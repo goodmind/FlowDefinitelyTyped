@@ -19,17 +19,17 @@ declare module "heremaps" {
    * Map class defines map instance in the application. By creating this object you will initialize a visible map object which is attached to the provided dom element.
    * Map class is an entry point to all operations related to layers, map objects and geo-screen transformations. By specifying options you can initialize map with predefined view.
    */
-  declare class H$Map mixins undefined.EventTarget {
+  declare class H$Map mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {base$Element} element - html element into which the map will be rendered
-     * @param {layer$Layer} baseLayer - The layer to be used as the base (bottom most) layer.
+     * @param {H$map$layer$Layer} baseLayer - The layer to be used as the base (bottom most) layer.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional map options
      */
     constructor(
       element: base$Element,
-      baseLayer: layer$Layer,
-      opt_options?: Map$Options
+      baseLayer: H$map$layer$Layer,
+      opt_options?: H$Map$Options
     ): this;
 
     /**
@@ -40,25 +40,25 @@ declare module "heremaps" {
 
     /**
      * This method sets the new center on a map.
-     * @param {geo$IPoint} center - requested center to be set
+     * @param {H$geo$IPoint} center - requested center to be set
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_animate - parameter indicates if animated transition should be applied, default is false
-     * @returns {Map} - the instance itself
+     * @returns {H$Map} - the instance itself
      */
-    setCenter(center: geo$IPoint, opt_animate?: boolean): Map;
+    setCenter(center: H$geo$IPoint, opt_animate?: boolean): H$Map;
 
     /**
      * This method returns currently rendered center of the map.
-     * @returns {geo$Point}
+     * @returns {H$geo$Point}
      */
-    getCenter(): geo$Point;
+    getCenter(): H$geo$Point;
 
     /**
      * This method sets the zoom level on the map. Every zoom level represents different scale i.e map at zoom level 2 is twice as large as the map at zoom level 1.
      * @param {number} zoom - requested zoom level
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_animate - parameter indicates if animated transition should be applied, default is false
-     * @returns {Map} - the instance itself
+     * @returns {H$Map} - the instance itself
      */
-    setZoom(zoom: number, opt_animate?: boolean): Map;
+    setZoom(zoom: number, opt_animate?: boolean): H$Map;
 
     /**
      * This method returns currently rendered zoom level.
@@ -76,49 +76,49 @@ declare module "heremaps" {
 
     /**
      * This method sets the bounding rect to be displayed by the map. Maps display the bounding rect in a way that it fits entirely in the current viewport.
-     * @param {geo$Rect} boundingRect - view bound which should be shown on map
+     * @param {H$geo$Rect} boundingRect - view bound which should be shown on map
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_animate - parameter indicates if animated transition should be applied, default is false
-     * @returns {Map} - the instance itself
+     * @returns {H$Map} - the instance itself
      */
-    setViewBounds(boundingRect: geo$Rect, opt_animate?: boolean): Map;
+    setViewBounds(boundingRect: H$geo$Rect, opt_animate?: boolean): H$Map;
 
     /**
      * This method returns bounding rect for the current map view. Returned bounding rect defines entire currently viewable area on the screen.
-     * @returns {geo$Rect}
+     * @returns {H$geo$Rect}
      */
-    getViewBounds(): geo$Rect;
+    getViewBounds(): H$geo$Rect;
 
     /**
      * Calculates the best CameraModel to show the provided bounding rectangle
-     * @param {geo$Rect} rect - The geographical bounding rectangle to use
-     * @returns {ViewModel$CameraData} - The result, represented by the properties zoom (number) and position (geo.Point)
+     * @param {H$geo$Rect} rect - The geographical bounding rectangle to use
+     * @returns {H$map$ViewModel$CameraData} - The result, represented by the properties zoom (number) and position (geo.Point)
      */
-    getCameraDataForBounds(rect: geo$Rect): ViewModel$CameraData;
+    getCameraDataForBounds(rect: H$geo$Rect): H$map$ViewModel$CameraData;
 
     /**
      * This method returns current map viewport.
      * Viewport can be used to modify padding and margin which will reflect the position of the viewport center and the amount of extra data loaded (for margin)
-     * @returns {map$ViewPort}
+     * @returns {H$map$ViewPort}
      */
-    getViewPort(): map$ViewPort;
+    getViewPort(): H$map$ViewPort;
 
     /**
      * This method returns current view model. View model can be used to modify the current view or camera. H.map.ViewModel
-     * @returns {ViewModel}
+     * @returns {H$map$ViewModel}
      */
-    getViewModel(): ViewModel;
+    getViewModel(): H$map$ViewModel;
 
     /**
      * This method returns the map's current layer collection.
-     * @returns {map$DataModel}
+     * @returns {H$map$DataModel}
      */
-    getLayers(): map$DataModel;
+    getLayers(): H$map$DataModel;
 
     /**
      * This method returns the imprint object for this map.
-     * @returns {map$Imprint}
+     * @returns {H$map$Imprint}
      */
-    getImprint(): map$Imprint;
+    getImprint(): H$map$Imprint;
 
     /**
      * This method captures desired region of the map and objects on it. Result is returned as an HTML5 Canvas element.
@@ -132,7 +132,7 @@ declare module "heremaps" {
      */
     capture(
       callback?: (canvas: HTMLCanvasElement) => void,
-      opt_capturables?: util$ICapturable[],
+      opt_capturables?: H$util$ICapturable[],
       opt_x1?: number,
       opt_y1?: number,
       opt_x2?: number,
@@ -142,9 +142,9 @@ declare module "heremaps" {
     /**
      * This method sets the rendering engine type for the map. Rendering engine is responsible for displaying i.e tiles and data on the map.
      * @param {$Values<typeof H$Map$EngineType>} type
-     * @returns {Map} - the map itself
+     * @returns {H$Map} - the map itself
      */
-    setEngineType(type: $Values<typeof H$Map$EngineType>): Map;
+    setEngineType(type: $Values<typeof H$Map$EngineType>): H$Map;
 
     /**
      * To persistently store the content of a map layer for a given area and range of zoom levels.
@@ -154,57 +154,59 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_min - The minimum zoom level to store, default is the current zoom level
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_max - The maximum zoom level to store, default is the current zoom level
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_layer - The layer to store, default is the current base layer
-     * @returns {Request} - A handle to the created storage request
+     * @returns {H$util$Request} - A handle to the created storage request
      */
     storeContent(
-      opt_onprogress?: (req: Request) => void,
-      opt_bounds?: geo$Rect,
+      opt_onprogress?: (req: H$util$Request) => void,
+      opt_bounds?: H$geo$Rect,
       opt_min?: number,
       opt_max?: number,
-      opt_layer?: layer$BaseTileLayer
-    ): Request;
+      opt_layer?: H$map$layer$BaseTileLayer
+    ): H$util$Request;
 
     /**
      * To clear the entire stored content
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_onprogress - A callback which is invoked every time when the progress state of the returned clear request changes
-     * @returns {Request} - A handle to the created flush request
+     * @returns {H$util$Request} - A handle to the created flush request
      */
-    clearContent(opt_onprogress?: (req: Request) => void): Request;
+    clearContent(
+      opt_onprogress?: (req: H$util$Request) => void
+    ): H$util$Request;
 
     /**
      * This method adds a layer to the map.
-     * @param {layer$Layer} layer - The map layer to be added
+     * @param {H$map$layer$Layer} layer - The map layer to be added
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_idx - index at which the new layer should be inserted
-     * @returns {Map} - current map instance
+     * @returns {H$Map} - current map instance
      */
-    addLayer(layer: layer$Layer, opt_idx?: number): Map;
+    addLayer(layer: H$map$layer$Layer, opt_idx?: number): H$Map;
 
     /**
      * This method removes layer from the map.
-     * @param {layer$Layer} layer - The map layer to be removed
-     * @returns {Map} - current map instance
+     * @param {H$map$layer$Layer} layer - The map layer to be removed
+     * @returns {H$Map} - current map instance
      */
-    removeLayer(layer: layer$Layer): Map;
+    removeLayer(layer: H$map$layer$Layer): H$Map;
 
     /**
      * This method will set provided layer as base map. The layer will be inserted as the bottom most layer in the map.
-     * @param {layer$Layer} layer - The layer to use as base map
-     * @returns {Map} - the instance itself
+     * @param {H$map$layer$Layer} layer - The layer to use as base map
+     * @returns {H$Map} - the instance itself
      */
-    setBaseLayer(layer: layer$Layer): Map;
+    setBaseLayer(layer: H$map$layer$Layer): H$Map;
 
     /**
      * To get the current base map layer.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"}
      */
-    getBaseLayer(): layer$Layer;
+    getBaseLayer(): H$map$layer$Layer;
 
     /**
      * Returns the screen coordinates according to the given geographical coordinates. This method returns a screen pixel coordinates for the provided geo point.
-     * @param {geo$IPoint} geoPoint - point on the map
+     * @param {H$geo$IPoint} geoPoint - point on the map
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"}
      */
-    geoToScreen(geoPoint: geo$IPoint): math$Point;
+    geoToScreen(geoPoint: H$geo$IPoint): H$math$Point;
 
     /**
      * Returns the geographical coordinates according to the given screen coordinates.
@@ -212,49 +214,49 @@ declare module "heremaps" {
      * @param {number} y - map viewport y-axis pixel coordinate
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"}
      */
-    screenToGeo(x: number, y: number): geo$Point;
+    screenToGeo(x: number, y: number): H$geo$Point;
 
     /**
      * Returns the camera data according to the given screen coordinates. Method converts screen pixel coordinates to correct camera data object
      * @param {number} x - map viewport x-axis pixel coordinate
      * @param {number} y - map viewport y-axis pixel coordinate
-     * @returns {ViewModel$CameraData}
+     * @returns {H$map$ViewModel$CameraData}
      */
-    screenToCameraData(x: number, y: number): ViewModel$CameraData;
+    screenToCameraData(x: number, y: number): H$map$ViewModel$CameraData;
 
     /**
      * This method adds an map object to the map. Map object can be a marker or a spatial object like polygon or polyline.
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} mapObject - The map object to add
      * @returns {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} - the added map object
      */
-    addObject(mapObject: Object): Object;
+    addObject(mapObject: H$map$Object): H$map$Object;
 
     /**
      * This method removes previously added map object from the map.
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} mapObject - The map object to remove
      * @returns {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} - the removed map object
      */
-    removeObject(mapObject: Object): Object;
+    removeObject(mapObject: H$map$Object): H$map$Object;
 
     /**
      * This method retrieves the list of all objects which have been added to the map.
-     * @returns {Array<Object>} - the list of all use objects which are currently on the map.
+     * @returns {Array<H$map$Object>} - the list of all use objects which are currently on the map.
      */
-    getObjects(): Object[];
+    getObjects(): H$map$Object[];
 
     /**
      * This method adds an array of objects or an object group to the map.
      * @param {Array<"NO PRINT IMPLEMENTED: JSDocNonNullableType">} mapObjects
-     * @returns {Map} - the map instance
+     * @returns {H$Map} - the map instance
      */
-    addObjects(mapObjects: Object[]): Map;
+    addObjects(mapObjects: H$map$Object[]): H$Map;
 
     /**
      * This method removes an array of object or an object group from the map.
-     * @param {(Array<Object> | map$Group)} mapObjects
-     * @returns {Map} - the map instance
+     * @param {(Array<H$map$Object> | H$map$Group)} mapObjects
+     * @returns {H$Map} - the map instance
      */
-    removeObjects(mapObjects: Object[] | map$Group): Map;
+    removeObjects(mapObjects: H$map$Object[] | H$map$Group): H$Map;
 
     /**
      * Returns the top most z-ordered map object found under the specific screen coordinates. Coordinates are viewport pixel coordinates starting from top left corner as (0, 0) point.
@@ -262,7 +264,7 @@ declare module "heremaps" {
      * @param {number} y - map viewport y-axis pixel coordinate
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"} - the encountered top most map object or null if no object found
      */
-    getObjectAt(x: number, y: number): Object;
+    getObjectAt(x: number, y: number): H$map$Object;
 
     /**
      * Returns a list of map objects in descending z-order found under the specific screen coordinates. Coordinates are viewport pixel coordinates starting from top left corner as (0, 0) point.
@@ -270,13 +272,13 @@ declare module "heremaps" {
      * @param {number} y - map viewport y-axis pixel coordinate
      * @returns {Array<"NO PRINT IMPLEMENTED: JSDocNonNullableType">}
      */
-    getObjectsAt(x: number, y: number): Object[];
+    getObjectsAt(x: number, y: number): H$map$Object[];
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -292,9 +294,9 @@ declare module "heremaps" {
 
     /**
      * This returns the map's render engine
-     * @return {p2d$RenderEngine} - map render engine
+     * @return {H$map$render$p2d$RenderEngine} - map render engine
      */
-    getEngine(): p2d$RenderEngine;
+    getEngine(): H$map$render$p2d$RenderEngine;
   }
 
   declare var npm$namespace$H$Map: {
@@ -339,17 +341,17 @@ declare module "heremaps" {
    * @property fixedCenter {boolean=} - Indicates whether the center of the map should remain unchanged if the viewport's size or padding has been changed, default is true
    */
   declare interface H$Map$Options {
-    center?: geo$IPoint;
+    center?: H$geo$IPoint;
     zoom?: number;
-    bounds?: geo$Rect;
-    layers?: layer$Layer[];
+    bounds?: H$geo$Rect;
+    layers?: H$map$layer$Layer[];
     engineType?: $Values<typeof H$Map$EngineType>;
     pixelRatio?: number;
-    imprint?: map$Imprint$Options;
+    imprint?: H$map$Imprint$Options;
     renderBaseBackground?: H$Map$BackgroundRange;
     autoColor?: boolean;
     margin?: number;
-    padding?: map$ViewPort$Padding;
+    padding?: H$map$ViewPort$Padding;
     fixedCenter?: boolean;
   }
 
@@ -366,23 +368,23 @@ declare module "heremaps" {
    * @property wt {number} - The weight of the data point
    * @property data {*} - Data associated with this data point
    */
-  declare class H$clustering$DataPoint mixins undefined.IPoint {
+  declare class H$clustering$DataPoint mixins H$geo$IPoint {
     /**
      * Constructor
-     * @param {geo$Latitude} lat - The latitude coordinate of the data point's position
-     * @param {geo$Longitude} lng - The longitude coordinate of the data point's position
+     * @param {H$geo$Latitude} lat - The latitude coordinate of the data point's position
+     * @param {H$geo$Longitude} lng - The longitude coordinate of the data point's position
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_weight - The weight of the data point as a positive number > 0. If not specified it , default is 1.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_data - Optional data, which will be associated with this DataPoint
      */
     constructor(
-      lat: geo$Latitude,
-      lng: geo$Longitude,
+      lat: H$geo$Latitude,
+      lng: H$geo$Longitude,
       opt_weight?: number,
       opt_data?: any
     ): this;
-    lat: geo$Latitude;
-    lng: geo$Longitude;
-    alt: geo$Altitude;
+    lat: H$geo$Latitude;
+    lng: H$geo$Longitude;
+    alt: H$geo$Altitude;
     ctx: $Values<typeof H$geo$AltitudeContext>;
     wt: number;
     H$data: any;
@@ -400,28 +402,28 @@ declare module "heremaps" {
 
     /**
      * Returns the bounding rectangle of this cluster.
-     * @returns {geo$Rect}
+     * @returns {H$geo$Rect}
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * Invokes the specified callback for each "entry" of the cluster.
      * That "entry" can be either a cluster which implements H.clustering.ICluster interface or a noise point which implements H.clustering.INoisePoint interface.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback - The callback gets the currently traversed entry as an argument, which is cluster or noise point.
      */
-    forEachEntry(callback: (result: clustering$IResult) => void): void;
+    forEachEntry(callback: (result: H$clustering$IResult) => void): void;
 
     /**
      * Invokes the specified callback for each data point which is part of this cluster, even indirectly.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback - The callback gets the currently traversed noise point as argument.
      */
-    forEachDataPoint(callback: (noise: clustering$INoisePoint) => void): void;
+    forEachDataPoint(callback: (noise: H$clustering$INoisePoint) => void): void;
 
     /**
      * Returns the geographical position of this cluster result.
-     * @returns {geo$Point}
+     * @returns {H$geo$Point}
      */
-    getPosition(): geo$Point;
+    getPosition(): H$geo$Point;
 
     /**
      * Returns the weight of this cluster result.
@@ -454,9 +456,9 @@ declare module "heremaps" {
 
     /**
      * Returns the geographical position of this cluster result.
-     * @returns {geo$Point}
+     * @returns {H$geo$Point}
      */
-    getPosition(): geo$Point;
+    getPosition(): H$geo$Point;
 
     /**
      * Returns the weight of this cluster result.
@@ -483,9 +485,9 @@ declare module "heremaps" {
   declare interface H$clustering$IResult {
     /**
      * Returns the geographical position of this cluster result.
-     * @returns {geo$Point}
+     * @returns {H$geo$Point}
      */
-    getPosition(): geo$Point;
+    getPosition(): H$geo$Point;
 
     /**
      * Returns the weight of this cluster result.
@@ -512,17 +514,17 @@ declare module "heremaps" {
   declare interface H$clustering$ITheme {
     /**
      * Function returns a cluster presentation as a map object.
-     * @param {clustering$ICluster} cluster
-     * @returns {Object}
+     * @param {H$clustering$ICluster} cluster
+     * @returns {H$map$Object}
      */
-    getClusterPresentation(cluster: clustering$ICluster): Object;
+    getClusterPresentation(cluster: H$clustering$ICluster): H$map$Object;
 
     /**
      * Function returns noise point presentation as a map object
-     * @param {clustering$INoisePoint} noisePoint
-     * @returns {Object}
+     * @param {H$clustering$INoisePoint} noisePoint
+     * @returns {H$map$Object}
      */
-    getNoisePresentation(noisePoint: clustering$INoisePoint): Object;
+    getNoisePresentation(noisePoint: H$clustering$INoisePoint): H$map$Object;
   }
 
   /**
@@ -531,22 +533,22 @@ declare module "heremaps" {
    * @property min {number} - Minimum zoom level at which provider can cluster data
    * @property max {number} - Maximum zoom level at which provider can cluster data
    */
-  declare class H$clustering$Provider mixins undefined.EventTarget {
+  declare class H$clustering$Provider mixins H$util$EventTarget {
     /**
      * Constructor
-     * @param {Array<clustering$DataPoint>} dataPoints
+     * @param {Array<H$clustering$DataPoint>} dataPoints
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
     constructor(
-      dataPoints: clustering$DataPoint[],
-      opt_options?: Provider$Options
+      dataPoints: H$clustering$DataPoint[],
+      opt_options?: H$clustering$Provider$Options
     ): this;
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -562,39 +564,39 @@ declare module "heremaps" {
 
     /**
      * This method sets new data to the provider
-     * @param {Array<clustering$DataPoint>} dataPoints
+     * @param {Array<H$clustering$DataPoint>} dataPoints
      */
-    setDataPoints(dataPoints: clustering$DataPoint[]): void;
+    setDataPoints(dataPoints: H$clustering$DataPoint[]): void;
 
     /**
      * This method adds a data point to the provider. Beware that this method provokes reclustering of the whole data set.
-     * @param {clustering$DataPoint} dataPoint
+     * @param {H$clustering$DataPoint} dataPoint
      */
-    addDataPoint(dataPoint: clustering$DataPoint): void;
+    addDataPoint(dataPoint: H$clustering$DataPoint): void;
 
     /**
      * This method adds a list of data points to the provider. Beware that this method provokes reclustering of the whole data set.
-     * @param {Array<clustering$DataPoint>} dataPoints
+     * @param {Array<H$clustering$DataPoint>} dataPoints
      */
-    addDataPoints(dataPoints: clustering$DataPoint[]): void;
+    addDataPoints(dataPoints: H$clustering$DataPoint[]): void;
 
     /**
      * This method removes a data point from the provider. Beware that this method provokes reclustering of the whole data set.
-     * @param {clustering$DataPoint} dataPoint
+     * @param {H$clustering$DataPoint} dataPoint
      */
-    removeDataPoint(dataPoint: clustering$DataPoint): void;
+    removeDataPoint(dataPoint: H$clustering$DataPoint): void;
 
     /**
      * This method returns current theme used for creating cluster visualization
-     * @returns {clustering$ITheme}
+     * @returns {H$clustering$ITheme}
      */
-    getTheme(): clustering$ITheme;
+    getTheme(): H$clustering$ITheme;
 
     /**
      * This method sets new theme on the provider. Calling this method will change visuals for displayed clusters and noise points.
-     * @param {clustering$ITheme} theme
+     * @param {H$clustering$ITheme} theme
      */
-    setTheme(theme: clustering$ITheme): void;
+    setTheme(theme: H$clustering$ITheme): void;
 
     /**
      * This method always returns true as we don't have information about visual representation until we have the clustering result and apply the theme.
@@ -604,18 +606,18 @@ declare module "heremaps" {
 
     /**
      * Returns all DomMarker cluster and noise point representations which intersect with the provided rectangular area.
-     * @param {geo$Rect} bounds - A rectangular area in geo space to intersect with
+     * @param {H$geo$Rect} bounds - A rectangular area in geo space to intersect with
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$DomMarker>} - a list of intersecting objects
+     * @returns {Array<H$map$DomMarker>} - a list of intersecting objects
      */
     requestDomMarkers(
-      bounds: geo$Rect,
+      bounds: H$geo$Rect,
       zoomLevel: number,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$DomMarker[];
+    ): H$map$DomMarker[];
 
     /**
      * This method always returns true as we don't have information about visual representation until we have the clustering result and apply the theme.
@@ -625,18 +627,18 @@ declare module "heremaps" {
 
     /**
      * Returns all cluster and noise point markers which intersect with the provided rectangular area.
-     * @param {geo$Rect} bounds - A rectangular area in geo space to intersect with
+     * @param {H$geo$Rect} bounds - A rectangular area in geo space to intersect with
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$Marker>} - a list of intersecting objects
+     * @returns {Array<H$map$Marker>} - a list of intersecting objects
      */
     requestMarkers(
-      bounds: geo$Rect,
+      bounds: H$geo$Rect,
       zoomLevel: number,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$Marker[];
+    ): H$map$Marker[];
 
     /**
      * This method always returns true as we don't have information about visual representation until we have the clustering result and apply the theme.
@@ -646,44 +648,44 @@ declare module "heremaps" {
 
     /**
      * Returns all polyline, polygon, circle and rect objects which represent cluster and noise points and intersect with the provided area.
-     * @param {geo$Rect} bounds - A rectangular area in geo space to intersect with
+     * @param {H$geo$Rect} bounds - A rectangular area in geo space to intersect with
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$Spatial>} - a list of intersecting objects
+     * @returns {Array<H$map$Spatial>} - a list of intersecting objects
      */
     requestSpatials(
-      bounds: geo$Rect,
+      bounds: H$geo$Rect,
       zoomLevel: number,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$Spatial[];
+    ): H$map$Spatial[];
 
     /**
      * Returns the spatial objects which intersect the given tile
      * @param {H$map.provider.SpatialTile} tile - The tile for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$Spatial>} - a list of intersecting objects
+     * @returns {Array<H$map$Spatial>} - a list of intersecting objects
      */
     requestSpatialsByTile(
-      tile: provider$Tile,
+      tile: H$map$provider$Tile,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$Spatial[];
+    ): H$map$Spatial[];
 
     /**
      * Returns the accumulate invalidations of this provider's objects that have occurred.
-     * @returns {Invalidations} - an invalidations object
+     * @returns {H$map$provider$Invalidations} - an invalidations object
      */
-    getInvalidations(): Invalidations;
+    getInvalidations(): H$map$provider$Invalidations;
 
     /**
      * To signal to this provider that a map object has been changed. The method updates the Invalidations of this provider and the given map object and triggers dispatchUpdate()
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} mapObject - The map object to be invalidated
-     * @param {math$BitMask} changes - The flags indicating the types of occurred changes
+     * @param {H$math$BitMask} changes - The flags indicating the types of occurred changes
      */
-    invalidateObject(mapObject: Object, changes: math$BitMask): void;
+    invalidateObject(mapObject: H$map$Object, changes: H$math$BitMask): void;
     min: number;
     max: number;
   }
@@ -703,7 +705,7 @@ declare module "heremaps" {
   declare interface H$clustering$Provider$ClusteringOptions {
     eps?: number;
     minWeight?: number;
-    projection?: geo$IProjection;
+    projection?: H$geo$IProjection;
     strategy?: $Values<typeof H$clustering$Provider$Strategy>;
   }
 
@@ -717,8 +719,8 @@ declare module "heremaps" {
   declare interface H$clustering$Provider$Options {
     min?: number;
     max?: number;
-    clusteringOptions?: Provider$ClusteringOptions;
-    theme?: clustering$ITheme;
+    clusteringOptions?: H$clustering$Provider$ClusteringOptions;
+    theme?: H$clustering$ITheme;
   }
 
   /**
@@ -742,7 +744,7 @@ declare module "heremaps" {
   /**
    * An abstract reader class defines interface for data readers and has general functionality related to fetching data and reader events.
    */
-  declare class H$data$AbstractReader mixins undefined.EventTarget {
+  declare class H$data$AbstractReader mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_url
@@ -752,15 +754,15 @@ declare module "heremaps" {
     /**
      * Method returns H.map.layer.ObjectLayer that contains parsed data, and can be added directly to the map. It returns new instance of the class with every invocation.
      * If data hasn't been parsed it will return H.map.layer.ObjectLayer that contains partial information, and reader will add new parsed objects to the layer's provider later on.
-     * @returns {layer$ObjectLayer}
+     * @returns {H$map$layer$ObjectLayer}
      */
-    getLayer(): layer$ObjectLayer;
+    getLayer(): H$map$layer$ObjectLayer;
 
     /**
      * Method returns collection of currently parsed, and converted to H.map.Object data objects. Method returns only currently parsed objects if parsing is ongoing.
-     * @returns {Array<Object>}
+     * @returns {Array<H$map$Object>}
      */
-    getParsedObjects(): Object[];
+    getParsedObjects(): H$map$Object[];
 
     /**
      * Returns URL of the current file, which is either in process of fetching/parsing or file that has been already parsed.
@@ -772,9 +774,9 @@ declare module "heremaps" {
      * Method sets reader's URL. Method resets current Reader's state to its initial values (clears data about last parsed objects, etc.), and throws
      * InvalidState exception if Reader's state is not READY or ERROR.
      * @param {string} url - The new URL
-     * @returns {AbstractReader}
+     * @returns {H$data$AbstractReader}
      */
-    setUrl(url: string): AbstractReader;
+    setUrl(url: string): H$data$AbstractReader;
 
     /**
      * Returns the reader's processing state for possible states see H.data.AbstractReader.State
@@ -797,16 +799,16 @@ declare module "heremaps" {
   /**
    * The event class for state events that are dispatched by AbstractReader
    */
-  declare class H$data$AbstractReader$Event mixins undefined.Event {
+  declare class H$data$AbstractReader$Event mixins H$util$Event {
     /**
      * Constructor
-     * @param {(AbstractReader | Object)} target - The target that's passed to event listeners
+     * @param {(H$data$AbstractReader | H$map$Object)} target - The target that's passed to event listeners
      * @param {string} type - The type of the event
      * @param {$Values<typeof H$data$AbstractReader$State>} state - The state of the target firing an event
      * @param {string} message - The message associated with an event
      */
     constructor(
-      target: AbstractReader | Object,
+      target: H$data$AbstractReader | H$map$Object,
       type: string,
       state: $Values<typeof H$data$AbstractReader$State>,
       message: string
@@ -842,9 +844,9 @@ declare module "heremaps" {
   declare class H$geo$AbstractGeometry {
     /**
      * Returns the bounding rectangle of the geometry.
-     * @return {geo$Rect} - the bounding rectangle of the geometry or null if the bounding rectangle can't be computed (e.g. for a geometry without coordinates)
+     * @return {H$geo$Rect} - the bounding rectangle of the geometry or null if the bounding rectangle can't be computed (e.g. for a geometry without coordinates)
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * Checks whether the geometry is equal to the geometry supplied by the caller.
@@ -888,17 +890,21 @@ declare module "heremaps" {
    * @property ctx {H.geo.AltitudeContext=} - The altitude context.
    */
   declare interface H$geo$IPoint {
-    lat: geo$Latitude;
+    lat: H$geo$Latitude;
     lng: geo$Longitude;
-    alt?: geo$Altitude;
+    alt?: H$geo$Altitude;
     ctx?: $Values<typeof H$geo$AltitudeContext>;
   }
 
   declare interface H$geo$IProjection {
-    latLngToPoint(lat: number, lng: number, opt_out?: math$Point): math$Point;
-    xyToGeo(x: number, y: number, opt_out?: geo$Point): geo$Point;
-    pointToGeo(point: math$IPoint, opt_out?: geo$Point): geo$Point;
-    geoToPoint(geoPoint: geo$IPoint, opt_out?: math$Point): math$Point;
+    latLngToPoint(
+      lat: number,
+      lng: number,
+      opt_out?: H$math$Point
+    ): H$math$Point;
+    xyToGeo(x: number, y: number, opt_out?: H$geo$Point): H$geo$Point;
+    pointToGeo(point: H$math$IPoint, opt_out?: H$geo$Point): H$geo$Point;
+    geoToPoint(geoPoint: H$geo$IPoint, opt_out?: H$math$Point): H$math$Point;
   }
 
   /**
@@ -925,15 +931,15 @@ declare module "heremaps" {
 
     /**
      * This method pushes a lat, lng, alt to the end of this LineString.
-     * @param {geo$Latitude} lat
-     * @param {geo$Longitude} lng
-     * @param {geo$Altitude} alt
+     * @param {H$geo$Latitude} lat
+     * @param {H$geo$Longitude} lng
+     * @param {H$geo$Altitude} alt
      * @throws {H.lang.InvalidArgumentError} - in case of invalid lat, lng, alt value
      */
     pushLatLngAlt(
-      lat: geo$Latitude,
-      lng: geo$Longitude,
-      alt: geo$Altitude
+      lat: H$geo$Latitude,
+      lng: H$geo$Longitude,
+      alt: H$geo$Altitude
     ): void;
 
     /**
@@ -953,15 +959,15 @@ declare module "heremaps" {
     /**
      * This method inserts one set of lat, lng, alt values into the LineString at the specified index.
      * @param {number} index - the index at which to add the element
-     * @param {geo$Latitude} lat - the latitude to insert
-     * @param {geo$Longitude} lng - the longitude to insert
-     * @param {geo$Altitude} alt - the altitude to insert
+     * @param {H$geo$Latitude} lat - the latitude to insert
+     * @param {H$geo$Longitude} lng - the longitude to insert
+     * @param {H$geo$Altitude} alt - the altitude to insert
      */
     insertLatLngAlt(
       index: number,
-      lat: geo$Latitude,
-      lng: geo$Longitude,
-      alt: geo$Altitude
+      lat: H$geo$Latitude,
+      lng: H$geo$Longitude,
+      alt: H$geo$Altitude
     ): void;
 
     /**
@@ -972,17 +978,17 @@ declare module "heremaps" {
 
     /**
      * This method pushes the lat, lng, alt values of a {H.geo.Point} to the end of this LineString.
-     * @param {geo$IPoint} geoPoint
+     * @param {H$geo$IPoint} geoPoint
      * @throws {H.lang.InvalidArgumentError} - in case of invalid geoPoint argument
      */
-    pushPoint(geoPoint: geo$IPoint): void;
+    pushPoint(geoPoint: H$geo$IPoint): void;
 
     /**
      * This method inserts the lat, lng, alt values of a H.geo.Point into the list at the specified index.
      * @param {number} pointIndex
-     * @param {geo$IPoint} geoPoint
+     * @param {H$geo$IPoint} geoPoint
      */
-    insertPoint(pointIndex: number, geoPoint: geo$IPoint): void;
+    insertPoint(pointIndex: number, geoPoint: H$geo$IPoint): void;
 
     /**
      * This method removes one set of lat, lng, alt values from this LineString at the virtual point index specified.
@@ -995,9 +1001,9 @@ declare module "heremaps" {
      * If the extracted point has an alt value, the LineString's altitude context will be supplied to the point.
      * @param {number} pointIndex - the virtual point index in the LineString
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional point object to store the lat, lng, alt values
-     * @return {geo$Point} - Returns either the 'opt_out' point object or a new point object.
+     * @return {H$geo$Point} - Returns either the 'opt_out' point object or a new point object.
      */
-    extractPoint(pointIndex: number, opt_out?: geo$Point): geo$Point;
+    extractPoint(pointIndex: number, opt_out?: H$geo$Point): H$geo$Point;
 
     /**
      * A utility method to iterate over the points of a line string.
@@ -1007,9 +1013,9 @@ declare module "heremaps" {
      */
     eachLatLngAlt(
       eachFn: (
-        lat: geo$Latitude,
-        lng: geo$Longitude,
-        alt: geo$Altitude,
+        lat: H$geo$Latitude,
+        lng: H$geo$Longitude,
+        alt: H$geo$Altitude,
         index: number
       ) => void,
       opt_start?: number,
@@ -1018,11 +1024,11 @@ declare module "heremaps" {
 
     /**
      * To obtain whether a leg (formed by the given two longitudes) crosses the International Date Line.
-     * @param {geo$Longitude} lng1 - The start longitude of the leg
-     * @param {geo$Longitude} lng2 - The end longitude of the leg
+     * @param {H$geo$Longitude} lng1 - The start longitude of the leg
+     * @param {H$geo$Longitude} lng2 - The end longitude of the leg
      * @return {boolean}
      */
-    static isDBC(lng1: geo$Longitude, lng2: geo$Longitude): boolean;
+    static isDBC(lng1: H$geo$Longitude, lng2: H$geo$Longitude): boolean;
 
     /**
      * To obtain the number of times that this LineString cross the International Date Line.
@@ -1048,17 +1054,17 @@ declare module "heremaps" {
     /**
      * This method returns the bounding box of this LineString.
      * Note: The LineString is treated as an open path. If the bounding rectangle for a closed shape is required, the closing leg must be merged in an extra step.
-     * @return {geo$Rect} - This LineString's bounding rectangle
+     * @return {H$geo$Rect} - This LineString's bounding rectangle
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * This method initializes a new LineString with an array of lat, lng values. Arrays are expected to have an even length with the format [lat, lng, lat, lng, ...].
      * @param {number[]} latLngs - the array of lat, lng value.
-     * @return {geo$LineString} - The LineString containing the lat, lng values
+     * @return {H$geo$LineString} - The LineString containing the lat, lng values
      * @throws {H.lang.InvalidArgumentError} - throws an error in case the latLngs array has an odd length
      */
-    static fromLatLngArray(latLngs: number[]): geo$LineString;
+    static fromLatLngArray(latLngs: number[]): H$geo$LineString;
 
     /**
      * Checks whether the geometry is equal to the geometry supplied by the caller.
@@ -1075,7 +1081,7 @@ declare module "heremaps" {
     toString(): string;
   }
 
-  declare class H$geo$MultiGeometry<T> mixins undefined.AbstractGeometry {
+  declare class H$geo$MultiGeometry<T> mixins H$geo$AbstractGeometry {
     /**
      * The base class for a geometry that is a container for multiple geometries of a generic type. The type of the contained geometries is specified by the generic type parameter T
      * @param {T[]} geometries - The list of geometries which are initially aggregated.
@@ -1122,9 +1128,9 @@ declare module "heremaps" {
 
     /**
      * Returns the bounding rectangle of the geometry.
-     * @return {geo$Rect} - the bounding rectangle of the geometry or null if the bounding rectangle can't be computed (e.g. for a geometry without coordinates)
+     * @return {H$geo$Rect} - the bounding rectangle of the geometry or null if the bounding rectangle can't be computed (e.g. for a geometry without coordinates)
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * Checks whether the geometry is equal to the geometry supplied by the caller.
@@ -1142,60 +1148,60 @@ declare module "heremaps" {
   }
 
   declare class H$geo$MultiLineString
-    mixins undefined.MultiGeometry<geo$LineString> {
+    mixins H$geo$MultiGeometry<H$geo$LineString> {
     /**
      * A MultiLineString is a collection of line strings represented as a H.geo.MultiGeometry with a H.geo.LineString as generic type parameter T.
-     * @param {geo$LineString[]} lineStrings - The list of line-strings which are initially represented by the MultiLineString.
+     * @param {H$geo$LineString[]} lineStrings - The list of line-strings which are initially represented by the MultiLineString.
      * @throws {H.lang.InvalidArgumentError} - if the lineStrings argument is not valid
      */
-    constructor(lineStrings: geo$LineString[]): this;
+    constructor(lineStrings: H$geo$LineString[]): this;
 
     /**
      * This method splices the specified MultiGeometry at the provided index, removing the specified number of items at that index and inserting new items.
      * @param {number} index - The index at which to start changing the list.
      * @param {"NO PRINT IMPLEMENTED: JSDocNullableType"} opt_deleteCount - The number of geometries to remove.
      * @param {"NO PRINT IMPLEMENTED: JSDocNullableType"} opt_items - The geometries to add.
-     * @return {geo$LineString[]} - the removed geometries
+     * @return {H$geo$LineString[]} - the removed geometries
      */
     splice(
       index: number,
       opt_deleteCount?: number,
-      opt_items?: geo$LineString[]
-    ): geo$LineString[];
+      opt_items?: H$geo$LineString[]
+    ): H$geo$LineString[];
 
     /**
      * Removes a contained geometry at the given index.
      * @param {number} index - The index of the geometry to remove.
-     * @return {geo$LineString} - the removed geometry.
+     * @return {H$geo$LineString} - the removed geometry.
      * @throws {H.lang.OutOfRangeError} - if no geometry exists at the given index.
      */
-    removeAt(index: number): geo$LineString;
+    removeAt(index: number): H$geo$LineString;
 
     /**
      * Removes the specified geometry from the multi-geometry
-     * @param {geo$LineString} geometry -The geometry (by reference) to remove from this multi-geometry
-     * @return {geo$LineString} -the removed geometry or null if the geometry was not found
+     * @param {H$geo$LineString} geometry -The geometry (by reference) to remove from this multi-geometry
+     * @return {H$geo$LineString} -the removed geometry or null if the geometry was not found
      */
-    remove(geometry: geo$LineString): geo$LineString;
+    remove(geometry: H$geo$LineString): H$geo$LineString;
 
     /**
      * Returns the aggregated geometries of the multi-geometry. The returned geometries must be treated as read-only to not violate the integrity of the multi-geometry.
-     * @return {geo$LineString[]} - An array of geometries
+     * @return {H$geo$LineString[]} - An array of geometries
      */
-    getGeometries(): geo$LineString[];
+    getGeometries(): H$geo$LineString[];
 
     /**
      * Adds the specified geometry to the current multi-geometry.
-     * @param {geo$LineString} geometry - A geometry which will be added to the current multi-geometry
+     * @param {H$geo$LineString} geometry - A geometry which will be added to the current multi-geometry
      * @throws {H.lang.InvalidArgumentError} - in case of invalid geometry argument
      */
-    push(geometry: geo$LineString): void;
+    push(geometry: H$geo$LineString): void;
 
     /**
      * Returns the bounding rectangle of the geometry.
-     * @return {geo$Rect} - the bounding rectangle of the geometry or null if the bounding rectangle can't be computed (e.g. for a geometry without coordinates)
+     * @return {H$geo$Rect} - the bounding rectangle of the geometry or null if the bounding rectangle can't be computed (e.g. for a geometry without coordinates)
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * Checks whether the geometry is equal to the geometry supplied by the caller.
@@ -1228,10 +1234,10 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_sizeAtLevelZero A value indicating the size of a tile representation of the world in pixels at zoom level 0, the default is 256
      */
     constructor(
-      opt_projection?: geo$IProjection,
+      opt_projection?: H$geo$IProjection,
       opt_sizeAtLevelZero?: number
     ): this;
-    projection: geo$IProjection;
+    projection: H$geo$IProjection;
     x: number;
     y: number;
     w: number;
@@ -1251,28 +1257,28 @@ declare module "heremaps" {
 
     /**
      * This method translates a point defines in terms of its geographic coordinates to pixel coordinates at the specified zoom level.
-     * @param {geo$IPoint} geoPoint - An object containing the geographic coordinates
+     * @param {H$geo$IPoint} geoPoint - An object containing the geographic coordinates
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - An optional point to store the result
-     * @return {math$IPoint} - An object representing the results of the the conversion to pixel coordinates
+     * @return {H$math$IPoint} - An object representing the results of the the conversion to pixel coordinates
      */
-    geoToPixel(geoPoint: geo$IPoint, opt_out?: math$IPoint): math$IPoint;
+    geoToPixel(geoPoint: H$geo$IPoint, opt_out?: H$math$IPoint): H$math$IPoint;
 
     /**
      * This method translates a point defined in terms of its pixel coordinates to a location defined in geographic coordinates.
-     * @param {math$IPoint} point - An object defining a location on the screen in terms of pixel coordinates
+     * @param {H$math$IPoint} point - An object defining a location on the screen in terms of pixel coordinates
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - An optional point to store the result
-     * @return {geo$IPoint} - An object representing the results of conversion to a geographic location
+     * @return {H$geo$IPoint} - An object representing the results of conversion to a geographic location
      */
-    pixelToGeo(point: math$IPoint, opt_out?: geo$IPoint): geo$IPoint;
+    pixelToGeo(point: H$math$IPoint, opt_out?: H$geo$IPoint): H$geo$IPoint;
 
     /**
      * This method translates the x and y coordinates of a pixel to a geographic point.
      * @param {number} x - A value indicating the pixel x-coordinate
      * @param {number} y - A value indicating the pixel y-coordinate
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - An optional point to store the result
-     * @return {geo$Point} - An object representing the results of the conversion to a geographic location
+     * @return {H$geo$Point} - An object representing the results of the conversion to a geographic location
      */
-    xyToGeo(x: number, y: number, opt_out?: geo$Point): geo$Point;
+    xyToGeo(x: number, y: number, opt_out?: H$geo$Point): H$geo$Point;
 
     /**
      * This method translates geographical coordinates (latitude, longitude) supplied by the caller into a point defined in terms of pixel coordinates.
@@ -1280,20 +1286,20 @@ declare module "heremaps" {
      * @param {number} latitude - The latitude to translate
      * @param {number} longitude - The longitude to translate
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - An optional point to store the result
-     * @return {math$Point} - The results of the conversion as a point object containing x and y coordinates (in pixels)
+     * @return {H$math$Point} - The results of the conversion as a point object containing x and y coordinates (in pixels)
      */
     latLngToPixel(
       latitude: number,
       longitude: number,
-      opt_out?: math$IPoint
-    ): math$Point;
+      opt_out?: H$math$IPoint
+    ): H$math$Point;
 
     /**
      * This method method translates a map point to world pixel coordinates relative to current projection offset.
-     * @param {math$IPoint} point - An object representing the map point to convert
-     * @return {math$Point} - The result of the conversion as an object containing pixel coordinate
+     * @param {H$math$IPoint} point - An object representing the map point to convert
+     * @return {H$math$Point} - The result of the conversion as an object containing pixel coordinate
      */
-    pointToPixel(point: math$IPoint): math$Point;
+    pointToPixel(point: H$math$IPoint): H$math$Point;
   }
 
   /**
@@ -1303,7 +1309,7 @@ declare module "heremaps" {
    * @property alt {H.geo.Altitude} - The altitude coordinate.
    * @property ctx {H.geo.AltitudeContext} - The altitude context.
    */
-  declare class H$geo$Point mixins IPoint {
+  declare class H$geo$Point mixins H$geo$IPoint {
     /**
      * Constructor
      * @property lat {H.geo.Latitude} - The latitude coordinate.
@@ -1312,22 +1318,22 @@ declare module "heremaps" {
      * @property opt_ctx {H.geo.AltitudeContext=} - The altitude context.
      */
     constructor(
-      lat: geo$Latitude,
+      lat: H$geo$Latitude,
       lng: H$geo$Longitude,
-      opt_alt?: geo$Altitude,
+      opt_alt?: H$geo$Altitude,
       opt_ctx?: $Values<typeof H$geo$AltitudeContext>
     ): this;
 
     /**
      * To compare this point with a supplied other point for equality. Two points are considered equal if they have the same lat and lng as well as equivalent values for alt and ctx.
-     * @param {geo$IPoint} other
+     * @param {H$geo$IPoint} other
      * @returns {boolean} - Whether the two points are equal.
      */
     equals(other: H$geo$IPoint): boolean;
 
     /**
      * To calculate the distance between this point and the supplied other point. The method uses the Haversine formula. The altitude is not considered.
-     * @param {geo$IPoint} other
+     * @param {H$geo$IPoint} other
      * @returns {number} - The distance between the given location and the location supplied by the caller in meters.
      */
     distance(other: H$geo$IPoint): number;
@@ -1338,7 +1344,7 @@ declare module "heremaps" {
      * @param {number} bearing - The bearing to use in the calculation in degrees.
      * @param {number} distance - The distance to the destination in meters.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_overGreatCircle - If true the computation uses the 'Great Circle' otherwise 'Rhumb Line'.
-     * @returns {geo$Point} - The calculated point
+     * @returns {H$geo$Point} - The calculated point
      */
     walk(
       bearing: number,
@@ -1349,7 +1355,7 @@ declare module "heremaps" {
     /**
      * This method validates the given IPoint. It checks, if lat, lng, alt and ctx have valid types. Additionally the value of the lat property is clamped into a range of -90 ... +90
      * and the value of the lng property is modulo into a range of -180 ... +180 plus validates the values of the alt and ctx properties
-     * @param {geo$IPoint} point - The point to validate
+     * @param {H$geo$IPoint} point - The point to validate
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_caller - The caller to use for InvalidArgumentError. If omitted no error is thrown
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_argNr - The argument number to use for InvalidArgumentError.
      * @returns {boolean} - if the given point could validate
@@ -1362,13 +1368,13 @@ declare module "heremaps" {
 
     /**
      * This method creates a Point instance from a given IPoint object.
-     * @param {geo$IPoint} iPoint - The IPoint object to use
-     * @returns {geo$Point} - the created Point instance
+     * @param {H$geo$IPoint} iPoint - The IPoint object to use
+     * @returns {H$geo$Point} - the created Point instance
      */
     static fromIPoint(iPoint: H$geo$IPoint): H$geo$Point;
-    lat: geo$Latitude;
-    lng: geo$Longitude;
-    alt: geo$Altitude;
+    lat: H$geo$Latitude;
+    lng: H$geo$Longitude;
+    alt: H$geo$Altitude;
     ctx: $Values<typeof H$geo$AltitudeContext>;
   }
 
@@ -1378,72 +1384,72 @@ declare module "heremaps" {
   declare class H$geo$Rect {
     /**
      * Constructor
-     * @param {geo$Latitude} top - the northern-most latitude
-     * @param {geo$Longitude} left - the left-most longitude
-     * @param {geo$Latitude} bottom - the southern-most latitude
-     * @param {geo$Longitude} right - the right-most latitude
+     * @param {H$geo$Latitude} top - the northern-most latitude
+     * @param {H$geo$Longitude} left - the left-most longitude
+     * @param {H$geo$Latitude} bottom - the southern-most latitude
+     * @param {H$geo$Longitude} right - the right-most latitude
      */
     constructor(
-      top: geo$Latitude,
-      left: geo$Longitude,
-      bottom: geo$Latitude,
-      right: geo$Longitude
+      top: H$geo$Latitude,
+      left: H$geo$Longitude,
+      bottom: H$geo$Latitude,
+      right: H$geo$Longitude
     ): this;
 
     /**
      * To compare this rectangle with a supplied other rectangle for equality.
-     * @param {geo$Rect} other
+     * @param {H$geo$Rect} other
      * @returns {boolean} - Whether the two rectangles are equal.
      */
-    equals(other: geo$Rect): boolean;
+    equals(other: H$geo$Rect): boolean;
 
     /**
      * Toclone this rectangle.
-     * @returns {geo$Rect}
+     * @returns {H$geo$Rect}
      */
-    clone(): geo$Rect;
+    clone(): H$geo$Rect;
 
     /**
      * This method returns the top-left corner of the rectangular area.
-     * @returns {geo$Point} - the top-left corner of the area
+     * @returns {H$geo$Point} - the top-left corner of the area
      */
-    getTopLeft(): geo$Point;
+    getTopLeft(): H$geo$Point;
 
     /**
      * This method returns the bottom-right corner of the rectangular area.
-     * @returns {geo$Point} - the bottom-right corner of the area
+     * @returns {H$geo$Point} - the bottom-right corner of the area
      */
-    getBottomRight(): geo$Point;
+    getBottomRight(): H$geo$Point;
 
     /**
      * This method returns the north-most latitude of this rectangular area
-     * @returns {geo$Latitude} - the north-most latitude of the area
+     * @returns {H$geo$Latitude} - the north-most latitude of the area
      */
-    getTop(): geo$Latitude;
+    getTop(): H$geo$Latitude;
 
     /**
      * This method returns the south-most latitude of this rectangular area
-     * @returns {geo$Latitude} - the south-most latitude of the area
+     * @returns {H$geo$Latitude} - the south-most latitude of the area
      */
-    getBottom(): geo$Latitude;
+    getBottom(): H$geo$Latitude;
 
     /**
      * This method returns the left-most longitude of this rectangular area
-     * @returns {geo$Longitude} - the left-most longitude of the area
+     * @returns {H$geo$Longitude} - the left-most longitude of the area
      */
-    getLeft(): geo$Longitude;
+    getLeft(): H$geo$Longitude;
 
     /**
      * This method returns the right-most longitude of this rectangular area
-     * @returns {geo$Longitude} - the right-most longitude of the area
+     * @returns {H$geo$Longitude} - the right-most longitude of the area
      */
-    getRight(): geo$Longitude;
+    getRight(): H$geo$Longitude;
 
     /**
      * This method returns the center point of this rectangular area
-     * @returns {geo$Point} - the center point of the area
+     * @returns {H$geo$Point} - the center point of the area
      */
-    getCenter(): geo$Point;
+    getCenter(): H$geo$Point;
 
     /**
      * Returns this width of this rectangular area in decimal degrees.
@@ -1471,179 +1477,182 @@ declare module "heremaps" {
 
     /**
      * This method checks if the latitude and longitude supplied by the caller lie within the area of this rectangular area.
-     * @param {geo$Latitude} lat - the latitude
-     * @param {geo$Longitude} lng - the longitude
+     * @param {H$geo$Latitude} lat - the latitude
+     * @param {H$geo$Longitude} lng - the longitude
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @returns {boolean} - true if the latitude and longitude are contained in this area, otherwise false
      */
     containsLatLng(
-      lat: geo$Latitude,
-      lng: geo$Longitude,
+      lat: H$geo$Latitude,
+      lng: H$geo$Longitude,
       opt_skipValidation?: boolean
     ): boolean;
 
     /**
      * This method checks if the point supplied by the caller lies within the area of this rectangular area.
-     * @param {geo$IPoint} geoPoint - the point
+     * @param {H$geo$IPoint} geoPoint - the point
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @returns {boolean} - true if the point is contained in this area, otherwise false
      */
-    containsPoint(geoPoint: geo$IPoint, opt_skipValidation?: boolean): boolean;
+    containsPoint(
+      geoPoint: H$geo$IPoint,
+      opt_skipValidation?: boolean
+    ): boolean;
 
     /**
      * This method checks if the rectangular area supplied by the caller is completely contained within the area of this rectangular area.
-     * @param {geo$Rect} geoRect - the rectangular area
+     * @param {H$geo$Rect} geoRect - the rectangular area
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @returns {boolean} - true if the rectangular area is contained in this area, otherwise false
      */
-    containsRect(geoRect: geo$Rect, opt_skipValidation?: boolean): boolean;
+    containsRect(geoRect: H$geo$Rect, opt_skipValidation?: boolean): boolean;
 
     /**
      * This method returns the smallest bounding box that covers this rectangular area and the latitude and longitude supplied by the caller.
-     * @param {geo$Latitude} lat - the latitude
-     * @param {geo$Longitude} lng - the longitude
+     * @param {H$geo$Latitude} lat - the latitude
+     * @param {H$geo$Longitude} lng - the longitude
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional rectangular area to store the result
-     * @returns {geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
+     * @returns {H$geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
      */
     mergeLatLng(
-      lat: geo$Latitude,
-      lng: geo$Longitude,
+      lat: H$geo$Latitude,
+      lng: H$geo$Longitude,
       opt_skipValidation?: boolean,
-      opt_out?: geo$Rect
-    ): geo$Rect;
+      opt_out?: H$geo$Rect
+    ): H$geo$Rect;
 
     /**
      * This method returns the smallest bounding box that covers this rectangular area and the point supplied by the caller.
-     * @param {geo$IPoint} geoPoint - the point to merge
+     * @param {H$geo$IPoint} geoPoint - the point to merge
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional rectangular area to store the result
-     * @returns {geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
+     * @returns {H$geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
      */
     mergePoint(
-      geoPoint: geo$IPoint,
+      geoPoint: H$geo$IPoint,
       opt_skipValidation?: boolean,
-      opt_out?: geo$Rect
-    ): geo$Rect;
+      opt_out?: H$geo$Rect
+    ): H$geo$Rect;
 
     /**
      * This method returns the smallest bounding box that covers this rectangular area and the rectangular area supplied by the caller.
-     * @param {geo$Rect} geoRect - the point to merge
+     * @param {H$geo$Rect} geoRect - the point to merge
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional rectangular area to store the result
-     * @returns {geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
+     * @returns {H$geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
      */
     mergeRect(
-      geoRect: geo$Rect,
+      geoRect: H$geo$Rect,
       opt_skipValidation?: boolean,
-      opt_out?: geo$Rect
-    ): geo$Rect;
+      opt_out?: H$geo$Rect
+    ): H$geo$Rect;
 
     /**
      * This method returns the smallest bounding box that covers this rectangular area and the rectangular area supplied by the caller.
-     * @param {geo$Latitude} top - The top latitude of the rectangle to merge
-     * @param {geo$Longitude} left - The left longitude of the rectangle to merge
-     * @param {geo$Latitude} bottom - The bottom latitude of the rectangle to merge
-     * @param {geo$Longitude} right - The right longitude of the rectangle to merge
+     * @param {H$geo$Latitude} top - The top latitude of the rectangle to merge
+     * @param {H$geo$Longitude} left - The left longitude of the rectangle to merge
+     * @param {H$geo$Latitude} bottom - The bottom latitude of the rectangle to merge
+     * @param {H$geo$Longitude} right - The right longitude of the rectangle to merge
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional rectangular area to store the result
-     * @returns {geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
+     * @returns {H$geo$Rect} - either the rectangular area passed as out parameter or a new rectangular area
      */
     mergeTopLeftBottomRight(
-      top: geo$Latitude,
-      left: geo$Longitude,
-      bottom: geo$Latitude,
-      right: geo$Longitude,
+      top: H$geo$Latitude,
+      left: H$geo$Longitude,
+      bottom: H$geo$Latitude,
+      right: H$geo$Longitude,
       opt_skipValidation?: boolean,
-      opt_out?: geo$Rect
-    ): geo$Rect;
+      opt_out?: H$geo$Rect
+    ): H$geo$Rect;
 
     /**
      * This method checks if the intersection of two bounding boxes is non-empty.
-     * @param {geo$Rect} geoRect - a rectangular area to be tested for intersection with this rectangular area
+     * @param {H$geo$Rect} geoRect - a rectangular area to be tested for intersection with this rectangular area
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
      * @returns {boolean} - a boolean value indicating whether the two areas intersect
      */
-    intersects(geoRect: geo$Rect, opt_skipValidation?: boolean): boolean;
+    intersects(geoRect: H$geo$Rect, opt_skipValidation?: boolean): boolean;
 
     /**
      * This method merges two rects by their values. The result of the merge is a bounding rect which covers all provided rect bounds.
-     * @param {geo$Latitude} topA - the northern-most latitude
-     * @param {geo$Longitude} leftA - the left-most longitude of operand A
-     * @param {geo$Latitude} bottomA - the southern-most latitude of operand A
-     * @param {geo$Longitude} rightA - the right-most latitude of operand A
-     * @param {geo$Latitude} topB - the northern-most latitude of operand B
-     * @param {geo$Longitude} leftB - the left-most longitude of operand B
-     * @param {geo$Latitude} bottomB - the southern-most latitude of operand B
-     * @param {geo$Longitude} rightB - the right-most latitude of operand B
+     * @param {H$geo$Latitude} topA - the northern-most latitude
+     * @param {H$geo$Longitude} leftA - the left-most longitude of operand A
+     * @param {H$geo$Latitude} bottomA - the southern-most latitude of operand A
+     * @param {H$geo$Longitude} rightA - the right-most latitude of operand A
+     * @param {H$geo$Latitude} topB - the northern-most latitude of operand B
+     * @param {H$geo$Longitude} leftB - the left-most longitude of operand B
+     * @param {H$geo$Latitude} bottomB - the southern-most latitude of operand B
+     * @param {H$geo$Longitude} rightB - the right-most latitude of operand B
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional rect to store the results
-     * @returns {geo$Rect} - either the opt_out rect or a new rect
+     * @returns {H$geo$Rect} - either the opt_out rect or a new rect
      */
     static merge(
-      topA: geo$Latitude,
-      leftA: geo$Longitude,
-      bottomA: geo$Latitude,
-      rightA: geo$Longitude,
-      topB: geo$Latitude,
-      leftB: geo$Longitude,
-      bottomB: geo$Latitude,
-      rightB: geo$Longitude,
-      opt_out?: geo$Rect
-    ): geo$Rect;
+      topA: H$geo$Latitude,
+      leftA: H$geo$Longitude,
+      bottomA: H$geo$Latitude,
+      rightA: H$geo$Longitude,
+      topB: H$geo$Latitude,
+      leftB: H$geo$Longitude,
+      bottomB: H$geo$Latitude,
+      rightB: H$geo$Longitude,
+      opt_out?: H$geo$Rect
+    ): H$geo$Rect;
 
     /**
      * This method creates a rectangular area from a top-left and bottom-right point pair.
-     * @param {geo$IPoint} topLeft - the top-left corner of the area
-     * @param {geo$IPoint} bottomRight - the bottom-right corner of the area
+     * @param {H$geo$IPoint} topLeft - the top-left corner of the area
+     * @param {H$geo$IPoint} bottomRight - the bottom-right corner of the area
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
-     * @returns {geo$Rect} - returns the rectangular area defined by the top-left and bottom-right corners
+     * @returns {H$geo$Rect} - returns the rectangular area defined by the top-left and bottom-right corners
      */
     static fromPoints(
-      topLeft: geo$IPoint,
-      bottomRight: geo$IPoint,
+      topLeft: H$geo$IPoint,
+      bottomRight: H$geo$IPoint,
       opt_skipValidation?: boolean
-    ): geo$Rect;
+    ): H$geo$Rect;
 
     /**
      * This method creates the minimum rectangular area covering all of the points in the argument array.
-     * @param {Array<geo$IPoint>} pointArray - the array of points to cover
+     * @param {Array<H$geo$IPoint>} pointArray - the array of points to cover
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
-     * @returns {geo$Rect} - returns the minimum rectangular area covering the points or null if no point is covered
+     * @returns {H$geo$Rect} - returns the minimum rectangular area covering the points or null if no point is covered
      */
     static coverPoints(
-      pointArray: geo$IPoint[],
+      pointArray: H$geo$IPoint[],
       opt_skipValidation?: boolean
-    ): geo$Rect;
+    ): H$geo$Rect;
 
     /**
      * This method creates the minimum rectangular area covering all of the coordinates in the argument array.
      * @param {Array<number>} latLngAltArray - the array of coordinates to cover
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
-     * @returns {(geo$Rect | void)} - returns the minimum rectangular area covering the coordinates
+     * @returns {(H$geo$Rect | void)} - returns the minimum rectangular area covering the coordinates
      */
     static coverLatLngAlts(
       latLngAltArray: number[],
       opt_skipValidation?: boolean
-    ): geo$Rect | void;
+    ): H$geo$Rect | void;
 
     /**
      * This method creates the minimum rectangular area covering all of the rectangular areas in the argument array.
-     * @param {Array<geo$Rect>} rectArray - the array of points to cover
+     * @param {Array<H$geo$Rect>} rectArray - the array of points to cover
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_skipValidation - a boolean flag indicating whether to check validity of the arguments
-     * @returns {(geo$Rect | void)} - returns the minimum rectangular area covering the rectangular areas
+     * @returns {(H$geo$Rect | void)} - returns the minimum rectangular area covering the rectangular areas
      */
     static coverRects(
-      rectArray: geo$Rect[],
+      rectArray: H$geo$Rect[],
       opt_skipValidation?: boolean
-    ): geo$Rect | void;
+    ): H$geo$Rect | void;
 
     /**
      * This method clones the given bounding rect and resizes the clone if necessary until the location supplied by the caller is at its center.
-     * @param {geo$IPoint} center - a point which is to be the center of the resized rectangular area
+     * @param {H$geo$IPoint} center - a point which is to be the center of the resized rectangular area
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional rectangular area to store the result
-     * @returns {geo$Rect} - the resized rectangular area
+     * @returns {H$geo$Rect} - the resized rectangular area
      */
-    resizeToCenter(center: geo$IPoint, opt_out?: geo$Rect): geo$Rect;
+    resizeToCenter(center: H$geo$IPoint, opt_out?: H$geo$Rect): H$geo$Rect;
   }
 
   /**
@@ -1662,14 +1671,14 @@ declare module "heremaps" {
 
     /**
      * This method pushes a lat, lng, alt to the end of this strip.
-     * @param {geo$Latitude} lat
-     * @param {geo$Longitude} lng
-     * @param {geo$Altitude} alt
+     * @param {H$geo$Latitude} lat
+     * @param {H$geo$Longitude} lng
+     * @param {H$geo$Altitude} alt
      */
     pushLatLngAlt(
-      lat: geo$Latitude,
-      lng: geo$Longitude,
-      alt: geo$Altitude
+      lat: H$geo$Latitude,
+      lng: H$geo$Longitude,
+      alt: H$geo$Altitude
     ): void;
 
     /**
@@ -1688,15 +1697,15 @@ declare module "heremaps" {
     /**
      * This method inserts one set of lat, lng, alt values into the strip at the specified index.
      * @param {number} index - the index at which to add the element
-     * @param {geo$Latitude} lat - the latitude to insert
-     * @param {geo$Longitude} lng - the longitude to insert
-     * @param {geo$Altitude} alt - the altitude to insert
+     * @param {H$geo$Latitude} lat - the latitude to insert
+     * @param {H$geo$Longitude} lng - the longitude to insert
+     * @param {H$geo$Altitude} alt - the altitude to insert
      */
     insertLatLngAlt(
       index: number,
-      lat: geo$Latitude,
-      lng: geo$Longitude,
-      alt: geo$Altitude
+      lat: H$geo$Latitude,
+      lng: H$geo$Longitude,
+      alt: H$geo$Altitude
     ): void;
 
     /**
@@ -1707,16 +1716,16 @@ declare module "heremaps" {
 
     /**
      * This method pushes the lat, lng, alt values of a H.geo.Point to the end of this strip.
-     * @param {geo$IPoint} geoPoint
+     * @param {H$geo$IPoint} geoPoint
      */
-    pushPoint(geoPoint: geo$IPoint): void;
+    pushPoint(geoPoint: H$geo$IPoint): void;
 
     /**
      * This method inserts the lat, lng, alt values of a H.geo.Point into the list at the specified index.
      * @param {number} pointIndex
-     * @param {geo$IPoint} geoPoint
+     * @param {H$geo$IPoint} geoPoint
      */
-    insertPoint(pointIndex: number, geoPoint: geo$IPoint): void;
+    insertPoint(pointIndex: number, geoPoint: H$geo$IPoint): void;
 
     /**
      * This method removes one set of lat, lng, alt values from this strip at the virtual point index specified.
@@ -1728,9 +1737,9 @@ declare module "heremaps" {
      * This method extracts a H.geo.Point from this strip at the virtual point index. If the extracted point has an alt value, the strip's altitude context will be supplied to the point.
      * @param {number} pointIndex - the virtual point index in the strip
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - an optional point object to store the lat, lng, alt values
-     * @returns {geo$Point} - returns either the 'opt_out' point object or a new point object.
+     * @returns {H$geo$Point} - returns either the 'opt_out' point object or a new point object.
      */
-    extractPoint(pointIndex: number, opt_out?: geo$Point): geo$Point;
+    extractPoint(pointIndex: number, opt_out?: H$geo$Point): H$geo$Point;
 
     /**
      * This method is a utility method that iterates over the lat, lng, alt array and calls the provided function for each 3 elements passing lat, lng and alt and the virtual point
@@ -1741,9 +1750,9 @@ declare module "heremaps" {
      */
     eachLatLngAlt(
       eachFn: (
-        lat: geo$Latitude,
-        lng: geo$Longitude,
-        alt: geo$Altitude,
+        lat: H$geo$Latitude,
+        lng: H$geo$Longitude,
+        alt: H$geo$Altitude,
         n: number
       ) => void,
       opt_start?: number,
@@ -1773,22 +1782,22 @@ declare module "heremaps" {
      * This method returns the bounding box of this strip.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"} - this strip's bounding rectangle
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * This method checks whether two longitudes form a leg which crosses the date border.
-     * @param {geo$Longitude} lng1 - the start longitude of the leg
-     * @param {geo$Longitude} lng2 - the end longitude of the leg
+     * @param {H$geo$Longitude} lng1 - the start longitude of the leg
+     * @param {H$geo$Longitude} lng2 - the end longitude of the leg
      * @returns {boolean} - true if the leg crosses the date border, otherwise false
      */
-    static isDBC(lng1: geo$Longitude, lng2: geo$Longitude): boolean;
+    static isDBC(lng1: H$geo$Longitude, lng2: H$geo$Longitude): boolean;
 
     /**
      * This method initializes a new strip with an array of lat, lng values. Arrays are expected to have an even length with the format [lat, lng, lat, lng, ...].
      * @param {Array<number>} latLngs - the array of lat, lng value.
-     * @returns {geo$Strip} - the strip containing the lat, lng values
+     * @returns {H$geo$Strip} - the strip containing the lat, lng values
      */
-    static fromLatLngArray(latLngs: number[]): geo$Strip;
+    static fromLatLngArray(latLngs: number[]): H$geo$Strip;
   }
 
   declare var npm$namespace$H$map: {
@@ -1825,42 +1834,42 @@ declare module "heremaps" {
   /**
    * This class represents marker, which offers a means of identifying a location on the map with an icon.
    */
-  declare class H$map$AbstractMarker mixins undefined.Object {
+  declare class H$map$AbstractMarker mixins H$map$Object {
     /**
      * Constructor
-     * @param {geo$IPoint} position - The location of this marker
+     * @param {H$geo$IPoint} position - The location of this marker
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The values to initialize this marker
      */
     constructor(
-      position: geo$IPoint,
-      opt_options?: map$AbstractMarker$Options
+      position: H$geo$IPoint,
+      opt_options?: H$map$AbstractMarker$Options
     ): this;
 
     /**
      * This method returns this marker's current position.
-     * @returns {geo$Point} - current marker geo position
+     * @returns {H$geo$Point} - current marker geo position
      */
-    getPosition(): geo$Point;
+    getPosition(): H$geo$Point;
 
     /**
      * This method sets the marker's current position.
-     * @param {geo$IPoint} position
-     * @returns {map$AbstractMarker} - the marker itself
+     * @param {H$geo$IPoint} position
+     * @returns {H$map$AbstractMarker} - the marker itself
      */
-    setPosition(position: geo$IPoint): map$AbstractMarker;
+    setPosition(position: H$geo$IPoint): H$map$AbstractMarker;
 
     /**
      * Returns this marker's current icon.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNonNullableType"}
      */
-    getIcon(): Icon | map$DomIcon;
+    getIcon(): H$map$Icon | H$map$DomIcon;
 
     /**
      * Sets the marker's current icon.
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} icon - The new marker icon
-     * @returns {map$AbstractMarker} - the marker itself
+     * @returns {H$map$AbstractMarker} - the marker itself
      */
-    setIcon(icon: Icon | map$DomIcon): map$AbstractMarker;
+    setIcon(icon: H$map$Icon | H$map$DomIcon): H$map$AbstractMarker;
 
     /**
      * @property draggable
@@ -1885,8 +1894,8 @@ declare module "heremaps" {
     max?: number;
     visibility?: boolean;
     zIndex?: number;
-    provider?: provider$Provider;
-    icon?: Icon | map$DomIcon;
+    provider?: H$map$provider$Provider;
+    icon?: H$map$Icon | H$map$DomIcon;
     data?: any;
   }
 
@@ -1898,14 +1907,16 @@ declare module "heremaps" {
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: map$ArrowStyle | map$ArrowStyle$Options): this;
+    constructor(
+      opt_options?: H$map$ArrowStyle | H$map$ArrowStyle$Options
+    ): this;
 
     /**
      * This method checks value-equality with another arrow style.
-     * @param {(map$ArrowStyle | map$ArrowStyle$Options)} other - the arrow style to compare with
+     * @param {(H$map$ArrowStyle | H$map$ArrowStyle$Options)} other - the arrow style to compare with
      * @returns {boolean} - true if the arrow styles are value-equal, otherwise false
      */
-    equals(other: map$ArrowStyle | map$ArrowStyle$Options): boolean;
+    equals(other: H$map$ArrowStyle | H$map$ArrowStyle$Options): boolean;
   }
 
   /**
@@ -1928,31 +1939,31 @@ declare module "heremaps" {
   /**
    * A Polygon with a circular shape.
    */
-  declare class H$map$Circle mixins undefined.Polygon {
+  declare class H$map$Circle mixins H$map$Polygon {
     /**
      * Constructor
-     * @param {geo$IPoint} center - The geographical coordinates of the circle's center
+     * @param {H$geo$IPoint} center - The geographical coordinates of the circle's center
      * @param {number} radius - The radius of the circle in meters
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - An object that specifies circle options and their initial values (among these, precision has a significant impact on the shape of the circle
      */
     constructor(
-      center: geo$IPoint,
+      center: H$geo$IPoint,
       radius: number,
-      opt_options?: map$Circle$Options
+      opt_options?: H$map$Circle$Options
     ): this;
 
     /**
      * To set the geographical center point of this circle. If the specified center is an instance of H.geo.Point you must not modify this Point instance without calling setCenter
      * immediately afterwards.
-     * @param {geo$IPoint} center
+     * @param {H$geo$IPoint} center
      */
-    setCenter(center: geo$IPoint): void;
+    setCenter(center: H$geo$IPoint): void;
 
     /**
      * To get the center point of this circle You must not modify the returned Point instance without calling setCenter immediately afterwards.
-     * @returns {geo$Point}
+     * @returns {H$geo$Point}
      */
-    getCenter(): geo$Point;
+    getCenter(): H$geo$Point;
 
     /**
      * To set the length of the radius of the circle in meters. The value is clamped to the of {@code[0 ... 20015089.27787877]} (half WGS84 mean circumference)
@@ -1994,13 +2005,13 @@ declare module "heremaps" {
    * @property data {*} - Optional arbitrary data to be stored with this map object. This data can be retrieved by calling getData
    */
   declare interface H$map$Circle$Options {
-    style?: map$SpatialStyle | map$SpatialStyle$Options;
+    style?: H$map$SpatialStyle | H$map$SpatialStyle$Options;
     visibility?: boolean;
     precision?: number;
     zIndex?: number;
     min?: number;
     max?: number;
-    provider?: provider$Provider;
+    provider?: H$map$provider$Provider;
     data?: any;
   }
 
@@ -2008,12 +2019,12 @@ declare module "heremaps" {
    * The class represents data model of the map. It holds list of layers that are rendered by map's RenderEngine.
    * The class listens to 'update' events from layers and dispatches them to the RenderEngine.
    */
-  declare class H$map$DataModel mixins undefined.OList {
+  declare class H$map$DataModel mixins H$util$OList {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_layers - array of layers to be added to the data model
      */
-    constructor(opt_layers?: layer$Layer[]): this;
+    constructor(opt_layers?: H$map$layer$Layer[]): this;
   }
 
   /**
@@ -2027,7 +2038,7 @@ declare module "heremaps" {
      */
     constructor(
       element: base$Element | string,
-      opt_options?: map$DomIcon$Options
+      opt_options?: H$map$DomIcon$Options
     ): this;
   }
 
@@ -2041,13 +2052,13 @@ declare module "heremaps" {
   declare interface H$map$DomIcon$Options {
     onAttach?: (
       el: base$Element,
-      icon: map$DomIcon,
-      marker: map$DomMarker
+      icon: H$map$DomIcon,
+      marker: H$map$DomMarker
     ) => void;
     onDetach?: (
       el: base$Element,
-      icon: map$DomIcon,
-      marker: map$DomMarker
+      icon: H$map$DomIcon,
+      marker: H$map$DomMarker
     ) => void;
   }
 
@@ -2055,15 +2066,15 @@ declare module "heremaps" {
    * A marker with a visual representation in the form of a full styleable and scripteable DOM element. DomMarker are predestinated if small amounts of markers with dynamic styled and/or
    * scripted icons should be displayed om the map (e.g. animated interactive SVG).
    */
-  declare class H$map$DomMarker mixins undefined.AbstractMarker {
+  declare class H$map$DomMarker mixins H$map$AbstractMarker {
     /**
      * Constructor
-     * @param {geo$IPoint} position
+     * @param {H$geo$IPoint} position
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
     constructor(
-      position: geo$IPoint,
-      opt_options?: map$DomMarker$Options
+      position: H$geo$IPoint,
+      opt_options?: H$map$DomMarker$Options
     ): this;
   }
 
@@ -2083,56 +2094,56 @@ declare module "heremaps" {
     max?: number;
     visibility?: boolean;
     zIndex?: number;
-    provider?: provider$Provider;
-    icon?: map$DomIcon;
+    provider?: H$map$provider$Provider;
+    icon?: H$map$DomIcon;
     data?: any;
   }
 
   /**
    * This class represents a spatial shape in geographic space. It is defined by a path containing the vertices of the shape (lat, lng, alt values).
    */
-  declare class H$map$GeoShape mixins undefined.Spatial {
+  declare class H$map$GeoShape mixins H$map$Spatial {
     /**
      * Constructor
      * @param {boolean} isClosed - Indicates whether this geographical shape is closed (a polygon)
-     * @param {geo$Strip} strip - The strip describing the shape of the spatial object
-     * @param {map$Spatial$Options} options - The options to apply
+     * @param {H$geo$Strip} strip - The strip describing the shape of the spatial object
+     * @param {H$map$Spatial$Options} options - The options to apply
      */
     constructor(
       isClosed: boolean,
-      strip: geo$Strip,
-      options: map$Spatial$Options
+      strip: H$geo$Strip,
+      options: H$map$Spatial$Options
     ): this;
 
     /**
      * This method returns the strip which represents the shape of the spatial object.
-     * @returns {geo$Strip} - the strip
+     * @returns {H$geo$Strip} - the strip
      */
-    getStrip(): geo$Strip;
+    getStrip(): H$geo$Strip;
 
     /**
      * This method sets the geo-information for the spatial object
      * @param {"NO PRINT IMPLEMENTED: JSDocNullableType"} strip - The strip which represents the shape of the spatial object.
-     * @returns {map$GeoShape} - the Spatial instance itself
+     * @returns {H$map$GeoShape} - the Spatial instance itself
      */
-    setStrip(strip: geo$Strip): map$GeoShape;
+    setStrip(strip: H$geo$Strip): H$map$GeoShape;
 
     /**
      * This method returns the bounding rectangle for this object. The rectangle is the smallest rectangle which encloses all points of the spatial object.
-     * @returns {geo$Rect}
+     * @returns {H$geo$Rect}
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
   }
 
   /**
    * This class represents a map object which can contain other map objects. It's visibility, zIndex and object-order influences the contained map objects
    */
-  declare class H$map$Group mixins undefined.Object {
+  declare class H$map$Group mixins H$map$Object {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - an optional object containing initialization values
      */
-    constructor(opt_options?: map$Group$Options): this;
+    constructor(opt_options?: H$map$Group$Options): this;
 
     /**
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
@@ -2140,7 +2151,7 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_context - The context to use as "this" within the callback
      */
     forEach(
-      callback: (object: Object, n: number, group: map$Group) => void,
+      callback: (object: H$map$Object, n: number, group: H$map$Group) => void,
       opt_recursive?: boolean,
       opt_context?: any
     ): void;
@@ -2150,39 +2161,39 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_recursive - Indicates whether objects in sub-groups are also collected .
      * @returns {"NO PRINT IMPLEMENTED: JSDocNonNullableType"}
      */
-    getObjects(opt_recursive?: boolean): Object[];
+    getObjects(opt_recursive?: boolean): H$map$Object[];
 
     /**
      * Method returns the bounding rectangle for the group. The rectangle is the smallest rectangle that covers all objects. If group doesn't contains objects method returns null.
-     * @returns {geo$Rect} - geo ractangle that covers all objects in the group
+     * @returns {H$geo$Rect} - geo ractangle that covers all objects in the group
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * To add an object to this group.
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} object
      * @returns {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} - a reference to the appended object
      */
-    addObject(object: Object): Object;
+    addObject(object: H$map$Object): H$map$Object;
 
     /**
      * Appends a list of objects to this group
      * @param {Array<"NO PRINT IMPLEMENTED: JSDocNonNullableType">} objects
      */
-    addObjects(objects: Object[]): void;
+    addObjects(objects: H$map$Object[]): void;
 
     /**
      * Removes an object from this group.
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} object - The object to remove
      * @returns {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} - a reference to the removed object
      */
-    removeObject(object: Object): Object;
+    removeObject(object: H$map$Object): H$map$Object;
 
     /**
      * Removes objects from this group.
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} objects - The list of objects to remove
      */
-    removeObjects(objects: Object[]): void;
+    removeObjects(objects: H$map$Object[]): void;
 
     /**
      * Method removes all objects from the group.
@@ -2206,9 +2217,9 @@ declare module "heremaps" {
     max?: number;
     visibility?: boolean;
     zIndex?: number;
-    provider?: provider$Provider;
+    provider?: H$map$provider$Provider;
     data?: any;
-    objects?: Object[];
+    objects?: H$map$Object[];
   }
 
   /**
@@ -2252,7 +2263,7 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_atY - control starts at y screen coordinate
      */
     startControl(
-      opt_kinetics?: util$kinetics$IKinetics,
+      opt_kinetics?: H$util$kinetics$IKinetics,
       opt_atX?: number,
       opt_atY?: number
     ): void;
@@ -2289,7 +2300,7 @@ declare module "heremaps" {
      */
     endControl(
       opt_preventKinetics?: boolean,
-      opt_adjustView?: (data: ViewModel$CameraData) => void
+      opt_adjustView?: (data: H$map$ViewModel$CameraData) => void
     ): void;
   }
 
@@ -2314,8 +2325,8 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_kinetics - specifies kinetic move at the end of interaction
      */
     startInteraction(
-      modifiers: math$BitMask,
-      opt_kinetics?: util$kinetics$IKinetics
+      modifiers: H$math$BitMask,
+      opt_kinetics?: H$util$kinetics$IKinetics
     ): void;
 
     /**
@@ -2352,7 +2363,7 @@ declare module "heremaps" {
      */
     constructor(
       bitmap: string | HTMLImageElement | HTMLCanvasElement,
-      opt_options?: Icon$Options
+      opt_options?: H$map$Icon$Options
     ): this;
 
     /**
@@ -2371,19 +2382,19 @@ declare module "heremaps" {
      * Returns the size of this icon or null if a size wasn't specified in the constructor's options and the state of this icon is not H.map.Icon.prototype.State.READY
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"}
      */
-    getSize(): math$Size;
+    getSize(): H$math$Size;
 
     /**
      * Returns the anchor point of this icon or null if an anchor wasn't specified in the constructor's options and the state of this icon is not H.map.Icon.prototype.State.READY.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"}
      */
-    getAnchor(): math$Point;
+    getAnchor(): H$math$Point;
 
     /**
      * Returns the hit area of the icon.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"} - icon's anchor point
      */
-    getHitArea(): HitArea;
+    getHitArea(): H$map$HitArea;
 
     /**
      * This method allows to listen for specific event triggered by the object. Keep in mind, that you must removeEventListener manually or dispose an object when you no longer need it.
@@ -2416,9 +2427,9 @@ declare module "heremaps" {
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -2458,10 +2469,10 @@ declare module "heremaps" {
    * false. The option is ignored by IE9-10.
    */
   declare interface H$map$Icon$Options {
-    size?: math$ISize | number;
-    anchor?: math$IPoint;
-    hitArea?: HitArea;
-    asCanvas?: HitArea;
+    size?: H$math$ISize | number;
+    anchor?: H$math$IPoint;
+    hitArea?: H$map$HitArea;
+    asCanvas?: H$map$HitArea;
     crossOrigin: boolean;
   }
 
@@ -2471,16 +2482,16 @@ declare module "heremaps" {
   declare class H$map$Imprint {
     /**
      * Constructor
-     * @param {Map} map - The map where the imprint is attached to
+     * @param {H$Map} map - The map where the imprint is attached to
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The options to style the imprint
      */
-    constructor(map: Map, opt_options?: map$Imprint$Options): this;
+    constructor(map: H$Map, opt_options?: H$map$Imprint$Options): this;
 
     /**
      * To set the imprint options. If no opt_options argument is defined then all values are reset to their defaults.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The options to style the imprint
      */
-    setOptions(opt_options?: map$Imprint$Options): void;
+    setOptions(opt_options?: H$map$Imprint$Options): void;
 
     /**
      * This method retrieves the copyright string for the current view of the map.
@@ -2531,13 +2542,16 @@ declare module "heremaps" {
   /**
    * A marker with a visual representation in the form of a bitmap icon. Marker are predestinated if large amounts of markers with static icons should be displayed om the map.
    */
-  declare class H$map$Marker mixins undefined.AbstractMarker {
+  declare class H$map$Marker mixins H$map$AbstractMarker {
     /**
      * Constructor
-     * @param {geo$IPoint} position - The location of this marker
+     * @param {H$geo$IPoint} position - The location of this marker
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The values to initialize this marker
      */
-    constructor(position: geo$IPoint, opt_options?: map$Marker$Options): this;
+    constructor(
+      position: H$geo$IPoint,
+      opt_options?: H$map$Marker$Options
+    ): this;
   }
 
   /**
@@ -2556,20 +2570,20 @@ declare module "heremaps" {
     max?: number;
     visibility?: boolean;
     zIndex?: number;
-    provider?: provider$Provider;
-    icon?: Icon;
+    provider?: H$map$provider$Provider;
+    icon?: H$map$Icon;
     data?: any;
   }
 
   /**
    * This class represents the abstract base class for map objects such as polylines, polygons, markers, groups etc.
    */
-  declare class H$map$Object mixins undefined.EventTarget {
+  declare class H$map$Object mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The values to initialize this object
      */
-    constructor(opt_options?: Object$Options): this;
+    constructor(opt_options?: H$map$Object$Options): this;
 
     /**
      * Returns the ID of this object.
@@ -2580,9 +2594,9 @@ declare module "heremaps" {
     /**
      * Sets the visibility of this object.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_visibility - Indicates whether this map object should be visible.
-     * @returns {Object} - returns this object
+     * @returns {H$map$Object} - returns this object
      */
-    setVisibility(opt_visibility?: boolean): Object;
+    setVisibility(opt_visibility?: boolean): H$map$Object;
 
     /**
      * Returns the visibility of this object.
@@ -2600,29 +2614,29 @@ declare module "heremaps" {
     /**
      * To set the-index of this object.
      * @param {(number | void)} zIndex
-     * @returns {Object} - returns this object
+     * @returns {H$map$Object} - returns this object
      */
-    setZIndex(zIndex?: number): Object;
+    setZIndex(zIndex?: number): H$map$Object;
 
     /**
      * Compares two objects regarding their z-order, useful to sort a list of objects via Array's sort() method
-     * @param {Object} first - The first object to compare
-     * @param {Object} second - The second object to compare
+     * @param {H$map$Object} first - The first object to compare
+     * @param {H$map$Object} second - The second object to compare
      * @returns {number} - If less then 0 the first object has a lower z-order. If equal 0 booth objects have the same z-order. If greater then 0 the first object has a higher z-order.
      */
-    static compareZOrder(first: Object, second: Object): number;
+    static compareZOrder(first: H$map$Object, second: H$map$Object): number;
 
     /**
      * Returns the parent group which contains this object or null if the object is not contained by any group.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"}
      */
-    getParentGroup(): map$Group;
+    getParentGroup(): H$map$Group;
 
     /**
      * The root object in which this object is attached or the object itself.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNonNullableType"}
      */
-    getRootGroup(): Object;
+    getRootGroup(): H$map$Object;
 
     /**
      * Checks whether the given object is an inclusive descendant of this object
@@ -2635,20 +2649,20 @@ declare module "heremaps" {
      * The current provider of this object
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"} - the current provider
      */
-    getProvider(): provider$ObjectProvider;
+    getProvider(): H$map$provider$ObjectProvider;
 
     /**
      * Returns the invalidations of this object
-     * @returns {Invalidations} - an invalidation object
+     * @returns {H$map$provider$Invalidations} - an invalidation object
      */
-    getInvalidations(): Invalidations;
+    getInvalidations(): H$map$provider$Invalidations;
 
     /**
      * This method invalidates this map object.
-     * @param {math$BitMask} flags - The flags indicating the types of occurred changes
+     * @param {H$math$BitMask} flags - The flags indicating the types of occurred changes
      * @returns {boolean} - indicates whether a validtion was executed (only if the object has a provider)
      */
-    invalidate(flags: math$BitMask): boolean;
+    invalidate(flags: H$math$BitMask): boolean;
 
     /**
      * This method returns previously stored arbitrary data from this object.
@@ -2659,15 +2673,15 @@ declare module "heremaps" {
     /**
      * This method stores arbitrary data with this map object
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} data - the data to be stored
-     * @returns {Object} - returns this map object instance
+     * @returns {H$map$Object} - returns this map object instance
      */
-    setData(data: any): Object;
+    setData(data: any): H$map$Object;
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -2701,7 +2715,7 @@ declare module "heremaps" {
     max?: number;
     visibility?: boolean;
     zIndex?: number;
-    provider?: provider$Provider;
+    provider?: H$map$provider$Provider;
     data?: any;
   }
 
@@ -2721,31 +2735,31 @@ declare module "heremaps" {
   /**
    * This class represents an overlay, which offers a bitmap that covers a geographical reactangular area on the map.
    */
-  declare class H$map$Overlay mixins undefined.Object {
+  declare class H$map$Overlay mixins H$map$Object {
     /**
      * Constructor
-     * @param {geo$Rect} bounds - The geographical reactangular area of this overlay
+     * @param {H$geo$Rect} bounds - The geographical reactangular area of this overlay
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} bitmap - Either an image URL, a SVG markup, an image or a canvas.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - Optional values values to initialize this overlay
      */
     constructor(
-      bounds: geo$Rect,
+      bounds: H$geo$Rect,
       bitmap: string | HTMLImageElement | HTMLCanvasElement,
-      opt_options?: map$Overlay$Options
+      opt_options?: H$map$Overlay$Options
     ): this;
 
     /**
      * This method returns this overlay's current bounds.
-     * @returns {geo$Rect}
+     * @returns {H$geo$Rect}
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * This method sets the overlay's current bounds.
-     * @param {geo$Rect} bounds
-     * @returns {map$Overlay} - the overlay itself
+     * @param {H$geo$Rect} bounds
+     * @returns {H$map$Overlay} - the overlay itself
      */
-    setBounds(bounds: geo$Rect): map$Overlay;
+    setBounds(bounds: H$geo$Rect): H$map$Overlay;
 
     /**
      * Returns this overlay's current bitmap.
@@ -2756,11 +2770,11 @@ declare module "heremaps" {
     /**
      * Sets the overlay's current bitmap.
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} bitmap - Either an image URL, a SVG markup, an image or a canvas.
-     * @returns {map$Overlay} - the overlay itself
+     * @returns {H$map$Overlay} - the overlay itself
      */
     setBitmap(
       bitmap: string | HTMLImageElement | HTMLCanvasElement
-    ): map$Overlay;
+    ): H$map$Overlay;
 
     /**
      * Returns this overlay's current opacity.
@@ -2771,9 +2785,9 @@ declare module "heremaps" {
     /**
      * Sets the overlay's current opacity.
      * @param {number} opacity - The opacity in range from 0 (transparent) to 1 (opaque).
-     * @returns {map$Overlay} - the overlay itself
+     * @returns {H$map$Overlay} - the overlay itself
      */
-    setOpacity(opacity: number): map$Overlay;
+    setOpacity(opacity: number): H$map$Overlay;
   }
 
   /**
@@ -2793,7 +2807,7 @@ declare module "heremaps" {
     opacity?: number;
     visibility?: boolean;
     zIndex?: number;
-    provider?: provider$Provider;
+    provider?: H$map$provider$Provider;
     data?: any;
   }
 
@@ -2802,21 +2816,21 @@ declare module "heremaps" {
    * Polygon represents a closed plane defined by the list of verticies, projected on the map display. List of vericies which define the polygon are is a list of geo coordinates encapsulated
    * by the strip object H.geo.Strip
    */
-  declare class H$map$Polygon mixins undefined.GeoShape {
+  declare class H$map$Polygon mixins H$map$GeoShape {
     /**
      * Constructor
-     * @param {geo$Strip} strip - the strip describing this polygon's vertices
+     * @param {H$geo$Strip} strip - the strip describing this polygon's vertices
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional initialization parameters
      */
-    constructor(strip: geo$Strip, opt_options?: map$Spatial$Options): this;
+    constructor(strip: H$geo$Strip, opt_options?: H$map$Spatial$Options): this;
 
     /**
      * To set the indicator whether this polygon covers the north pole. It's needed for Polygons whose strip is defined as lines arround the world on longitude axis (for example a circle whose
      * center is one of the poles). In this case a additional information is needed to know if the southern or northern part of the world should be covered by the poygon.
      * @param {boolean} flag - A value of true means it covers the north pole, false means south pole
-     * @returns {map$Polygon} - the Polygon instance itself
+     * @returns {H$map$Polygon} - the Polygon instance itself
      */
-    setNorthPoleCovering(flag: boolean): map$Polygon;
+    setNorthPoleCovering(flag: boolean): H$map$Polygon;
 
     /**
      * See H.map.Polygon#setNorthPoleCovering
@@ -2828,90 +2842,92 @@ declare module "heremaps" {
   /**
    * This class represents a polyline in geo-space. It is defined by a path containing the vertices of a polyline (lat, lng, alt values) and a pen to use when tracing the path on the map.
    */
-  declare class H$map$Polyline mixins undefined.GeoShape {
+  declare class H$map$Polyline mixins H$map$GeoShape {
     /**
      * Constructor
-     * @param {geo$Strip | geo$LineString | geo$MultiLineString} geometry - The geometry that defines the line segments of the polyline
+     * @param {H$geo$Strip | H$geo$LineString | H$geo$MultiLineString} geometry - The geometry that defines the line segments of the polyline
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional initialization parameters
      */
     constructor(
-      geometry: geo$Strip | geo$LineString | geo$MultiLineString,
-      opt_options?: map$Polyline$Options
+      geometry: H$geo$Strip | H$geo$LineString | H$geo$MultiLineString,
+      opt_options?: H$map$Polyline$Options
     ): this;
 
     /**
      * To set the polyline's geometry. If the given geometry is modified afterwards, it must be set again via setGeometry(geometry) to not violate the integrity of the polyline.
-     * @param {geo$LineString | geo$MultiLineString} geometry - the geometry to set.
-     * @return {map$Polyline} - The polyline instance itself.
+     * @param {H$geo$LineString | H$geo$MultiLineString} geometry - the geometry to set.
+     * @return {H$map$Polyline} - The polyline instance itself.
      */
-    setGeometry(geometry: geo$LineString | geo$MultiLineString): map$Polyline;
+    setGeometry(
+      geometry: H$geo$LineString | H$geo$MultiLineString
+    ): H$map$Polyline;
 
     /**
      * To obtain the polyline's geometry. If you modify the obtained geometry, you must call setGeometry(geometry) afterwards to not violate the integrity of the polyline.
-     * @return {geo$LineString | geo$MultiLineString}
+     * @return {H$geo$LineString | H$geo$MultiLineString}
      */
-    getGeometry(): geo$LineString | geo$MultiLineString;
+    getGeometry(): H$geo$LineString | H$geo$MultiLineString;
 
     /**
      * Clips the geometry of the Polyline to a rectangular area
-     * @param {geo$Rect} geoRect - The rectangle to clip against.
+     * @param {H$geo$Rect} geoRect - The rectangle to clip against.
      * @returns {Array<Array<number>>} - a list of geometry segments that intersecting the given rectangle.
      * Each segment is represented as a list of alternating latitude and longitude coordinates that describes a line string.
      */
-    clip(geoRect: geo$Rect): number[][];
+    clip(geoRect: H$geo$Rect): number[][];
 
     /**
      * Returns the geometry.
      * @deprecated since 3.0.15.0
-     * @return {geo$Strip} - spatial object.
+     * @return {H$geo$Strip} - spatial object.
      */
-    getStrip(): geo$Strip;
+    getStrip(): H$geo$Strip;
 
     /**
      * Sets the geometry.
      * @deprecated since 3.0.15.0
-     * @param {geo$Strip} strip - The strip which represents geometry.
-     * @return {map$GeoShape} - The given spatial object
+     * @param {H$geo$Strip} strip - The strip which represents geometry.
+     * @return {H$map$GeoShape} - The given spatial object
      */
-    setStrip(strip: geo$Strip): map$GeoShape;
+    setStrip(strip: H$geo$Strip): H$map$GeoShape;
 
     /**
      * Returns the smallest rectangle which encloses the whole geometry of the GeoShape.
-     * @return {geo$Rect}
+     * @return {H$geo$Rect}
      */
-    getBounds(): geo$Rect;
+    getBounds(): H$geo$Rect;
 
     /**
      * This method retrieves the drawing style of the given spatial object. The returned style is treated as immutable and must not be modified afterwards to prevent inconsistencies!
-     * @return {map$SpatialStyle} - The given spatial object
+     * @return {H$map$SpatialStyle} - The given spatial object
      */
-    getStyle(): map$SpatialStyle;
+    getStyle(): H$map$SpatialStyle;
 
     /**
      * This method sets the drawing style of the given spatial object. If the argument opt_style is an instance of H.map.SpatialStyle,
      * it is treated as immutable and must not be modified afterwards to prevent inconsistencies!
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_style - The style to set. If it evaluates to a false, the H.map.SpatialStyle.DEFAULT_STYLE is used.
-     * @return {map$Spatial} - The given spatial object
+     * @return {H$map$Spatial} - The given spatial object
      */
     setStyle(
-      opt_style?: map$SpatialStyle | map$SpatialStyle$Options
-    ): map$Spatial;
+      opt_style?: H$map$SpatialStyle | H$map$SpatialStyle$Options
+    ): H$map$Spatial;
 
     /**
      * This method retrieves the arrow style of the given spatial object or undefined if the style is not defined.
      * The returned arrow style is treated as immutable and must not be modified afterwards to prevent inconsistencies!
-     * @return {map$ArrowStyle} - An object encapsulating information about the arrow style or undefined if the arrow style is not defined.
+     * @return {H$map$ArrowStyle} - An object encapsulating information about the arrow style or undefined if the arrow style is not defined.
      */
-    getArrows(): map$ArrowStyle | void;
+    getArrows(): H$map$ArrowStyle | void;
 
     /**
      * This method sets the arrow style of the given spatial object.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_arrows - The arrow style to be applied
-     * @return {map$Spatial} - The given spatial object
+     * @return {H$map$Spatial} - The given spatial object
      */
     setArrows(
-      opt_arrows?: map$ArrowStyle | map$ArrowStyle$Options
-    ): map$Spatial;
+      opt_arrows?: H$map$ArrowStyle | H$map$ArrowStyle$Options
+    ): H$map$Spatial;
 
     /**
      * This method indicates whether this spatial object represents a closed shape
@@ -2928,9 +2944,9 @@ declare module "heremaps" {
     /**
      * This method sets the visibility of the given object.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_visibility - Indicates whether the map object should be visible.
-     * @return {Object} - The given object
+     * @return {H$map$Object} - The given object
      */
-    setVisibility(opt_visibility?: boolean): Object;
+    setVisibility(opt_visibility?: boolean): H$map$Object;
 
     /**
      * This method retrieves a value indicating the visibility of the given object.
@@ -2948,29 +2964,29 @@ declare module "heremaps" {
     /**
      * This method sets the z-index of the given object.
      * @param {number | void} zIndex - A value indicating the new z-index
-     * @return {Object} - The given object
+     * @return {H$map$Object} - The given object
      */
-    setZIndex(zIndex: number | void): Object;
+    setZIndex(zIndex: number | void): H$map$Object;
 
     /**
      * This method compares the rendering z-order of the given object with another object. (The 'given object' mean the object on which the method has been invoke.)
-     * @param {Object} other -The map object with which to compare the given object.
+     * @param {H$map$Object} other -The map object with which to compare the given object.
      * @return {number} - A value lower than 0 indicates that the given object has a lower z-order. 0 indicates that both objects have the same z-order.
      * A value greater than 0, indicates that the given object has a higher z-order.
      */
-    compareZOrder(other: Object): number;
+    compareZOrder(other: H$map$Object): number;
 
     /**
      * This method retrieves the parent group which contains the given object or null if the object is not contained in any group.
-     * @return {map$Group} - An object representing the containing group object or null if the given object is not contained in any group.
+     * @return {H$map$Group} - An object representing the containing group object or null if the given object is not contained in any group.
      */
-    getParentGroup(): map$Group;
+    getParentGroup(): H$map$Group;
 
     /**
      * The root object to which the given object is attached or the object itself if it is not attached to another.
-     * @return {Object} - An object representing the root group for the given object or the given object if it is not part of a group.
+     * @return {H$map$Object} - An object representing the root group for the given object or the given object if it is not part of a group.
      */
-    getRootGroup(): Object;
+    getRootGroup(): H$map$Object;
 
     /**
      * This method checks whether the received object is an inclusive descendant of the given object.
@@ -2981,22 +2997,22 @@ declare module "heremaps" {
 
     /**
      * This method obtains the current provider of the given object
-     * @return {provider$ObjectProvider} - An object representing the provider
+     * @return {H$map$provider$ObjectProvider} - An object representing the provider
      */
-    getProvider(): provider$ObjectProvider;
+    getProvider(): H$map$provider$ObjectProvider;
 
     /**
      * This method retrieves the invalidation states for the given object.
-     * @return {Invalidations} - An object containing the invalidation states
+     * @return {H$map$provider$Invalidations} - An object containing the invalidation states
      */
-    getInvalidations(): Invalidations;
+    getInvalidations(): H$map$provider$Invalidations;
 
     /**
      * This method invalidates the given map object.
-     * @param {math$BitMask} flags - The flags indicating the types of changes to the given object
+     * @param {H$math$BitMask} flags - The flags indicating the types of changes to the given object
      * @return {boolean} - Indicates whether a validation was executed (only if the object has a provider)
      */
-    invalidate(flags: math$BitMask): boolean;
+    invalidate(flags: H$math$BitMask): boolean;
 
     /**
      * This method retrieves previously stored arbitrary data from the given object.
@@ -3007,9 +3023,9 @@ declare module "heremaps" {
     /**
      * This method stores arbitrary data with the given map object.
      * @param {any} data - The data to be stored
-     * @return {Object} - The given map object
+     * @return {H$map$Object} - The given map object
      */
-    setData(data: any): Object;
+    setData(data: any): H$map$Object;
 
     /**
      * This method adds a listener for a specific event.
@@ -3042,9 +3058,9 @@ declare module "heremaps" {
 
     /**
      * This method dispatches an event on the EventTarget object.
-     * @param {util$Event | string} evt - An object representing the event or a string with the event name
+     * @param {H$util$Event | string} evt - An object representing the event or a string with the event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * This method removes listeners from the given object.
@@ -3073,76 +3089,76 @@ declare module "heremaps" {
    * @property data {*} - Optional arbitrary data to be stored with this map object. This data can be retrieved by calling getData
    */
   declare interface H$map$Polyline$Options {
-    style?: map$SpatialStyle | map$SpatialStyle$Options;
-    arrows?: map$ArrowStyle | map$ArrowStyle$Options;
+    style?: H$map$SpatialStyle | H$map$SpatialStyle$Options;
+    arrows?: H$map$ArrowStyle | H$map$ArrowStyle$Options;
     visibility?: boolean;
     zIndex?: number;
     min?: number;
     max?: number;
-    provider?: provider$Provider;
+    provider?: H$map$provider$Provider;
     data?: any;
   }
 
   /**
    * A Polygon with a rectangular shape.
    */
-  declare class H$map$Rect mixins undefined.Polygon {
+  declare class H$map$Rect mixins H$map$Polygon {
     /**
      * Constructor
-     * @param {geo$Rect} bounds - The geographical bounding box for this rectangle
+     * @param {H$geo$Rect} bounds - The geographical bounding box for this rectangle
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(bounds: geo$Rect, opt_options?: map$Spatial$Options): this;
+    constructor(bounds: H$geo$Rect, opt_options?: H$map$Spatial$Options): this;
 
     /**
      * To set the bounds of this rectangle.
-     * @param {geo$Rect} bounds
+     * @param {H$geo$Rect} bounds
      */
-    setBounds(bounds: geo$Rect): void;
+    setBounds(bounds: H$geo$Rect): void;
   }
 
   /**
    * This class represents a spatial map object which provides its projected geometry.
    */
-  declare class H$map$Spatial mixins undefined.Object {
+  declare class H$map$Spatial mixins H$map$Object {
     /**
      * Constructor
      * @param {boolean} isClosed - Indicates whether this spatial object represents a closed shape
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The options to apply
      */
-    constructor(isClosed: boolean, opt_options?: map$Spatial$Options): this;
+    constructor(isClosed: boolean, opt_options?: H$map$Spatial$Options): this;
 
     /**
      * To get the drawing style of this object. The returned style is treated as immutable and must not be modified afterwards to prevent inconsistancies!
-     * @returns {map$SpatialStyle}
+     * @returns {H$map$SpatialStyle}
      */
-    getStyle(): map$SpatialStyle;
+    getStyle(): H$map$SpatialStyle;
 
     /**
      * To set the drawing style of this object. If the passed opt_style argument is an instance of H.map.SpatialStyle it is treated as immutable and must not be modified afterwards to prevent
      * inconsistancies!
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_style - The style to set. If it evaluates to a falsy the H.map.SpatialStyle.DEFAULT_STYLE is used.
-     * @returns {map$Spatial} - the Spatial instance itself
+     * @returns {H$map$Spatial} - the Spatial instance itself
      */
     setStyle(
-      opt_style?: map$SpatialStyle | map$SpatialStyle$Options
-    ): map$Spatial;
+      opt_style?: H$map$SpatialStyle | H$map$SpatialStyle$Options
+    ): H$map$Spatial;
 
     /**
      * To get the arrow style of this spatial object or undefined if no style is defined. A returned arrow style is treated as immutable and must not be modified afterwards to prevent
      * inconsistancies!
-     * @returns {(map$ArrowStyle | void)}
+     * @returns {(H$map$ArrowStyle | void)}
      */
-    getArrows(): map$ArrowStyle | void;
+    getArrows(): H$map$ArrowStyle | void;
 
     /**
      * To set the arrow style of this object.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_arrows - the arrow style to be applied
-     * @returns {map$Spatial} - the Spatial instance itself
+     * @returns {H$map$Spatial} - the Spatial instance itself
      */
     setArrows(
-      opt_arrows?: map$ArrowStyle | map$ArrowStyle$Options
-    ): map$Spatial;
+      opt_arrows?: H$map$ArrowStyle | H$map$ArrowStyle$Options
+    ): H$map$Spatial;
 
     /**
      * Indicates whether this spatial object represents a closed shape
@@ -3184,13 +3200,13 @@ declare module "heremaps" {
    * @property data {*} - Optional arbitrary data to be stored with this map object. This data can be retrieved by calling getData.
    */
   declare interface H$map$Spatial$Options {
-    style?: map$SpatialStyle | map$SpatialStyle$Options;
-    arrows?: map$ArrowStyle | map$ArrowStyle$Options;
+    style?: H$map$SpatialStyle | H$map$SpatialStyle$Options;
+    arrows?: H$map$ArrowStyle | H$map$ArrowStyle$Options;
     visibility?: boolean;
     zIndex?: number;
     min?: number;
     max?: number;
-    provider?: provider$Provider;
+    provider?: H$map$provider$Provider;
     data?: any;
   }
 
@@ -3215,32 +3231,32 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The optional style attributes
      */
     constructor(
-      opt_options?: map$SpatialStyle | map$SpatialStyle$Options
+      opt_options?: H$map$SpatialStyle | H$map$SpatialStyle$Options
     ): this;
 
     /**
      * This method checks value-equality with another style.
-     * @param {(map$SpatialStyle | map$SpatialStyle$Options)} other - the style to compare with
+     * @param {(H$map$SpatialStyle | H$map$SpatialStyle$Options)} other - the style to compare with
      * @returns {boolean} - true if the styles are value-equal, otherwise false
      */
-    equals(other: map$SpatialStyle | map$SpatialStyle$Options): boolean;
+    equals(other: H$map$SpatialStyle | H$map$SpatialStyle$Options): boolean;
 
     /**
      * Returns a copy of spatial style object and replaces the passed style attributes into it.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_attributes - The style attributes to set on the copied style instance
-     * @returns {map$SpatialStyle}
+     * @returns {H$map$SpatialStyle}
      */
-    getCopy(opt_attributes?: map$SpatialStyle$Options): map$SpatialStyle;
+    getCopy(opt_attributes?: H$map$SpatialStyle$Options): H$map$SpatialStyle;
     strokeColor: string;
     fillColor: string;
     lineWidth: number;
-    lineCap: map$SpatialStyle$LineCap;
-    lineJoin: map$SpatialStyle$LineJoin;
+    lineCap: H$map$SpatialStyle$LineCap;
+    lineJoin: H$map$SpatialStyle$LineJoin;
     miterLimit: number;
     lineDash: number[];
     lineDashOffset: number;
     static MAX_LINE_WIDTH: number;
-    static DEFAULT_STYLE: map$SpatialStyle;
+    static DEFAULT_STYLE: H$map$SpatialStyle;
   }
 
   /**
@@ -3269,8 +3285,8 @@ declare module "heremaps" {
     strokeColor?: string;
     fillColor?: string;
     lineWidth?: number;
-    lineCap?: map$SpatialStyle$LineCap;
-    lineJoin?: map$SpatialStyle$LineJoin;
+    lineCap?: H$map$SpatialStyle$LineCap;
+    lineJoin?: H$map$SpatialStyle$LineJoin;
     miterLimit?: number;
     lineDash?: number[];
     lineDashOffset?: number;
@@ -3280,20 +3296,19 @@ declare module "heremaps" {
    * This class represents a view of the map. It consists of a virtual camera and a look-at point both of which have a position in geo-space and orientation angles. The view model allows to
    * change the values of these objects in order to move or rotate the map or zoom in and out.
    */
-  declare class H$map$ViewModel
-    mixins undefined.EventTarget, undefined.IControl {
+  declare class H$map$ViewModel mixins H$util$EventTarget, H$map$IControl {
     /**
      * This method returns the camera data, which is currently rendered.
-     * @returns {ViewModel$CameraData} - the current rendered camera data
+     * @returns {H$map$ViewModel$CameraData} - the current rendered camera data
      */
-    getCameraData(): ViewModel$CameraData;
+    getCameraData(): H$map$ViewModel$CameraData;
 
     /**
      * This method sets new camera data to be processed by the renderer.
-     * @param {ViewModel$CameraData} data - the values to be modified
-     * @returns {ViewModel} - this view model object
+     * @param {H$map$ViewModel$CameraData} data - the values to be modified
+     * @returns {H$map$ViewModel} - this view model object
      */
-    setCameraData(data: ViewModel$CameraData): ViewModel;
+    setCameraData(data: H$map$ViewModel$CameraData): H$map$ViewModel;
 
     /**
      * This method sets a new zoom level to be processed by the renderer
@@ -3310,9 +3325,9 @@ declare module "heremaps" {
 
     /**
      * This method returns the currently requested data.
-     * @returns {ViewModel$CameraData} - last requested cam/view data
+     * @returns {H$map$ViewModel$CameraData} - last requested cam/view data
      */
-    getRequestedCameraData(): ViewModel$CameraData;
+    getRequestedCameraData(): H$map$ViewModel$CameraData;
 
     /**
      * A method to signal the begin of a control operation.
@@ -3321,7 +3336,7 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_atY - y screen coordinate at which control has started
      */
     startControl(
-      opt_kinetics?: util$kinetics$IKinetics,
+      opt_kinetics?: H$util$kinetics$IKinetics,
       opt_atX?: number,
       opt_atY?: number
     ): void;
@@ -3353,14 +3368,14 @@ declare module "heremaps" {
      */
     endControl(
       opt_preventKinetics?: boolean,
-      opt_adjustView?: (data: ViewModel$CameraData) => void
+      opt_adjustView?: (data: H$map$ViewModel$CameraData) => void
     ): void;
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -3390,7 +3405,7 @@ declare module "heremaps" {
    */
   declare interface H$map$ViewModel$CameraData {
     zoom?: number;
-    position: geo$IPoint;
+    position: H$geo$IPoint;
     pitch?: number;
     yaw?: number;
     roll?: number;
@@ -3404,7 +3419,7 @@ declare module "heremaps" {
    * @property animate {boolean=} - indicates if the requested transition should be animated
    */
   declare interface H$map$ViewModel$RequestedData {
-    camera?: ViewModel$CameraData;
+    camera?: H$map$ViewModel$CameraData;
     zoom?: number;
     animate?: boolean;
   }
@@ -3416,12 +3431,12 @@ declare module "heremaps" {
    * @property type {string} - Name of the dispatched event
    * @property defaultPrevented {boolean} - Indicates if preventDefault was called on the current event
    */
-  declare class H$map$ViewModel$UpdateEvent mixins undefined.Event {
+  declare class H$map$ViewModel$UpdateEvent mixins H$util$Event {
     /**
      * Constructor
-     * @param {ViewModel$RequestedData} requested
+     * @param {H$map$ViewModel$RequestedData} requested
      */
-    constructor(requested: ViewModel$RequestedData): this;
+    constructor(requested: H$map$ViewModel$RequestedData): this;
 
     /**
      * Sets defaultPrevented to true. Which can be used to prevent some default behavior.
@@ -3448,8 +3463,7 @@ declare module "heremaps" {
    * @property padding {H.map.ViewPort.Padding} - This property holds this viewport&#x27;s current padding
    * @property center {H.math.Point} - This property holds this viewport&#x27;s current center point
    */
-  declare class H$map$ViewPort
-    mixins undefined.EventTarget, undefined.IInteraction {
+  declare class H$map$ViewPort mixins H$util$EventTarget, H$map$IInteraction {
     /**
      * Constructor
      * @param {base$Element} element - html element were map will be rendered
@@ -3457,7 +3471,7 @@ declare module "heremaps" {
      */
     constructor(
       element: base$Element,
-      opt_options?: map$ViewPort$Options
+      opt_options?: H$map$ViewPort$Options
     ): this;
 
     /**
@@ -3486,8 +3500,8 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_kinetics - specifies kinetic move at the end of interaction
      */
     startInteraction(
-      modifiers: math$BitMask,
-      opt_kinetics?: util$kinetics$IKinetics
+      modifiers: H$math$BitMask,
+      opt_kinetics?: H$util$kinetics$IKinetics
     ): void;
 
     /**
@@ -3514,9 +3528,9 @@ declare module "heremaps" {
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -3533,8 +3547,8 @@ declare module "heremaps" {
     width: number;
     height: number;
     margin: number;
-    padding: map$ViewPort$Padding;
-    center: math$Point;
+    padding: H$map$ViewPort$Padding;
+    center: H$math$Point;
   }
 
   /**
@@ -3545,7 +3559,7 @@ declare module "heremaps" {
    */
   declare interface H$map$ViewPort$Options {
     margin?: number;
-    padding?: map$ViewPort$Padding;
+    padding?: H$map$ViewPort$Padding;
     fixedCenter?: boolean;
   }
 
@@ -3575,38 +3589,38 @@ declare module "heremaps" {
    * BaseTileLayer encapsulates funcitonailty that is common to all layers that deliver tiles, such as H.map.layer.TileLayer. The functionality includes geo bounding box to grid
    * calculation, tile request management.
    */
-  declare class H$map$layer$BaseTileLayer mixins undefined.Layer {
+  declare class H$map$layer$BaseTileLayer mixins H$map$layer$Layer {
     /**
      * Constructor
-     * @param {provider$TileProvider} provider - data source for the TileLayer
+     * @param {H$map$provider$TileProvider} provider - data source for the TileLayer
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional options
      */
     constructor(
-      provider: provider$TileProvider,
-      opt_options?: layer$ITileLayer$Options
+      provider: H$map$provider$TileProvider,
+      opt_options?: H$map$layer$ITileLayer$Options
     ): this;
 
     /**
      * This method returns the provider which feeds this layer with data.
-     * @returns {provider$TileProvider} - this layer's provider
+     * @returns {H$map$provider$TileProvider} - this layer's provider
      */
-    getProvider(): provider$TileProvider;
+    getProvider(): H$map$provider$TileProvider;
 
     /**
      * This method transforms a geo-rectangle to geometrical projected rectangle at the current projection zoom level or at provided zoom level
-     * @param {geo$Rect} geoRect - geo bounds to be projected
+     * @param {H$geo$Rect} geoRect - geo bounds to be projected
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_zoom - overrides current projection zoom level
-     * @returns {math$Rect} - projected 2d space rect cooresponding to provided geo bounds
+     * @returns {H$math$Rect} - projected 2d space rect cooresponding to provided geo bounds
      */
-    geoRectToRect(geoRect: geo$Rect, opt_zoom?: number): math$Rect;
+    geoRectToRect(geoRect: H$geo$Rect, opt_zoom?: number): H$math$Rect;
 
     /**
      * This method returns tile grid for a bounding rectangle
-     * @param {math$Rect} rectBounds - projected rect bounds which coorespond to geo bounding box
+     * @param {H$math$Rect} rectBounds - projected rect bounds which coorespond to geo bounding box
      * @param {number} zoom - current zoom level
-     * @returns {math$Rect} - rectangle which represents the tile grid bounds
+     * @returns {H$math$Rect} - rectangle which represents the tile grid bounds
      */
-    getTileBounds(rectBounds: math$Rect, zoom: number): math$Rect;
+    getTileBounds(rectBounds: H$math$Rect, zoom: number): H$math$Rect;
 
     /**
      * This method requests a single tile according to tile coordinates. It returns either a Tile object if it is already loaded or undefined and starts loading the tile
@@ -3614,14 +3628,14 @@ declare module "heremaps" {
      * @param {number} y - tile column position
      * @param {number} z - The zoom level for which the tile is requested
      * @param {boolean} cacheOnly - indicates whether only cached tiles are to be considered
-     * @returns {(provider$Tile | void)} - tile object corresponding to requested coordinates
+     * @returns {(H$map$provider$Tile | void)} - tile object corresponding to requested coordinates
      */
     requestTile(
       x: number,
       y: number,
       z: number,
       cacheOnly: boolean
-    ): provider$Tile | void;
+    ): H$map$provider$Tile | void;
 
     /**
      * This method cancels a previously requested tile.
@@ -3634,20 +3648,20 @@ declare module "heremaps" {
     /**
      * This method requests tiles from the data source (provider). It can return a set of tiles which are currently loaded. All tiles which are not yet loaded will be included in response
      * as soon as they will be available during subsequent calls.
-     * @param {math$Rect} tileBounds - bounds in tile grid
+     * @param {H$math$Rect} tileBounds - bounds in tile grid
      * @param {boolean} isCDB
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {layer$ITileLayer$Response} - returns an array if tile which are already loaded
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {H$map$layer$ITileLayer$Response} - returns an array if tile which are already loaded
      */
     getProviderTiles(
-      tileBounds: math$Rect,
+      tileBounds: H$math$Rect,
       isCDB: boolean,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$ITileLayer$Response;
+      prioCenter: H$math$Point
+    ): H$map$layer$ITileLayer$Response;
   }
 
   /**
@@ -3656,33 +3670,37 @@ declare module "heremaps" {
   declare interface H$map$layer$IMarkerLayer {
     /**
      * This method requests marker objects for provided bounding rectangle.
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {(layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {(H$map$layer$IMarkerLayer$Response | H$map$layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
      */
     requestMarkers(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse;
+      prioCenter: H$math$Point
+    ):
+      | H$map$layer$IMarkerLayer$Response
+      | H$map$layer$IMarkerLayer$TiledResponse;
 
     /**
      * This method requests dom marker objects for provided bounding rectangle.
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {(layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {(H$map$layer$IMarkerLayer$Response | H$map$layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
      */
     requestDomMarkers(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse;
+      prioCenter: H$math$Point
+    ):
+      | H$map$layer$IMarkerLayer$Response
+      | H$map$layer$IMarkerLayer$TiledResponse;
   }
 
   /**
@@ -3692,7 +3710,7 @@ declare module "heremaps" {
    */
   declare interface H$map$layer$IMarkerLayer$Response {
     total: number;
-    markers: map$AbstractMarker[];
+    markers: H$map$AbstractMarker[];
   }
 
   /**
@@ -3704,7 +3722,7 @@ declare module "heremaps" {
   declare interface H$map$layer$IMarkerLayer$TiledResponse {
     number: number;
     requested: number;
-    objects: map$AbstractMarker[];
+    objects: H$map$AbstractMarker[];
   }
 
   /**
@@ -3714,18 +3732,18 @@ declare module "heremaps" {
   declare interface H$map$layer$ITileLayer {
     /**
      * This method requests tiles for the current bounding rectangle at the given zoom level (z-value).
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which tiles are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which tiles are to be returned
      * @param {number} zoomLevel - The zoom level for which the tiles are requested
      * @param {boolean} cacheOnly - Indicates whether only cached tiles are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {layer$ITileLayer$Response} - a response object containing the total number of tiles requested and the tile objects that could be immediately returned
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {H$map$layer$ITileLayer$Response} - a response object containing the total number of tiles requested and the tile objects that could be immediately returned
      */
     requestTiles(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$ITileLayer$Response;
+      prioCenter: H$math$Point
+    ): H$map$layer$ITileLayer$Response;
 
     /**
      * This method requests a single tile according to tile coordinates. It returns either a Tile object if it is already loaded or undefined and starts loading the tile
@@ -3733,14 +3751,14 @@ declare module "heremaps" {
      * @param {number} y - tile column position
      * @param {number} z - The zoom level for which the tile is requested
      * @param {boolean} cacheOnly - indicates whether only cached tiles are to be considered
-     * @returns {(provider$Tile | void)} - tile object corresponding to requested coordinates
+     * @returns {(H$map$provider$Tile | void)} - tile object corresponding to requested coordinates
      */
     requestTile(
       x: number,
       y: number,
       z: number,
       cacheOnly: boolean
-    ): provider$Tile | void;
+    ): H$map$provider$Tile | void;
 
     /**
      * This method cancels a previously requested tile.
@@ -3757,7 +3775,7 @@ declare module "heremaps" {
    * @property opacity {number=} - tile layer opacity, default is 1
    */
   declare interface H$map$layer$ITileLayer$Options {
-    projection?: geo$IProjection;
+    projection?: H$geo$IProjection;
     opacity?: number;
   }
 
@@ -3768,19 +3786,19 @@ declare module "heremaps" {
    */
   declare interface H$map$layer$ITileLayer$Response {
     total: number;
-    tiles: provider$Tile[];
+    tiles: H$map$provider$Tile[];
   }
 
   /**
    * The Layer class represents an object that is evaluated by the renderer in the order in which it is added to the layers collection. It provides the basic infrastructure for dispatching
    * update events to the renderer in case new data is available.
    */
-  declare class H$map$layer$Layer mixins undefined.EventTarget {
+  declare class H$map$layer$Layer mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional configuration object
      */
-    constructor(opt_options?: layer$Layer$Options): this;
+    constructor(opt_options?: H$map$layer$Layer$Options): this;
 
     /**
      * This method checks if a zoom level can be served by this layer.
@@ -3792,30 +3810,30 @@ declare module "heremaps" {
     /**
      * This method sets the minimum zoom level for which this layer will provide tiles.
      * @param {number} min - The new minimum zoom level of this layer
-     * @returns {layer$Layer} - Returns this instance of the layer
+     * @returns {H$map$layer$Layer} - Returns this instance of the layer
      */
-    setMin(min: number): layer$Layer;
+    setMin(min: number): H$map$layer$Layer;
 
     /**
      * This method sets the maximum zoom level for which this layer will provide tiles.
      * @param {number} max - The new maximum zoom level of this layer
-     * @returns {layer$Layer} - Returns this instance of the layer
+     * @returns {H$map$layer$Layer} - Returns this instance of the layer
      */
-    setMax(max: number): layer$Layer;
+    setMax(max: number): H$map$layer$Layer;
 
     /**
      * This method returns the copyright of the current data provider.
-     * @param {geo$Rect} bounds - the bounding area for which to retrieve the copyright information
+     * @param {H$geo$Rect} bounds - the bounding area for which to retrieve the copyright information
      * @param {number} level - the zoom level for which to retrieve the copyright information
-     * @returns {Array<map$ICopyright>} - a list of copyright information objects for the provided area and zoom level
+     * @returns {Array<H$map$ICopyright>} - a list of copyright information objects for the provided area and zoom level
      */
-    getCopyrights(bounds: geo$Rect, level: number): map$ICopyright[];
+    getCopyrights(bounds: H$geo$Rect, level: number): H$map$ICopyright[];
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -3842,7 +3860,7 @@ declare module "heremaps" {
     min?: number;
     max?: number;
     dark?: boolean;
-    projection?: geo$IProjection;
+    projection?: H$geo$IProjection;
     minWorldSize?: number;
   }
 
@@ -3850,46 +3868,50 @@ declare module "heremaps" {
    * ObjectTileLayer represents map objects which are requested on a tile basis
    */
   declare class H$map$layer$MarkerTileLayer
-    mixins undefined.BaseTileLayer, undefined.IMarkerLayer {
+    mixins H$map$layer$BaseTileLayer, H$map$layer$IMarkerLayer {
     /**
      * Constructor
-     * @param {provider$MarkerTileProvider} provider
+     * @param {H$map$provider$MarkerTileProvider} provider
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
     constructor(
-      provider: provider$MarkerTileProvider,
-      opt_options?: layer$ITileLayer$Options
+      provider: H$map$provider$MarkerTileProvider,
+      opt_options?: H$map$layer$ITileLayer$Options
     ): this;
 
     /**
      * This method requests marker objects for provided bounding rectangle.
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {(layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {(H$map$layer$IMarkerLayer$Response | H$map$layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
      */
     requestMarkers(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse;
+      prioCenter: H$math$Point
+    ):
+      | H$map$layer$IMarkerLayer$Response
+      | H$map$layer$IMarkerLayer$TiledResponse;
 
     /**
      * This method requests dom marker objects for provided bounding rectangle.
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {(layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {(H$map$layer$IMarkerLayer$Response | H$map$layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
      */
     requestDomMarkers(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse;
+      prioCenter: H$math$Point
+    ):
+      | H$map$layer$IMarkerLayer$Response
+      | H$map$layer$IMarkerLayer$TiledResponse;
   }
 
   /**
@@ -3897,52 +3919,52 @@ declare module "heremaps" {
    * are provided as objects given an rectangular area.
    */
   declare class H$map$layer$ObjectLayer
-    mixins undefined.Layer, undefined.ITileLayer {
+    mixins H$map$layer$Layer, H$map$layer$ITileLayer {
     /**
      * Constructor
-     * @param {provider$ObjectProvider} provider - the ObjectProvider which provides the map objects to this object layer.
+     * @param {H$map$provider$ObjectProvider} provider - the ObjectProvider which provides the map objects to this object layer.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The options for this layer
      */
     constructor(
-      provider: provider$ObjectProvider | Provider,
-      opt_options?: layer$ObjectLayer$Options
+      provider: H$map$provider$ObjectProvider | H$clustering$Provider,
+      opt_options?: H$map$layer$ObjectLayer$Options
     ): this;
 
     /**
      * This method returns current ObjectLayer's data provider
-     * @returns {provider$ObjectProvider}
+     * @returns {H$map$provider$ObjectProvider}
      */
-    getProvider(): provider$ObjectProvider;
+    getProvider(): H$map$provider$ObjectProvider;
 
     /**
      * To request overlay objects for the passsed bounding rectangle. It returns all overlay objects which are contained within this bounding rectangle.
-     * @param {geo$Rect} bounds - The bounding rectangle for which overlays are to be returned
+     * @param {H$geo$Rect} bounds - The bounding rectangle for which overlays are to be returned
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {layer$ObjectLayer$OverlaysResponse}
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {H$map$layer$ObjectLayer$OverlaysResponse}
      */
     requestOverlays(
-      bounds: geo$Rect,
+      bounds: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$ObjectLayer$OverlaysResponse;
+      prioCenter: H$math$Point
+    ): H$map$layer$ObjectLayer$OverlaysResponse;
 
     /**
      * This method requests tiles for the current bounding rectangle at the given zoom level (z-value).
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which tiles are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which tiles are to be returned
      * @param {number} zoomLevel - The zoom level for which the tiles are requested
      * @param {boolean} cacheOnly - Indicates whether only cached tiles are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {layer$ITileLayer$Response} - a response object containing the total number of tiles requested and the tile objects that could be immediately returned
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {H$map$layer$ITileLayer$Response} - a response object containing the total number of tiles requested and the tile objects that could be immediately returned
      */
     requestTiles(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$ITileLayer$Response;
+      prioCenter: H$math$Point
+    ): H$map$layer$ITileLayer$Response;
 
     /**
      * This method requests a single tile according to tile coordinates. It returns either a Tile object if it is already loaded or undefined and starts loading the tile
@@ -3950,14 +3972,14 @@ declare module "heremaps" {
      * @param {number} y - tile column position
      * @param {number} z - The zoom level for which the tile is requested
      * @param {boolean} cacheOnly - indicates whether only cached tiles are to be considered
-     * @returns {(provider$Tile | void)} - tile object corresponding to requested coordinates
+     * @returns {(H$map$provider$Tile | void)} - tile object corresponding to requested coordinates
      */
     requestTile(
       x: number,
       y: number,
       z: number,
       cacheOnly: boolean
-    ): provider$Tile | void;
+    ): H$map$provider$Tile | void;
 
     /**
      * This method cancels a previously requested tile.
@@ -3969,33 +3991,37 @@ declare module "heremaps" {
 
     /**
      * This method requests marker objects for provided bounding rectangle.
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {(layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {(H$map$layer$IMarkerLayer$Response | H$map$layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
      */
     requestMarkers(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse;
+      prioCenter: H$math$Point
+    ):
+      | H$map$layer$IMarkerLayer$Response
+      | H$map$layer$IMarkerLayer$TiledResponse;
 
     /**
      * This method requests dom marker objects for provided bounding rectangle.
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which marker are to be returned
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {(layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {(H$map$layer$IMarkerLayer$Response | H$map$layer$IMarkerLayer$TiledResponse)} - a response object containing the number of markers and the markers themselves
      */
     requestDomMarkers(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$IMarkerLayer$Response | layer$IMarkerLayer$TiledResponse;
+      prioCenter: H$math$Point
+    ):
+      | H$map$layer$IMarkerLayer$Response
+      | H$map$layer$IMarkerLayer$TiledResponse;
   }
 
   /**
@@ -4019,7 +4045,7 @@ declare module "heremaps" {
    */
   declare interface H$map$layer$ObjectLayer$OverlaysResponse {
     total: number;
-    overlays: map$Overlay[];
+    overlays: H$map$Overlay[];
   }
 
   /**
@@ -4027,32 +4053,32 @@ declare module "heremaps" {
    * @event update {H.util.Event}
    */
   declare class H$map$layer$TileLayer
-    mixins undefined.BaseTileLayer, undefined.ITileLayer {
+    mixins H$map$layer$BaseTileLayer, H$map$layer$ITileLayer {
     /**
      * Constructor
-     * @param {provider$TileProvider} provider - data source for the TileLayer
+     * @param {H$map$provider$TileProvider} provider - data source for the TileLayer
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional options
      */
     constructor(
-      provider: provider$TileProvider,
-      opt_options?: layer$ITileLayer$Options
+      provider: H$map$provider$TileProvider,
+      opt_options?: H$map$layer$ITileLayer$Options
     ): this;
 
     /**
      * This method requests tiles for the current bounding rectangle at the given zoom level (z-value).
-     * @param {geo$Rect} boundingRect - the bounding rectangle for which tiles are to be returned
+     * @param {H$geo$Rect} boundingRect - the bounding rectangle for which tiles are to be returned
      * @param {number} zoomLevel - The zoom level for which the tiles are requested
      * @param {boolean} cacheOnly - Indicates whether only cached tiles are to be considered
-     * @param {math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
-     * @returns {layer$ITileLayer$Response} - a response object containing the total number of tiles requested and the tile objects that could be immediately returned
+     * @param {H$math$Point} prioCenter - The priority center as an offset in screen pixel relative to the center
+     * @returns {H$map$layer$ITileLayer$Response} - a response object containing the total number of tiles requested and the tile objects that could be immediately returned
      */
     requestTiles(
-      boundingRect: geo$Rect,
+      boundingRect: H$geo$Rect,
       zoomLevel: number,
       cacheOnly: boolean,
-      prioCenter: math$Point
-    ): layer$ITileLayer$Response;
-    update: util$Event;
+      prioCenter: H$math$Point
+    ): H$map$layer$ITileLayer$Response;
+    update: H$util$Event;
   }
 
   declare var npm$namespace$H$map$provider: {
@@ -4072,12 +4098,12 @@ declare module "heremaps" {
    * @property tileSize {number} - Size of a tile image supported by the provider
    */
   declare class H$map$provider$ImageTileProvider
-    mixins undefined.RemoteTileProvider {
+    mixins H$map$provider$RemoteTileProvider {
     /**
      * Constructor
-     * @param {provider$ImageTileProvider$Options} options - configuration for tile provider
+     * @param {H$map$provider$ImageTileProvider$Options} options - configuration for tile provider
      */
-    constructor(options: provider$ImageTileProvider$Options): this;
+    constructor(options: H$map$provider$ImageTileProvider$Options): this;
     tileSize: number;
   }
 
@@ -4097,7 +4123,7 @@ declare module "heremaps" {
     uri?: string;
     min?: number;
     max?: number;
-    getCopyrights?: (rect: geo$Rect, n: number) => map$ICopyright[];
+    getCopyrights?: (rect: H$geo$Rect, n: number) => H$map$ICopyright[];
     tileSize?: number;
     getURL(n1: number, n2: number, n3: number): string;
     crossOrigin?: string | boolean;
@@ -4110,59 +4136,62 @@ declare module "heremaps" {
   declare class H$map$provider$Invalidations {
     /**
      * To update invalidation marks accordingly to the given the invalidation types.
-     * @param {Invalidations$Mark} mark - The invalidation mark to set
-     * @param {math$BitMask} types - The descrete invalidation types to update
+     * @param {H$map$provider$Invalidations$Mark} mark - The invalidation mark to set
+     * @param {H$math$BitMask} types - The descrete invalidation types to update
      */
-    update(mark: Invalidations$Mark, types: math$BitMask): void;
+    update(
+      mark: H$map$provider$Invalidations$Mark,
+      types: H$math$BitMask
+    ): void;
 
     /**
      * This method returns the current invalidation mark of this invalidations object.
-     * @returns {Invalidations$Mark} - the current invalidation mark
+     * @returns {H$map$provider$Invalidations$Mark} - the current invalidation mark
      */
-    getMark(): Invalidations$Mark;
+    getMark(): H$map$provider$Invalidations$Mark;
 
     /**
      * Checks whether any change occurred after the specified since mark
-     * @param {Invalidations$Mark} since - The invalidation mark to check against
+     * @param {H$map$provider$Invalidations$Mark} since - The invalidation mark to check against
      * @returns {boolean}
      */
-    isAny(since: Invalidations$Mark): boolean;
+    isAny(since: H$map$provider$Invalidations$Mark): boolean;
 
     /**
      * Checks whether a visual change occurred after the specified since mark
-     * @param {Invalidations$Mark} since - The invalidation mark to check against
+     * @param {H$map$provider$Invalidations$Mark} since - The invalidation mark to check against
      * @returns {boolean}
      */
-    isVisual(since: Invalidations$Mark): boolean;
+    isVisual(since: H$map$provider$Invalidations$Mark): boolean;
 
     /**
      * Checks whether a spatial change occurred after the specified since mark
-     * @param {Invalidations$Mark} since - The invalidation mark to check against
+     * @param {H$map$provider$Invalidations$Mark} since - The invalidation mark to check against
      * @returns {boolean}
      */
-    isSpatial(since: Invalidations$Mark): boolean;
+    isSpatial(since: H$map$provider$Invalidations$Mark): boolean;
 
     /**
      * Checks whether an add-operation occurred after the specified since mark
-     * @param {Invalidations$Mark} since - The invalidation mark to check against
+     * @param {H$map$provider$Invalidations$Mark} since - The invalidation mark to check against
      * @returns {boolean}
      */
-    isAdd(since: Invalidations$Mark): boolean;
+    isAdd(since: H$map$provider$Invalidations$Mark): boolean;
 
     /**
      * Checks whether a remove operation occurred after the specified since mark
-     * @param {Invalidations$Mark} since - The invalidation mark to check against
+     * @param {H$map$provider$Invalidations$Mark} since - The invalidation mark to check against
      * @returns {boolean}
      */
-    isRemove(since: Invalidations$Mark): boolean;
+    isRemove(since: H$map$provider$Invalidations$Mark): boolean;
 
     /**
      * Checks whether a z-order change occurred after the specified since mark
-     * @param {Invalidations$Mark} since - The invalidation mark to check against
+     * @param {H$map$provider$Invalidations$Mark} since - The invalidation mark to check against
      * @returns {boolean}
      */
-    isZOrder(since: Invalidations$Mark): boolean;
-    static MARK_INITIAL: Invalidations$Mark;
+    isZOrder(since: H$map$provider$Invalidations$Mark): boolean;
+    static MARK_INITIAL: H$map$provider$Invalidations$Mark;
   }
 
   declare var npm$namespace$H$map$provider$Invalidations: {
@@ -4198,19 +4227,19 @@ declare module "heremaps" {
    * @property uid {string} - Provider instance unique identifier, generated at construction time
    */
   declare class H$map$provider$MarkerTileProvider
-    mixins undefined.RemoteTileProvider {
+    mixins H$map$provider$RemoteTileProvider {
     /**
      * Constructor
-     * @param {provider$MarkerTileProvider$Options} options - configuration for tile provider
+     * @param {H$map$provider$MarkerTileProvider$Options} options - configuration for tile provider
      */
-    constructor(options: provider$MarkerTileProvider$Options): this;
+    constructor(options: H$map$provider$MarkerTileProvider$Options): this;
 
     /**
      * To signal to this provider that a map object has been changed. The method marks tile, that contains that object as invalid and triggers dispatchUpdate()
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} marker - The map object to be invalidated
-     * @param {math$BitMask} flags - The flags indicating the types of occurred changes
+     * @param {H$math$BitMask} flags - The flags indicating the types of occurred changes
      */
-    invalidateObject(marker: map$AbstractMarker, flags: math$BitMask): void;
+    invalidateObject(marker: H$map$AbstractMarker, flags: H$math$BitMask): void;
 
     /**
      * Checks whether this provider is currently providing H.map.DomMarker map objects.
@@ -4234,37 +4263,37 @@ declare module "heremaps" {
       n1: number,
       n2: number,
       n3: number,
-      markerCallback: (markers: map$AbstractMarker[]) => void,
+      markerCallback: (markers: H$map$AbstractMarker[]) => void,
       f: () => void
-    ): util$ICancelable;
+    ): H$util$ICancelable;
     providesDomMarkers?: boolean;
   }
 
   /**
    * An abstract class to manage and provide map objects (Marker, Polyline, Polygon)
    */
-  declare class H$map$provider$ObjectProvider mixins undefined.Provider {
+  declare class H$map$provider$ObjectProvider mixins H$map$provider$Provider {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: provider$Provider$Options): this;
+    constructor(opt_options?: H$map$provider$Provider$Options): this;
 
     /**
      * Returns the accumulate invalidations of this provider's objects that have occurred.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_type - The type of objects to consider for the invalidations. If undefined, all types are taken into account.
-     * @returns {Invalidations}
+     * @returns {H$map$provider$Invalidations}
      */
     getInvalidations(
       opt_type?: $Values<typeof H$map$Object$Type>
-    ): Invalidations;
+    ): H$map$provider$Invalidations;
 
     /**
      * To signal to this provider that a map object has been changed. The method updates the Invalidations of this provider and the given map object and triggers dispatchUpdate()
      * @param {"NO PRINT IMPLEMENTED: JSDocNonNullableType"} mapObject - The map object to be invalidated
-     * @param {math$BitMask} changes - The flags indicating the types of occurred changes
+     * @param {H$math$BitMask} changes - The flags indicating the types of occurred changes
      */
-    invalidateObject(mapObject: Object, changes: math$BitMask): void;
+    invalidateObject(mapObject: H$map$Object, changes: H$math$BitMask): void;
 
     /**
      * Checks whether this provider is currently providing overlay map objects. A concrete implementation of ObjectProvider must override it if it currently provides overlays.
@@ -4274,18 +4303,18 @@ declare module "heremaps" {
 
     /**
      * Returns all Overlay objects which intersect with the provided area.
-     * @param {geo$Rect} geoRect - A rectangular area in geo space to intersect with
+     * @param {H$geo$Rect} geoRect - A rectangular area in geo space to intersect with
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$Overlay>} - a list of intersecting objects
+     * @returns {Array<H$map$Overlay>} - a list of intersecting objects
      */
     requestOverlays(
-      geoRect: geo$Rect,
+      geoRect: H$geo$Rect,
       zoomLevel: number,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$Overlay[];
+    ): H$map$Overlay[];
 
     /**
      * Checks whether this provider is currently providing spatial map objects. A concrete implementation of ObjectProvider must override it if it currently provides Spatials.
@@ -4295,31 +4324,31 @@ declare module "heremaps" {
 
     /**
      * Returns all polyline, polygon, circle and rect objects which intersect with the provided area.
-     * @param {geo$Rect} geoRect - A rectangular area in geo space to intersect with
+     * @param {H$geo$Rect} geoRect - A rectangular area in geo space to intersect with
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$Spatial>} - a list of intersecting objects
+     * @returns {Array<H$map$Spatial>} - a list of intersecting objects
      */
     requestSpatials(
-      geoRect: geo$Rect,
+      geoRect: H$geo$Rect,
       zoomLevel: number,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$Spatial[];
+    ): H$map$Spatial[];
 
     /**
      * Returns the spatial objects which intersect the given tile
      * @param {H$map.provider.SpatialTile} tile - The tile for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$Spatial>} - a list of intersecting objects
+     * @returns {Array<H$map$Spatial>} - a list of intersecting objects
      */
     requestSpatialsByTile(
-      tile: provider$Tile,
+      tile: H$map$provider$Tile,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$Spatial[];
+    ): H$map$Spatial[];
 
     /**
      * Checks whether this provider is currently providing Marker map objects. A concrete implementation of ObjectProvider must override it if it currently provides Markers.
@@ -4329,18 +4358,18 @@ declare module "heremaps" {
 
     /**
      * Returns all Marker map objects which intersect with the provided rectangular area.
-     * @param {geo$Rect} geoRect - A rectangular area in geo space to intersect with
+     * @param {H$geo$Rect} geoRect - A rectangular area in geo space to intersect with
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$Marker>} - a list of intersecting objects
+     * @returns {Array<H$map$Marker>} - a list of intersecting objects
      */
     requestMarkers(
-      geoRect: geo$Rect,
+      geoRect: H$geo$Rect,
       zoomLevel: number,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$Marker[];
+    ): H$map$Marker[];
 
     /**
      * Checks whether this provider is currently providing DomMarker map objects. A concrete implementation of ObjectProvider must override it if it currently provides Markers.
@@ -4350,18 +4379,18 @@ declare module "heremaps" {
 
     /**
      * Returns all DomMarker map objects which intersect with the provided rectangular area.
-     * @param {geo$Rect} geoRect - A rectangular area in geo space to intersect with
+     * @param {H$geo$Rect} geoRect - A rectangular area in geo space to intersect with
      * @param {number} zoomLevel - The zoom level for which the objects are requested
      * @param {boolean} visiblesOnly - Indicates whether only invisible objects are to be considered
      * @param {boolean} cacheOnly - Indicates whether only cached objects are to be considered
-     * @returns {Array<map$DomMarker>} - a list of intersecting objects
+     * @returns {Array<H$map$DomMarker>} - a list of intersecting objects
      */
     requestDomMarkers(
-      geoRect: geo$Rect,
+      geoRect: H$geo$Rect,
       zoomLevel: number,
       visiblesOnly: boolean,
       cacheOnly: boolean
-    ): map$DomMarker[];
+    ): H$map$DomMarker[];
   }
 
   /**
@@ -4372,26 +4401,26 @@ declare module "heremaps" {
    * @property max {number} - Maximum zoom level at which provider can server data, set at construction time
    * @property uid {string} - Provider instance unique identifier, generated at construction time
    */
-  declare class H$map$provider$Provider mixins undefined.EventTarget {
+  declare class H$map$provider$Provider mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: provider$Provider$Options): this;
+    constructor(opt_options?: H$map$provider$Provider$Options): this;
 
     /**
      * This method returns the copyrights of the provided content for a certain geographical area at a specified zoom level.
-     * @param {geo$Rect} bounds - The bounding area for which to retrieve the copyright information
+     * @param {H$geo$Rect} bounds - The bounding area for which to retrieve the copyright information
      * @param {number} level - The zoom level for which to retrieve the copyright information
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"} - a list of copyright information objects for the provided area and zoom level
      */
-    getCopyrights(bounds: geo$Rect, level: number): map$ICopyright[];
+    getCopyrights(bounds: H$geo$Rect, level: number): H$map$ICopyright[];
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -4422,7 +4451,7 @@ declare module "heremaps" {
     uri?: string;
     min?: number;
     max?: number;
-    getCopyrights?: (rect: geo$Rect, n: number) => map$ICopyright[];
+    getCopyrights?: (rect: H$geo$Rect, n: number) => H$map$ICopyright[];
   }
 
   /**
@@ -4430,18 +4459,18 @@ declare module "heremaps" {
    * (to request remote tile) and 'getCache' (to provide configured cache object were tiled data is being cached)
    */
   declare class H$map$provider$RemoteTileProvider
-    mixins undefined.TileProvider {
+    mixins H$map$provider$TileProvider {
     /**
      * Constructor
-     * @param {provider$TileProvider$Options} options - The options to instantiate this TileProvider
+     * @param {H$map$provider$TileProvider$Options} options - The options to instantiate this TileProvider
      */
-    constructor(options: provider$TileProvider$Options): this;
+    constructor(options: H$map$provider$TileProvider$Options): this;
 
     /**
      * This method returns cache which should be used to store tiles
-     * @returns {util$ICache} - cache
+     * @returns {H$util$ICache} - cache
      */
-    getCache(): util$ICache;
+    getCache(): H$util$ICache;
 
     /**
      * This method request tile from remote service
@@ -4451,19 +4480,23 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResponse - function which is called after response arrives
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - function which is called in case of communication error
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_priority - optional request priority level
-     * @returns {util$ICancelable}
+     * @returns {H$util$ICancelable}
      */
     requestInternal(
       x: number,
       y: number,
       z: number,
       onResponse?: (
-        object: Object[] | HTMLImageElement | HTMLCanvasElement | ArrayBuffer,
+        object:
+          | H$map$Object[]
+          | HTMLImageElement
+          | HTMLCanvasElement
+          | ArrayBuffer,
         response: any
       ) => void,
       onError?: (s: string) => void,
-      opt_priority?: Request$Priority
-    ): util$ICancelable;
+      opt_priority?: H$net$Request$Priority
+    ): H$util$ICancelable;
 
     /**
      * This method instructs the provider to reload data from it's source.
@@ -4509,12 +4542,12 @@ declare module "heremaps" {
    * @property max {number} - Maximum zoom level at which provider can server data, set at construction time
    * @property uid {string} - Provider instance unique identifier, generated at construction time
    */
-  declare class H$map$provider$TileProvider mixins undefined.Provider {
+  declare class H$map$provider$TileProvider mixins H$map$provider$Provider {
     /**
      * Constructor
-     * @param {provider$TileProvider$Options} options - The options to instantiate this TileProvider
+     * @param {H$map$provider$TileProvider$Options} options - The options to instantiate this TileProvider
      */
-    constructor(options: provider$TileProvider$Options): this;
+    constructor(options: H$map$provider$TileProvider$Options): this;
 
     /**
      * This method creates a tile object with given parameters
@@ -4523,7 +4556,7 @@ declare module "heremaps" {
      * @param {number} z - tile coordinate (zoom)
      * @param {(HTMLImageElement | HTMLCanvasElement)} data - data for the tile
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - free form options object. These options are meant to be used in tile specific rendering cases
-     * @returns {provider$Tile}
+     * @returns {H$map$provider$Tile}
      */
     createTileInternal(
       x: number,
@@ -4533,7 +4566,7 @@ declare module "heremaps" {
       opt_options?: {
         [key: string]: any
       }
-    ): provider$Tile;
+    ): H$map$provider$Tile;
 
     /**
      * This method creates a tile key consisting of the provider&#x27;s uri, and the tile&#x27;s x, y and z coordinates, seperated by underscores e.g.: &quot;4711_7_42_23&quot;
@@ -4564,7 +4597,7 @@ declare module "heremaps" {
     uri?: string;
     min?: number;
     max?: number;
-    getCopyrights?: (rect: geo$Rect, number: number) => map$ICopyright[];
+    getCopyrights?: (rect: H$geo$Rect, number: number) => H$map$ICopyright[];
     tileSize?: number;
   }
 
@@ -4581,19 +4614,19 @@ declare module "heremaps" {
    * specific implementation to present the current view model data in best possible way. For example, 2D engines create a two-dimensional flat
    * map composed of tiles, while 3D engines can generate panoramas displaying the same coordinates as a 'street view'.
    */
-  declare class H$map$render$RenderEngine mixins undefined.EventTarget {
+  declare class H$map$render$RenderEngine mixins H$util$EventTarget {
     /**
      * Constructor
-     * @param {map$ViewPort} viewPort - An object representing the map viewport
-     * @param {ViewModel} viewModel - An object representing a view of the map
-     * @param {map$DataModel} dataModel - An object encapsulating the data to be rendered on the map (layers and objects)
-     * @param {RenderEngine$Options} options - An object containing the render engine initialization options
+     * @param {H$map$ViewPort} viewPort - An object representing the map viewport
+     * @param {H$map$ViewModel} viewModel - An object representing a view of the map
+     * @param {H$map$DataModel} dataModel - An object encapsulating the data to be rendered on the map (layers and objects)
+     * @param {H$map$render$RenderEngine$Options} options - An object containing the render engine initialization options
      */
     constructor(
-      viewPort: map$ViewPort,
-      viewModel: ViewModel,
-      dataModel: map$DataModel,
-      options: RenderEngine$Options
+      viewPort: H$map$ViewPort,
+      viewModel: H$map$ViewModel,
+      dataModel: H$map$DataModel,
+      options: H$map$render$RenderEngine$Options
     ): this;
 
     /**
@@ -4627,9 +4660,9 @@ declare module "heremaps" {
 
     /**
      * This method dispatches an event on the EventTarget object.
-     * @param {util$Event | string} evt - An object representing the event or a string with the event name
+     * @param {H$util$Event | string} evt - An object representing the event or a string with the event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * This method removes listeners from the given object. Classes that extend EventTarget may need to override this method in order to remove
@@ -4685,9 +4718,9 @@ declare module "heremaps" {
     /**
      * The geographical area to render. Note that it is not the same as visible viewport. Specified bounds also include H.Map.Options#margin and
      * optionally an additional margin in case of DOM node rendering for a better rendering experience.
-     * @type {geo$Rect}
+     * @type {H$geo$Rect}
      */
-    bounds: geo$Rect;
+    bounds: H$geo$Rect;
 
     /**
      * The zoom level to render the data for.
@@ -4697,22 +4730,22 @@ declare module "heremaps" {
 
     /**
      * The coordinates of the screen center in CSS pixels.
-     * @type {math$Point}
+     * @type {H$math$Point}
      */
-    screenCenter: math$Point;
+    screenCenter: H$math$Point;
 
     /**
      * The coordinates relative to the screen center where the rendering has the highest priority. If the layer has to request and/or process data
      * asynchronously, it's recommended to prioritize the rendering close to this center.
-     * @type {math$Point}
+     * @type {H$math$Point}
      */
-    priorityCenter: math$Point;
+    priorityCenter: H$math$Point;
 
     /**
      * The pixel projection to use to project geographical coordinates into screen coordinates and vice versa.
-     * @type {geo$PixelProjection}
+     * @type {H$geo$PixelProjection}
      */
-    projection: geo$PixelProjection;
+    projection: H$geo$PixelProjection;
 
     /**
      * Indicates whether only cached data should be considered.
@@ -4722,9 +4755,9 @@ declare module "heremaps" {
 
     /**
      * The size of the area to render.
-     * @type {math$Size}
+     * @type {H$math$Size}
      */
-    size: math$Size;
+    size: H$math$Size;
 
     /**
      * The pixelRatio to use for over-sampling in cases of high-resolution displays.
@@ -4742,19 +4775,19 @@ declare module "heremaps" {
    * This class implements a map render engine. It presents a geographic location (camera data from a view model) and renders all map layers in
    * the order in which they are provided in a single 2D canvas element.
    */
-  declare class H$map$render$p2d$RenderEngine mixins undefined.RenderEngine {
+  declare class H$map$render$p2d$RenderEngine mixins H$map$render$RenderEngine {
     /**
      * Constructor
-     * @param {map$ViewPort} viewPort - An object representing the map viewport
-     * @param {ViewModel} viewModel - An object representing a view of the map
-     * @param {map$DataModel} dataModel - An object encapsulating the data to be rendered on the map (layers and objects)
-     * @param {RenderEngine$Options} options - An object containing the render engine initialization options
+     * @param {H$map$ViewPort} viewPort - An object representing the map viewport
+     * @param {H$map$ViewModel} viewModel - An object representing a view of the map
+     * @param {H$map$DataModel} dataModel - An object encapsulating the data to be rendered on the map (layers and objects)
+     * @param {H$map$render$RenderEngine$Options} options - An object containing the render engine initialization options
      */
     constructor(
-      viewPort: map$ViewPort,
-      viewModel: ViewModel,
-      dataModel: map$DataModel,
-      options: RenderEngine$Options
+      viewPort: H$map$ViewPort,
+      viewModel: H$map$ViewModel,
+      dataModel: H$map$DataModel,
+      options: H$map$render$RenderEngine$Options
     ): this;
 
     /**
@@ -4819,9 +4852,9 @@ declare module "heremaps" {
 
     /**
      * This method dispatches an event on the EventTarget object.
-     * @param {util$Event | string} evt - An object representing the event or a string with the event name
+     * @param {H$util$Event | string} evt - An object representing the event or a string with the event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * This method removes listeners from the given object. Classes that extend EventTarget may need to override this method in order to remove
@@ -4870,15 +4903,15 @@ declare module "heremaps" {
    * @property WHEELZOOM {number} - Map zooms in or out in respond to mouse wheel events
    * @property DBLTAPZOOM {number} - Map zooms in or out in response to double click or double tap. For double tap if more that one touches are on the screen map will zoom out.
    */
-  declare class H$mapevents$Behavior mixins undefined.Disposable {
+  declare class H$mapevents$Behavior mixins H$util$Disposable {
     /**
      * Constructor
-     * @param {mapevents$MapEvents} mapEvents - previously initialized map events instance
-     * @param {mapevents$Behavior$Options} options - additional options (i.e kinetics)
+     * @param {H$mapevents$MapEvents} mapEvents - previously initialized map events instance
+     * @param {H$mapevents$Behavior$Options} options - additional options (i.e kinetics)
      */
     constructor(
-      mapEvents: mapevents$MapEvents,
-      options?: mapevents$Behavior$Options
+      mapEvents: H$mapevents$MapEvents,
+      options?: H$mapevents$Behavior$Options
     ): this;
 
     /**
@@ -4891,13 +4924,13 @@ declare module "heremaps" {
      * This method disables the behavior functionality for the map
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_behavior - The bitmask of behaviors to disable. If no arguments are passed, all behaviors will be disabled.
      */
-    disable(opt_behavior?: math$BitMask): void;
+    disable(opt_behavior?: H$math$BitMask): void;
 
     /**
      * This method re-enables the behavior functionality for the map.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_behavior - The bitmask of behaviors to enable. If no arguments are passed, all behaviors will be enabled.
      */
-    enable(opt_behavior?: math$BitMask): void;
+    enable(opt_behavior?: H$math$BitMask): void;
 
     /**
      * This method checks if certain functionality is enabled
@@ -4916,8 +4949,8 @@ declare module "heremaps" {
    * @property enable {number=} - The bitmask of behaviors to enable like H.mapevents.Behavior.DRAGGING. All are enabled by default.
    */
   declare interface H$mapevents$Behavior$Options {
-    kinetics?: util$kinetics$IKinetics;
-    enable?: math$BitMask;
+    kinetics?: H$util$kinetics$IKinetics;
+    enable?: H$math$BitMask;
   }
 
   /**
@@ -4930,21 +4963,21 @@ declare module "heremaps" {
    * @property type {string} - Name of the dispatched event
    * @property defaultPrevented {boolean} - Indicates if preventDefault was called on the current event
    */
-  declare class H$mapevents$ContextMenuEvent mixins undefined.Event {
+  declare class H$mapevents$ContextMenuEvent mixins H$util$Event {
     /**
      * Constructor
      * @param {number} viewportX - The x coordinate on the viewport
      * @param {number} viewportY - The y coordinate on the viewport
-     * @param {(Map | Object)} target - The event's target element
+     * @param {(H$Map | H$map$Object)} target - The event's target element
      * @param {H$data$AbstractReader$Event} originalEvent - target of the event
      */
     constructor(
       viewportX: number,
       viewportY: number,
-      target: Map | Object,
+      target: H$Map | H$map$Object,
       originalEvent: H$data$AbstractReader$Event
     ): this;
-    viewportX: util$ContextItem[];
+    viewportX: H$util$ContextItem[];
     viewportY: number;
     originalEvent: H$data$AbstractReader$Event;
   }
@@ -4961,24 +4994,24 @@ declare module "heremaps" {
    * @property type {string} - Name of the dispatched event
    * @property defaultPrevented {boolean} - Indicates if preventDefault was called on the current event
    */
-  declare class H$mapevents$Event mixins undefined.Event {
+  declare class H$mapevents$Event mixins H$util$Event {
     /**
      * Constructor
      * @param {string} type - type of event
-     * @param {Array<Pointer>} pointers - pointers which are currently on the screen
-     * @param {Array<Pointer>} changedPointers - pointers which changed during event
-     * @param {Array<Pointer>} targetPointers - pointers on the event target
-     * @param {Pointer} currentPointer - pointer which triggered the event
-     * @param {(Map | Object)} target - target map object which triggered event
+     * @param {Array<H$mapevents$Pointer>} pointers - pointers which are currently on the screen
+     * @param {Array<H$mapevents$Pointer>} changedPointers - pointers which changed during event
+     * @param {Array<H$mapevents$Pointer>} targetPointers - pointers on the event target
+     * @param {H$mapevents$Pointer} currentPointer - pointer which triggered the event
+     * @param {(H$Map | H$map$Object)} target - target map object which triggered event
      * @param {H$mapevents$Event} originalEvent - original dom event
      */
     constructor(
       type: string,
-      pointers: Pointer[],
-      changedPointers: Pointer[],
-      targetPointers: Pointer[],
-      currentPointer: Pointer,
-      target: Map | Object,
+      pointers: H$mapevents$Pointer[],
+      changedPointers: H$mapevents$Pointer[],
+      targetPointers: H$mapevents$Pointer[],
+      currentPointer: H$mapevents$Pointer,
+      target: H$Map | H$map$Object,
       originalEvent: H$mapevents$Event
     ): this;
 
@@ -4991,13 +5024,13 @@ declare module "heremaps" {
      * Stops propagation for current event.
      */
     stopPropagation(): void;
-    pointers: Pointer[];
-    changedPointers: Pointer[];
-    targetPointers: Pointer[];
-    currentPointer: Pointer;
+    pointers: H$mapevents$Pointer[];
+    changedPointers: H$mapevents$Pointer[];
+    targetPointers: H$mapevents$Pointer[];
+    currentPointer: H$mapevents$Pointer;
     originalEvent: H$mapevents$Event;
-    target: Object | Map;
-    currentTarget: Object | Map;
+    target: H$map$Object | H$Map;
+    currentTarget: H$map$Object | H$Map;
     type: string;
     defaultPrevented: boolean;
   }
@@ -5007,12 +5040,12 @@ declare module "heremaps" {
    * circles and on the map object itself. Events are triggered depending on user interaction. Please check the Events Summary section for the list of events fired by this class and by the map
    * objects.
    */
-  declare class H$mapevents$MapEvents mixins undefined.Disposable {
+  declare class H$mapevents$MapEvents mixins H$util$Disposable {
     /**
      * Constructor
-     * @param {Map} map - map instance which is used for firing events
+     * @param {H$Map} map - map instance which is used for firing events
      */
-    constructor(map: Map): this;
+    constructor(map: H$Map): this;
 
     /**
      * This method destroys the MapEvents by removing all handlers from the map object. After calling this function mapEvents and map objects will not trigger any events. This object will be
@@ -5022,9 +5055,9 @@ declare module "heremaps" {
 
     /**
      * This method returns map into which events are attached
-     * @returns {Map}
+     * @returns {H$Map}
      */
-    getAttachedMap(): Map;
+    getAttachedMap(): H$Map;
   }
 
   /**
@@ -5053,14 +5086,14 @@ declare module "heremaps" {
       id: number,
       type: string,
       opt_button?: $Values<typeof H$mapevents$Pointer$Button>,
-      opt_buttons?: math$BitMask
+      opt_buttons?: H$math$BitMask
     ): this;
     static viewportX: number;
     static viewportY: number;
-    static target: Object | Map;
+    static target: H$map$Object | H$Map;
     static id: number;
     static type: string;
-    static dragTarget: Object | Map;
+    static dragTarget: H$map$Object | H$Map;
     static button: $Values<typeof H$mapevents$Pointer$Button>;
   }
 
@@ -5087,7 +5120,7 @@ declare module "heremaps" {
    *    - 2: Right mouse button pressed, or Pen contact with barrel button pressed
    *    - 4: Middle mouse button pressed
    */
-  declare type H$mapevents$Pointer$Buttons = math$BitMask;
+  declare type H$mapevents$Pointer$Buttons = H$math$BitMask;
 
   /**
    * WheelEvent is fired when the mouse wheel is used over the map. It contains information about cursor position and the map object which resides directly under the cursor.
@@ -5100,20 +5133,20 @@ declare module "heremaps" {
    * @property type {string} - Name of the dispatched event
    * @property defaultPrevented {boolean} - Indicates if preventDefault was called on the current event
    */
-  declare class H$mapevents$WheelEvent mixins undefined.Event {
+  declare class H$mapevents$WheelEvent mixins H$util$Event {
     /**
      * Constructor
      * @param {number} deltaY - The wheel move delta on y-axis
      * @param {number} viewportX - The x coordinate on the viewport
      * @param {number} viewportY - The y coordinate on the viewport
-     * @param {(Map | Object)} target - The event's target element
+     * @param {(H$Map | H$map$Object)} target - The event's target element
      * @param {H$mapevents$Event} originalEvent - target of the event
      */
     constructor(
       deltaY: number,
       viewportX: number,
       viewportY: number,
-      target: Map | Object,
+      target: H$Map | H$map$Object,
       originalEvent: H$mapevents$Event
     ): this;
     delta: number;
@@ -5158,7 +5191,7 @@ declare module "heremaps" {
    * @property x {number} - The point's coordinate on X-axis.
    * @property y {number} - The point's coordinate on Y-axis.
    */
-  declare class H$math$Point mixins IPoint {
+  declare class H$math$Point mixins H$math$IPoint {
     /**
      * Constructor
      * @param {number} x - The point's coordinate on X-axis.
@@ -5176,21 +5209,21 @@ declare module "heremaps" {
     /**
      * This method creates a copy of the current point.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_out - An optional point to store the copied values
-     * @returns {math$Point} - The clone of the point
+     * @returns {H$math$Point} - The clone of the point
      */
     clone(opt_out?: H$math$Point): H$math$Point;
 
     /**
      * This method adds given point coordinates to the current one.
-     * @param {math$IPoint} other - The point to add
-     * @returns {math$Point} - the point itself after adding
+     * @param {H$math$IPoint} other - The point to add
+     * @returns {H$math$Point} - the point itself after adding
      */
     add(other: H$math$IPoint): H$math$Point;
 
     /**
      * This method subtracts given point coordinates from the current point.
-     * @param {math$IPoint} other - The point to subtract
-     * @returns {math$Point} - the point itself after subtracting
+     * @param {H$math$IPoint} other - The point to subtract
+     * @returns {H$math$Point} - the point itself after subtracting
      */
     sub(other: H$math$IPoint): H$math$Point;
 
@@ -5198,54 +5231,54 @@ declare module "heremaps" {
      * This method scales the current point coordinates by the given factor(s).
      * @param {number} factor - multiplication factor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_factorY - If omitted, the factor argument is used
-     * @returns {math$Point} - the point itself after scaling
+     * @returns {H$math$Point} - the point itself after scaling
      */
     scale(factor: number, opt_factorY?: number): H$math$Point;
 
     /**
      * This method rounds the x and y coordinates of the point.
-     * @returns {math$Point} - the point itself after rounding
+     * @returns {H$math$Point} - the point itself after rounding
      */
     round(): H$math$Point;
 
     /**
      * Rounds the x and y coordinates to the next smaller integer values.
-     * @returns {math$Point} - the point itself after flooring
+     * @returns {H$math$Point} - the point itself after flooring
      */
     floor(): H$math$Point;
 
     /**
      * Rounds the x and y coordinates to the next greater integer values.
-     * @returns {math$Point} - the point itself after ceiling
+     * @returns {H$math$Point} - the point itself after ceiling
      */
     ceil(): H$math$Point;
 
     /**
      * This method compares current point coordinates with the supplied point coordinates.
-     * @param {math$IPoint} other - The point to compare to.
+     * @param {H$math$IPoint} other - The point to compare to.
      * @returns {boolean} - True if the points are equal
      */
     equals(other: H$math$IPoint): boolean;
 
     /**
      * Calculates the closest point on a given line
-     * @param {math$IPoint} start - The start point of the line
-     * @param {math$IPoint} end - The end point of the line
-     * @returns {math$IPoint} - the closest point
+     * @param {H$math$IPoint} start - The start point of the line
+     * @param {H$math$IPoint} end - The end point of the line
+     * @returns {H$math$IPoint} - the closest point
      */
     getNearest(start: H$math$IPoint, end: H$math$IPoint): H$math$IPoint;
 
     /**
      * This method calculates the distance to a point supplied by the caller.
-     * @param {math$IPoint} other
+     * @param {H$math$IPoint} other
      * @returns {number}
      */
     distance(other: H$math$IPoint): number;
 
     /**
      * This method creates a Point instance from a given IPoint object.
-     * @param {math$IPoint} iPoint - The IPoint object to use
-     * @returns {math$Point} - the created Point instance
+     * @param {H$math$IPoint} iPoint - The IPoint object to use
+     * @returns {H$math$Point} - the created Point instance
      */
     static fromIPoint(iPoint: H$math$IPoint): H$math$Point;
     x: number;
@@ -5276,15 +5309,15 @@ declare module "heremaps" {
 
     /**
      * To get the rectangle's top-left vertex
-     * @returns {math$Point}
+     * @returns {H$math$Point}
      */
-    getTopLeft(): math$Point;
+    getTopLeft(): H$math$Point;
 
     /**
      * To get the rectangle's bottom-right vertex
-     * @returns {math$Point}
+     * @returns {H$math$Point}
      */
-    getBottomRight(): math$Point;
+    getBottomRight(): H$math$Point;
 
     /**
      * Method checks if provided coordinates lie within rectangle.
@@ -5296,20 +5329,20 @@ declare module "heremaps" {
 
     /**
      * To create a rectangle from a top-left and bottom-right point pair.
-     * @param {math$IPoint} topLeft - the top-left vertex of the rectanle
-     * @param {math$IPoint} bottomRight - the bottom-right vertex of the rectanle
-     * @returns {math$Rect} - returns the rectangular area defined by the top-left and bottom-right vertices
+     * @param {H$math$IPoint} topLeft - the top-left vertex of the rectanle
+     * @param {H$math$IPoint} bottomRight - the bottom-right vertex of the rectanle
+     * @returns {H$math$Rect} - returns the rectangular area defined by the top-left and bottom-right vertices
      */
     static fromPoints(
-      topLeft: math$IPoint,
-      bottomRight: math$IPoint
-    ): math$Rect;
+      topLeft: H$math$IPoint,
+      bottomRight: H$math$IPoint
+    ): H$math$Rect;
 
     /**
      * To clone a rectangle
-     * @returns {math$Rect}
+     * @returns {H$math$Rect}
      */
-    clone(): math$Rect;
+    clone(): H$math$Rect;
   }
 
   /**
@@ -5362,12 +5395,12 @@ declare module "heremaps" {
   /**
    * Abstract rest service class
    */
-  declare class H$service$AbstractRestService mixins undefined.IConfigurable {
+  declare class H$service$AbstractRestService mixins H$service$IConfigurable {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: service$AbstractRestService$Options): this;
+    constructor(opt_options?: H$service$AbstractRestService$Options): this;
 
     /**
      * This methods receive configuration parameters from the platform, that can be used by the object implementing the interface.
@@ -5377,15 +5410,15 @@ declare module "heremaps" {
      * @param {boolean} useCIT - Indicates whether the Customer Integration Testing should be used, default is false
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_baseUrl - The base URL of the platform, default is http://api.here.com. Note that if useHTTPS flag is passed it will override the URL scheme specified in
      * the opt_baseUrl to use HTTPS.
-     * @returns {service$IConfigurable}
+     * @returns {H$service$IConfigurable}
      */
     configure(
       appId: string,
       appCode: string,
       useHTTPS: boolean,
       useCIT: boolean,
-      opt_baseUrl?: service$Url
-    ): service$IConfigurable;
+      opt_baseUrl?: H$service$Url
+    ): H$service$IConfigurable;
   }
 
   declare type H$service$AbstractRestService$Options = any;
@@ -5394,11 +5427,11 @@ declare module "heremaps" {
    * This property specifies collection of pre-configured HERE layers
    */
   declare interface H$service$DefaultLayers {
-    normal: service$MapType;
-    satellite: service$MapType;
-    terrain: service$MapType;
-    incidents: layer$MarkerTileLayer;
-    venues: layer$TileLayer;
+    normal: H$service$MapType;
+    satellite: H$service$MapType;
+    terrain: H$service$MapType;
+    incidents: H$map$layer$MarkerTileLayer;
+    venues: H$map$layer$TileLayer;
   }
 
   /**
@@ -5406,62 +5439,62 @@ declare module "heremaps" {
    * H.service.Platform#getEnterpriseRoutingService.
    */
   declare class H$service$EnterpriseRoutingService
-    mixins undefined.AbstractRestService {
+    mixins H$service$AbstractRestService {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: service$EnterpriseRoutingService$Options): this;
+    constructor(opt_options?: H$service$EnterpriseRoutingService$Options): this;
 
     /**
      * This method sends a "calculateroute" request to Enterprise Routing REST API and calls the onResult callback function once the service response was received - providing
      * a H.service.ServiceResult object - or the onError callback if a communication error occurred.
-     * @param {service$ServiceParameters} calculateRouteParams - the service parameters to be sent with the routing request.
+     * @param {H$service$ServiceParameters} calculateRouteParams - the service parameters to be sent with the routing request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Enterprise Routing REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
      */
     calculateRoute(
-      calculateRouteParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      calculateRouteParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
     ): void;
 
     /**
      * This method sends a "getroute" request to Enterprise Routing REST API and calls the onResult callback function once the service response was received - providing
      * a H.service.ServiceResult object - or the onError callback if a communication error occurred.
-     * @param {service$ServiceParameters} getRouteParams - the service parameters to be sent with the routing request.
+     * @param {H$service$ServiceParameters} getRouteParams - the service parameters to be sent with the routing request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Enterprise Routing REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
      */
     getRoute(
-      getRouteParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      getRouteParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
     ): void;
 
     /**
      * This method sends a "getlinkinfo" request to Enterprise Routing REST API and calls the onResult callback function once the service response was received - providing
      * a H.service.ServiceResult object - or the onError callback if a communication error occured.
-     * @param {service$ServiceParameters} getLinkInfoParams - the service parameters to be sent with the routing request.
+     * @param {H$service$ServiceParameters} getLinkInfoParams - the service parameters to be sent with the routing request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Enterprise Routing REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
      */
     getLinkInfo(
-      getLinkInfoParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      getLinkInfoParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
     ): void;
 
     /**
      * This method sends a "calculateisoline" request to Enterprise Routing REST API and calls the onResult callback function once the service response was received - providing
      * a H.service.ServiceResult object - or the onError callback if a communication error occurred.
-     * @param {service$ServiceParameters} calculateIsolineParams - the service parameters to be sent with the routing request.
+     * @param {H$service$ServiceParameters} calculateIsolineParams - the service parameters to be sent with the routing request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Enterprise Routing REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
      */
     calculateIsoline(
-      calculateIsolineParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      calculateIsolineParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
     ): void;
   }
@@ -5475,61 +5508,61 @@ declare module "heremaps" {
   declare interface H$service$EnterpriseRoutingService$Options {
     subDomain?: string;
     path?: string;
-    baseUrl?: service$Url;
+    baseUrl?: H$service$Url;
   }
 
   /**
    * This class encapsulates the Geocoding REST API in a service stub with calls to its various resources implemented.
    */
   declare class H$service$GeocodingService
-    mixins undefined.AbstractRestService {
+    mixins H$service$AbstractRestService {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: service$GeocodingService$Options): this;
+    constructor(opt_options?: H$service$GeocodingService$Options): this;
 
     /**
      * This method sends a reverse geocoding request to Geocoder REST API and calls the onResult callback function once the service response was received - providing a H.service.ServiceResult
      * object - or the onError callback if a communication error occured.
-     * @param {service$ServiceParameters} geoodingParams - the service parameters to be sent with the geocoding request.
+     * @param {H$service$ServiceParameters} geoodingParams - the service parameters to be sent with the geocoding request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Geocoder REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
-     * @returns {service$JsonpRequestHandle}
+     * @returns {H$service$JsonpRequestHandle}
      */
     geocode(
-      geoodingParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      geoodingParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * This method sends a reverse geocoding request to Geocoder REST API and calls the onResult callback function once the service response was received - providing a H.service.ServiceResult
      * object - or the onError callback if a communication error occured.
-     * @param {service$ServiceParameters} reverseGeocodingParams - the service parameters to be sent with the reverse geocoding request
+     * @param {H$service$ServiceParameters} reverseGeocodingParams - the service parameters to be sent with the reverse geocoding request
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Geocoder REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
-     * @returns {service$JsonpRequestHandle}
+     * @returns {H$service$JsonpRequestHandle}
      */
     reverseGeocode(
-      reverseGeocodingParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      reverseGeocodingParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * This method sends a landmark search request to Geocoder REST API and calls the onResult callback function once the service response was received - providing a H.service.ServiceResult
      * object - or the onError callback if a communication error occured.
-     * @param {service$ServiceParameters} searchParams - the service parameters to be sent with the reverse geocoding request
+     * @param {H$service$ServiceParameters} searchParams - the service parameters to be sent with the reverse geocoding request
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Geocoder REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
-     * @returns {service$JsonpRequestHandle}
+     * @returns {H$service$JsonpRequestHandle}
      */
     search(
-      searchParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      searchParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
   }
 
   /**
@@ -5553,15 +5586,15 @@ declare module "heremaps" {
      * @param {boolean} useCIT - Indicates whether the Customer Integration Testing should be used, default is false
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_baseUrl - The base URL of the platform, default is http://api.here.com. Note that if useHTTPS flag is passed it will override the URL scheme specified in
      * the opt_baseUrl to use HTTPS.
-     * @returns {service$IConfigurable}
+     * @returns {H$service$IConfigurable}
      */
     configure(
       appId: string,
       appCode: string,
       useHTTPS: boolean,
       useCIT: boolean,
-      opt_baseUrl?: service$Url
-    ): service$IConfigurable;
+      opt_baseUrl?: H$service$Url
+    ): H$service$IConfigurable;
   }
 
   /**
@@ -5577,12 +5610,12 @@ declare module "heremaps" {
    * This class encapsulates a map tile end point of the HERE Map Tile API.
    */
   declare class H$service$MapTileService
-    mixins undefined.EventTarget, undefined.IConfigurable {
+    mixins H$util$EventTarget, H$service$IConfigurable {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: service$MapTileService$Options): this;
+    constructor(opt_options?: H$service$MapTileService$Options): this;
 
     /**
      * This method returns the map tile type provided by this service.
@@ -5598,9 +5631,9 @@ declare module "heremaps" {
 
     /**
      * This method returns the map tile service's meta information. The method will return an object once the map tile service's data has been fetched.
-     * @returns {(service$MapTileService$Info | void)} - meta information for this map tile service
+     * @returns {(H$service$MapTileService$Info | void)} - meta information for this map tile service
      */
-    getInfo(): service$MapTileService$Info | void;
+    getInfo(): H$service$MapTileService$Info | void;
 
     /**
      * This method creates a tile provider which uses the specified map tiles. This provider can be used as a data source for an ImageTileLayer.
@@ -5610,16 +5643,16 @@ declare module "heremaps" {
      * @param {string} format - the tile image format
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_additionalParameters - a hash of additional parameters to be
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional set of options for the provider
-     * @returns {provider$ImageTileProvider} - the image tile provider
+     * @returns {H$map$provider$ImageTileProvider} - the image tile provider
      */
     createTileProvider(
       tileType: string,
       scheme: string,
       tileSize: number,
       format: string,
-      opt_additionalParameters?: service$ServiceParameters,
-      opt_options?: service$TileProviderOptions
-    ): provider$ImageTileProvider;
+      opt_additionalParameters?: H$service$ServiceParameters,
+      opt_options?: H$service$TileProviderOptions
+    ): H$map$provider$ImageTileProvider;
 
     /**
      * This method creates a tile layer. This layer can be used as a layer on a map's data model.
@@ -5631,18 +5664,18 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_opacity - The opacity of this layer
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_dark - Indicates whether the content of this layer is mainly dark, default is false See also H.Map.Options#autoColor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional set of options for the provider
-     * @returns {layer$TileLayer} - the tile layer
+     * @returns {H$map$layer$TileLayer} - the tile layer
      */
     createTileLayer(
       tileType: string,
       scheme: string,
       tileSize: number,
       format: string,
-      opt_additionalParameters?: service$ServiceParameters,
+      opt_additionalParameters?: H$service$ServiceParameters,
       opt_opacity?: number,
       opt_dark?: boolean,
-      opt_options?: service$TileProviderOptions
-    ): layer$TileLayer;
+      opt_options?: H$service$TileProviderOptions
+    ): H$map$layer$TileLayer;
 
     /**
      * This methods receive configuration parameters from the platform, that can be used by the object implementing the interface.
@@ -5652,15 +5685,15 @@ declare module "heremaps" {
      * @param {boolean} useCIT - Indicates whether the Customer Integration Testing should be used, default is false
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_baseUrl - The base URL of the platform, default is http://api.here.com. Note that if useHTTPS flag is passed it will override the URL scheme specified in
      * the opt_baseUrl to use HTTPS.
-     * @returns {service$IConfigurable}
+     * @returns {H$service$IConfigurable}
      */
     configure(
       appId: string,
       appCode: string,
       useHTTPS: boolean,
       useCIT: boolean,
-      opt_baseUrl?: service$Url
-    ): service$IConfigurable;
+      opt_baseUrl?: H$service$Url
+    ): H$service$IConfigurable;
   }
 
   /**
@@ -5722,29 +5755,29 @@ declare module "heremaps" {
    * @property labels {H.map.layer.TileLayer=} - transparent map tiles with labels only
    */
   declare interface H$service$MapType {
-    map: layer$TileLayer;
-    mapnight: layer$TileLayer;
-    xbase?: layer$TileLayer;
-    xbasenight?: layer$TileLayer;
-    base?: layer$TileLayer;
-    basenight?: layer$TileLayer;
-    traffic?: layer$TileLayer;
-    trafficnight?: layer$TileLayer;
-    transit?: layer$TileLayer;
-    panorama?: layer$TileLayer;
-    panoramanight?: layer$TileLayer;
-    labels?: layer$TileLayer;
+    map: H$map$layer$TileLayer;
+    mapnight: H$map$layer$TileLayer;
+    xbase?: H$map$layer$TileLayer;
+    xbasenight?: H$map$layer$TileLayer;
+    base?: H$map$layer$TileLayer;
+    basenight?: H$map$layer$TileLayer;
+    traffic?: H$map$layer$TileLayer;
+    trafficnight?: H$map$layer$TileLayer;
+    transit?: H$map$layer$TileLayer;
+    panorama?: H$map$layer$TileLayer;
+    panoramanight?: H$map$layer$TileLayer;
+    labels?: H$map$layer$TileLayer;
   }
 
   /**
    * Places service implements a low level places RestApi access. Please refer to Restful API documentation for providing parameters and handling response objects.
    */
-  declare class H$service$PlacesService mixins undefined.AbstractRestService {
+  declare class H$service$PlacesService mixins H$service$AbstractRestService {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: PlacesService$Options): this;
+    constructor(opt_options?: H$service$PlacesService$Options): this;
 
     /**
      * This is generic method to query places RestAPI.
@@ -5753,92 +5786,92 @@ declare module "heremaps" {
      * restful api documentation documentation for available parameters for chose entry point
      * @param {Function} onResult - callback which is called when result is returned
      * @param {Function} onError - callback which is called when error occured (i.e request timeout)
-     * @returns {service$JsonpRequestHandle} - jsonp request handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp request handle
      */
     request(
       entryPoint: $Values<typeof H$service$PlacesService$EntryPoint>,
       entryPointParams: {},
-      onResult: (result: service$ServiceResult) => void,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * Function triggers places api 'search' entry point. Please refer to documentation for parameter specification and response handling.
-     * @param {service$ServiceParameters} searchParams - places api search entry point parameters please refer to places api documentation
+     * @param {H$service$ServiceParameters} searchParams - places api search entry point parameters please refer to places api documentation
      * @param {Function} onResult
      * @param {Function} onError
-     * @returns {service$JsonpRequestHandle} - jsonp request handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp request handle
      */
     search(
-      searchParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      searchParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * Function triggers places api 'suggestions' entry point. Please refer to documentation for parameter specification and response handling.
-     * @param {service$ServiceParameters} suggestParams - places api suggest entry point parameters please refer to places api documentation
+     * @param {H$service$ServiceParameters} suggestParams - places api suggest entry point parameters please refer to places api documentation
      * @param {Function} onResult
      * @param {Function} onError
-     * @returns {service$JsonpRequestHandle} - jsonp request handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp request handle
      */
     suggest(
-      suggestParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      suggestParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * Function triggers places api 'explore' entry point. Please refer to documentation for parameter specification and response handling.
-     * @param {service$ServiceParameters} exploreParams - places api explore entry point parameters please refer to places api documentation
+     * @param {H$service$ServiceParameters} exploreParams - places api explore entry point parameters please refer to places api documentation
      * @param {Function} onResult
      * @param {Function} onError
-     * @returns {service$JsonpRequestHandle} - jsonp request handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp request handle
      */
     explore(
-      exploreParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      exploreParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * Function triggers places api 'around' entry point. Please refer to documentation for parameter specification and response handling.
-     * @param {service$ServiceParameters} aroundParams - places api around entry point parameters please refer to places api documentation
+     * @param {H$service$ServiceParameters} aroundParams - places api around entry point parameters please refer to places api documentation
      * @param {Function} onResult
      * @param {Function} onError
-     * @returns {service$JsonpRequestHandle} - jsonp request handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp request handle
      */
     around(
-      aroundParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      aroundParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * Function triggers places api 'here' entry point. Please refer to documentation for parameter specification and response handling.
-     * @param {service$ServiceParameters} hereParams - places api here entry point parameters please refer to places api documentation
+     * @param {H$service$ServiceParameters} hereParams - places api here entry point parameters please refer to places api documentation
      * @param {Function} onResult
      * @param {Function} onError
-     * @returns {service$JsonpRequestHandle} - jsonp request handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp request handle
      */
     here(
-      hereParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      hereParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * Function triggers places api 'categories' entry point. Please refer to documentation for parameter specification and response handling.
-     * @param {service$ServiceParameters} categoriesParams - places api here entry point parameters please refer to places api documentation
+     * @param {H$service$ServiceParameters} categoriesParams - places api here entry point parameters please refer to places api documentation
      * @param {Function} onResult
      * @param {Function} onError
-     * @returns {service$JsonpRequestHandle} - jsonp request handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp request handle
      */
     categories(
-      categoriesParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      categoriesParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * This method should be used to follow hyperlinks available in results returned by dicovery queries.
@@ -5846,14 +5879,14 @@ declare module "heremaps" {
      * @param {Function} onResult
      * @param {Function} onError
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_additionalParameters - additional parameters to send with request
-     * @returns {service$JsonpRequestHandle} - jsonp resquest handle
+     * @returns {H$service$JsonpRequestHandle} - jsonp resquest handle
      */
     follow(
       hyperlink: string,
-      onResult: (result: service$ServiceResult) => void,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void,
       opt_additionalParameters?: {}
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
   }
 
   declare var npm$namespace$H$service$PlacesService: {
@@ -5881,7 +5914,7 @@ declare module "heremaps" {
   declare interface H$service$PlacesService$Options {
     subDomain?: string;
     path?: string;
-    baseUrl?: service$Url;
+    baseUrl?: H$service$Url;
   }
 
   /**
@@ -5891,16 +5924,16 @@ declare module "heremaps" {
   declare class H$service$Platform {
     /**
      * Constructor
-     * @param {service$Platform$Options} options
+     * @param {H$service$Platform$Options} options
      */
-    constructor(options: service$Platform$Options): this;
+    constructor(options: H$service$Platform$Options): this;
 
     /**
      * Method attempts to configure object that implements H.service.IConfigurable
-     * @param {service$IConfigurable} configurable
-     * @returns {service$IConfigurable}
+     * @param {H$service$IConfigurable} configurable
+     * @returns {H$service$IConfigurable}
      */
-    configure(configurable: service$IConfigurable): service$IConfigurable;
+    configure(configurable: H$service$IConfigurable): H$service$IConfigurable;
 
     /**
      * This method enables or disables HTTPS communication with the platform
@@ -5916,44 +5949,48 @@ declare module "heremaps" {
 
     /**
      * This method modifies the base URL to be used when creating service stubs.
-     * @param {service$Url} baseUrl - the new base URL to use
+     * @param {H$service$Url} baseUrl - the new base URL to use
      */
-    setBaseUrl(baseUrl: service$Url): void;
+    setBaseUrl(baseUrl: H$service$Url): void;
 
     /**
      * This method returns the currently used base URL.
-     * @returns {service$Url}
+     * @returns {H$service$Url}
      */
-    getBaseUrl(): service$Url;
+    getBaseUrl(): H$service$Url;
 
     /**
      * This method returns an instance of H.service.TrafficIncidentsService to query the Traffic API Traffic Incident Data
-     * @returns {service$TrafficIncidentsService} - a new places service instance
+     * @returns {H$service$TrafficIncidentsService} - a new places service instance
      */
-    getTrafficIncidentsService(): service$TrafficIncidentsService;
+    getTrafficIncidentsService(): H$service$TrafficIncidentsService;
 
     /**
      * This method returns an instance of H.service.MapTileService to query the Map Tile API.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
-     * @returns {service$MapTileService}
+     * @returns {H$service$MapTileService}
      */
     getMapTileService(
-      opt_options?: service$MapTileService$Options
-    ): service$MapTileService;
+      opt_options?: H$service$MapTileService$Options
+    ): H$service$MapTileService;
 
     /**
      * This method returns an instance of H.service.venues.Service to query the Venue Maps API
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_params - additional service parameters
-     * @returns {Service}
+     * @returns {H$service$venues$Service}
      */
-    getVenueService(opt_params?: Service$Options): Service;
+    getVenueService(
+      opt_params?: H$service$venues$Service$Options
+    ): H$service$venues$Service;
 
     /**
      * This method returns an instance of H.service.metaInfo.Service to query the Map Tile API Metainfo Tiles
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_params - additional service parameters
-     * @returns {metaInfo$Service}
+     * @returns {H$service$metaInfo$Service}
      */
-    getMetaInfoService(opt_params?: metaInfo$Service$Options): metaInfo$Service;
+    getMetaInfoService(
+      opt_params?: H$service$metaInfo$Service$Options
+    ): H$service$metaInfo$Service;
 
     /**
      * This method creates a pre-configured set of HERE tile layers for convenient use with the map.
@@ -5966,49 +6003,49 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_style - optional 'style' parameter to use when querying map tiles, default is not specified
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_pois - indicates if pois are displayed on the map. Pass true to indicate that all pois should be visible. Alternatively you can specify mask for the
      * POI Categories as described at the Map Tile API documentation POI Categories chapter.
-     * @returns {service$DefaultLayers} - a set of tile layers ready to use
+     * @returns {H$service$DefaultLayers} - a set of tile layers ready to use
      */
     createDefaultLayers(
-      opt_tileSize?: service$Platform$DefaultLayersOptions | number,
+      opt_tileSize?: H$service$Platform$DefaultLayersOptions | number,
       opt_ppi?: number,
       opt_lang?: string,
       opt_secondaryLang?: string,
       opt_style?: string,
       opt_pois?: string | boolean
-    ): service$DefaultLayers;
+    ): H$service$DefaultLayers;
 
     /**
      * This method returns an instance of H.service.RoutingService to query the Routing API.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
-     * @returns {service$RoutingService}
+     * @returns {H$service$RoutingService}
      */
     getRoutingService(
-      opt_options?: service$RoutingService$Options
-    ): service$RoutingService;
+      opt_options?: H$service$RoutingService$Options
+    ): H$service$RoutingService;
 
     /**
      * This method returns an instance of H.service.GeocodingService to query the Geocoder API
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - an optional set of options for the new geocoding service to connect to
-     * @returns {service$GeocodingService} - a new geocoding service instance
+     * @returns {H$service$GeocodingService} - a new geocoding service instance
      */
     getGeocodingService(
-      opt_options?: service$GeocodingService$Options
-    ): service$GeocodingService;
+      opt_options?: H$service$GeocodingService$Options
+    ): H$service$GeocodingService;
 
     /**
      * This method returns an instance of H.service.PlacesService to query the Places API.
-     * @returns {PlacesService} - a new places service instance
+     * @returns {H$service$PlacesService} - a new places service instance
      */
-    getPlacesService(): PlacesService;
+    getPlacesService(): H$service$PlacesService;
 
     /**
      * This method returns an instance of H.service.EnterpriseRoutingService to query the Enterprise Routing API.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
-     * @returns {service$EnterpriseRoutingService}
+     * @returns {H$service$EnterpriseRoutingService}
      */
     getEnterpriseRoutingService(
-      opt_options?: service$EnterpriseRoutingService$Options
-    ): service$EnterpriseRoutingService;
+      opt_options?: H$service$EnterpriseRoutingService$Options
+    ): H$service$EnterpriseRoutingService;
   }
 
   /**
@@ -6042,7 +6079,7 @@ declare module "heremaps" {
   declare interface H$service$Platform$Options {
     app_id: string;
     app_code: string;
-    baseUrl?: service$Url;
+    baseUrl?: H$service$Url;
     useCIT?: boolean;
     useHTTPS?: boolean;
   }
@@ -6051,33 +6088,33 @@ declare module "heremaps" {
    * pre-configured set of HERE tile layers for convenient use with the map.
    */
   declare interface H$service$Platform$MapTypes {
-    normal?: service$MapType;
-    satellite?: service$MapType;
-    terrain?: service$MapType;
-    [key: string]: service$MapType | void;
+    normal?: H$service$MapType;
+    satellite?: H$service$MapType;
+    terrain?: H$service$MapType;
+    [key: string]: H$service$MapType | void;
   }
 
   /**
    * This class encapsulates the Routing REST API as a service stub. An instance of this class can be retrieved by calling the factory method on a platform instance.
    * H.service.Platform#getRoutingService.
    */
-  declare class H$service$RoutingService mixins undefined.AbstractRestService {
+  declare class H$service$RoutingService mixins H$service$AbstractRestService {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: service$RoutingService$Options): this;
+    constructor(opt_options?: H$service$RoutingService$Options): this;
 
     /**
      * This method sends a "calculateroute" request to Routing REST API and calls the onResult callback function once the service response was received - providing a
      * H.service.ServiceResult object - or the onError callback if a communication error occured.
-     * @param {service$ServiceParameters} calculateRouteParams - the service parameters to be sent with the routing request.
+     * @param {H$service$ServiceParameters} calculateRouteParams - the service parameters to be sent with the routing request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Routing REST API provides a response to the request.
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during the JSON-P request
      */
     calculateRoute(
-      calculateRouteParams: service$ServiceParameters,
-      onResult: (result: service$ServiceResult) => void,
+      calculateRouteParams: H$service$ServiceParameters,
+      onResult: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
     ): void;
   }
@@ -6090,7 +6127,7 @@ declare module "heremaps" {
   declare interface H$service$RoutingService$Options {
     subDomain?: string;
     path?: string;
-    baseUrl?: service$Url;
+    baseUrl?: H$service$Url;
   }
 
   /**
@@ -6253,25 +6290,25 @@ declare module "heremaps" {
    * tile basis
    */
   declare class H$service$TrafficIncidentsService
-    mixins undefined.AbstractRestService {
+    mixins H$service$AbstractRestService {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(opt_options?: service$TrafficIncidentsService$Options): this;
+    constructor(opt_options?: H$service$TrafficIncidentsService$Options): this;
 
     /**
      * This method requests traffic incidents based on the service parameters provided.
-     * @param {service$ServiceParameters} serviceParams
+     * @param {H$service$ServiceParameters} serviceParams
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResponse
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError
-     * @returns {service$JsonpRequestHandle}
+     * @returns {H$service$JsonpRequestHandle}
      */
     requestIncidents(
-      serviceParams: service$ServiceParameters,
-      onResponse: (result: service$ServiceResult) => void,
+      serviceParams: H$service$ServiceParameters,
+      onResponse: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void
-    ): service$JsonpRequestHandle;
+    ): H$service$JsonpRequestHandle;
 
     /**
      * This method requests traffic incident information by tile coordinates
@@ -6281,16 +6318,16 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResponse - callback to handle service resposne
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - callback to habdle communication error
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_serviceParams - optional service parameters to be added to the request
-     * @returns {service$JsonpRequestHandle}
+     * @returns {H$service$JsonpRequestHandle}
      */
     requestIncidentsByTile(
       x: number,
       y: number,
       z: number,
-      onResponse: (result: service$ServiceResult) => void,
+      onResponse: (result: H$service$ServiceResult) => void,
       onError: (error: Error) => void,
-      opt_serviceParams?: service$ServiceParameters
-    ): service$JsonpRequestHandle;
+      opt_serviceParams?: H$service$ServiceParameters
+    ): H$service$JsonpRequestHandle;
   }
 
   /**
@@ -6301,7 +6338,7 @@ declare module "heremaps" {
   declare interface H$service$TrafficIncidentsService$Options {
     subDomain?: string;
     path?: string;
-    baseUrl?: service$Url;
+    baseUrl?: H$service$Url;
   }
 
   /**
@@ -6331,23 +6368,23 @@ declare module "heremaps" {
      * This function parses a URL string and returns a H.service.Url object. The URL string must contain at least a scheme and a host.
      * @param {string} url - The URL string to parse.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_baseURL - The base URL to use to resolve relative URLs. If ommited the base URL of the document which loaded the API is taken.
-     * @returns {service$Url} - the parsed URL object
+     * @returns {H$service$Url} - the parsed URL object
      */
-    static parse(url: string, opt_baseURL?: string): service$Url;
+    static parse(url: string, opt_baseURL?: string): H$service$Url;
 
     /**
      * Clones this URL object. Optionally, mutations can be passed to this function to modify properties of the cloned object. Note that URL parameters are not replaced but merged with the
      * parameters of this instance.
-     * @returns {service$Url} - the clone of the URL object
+     * @returns {H$service$Url} - the clone of the URL object
      */
-    clone(): service$Url;
+    clone(): H$service$Url;
 
     /**
      * This function sets the scheme of this URL object.
      * @param {string} scheme - the new scheme
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    setScheme(scheme: string): service$Url;
+    setScheme(scheme: string): H$service$Url;
 
     /**
      * This function returns the scheme of this Url object.
@@ -6358,9 +6395,9 @@ declare module "heremaps" {
     /**
      * This function sets the host of this URL object.
      * @param {string} host - the new host
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    setHost(host: string): service$Url;
+    setHost(host: string): H$service$Url;
 
     /**
      * This function returns the host name of this Url object.
@@ -6371,9 +6408,9 @@ declare module "heremaps" {
     /**
      * This function sets the path of this URL object.
      * @param {(string | void)} path - the new path or a boolean to clear the path
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    setPath(path: string | boolean): service$Url;
+    setPath(path: string | boolean): H$service$Url;
 
     /**
      * This function returns the path part of this Url object.
@@ -6385,9 +6422,9 @@ declare module "heremaps" {
      * This function sets the specified parameters for this URL object. Keys in this object, which are associated with undefined values will be treated as query string parameters
      * with no value.
      * @param {(H$map$Object | void)} params - a hash of query string parameters specifying the parameters to be set.or a boolean to clear the parameters.
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    setQuery(params?: {} | boolean): service$Url;
+    setQuery(params?: {} | boolean): H$service$Url;
 
     /**
      * This function returns a boolean value indicating whether there are any query string parameter associated with this URL.
@@ -6404,9 +6441,9 @@ declare module "heremaps" {
     /**
      * This function sets the anchor of this URL object.
      * @param {(string | boolean | void)} anchor - the new anchor or undefined to clear the anchor
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    setAnchor(anchor?: string | boolean): service$Url;
+    setAnchor(anchor?: string | boolean): H$service$Url;
 
     /**
      * This function returns the anchor of this Url object.
@@ -6418,23 +6455,23 @@ declare module "heremaps" {
      * This function merges the provided parameters into this URL's existing parameters. Key-value pairs which are defined in the argument and this URL's parameters will be overwritten.
      * Key-value pairs which are defined in the argument and are not defined in this URL's parameters will be added. Prototype properties and function properties will not be merged.
      * @param {H$map$Object} other - the parmeters to be merged into this URL's query string parameters
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    mergeQuery(other: {}): service$Url;
+    mergeQuery(other: {}): H$service$Url;
 
     /**
      * This function adds a sub-domain to the host of this URL object.
      * @param {string} subDomain - the sub domain (non-empty string) to be added
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    addSubDomain(subDomain: string): service$Url;
+    addSubDomain(subDomain: string): H$service$Url;
 
     /**
      * This function adds a sub-path to this URL's path
      * @param {string} subPath - the path to be added
-     * @returns {service$Url} - this URL object
+     * @returns {H$service$Url} - this URL object
      */
-    addSubPath(subPath: string): service$Url;
+    addSubPath(subPath: string): H$service$Url;
 
     /**
      * This function formats this URL object to a full URL string.
@@ -6452,12 +6489,12 @@ declare module "heremaps" {
    * This class encapsulates a Metainfo Tile end point of the HERE Map Tile API.
    */
   declare class H$service$metaInfo$Service
-    mixins undefined.EventTarget, undefined.IConfigurable {
+    mixins H$util$EventTarget, H$service$IConfigurable {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional service parameters
      */
-    constructor(opt_options?: metaInfo$Service$Options): this;
+    constructor(opt_options?: H$service$metaInfo$Service$Options): this;
 
     /**
      * This method returns the meta info tile service's newest version hash.
@@ -6467,9 +6504,9 @@ declare module "heremaps" {
 
     /**
      * This method returns the meta info tile service's meta information. The method will return an object once the map tile service's data has been fetched.
-     * @returns {(metaInfo$Service$Info | void)} - meta information for this meta info tile service
+     * @returns {(H$service$metaInfo$Service$Info | void)} - meta information for this meta info tile service
      */
-    getInfo(): metaInfo$Service$Info | void;
+    getInfo(): H$service$metaInfo$Service$Info | void;
 
     /**
      * This method creates a tile provider which uses the meta info tile backend. This provider can be used as a data source for an TileLayer.
@@ -6479,16 +6516,16 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_additionalParameters - Additional parameters for the meta info service
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_tileType - the tile type (default is 'maptile')
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_scheme - the scheme for which the meta info tiles a requested (default is 'normal.day')
-     * @returns {provider$TileProvider} - the tile provider
+     * @returns {H$map$provider$TileProvider} - the tile provider
      */
     createTileProvider(
       tileSize: number,
       pixelRatio: number,
       opt_categoryFilter?: string[],
-      opt_additionalParameters?: service$ServiceParameters,
+      opt_additionalParameters?: H$service$ServiceParameters,
       opt_tileType?: string,
       opt_scheme?: string
-    ): provider$TileProvider;
+    ): H$map$provider$TileProvider;
 
     /**
      * This method creates a tile layer. This layer can be used as a layer on a map's data model.
@@ -6498,16 +6535,16 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_additionalParameters - Additional parameters for the meta info service
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_tileType - the tile type (default is 'maptile')
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_scheme - the scheme for which the meta info tiles a requested (default is 'normal.day')
-     * @returns {layer$TileLayer} - the tile layer
+     * @returns {H$map$layer$TileLayer} - the tile layer
      */
     createTileLayer(
       tileSize: number,
       pixelRatio: number,
       opt_categoryFilter?: string[],
-      opt_additionalParameters?: service$ServiceParameters,
+      opt_additionalParameters?: H$service$ServiceParameters,
       opt_tileType?: string,
       opt_scheme?: string
-    ): layer$TileLayer;
+    ): H$map$layer$TileLayer;
 
     /**
      * This methods receive configuration parameters from the platform, that can be used by the object implementing the interface.
@@ -6517,15 +6554,15 @@ declare module "heremaps" {
      * @param {boolean} useCIT - Indicates whether the Customer Integration Testing should be used, default is false
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_baseUrl - The base URL of the platform, default is http://api.here.com. Note that if useHTTPS flag is passed it will override the URL scheme specified
      * in the opt_baseUrl to use HTTPS.
-     * @returns {service$IConfigurable}
+     * @returns {H$service$IConfigurable}
      */
     configure(
       appId: string,
       appCode: string,
       useHTTPS: boolean,
       useCIT: boolean,
-      opt_baseUrl?: service$Url
-    ): service$IConfigurable;
+      opt_baseUrl?: H$service$Url
+    ): H$service$IConfigurable;
   }
 
   /**
@@ -6573,17 +6610,17 @@ declare module "heremaps" {
    * This class utilizes Metainfo Tiles functionality provided by the Map Tile API to load meta information about map objects (buildings, labels, public transport etc.).
    */
   declare class H$service$metaInfo$TileProvider
-    mixins undefined.RemoteTileProvider {
+    mixins H$map$provider$RemoteTileProvider {
     /**
      * Constructor
-     * @param {(metaInfo$Service | service$MapTileService)} service - the tile service which holds information from about the source of the tiles
+     * @param {(H$service$metaInfo$Service | H$service$MapTileService)} service - the tile service which holds information from about the source of the tiles
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_params - an additional set of URL parameters
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional parameters
      */
     constructor(
-      service: metaInfo$Service | service$MapTileService,
-      opt_params?: service$ServiceParameters,
-      opt_options?: metaInfo$TileProvider$Options
+      service: H$service$metaInfo$Service | H$service$MapTileService,
+      opt_params?: H$service$ServiceParameters,
+      opt_options?: H$service$metaInfo$TileProvider$Options
     ): this;
   }
 
@@ -6618,16 +6655,16 @@ declare module "heremaps" {
   /**
    * The class represents the building in the venue hiearachy (see H.service.venues.Venue) and holds floors that belong to the building.
    */
-  declare class H$service$venues$Building mixins undefined.Group {
+  declare class H$service$venues$Building mixins H$map$Group {
     /**
      * Constructor
-     * @param {provider$ObjectProvider} provider - The object provider of this venue building
+     * @param {H$map$provider$ObjectProvider} provider - The object provider of this venue building
      * @param {string} uid - The unique identifier of this building
      * @param {number} minLevel - The minimum floor level of this building
      * @param {number} maxLevel - The maximum floor level of this building
      */
     constructor(
-      provider: provider$ObjectProvider,
+      provider: H$map$provider$ObjectProvider,
       uid: string,
       minLevel: number,
       maxLevel: number
@@ -6635,9 +6672,9 @@ declare module "heremaps" {
 
     /**
      * Method returns the parent object - venue (see H.service.venues.Venue) to which the building belongs to.
-     * @returns {venues$Venue}
+     * @returns {H$service$venues$Venue}
      */
-    getVenue(): venues$Venue;
+    getVenue(): H$service$venues$Venue;
 
     /**
      * Method returns the minimum floor level of this building.
@@ -6654,24 +6691,24 @@ declare module "heremaps" {
     /**
      * Method returns the floor (see H.service.venues.Floor) if one was already loaded. This method doesn't make attempt to fetch the floor data.
      * @param {number} level - floor level within minimum and maximum level boundaries for the building
-     * @returns {(venues$Floor | void)} - The floor object or undefined if floor was not loaded
+     * @returns {(H$service$venues$Floor | void)} - The floor object or undefined if floor was not loaded
      */
-    getFloor(level: number): venues$Floor | void;
+    getFloor(level: number): H$service$venues$Floor | void;
   }
 
   /**
    * The class represents the floor object in the venue hierarchy (see H.service.venues.Venue). The class holds information about floor geometry and spaces (see H.service.venues.Space)
    * that belong to this floor.
    */
-  declare class H$service$venues$Floor mixins undefined.Group {
+  declare class H$service$venues$Floor mixins H$map$Group {
     /**
      * Constructor
-     * @param {provider$ObjectProvider} provider - The object provider of this venue floor
+     * @param {H$map$provider$ObjectProvider} provider - The object provider of this venue floor
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} data - The meta data of this floor
      * @param {number} level - The level of this floor
      */
     constructor(
-      provider: provider$ObjectProvider,
+      provider: H$map$provider$ObjectProvider,
       data: any,
       level: number
     ): this;
@@ -6684,21 +6721,21 @@ declare module "heremaps" {
 
     /**
      * Method returns map geometry that represents floor boundaries.
-     * @returns {(venues$Space | void)}
+     * @returns {(H$service$venues$Space | void)}
      */
-    getFloorSpace(): venues$Space | void;
+    getFloorSpace(): H$service$venues$Space | void;
 
     /**
      * Method returns the H.map.Group of all spaces that belong to the floor.
-     * @returns {map$Group}
+     * @returns {H$map$Group}
      */
-    getSpaces(): map$Group;
+    getSpaces(): H$map$Group;
 
     /**
      * Method returns parent object - building (see H.service.venues.Building) of the floor.
-     * @returns {venues$Building}
+     * @returns {H$service$venues$Building}
      */
-    getBuilding(): venues$Building;
+    getBuilding(): H$service$venues$Building;
 
     /**
      * Method returns raw data associated with the floor. For more details on data format see
@@ -6710,32 +6747,32 @@ declare module "heremaps" {
     /**
      * Method returns the space object with the given ID, that belongs to the floor.
      * @param {string} id - The ID of the space.
-     * @returns {(venues$Space | void)} - The requested space or undefined if space not found.
+     * @returns {(H$service$venues$Space | void)} - The requested space or undefined if space not found.
      */
-    getSpace(id: string): venues$Space | void;
+    getSpace(id: string): H$service$venues$Space | void;
   }
 
   /**
    * This class encapsulates methods to call Venue Maps API endpoints.
    */
   declare class H$service$venues$Service
-    mixins undefined.EventTarget, undefined.IConfigurable {
+    mixins H$util$EventTarget, H$service$IConfigurable {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - additional service parameters
      */
-    constructor(opt_options?: Service$Options): this;
+    constructor(opt_options?: H$service$venues$Service$Options): this;
 
     /**
      * This method sends a discovery request to the Venue Maps API and calls the onResult callback function once the service response was received - providing a H.service.ServiceResult
      * object, or the onError callback if a communication error occured.
-     * @param {service$ServiceParameters} serviceParams - the service parameters to be sent with the discovery request
+     * @param {H$service$ServiceParameters} serviceParams - the service parameters to be sent with the discovery request
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onResult - this function will be called once the Venue Maps API provides a response to the request
      * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} onError - this function will be called if a communication error occurs during request and error type is passed as an argument
      */
     discover(
-      serviceParams: service$ServiceParameters,
-      onResult: (res: service$ServiceResult) => void,
+      serviceParams: H$service$ServiceParameters,
+      onResult: (res: H$service$ServiceResult) => void,
       onError: (s: string) => void
     ): void;
 
@@ -6743,9 +6780,11 @@ declare module "heremaps" {
      * This method creates a tile layer which can be added to the map in order to see the venues. It uses Interaction Tile endpoint of the Venue Maps API, more at
      * http://developer.here.com/rest-apis/documentation/venue-maps/topics/quick-start-get-interaction-tile.html.
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - Tile provider options
-     * @returns {layer$TileLayer} - the tile layer
+     * @returns {H$map$layer$TileLayer} - the tile layer
      */
-    createTileLayer(opt_options?: venues$TileProvider$Options): layer$TileLayer;
+    createTileLayer(
+      opt_options?: H$service$venues$TileProvider$Options
+    ): H$map$layer$TileLayer;
 
     /**
      * Method returns current state of the service.
@@ -6761,15 +6800,15 @@ declare module "heremaps" {
      * @param {boolean} useCIT - Indicates whether the Customer Integration Testing should be used, default is false
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_baseUrl - The base URL of the platform, default is http://api.here.com. Note that if useHTTPS flag is passed it will override the URL scheme specified
      * in the opt_baseUrl to use HTTPS.
-     * @returns {service$IConfigurable}
+     * @returns {H$service$IConfigurable}
      */
     configure(
       appId: string,
       appCode: string,
       useHTTPS: boolean,
       useCIT: boolean,
-      opt_baseUrl?: service$Url
-    ): service$IConfigurable;
+      opt_baseUrl?: H$service$Url
+    ): H$service$IConfigurable;
   }
 
   declare var npm$namespace$H$service$venues$Service: {
@@ -6801,13 +6840,13 @@ declare module "heremaps" {
   declare class H$service$venues$Space {
     /**
      * Constructor
-     * @param {provider$ObjectProvider} provider - The provider of this object.
+     * @param {H$map$provider$ObjectProvider} provider - The provider of this object.
      * @param {string} uid - The unique identifier of this space
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} data - The meta data of this space
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_isFloorSpace - Indicates whether this space represents a floor itself, defaults to false
      */
     constructor(
-      provider: provider$ObjectProvider,
+      provider: H$map$provider$ObjectProvider,
       uid: string,
       data?: any,
       opt_isFloorSpace?: boolean
@@ -6822,17 +6861,17 @@ declare module "heremaps" {
     /**
      * This method sets custom style to use for rendering the labels. Should be called before the first render of the space, otherwise has no any effect. Note that due to the design
      * consistency currently it is not allowed to change the font family and the size of the labels.
-     * @param {(map$SpatialStyle | map$SpatialStyle$Options)} labelStyle - Custom label style
+     * @param {(H$map$SpatialStyle | H$map$SpatialStyle$Options)} labelStyle - Custom label style
      */
     initLabelStyle(
-      labelStyle: map$SpatialStyle | map$SpatialStyle$Options
+      labelStyle: H$map$SpatialStyle | H$map$SpatialStyle$Options
     ): void;
 
     /**
      * Method returns parent object - floor (see H.service.venues.Floor) of the space.
-     * @returns {venues$Floor}
+     * @returns {H$service$venues$Floor}
      */
-    getFloor(): venues$Floor;
+    getFloor(): H$service$venues$Floor;
 
     /**
      * Method returns raw data associated with the space. For more details on data format see
@@ -6846,15 +6885,15 @@ declare module "heremaps" {
    * This class represents a Venue Maps tile provider which requests venues tiles from a platform venue tile service.
    */
   declare class H$service$venues$TileProvider
-    mixins undefined.RemoteTileProvider {
+    mixins H$map$provider$RemoteTileProvider {
     /**
      * Constructor
-     * @param {Service} service
+     * @param {H$service$venues$Service} service
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
     constructor(
-      service: Service,
-      opt_options?: venues$TileProvider$Options
+      service: H$service$venues$Service,
+      opt_options?: H$service$venues$TileProvider$Options
     ): this;
 
     /**
@@ -6880,7 +6919,7 @@ declare module "heremaps" {
   declare interface H$service$venues$TileProvider$Options {
     tileCacheSize?: number;
     pixelRatio?: number;
-    onSpaceCreated?: (space: venues$Space) => void;
+    onSpaceCreated?: (space: H$service$venues$Space) => void;
   }
 
   /**
@@ -6888,24 +6927,24 @@ declare module "heremaps" {
    * Building objects hold floor objects (see H.service.venues.Floor) and inherit from H.map.Group as well. Leaf objects are spaces (see H.service.venues.Space) that are spatial map objects
    * and reside inside floor containers.
    */
-  declare class H$service$venues$Venue mixins undefined.Group {
+  declare class H$service$venues$Venue mixins H$map$Group {
     /**
      * Constructor
-     * @param {provider$ObjectProvider} provider - The object provider of this venue
+     * @param {H$map$provider$ObjectProvider} provider - The object provider of this venue
      * @param {string} uid - The unique identifier of this venue
      */
-    constructor(provider: provider$ObjectProvider, uid: string): this;
+    constructor(provider: H$map$provider$ObjectProvider, uid: string): this;
 
     /**
      * Method returns the building object, that belongs to the venue, with the given ID . The method doesn't attempt to fetch building data.
      * @param {string} id - the ID of the building
-     * @returns {(venues$Building | void)} - The requested building or undefined if building wasn't loaded
+     * @returns {(H$service$venues$Building | void)} - The requested building or undefined if building wasn't loaded
      */
-    getBuilding(id: string): venues$Building | void;
+    getBuilding(id: string): H$service$venues$Building | void;
 
     /**
      * Method returns map of all loaded buildings associated with the venue.
-     * @returns {H$map$Object<"NO PRINT IMPLEMENTED: JSDocAllType", venues$Building>}
+     * @returns {H$map$Object<"NO PRINT IMPLEMENTED: JSDocAllType", H$service$venues$Building>}
      */
     getBuildings(): any;
   }
@@ -6930,7 +6969,7 @@ declare module "heremaps" {
   /**
    * This class represents the base class for UI controls on the map.
    */
-  declare class H$ui$Control mixins undefined.Container {
+  declare class H$ui$Control mixins H$ui$base$Container {
     /**
      * This abstract method can be overridden by deriving classes to be invoked when the UI object&#x27;s unit system changes.
      * @param {$Values<typeof H$ui$UnitSystem>} unitSystem - the unit system the UI currently uses
@@ -6947,13 +6986,13 @@ declare module "heremaps" {
      * This method returns the map to which this control is attached.
      * @returns {"NO PRINT IMPLEMENTED: JSDocNullableType"} - return the map
      */
-    getMap(): Map;
+    getMap(): H$Map;
 
     /**
      * This method returns the localization object which corresponds to the UI&#x27;s current locale.
-     * @returns {i18n$Localization}
+     * @returns {H$ui$i18n$Localization}
      */
-    getLocalization(): i18n$Localization;
+    getLocalization(): H$ui$i18n$Localization;
 
     /**
      * This method returns this control&#x27;s layout alignment.
@@ -6964,20 +7003,20 @@ declare module "heremaps" {
     /**
      * This method sets the control&#x27;s layout alignments.
      * @param {$Values<typeof H$ui$LayoutAlignment>} alignment - The new alignment of the control
-     * @returns {ui$Control} - returns this control instance
+     * @returns {H$ui$Control} - returns this control instance
      */
-    setAlignment(alignment: $Values<typeof H$ui$LayoutAlignment>): ui$Control;
+    setAlignment(alignment: $Values<typeof H$ui$LayoutAlignment>): H$ui$Control;
   }
 
   /**
    * This class represents a distance measurement control which helps calculating distances between geographical locations indicated by the user clicks.
    */
-  declare class H$ui$DistanceMeasurement mixins undefined.Control {
+  declare class H$ui$DistanceMeasurement mixins H$ui$Control {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional parameters to be passed to this control
      */
-    constructor(opt_options?: ui$DistanceMeasurement$Options): this;
+    constructor(opt_options?: H$ui$DistanceMeasurement$Options): this;
   }
 
   /**
@@ -6992,30 +7031,33 @@ declare module "heremaps" {
    */
   declare interface H$ui$DistanceMeasurement$Options {
     alignment?: $Values<typeof H$ui$LayoutAlignment>;
-    startIcon?: Icon;
-    stopoverIcon?: Icon;
-    endIcon?: Icon;
-    splitIcon?: Icon;
-    lineStyle: map$SpatialStyle | map$SpatialStyle$Options;
+    startIcon?: H$map$Icon;
+    stopoverIcon?: H$map$Icon;
+    endIcon?: H$map$Icon;
+    splitIcon?: H$map$Icon;
+    lineStyle: H$map$SpatialStyle | H$map$SpatialStyle$Options;
     distanceFormatter?: (n: number) => void;
   }
 
   /**
    * This class represents an information bubble bound to a geo-position on the map.
    */
-  declare class H$ui$InfoBubble mixins base$Element {
+  declare class H$ui$InfoBubble mixins H$ui$base$Element {
     /**
      * Constructor
-     * @param {geo$IPoint} position - the geo-position to which this info bubble corresponds
+     * @param {H$geo$IPoint} position - the geo-position to which this info bubble corresponds
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional parameters to be passed to the info bubble
      */
-    constructor(position: geo$IPoint, opt_options?: InfoBubble$Options): this;
+    constructor(
+      position: H$geo$IPoint,
+      opt_options?: H$ui$InfoBubble$Options
+    ): this;
 
     /**
      * This method sets the geo-position of this info bubble
-     * @param {(geo$IPoint | geo$Point)} position - the new geo-position of this bubble
+     * @param {(H$geo$IPoint | H$geo$Point)} position - the new geo-position of this bubble
      */
-    setPosition(position: geo$IPoint | geo$Point): void;
+    setPosition(position: H$geo$IPoint | H$geo$Point): void;
 
     /**
      * This method returns this info bubble's current state.
@@ -7071,9 +7113,9 @@ declare module "heremaps" {
   declare interface H$ui$InfoBubble$Options {
     /**
      * a callback to be invoked when the info bubble's state changes
-     * @param {util$Event} event
+     * @param {H$util$Event} event
      */
-    onStateChange?: (event: util$Event) => void;
+    onStateChange?: (event: H$util$Event) => void;
 
     /**
      * content to be added to the info bubble
@@ -7103,18 +7145,18 @@ declare module "heremaps" {
   /**
    * This class represents a menu control allowing to control which map type the map shows, etc.
    */
-  declare class H$ui$MapSettingsControl mixins undefined.Control {
+  declare class H$ui$MapSettingsControl mixins H$ui$Control {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional parameters to be passed to this control
      */
-    constructor(opt_options?: ui$MapSettingsControl$Options): this;
+    constructor(opt_options?: H$ui$MapSettingsControl$Options): this;
 
     /**
      * Sets the traffic incidents layer to be shown when activating the respective button on the map settings control.
-     * @param {layer$Layer} incidentsLayer - the incidents layer
+     * @param {H$map$layer$Layer} incidentsLayer - the incidents layer
      */
-    setIncidentsLayer(incidentsLayer: layer$Layer): void;
+    setIncidentsLayer(incidentsLayer: H$map$layer$Layer): void;
   }
 
   /**
@@ -7124,7 +7166,7 @@ declare module "heremaps" {
    */
   declare interface H$ui$MapSettingsControl$MapTypeEntry {
     name: string;
-    mapType: service$MapType;
+    mapType: H$service$MapType;
   }
 
   /**
@@ -7134,19 +7176,19 @@ declare module "heremaps" {
    */
   declare interface H$ui$MapSettingsControl$Options {
     alignment?: $Values<typeof H$ui$LayoutAlignment>;
-    entries?: ui$MapSettingsControl$MapTypeEntry[];
-    incidents: layer$Layer;
+    entries?: H$ui$MapSettingsControl$MapTypeEntry[];
+    incidents: H$map$layer$Layer;
   }
 
   /**
    * This class represents the UI controls for panorama
    */
-  declare class H$ui$Pano mixins undefined.Control {
+  declare class H$ui$Pano mixins H$ui$Control {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional parameters to be passed to the map.
      */
-    constructor(opt_options?: ui$Pano$Options): this;
+    constructor(opt_options?: H$ui$Pano$Options): this;
   }
 
   /**
@@ -7155,7 +7197,7 @@ declare module "heremaps" {
    */
   declare interface H$ui$Pano$Options {
     alignment?: $Values<typeof H$ui$LayoutAlignment>;
-    mapTypes: service$MapType;
+    mapTypes: H$service$MapType;
   }
 
   /**
@@ -7166,7 +7208,7 @@ declare module "heremaps" {
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional parameters to be passed to this scale bar.
      */
-    constructor(opt_options?: ui$ScaleBar$Options): this;
+    constructor(opt_options?: H$ui$ScaleBar$Options): this;
   }
 
   /**
@@ -7179,13 +7221,13 @@ declare module "heremaps" {
   /**
    * This class encapsulates map UI functionality.
    */
-  declare class H$ui$UI mixins undefined.ICapturable {
+  declare class H$ui$UI mixins H$util$ICapturable {
     /**
      * Constructor
-     * @param {Map} map
+     * @param {H$Map} map
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options
      */
-    constructor(map: Map, opt_options?: ui$UI$Options): this;
+    constructor(map: H$Map, opt_options?: H$ui$UI$Options): this;
 
     /**
      * This method returns this ui's root element.
@@ -7195,9 +7237,9 @@ declare module "heremaps" {
 
     /**
      * Returns the map instance to which this UI was added.
-     * @returns {Map}
+     * @returns {H$Map}
      */
-    getMap(): Map;
+    getMap(): H$Map;
 
     /**
      * This method returns this UI object's current unit system.
@@ -7218,40 +7260,40 @@ declare module "heremaps" {
 
     /**
      * This method adds an info bubble to the UI.
-     * @param {InfoBubble} bubble - the info bubble to be added
+     * @param {H$ui$InfoBubble} bubble - the info bubble to be added
      */
     addBubble(bubble: H$ui$InfoBubble): void;
 
     /**
      * This method removes a previously added info bubble from the UI.
-     * @param {InfoBubble} bubble - the info bubble to be removed
+     * @param {H$ui$InfoBubble} bubble - the info bubble to be removed
      */
     removeBubble(bubble: H$ui$InfoBubble): void;
 
     /**
      * This method returns a list of info bubble objects which are currently attached to this UI.
-     * @returns {Array<InfoBubble>} - the list of info bubbles
+     * @returns {Array<H$ui$InfoBubble>} - the list of info bubbles
      */
     getBubbles(): H$ui$InfoBubble[];
 
     /**
      * This method appends a control to the UI.
      * @param {string} name - the name under which to register this control
-     * @param {ui$Control} control - the control to add to this UI
+     * @param {H$ui$Control} control - the control to add to this UI
      */
     addControl(name: string, control: H$ui$Control): void;
 
     /**
      * Removes a previously registered control from the UI object.
      * @param {string} name - the name under which this control was previously registered
-     * @returns {ui$Control} - the removed control
+     * @returns {H$ui$Control} - the removed control
      */
     removeControl(name: string): H$ui$Control;
 
     /**
      * This method returns a UI control which was previously registered with the provided name.
      * @param {string} name - the name under which the control was registered.
-     * @returns {ui$Control} - the control or undefined if the control does not exist.
+     * @returns {H$ui$Control} - the control or undefined if the control does not exist.
      */
     getControl(name: string): H$ui$Control;
 
@@ -7272,16 +7314,16 @@ declare module "heremaps" {
      * Pano:
      *      id: 'panorama'
      *      alignment: 'top-right'
-     * @param {Map} map - The map instance to which to append the UI
-     * @param {H$map$Object<service$MapType>} mapTypes - The map types to use
+     * @param {H$Map} map - The map instance to which to append the UI
+     * @param {H$map$Object<H$service$MapType>} mapTypes - The map types to use
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_locale - the language to use (or a full localization object).
-     * @returns {ui$UI} - the UI instance configured with the default controls
+     * @returns {H$ui$UI} - the UI instance configured with the default controls
      */
     static createDefault(
-      map: Map,
-      mapTypes: service$Platform$MapTypes | service$DefaultLayers,
-      opt_locale?: i18n$Localization | string
-    ): ui$UI;
+      map: H$Map,
+      mapTypes: H$service$Platform$MapTypes | H$service$DefaultLayers,
+      opt_locale?: H$ui$i18n$Localization | string
+    ): H$ui$UI;
 
     /**
      * This method is used to capture the element view
@@ -7313,13 +7355,13 @@ declare module "heremaps" {
    */
   declare interface H$ui$UI$Options {
     unitSystem?: $Values<typeof H$ui$UnitSystem>;
-    zoom?: ui$ZoomControl$Options | boolean;
-    zoomrectangle?: ui$ZoomRectangle$Options | boolean;
-    mapsettings?: ui$MapSettingsControl$Options | boolean;
-    scalebar?: ui$ScaleBar$Options | boolean;
-    panorama?: ui$Pano$Options | boolean;
-    distancemeasurement?: ui$DistanceMeasurement$Options | boolean;
-    locale?: i18n$Localization | string;
+    zoom?: H$ui$ZoomControl$Options | boolean;
+    zoomrectangle?: H$ui$ZoomRectangle$Options | boolean;
+    mapsettings?: H$ui$MapSettingsControl$Options | boolean;
+    scalebar?: H$ui$ScaleBar$Options | boolean;
+    panorama?: H$ui$Pano$Options | boolean;
+    distancemeasurement?: H$ui$DistanceMeasurement$Options | boolean;
+    locale?: H$ui$i18n$Localization | string;
   }
 
   /**
@@ -7334,12 +7376,12 @@ declare module "heremaps" {
   /**
    * This class represents the UI controls for zooming in an out of the map.
    */
-  declare class H$ui$ZoomControl mixins undefined.Control {
+  declare class H$ui$ZoomControl mixins H$ui$Control {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional parameters to be passed to the map.
      */
-    constructor(opt_options?: ui$ZoomControl$Options): this;
+    constructor(opt_options?: H$ui$ZoomControl$Options): this;
 
     /**
      * This method returns the zoom speed (in levels per millisecond) which is applied when the button is pressed constantly.
@@ -7364,12 +7406,12 @@ declare module "heremaps" {
   /**
    * This class represents a zoom rectangle control element that allows zooming to the selected area on the screen.
    */
-  declare class H$ui$ZoomRectangle mixins undefined.Control {
+  declare class H$ui$ZoomRectangle mixins H$ui$Control {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - optional parameters to be passed to this control
      */
-    constructor(opt_options?: ui$ZoomRectangle$Options): this;
+    constructor(opt_options?: H$ui$ZoomRectangle$Options): this;
   }
 
   /**
@@ -7379,7 +7421,7 @@ declare module "heremaps" {
    */
   declare interface H$ui$ZoomRectangle$Options {
     alignment?: $Values<typeof H$ui$LayoutAlignment>;
-    adjustZoom?: (n: number, m: Map) => number;
+    adjustZoom?: (n: number, m: H$Map) => number;
   }
 
   declare type H$ui$ES6Element = base$Element;
@@ -7388,7 +7430,7 @@ declare module "heremaps" {
     Container: typeof H$ui$base$Container,
     Element: typeof H$ui$base$Element
   };
-  declare class H$ui$base$Container mixins undefined.EventTarget {
+  declare class H$ui$base$Container mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_elementType - the type of HTML element this UI element renders as, default is 'div'
@@ -7403,20 +7445,20 @@ declare module "heremaps" {
 
     /**
      * Adds a child element to be rendered within the container element.
-     * @param {base$Element} child - the child element to be added
-     * @returns {base$Container} - this container instance
+     * @param {H$ui$base$Element} child - the child element to be added
+     * @returns {H$ui$base$Container} - this container instance
      */
     addChild(child: base$Element): H$ui$base$Container;
 
     /**
      * Returns the child collection of this container.
-     * @returns {Array<base$Element>} - Returns the child collection of this container.
+     * @returns {Array<H$ui$base$Element>} - Returns the child collection of this container.
      */
     getChildren(): base$Element[];
 
     /**
      * Removes a child element from this container's child collection.
-     * @param {base$Element} child - the child element to be removed
+     * @param {H$ui$base$Element} child - the child element to be removed
      */
     removeChild(child: base$Element): void;
 
@@ -7437,7 +7479,7 @@ declare module "heremaps" {
      * This method set's the disabled state of this UI element.
      * @param {boolean} disabled - true to disable the element, false to enable it
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_force - an optional boolean flag indicating that the value should be set and propagated even if it is the same as the current state
-     * @returns {base$Element} - this element instance
+     * @returns {H$ui$base$Element} - this element instance
      */
     setDisabled(disabled: boolean, opt_force?: boolean): H$ui$ES6Element;
 
@@ -7476,19 +7518,19 @@ declare module "heremaps" {
     /**
      * This method adds a CSS class to this UI element (if it is not already present).
      * @param {string} className - the CSS class name to add
-     * @returns {base$Element} - this UI element instance
+     * @returns {H$ui$base$Element} - this UI element instance
      */
     addClass(className: string): base$Element;
 
     /**
      * This method removes a CSS class from this UI element (if it is present).
      * @param {string} className - the CSS class name to remove
-     * @returns {base$Element} - this UI element instance
+     * @returns {H$ui$base$Element} - this UI element instance
      */
     removeClass(className: string): base$Element;
   }
 
-  declare class H$ui$base$Element mixins undefined.EventTarget {
+  declare class H$ui$base$Element mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_elementType - the type of HTML element this UI element renders as, default is 'div'
@@ -7513,7 +7555,7 @@ declare module "heremaps" {
      * This method set's the disabled state of this UI element.
      * @param {boolean} disabled - true to disable the element, false to enable it
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_force - an optional boolean flag indicating that the value should be set and propagated even if it is the same as the current state
-     * @returns {base$Element} - this element instance
+     * @returns {H$ui$base$Element} - this element instance
      */
     setDisabled(disabled: boolean, opt_force?: boolean): H$ui$ES6Element;
 
@@ -7552,14 +7594,14 @@ declare module "heremaps" {
     /**
      * This method adds a CSS class to this UI element (if it is not already present).
      * @param {string} className - the CSS class name to add
-     * @returns {base$Element} - this UI element instance
+     * @returns {H$ui$base$Element} - this UI element instance
      */
     addClass(className: string): H$ui$base$Element;
 
     /**
      * This method removes a CSS class from this UI element (if it is present).
      * @param {string} className - the CSS class name to remove
-     * @returns {base$Element} - this UI element instance
+     * @returns {H$ui$base$Element} - this UI element instance
      */
     removeClass(className: string): H$ui$base$Element;
   }
@@ -7627,7 +7669,7 @@ declare module "heremaps" {
    * exceeds the maximum size the cache will drop the least recently retrieved elements until the size of the cache is within the bounds of its maximum size. Data elements are always
    * associated with an identifier that allow to retrieve them at a later stage and their content size.
    */
-  declare class H$util$Cache mixins undefined.ICache {
+  declare class H$util$Cache mixins H$util$ICache {
     /**
      * Constructor
      * @param {number} maxSize - the maximum size of the cache
@@ -7643,9 +7685,9 @@ declare module "heremaps" {
     /**
      * This method sets this cache's maximum size to a new size. If the cache's contents exceed the new size, least recently used data elements will be dropped.
      * @param {number} maxSize - the new maximum size of this cache.
-     * @returns {util$Cache} - this cache
+     * @returns {H$util$Cache} - this cache
      */
-    setMaxSize(maxSize: number): util$Cache;
+    setMaxSize(maxSize: number): H$util$Cache;
 
     /**
      * This method returns the maximum size of this cache.
@@ -7717,7 +7759,7 @@ declare module "heremaps" {
    * @property type {string} - Name of the dispatched event
    * @property defaultPrevented {boolean} - Indicates if preventDefault was called on the current event
    */
-  declare class H$util$ChangeEvent mixins undefined.Event {
+  declare class H$util$ChangeEvent mixins H$util$Event {
     /**
      * Constructor
      * @param {string} type - The type of the event
@@ -7745,12 +7787,12 @@ declare module "heremaps" {
    * This class represents a contextual information/action.
    * @property SEPARATOR {H.util.ContextItem} - Separator for the context items
    */
-  declare class H$util$ContextItem mixins undefined.EventTarget {
+  declare class H$util$ContextItem mixins H$util$EventTarget {
     /**
      * Constructor
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_options - The values to initialize this context item
      */
-    constructor(opt_options?: util$ContextItem$Options): this;
+    constructor(opt_options?: H$util$ContextItem$Options): this;
 
     /**
      * This method returns label of the context item
@@ -7761,9 +7803,9 @@ declare module "heremaps" {
     /**
      * This method changes context item label to the specified one
      * @param {string} label - New label for the context item
-     * @returns {util$ContextItem} - this context item instance
+     * @returns {H$util$ContextItem} - this context item instance
      */
-    setLabel(label: string): util$ContextItem;
+    setLabel(label: string): H$util$ContextItem;
 
     /**
      * This method returns disabled state of the context item.
@@ -7774,15 +7816,15 @@ declare module "heremaps" {
     /**
      * This method enables/disables the context item
      * @param {boolean} disabled -  true to disable and false to enabled it
-     * @returns {util$ContextItem} - this context item instance
+     * @returns {H$util$ContextItem} - this context item instance
      */
-    setDisabled(disabled: boolean): util$ContextItem;
+    setDisabled(disabled: boolean): H$util$ContextItem;
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -7795,7 +7837,7 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_scope - An optional scope to call the callback in.
      */
     addOnDisposeCallback(callback: () => void, opt_scope?: {}): void;
-    static SEPARATOR: util$ContextItem;
+    static SEPARATOR: H$util$ContextItem;
   }
 
   /**
@@ -7807,7 +7849,7 @@ declare module "heremaps" {
   declare interface H$util$ContextItem$Options {
     label?: string;
     disabled?: boolean;
-    callback?: (event: util$Event) => void;
+    callback?: (event: H$util$Event) => void;
   }
 
   /**
@@ -7897,9 +7939,9 @@ declare module "heremaps" {
 
     /**
      * This method will dispatch event on the event target object
-     * @param {util$Event | string} evt - event object or event name
+     * @param {H$util$Event | string} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -8003,7 +8045,7 @@ declare module "heremaps" {
    * @event set {H.util.OList.Event} - Fired when an entry was set in the list.
    * @event move {H.util.OList.Event} - Fired when an entry was moved within the list.
    */
-  declare class H$util$OList mixins undefined.EventTarget {
+  declare class H$util$OList mixins H$util$EventTarget {
     /**
      * This method inserts an entry to the list. Optionally it can place new entry at provided index.
      * @param {"NO PRINT IMPLEMENTED: JSDocUnknownType"} entry - The entry to insert
@@ -8067,9 +8109,9 @@ declare module "heremaps" {
 
     /**
      * This method will dispatch event on the event target object
-     * @param {(util$Event | string)} evt - event object or event name
+     * @param {(H$util$Event | string)} evt - event object or event name
      */
-    dispatchEvent(evt: util$Event | string): void;
+    dispatchEvent(evt: H$util$Event | string): void;
 
     /**
      * Removes listeners from this object. Classes that extend EventTarget may need to override this method in order to remove references to DOM Elements and additional listeners.
@@ -8095,10 +8137,10 @@ declare module "heremaps" {
    * @property type {string} - Name of the dispatched event
    * @property defaultPrevented {boolean} - Indicates if preventDefault was called on the current event
    */
-  declare class H$util$OList$Event mixins undefined.Event {
+  declare class H$util$OList$Event mixins H$util$Event {
     /**
      * Constructor
-     * @param {OList} list - The OList instance which is emitting the event
+     * @param {H$util$OList} list - The OList instance which is emitting the event
      * @param {H$util.OList.prototype.EventType} type - The type of the event
      * @param {number} idx - The affected index within this list
      * @param {"NO PRINT IMPLEMENTED: JSDocNullableType"} added - The value of the entry which was added or set
@@ -8106,7 +8148,7 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocNullableType"} moved - The value of the entry which was moved
      */
     constructor(
-      list: OList,
+      list: H$util$OList,
       type: string,
       idx: number,
       added: any,
@@ -8139,7 +8181,7 @@ declare module "heremaps" {
      * @param {"NO PRINT IMPLEMENTED: JSDocOptionalType"} opt_total - The total number of processing steps to complete this request, default is 1
      */
     constructor(
-      opt_onprogress?: (req: Request) => void,
+      opt_onprogress?: (req: H$util$Request) => void,
       opt_total?: number
     ): this;
 
