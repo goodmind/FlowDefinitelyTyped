@@ -1,518 +1,181 @@
 declare module "tableau" {
-  declare class tableau$DashboardObjectType {
-    constructor(...args: empty): mixed;
-    static +BLANK: Class<tableau$DashboardObjectType__BLANK> &
-      tableau$DashboardObjectType__BLANK &
-      "blank"; // "blank"
-    static +WORKSHEET: Class<tableau$DashboardObjectType__WORKSHEET> &
-      tableau$DashboardObjectType__WORKSHEET &
-      "worksheet"; // "worksheet"
-    static +QUICK_FILTER: Class<tableau$DashboardObjectType__QUICK_FILTER> &
-      tableau$DashboardObjectType__QUICK_FILTER &
-      "quickFilter"; // "quickFilter"
-    static +PARAMETER_CONTROL: Class<tableau$DashboardObjectType__PARAMETER_CONTROL> &
-      tableau$DashboardObjectType__PARAMETER_CONTROL &
-      "parameterControl"; // "parameterControl"
-    static +PAGE_FILTER: Class<tableau$DashboardObjectType__PAGE_FILTER> &
-      tableau$DashboardObjectType__PAGE_FILTER &
-      "pageFilter"; // "pageFilter"
-    static +LEGEND: Class<tableau$DashboardObjectType__LEGEND> &
-      tableau$DashboardObjectType__LEGEND &
-      "legend"; // "legend"
-    static +TITLE: Class<tableau$DashboardObjectType__TITLE> &
-      tableau$DashboardObjectType__TITLE &
-      "title"; // "title"
-    static +TEXT: Class<tableau$DashboardObjectType__TEXT> &
-      tableau$DashboardObjectType__TEXT &
-      "text"; // "text"
-    static +IMAGE: Class<tableau$DashboardObjectType__IMAGE> &
-      tableau$DashboardObjectType__IMAGE &
-      "image"; // "image"
-    static +WEB_PAGE: Class<tableau$DashboardObjectType__WEB_PAGE> &
-      tableau$DashboardObjectType__WEB_PAGE &
-      "webPage"; // "webPage"
-    static +ADDIN: Class<tableau$DashboardObjectType__ADDIN> &
-      tableau$DashboardObjectType__ADDIN &
-      "addIn"; // "addIn"
-  }
+  declare var npm$namespace$tableau: {
+    DashboardObjectType: typeof tableau$DashboardObjectType,
+    FieldAggregationType: typeof tableau$FieldAggregationType,
+    FieldRoleType: typeof tableau$FieldRoleType,
+    SheetType: typeof tableau$SheetType,
+    ParameterAllowableValuesType: typeof tableau$ParameterAllowableValuesType,
+    ParameterDataType: typeof tableau$ParameterDataType,
+    ErrorCode: typeof tableau$ErrorCode,
+    ToolbarPosition: typeof tableau$ToolbarPosition,
+    ToolbarButtonName: typeof tableau$ToolbarButtonName,
+    TableauEventName: typeof tableau$TableauEventName,
+    SheetSizeBehaviour: typeof tableau$SheetSizeBehaviour,
+    NullOption: typeof tableau$NullOption,
+    FilterType: typeof tableau$FilterType,
+    FilterUpdateType: typeof tableau$FilterUpdateType,
+    PeriodType: typeof tableau$PeriodType,
+    DateRangeType: typeof tableau$DateRangeType,
+    SelectionUpdateType: typeof tableau$SelectionUpdateType,
+    TableauException: typeof tableau$TableauException,
+    VizManager: typeof tableau$VizManager,
+    Viz: typeof tableau$Viz,
+    ToolbarState: typeof tableau$ToolbarState,
+    TableauEvent: typeof tableau$TableauEvent,
+    CustomViewEvent: typeof tableau$CustomViewEvent,
+    FilterEvent: typeof tableau$FilterEvent,
+    MarksEvent: typeof tableau$MarksEvent,
+    ParameterEvent: typeof tableau$ParameterEvent,
+    StoryPointSwitchEvent: typeof tableau$StoryPointSwitchEvent,
+    TabSwitchEvent: typeof tableau$TabSwitchEvent,
+    ToolbarStateEvent: typeof tableau$ToolbarStateEvent,
+    VizResizeEvent: typeof tableau$VizResizeEvent,
+    SheetInfo: typeof tableau$SheetInfo,
+    Sheet: typeof tableau$Sheet,
+    DataTable: typeof tableau$DataTable,
+    Column: typeof tableau$Column,
+    Worksheet: typeof tableau$Worksheet,
+    Dashboard: typeof tableau$Dashboard,
+    DashboardObject: typeof tableau$DashboardObject,
+    Story: typeof tableau$Story,
+    StoryPointInfo: typeof tableau$StoryPointInfo,
+    StoryPoint: typeof tableau$StoryPoint,
+    Workbook: typeof tableau$Workbook,
+    DataSource: typeof tableau$DataSource,
+    Field: typeof tableau$Field,
+    CustomView: typeof tableau$CustomView,
+    Parameter: typeof tableau$Parameter,
+    Filter: typeof tableau$Filter,
+    CategoricalFilter: typeof tableau$CategoricalFilter,
+    QuantitativeFilter: typeof tableau$QuantitativeFilter,
+    RelativeDateFilter: typeof tableau$RelativeDateFilter,
+    DataValue: typeof tableau$DataValue,
+    Mark: typeof tableau$Mark,
+    Pair: typeof tableau$Pair
+  };
 
-  declare class tableau$DashboardObjectType__BLANK
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__WORKSHEET
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__QUICK_FILTER
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__PARAMETER_CONTROL
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__PAGE_FILTER
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__LEGEND
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__TITLE
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__TEXT
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__IMAGE
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__WEB_PAGE
-    mixins tableau$DashboardObjectType {}
-  declare class tableau$DashboardObjectType__ADDIN
-    mixins tableau$DashboardObjectType {}
+  declare var tableau$DashboardObjectType: {|
+    +BLANK: "blank", // "blank"
+    +WORKSHEET: "worksheet", // "worksheet"
+    +QUICK_FILTER: "quickFilter", // "quickFilter"
+    +PARAMETER_CONTROL: "parameterControl", // "parameterControl"
+    +PAGE_FILTER: "pageFilter", // "pageFilter"
+    +LEGEND: "legend", // "legend"
+    +TITLE: "title", // "title"
+    +TEXT: "text", // "text"
+    +IMAGE: "image", // "image"
+    +WEB_PAGE: "webPage", // "webPage"
+    +ADDIN: "addIn" // "addIn"
+  |};
 
-  declare class tableau$FieldAggregationType {
-    constructor(...args: empty): mixed;
-    static +SUM: Class<tableau$FieldAggregationType__SUM> &
-      tableau$FieldAggregationType__SUM &
-      0; // 0
-    static +AVG: Class<tableau$FieldAggregationType__AVG> &
-      tableau$FieldAggregationType__AVG &
-      1; // 1
-    static +MIN: Class<tableau$FieldAggregationType__MIN> &
-      tableau$FieldAggregationType__MIN &
-      2; // 2
-    static +MAX: Class<tableau$FieldAggregationType__MAX> &
-      tableau$FieldAggregationType__MAX &
-      3; // 3
-    static +STDEV: Class<tableau$FieldAggregationType__STDEV> &
-      tableau$FieldAggregationType__STDEV &
-      4; // 4
-    static +STDEVP: Class<tableau$FieldAggregationType__STDEVP> &
-      tableau$FieldAggregationType__STDEVP &
-      5; // 5
-    static +VAR: Class<tableau$FieldAggregationType__VAR> &
-      tableau$FieldAggregationType__VAR &
-      6; // 6
-    static +VARP: Class<tableau$FieldAggregationType__VARP> &
-      tableau$FieldAggregationType__VARP &
-      7; // 7
-    static +COUNT: Class<tableau$FieldAggregationType__COUNT> &
-      tableau$FieldAggregationType__COUNT &
-      8; // 8
-    static +COUNTD: Class<tableau$FieldAggregationType__COUNTD> &
-      tableau$FieldAggregationType__COUNTD &
-      9; // 9
-    static +MEDIAN: Class<tableau$FieldAggregationType__MEDIAN> &
-      tableau$FieldAggregationType__MEDIAN &
-      10; // 10
-    static +ATTR: Class<tableau$FieldAggregationType__ATTR> &
-      tableau$FieldAggregationType__ATTR &
-      11; // 11
-    static +NONE: Class<tableau$FieldAggregationType__NONE> &
-      tableau$FieldAggregationType__NONE &
-      12; // 12
-    static +YEAR: Class<tableau$FieldAggregationType__YEAR> &
-      tableau$FieldAggregationType__YEAR &
-      13; // 13
-    static +QTR: Class<tableau$FieldAggregationType__QTR> &
-      tableau$FieldAggregationType__QTR &
-      14; // 14
-    static +MONTH: Class<tableau$FieldAggregationType__MONTH> &
-      tableau$FieldAggregationType__MONTH &
-      15; // 15
-    static +DAY: Class<tableau$FieldAggregationType__DAY> &
-      tableau$FieldAggregationType__DAY &
-      16; // 16
-    static +HOUR: Class<tableau$FieldAggregationType__HOUR> &
-      tableau$FieldAggregationType__HOUR &
-      17; // 17
-    static +MINUTE: Class<tableau$FieldAggregationType__MINUTE> &
-      tableau$FieldAggregationType__MINUTE &
-      18; // 18
-    static +SECOND: Class<tableau$FieldAggregationType__SECOND> &
-      tableau$FieldAggregationType__SECOND &
-      19; // 19
-    static +WEEK: Class<tableau$FieldAggregationType__WEEK> &
-      tableau$FieldAggregationType__WEEK &
-      20; // 20
-    static +WEEKDAY: Class<tableau$FieldAggregationType__WEEKDAY> &
-      tableau$FieldAggregationType__WEEKDAY &
-      21; // 21
-    static +MONTHYEAR: Class<tableau$FieldAggregationType__MONTHYEAR> &
-      tableau$FieldAggregationType__MONTHYEAR &
-      22; // 22
-    static +MDY: Class<tableau$FieldAggregationType__MDY> &
-      tableau$FieldAggregationType__MDY &
-      23; // 23
-    static +END: Class<tableau$FieldAggregationType__END> &
-      tableau$FieldAggregationType__END &
-      24; // 24
-    static +TRUNC_YEAR: Class<tableau$FieldAggregationType__TRUNC_YEAR> &
-      tableau$FieldAggregationType__TRUNC_YEAR &
-      25; // 25
-    static +TRUNC_QTR: Class<tableau$FieldAggregationType__TRUNC_QTR> &
-      tableau$FieldAggregationType__TRUNC_QTR &
-      26; // 26
-    static +TRUNC_MONTH: Class<tableau$FieldAggregationType__TRUNC_MONTH> &
-      tableau$FieldAggregationType__TRUNC_MONTH &
-      27; // 27
-    static +TRUNC_WEEK: Class<tableau$FieldAggregationType__TRUNC_WEEK> &
-      tableau$FieldAggregationType__TRUNC_WEEK &
-      28; // 28
-    static +TRUNC_DAY: Class<tableau$FieldAggregationType__TRUNC_DAY> &
-      tableau$FieldAggregationType__TRUNC_DAY &
-      29; // 29
-    static +TRUNC_HOUR: Class<tableau$FieldAggregationType__TRUNC_HOUR> &
-      tableau$FieldAggregationType__TRUNC_HOUR &
-      30; // 30
-    static +TRUNC_MINUTE: Class<tableau$FieldAggregationType__TRUNC_MINUTE> &
-      tableau$FieldAggregationType__TRUNC_MINUTE &
-      31; // 31
-    static +TRUNC_SECOND: Class<tableau$FieldAggregationType__TRUNC_SECOND> &
-      tableau$FieldAggregationType__TRUNC_SECOND &
-      32; // 32
-    static +QUART1: Class<tableau$FieldAggregationType__QUART1> &
-      tableau$FieldAggregationType__QUART1 &
-      33; // 33
-    static +QUART3: Class<tableau$FieldAggregationType__QUART3> &
-      tableau$FieldAggregationType__QUART3 &
-      34; // 34
-    static +SKEWNESS: Class<tableau$FieldAggregationType__SKEWNESS> &
-      tableau$FieldAggregationType__SKEWNESS &
-      35; // 35
-    static +KURTOSIS: Class<tableau$FieldAggregationType__KURTOSIS> &
-      tableau$FieldAggregationType__KURTOSIS &
-      36; // 36
-    static +INOUT: Class<tableau$FieldAggregationType__INOUT> &
-      tableau$FieldAggregationType__INOUT &
-      37; // 37
-    static +USER: Class<tableau$FieldAggregationType__USER> &
-      tableau$FieldAggregationType__USER &
-      38; // 38
-  }
+  declare var tableau$FieldAggregationType: {|
+    +SUM: 0, // 0
+    +AVG: 1, // 1
+    +MIN: 2, // 2
+    +MAX: 3, // 3
+    +STDEV: 4, // 4
+    +STDEVP: 5, // 5
+    +VAR: 6, // 6
+    +VARP: 7, // 7
+    +COUNT: 8, // 8
+    +COUNTD: 9, // 9
+    +MEDIAN: 10, // 10
+    +ATTR: 11, // 11
+    +NONE: 12, // 12
+    +YEAR: 13, // 13
+    +QTR: 14, // 14
+    +MONTH: 15, // 15
+    +DAY: 16, // 16
+    +HOUR: 17, // 17
+    +MINUTE: 18, // 18
+    +SECOND: 19, // 19
+    +WEEK: 20, // 20
+    +WEEKDAY: 21, // 21
+    +MONTHYEAR: 22, // 22
+    +MDY: 23, // 23
+    +END: 24, // 24
+    +TRUNC_YEAR: 25, // 25
+    +TRUNC_QTR: 26, // 26
+    +TRUNC_MONTH: 27, // 27
+    +TRUNC_WEEK: 28, // 28
+    +TRUNC_DAY: 29, // 29
+    +TRUNC_HOUR: 30, // 30
+    +TRUNC_MINUTE: 31, // 31
+    +TRUNC_SECOND: 32, // 32
+    +QUART1: 33, // 33
+    +QUART3: 34, // 34
+    +SKEWNESS: 35, // 35
+    +KURTOSIS: 36, // 36
+    +INOUT: 37, // 37
+    +USER: 38 // 38
+  |};
 
-  declare class tableau$FieldAggregationType__SUM
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__AVG
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__MIN
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__MAX
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__STDEV
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__STDEVP
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__VAR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__VARP
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__COUNT
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__COUNTD
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__MEDIAN
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__ATTR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__NONE
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__YEAR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__QTR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__MONTH
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__DAY
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__HOUR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__MINUTE
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__SECOND
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__WEEK
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__WEEKDAY
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__MONTHYEAR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__MDY
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__END
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_YEAR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_QTR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_MONTH
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_WEEK
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_DAY
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_HOUR
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_MINUTE
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__TRUNC_SECOND
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__QUART1
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__QUART3
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__SKEWNESS
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__KURTOSIS
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__INOUT
-    mixins tableau$FieldAggregationType {}
-  declare class tableau$FieldAggregationType__USER
-    mixins tableau$FieldAggregationType {}
+  declare var tableau$FieldRoleType: {|
+    +DIMENSION: 0, // 0
+    +MEASURE: 1, // 1
+    +UKNOWN: 2 // 2
+  |};
 
-  declare class tableau$FieldRoleType {
-    constructor(...args: empty): mixed;
-    static +DIMENSION: Class<tableau$FieldRoleType__DIMENSION> &
-      tableau$FieldRoleType__DIMENSION &
-      0; // 0
-    static +MEASURE: Class<tableau$FieldRoleType__MEASURE> &
-      tableau$FieldRoleType__MEASURE &
-      1; // 1
-    static +UKNOWN: Class<tableau$FieldRoleType__UKNOWN> &
-      tableau$FieldRoleType__UKNOWN &
-      2; // 2
-  }
+  declare var tableau$SheetType: {|
+    +WORKSHEET: "worksheet", // "worksheet"
+    +DASHBOARD: "dashboard", // "dashboard"
+    +STORY: "story" // "story"
+  |};
 
-  declare class tableau$FieldRoleType__DIMENSION mixins tableau$FieldRoleType {}
-  declare class tableau$FieldRoleType__MEASURE mixins tableau$FieldRoleType {}
-  declare class tableau$FieldRoleType__UKNOWN mixins tableau$FieldRoleType {}
+  declare var tableau$ParameterAllowableValuesType: {|
+    +ALL: "all", // "all"
+    +LIST: "list", // "list"
+    +RANGE: "range" // "range"
+  |};
 
-  declare class tableau$SheetType {
-    constructor(...args: empty): mixed;
-    static +WORKSHEET: Class<tableau$SheetType__WORKSHEET> &
-      tableau$SheetType__WORKSHEET &
-      "worksheet"; // "worksheet"
-    static +DASHBOARD: Class<tableau$SheetType__DASHBOARD> &
-      tableau$SheetType__DASHBOARD &
-      "dashboard"; // "dashboard"
-    static +STORY: Class<tableau$SheetType__STORY> &
-      tableau$SheetType__STORY &
-      "story"; // "story"
-  }
-
-  declare class tableau$SheetType__WORKSHEET mixins tableau$SheetType {}
-  declare class tableau$SheetType__DASHBOARD mixins tableau$SheetType {}
-  declare class tableau$SheetType__STORY mixins tableau$SheetType {}
-
-  declare class tableau$ParameterAllowableValuesType {
-    constructor(...args: empty): mixed;
-    static +ALL: Class<tableau$ParameterAllowableValuesType__ALL> &
-      tableau$ParameterAllowableValuesType__ALL &
-      "all"; // "all"
-    static +LIST: Class<tableau$ParameterAllowableValuesType__LIST> &
-      tableau$ParameterAllowableValuesType__LIST &
-      "list"; // "list"
-    static +RANGE: Class<tableau$ParameterAllowableValuesType__RANGE> &
-      tableau$ParameterAllowableValuesType__RANGE &
-      "range"; // "range"
-  }
-
-  declare class tableau$ParameterAllowableValuesType__ALL
-    mixins tableau$ParameterAllowableValuesType {}
-  declare class tableau$ParameterAllowableValuesType__LIST
-    mixins tableau$ParameterAllowableValuesType {}
-  declare class tableau$ParameterAllowableValuesType__RANGE
-    mixins tableau$ParameterAllowableValuesType {}
-
-  declare class tableau$ParameterDataType {
-    constructor(...args: empty): mixed;
-    static +FLOAT: Class<tableau$ParameterDataType__FLOAT> &
-      tableau$ParameterDataType__FLOAT &
-      "float"; // "float"
-    static +INTEGER: Class<tableau$ParameterDataType__INTEGER> &
-      tableau$ParameterDataType__INTEGER &
-      "integer"; // "integer"
-    static +STRING: Class<tableau$ParameterDataType__STRING> &
-      tableau$ParameterDataType__STRING &
-      "string"; // "string"
-    static +BOOLEAN: Class<tableau$ParameterDataType__BOOLEAN> &
-      tableau$ParameterDataType__BOOLEAN &
-      "boolean"; // "boolean"
-    static +DATE: Class<tableau$ParameterDataType__DATE> &
-      tableau$ParameterDataType__DATE &
-      "date"; // "date"
-    static +DATETIME: Class<tableau$ParameterDataType__DATETIME> &
-      tableau$ParameterDataType__DATETIME &
-      "datetime"; // "datetime"
-  }
-
-  declare class tableau$ParameterDataType__FLOAT
-    mixins tableau$ParameterDataType {}
-  declare class tableau$ParameterDataType__INTEGER
-    mixins tableau$ParameterDataType {}
-  declare class tableau$ParameterDataType__STRING
-    mixins tableau$ParameterDataType {}
-  declare class tableau$ParameterDataType__BOOLEAN
-    mixins tableau$ParameterDataType {}
-  declare class tableau$ParameterDataType__DATE
-    mixins tableau$ParameterDataType {}
-  declare class tableau$ParameterDataType__DATETIME
-    mixins tableau$ParameterDataType {}
+  declare var tableau$ParameterDataType: {|
+    +FLOAT: "float", // "float"
+    +INTEGER: "integer", // "integer"
+    +STRING: "string", // "string"
+    +BOOLEAN: "boolean", // "boolean"
+    +DATE: "date", // "date"
+    +DATETIME: "datetime" // "datetime"
+  |};
 
   declare class tableau$TableauException mixins Error {
-    tableauSoftwareErrorCode: tableau$ErrorCode;
+    tableauSoftwareErrorCode: $Values<typeof tableau$ErrorCode>;
   }
 
-  declare class tableau$ErrorCode {
-    constructor(...args: empty): mixed;
-    static +BROWSER_NOT_CAPABLE: Class<tableau$ErrorCode__BROWSER_NOT_CAPABLE> &
-      tableau$ErrorCode__BROWSER_NOT_CAPABLE &
-      "browserNotCapable"; // "browserNotCapable"
-    static +DOWNLOAD_WORKBOOK_NOT_ALLOWED: Class<tableau$ErrorCode__DOWNLOAD_WORKBOOK_NOT_ALLOWED> &
-      tableau$ErrorCode__DOWNLOAD_WORKBOOK_NOT_ALLOWED &
-      "downloadWorkbookNotAllowed"; // "downloadWorkbookNotAllowed"
-    static +FILTER_CANNOT_BE_PERFORMED: Class<tableau$ErrorCode__FILTER_CANNOT_BE_PERFORMED> &
-      tableau$ErrorCode__FILTER_CANNOT_BE_PERFORMED &
-      "filterCannotBePerformed"; // "filterCannotBePerformed"
-    static +INDEX_OUT_OF_RANGE: Class<tableau$ErrorCode__INDEX_OUT_OF_RANGE> &
-      tableau$ErrorCode__INDEX_OUT_OF_RANGE &
-      "indexOutOfRange"; // "indexOutOfRange"
-    static +INTERNAL_ERROR: Class<tableau$ErrorCode__INTERNAL_ERROR> &
-      tableau$ErrorCode__INTERNAL_ERROR &
-      "internalError"; // "internalError"
-    static +INVALID_AGGREGATION_FIELD_NAME: Class<tableau$ErrorCode__INVALID_AGGREGATION_FIELD_NAME> &
-      tableau$ErrorCode__INVALID_AGGREGATION_FIELD_NAME &
-      "invalidAggregationFieldName"; // "invalidAggregationFieldName"
-    static +INVALID_CUSTOM_VIEW_NAME: Class<tableau$ErrorCode__INVALID_CUSTOM_VIEW_NAME> &
-      tableau$ErrorCode__INVALID_CUSTOM_VIEW_NAME &
-      "invalidCustomViewName"; // "invalidCustomViewName"
-    static +INVALID_DATE_PARAMETER: Class<tableau$ErrorCode__INVALID_DATE_PARAMETER> &
-      tableau$ErrorCode__INVALID_DATE_PARAMETER &
-      "invalidDateParameter"; // "invalidDateParameter"
-    static +INVALID_FILTER_FIELDNAME: Class<tableau$ErrorCode__INVALID_FILTER_FIELDNAME> &
-      tableau$ErrorCode__INVALID_FILTER_FIELDNAME &
-      "invalidFilterFieldName"; // "invalidFilterFieldName"
-    static +INVALID_FILTER_FIELDNAME_OR_VALUE: Class<tableau$ErrorCode__INVALID_FILTER_FIELDNAME_OR_VALUE> &
-      tableau$ErrorCode__INVALID_FILTER_FIELDNAME_OR_VALUE &
-      "invalidFilterFieldNameOrValue"; // "invalidFilterFieldNameOrValue"
-    static +INVALID_FILTER_FIELDVALUE: Class<tableau$ErrorCode__INVALID_FILTER_FIELDVALUE> &
-      tableau$ErrorCode__INVALID_FILTER_FIELDVALUE &
-      "invalidFilterFieldValue"; // "invalidFilterFieldValue"
-    static +INVALID_PARAMETER: Class<tableau$ErrorCode__INVALID_PARAMETER> &
-      tableau$ErrorCode__INVALID_PARAMETER &
-      "invalidParameter"; // "invalidParameter"
-    static +INVALID_SELECTION_DATE: Class<tableau$ErrorCode__INVALID_SELECTION_DATE> &
-      tableau$ErrorCode__INVALID_SELECTION_DATE &
-      "invalidSelectionDate"; // "invalidSelectionDate"
-    static +INVALID_SELECTION_FIELDNAME: Class<tableau$ErrorCode__INVALID_SELECTION_FIELDNAME> &
-      tableau$ErrorCode__INVALID_SELECTION_FIELDNAME &
-      "invalidSelectionFieldName"; // "invalidSelectionFieldName"
-    static +INVALID_SELECTION_VALUE: Class<tableau$ErrorCode__INVALID_SELECTION_VALUE> &
-      tableau$ErrorCode__INVALID_SELECTION_VALUE &
-      "invalidSelectionValue"; // "invalidSelectionValue"
-    static +INVALID_SIZE: Class<tableau$ErrorCode__INVALID_SIZE> &
-      tableau$ErrorCode__INVALID_SIZE &
-      "invalidSize"; // "invalidSize"
-    static +INVALID_SIZE_BEHAVIOR_ON_WORKSHEET: Class<tableau$ErrorCode__INVALID_SIZE_BEHAVIOR_ON_WORKSHEET> &
-      tableau$ErrorCode__INVALID_SIZE_BEHAVIOR_ON_WORKSHEET &
-      "invalidSizeBehaviorOnWorksheet"; // "invalidSizeBehaviorOnWorksheet"
-    static +INVALID_URL: Class<tableau$ErrorCode__INVALID_URL> &
-      tableau$ErrorCode__INVALID_URL &
-      "invalidUrl"; // "invalidUrl"
-    static +MISSING_MAX_SIZE: Class<tableau$ErrorCode__MISSING_MAX_SIZE> &
-      tableau$ErrorCode__MISSING_MAX_SIZE &
-      "missingMaxSize"; // "missingMaxSize"
-    static +MISSING_MIN_SIZE: Class<tableau$ErrorCode__MISSING_MIN_SIZE> &
-      tableau$ErrorCode__MISSING_MIN_SIZE &
-      "missingMinSize"; // "missingMinSize"
-    static +MISSING_MINMAX_SIZE: Class<tableau$ErrorCode__MISSING_MINMAX_SIZE> &
-      tableau$ErrorCode__MISSING_MINMAX_SIZE &
-      "missingMinMaxSize"; // "missingMinMaxSize"
-    static +MISSING_RANGEN_FOR_RELATIVE_DATE_FILTERS: Class<tableau$ErrorCode__MISSING_RANGEN_FOR_RELATIVE_DATE_FILTERS> &
-      tableau$ErrorCode__MISSING_RANGEN_FOR_RELATIVE_DATE_FILTERS &
-      "missingRangeNForRelativeDateFilters"; // "missingRangeNForRelativeDateFilters"
-    static +NO_URL_FOR_HIDDEN_WORKSHEET: Class<tableau$ErrorCode__NO_URL_FOR_HIDDEN_WORKSHEET> &
-      tableau$ErrorCode__NO_URL_FOR_HIDDEN_WORKSHEET &
-      "noUrlForHiddenWorksheet"; // "noUrlForHiddenWorksheet"
-    static +NO_URL_OR_PARENT_ELEMENT_NOT_FOUND: Class<tableau$ErrorCode__NO_URL_OR_PARENT_ELEMENT_NOT_FOUND> &
-      tableau$ErrorCode__NO_URL_OR_PARENT_ELEMENT_NOT_FOUND &
-      "noUrlOrParentElementNotFound"; // "noUrlOrParentElementNotFound"
-    static +NOT_ACTIVE_SHEET: Class<tableau$ErrorCode__NOT_ACTIVE_SHEET> &
-      tableau$ErrorCode__NOT_ACTIVE_SHEET &
-      "notActiveSheet"; // "notActiveSheet"
-    static +NULL_OR_EMPTY_PARAMETER: Class<tableau$ErrorCode__NULL_OR_EMPTY_PARAMETER> &
-      tableau$ErrorCode__NULL_OR_EMPTY_PARAMETER &
-      "nullOrEmptyParameter"; // "nullOrEmptyParameter"
-    static +SERVER_ERROR: Class<tableau$ErrorCode__SERVER_ERROR> &
-      tableau$ErrorCode__SERVER_ERROR &
-      "serverError"; // "serverError"
-    static +SHEET_NOT_IN_WORKBOOK: Class<tableau$ErrorCode__SHEET_NOT_IN_WORKBOOK> &
-      tableau$ErrorCode__SHEET_NOT_IN_WORKBOOK &
-      "sheetNotInWorkbook"; // "sheetNotInWorkbook"
-    static +STALE_DATA_REFERENCE: Class<tableau$ErrorCode__STALE_DATA_REFERENCE> &
-      tableau$ErrorCode__STALE_DATA_REFERENCE &
-      "staleDataReference"; // "staleDataReference"
-    static +UNSUPPORTED_EVENT_NAME: Class<tableau$ErrorCode__UNSUPPORTED_EVENT_NAME> &
-      tableau$ErrorCode__UNSUPPORTED_EVENT_NAME &
-      "unsupportedEventName"; // "unsupportedEventName"
-    static +VIZ_ALREADY_IN_MANAGER: Class<tableau$ErrorCode__VIZ_ALREADY_IN_MANAGER> &
-      tableau$ErrorCode__VIZ_ALREADY_IN_MANAGER &
-      "vizAlreadyInManager"; // "vizAlreadyInManager"
-    static +INVALID_TOOLBAR_BUTTON_NAME: Class<tableau$ErrorCode__INVALID_TOOLBAR_BUTTON_NAME> &
-      tableau$ErrorCode__INVALID_TOOLBAR_BUTTON_NAME &
-      "invalidToolbarButtonName"; // "invalidToolbarButtonName"
-    static +MAX_VIZ_RESIZE_ATTEMPTS: Class<tableau$ErrorCode__MAX_VIZ_RESIZE_ATTEMPTS> &
-      tableau$ErrorCode__MAX_VIZ_RESIZE_ATTEMPTS &
-      "maxVizResizeAttempts"; // "maxVizResizeAttempts"
-  }
-
-  declare class tableau$ErrorCode__BROWSER_NOT_CAPABLE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__DOWNLOAD_WORKBOOK_NOT_ALLOWED
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__FILTER_CANNOT_BE_PERFORMED
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INDEX_OUT_OF_RANGE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INTERNAL_ERROR mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_AGGREGATION_FIELD_NAME
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_CUSTOM_VIEW_NAME
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_DATE_PARAMETER
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_FILTER_FIELDNAME
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_FILTER_FIELDNAME_OR_VALUE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_FILTER_FIELDVALUE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_PARAMETER mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_SELECTION_DATE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_SELECTION_FIELDNAME
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_SELECTION_VALUE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_SIZE mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_SIZE_BEHAVIOR_ON_WORKSHEET
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_URL mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__MISSING_MAX_SIZE mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__MISSING_MIN_SIZE mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__MISSING_MINMAX_SIZE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__MISSING_RANGEN_FOR_RELATIVE_DATE_FILTERS
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__NO_URL_FOR_HIDDEN_WORKSHEET
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__NO_URL_OR_PARENT_ELEMENT_NOT_FOUND
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__NOT_ACTIVE_SHEET mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__NULL_OR_EMPTY_PARAMETER
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__SERVER_ERROR mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__SHEET_NOT_IN_WORKBOOK
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__STALE_DATA_REFERENCE
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__UNSUPPORTED_EVENT_NAME
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__VIZ_ALREADY_IN_MANAGER
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__INVALID_TOOLBAR_BUTTON_NAME
-    mixins tableau$ErrorCode {}
-  declare class tableau$ErrorCode__MAX_VIZ_RESIZE_ATTEMPTS
-    mixins tableau$ErrorCode {}
+  declare var tableau$ErrorCode: {|
+    +BROWSER_NOT_CAPABLE: "browserNotCapable", // "browserNotCapable"
+    +DOWNLOAD_WORKBOOK_NOT_ALLOWED: "downloadWorkbookNotAllowed", // "downloadWorkbookNotAllowed"
+    +FILTER_CANNOT_BE_PERFORMED: "filterCannotBePerformed", // "filterCannotBePerformed"
+    +INDEX_OUT_OF_RANGE: "indexOutOfRange", // "indexOutOfRange"
+    +INTERNAL_ERROR: "internalError", // "internalError"
+    +INVALID_AGGREGATION_FIELD_NAME: "invalidAggregationFieldName", // "invalidAggregationFieldName"
+    +INVALID_CUSTOM_VIEW_NAME: "invalidCustomViewName", // "invalidCustomViewName"
+    +INVALID_DATE_PARAMETER: "invalidDateParameter", // "invalidDateParameter"
+    +INVALID_FILTER_FIELDNAME: "invalidFilterFieldName", // "invalidFilterFieldName"
+    +INVALID_FILTER_FIELDNAME_OR_VALUE: "invalidFilterFieldNameOrValue", // "invalidFilterFieldNameOrValue"
+    +INVALID_FILTER_FIELDVALUE: "invalidFilterFieldValue", // "invalidFilterFieldValue"
+    +INVALID_PARAMETER: "invalidParameter", // "invalidParameter"
+    +INVALID_SELECTION_DATE: "invalidSelectionDate", // "invalidSelectionDate"
+    +INVALID_SELECTION_FIELDNAME: "invalidSelectionFieldName", // "invalidSelectionFieldName"
+    +INVALID_SELECTION_VALUE: "invalidSelectionValue", // "invalidSelectionValue"
+    +INVALID_SIZE: "invalidSize", // "invalidSize"
+    +INVALID_SIZE_BEHAVIOR_ON_WORKSHEET: "invalidSizeBehaviorOnWorksheet", // "invalidSizeBehaviorOnWorksheet"
+    +INVALID_URL: "invalidUrl", // "invalidUrl"
+    +MISSING_MAX_SIZE: "missingMaxSize", // "missingMaxSize"
+    +MISSING_MIN_SIZE: "missingMinSize", // "missingMinSize"
+    +MISSING_MINMAX_SIZE: "missingMinMaxSize", // "missingMinMaxSize"
+    +MISSING_RANGEN_FOR_RELATIVE_DATE_FILTERS: "missingRangeNForRelativeDateFilters", // "missingRangeNForRelativeDateFilters"
+    +NO_URL_FOR_HIDDEN_WORKSHEET: "noUrlForHiddenWorksheet", // "noUrlForHiddenWorksheet"
+    +NO_URL_OR_PARENT_ELEMENT_NOT_FOUND: "noUrlOrParentElementNotFound", // "noUrlOrParentElementNotFound"
+    +NOT_ACTIVE_SHEET: "notActiveSheet", // "notActiveSheet"
+    +NULL_OR_EMPTY_PARAMETER: "nullOrEmptyParameter", // "nullOrEmptyParameter"
+    +SERVER_ERROR: "serverError", // "serverError"
+    +SHEET_NOT_IN_WORKBOOK: "sheetNotInWorkbook", // "sheetNotInWorkbook"
+    +STALE_DATA_REFERENCE: "staleDataReference", // "staleDataReference"
+    +UNSUPPORTED_EVENT_NAME: "unsupportedEventName", // "unsupportedEventName"
+    +VIZ_ALREADY_IN_MANAGER: "vizAlreadyInManager", // "vizAlreadyInManager"
+    +INVALID_TOOLBAR_BUTTON_NAME: "invalidToolbarButtonName", // "invalidToolbarButtonName"
+    +MAX_VIZ_RESIZE_ATTEMPTS: "maxVizResizeAttempts" // "maxVizResizeAttempts"
+  |};
 
   declare class tableau$VizManager {
     getVizs(): tableau$Viz[];
@@ -570,39 +233,39 @@ declare module "tableau" {
      */
     getAreAutomaticUpdatesPaused(): boolean;
     addEventListener(
-      event: tableau$TableauEventName.FILTER_CHANGE,
+      event: typeof tableau$TableauEventName.FILTER_CHANGE,
       f: tableau$ListenerFunction<tableau$FilterEvent>
     ): void;
     addEventListener(
       event:
-        | tableau$TableauEventName.CUSTOM_VIEW_LOAD
-        | tableau$TableauEventName.CUSTOM_VIEW_REMOVE
-        | tableau$TableauEventName.CUSTOM_VIEW_SAVE
-        | tableau$TableauEventName.CUSTOM_VIEW_SET_DEFAULT,
+        | typeof tableau$TableauEventName.CUSTOM_VIEW_LOAD
+        | typeof tableau$TableauEventName.CUSTOM_VIEW_REMOVE
+        | typeof tableau$TableauEventName.CUSTOM_VIEW_SAVE
+        | typeof tableau$TableauEventName.CUSTOM_VIEW_SET_DEFAULT,
       f: tableau$ListenerFunction<tableau$CustomViewEvent>
     ): void;
     addEventListener(
-      event: tableau$TableauEventName.MARKS_SELECTION,
+      event: typeof tableau$TableauEventName.MARKS_SELECTION,
       f: tableau$ListenerFunction<tableau$MarksEvent>
     ): void;
     addEventListener(
-      event: tableau$TableauEventName.PARAMETER_VALUE_CHANGE,
+      event: typeof tableau$TableauEventName.PARAMETER_VALUE_CHANGE,
       f: tableau$ListenerFunction<tableau$ParameterEvent>
     ): void;
     addEventListener(
-      event: tableau$TableauEventName.STORY_POINT_SWITCH,
+      event: typeof tableau$TableauEventName.STORY_POINT_SWITCH,
       f: tableau$ListenerFunction<tableau$StoryPointSwitchEvent>
     ): void;
     addEventListener(
-      event: tableau$TableauEventName.TAB_SWITCH,
+      event: typeof tableau$TableauEventName.TAB_SWITCH,
       f: tableau$ListenerFunction<tableau$TabSwitchEvent>
     ): void;
     addEventListener(
-      event: tableau$TableauEventName.TOOLBAR_STATE_CHANGE,
+      event: typeof tableau$TableauEventName.TOOLBAR_STATE_CHANGE,
       f: tableau$ListenerFunction<tableau$ToolbarStateEvent>
     ): void;
     addEventListener(
-      event: tableau$TableauEventName.VIZ_RESIZE,
+      event: typeof tableau$TableauEventName.VIZ_RESIZE,
       f: tableau$ListenerFunction<tableau$VizResizeEvent>
     ): void;
 
@@ -610,7 +273,7 @@ declare module "tableau" {
      * Removes an event listener from the specified event.
      */
     removeEventListener(
-      type: tableau$TableauEventName,
+      type: $Values<typeof tableau$TableauEventName>,
       f: tableau$ListenerFunction<tableau$TableauEvent>
     ): void;
 
@@ -763,19 +426,10 @@ declare module "tableau" {
     [filter: string]: any;
   }
 
-  declare class tableau$ToolbarPosition {
-    constructor(...args: empty): mixed;
-    static +TOP: Class<tableau$ToolbarPosition__TOP> &
-      tableau$ToolbarPosition__TOP &
-      "top"; // "top"
-    static +BOTTOM: Class<tableau$ToolbarPosition__BOTTOM> &
-      tableau$ToolbarPosition__BOTTOM &
-      "bottom"; // "bottom"
-  }
-
-  declare class tableau$ToolbarPosition__TOP mixins tableau$ToolbarPosition {}
-  declare class tableau$ToolbarPosition__BOTTOM
-    mixins tableau$ToolbarPosition {}
+  declare var tableau$ToolbarPosition: {|
+    +TOP: "top", // "top"
+    +BOTTOM: "bottom" // "bottom"
+  |};
 
   declare class tableau$ToolbarState {
     /**
@@ -789,23 +443,15 @@ declare module "tableau" {
      * Currently, only Undo and Redo are supported.
      * Checking this property with a toolbar button that is not supported causes an InvalidToolbarButtonName error.
      */
-    isButtonEnabled(toolbarButtonName: tableau$ToolbarButtonName): boolean;
+    isButtonEnabled(
+      toolbarButtonName: $Values<typeof tableau$ToolbarButtonName>
+    ): boolean;
   }
 
-  declare class tableau$ToolbarButtonName {
-    constructor(...args: empty): mixed;
-    static +UNDO: Class<tableau$ToolbarButtonName__UNDO> &
-      tableau$ToolbarButtonName__UNDO &
-      "undo"; // "undo"
-    static +REDO: Class<tableau$ToolbarButtonName__REDO> &
-      tableau$ToolbarButtonName__REDO &
-      "redo"; // "redo"
-  }
-
-  declare class tableau$ToolbarButtonName__UNDO
-    mixins tableau$ToolbarButtonName {}
-  declare class tableau$ToolbarButtonName__REDO
-    mixins tableau$ToolbarButtonName {}
+  declare var tableau$ToolbarButtonName: {|
+    +UNDO: "undo", // "undo"
+    +REDO: "redo" // "redo"
+  |};
 
   /**
    * Defines strings passed to the Viz.addEventListener and Viz.removeEventListener methods.
@@ -813,65 +459,20 @@ declare module "tableau" {
    * For example, CUSTOM_VIEW_LOAD is customviewload.
    * Either the fully-qualified enum (tableau.TableauEventName.FILTER_CHANGE) or the raw string (filterchange) is acceptable.
    */
-  declare class tableau$TableauEventName {
-    constructor(...args: empty): mixed;
-    static +CUSTOM_VIEW_LOAD: Class<tableau$TableauEventName__CUSTOM_VIEW_LOAD> &
-      tableau$TableauEventName__CUSTOM_VIEW_LOAD &
-      "customviewload"; // "customviewload"
-    static +CUSTOM_VIEW_REMOVE: Class<tableau$TableauEventName__CUSTOM_VIEW_REMOVE> &
-      tableau$TableauEventName__CUSTOM_VIEW_REMOVE &
-      "customviewremove"; // "customviewremove"
-    static +CUSTOM_VIEW_SAVE: Class<tableau$TableauEventName__CUSTOM_VIEW_SAVE> &
-      tableau$TableauEventName__CUSTOM_VIEW_SAVE &
-      "customviewsave"; // "customviewsave"
-    static +CUSTOM_VIEW_SET_DEFAULT: Class<tableau$TableauEventName__CUSTOM_VIEW_SET_DEFAULT> &
-      tableau$TableauEventName__CUSTOM_VIEW_SET_DEFAULT &
-      "customviewsetdefault"; // "customviewsetdefault"
-    static +FILTER_CHANGE: Class<tableau$TableauEventName__FILTER_CHANGE> &
-      tableau$TableauEventName__FILTER_CHANGE &
-      "filterchange"; // "filterchange"
-    static +MARKS_SELECTION: Class<tableau$TableauEventName__MARKS_SELECTION> &
-      tableau$TableauEventName__MARKS_SELECTION &
-      "marksselection"; // "marksselection"
-    static +PARAMETER_VALUE_CHANGE: Class<tableau$TableauEventName__PARAMETER_VALUE_CHANGE> &
-      tableau$TableauEventName__PARAMETER_VALUE_CHANGE &
-      "parametervaluechange"; // "parametervaluechange"
-    static +STORY_POINT_SWITCH: Class<tableau$TableauEventName__STORY_POINT_SWITCH> &
-      tableau$TableauEventName__STORY_POINT_SWITCH &
-      "storypointswitch"; // "storypointswitch"
-    static +TAB_SWITCH: Class<tableau$TableauEventName__TAB_SWITCH> &
-      tableau$TableauEventName__TAB_SWITCH &
-      "tabswitch"; // "tabswitch"
-    static +TOOLBAR_STATE_CHANGE: Class<tableau$TableauEventName__TOOLBAR_STATE_CHANGE> &
-      tableau$TableauEventName__TOOLBAR_STATE_CHANGE &
-      "toolbarstatechange"; // "toolbarstatechange"
-    static +VIZ_RESIZE: Class<tableau$TableauEventName__VIZ_RESIZE> &
-      tableau$TableauEventName__VIZ_RESIZE &
-      "vizresize"; // "vizresize"
-  }
 
-  declare class tableau$TableauEventName__CUSTOM_VIEW_LOAD
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__CUSTOM_VIEW_REMOVE
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__CUSTOM_VIEW_SAVE
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__CUSTOM_VIEW_SET_DEFAULT
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__FILTER_CHANGE
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__MARKS_SELECTION
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__PARAMETER_VALUE_CHANGE
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__STORY_POINT_SWITCH
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__TAB_SWITCH
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__TOOLBAR_STATE_CHANGE
-    mixins tableau$TableauEventName {}
-  declare class tableau$TableauEventName__VIZ_RESIZE
-    mixins tableau$TableauEventName {}
+  declare var tableau$TableauEventName: {|
+    +CUSTOM_VIEW_LOAD: "customviewload", // "customviewload"
+    +CUSTOM_VIEW_REMOVE: "customviewremove", // "customviewremove"
+    +CUSTOM_VIEW_SAVE: "customviewsave", // "customviewsave"
+    +CUSTOM_VIEW_SET_DEFAULT: "customviewsetdefault", // "customviewsetdefault"
+    +FILTER_CHANGE: "filterchange", // "filterchange"
+    +MARKS_SELECTION: "marksselection", // "marksselection"
+    +PARAMETER_VALUE_CHANGE: "parametervaluechange", // "parametervaluechange"
+    +STORY_POINT_SWITCH: "storypointswitch", // "storypointswitch"
+    +TAB_SWITCH: "tabswitch", // "tabswitch"
+    +TOOLBAR_STATE_CHANGE: "toolbarstatechange", // "toolbarstatechange"
+    +VIZ_RESIZE: "vizresize" // "vizresize"
+  |};
 
   declare class tableau$TableauEvent {
     /**
@@ -882,7 +483,7 @@ declare module "tableau" {
     /**
      * Gets the name of the event, which is a string, but is also one of the items in the TableauEventName enum.
      */
-    getEventName(): tableau$TableauEventName;
+    getEventName(): $Values<typeof tableau$TableauEventName>;
   }
 
   declare class tableau$CustomViewEvent mixins tableau$TableauEvent {
@@ -975,7 +576,7 @@ declare module "tableau" {
     /**
      * Gets the name of the event, which is a string, but is also one of the items in the TableauEventName enum.
      */
-    getEventName(): tableau$TableauEventName;
+    getEventName(): $Values<typeof tableau$TableauEventName>;
 
     /**
      * Gets the sheetSize record for the current sheet. For more information, see SheetSizeOptions Record.
@@ -1009,7 +610,7 @@ declare module "tableau" {
     /**
      * Gets the type of the sheet. SheetType is an enum with the following values: WORKSHEET, DASHBOARD and STORY.
      */
-    getSheetType(): tableau$SheetType;
+    getSheetType(): $Values<typeof tableau$SheetType>;
 
     /**
      * Gets the size information that the author specified when publishing the workbook.
@@ -1053,7 +654,7 @@ declare module "tableau" {
     /**
      * Gets the type of the sheet. SheetType is an enum with the following values: WORKSHEET , DASHBOARD and STORY.
      */
-    getSheetType(): tableau$SheetType;
+    getSheetType(): $Values<typeof tableau$SheetType>;
 
     /**
      * Gets the size information that the author specified when publishing the workbook.
@@ -1079,41 +680,19 @@ declare module "tableau" {
     ): Promise<tableau$SheetSizeOptions>;
   }
 
-  declare class tableau$SheetSizeBehaviour {
-    constructor(...args: empty): mixed;
-    static +AUTOMATIC: Class<tableau$SheetSizeBehaviour__AUTOMATIC> &
-      tableau$SheetSizeBehaviour__AUTOMATIC &
-      "automatic"; // "automatic"
-    static +EXACTLY: Class<tableau$SheetSizeBehaviour__EXACTLY> &
-      tableau$SheetSizeBehaviour__EXACTLY &
-      "exactly"; // "exactly"
-    static +RANGE: Class<tableau$SheetSizeBehaviour__RANGE> &
-      tableau$SheetSizeBehaviour__RANGE &
-      "range"; // "range"
-    static +ATLEAST: Class<tableau$SheetSizeBehaviour__ATLEAST> &
-      tableau$SheetSizeBehaviour__ATLEAST &
-      "atleast"; // "atleast"
-    static +ATMOST: Class<tableau$SheetSizeBehaviour__ATMOST> &
-      tableau$SheetSizeBehaviour__ATMOST &
-      "atmost"; // "atmost"
-  }
-
-  declare class tableau$SheetSizeBehaviour__AUTOMATIC
-    mixins tableau$SheetSizeBehaviour {}
-  declare class tableau$SheetSizeBehaviour__EXACTLY
-    mixins tableau$SheetSizeBehaviour {}
-  declare class tableau$SheetSizeBehaviour__RANGE
-    mixins tableau$SheetSizeBehaviour {}
-  declare class tableau$SheetSizeBehaviour__ATLEAST
-    mixins tableau$SheetSizeBehaviour {}
-  declare class tableau$SheetSizeBehaviour__ATMOST
-    mixins tableau$SheetSizeBehaviour {}
+  declare var tableau$SheetSizeBehaviour: {|
+    +AUTOMATIC: "automatic", // "automatic"
+    +EXACTLY: "exactly", // "exactly"
+    +RANGE: "range", // "range"
+    +ATLEAST: "atleast", // "atleast"
+    +ATMOST: "atmost" // "atmost"
+  |};
 
   declare interface tableau$SheetSizeOptions {
     /**
      * Contains an enumeration value of one of the following: AUTOMATIC, EXACTLY, RANGE, ATLEAST, and ATMOST.
      */
-    behavior: tableau$SheetSizeBehaviour;
+    behavior: $Values<typeof tableau$SheetSizeBehaviour>;
 
     /**
      * This is only defined when behavior is EXACTLY, RANGE or ATMOST.
@@ -1223,7 +802,7 @@ declare module "tableau" {
     applyFilterAsync(
       fieldName: string,
       values: { [key: string]: any }[] | { [key: string]: any },
-      updateType: tableau$FilterUpdateType,
+      updateType: $Values<typeof tableau$FilterUpdateType>,
       options?: tableau$FilterOptions
     ): Promise<string>;
 
@@ -1282,7 +861,7 @@ declare module "tableau" {
     selectMarksAsync(
       fieldName: string,
       value: { [key: string]: any } | { [key: string]: any }[],
-      updateType: tableau$SelectionUpdateType
+      updateType: $Values<typeof tableau$SelectionUpdateType>
     ): Promise<void>;
 
     /**
@@ -1294,7 +873,7 @@ declare module "tableau" {
      */
     selectMarksAsync(
       fieldValuesMap: { [key: string]: any } | tableau$Mark[],
-      updateType: tableau$SelectionUpdateType
+      updateType: $Values<typeof tableau$SelectionUpdateType>
     ): Promise<void>;
   }
 
@@ -1363,7 +942,7 @@ declare module "tableau" {
      * Gets what the object represents, which is an enum with the following values:
      * BLANK, WORKSHEET, QUICK_FILTER, PARAMETER_CONTROL, PAGE_FILTER, LEGEND, TITLE, TEXT, IMAGE, WEB_PAGE.
      */
-    getObjectType(): tableau$DashboardObjectType;
+    getObjectType(): $Values<typeof tableau$DashboardObjectType>;
 
     /**
      * Gets the Dashboard object that contains this object.
@@ -1585,7 +1164,7 @@ declare module "tableau" {
      * Gets the field name (i.e. caption).
      */
     getName(): string;
-    getAggregation(): tableau$FieldAggregationType;
+    getAggregation(): $Values<typeof tableau$FieldAggregationType>;
 
     /**
      * Gets the data source to which this field belongs.
@@ -1595,7 +1174,7 @@ declare module "tableau" {
     /**
      * One of the following values: DIMENSION, MEASURE, UKNOWN
      */
-    getRole(): tableau$FieldRoleType;
+    getRole(): $Values<typeof tableau$FieldRoleType>;
   }
 
   declare class tableau$CustomView {
@@ -1659,12 +1238,14 @@ declare module "tableau" {
     /**
      * The data type of the parameter can be one of the following: FLOAT, INTEGER, STRING, BOOLEAN, DATE, DATETIME.
      */
-    getDataType(): tableau$ParameterDataType;
+    getDataType(): $Values<typeof tableau$ParameterDataType>;
 
     /**
      * The type of allowable values that the parameter can accept. It can be one of the following enumeration items: ALL, LIST, RANGE.
      */
-    getAllowableValuesType(): tableau$ParameterAllowableValuesType;
+    getAllowableValuesType(): $Values<
+      typeof tableau$ParameterAllowableValuesType
+    >;
 
     /**
      * If the parameter is restricted to a list of allowable values, this property contains the array of those values.
@@ -1692,7 +1273,7 @@ declare module "tableau" {
      * this defines the step date period used in the Parameter UI control slider.
      * Otherwise it’s undefined/null.
      */
-    getDateStepPeriod(): tableau$PeriodType;
+    getDateStepPeriod(): $Values<typeof tableau$PeriodType>;
   }
 
   declare interface tableau$FilterOptions {
@@ -1718,7 +1299,7 @@ declare module "tableau" {
     /**
      * The null values to include
      */
-    nullOption: tableau$NullOption;
+    nullOption: $Values<typeof tableau$NullOption>;
   }
 
   declare interface tableau$RelativeDateFilterOptions {
@@ -1730,12 +1311,12 @@ declare module "tableau" {
     /**
      * Year, quarter, month, etc.
      */
-    periodType: tableau$PeriodType;
+    periodType: $Values<typeof tableau$PeriodType>;
 
     /**
      * LAST, LASTN, NEXT, etc.
      */
-    rangeType: tableau$DateRangeType;
+    rangeType: $Values<typeof tableau$DateRangeType>;
 
     /**
      * The number used when the rangeType is LASTN or NEXTN.
@@ -1752,7 +1333,7 @@ declare module "tableau" {
     /**
      * Gets the type of the filter. See FilterType Enum for the values in the enum.
      */
-    getFilterType(): tableau$FilterType;
+    getFilterType(): $Values<typeof tableau$FilterType>;
 
     /**
      * Gets the name of the field being filtered. Note that this is the caption as shown in the UI and not the actual database field name.
@@ -1768,22 +1349,12 @@ declare module "tableau" {
   /**
    * An enumeration that indicates what to do with null values for a given filter or mark selection call.
    */
-  declare class tableau$NullOption {
-    constructor(...args: empty): mixed;
-    static +NULL_VALUES: Class<tableau$NullOption__NULL_VALUES> &
-      tableau$NullOption__NULL_VALUES &
-      "nullValues"; // "nullValues"
-    static +NON_NULL_VALUES: Class<tableau$NullOption__NON_NULL_VALUES> &
-      tableau$NullOption__NON_NULL_VALUES &
-      "nonNullValues"; // "nonNullValues"
-    static +ALL_VALUES: Class<tableau$NullOption__ALL_VALUES> &
-      tableau$NullOption__ALL_VALUES &
-      "allValues"; // "allValues"
-  }
 
-  declare class tableau$NullOption__NULL_VALUES mixins tableau$NullOption {}
-  declare class tableau$NullOption__NON_NULL_VALUES mixins tableau$NullOption {}
-  declare class tableau$NullOption__ALL_VALUES mixins tableau$NullOption {}
+  declare var tableau$NullOption: {|
+    +NULL_VALUES: "nullValues", // "nullValues"
+    +NON_NULL_VALUES: "nonNullValues", // "nonNullValues"
+    +ALL_VALUES: "allValues" // "allValues"
+  |};
 
   declare class tableau$CategoricalFilter mixins tableau$Filter {
     /**
@@ -1830,12 +1401,12 @@ declare module "tableau" {
     /**
      * The date period of the filter. See PeriodType Enum for the values in the enum.
      */
-    getPeriod(): tableau$PeriodType;
+    getPeriod(): $Values<typeof tableau$PeriodType>;
 
     /**
      * The range of the date filter (years, months, etc.). See DateRangeType Enum for the values in the enum.
      */
-    getRange(): tableau$DateRangeType;
+    getRange(): $Values<typeof tableau$DateRangeType>;
 
     /**
      * When getRange returns LASTN or NEXTN, this is the N value (how many years, months, etc.).
@@ -1860,115 +1431,39 @@ declare module "tableau" {
     formattedValue: string;
   }
 
-  declare class tableau$FilterType {
-    constructor(...args: empty): mixed;
-    static +CATEGORICAL: Class<tableau$FilterType__CATEGORICAL> &
-      tableau$FilterType__CATEGORICAL &
-      "categorical"; // "categorical"
-    static +QUANTITATIVE: Class<tableau$FilterType__QUANTITATIVE> &
-      tableau$FilterType__QUANTITATIVE &
-      "quantitative"; // "quantitative"
-    static +HIERARCHICAL: Class<tableau$FilterType__HIERARCHICAL> &
-      tableau$FilterType__HIERARCHICAL &
-      "hierarchical"; // "hierarchical"
-    static +RELATIVE_DATE: Class<tableau$FilterType__RELATIVE_DATE> &
-      tableau$FilterType__RELATIVE_DATE &
-      "relativedate"; // "relativedate"
-  }
+  declare var tableau$FilterType: {|
+    +CATEGORICAL: "categorical", // "categorical"
+    +QUANTITATIVE: "quantitative", // "quantitative"
+    +HIERARCHICAL: "hierarchical", // "hierarchical"
+    +RELATIVE_DATE: "relativedate" // "relativedate"
+  |};
 
-  declare class tableau$FilterType__CATEGORICAL mixins tableau$FilterType {}
-  declare class tableau$FilterType__QUANTITATIVE mixins tableau$FilterType {}
-  declare class tableau$FilterType__HIERARCHICAL mixins tableau$FilterType {}
-  declare class tableau$FilterType__RELATIVE_DATE mixins tableau$FilterType {}
+  declare var tableau$FilterUpdateType: {|
+    +ALL: "all", // "all"
+    +REPLACE: "replace", // "replace"
+    +ADD: "add", // "add"
+    +REMOVE: "remove" // "remove"
+  |};
 
-  declare class tableau$FilterUpdateType {
-    constructor(...args: empty): mixed;
-    static +ALL: Class<tableau$FilterUpdateType__ALL> &
-      tableau$FilterUpdateType__ALL &
-      "all"; // "all"
-    static +REPLACE: Class<tableau$FilterUpdateType__REPLACE> &
-      tableau$FilterUpdateType__REPLACE &
-      "replace"; // "replace"
-    static +ADD: Class<tableau$FilterUpdateType__ADD> &
-      tableau$FilterUpdateType__ADD &
-      "add"; // "add"
-    static +REMOVE: Class<tableau$FilterUpdateType__REMOVE> &
-      tableau$FilterUpdateType__REMOVE &
-      "remove"; // "remove"
-  }
+  declare var tableau$PeriodType: {|
+    +YEARS: "years", // "years"
+    +QUARTERS: "quarters", // "quarters"
+    +MONTHS: "months", // "months"
+    +WEEKS: "weeks", // "weeks"
+    +DAYS: "days", // "days"
+    +HOURS: "hours", // "hours"
+    +MINUTES: "minutes", // "minutes"
+    +SECONDS: "seconds" // "seconds"
+  |};
 
-  declare class tableau$FilterUpdateType__ALL mixins tableau$FilterUpdateType {}
-  declare class tableau$FilterUpdateType__REPLACE
-    mixins tableau$FilterUpdateType {}
-  declare class tableau$FilterUpdateType__ADD mixins tableau$FilterUpdateType {}
-  declare class tableau$FilterUpdateType__REMOVE
-    mixins tableau$FilterUpdateType {}
-
-  declare class tableau$PeriodType {
-    constructor(...args: empty): mixed;
-    static +YEARS: Class<tableau$PeriodType__YEARS> &
-      tableau$PeriodType__YEARS &
-      "years"; // "years"
-    static +QUARTERS: Class<tableau$PeriodType__QUARTERS> &
-      tableau$PeriodType__QUARTERS &
-      "quarters"; // "quarters"
-    static +MONTHS: Class<tableau$PeriodType__MONTHS> &
-      tableau$PeriodType__MONTHS &
-      "months"; // "months"
-    static +WEEKS: Class<tableau$PeriodType__WEEKS> &
-      tableau$PeriodType__WEEKS &
-      "weeks"; // "weeks"
-    static +DAYS: Class<tableau$PeriodType__DAYS> &
-      tableau$PeriodType__DAYS &
-      "days"; // "days"
-    static +HOURS: Class<tableau$PeriodType__HOURS> &
-      tableau$PeriodType__HOURS &
-      "hours"; // "hours"
-    static +MINUTES: Class<tableau$PeriodType__MINUTES> &
-      tableau$PeriodType__MINUTES &
-      "minutes"; // "minutes"
-    static +SECONDS: Class<tableau$PeriodType__SECONDS> &
-      tableau$PeriodType__SECONDS &
-      "seconds"; // "seconds"
-  }
-
-  declare class tableau$PeriodType__YEARS mixins tableau$PeriodType {}
-  declare class tableau$PeriodType__QUARTERS mixins tableau$PeriodType {}
-  declare class tableau$PeriodType__MONTHS mixins tableau$PeriodType {}
-  declare class tableau$PeriodType__WEEKS mixins tableau$PeriodType {}
-  declare class tableau$PeriodType__DAYS mixins tableau$PeriodType {}
-  declare class tableau$PeriodType__HOURS mixins tableau$PeriodType {}
-  declare class tableau$PeriodType__MINUTES mixins tableau$PeriodType {}
-  declare class tableau$PeriodType__SECONDS mixins tableau$PeriodType {}
-
-  declare class tableau$DateRangeType {
-    constructor(...args: empty): mixed;
-    static +LAST: Class<tableau$DateRangeType__LAST> &
-      tableau$DateRangeType__LAST &
-      "last"; // "last"
-    static +LASTN: Class<tableau$DateRangeType__LASTN> &
-      tableau$DateRangeType__LASTN &
-      "lastn"; // "lastn"
-    static +NEXT: Class<tableau$DateRangeType__NEXT> &
-      tableau$DateRangeType__NEXT &
-      "next"; // "next"
-    static +NEXTN: Class<tableau$DateRangeType__NEXTN> &
-      tableau$DateRangeType__NEXTN &
-      "nextn"; // "nextn"
-    static +CURRENT: Class<tableau$DateRangeType__CURRENT> &
-      tableau$DateRangeType__CURRENT &
-      "current"; // "current"
-    static +TODATE: Class<tableau$DateRangeType__TODATE> &
-      tableau$DateRangeType__TODATE &
-      "todate"; // "todate"
-  }
-
-  declare class tableau$DateRangeType__LAST mixins tableau$DateRangeType {}
-  declare class tableau$DateRangeType__LASTN mixins tableau$DateRangeType {}
-  declare class tableau$DateRangeType__NEXT mixins tableau$DateRangeType {}
-  declare class tableau$DateRangeType__NEXTN mixins tableau$DateRangeType {}
-  declare class tableau$DateRangeType__CURRENT mixins tableau$DateRangeType {}
-  declare class tableau$DateRangeType__TODATE mixins tableau$DateRangeType {}
+  declare var tableau$DateRangeType: {|
+    +LAST: "last", // "last"
+    +LASTN: "lastn", // "lastn"
+    +NEXT: "next", // "next"
+    +NEXTN: "nextn", // "nextn"
+    +CURRENT: "current", // "current"
+    +TODATE: "todate" // "todate"
+  |};
 
   /**
    * A mark represents a single data point on the visualization.
@@ -2011,25 +1506,11 @@ declare module "tableau" {
     ): this;
   }
 
-  declare class tableau$SelectionUpdateType {
-    constructor(...args: empty): mixed;
-    static +REPLACE: Class<tableau$SelectionUpdateType__REPLACE> &
-      tableau$SelectionUpdateType__REPLACE &
-      "replace"; // "replace"
-    static +ADD: Class<tableau$SelectionUpdateType__ADD> &
-      tableau$SelectionUpdateType__ADD &
-      "add"; // "add"
-    static +REMOVE: Class<tableau$SelectionUpdateType__REMOVE> &
-      tableau$SelectionUpdateType__REMOVE &
-      "remove"; // "remove"
-  }
-
-  declare class tableau$SelectionUpdateType__REPLACE
-    mixins tableau$SelectionUpdateType {}
-  declare class tableau$SelectionUpdateType__ADD
-    mixins tableau$SelectionUpdateType {}
-  declare class tableau$SelectionUpdateType__REMOVE
-    mixins tableau$SelectionUpdateType {}
+  declare var tableau$SelectionUpdateType: {|
+    +REPLACE: "replace", // "replace"
+    +ADD: "add", // "add"
+    +REMOVE: "remove" // "remove"
+  |};
 
   declare interface tableau$Size {
     width: number;
