@@ -163,7 +163,7 @@ declare module "mapbox-gl" {
   /**
    * Map
    */
-  declare export class mapboxgl$Map mixins Evented {
+  declare export class mapboxgl$Map mixins mapboxgl$Evented {
     constructor(options?: mapboxgl$MapboxOptions): this;
     addControl(
       control: mapboxgl$Control | mapboxgl$IControl,
@@ -745,12 +745,12 @@ declare module "mapbox-gl" {
   /**
    * Control
    */
-  declare export class mapboxgl$Control mixins Evented {}
+  declare export class mapboxgl$Control mixins mapboxgl$Evented {}
 
   /**
    * Navigation
    */
-  declare export class mapboxgl$NavigationControl mixins Control {
+  declare export class mapboxgl$NavigationControl mixins mapboxgl$Control {
     constructor(options?: {
       showCompass?: boolean,
       showZoom?: boolean
@@ -766,7 +766,7 @@ declare module "mapbox-gl" {
   /**
    * Geolocate
    */
-  declare export class mapboxgl$GeolocateControl mixins Control {
+  declare export class mapboxgl$GeolocateControl mixins mapboxgl$Control {
     constructor(options?: {
       positionOptions?: mapboxgl$PositionOptions,
       fitBoundsOptions?: mapboxgl$FitBoundsOptions,
@@ -779,7 +779,7 @@ declare module "mapbox-gl" {
   /**
    * Attribution
    */
-  declare export class mapboxgl$AttributionControl mixins Control {
+  declare export class mapboxgl$AttributionControl mixins mapboxgl$Control {
     constructor(options?: {
       compact?: boolean,
       customAttribution?: string | string[]
@@ -789,7 +789,7 @@ declare module "mapbox-gl" {
   /**
    * Scale
    */
-  declare export class mapboxgl$ScaleControl mixins Control {
+  declare export class mapboxgl$ScaleControl mixins mapboxgl$Control {
     constructor(options?: {
       maxWidth?: number,
       unit?: string
@@ -800,14 +800,14 @@ declare module "mapbox-gl" {
   /**
    * Fullscreen
    */
-  declare export class mapboxgl$FullscreenControl mixins Control {
+  declare export class mapboxgl$FullscreenControl mixins mapboxgl$Control {
     constructor(): this;
   }
 
   /**
    * Popup
    */
-  declare export class mapboxgl$Popup mixins Evented {
+  declare export class mapboxgl$Popup mixins mapboxgl$Evented {
     constructor(options?: mapboxgl$PopupOptions): this;
     addTo(map: mapboxgl$Map): this;
     isOpen(): boolean;
@@ -901,10 +901,10 @@ declare module "mapbox-gl" {
    */
   declare export type mapboxgl$GeoJSONSourceRaw = {
     type: "geojson"
-  } & Source &
-    GeoJSONSourceOptions;
+  } & mapboxgl$Source &
+    mapboxgl$GeoJSONSourceOptions;
 
-  declare export class mapboxgl$GeoJSONSource mixins GeoJSONSourceRaw {
+  declare export class mapboxgl$GeoJSONSource mixins mapboxgl$GeoJSONSourceRaw {
     type: "geojson";
     constructor(options?: mapboxgl$GeoJSONSourceOptions): this;
     setData(
@@ -956,10 +956,10 @@ declare module "mapbox-gl" {
    */
   declare export type mapboxgl$VideoSourceRaw = {
     type: "video"
-  } & Source &
-    VideoSourceOptions;
+  } & mapboxgl$Source &
+    mapboxgl$VideoSourceOptions;
 
-  declare export class mapboxgl$VideoSource mixins VideoSourceRaw {
+  declare export class mapboxgl$VideoSource mixins mapboxgl$VideoSourceRaw {
     type: "video";
     constructor(options?: mapboxgl$VideoSourceOptions): this;
     getVideo(): HTMLVideoElement;
@@ -976,10 +976,10 @@ declare module "mapbox-gl" {
    */
   declare export type mapboxgl$ImageSourceRaw = {
     type: "image"
-  } & Source &
-    ImageSourceOptions;
+  } & mapboxgl$Source &
+    mapboxgl$ImageSourceOptions;
 
-  declare export class mapboxgl$ImageSource mixins ImageSourceRaw {
+  declare export class mapboxgl$ImageSource mixins mapboxgl$ImageSourceRaw {
     type: "image";
     constructor(options?: mapboxgl$ImageSourceOptions): this;
     setCoordinates(coordinates: number[][]): this;
@@ -995,10 +995,10 @@ declare module "mapbox-gl" {
    */
   declare export type mapboxgl$CanvasSourceRaw = {
     type: "canvas"
-  } & Source &
-    CanvasSourceOptions;
+  } & mapboxgl$Source &
+    mapboxgl$CanvasSourceOptions;
 
-  declare export class mapboxgl$CanvasSource mixins CanvasSourceRaw {
+  declare export class mapboxgl$CanvasSource mixins mapboxgl$CanvasSourceRaw {
     type: "canvas";
     coordinates: number[][];
     canvas: string | HTMLCanvasElement;
@@ -1023,7 +1023,7 @@ declare module "mapbox-gl" {
     minzoom?: number,
     maxzoom?: number,
     attribution?: string
-  } & Source;
+  } & mapboxgl$Source;
 
   declare type mapboxgl$RasterSource = {
     type: "raster",
@@ -1035,7 +1035,7 @@ declare module "mapbox-gl" {
     tileSize?: number,
     scheme?: "xyz" | "tms",
     attribution?: string
-  } & Source;
+  } & mapboxgl$Source;
 
   declare type mapboxgl$RasterDemSource = {
     type: "raster-dem",
@@ -1047,7 +1047,7 @@ declare module "mapbox-gl" {
     tileSize?: number,
     attribution?: string,
     encoding?: "terrarium" | "mapbox"
-  } & Source;
+  } & mapboxgl$Source;
 
   /**
    * LngLat
@@ -1192,7 +1192,7 @@ declare module "mapbox-gl" {
   /**
    * Marker
    */
-  declare export class mapboxgl$Marker mixins Evented {
+  declare export class mapboxgl$Marker mixins mapboxgl$Evented {
     constructor(options?: mapboxgl$MarkerOptions): this;
     constructor(element?: HTMLElement, options?: mapboxgl$MarkerOptions): this;
     addTo(map: mapboxgl$Map): this;
@@ -1258,7 +1258,8 @@ declare module "mapbox-gl" {
     originalEvent: TOrig;
   }
 
-  declare export class mapboxgl$MapMouseEvent mixins MapboxEvent<MouseEvent> {
+  declare export class mapboxgl$MapMouseEvent
+    mixins mapboxgl$MapboxEvent<MouseEvent> {
     type:
       | "mousedown"
       | "mouseup"
@@ -1280,7 +1281,8 @@ declare module "mapbox-gl" {
     features?: mapboxgl$MapboxGeoJSONFeature[]
   };
 
-  declare export class mapboxgl$MapTouchEvent mixins MapboxEvent<TouchEvent> {
+  declare export class mapboxgl$MapTouchEvent
+    mixins mapboxgl$MapboxEvent<TouchEvent> {
     type: "touchstart" | "touchend" | "touchcancel";
     point: mapboxgl$Point;
     lngLat: mapboxgl$LngLat;
@@ -1294,7 +1296,8 @@ declare module "mapbox-gl" {
     features?: mapboxgl$MapboxGeoJSONFeature[]
   };
 
-  declare export class mapboxgl$MapWheelEvent mixins MapboxEvent<WheelEvent> {
+  declare export class mapboxgl$MapWheelEvent
+    mixins mapboxgl$MapboxEvent<WheelEvent> {
     type: "wheel";
     preventDefault(): void;
     defaultPrevented: boolean;
@@ -1303,7 +1306,7 @@ declare module "mapbox-gl" {
   declare export type mapboxgl$MapBoxZoomEvent = {
     type: "boxzoomstart" | "boxzoomend" | "boxzoomcancel",
     boxZoomBounds: mapboxgl$LngLatBounds
-  } & MapboxEvent<MouseEvent>;
+  } & mapboxgl$MapboxEvent<MouseEvent>;
 
   declare export type mapboxgl$MapDataEvent =
     | mapboxgl$MapSourceDataEvent
@@ -1311,7 +1314,7 @@ declare module "mapbox-gl" {
 
   declare export type mapboxgl$MapStyleDataEvent = {
     dataType: "style"
-  } & MapboxEvent;
+  } & mapboxgl$MapboxEvent;
 
   declare export type mapboxgl$MapSourceDataEvent = {
     dataType: "source",
@@ -1321,7 +1324,7 @@ declare module "mapbox-gl" {
     sourceDataType: "metadata" | "content",
     tile: any,
     coord: mapboxgl$Coordinate
-  } & MapboxEvent;
+  } & mapboxgl$MapboxEvent;
 
   declare export interface mapboxgl$Coordinate {
     canonical: mapboxgl$CanonicalCoordinate;
@@ -1339,9 +1342,9 @@ declare module "mapbox-gl" {
 
   declare export type mapboxgl$MapContextEvent = {
     type: "webglcontextlost" | "webglcontextrestored"
-  } & MapboxEvent<WebGLContextEvent>;
+  } & mapboxgl$MapboxEvent<WebGLContextEvent>;
 
-  declare export class mapboxgl$ErrorEvent mixins MapboxEvent {
+  declare export class mapboxgl$ErrorEvent mixins mapboxgl$MapboxEvent {
     type: "error";
     error: Error;
   }
@@ -1406,7 +1409,7 @@ declare module "mapbox-gl" {
     padding?: number | mapboxgl$PaddingOptions,
     offset?: mapboxgl$PointLike,
     maxZoom?: number
-  } & CameraOptions;
+  } & mapboxgl$CameraOptions;
 
   /**
    * FlyToOptions
@@ -1417,8 +1420,8 @@ declare module "mapbox-gl" {
     speed?: number,
     screenSpeed?: number,
     maxDuration?: number
-  } & AnimationOptions &
-    CameraOptions;
+  } & mapboxgl$AnimationOptions &
+    mapboxgl$CameraOptions;
 
   declare export type mapboxgl$FitBoundsOptions = {
     linear?: boolean,
@@ -1433,10 +1436,10 @@ declare module "mapbox-gl" {
    */
   declare export type mapboxgl$MapEventType = {
     error: mapboxgl$ErrorEvent,
-    load: mapboxgl$MapboxEvent,
-    remove: mapboxgl$MapboxEvent,
-    render: mapboxgl$MapboxEvent,
-    resize: mapboxgl$MapboxEvent,
+    load: mapboxgl$MapboxEvent<>,
+    remove: mapboxgl$MapboxEvent<>,
+    render: mapboxgl$MapboxEvent<>,
+    resize: mapboxgl$MapboxEvent<>,
     webglcontextlost: mapboxgl$MapContextEvent,
     webglcontextrestored: mapboxgl$MapContextEvent,
     dataloading: mapboxgl$MapDataEvent,
