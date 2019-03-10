@@ -5,10 +5,10 @@ declare module "assert-equal-jsx" {
     sanitize?: (str: string) => string;
   }
   declare function assertEqualJSX(
-    actual: JSX.Element,
-    expected: JSX.Element,
-    opts?: assertEqualJSX$assertEqualJSX$AsssertOptions
+    actual: React$Node,
+    expected: React$Node,
+    opts?: assertEqualJSX$AsssertOptions
   ): void;
 
-  declare module.exports: typeof assertEqualJSX;
+  declare export default typeof assertEqualJSX;
 }
