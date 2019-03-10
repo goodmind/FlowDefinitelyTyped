@@ -1,5 +1,6 @@
 declare module 'ibm-mobilefirst' {
-        
+        declare var WL: typeof npm$namespace$WL;
+
       declare var npm$namespace$WL: {
         
         Logger: typeof WL$Logger,
@@ -945,7 +946,7 @@ declare function WL$JSONStore$fileInfo(): JQueryDeferred<any>
 /**
  * Provides an accessor to the collection if the collection exists, otherwise it returns undefined.
  */
-declare function WL$JSONStore$get(collectionName: string): JSONStore$JSONStoreInstance
+declare function WL$JSONStore$get(collectionName: string): WL$JSONStore$JSONStoreInstance
 
 
 
@@ -980,7 +981,7 @@ options?: WL$JSONStore$InitOptions): WL$JSONStore$JSONStoreInstance
 /**
  * Creates a query for advanced find. See WL.JSONStore.QueryPart for more information.
  */
-declare function WL$JSONStore$QueryPart(): JSONStore$QueryPartObj
+declare function WL$JSONStore$QueryPart(): WL$JSONStore$QueryPartObj
 
 
 
@@ -1604,7 +1605,8 @@ declare function WL$UserAuth$deleteCertificate(provisioningEntity?: string): JQu
 declare var WL$ClientMessages: {
 [name: string]: string
 };
-	
+	declare var WLAuthorizationManager: typeof npm$namespace$WLAuthorizationManager;
+
       declare var npm$namespace$WLAuthorizationManager: {
         addCachedAuthorizationHeader: typeof WLAuthorizationManager$addCachedAuthorizationHeader,
 getAppIdentity: typeof WLAuthorizationManager$getAppIdentity,
