@@ -1,6 +1,6 @@
 declare module "@storybook/channels" {
   declare type EventName = PropertyKey;
-  declare type EventHandler = (event: Channel$Channel$Event) => void;
+  declare type EventHandler = (event: Channel$Event) => void;
   declare type Listener = (...args: any) => void;
   declare interface Channel$Event {
     type: EventName;
@@ -14,7 +14,7 @@ declare module "@storybook/channels" {
   }
   declare class Channel {
     constructor(options?: {
-      transport?: Channel$Channel$Transport,
+      transport?: Channel$Transport,
       async?: boolean
     }): this;
     addListener(type: EventName, listener: Listener): void;
@@ -29,5 +29,5 @@ declare module "@storybook/channels" {
     removeAllListeners(type: EventName): void;
     removeListener(type: EventName, listener: Listener): void;
   }
-  declare module.exports: typeof Channel;
+  declare export default typeof Channel;
 }
