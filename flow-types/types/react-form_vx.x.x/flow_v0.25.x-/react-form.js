@@ -12,7 +12,7 @@ declare module "react-form" {
     [key: string]: FormError;
   }
   declare export type NestedErrors = Nested<FormErrors>;
-  declare export type RenderReturn = JSX.Element | false | null | empty[];
+  declare export type RenderReturn = React$Node | false | null | empty[];
   declare export interface FormState {
     values: FormValues;
     touched: Touched;
