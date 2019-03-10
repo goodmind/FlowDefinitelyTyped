@@ -21,8 +21,8 @@ declare module "react-burger-menu" {
     burgerButtonClassName?: string;
     crossButtonClassName?: string;
     crossClassName?: string;
-    customBurgerIcon?: JSX.Element | false;
-    customCrossIcon?: JSX.Element | false;
+    customBurgerIcon?: React$Node | false;
+    customCrossIcon?: React$Node | false;
     disableOverlayClick?: boolean;
     id?: string;
     isOpen?: boolean;
