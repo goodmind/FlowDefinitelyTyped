@@ -33,12 +33,12 @@ declare module "react-dnd-multi-backend" {
   }
 
   /**
- * Function to create a custom/new Transition.
- * @param eventType EventType string to identify the type of event being tested. This will be an
-HTML event, such as "dragstart", "touchstart", etc.
- * @param check The CheckFunction to use to verify if an event matches the event type.
- * @returns A Transition to indicate when a particular Backend should be used.
- */
+   * Function to create a custom/new Transition.
+   * @param eventType EventType string to identify the type of event being tested. This will be an
+   * HTML event, such as "dragstart", "touchstart", etc.
+   * @param check The CheckFunction to use to verify if an event matches the event type.
+   * @returns A Transition to indicate when a particular Backend should be used.
+   */
   declare export function createTransition(
     eventType: string,
     check: CheckFunction<any>
@@ -83,15 +83,15 @@ HTML event, such as "dragstart", "touchstart", etc.
    */
   declare export interface PreviewProps {
     /**
- * Callback function to generate a preview object when dragging. This preview will only be used
- * with backends that have the 'preview' flag set to true.
- * @param type : the type of the item (monitor.getItemType())
- * @param item : the item being dragged (monitor.getItem())
- * @param style : an object representing the style to use for the item, it should be passed to
-your component's style property and is used for positioning.
- * @returns The JSX element to display for the drag preview.
- */
-    generator(type: string, item: any, style: CSSProperties): JSX.Element;
+     * Callback function to generate a preview object when dragging. This preview will only be used
+     * with backends that have the 'preview' flag set to true.
+     * @param type : the type of the item (monitor.getItemType())
+     * @param item : the item being dragged (monitor.getItem())
+     * @param style : an object representing the style to use for the item, it should be passed to
+     * your component's style property and is used for positioning.
+     * @returns The JSX element to display for the drag preview.
+     */
+    generator(type: string, item: any, style: CSSProperties): React$Node;
   }
 
   /**
