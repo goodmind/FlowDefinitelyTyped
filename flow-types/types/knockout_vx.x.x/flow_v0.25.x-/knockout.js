@@ -1,5 +1,5 @@
 declare interface KnockoutSubscribableFunctions<T> {
-  notifySubscribers(valueToWrite?: T, maps$event?: string): void;
+  notifySubscribers(valueToWrite?: T, event?: string): void;
 }
 declare interface KnockoutComputedFunctions<T> {}
 declare interface KnockoutObservableFunctions<T> {
@@ -11,7 +11,7 @@ declare interface KnockoutReadonlyObservableArrayFunctions<T> {
    * @param searchElement The value to locate in the array.
    * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
    */
-  tools$indexOf(searchElement: T, fromIndex?: number): number;
+  indexOf(searchElement: T, fromIndex?: number): number;
 
   /**
    * Returns a section of an array.
@@ -80,19 +80,19 @@ declare type KnockoutObservableArrayFunctions<T> = {
    * @param oldItem Item to be replaced
    * @param newItem Replacing item
    */
-  CKEDITOR$replace(oldItem: T, newItem: T): void,
+  replace(oldItem: T, newItem: T): void,
 
   /**
    * Removes all values that equal item and returns them as an array.
    * @param item The item to be removed
    */
-  EncryptedCache$remove(item: T): T[],
+  remove(item: T): T[],
 
   /**
    * Removes all values and returns them as an array.
    * @param removeFunction A function used to determine true if item should be removed and fasle otherwise
    */
-  EncryptedCache$remove(tools$removeFunction: (item: T) => boolean): T[],
+  remove(removeFunction: (item: T) => boolean): T[],
 
   /**
    * Removes all values that equal any of the supplied items
@@ -109,13 +109,13 @@ declare type KnockoutObservableArrayFunctions<T> = {
    * Finds any objects in the array that equal someItem and gives them a special property called _destroy with value true.
    * @param item Items to be marked with the property.
    */
-  JSONStore$destroy(item: T): void,
+  destroy(item: T): void,
 
   /**
    * Finds any objects in the array filtered by a function and gives them a special property called _destroy with value true.
    * @param destroyFunction A function used to determine which items should be marked with the property.
    */
-  JSONStore$destroy(destroyFunction: (item: T) => boolean): void,
+  destroy(destroyFunction: (item: T) => boolean): void,
 
   /**
    * Finds any objects in the array that equal suplied items and gives them a special property called _destroy with value true.
@@ -136,7 +136,7 @@ declare interface KnockoutSubscription {
   /**
    * Terminates a subscription
    */
-  Giraffe$dispose(): void;
+  dispose(): void;
 }
 declare type KnockoutSubscribable<T> = {
   /**
@@ -146,9 +146,9 @@ declare type KnockoutSubscribable<T> = {
    * @param event The name of the event to receive notification for
    */
   subscribe(
-    braintree$callback: (newValue: T) => void,
+    callback: (newValue: T) => void,
     target?: any,
-    maps$event?: "change"
+    event?: "change"
   ): KnockoutSubscription,
 
   /**
@@ -158,9 +158,9 @@ declare type KnockoutSubscribable<T> = {
    * @param event The name of the event to receive notification for
    */
   subscribe(
-    braintree$callback: (newValue: T) => void,
+    callback: (newValue: T) => void,
     target: any,
-    maps$event: "beforeChange"
+    event: "beforeChange"
   ): KnockoutSubscription,
 
   /**
@@ -170,16 +170,16 @@ declare type KnockoutSubscribable<T> = {
    * @param event The name of the event to receive notification for
    */
   subscribe<TEvent>(
-    braintree$callback: (newValue: TEvent) => void,
+    callback: (newValue: TEvent) => void,
     target: any,
-    maps$event: string
+    event: string
   ): KnockoutSubscription,
 
   /**
    * Customizes observables basic functionality
    * @param requestedExtenders Name of the extender feature and its value, e.g. { notify: 'always' }, { rateLimit: 50 }
    */
-  Utils$extend(requestedExtenders: {
+  extend(requestedExtenders: {
     [key: string]: any
   }): KnockoutSubscribable<T>,
 
@@ -192,7 +192,7 @@ declare type KnockoutSubscribable<T> = {
    * Gets number of subscribers of a particular event
    * @param event Event name
    */
-  getSubscriptionsCount(maps$event: string): number
+  getSubscriptionsCount(event: string): number
 } & KnockoutSubscribableFunctions<T>;
 declare interface KnockoutComputedStatic {
   fn: KnockoutComputedFunctions<any>;
@@ -210,8 +210,8 @@ declare interface KnockoutComputedStatic {
    */
   <T>(
     evaluatorFunction: () => T,
-    balloontoolbar$context?: any,
-    notification$options?: KnockoutComputedOptions<T>
+    context?: any,
+    options?: KnockoutComputedOptions<T>
   ): KnockoutComputed<T>;
 
   /**
@@ -219,10 +219,7 @@ declare interface KnockoutComputedStatic {
    * @param options An object that defines the computed observable options and behavior
    * @param context Defines the value of 'this' when evaluating the computed observable
    */
-  <T>(
-    notification$options: KnockoutComputedDefine<T>,
-    balloontoolbar$context?: any
-  ): KnockoutComputed<T>;
+  <T>(options: KnockoutComputedDefine<T>, context?: any): KnockoutComputed<T>;
 }
 declare type KnockoutReadonlyComputed<T> = {
   isActive(): boolean,
@@ -236,7 +233,7 @@ declare type KnockoutComputed<T> = {
    * This function is useful if you want to stop a computed observable from being updated or want to clean up memory for a
    * computed observable that has dependencies on observables that won’t be cleaned.
    */
-  Giraffe$dispose(): void,
+  dispose(): void,
 
   /**
    * Returns whether the computed observable may be updated in the future. A computed observable is inactive if it has no dependencies.
@@ -252,7 +249,7 @@ declare type KnockoutComputed<T> = {
    * Customizes observables basic functionality
    * @param requestedExtenders Name of the extender feature and it's value, e.g. { notify: 'always' }, { rateLimit: 50 }
    */
-  Utils$extend(requestedExtenders: {
+  extend(requestedExtenders: {
     [key: string]: any
   }): KnockoutComputed<T>
 } & KnockoutReadonlyComputed<T> &
@@ -268,49 +265,49 @@ declare interface KnockoutObservableArrayStatic {
  */
 declare type KnockoutReadonlyObservableArray<T> = {
   subscribe(
-    braintree$callback: (newValue: KnockoutArrayChange<T>[]) => void,
+    callback: (newValue: KnockoutArrayChange<T>[]) => void,
     target: any,
-    maps$event: "arrayChange"
+    event: "arrayChange"
   ): KnockoutSubscription,
   subscribe(
-    braintree$callback: (newValue: T[]) => void,
+    callback: (newValue: T[]) => void,
     target: any,
-    maps$event: "beforeChange"
+    event: "beforeChange"
   ): KnockoutSubscription,
   subscribe(
-    braintree$callback: (newValue: T[]) => void,
+    callback: (newValue: T[]) => void,
     target?: any,
-    maps$event?: "change"
+    event?: "change"
   ): KnockoutSubscription,
   subscribe<TEvent>(
-    braintree$callback: (newValue: TEvent) => void,
+    callback: (newValue: TEvent) => void,
     target: any,
-    maps$event: string
+    event: string
   ): KnockoutSubscription
 } & KnockoutReadonlyObservable<$ReadOnlyArray<T>> &
   KnockoutReadonlyObservableArrayFunctions<T>;
 declare type KnockoutObservableArray<T> = {
   subscribe(
-    braintree$callback: (newValue: KnockoutArrayChange<T>[]) => void,
+    callback: (newValue: KnockoutArrayChange<T>[]) => void,
     target: any,
-    maps$event: "arrayChange"
+    event: "arrayChange"
   ): KnockoutSubscription,
   subscribe(
-    braintree$callback: (newValue: T[]) => void,
+    callback: (newValue: T[]) => void,
     target: any,
-    maps$event: "beforeChange"
+    event: "beforeChange"
   ): KnockoutSubscription,
   subscribe(
-    braintree$callback: (newValue: T[]) => void,
+    callback: (newValue: T[]) => void,
     target?: any,
-    maps$event?: "change"
+    event?: "change"
   ): KnockoutSubscription,
   subscribe<TEvent>(
-    braintree$callback: (newValue: TEvent) => void,
+    callback: (newValue: TEvent) => void,
     target: any,
-    maps$event: string
+    event: string
   ): KnockoutSubscription,
-  Utils$extend(requestedExtenders: {
+  extend(requestedExtenders: {
     [key: string]: any
   }): KnockoutObservableArray<T>
 } & KnockoutObservable<T[]> &
@@ -342,7 +339,7 @@ declare type KnockoutReadonlyObservable<T> = {
   KnockoutObservableFunctions<T>;
 declare type KnockoutObservable<T> = {
   (value: T): void,
-  Utils$extend(requestedExtenders: {
+  extend(requestedExtenders: {
     [key: string]: any
   }): KnockoutObservable<T>
 } & KnockoutReadonlyObservable<T>;
@@ -352,13 +349,13 @@ declare interface KnockoutComputedOptions<T> {
    * It’s up to you to supply custom logic to handle the incoming values, typically by writing the values to some underlying observable(s).
    * @param value
    */
-  EncryptedCache$write?: (value: T) => void;
+  write?: (value: T) => void;
 
   /**
    * Disposal of the computed observable will be triggered when the specified DOM node is removed by KO.
    * This feature is used to dispose computed observables used in bindings when nodes are removed by the template and control-flow bindings.
    */
-  disposeWhenNodeIsRemoved?: AST$Node;
+  disposeWhenNodeIsRemoved?: Node;
 
   /**
    * This function is executed before each re-evaluation to determine if the computed observable should be disposed.
@@ -386,7 +383,7 @@ declare type KnockoutComputedDefine<T> = {
   /**
    * A function that is used to evaluate the computed observable’s current value.
    */
-  EncryptedCache$read(): T
+  read(): T
 } & KnockoutComputedOptions<T>;
 declare interface KnockoutBindingContext {
   $parent: any;
@@ -397,23 +394,23 @@ declare interface KnockoutBindingContext {
   $index?: KnockoutObservable<number>;
   $parentContext?: KnockoutBindingContext;
   $component: any;
-  $componentTemplateNodes: AST$Node[];
-  Utils$extend(properties: any): any;
+  $componentTemplateNodes: Node[];
+  extend(properties: any): any;
   createChildContext(
     dataItemOrAccessor: any,
     dataItemAlias?: any,
-    extendCallback?: core$Function
+    extendCallback?: Function
   ): any;
 }
 declare interface KnockoutAllBindingsAccessor {
   (): any;
-  JSONStore$get(skin$name: string): any;
-  dojo$has(skin$name: string): boolean;
+  get(name: string): any;
+  has(name: string): boolean;
 }
-declare interface KnockoutBindingHandler<E: AST$Node = any, V = any, VM = any> {
-  after?: core$Array<string>;
-  TabBar$init?: (
-    htmlParser$element: E,
+declare interface KnockoutBindingHandler<E: Node = any, V = any, VM = any> {
+  after?: Array<string>;
+  init?: (
+    element: E,
     valueAccessor: () => V,
     allBindingsAccessor: KnockoutAllBindingsAccessor,
     viewModel: VM,
@@ -422,49 +419,49 @@ declare interface KnockoutBindingHandler<E: AST$Node = any, V = any, VM = any> {
     controlsDescendantBindings: boolean
   };
   update?: (
-    htmlParser$element: E,
+    element: E,
     valueAccessor: () => V,
     allBindingsAccessor: KnockoutAllBindingsAccessor,
     viewModel: VM,
     bindingContext: KnockoutBindingContext
   ) => void;
-  notification$options?: any;
+  options?: any;
   preprocess?: (
     value: string,
-    skin$name: string,
-    addBindingCallback?: (skin$name: string, value: string) => void
+    name: string,
+    addBindingCallback?: (name: string, value: string) => void
   ) => string;
   [s: string]: any;
 }
 declare interface KnockoutBindingHandlers {
-  [bindingHandler: string]: KnockoutBindingHandler;
-  visible: KnockoutBindingHandler;
-  dojo$text: KnockoutBindingHandler;
-  main$html: KnockoutBindingHandler;
-  css: KnockoutBindingHandler;
-  CKEDITOR$style: KnockoutBindingHandler;
-  DS$attr: KnockoutBindingHandler;
-  foreach: KnockoutBindingHandler;
-  if: KnockoutBindingHandler;
-  ifnot: KnockoutBindingHandler;
-  with: KnockoutBindingHandler;
-  click: KnockoutBindingHandler;
-  maps$event: KnockoutBindingHandler;
-  submit: KnockoutBindingHandler;
-  Analytics$enable: KnockoutBindingHandler;
-  Analytics$disable: KnockoutBindingHandler;
-  value: KnockoutBindingHandler;
-  dialog$textInput: KnockoutBindingHandler;
-  hasfocus: KnockoutBindingHandler;
-  checked: KnockoutBindingHandler;
-  notification$options: KnockoutBindingHandler;
-  selectedOptions: KnockoutBindingHandler;
-  uniqueName: KnockoutBindingHandler;
-  Handlebars$template: KnockoutBindingHandler;
-  component: KnockoutBindingHandler;
+  [bindingHandler: string]: KnockoutBindingHandler<>;
+  visible: KnockoutBindingHandler<>;
+  text: KnockoutBindingHandler<>;
+  html: KnockoutBindingHandler<>;
+  css: KnockoutBindingHandler<>;
+  style: KnockoutBindingHandler<>;
+  attr: KnockoutBindingHandler<>;
+  foreach: KnockoutBindingHandler<>;
+  if: KnockoutBindingHandler<>;
+  ifnot: KnockoutBindingHandler<>;
+  with: KnockoutBindingHandler<>;
+  click: KnockoutBindingHandler<>;
+  event: KnockoutBindingHandler<>;
+  submit: KnockoutBindingHandler<>;
+  enable: KnockoutBindingHandler<>;
+  disable: KnockoutBindingHandler<>;
+  value: KnockoutBindingHandler<>;
+  textInput: KnockoutBindingHandler<>;
+  hasfocus: KnockoutBindingHandler<>;
+  checked: KnockoutBindingHandler<>;
+  options: KnockoutBindingHandler<>;
+  selectedOptions: KnockoutBindingHandler<>;
+  uniqueName: KnockoutBindingHandler<>;
+  template: KnockoutBindingHandler<>;
+  component: KnockoutBindingHandler<>;
 }
 declare interface KnockoutMemoization {
-  core$memoize(braintree$callback: () => string): string;
+  memoize(callback: () => string): string;
   unmemoize(memoId: string, callbackParams: any[]): boolean;
   unmemoizeDomNodeAndDescendants(
     domNode: any,
@@ -477,31 +474,31 @@ declare interface KnockoutVirtualElements {
   allowedBindings: {
     [bindingName: string]: boolean
   };
-  emptyNode(dojo$node: KnockoutVirtualElement): void;
-  firstChild(dojo$node: KnockoutVirtualElement): KnockoutVirtualElement;
+  emptyNode(node: KnockoutVirtualElement): void;
+  firstChild(node: KnockoutVirtualElement): KnockoutVirtualElement;
   insertAfter(
     container: KnockoutVirtualElement,
-    nodeToInsert: AST$Node,
-    insertAfter: AST$Node
+    nodeToInsert: Node,
+    insertAfter: Node
   ): void;
-  nextSibling(dojo$node: KnockoutVirtualElement): AST$Node;
-  Insert$prepend(dojo$node: KnockoutVirtualElement, toInsert: AST$Node): void;
+  nextSibling(node: KnockoutVirtualElement): Node;
+  prepend(node: KnockoutVirtualElement, toInsert: Node): void;
   setDomNodeChildren(
-    dojo$node: KnockoutVirtualElement,
+    node: KnockoutVirtualElement,
     newChildren: {
       length: number,
-      [index: number]: AST$Node
+      [index: number]: Node
     }
   ): void;
-  childNodes(dojo$node: KnockoutVirtualElement): AST$Node[];
+  childNodes(node: KnockoutVirtualElement): Node[];
 }
 declare interface KnockoutExtenders {
   throttle(target: any, timeout: number): KnockoutComputed<any>;
-  ElectronNotifications$notify(target: any, notifyWhen: string): any;
+  notify(target: any, notifyWhen: string): any;
   rateLimit(target: any, timeout: number): any;
   rateLimit(
     target: any,
-    notification$options: {
+    options: {
       timeout: number,
       method?: string
     }
@@ -510,95 +507,75 @@ declare interface KnockoutExtenders {
 }
 declare interface KnockoutUtils {
   domData: {
-    JSONStore$get(dojo$node: AST$Node, key: string): any,
-    Reflect$set(dojo$node: AST$Node, key: string, value: any): void,
-    getAll(dojo$node: AST$Node, createIfNotFound: boolean): any,
-    LocalStorage$clear(dojo$node: AST$Node): boolean
+    get(node: Node, key: string): any,
+    set(node: Node, key: string, value: any): void,
+    getAll(node: Node, createIfNotFound: boolean): any,
+    clear(node: Node): boolean
   };
   domNodeDisposal: {
-    addDisposeCallback(
-      dojo$node: AST$Node,
-      braintree$callback: core$Function
-    ): void,
-    removeDisposeCallback(
-      dojo$node: AST$Node,
-      braintree$callback: core$Function
-    ): void,
-    cleanNode(dojo$node: AST$Node): AST$Node,
-    removeNode(dojo$node: AST$Node): void
+    addDisposeCallback(node: Node, callback: Function): void,
+    removeDisposeCallback(node: Node, callback: Function): void,
+    cleanNode(node: Node): Node,
+    removeNode(node: Node): void
   };
   addOrRemoveItem<T>(
-    getenv$array: T[] | KnockoutObservable<T>,
+    array: T[] | KnockoutObservable<T>,
     value: T,
     included: T
   ): void;
-  arrayFilter<T>(getenv$array: T[], predicate: (item: T) => boolean): T[];
-  core$arrayFirst<T>(
-    getenv$array: T[],
+  arrayFilter<T>(array: T[], predicate: (item: T) => boolean): T[];
+  arrayFirst<T>(
+    array: T[],
     predicate: (item: T) => boolean,
     predicateOwner?: any
   ): T;
-  arrayForEach<T>(
-    getenv$array: T[],
-    action: (item: T, index: number) => void
-  ): void;
-  arrayGetDistinctValues<T>(getenv$array: T[]): T[];
-  core$arrayIndexOf<T>(getenv$array: T[], item: T): number;
-  arrayMap<T, U>(getenv$array: T[], mapping: (item: T) => U): U[];
+  arrayForEach<T>(array: T[], action: (item: T, index: number) => void): void;
+  arrayGetDistinctValues<T>(array: T[]): T[];
+  arrayIndexOf<T>(array: T[], item: T): number;
+  arrayMap<T, U>(array: T[], mapping: (item: T) => U): U[];
   arrayPushAll<T>(
-    getenv$array: T[] | KnockoutObservableArray<T>,
+    array: T[] | KnockoutObservableArray<T>,
     valuesToPush: T[]
   ): T[];
-  core$arrayRemoveItem(getenv$array: any[], itemToRemove: any): void;
-  compareArrays<T>(a: T[], b: T[]): core$Array<KnockoutArrayChange<T>>;
-  Utils$extend(
-    target: ioBroker$Object,
-    source: ioBroker$Object
-  ): ioBroker$Object;
+  arrayRemoveItem(array: any[], itemToRemove: any): void;
+  compareArrays<T>(a: T[], b: T[]): Array<KnockoutArrayChange<T>>;
+  extend(target: Object, source: Object): Object;
   fieldsIncludedWithJsonPost: any[];
   getFormFields(form: any, fieldName: string): any[];
-  core$objectForEach(obj: any, action: (key: any, value: any) => void): void;
-  parseHtmlFragment(main$html: string): any[];
+  objectForEach(obj: any, action: (key: any, value: any) => void): void;
+  parseHtmlFragment(html: string): any[];
   parseJson(jsonString: string): any;
-  postJson(urlOrForm: any, main$data: any, notification$options: any): void;
+  postJson(urlOrForm: any, data: any, options: any): void;
   peekObservable<T>(value: KnockoutObservable<T>): T;
-  dom$range(min: any, max: any): any;
-  registerEventHandler(
-    htmlParser$element: any,
-    eventType: any,
-    panel$handler: core$Function
-  ): void;
-  setHtml(dojo$node: JSX$Element, main$html: () => string): void;
-  setHtml(dojo$node: JSX$Element, main$html: string): void;
+  range(min: any, max: any): any;
+  registerEventHandler(element: any, eventType: any, handler: Function): void;
+  setHtml(node: Element, html: () => string): void;
+  setHtml(node: Element, html: string): void;
   setTextContent(
-    htmlParser$element: any,
+    element: any,
     textContent: string | KnockoutObservable<string>
   ): void;
-  stringifyJson(
-    main$data: any,
-    replacer?: core$Function,
-    space?: string
-  ): string;
+  stringifyJson(data: any, replacer?: Function, space?: string): string;
   toggleDomNodeCssClass(
-    dojo$node: any,
+    node: any,
     className: string,
     shouldHaveClass: boolean
   ): void;
-  triggerEvent(htmlParser$element: any, eventType: any): void;
+  triggerEvent(element: any, eventType: any): void;
   unwrapObservable<T>(value: KnockoutObservable<T> | T): T;
   unwrapObservable<T>(value: KnockoutObservableArray<T> | T[]): T[];
 }
 declare interface KnockoutArrayChange<T> {
-  CKEDITOR$status: "added" | "deleted" | "retained";
+  status: "added" | "deleted" | "retained";
   value: T;
   index: number;
   moved?: number;
 }
 declare interface KnockoutTemplateSourcesDomElement {
-  dojo$text(): any;
-  dojo$text(value: any): void;
-  main$data(key: string): any;
-  main$data(key: string, value: any): any;
+  text(): any;
+  text(value: any): void;
+  data(key: string): any;
+  data(key: string, value: any): any;
 }
 declare type KnockoutTemplateAnonymous = {
   nodes(): any,
@@ -606,54 +583,48 @@ declare type KnockoutTemplateAnonymous = {
 } & KnockoutTemplateSourcesDomElement;
 declare interface KnockoutTemplateSources {
   domElement: {
-    express_flash_notification$prototype: KnockoutTemplateSourcesDomElement,
-    new(htmlParser$element: JSX$Element): KnockoutTemplateSourcesDomElement
+    prototype: KnockoutTemplateSourcesDomElement,
+    new(element: Element): KnockoutTemplateSourcesDomElement
   };
   anonymousTemplate: {
-    express_flash_notification$prototype: KnockoutTemplateAnonymous,
-    new(htmlParser$element: JSX$Element): KnockoutTemplateAnonymous
+    prototype: KnockoutTemplateAnonymous,
+    new(element: Element): KnockoutTemplateAnonymous
   };
 }
 declare type KnockoutNativeTemplateEngine = {
   renderTemplateSource(
-    templateSource: ioBroker$Object,
+    templateSource: Object,
     bindingContext?: KnockoutBindingContext,
-    notification$options?: ioBroker$Object
+    options?: Object
   ): any[]
 } & KnockoutTemplateEngine;
 declare interface KnockoutTemplateEngine {
-  createJavaScriptEvaluatorBlock(io$script: string): string;
-  makeTemplateSource(
-    Handlebars$template: any,
-    templateDocument?: Viewing$Document
-  ): any;
+  createJavaScriptEvaluatorBlock(script: string): string;
+  makeTemplateSource(template: any, templateDocument?: Document): any;
   renderTemplate(
-    Handlebars$template: any,
+    template: any,
     bindingContext: KnockoutBindingContext,
-    notification$options: ioBroker$Object,
-    templateDocument: Viewing$Document
+    options: Object,
+    templateDocument: Document
   ): any;
-  isTemplateRewritten(
-    Handlebars$template: any,
-    templateDocument: Viewing$Document
-  ): boolean;
+  isTemplateRewritten(template: any, templateDocument: Document): boolean;
   rewriteTemplate(
-    Handlebars$template: any,
-    rewriterCallback: core$Function,
-    templateDocument: Viewing$Document
+    template: any,
+    rewriterCallback: Function,
+    templateDocument: Document
   ): void;
 }
 declare interface KnockoutTasks {
-  scheduler: (braintree$callback: core$Function) => any;
-  schedule(esri$task: core$Function): number;
+  scheduler: (callback: Function) => any;
+  schedule(task: Function): number;
   cancel(handle: number): void;
   runEarly(): void;
 }
 declare interface KnockoutStatic {
-  AFRAME$utils: KnockoutUtils;
+  utils: KnockoutUtils;
   memoization: KnockoutMemoization;
   bindingHandlers: KnockoutBindingHandlers;
-  getBindingHandler(panel$handler: string): KnockoutBindingHandler;
+  getBindingHandler(handler: string): KnockoutBindingHandler<>;
   virtualElements: KnockoutVirtualElements;
   extenders: KnockoutExtenders;
   applyBindings(viewModelOrBindingContext?: any, rootNode?: any): void;
@@ -662,33 +633,23 @@ declare interface KnockoutStatic {
     rootNode: any
   ): void;
   applyBindingAccessorsToNode(
-    dojo$node: AST$Node,
-    bindings: (
-      bindingContext: KnockoutBindingContext,
-      dojo$node: AST$Node
-    ) => {},
+    node: Node,
+    bindings: (bindingContext: KnockoutBindingContext, node: Node) => {},
     bindingContext: KnockoutBindingContext
   ): void;
   applyBindingAccessorsToNode(
-    dojo$node: AST$Node,
+    node: Node,
     bindings: {},
     bindingContext: KnockoutBindingContext
   ): void;
   applyBindingAccessorsToNode(
-    dojo$node: AST$Node,
-    bindings: (
-      bindingContext: KnockoutBindingContext,
-      dojo$node: AST$Node
-    ) => {},
+    node: Node,
+    bindings: (bindingContext: KnockoutBindingContext, node: Node) => {},
     viewModel: any
   ): void;
-  applyBindingAccessorsToNode(
-    dojo$node: AST$Node,
-    bindings: {},
-    viewModel: any
-  ): void;
+  applyBindingAccessorsToNode(node: Node, bindings: {}, viewModel: any): void;
   applyBindingsToNode(
-    dojo$node: AST$Node,
+    node: Node,
     bindings: any,
     viewModelOrBindingContext?: any
   ): any;
@@ -703,7 +664,7 @@ declare interface KnockoutStatic {
    */
   pureComputed<T>(
     evaluatorFunction: () => T,
-    balloontoolbar$context?: any
+    context?: any
   ): KnockoutComputed<T>;
 
   /**
@@ -712,13 +673,13 @@ declare interface KnockoutStatic {
    * @param context Defines the value of 'this' when evaluating the computed observable
    */
   pureComputed<T>(
-    notification$options: KnockoutComputedDefine<T>,
-    balloontoolbar$context?: any
+    options: KnockoutComputedDefine<T>,
+    context?: any
   ): KnockoutComputed<T>;
   observableArray: KnockoutObservableArrayStatic;
-  contextFor(dojo$node: any): any;
+  contextFor(node: any): any;
   isSubscribable(instance: any): boolean;
-  utils$toJSON(viewModel: any, replacer?: core$Function, space?: any): string;
+  toJSON(viewModel: any, replacer?: Function, space?: any): string;
   toJS(viewModel: any): any;
 
   /**
@@ -756,20 +717,20 @@ declare interface KnockoutStatic {
    * @param instance Object to be checked
    */
   isComputed<T>(instance: KnockoutObservable<T> | T): boolean;
-  dataFor(dojo$node: any): any;
-  removeNode(dojo$node: AST$Node): void;
-  cleanNode(dojo$node: AST$Node): AST$Node;
+  dataFor(node: any): any;
+  removeNode(node: Node): void;
+  cleanNode(node: Node): Node;
   renderTemplate(
-    Handlebars$template: core$Function,
+    template: Function,
     viewModel: any,
-    notification$options?: any,
+    options?: any,
     target?: any,
     renderMode?: any
   ): any;
   renderTemplate(
-    Handlebars$template: string,
+    template: string,
     viewModel: any,
-    notification$options?: any,
+    options?: any,
     target?: any,
     renderMode?: any
   ): any;
@@ -782,19 +743,19 @@ declare interface KnockoutStatic {
   computedContext: KnockoutComputedContext;
   templateSources: KnockoutTemplateSources;
   templateEngine: {
-    express_flash_notification$prototype: KnockoutTemplateEngine,
+    prototype: KnockoutTemplateEngine,
     new(): KnockoutTemplateEngine
   };
   templateRewriting: {
     ensureTemplateIsRewritten(
-      Handlebars$template: AST$Node,
+      template: Node,
       templateEngine: KnockoutTemplateEngine,
-      templateDocument: Viewing$Document
+      templateDocument: Document
     ): any,
     ensureTemplateIsRewritten(
-      Handlebars$template: string,
+      template: string,
       templateEngine: KnockoutTemplateEngine,
-      templateDocument: Viewing$Document
+      templateDocument: Document
     ): any,
     memoizeBindingAttributeSyntax(
       htmlString: string,
@@ -803,103 +764,103 @@ declare interface KnockoutStatic {
     applyMemoizedBindingsToNextSibling(bindings: any, nodeName: string): string
   };
   nativeTemplateEngine: {
-    express_flash_notification$prototype: KnockoutNativeTemplateEngine,
+    prototype: KnockoutNativeTemplateEngine,
     new(): KnockoutNativeTemplateEngine,
     instance: KnockoutNativeTemplateEngine
   };
   jqueryTmplTemplateEngine: {
-    express_flash_notification$prototype: KnockoutTemplateEngine,
+    prototype: KnockoutTemplateEngine,
     renderTemplateSource(
-      templateSource: ioBroker$Object,
+      templateSource: Object,
       bindingContext: KnockoutBindingContext,
-      notification$options: ioBroker$Object
-    ): AST$Node[],
-    createJavaScriptEvaluatorBlock(io$script: string): string,
-    CKEDITOR$addTemplate(templateName: string, templateMarkup: string): void
+      options: Object
+    ): Node[],
+    createJavaScriptEvaluatorBlock(script: string): string,
+    addTemplate(templateName: string, templateMarkup: string): void
   };
   setTemplateEngine(templateEngine: KnockoutNativeTemplateEngine | void): void;
   renderTemplate(
-    Handlebars$template: core$Function,
+    template: Function,
     dataOrBindingContext: KnockoutBindingContext,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node,
+    options: Object,
+    targetNodeOrNodeArray: Node,
     renderMode: string
   ): any;
   renderTemplate(
-    Handlebars$template: any,
+    template: any,
     dataOrBindingContext: KnockoutBindingContext,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node,
+    options: Object,
+    targetNodeOrNodeArray: Node,
     renderMode: string
   ): any;
   renderTemplate(
-    Handlebars$template: core$Function,
+    template: Function,
     dataOrBindingContext: any,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node,
+    options: Object,
+    targetNodeOrNodeArray: Node,
     renderMode: string
   ): any;
   renderTemplate(
-    Handlebars$template: any,
+    template: any,
     dataOrBindingContext: any,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node,
+    options: Object,
+    targetNodeOrNodeArray: Node,
     renderMode: string
   ): any;
   renderTemplate(
-    Handlebars$template: core$Function,
+    template: Function,
     dataOrBindingContext: KnockoutBindingContext,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node[],
+    options: Object,
+    targetNodeOrNodeArray: Node[],
     renderMode: string
   ): any;
   renderTemplate(
-    Handlebars$template: any,
+    template: any,
     dataOrBindingContext: KnockoutBindingContext,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node[],
+    options: Object,
+    targetNodeOrNodeArray: Node[],
     renderMode: string
   ): any;
   renderTemplate(
-    Handlebars$template: core$Function,
+    template: Function,
     dataOrBindingContext: any,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node[],
+    options: Object,
+    targetNodeOrNodeArray: Node[],
     renderMode: string
   ): any;
   renderTemplate(
-    Handlebars$template: any,
+    template: any,
     dataOrBindingContext: any,
-    notification$options: ioBroker$Object,
-    targetNodeOrNodeArray: AST$Node[],
+    options: Object,
+    targetNodeOrNodeArray: Node[],
     renderMode: string
   ): any;
   renderTemplateForEach(
-    Handlebars$template: core$Function,
+    template: Function,
     arrayOrObservableArray: any[],
-    notification$options: ioBroker$Object,
-    targetNode: AST$Node,
+    options: Object,
+    targetNode: Node,
     parentBindingContext: KnockoutBindingContext
   ): any;
   renderTemplateForEach(
-    Handlebars$template: any,
+    template: any,
     arrayOrObservableArray: any[],
-    notification$options: ioBroker$Object,
-    targetNode: AST$Node,
+    options: Object,
+    targetNode: Node,
     parentBindingContext: KnockoutBindingContext
   ): any;
   renderTemplateForEach(
-    Handlebars$template: core$Function,
+    template: Function,
     arrayOrObservableArray: KnockoutObservable<any>,
-    notification$options: ioBroker$Object,
-    targetNode: AST$Node,
+    options: Object,
+    targetNode: Node,
     parentBindingContext: KnockoutBindingContext
   ): any;
   renderTemplateForEach(
-    Handlebars$template: any,
+    template: any,
     arrayOrObservableArray: KnockoutObservable<any>,
-    notification$options: ioBroker$Object,
-    targetNode: AST$Node,
+    options: Object,
+    targetNode: Node,
     parentBindingContext: KnockoutBindingContext
   ): any;
 
@@ -910,7 +871,7 @@ declare interface KnockoutStatic {
    * @param callbackArgs Arguments for the callback Function
    */
   ignoreDependencies<T>(
-    braintree$callback: () => T,
+    callback: () => T,
     callbackTarget?: any,
     callbackArgs?: any
   ): T;
@@ -947,26 +908,22 @@ declare interface KnockoutStatic {
     new(): KnockoutBindingProvider
   };
   selectExtensions: {
-    readValue(htmlParser$element: HTMLElement): any,
-    writeValue(
-      htmlParser$element: HTMLElement,
-      value: any,
-      allowUnset?: boolean
-    ): void
+    readValue(element: HTMLElement): any,
+    writeValue(element: HTMLElement, value: any, allowUnset?: boolean): void
   };
-  AFRAME$components: KnockoutComponents;
-  notification$options: {
+  components: KnockoutComponents;
+  options: {
     deferUpdates: boolean,
     useOnlyNativeEvents: boolean
   };
   tasks: KnockoutTasks;
-  onError?: (log$error: EventType$Error) => void;
+  onError?: (error: Error) => void;
 }
 declare interface KnockoutBindingProvider {
-  nodeHasBindings(dojo$node: AST$Node): boolean;
-  getBindings(dojo$node: AST$Node, bindingContext: KnockoutBindingContext): {};
+  nodeHasBindings(node: Node): boolean;
+  getBindings(node: Node, bindingContext: KnockoutBindingContext): {};
   getBindingAccessors?: (
-    dojo$node: AST$Node,
+    node: Node,
     bindingContext: KnockoutBindingContext
   ) => {
     [key: string]: string
@@ -991,9 +948,9 @@ declare interface KnockoutComponentTypes$Config {
     | KnockoutComponentTypes$ViewModelSharedInstance
     | KnockoutComponentTypes$ViewModelFactoryFunction
     | KnockoutComponentTypes$AMDModule;
-  Handlebars$template:
+  template:
     | string
-    | AST$Node[]
+    | Node[]
     | DocumentFragment
     | KnockoutComponentTypes$TemplateElement
     | KnockoutComponentTypes$AMDModule;
@@ -1006,14 +963,14 @@ declare interface KnockoutComponentTypes$ComponentConfig {
     | KnockoutComponentTypes$ViewModelSharedInstance
     | KnockoutComponentTypes$ViewModelFactoryFunction
     | KnockoutComponentTypes$AMDModule;
-  Handlebars$template: any;
+  template: any;
   createViewModel?: any;
 }
 
 declare interface KnockoutComponentTypes$EmptyConfig {}
 
 declare interface KnockoutComponentTypes$AMDModule {
-  dojo$require: string;
+  require: string;
 }
 
 declare interface KnockoutComponentTypes$ViewModelFunction {
@@ -1032,47 +989,43 @@ declare interface KnockoutComponentTypes$ViewModelFactoryFunction {
 }
 
 declare interface KnockoutComponentTypes$ComponentInfo {
-  htmlParser$element: AST$Node;
-  templateNodes: AST$Node[];
+  element: Node;
+  templateNodes: Node[];
 }
 
 declare interface KnockoutComponentTypes$TemplateElement {
-  htmlParser$element: string | AST$Node;
+  element: string | Node;
 }
 
 declare interface KnockoutComponentTypes$Loader {
   getConfig?: (
     componentName: string,
-    braintree$callback: (
-      result: KnockoutComponentTypes$ComponentConfig | null
-    ) => void
+    callback: (result: KnockoutComponentTypes$ComponentConfig | null) => void
   ) => void;
   loadComponent?: (
     componentName: string,
-    main$config: KnockoutComponentTypes$ComponentConfig,
-    braintree$callback: (
-      result: KnockoutComponentTypes$Definition | null
-    ) => void
+    config: KnockoutComponentTypes$ComponentConfig,
+    callback: (result: KnockoutComponentTypes$Definition | null) => void
   ) => void;
   loadTemplate?: (
     componentName: string,
     templateConfig: any,
-    braintree$callback: (result: AST$Node[] | null) => void
+    callback: (result: Node[] | null) => void
   ) => void;
   loadViewModel?: (
     componentName: string,
     viewModelConfig: any,
-    braintree$callback: (result: any) => void
+    callback: (result: any) => void
   ) => void;
   suppressLoaderExceptions?: boolean;
 }
 
 declare interface KnockoutComponentTypes$Definition {
-  Handlebars$template: AST$Node[];
+  template: Node[];
   createViewModel?: (
     params: any,
-    notification$options: {
-      htmlParser$element: AST$Node
+    options: {
+      element: Node
     }
   ) => any;
 }
@@ -1084,9 +1037,7 @@ declare interface KnockoutComponents {
    */
   register(
     componentName: string,
-    main$config:
-      | KnockoutComponentTypes$KnockoutComponentTypes$Config
-      | KnockoutComponentTypes$KnockoutComponentTypes$EmptyConfig
+    config: KnockoutComponentTypes$Config | KnockoutComponentTypes$EmptyConfig
   ): void;
 
   /**
@@ -1106,11 +1057,9 @@ declare interface KnockoutComponents {
    * @param componentName Component name.
    * @param callback Function to be called with the viewmodel/template declaration parameter.
    */
-  JSONStore$get(
+  get(
     componentName: string,
-    braintree$callback: (
-      balloonPanel$definition: KnockoutComponentTypes$KnockoutComponentTypes$Definition
-    ) => void
+    callback: (definition: KnockoutComponentTypes$Definition) => void
   ): void;
 
   /**
@@ -1118,11 +1067,11 @@ declare interface KnockoutComponents {
    * @param componentName Component name.
    */
   clearCachedDefinition(componentName: string): void;
-  defaultLoader: KnockoutComponentTypes$KnockoutComponentTypes$Loader;
-  loaders: KnockoutComponentTypes$KnockoutComponentTypes$Loader[];
-  getComponentNameForNode(dojo$node: AST$Node): string;
+  defaultLoader: KnockoutComponentTypes$Loader;
+  loaders: KnockoutComponentTypes$Loader[];
+  getComponentNameForNode(node: Node): string;
 }
 declare var ko: KnockoutStatic;
 declare module "knockout" {
-  declare module.exports: typeof ko;
+  declare export default typeof ko;
 }
