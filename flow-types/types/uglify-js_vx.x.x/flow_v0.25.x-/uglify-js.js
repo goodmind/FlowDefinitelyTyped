@@ -98,7 +98,7 @@ declare module "uglify-js" {
      * - `WithArgumentsAndVariables` -- inline functions with arguments and variables
      * - true -- same as `WithArgumentsAndVariables`
      */
-    inline?: boolean | InlineFunctions;
+    inline?: boolean | $Values<typeof InlineFunctions>;
 
     /**
      * join consecutive `var` statements
@@ -219,27 +219,13 @@ declare module "uglify-js" {
      */
     warnings?: boolean;
   }
-  declare export class InlineFunctions {
-    constructor(...args: empty): mixed;
-    static +Disabled: Class<InlineFunctions__Disabled> &
-      InlineFunctions__Disabled &
-      0; // 0
-    static +SimpleFunctions: Class<InlineFunctions__SimpleFunctions> &
-      InlineFunctions__SimpleFunctions &
-      1; // 1
-    static +WithArguments: Class<InlineFunctions__WithArguments> &
-      InlineFunctions__WithArguments &
-      2; // 2
-    static +WithArgumentsAndVariables: Class<InlineFunctions__WithArgumentsAndVariables> &
-      InlineFunctions__WithArgumentsAndVariables &
-      3; // 3
-  }
 
-  declare class InlineFunctions__Disabled mixins InlineFunctions {}
-  declare class InlineFunctions__SimpleFunctions mixins InlineFunctions {}
-  declare class InlineFunctions__WithArguments mixins InlineFunctions {}
-  declare class InlineFunctions__WithArgumentsAndVariables
-    mixins InlineFunctions {}
+  declare export var InlineFunctions: {|
+    +Disabled: 0, // 0
+    +SimpleFunctions: 1, // 1
+    +WithArguments: 2, // 2
+    +WithArgumentsAndVariables: 3 // 3
+  |};
 
   declare export interface MangleOptions {
     /**
@@ -302,33 +288,20 @@ declare module "uglify-js" {
     preamble?: string;
     preserve_line?: boolean;
     quote_keys?: boolean;
-    quote_style?: OutputQuoteStyle;
+    quote_style?: $Values<typeof OutputQuoteStyle>;
     semicolons?: boolean;
     shebang?: boolean;
     webkit?: boolean;
     width?: number;
     wrap_iife?: boolean;
   }
-  declare export class OutputQuoteStyle {
-    constructor(...args: empty): mixed;
-    static +PreferDouble: Class<OutputQuoteStyle__PreferDouble> &
-      OutputQuoteStyle__PreferDouble &
-      0; // 0
-    static +AlwaysSingle: Class<OutputQuoteStyle__AlwaysSingle> &
-      OutputQuoteStyle__AlwaysSingle &
-      1; // 1
-    static +AlwaysDouble: Class<OutputQuoteStyle__AlwaysDouble> &
-      OutputQuoteStyle__AlwaysDouble &
-      2; // 2
-    static +AlwaysOriginal: Class<OutputQuoteStyle__AlwaysOriginal> &
-      OutputQuoteStyle__AlwaysOriginal &
-      3; // 3
-  }
 
-  declare class OutputQuoteStyle__PreferDouble mixins OutputQuoteStyle {}
-  declare class OutputQuoteStyle__AlwaysSingle mixins OutputQuoteStyle {}
-  declare class OutputQuoteStyle__AlwaysDouble mixins OutputQuoteStyle {}
-  declare class OutputQuoteStyle__AlwaysOriginal mixins OutputQuoteStyle {}
+  declare export var OutputQuoteStyle: {|
+    +PreferDouble: 0, // 0
+    +AlwaysSingle: 1, // 1
+    +AlwaysDouble: 2, // 2
+    +AlwaysOriginal: 3 // 3
+  |};
 
   declare export interface MinifyOptions {
     /**
