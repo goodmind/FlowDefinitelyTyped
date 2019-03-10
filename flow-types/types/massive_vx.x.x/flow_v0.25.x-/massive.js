@@ -1,12 +1,25 @@
 declare module "massive" {
-  declare module.exports: typeof massive;
+  declare export default typeof massive;
 
   declare function massive(
-    connection: massive$massive$ConnectionInfo | string,
-    loaderConfig?: massive$massive$Loader,
+    connection: massive$ConnectionInfo | string,
+    loaderConfig?: massive$Loader,
     driverConfig?: { [key: string]: any }
-  ): Promise<massive$massive$Database>;
+  ): Promise<massive$Database>;
 
+  declare var npm$namespace$massive: {
+    Entity: typeof massive$Entity,
+    Executable: typeof massive$Executable,
+    Readable: typeof massive$Readable,
+    Writable: typeof massive$Writable,
+    Sequence: typeof massive$Sequence,
+    SingleValueStream: typeof massive$SingleValueStream,
+    Select: typeof massive$Select,
+    Insert: typeof massive$Insert,
+    Update: typeof massive$Update,
+    Delete: typeof massive$Delete,
+    Database: typeof massive$Database
+  };
   declare type massive$UUID = string;
 
   declare interface massive$AnyObject<T = any> {
@@ -86,7 +99,7 @@ declare module "massive" {
   declare interface massive$SearchDefinition {
     fields: string[];
     term: string;
-    where: massive$AnyObject;
+    where: massive$AnyObject<>;
   }
 
   declare interface massive$SearchCriteria {
@@ -189,7 +202,7 @@ declare module "massive" {
      */
     invoke(
       options?: massive$ResultProcessingOptions
-    ): Promise<massive$AnyObject | any[]>;
+    ): Promise<massive$AnyObject<> | any[]>;
   }
 
   declare interface massive$ReadableSpecification {
@@ -220,7 +233,7 @@ declare module "massive" {
     /**
      * Count rows matching criteria.
      */
-    count(conditions: massive$AnyObject): Promise<number>;
+    count(conditions: massive$AnyObject<>): Promise<number>;
     count(conditions: string, params: any[]): Promise<number>;
 
     /**
@@ -232,7 +245,7 @@ declare module "massive" {
      * Find rows matching criteria.
      */
     find(
-      criteria?: massive$AnyObject | number | massive$UUID,
+      criteria?: massive$AnyObject<> | number | massive$UUID,
       options?: massive$RetrievalOptions & massive$ResultProcessingOptions
     ): Promise<any>;
 
@@ -240,7 +253,7 @@ declare module "massive" {
      * Find a document by searching in the body.
      */
     findDoc(
-      criteria?: massive$AnyObject | number | massive$UUID,
+      criteria?: massive$AnyObject<> | number | massive$UUID,
       options?: massive$RetrievalOptions
     ): Promise<any>;
 
@@ -248,7 +261,7 @@ declare module "massive" {
      * Return a single record.
      */
     findOne(
-      criteria: massive$AnyObject | number | massive$UUID,
+      criteria: massive$AnyObject<> | number | massive$UUID,
       options?: massive$RetrievalOptions & massive$ResultProcessingOptions
     ): Promise<any>;
 
@@ -256,7 +269,7 @@ declare module "massive" {
      * Determine whether criteria represent a search by primary key.
      * If a number or uuid are passed, it is assumed to be a primary key value; if an object, it must have only one key, which must specify the primary key column.
      */
-    isPkSearch(criteria: massive$AnyObject | massive$UUID | number): boolean;
+    isPkSearch(criteria: massive$AnyObject<> | massive$UUID | number): boolean;
 
     /**
      * Refresh a materialized view.
@@ -321,7 +334,7 @@ declare module "massive" {
      * Delete a record or records.
      */
     destroy(
-      criteria: massive$AnyObject,
+      criteria: massive$AnyObject<>,
       options?: massive$ResultProcessingOptions
     ): Promise<any[]>;
 
@@ -329,21 +342,21 @@ declare module "massive" {
      * Attempts to assemble primary key criteria for a record object representing a row in this table.
      * The criteria must include the full primary key, and must not invoke any operations.
      */
-    getPkCriteria(record: massive$AnyObject): massive$AnyObject;
+    getPkCriteria(record: massive$AnyObject<>): massive$AnyObject<>;
 
     /**
      * Insert a record or records into the table.
      */
     insert(
-      data: massive$AnyObject,
+      data: massive$AnyObject<>,
       options?: massive$PersistenceInsertOptions &
         massive$ResultProcessingOptions
-    ): Promise<massive$AnyObject>;
+    ): Promise<massive$AnyObject<>>;
     insert(
-      data: massive$AnyObject[],
+      data: massive$AnyObject<>[],
       options?: massive$PersistenceInsertOptions &
         massive$ResultProcessingOptions
-    ): Promise<massive$AnyObject[]>;
+    ): Promise<massive$AnyObject<>[]>;
 
     /**
      * Saves an object.
@@ -353,32 +366,32 @@ declare module "massive" {
      * This is not a true Postgres upsert! If you need the behavior of ON CONFLICT DO UPDATE, you'll need to use db.query or create an SQL script file.
      */
     save(
-      record: massive$AnyObject,
+      record: massive$AnyObject<>,
       options?: massive$PersistenceInsertOptions &
         massive$PersistenceUpdateDocOptions &
         massive$ResultProcessingOptions
-    ): Promise<massive$AnyObject>;
+    ): Promise<massive$AnyObject<>>;
 
     /**
      * Save a document to the database. This function will create or replace the entire document body.
      */
-    saveDoc(doc: massive$AnyObject): Promise<massive$AnyObject>;
+    saveDoc(doc: massive$AnyObject<>): Promise<massive$AnyObject<>>;
 
     /**
      * Update a record.
      */
     update(
       criteria: massive$UUID | number,
-      changes: massive$AnyObject,
+      changes: massive$AnyObject<>,
       options?: massive$PersistenceUpdateDocOptions &
         massive$ResultProcessingOptions
-    ): Promise<massive$AnyObject>;
+    ): Promise<massive$AnyObject<>>;
     update(
-      criteria: massive$AnyObject,
-      changes: massive$AnyObject,
+      criteria: massive$AnyObject<>,
+      changes: massive$AnyObject<>,
       options?: massive$PersistenceUpdateDocOptions &
         massive$ResultProcessingOptions
-    ): Promise<massive$AnyObject[]>;
+    ): Promise<massive$AnyObject<>[]>;
 
     /**
      * Update a document, adding new information and changing existing information.
@@ -387,11 +400,11 @@ declare module "massive" {
      * To test elements of the JSON field in a non-document table with a criteria object, use a JSON path string.
      */
     updateDoc(
-      criteria: massive$UUID | number | massive$AnyObject,
-      changes: massive$AnyObject,
+      criteria: massive$UUID | number | massive$AnyObject<>,
+      changes: massive$AnyObject<>,
       options?: massive$PersistenceUpdateDocOptions &
         massive$ResultProcessingOptions
-    ): Promise<massive$AnyObject>;
+    ): Promise<massive$AnyObject<>>;
   }
 
   declare class massive$Sequence {
@@ -422,12 +435,12 @@ declare module "massive" {
     /**
      * A stream which processes single-key results objects into their values for convenience on the client side.
      */
-    constructor(options: massive$AnyObject): this;
+    constructor(options: massive$AnyObject<>): this;
 
     /**
      * Converts a single-key object into its value.
      */
-    singleValue(obj: massive$AnyObject): any;
+    singleValue(obj: massive$AnyObject<>): any;
   }
 
   /**
@@ -439,7 +452,7 @@ declare module "massive" {
      */
     constructor(
       source: massive$Readable,
-      criteria: massive$AnyObject | massive$UUID,
+      criteria: massive$AnyObject<> | massive$UUID,
       options?: massive$RetrievalOptions & massive$ResultProcessingOptions
     ): this;
 
@@ -458,7 +471,7 @@ declare module "massive" {
      */
     constructor(
       source: massive$Readable,
-      record: massive$AnyObject | any[],
+      record: massive$AnyObject<> | any[],
       options?: massive$ResultProcessingOptions &
         massive$PersistenceInsertOptions
     ): this;
@@ -478,8 +491,8 @@ declare module "massive" {
      */
     constructor(
       source: massive$Readable,
-      changes: massive$AnyObject,
-      criteria: massive$AnyObject,
+      changes: massive$AnyObject<>,
+      criteria: massive$AnyObject<>,
       options?: massive$ResultProcessingOptions &
         massive$PersistenceUpdateDocOptions
     ): this;
@@ -499,7 +512,7 @@ declare module "massive" {
      */
     constructor(
       source: massive$Readable,
-      criteria?: massive$AnyObject | massive$UUID | number,
+      criteria?: massive$AnyObject<> | massive$UUID | number,
       options?: massive$ResultProcessingOptions & massive$InheritanceOptions
     ): this;
 
@@ -522,7 +535,7 @@ declare module "massive" {
     /**
      * Attach an entity to the connected instance.
      */
-    attach(entities: massive$AnyObject | any[]): Promise<any[]>;
+    attach(entities: massive$AnyObject<> | any[]): Promise<any[]>;
 
     /**
      * Remove all attached entities from the instance, returning it to the pre- introspection state.
@@ -615,14 +628,14 @@ declare module "massive" {
     /**
      * Save a document.
      */
-    saveDoc(collection: string, doc: massive$AnyObject): Promise<any>;
+    saveDoc(collection: string, doc: massive$AnyObject<>): Promise<any>;
 
     /**
      * Begin a task, returning a copy of the connected instance which will route all queries made in the callback through the task scope.
      */
     withConnection(
       cb: (withTask: any) => any,
-      options?: massive$AnyObject
+      options?: massive$AnyObject<>
     ): Promise<any>;
 
     /**
@@ -630,7 +643,7 @@ declare module "massive" {
      */
     withTransaction(
       cb: (withTx: any) => any,
-      options?: massive$AnyObject
+      options?: massive$AnyObject<>
     ): Promise<any>;
     [tableName: string]: massive$Writable | any;
   }
