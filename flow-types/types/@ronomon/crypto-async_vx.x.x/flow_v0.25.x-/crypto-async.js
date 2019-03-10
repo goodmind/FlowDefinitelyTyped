@@ -1,7 +1,7 @@
 declare module "@ronomon/crypto-async" {
   declare function cipher(
     algorithm: string,
-    cipherDirection: CipherDirection,
+    cipherDirection: $Values<typeof CipherDirection>,
     key: Buffer,
     iv: Buffer,
     plaintext: Buffer,
@@ -10,7 +10,7 @@ declare module "@ronomon/crypto-async" {
 
   declare function cipher(
     algorithm: string,
-    cipherDirection: CipherDirection,
+    cipherDirection: $Values<typeof CipherDirection>,
     key: Buffer,
     keyOffset: number,
     keySize: number,
@@ -61,16 +61,8 @@ declare module "@ronomon/crypto-async" {
     cb: (error: Error | void, targetSize: number) => void
   ): void;
 
-  declare class CipherDirection {
-    constructor(...args: empty): mixed;
-    static +Decrypt: Class<CipherDirection__Decrypt> &
-      CipherDirection__Decrypt &
-      0; // 0
-    static +Encrypt: Class<CipherDirection__Encrypt> &
-      CipherDirection__Encrypt &
-      1; // 1
-  }
-
-  declare class CipherDirection__Decrypt mixins CipherDirection {}
-  declare class CipherDirection__Encrypt mixins CipherDirection {}
+  declare var CipherDirection: {|
+    +Decrypt: 0, // 0
+    +Encrypt: 1 // 1
+  |};
 }
