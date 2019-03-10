@@ -12,7 +12,7 @@ declare module "dispatchr" {
   }
   declare export interface StoreClass {
     storeName: string;
-    new(): Store;
+    new(): Store<>;
   }
   declare export type Store<S = {}> = {
     dehydrate?: () => S,
@@ -29,11 +29,11 @@ declare module "dispatchr" {
   }
   declare export interface DispatcherInterface {
     getContext(): DispatcherContext;
-    getStore: $ElementType<DispatcherContext, "getStore">;
-    waitFor: $ElementType<DispatcherContext, "waitFor">;
+    getStore: $PropertyType<DispatcherContext, "getStore">;
+    waitFor: $PropertyType<DispatcherContext, "waitFor">;
   }
   declare export interface DispatcherContext {
-    getStore(name: string): Store;
+    getStore(name: string): Store<>;
     getStore<T: StoreClass>(name: T): T;
     dispatch(actionName: string, payload: any): void;
     dehydrate(): DispatcherState;
