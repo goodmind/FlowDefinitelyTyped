@@ -3819,7 +3819,7 @@ declare module "firefox-webext-browser" {
   /**
    * Fired when proxy data is needed for a request.
    */
-  declare var browser$proxy$onRequest: browser$proxy$_ProxyOnRequestEvent;
+  declare var browser$proxy$onRequest: browser$proxy$_ProxyOnRequestEvent<>;
 
   /**
    * Notifies about proxy script errors.
@@ -5414,41 +5414,41 @@ declare module "firefox-webext-browser" {
   /**
    * Fired when a navigation is about to occur.
    */
-  declare var browser$webNavigation$onBeforeNavigate: browser$webNavigation$_WebNavigationOnBeforeNavigateEvent;
+  declare var browser$webNavigation$onBeforeNavigate: browser$webNavigation$_WebNavigationOnBeforeNavigateEvent<>;
 
   /**
    * Fired when a navigation is committed. The document (and the resources it refers to, such as images and
    * subframes) might still be downloading, but at least part of the document has been received from the server and
    * the browser has decided to switch to the new document.
    */
-  declare var browser$webNavigation$onCommitted: browser$webNavigation$_WebNavigationOnCommittedEvent;
+  declare var browser$webNavigation$onCommitted: browser$webNavigation$_WebNavigationOnCommittedEvent<>;
 
   /**
    * Fired when the page's DOM is fully constructed, but the referenced resources may not finish loading.
    */
-  declare var browser$webNavigation$onDOMContentLoaded: browser$webNavigation$_WebNavigationOnDOMContentLoadedEvent;
+  declare var browser$webNavigation$onDOMContentLoaded: browser$webNavigation$_WebNavigationOnDOMContentLoadedEvent<>;
 
   /**
    * Fired when a document, including the resources it refers to, is completely loaded and initialized.
    */
-  declare var browser$webNavigation$onCompleted: browser$webNavigation$_WebNavigationOnCompletedEvent;
+  declare var browser$webNavigation$onCompleted: browser$webNavigation$_WebNavigationOnCompletedEvent<>;
 
   /**
    * Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or
    * the user aborted the navigation.
    */
-  declare var browser$webNavigation$onErrorOccurred: browser$webNavigation$_WebNavigationOnErrorOccurredEvent;
+  declare var browser$webNavigation$onErrorOccurred: browser$webNavigation$_WebNavigationOnErrorOccurredEvent<>;
 
   /**
    * Fired when a new window, or a new tab in an existing window, is created to host a navigation.
    */
-  declare var browser$webNavigation$onCreatedNavigationTarget: browser$webNavigation$_WebNavigationOnCreatedNavigationTargetEvent;
+  declare var browser$webNavigation$onCreatedNavigationTarget: browser$webNavigation$_WebNavigationOnCreatedNavigationTargetEvent<>;
 
   /**
    * Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated
    * URL.
    */
-  declare var browser$webNavigation$onReferenceFragmentUpdated: browser$webNavigation$_WebNavigationOnReferenceFragmentUpdatedEvent;
+  declare var browser$webNavigation$onReferenceFragmentUpdated: browser$webNavigation$_WebNavigationOnReferenceFragmentUpdatedEvent<>;
 
   /**
    * Fired when the contents of the tab is replaced by a different (usually previously pre-rendered) tab.
@@ -5476,7 +5476,7 @@ declare module "firefox-webext-browser" {
    * Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated
    * URL.
    */
-  declare var browser$webNavigation$onHistoryStateUpdated: browser$webNavigation$_WebNavigationOnHistoryStateUpdatedEvent;
+  declare var browser$webNavigation$onHistoryStateUpdated: browser$webNavigation$_WebNavigationOnHistoryStateUpdatedEvent<>;
 
   declare var npm$namespace$browser$webRequest: {
     handlerBehaviorChanged: typeof browser$webRequest$handlerBehaviorChanged,
@@ -6669,7 +6669,7 @@ declare module "firefox-webext-browser" {
    * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
    * of this type.
    */
-  declare var browser$webRequest$onBeforeRequest: browser$webRequest$_WebRequestOnBeforeRequestEvent;
+  declare var browser$webRequest$onBeforeRequest: browser$webRequest$_WebRequestOnBeforeRequestEvent<>;
 
   /**
    * Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP
@@ -6677,20 +6677,20 @@ declare module "firefox-webext-browser" {
    * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
    * of this type.
    */
-  declare var browser$webRequest$onBeforeSendHeaders: browser$webRequest$_WebRequestOnBeforeSendHeadersEvent;
+  declare var browser$webRequest$onBeforeSendHeaders: browser$webRequest$_WebRequestOnBeforeSendHeadersEvent<>;
 
   /**
    * Fired just before a request is going to be sent to the server (modifications of previous onBeforeSendHeaders
    * callbacks are visible by the time onSendHeaders is fired).
    */
-  declare var browser$webRequest$onSendHeaders: browser$webRequest$_WebRequestOnSendHeadersEvent;
+  declare var browser$webRequest$onSendHeaders: browser$webRequest$_WebRequestOnSendHeadersEvent<>;
 
   /**
    * Fired when HTTP response headers of a request have been received.
    * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
    * of this type.
    */
-  declare var browser$webRequest$onHeadersReceived: browser$webRequest$_WebRequestOnHeadersReceivedEvent;
+  declare var browser$webRequest$onHeadersReceived: browser$webRequest$_WebRequestOnHeadersReceivedEvent<>;
 
   /**
    * Fired when an authentication failure is received. The listener has three options: it can provide authentication
@@ -6699,28 +6699,28 @@ declare module "firefox-webext-browser" {
    * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
    * of this type.
    */
-  declare var browser$webRequest$onAuthRequired: browser$webRequest$_WebRequestOnAuthRequiredEvent;
+  declare var browser$webRequest$onAuthRequired: browser$webRequest$_WebRequestOnAuthRequiredEvent<>;
 
   /**
    * Fired when the first byte of the response body is received. For HTTP requests, this means that the status line
    * and response headers are available.
    */
-  declare var browser$webRequest$onResponseStarted: browser$webRequest$_WebRequestOnResponseStartedEvent;
+  declare var browser$webRequest$onResponseStarted: browser$webRequest$_WebRequestOnResponseStartedEvent<>;
 
   /**
    * Fired when a server-initiated redirect is about to occur.
    */
-  declare var browser$webRequest$onBeforeRedirect: browser$webRequest$_WebRequestOnBeforeRedirectEvent;
+  declare var browser$webRequest$onBeforeRedirect: browser$webRequest$_WebRequestOnBeforeRedirectEvent<>;
 
   /**
    * Fired when a request is completed.
    */
-  declare var browser$webRequest$onCompleted: browser$webRequest$_WebRequestOnCompletedEvent;
+  declare var browser$webRequest$onCompleted: browser$webRequest$_WebRequestOnCompletedEvent<>;
 
   /**
    * Fired when an error occurs.
    */
-  declare var browser$webRequest$onErrorOccurred: browser$webRequest$_WebRequestOnErrorOccurredEvent;
+  declare var browser$webRequest$onErrorOccurred: browser$webRequest$_WebRequestOnErrorOccurredEvent<>;
 
   declare var npm$namespace$browser$bookmarks: {
     get: typeof browser$bookmarks$get,
@@ -11105,7 +11105,7 @@ declare module "firefox-webext-browser" {
    * @param changeInfo Lists the changes to the state of the tab that was updated.
    * @param tab Gives the state of the tab that was updated.
    */
-  declare var browser$tabs$onUpdated: browser$tabs$_TabsOnUpdatedEvent;
+  declare var browser$tabs$onUpdated: browser$tabs$_TabsOnUpdatedEvent<>;
 
   /**
    * Fired when a tab is moved within a window. Only one move event is fired, representing the tab the user directly
