@@ -1,186 +1,70 @@
 declare module "activex-scripting" {
-  declare class Scripting$CompareMethod {
-    constructor(...args: empty): mixed;
-    static +BinaryCompare: Class<Scripting$CompareMethod__BinaryCompare> &
-      Scripting$CompareMethod__BinaryCompare &
-      0; // 0
-    static +DatabaseCompare: Class<Scripting$CompareMethod__DatabaseCompare> &
-      Scripting$CompareMethod__DatabaseCompare &
-      2; // 2
-    static +TextCompare: Class<Scripting$CompareMethod__TextCompare> &
-      Scripting$CompareMethod__TextCompare &
-      1; // 1
-  }
+  declare var npm$namespace$Scripting: {
+    CompareMethod: typeof Scripting$CompareMethod,
+    DriveTypeConst: typeof Scripting$DriveTypeConst,
+    FileAttribute: typeof Scripting$FileAttribute,
+    IOMode: typeof Scripting$IOMode,
+    SpecialFolderConst: typeof Scripting$SpecialFolderConst,
+    StandardStreamTypes: typeof Scripting$StandardStreamTypes,
+    Tristate: typeof Scripting$Tristate,
+    Drive: typeof Scripting$Drive,
+    File: typeof Scripting$File,
+    FileSystemObject: typeof Scripting$FileSystemObject,
+    Folder: typeof Scripting$Folder,
+    TextStream: typeof Scripting$TextStream
+  };
 
-  declare class Scripting$CompareMethod__BinaryCompare
-    mixins Scripting$CompareMethod {}
-  declare class Scripting$CompareMethod__DatabaseCompare
-    mixins Scripting$CompareMethod {}
-  declare class Scripting$CompareMethod__TextCompare
-    mixins Scripting$CompareMethod {}
+  declare var Scripting$CompareMethod: {|
+    +BinaryCompare: 0, // 0
+    +DatabaseCompare: 2, // 2
+    +TextCompare: 1 // 1
+  |};
 
-  declare class Scripting$DriveTypeConst {
-    constructor(...args: empty): mixed;
-    static +CDRom: Class<Scripting$DriveTypeConst__CDRom> &
-      Scripting$DriveTypeConst__CDRom &
-      4; // 4
-    static +Fixed: Class<Scripting$DriveTypeConst__Fixed> &
-      Scripting$DriveTypeConst__Fixed &
-      2; // 2
-    static +RamDisk: Class<Scripting$DriveTypeConst__RamDisk> &
-      Scripting$DriveTypeConst__RamDisk &
-      5; // 5
-    static +Remote: Class<Scripting$DriveTypeConst__Remote> &
-      Scripting$DriveTypeConst__Remote &
-      3; // 3
-    static +Removable: Class<Scripting$DriveTypeConst__Removable> &
-      Scripting$DriveTypeConst__Removable &
-      1; // 1
-    static +UnknownType: Class<Scripting$DriveTypeConst__UnknownType> &
-      Scripting$DriveTypeConst__UnknownType &
-      0; // 0
-  }
+  declare var Scripting$DriveTypeConst: {|
+    +CDRom: 4, // 4
+    +Fixed: 2, // 2
+    +RamDisk: 5, // 5
+    +Remote: 3, // 3
+    +Removable: 1, // 1
+    +UnknownType: 0 // 0
+  |};
 
-  declare class Scripting$DriveTypeConst__CDRom
-    mixins Scripting$DriveTypeConst {}
-  declare class Scripting$DriveTypeConst__Fixed
-    mixins Scripting$DriveTypeConst {}
-  declare class Scripting$DriveTypeConst__RamDisk
-    mixins Scripting$DriveTypeConst {}
-  declare class Scripting$DriveTypeConst__Remote
-    mixins Scripting$DriveTypeConst {}
-  declare class Scripting$DriveTypeConst__Removable
-    mixins Scripting$DriveTypeConst {}
-  declare class Scripting$DriveTypeConst__UnknownType
-    mixins Scripting$DriveTypeConst {}
+  declare var Scripting$FileAttribute: {|
+    +Alias: 1024, // 1024
+    +Archive: 32, // 32
+    +Compressed: 2048, // 2048
+    +Directory: 16, // 16
+    +Hidden: 2, // 2
+    +Normal: 0, // 0
+    +ReadOnly: 1, // 1
+    +System: 4, // 4
+    +Volume: 8 // 8
+  |};
 
-  declare class Scripting$FileAttribute {
-    constructor(...args: empty): mixed;
-    static +Alias: Class<Scripting$FileAttribute__Alias> &
-      Scripting$FileAttribute__Alias &
-      1024; // 1024
-    static +Archive: Class<Scripting$FileAttribute__Archive> &
-      Scripting$FileAttribute__Archive &
-      32; // 32
-    static +Compressed: Class<Scripting$FileAttribute__Compressed> &
-      Scripting$FileAttribute__Compressed &
-      2048; // 2048
-    static +Directory: Class<Scripting$FileAttribute__Directory> &
-      Scripting$FileAttribute__Directory &
-      16; // 16
-    static +Hidden: Class<Scripting$FileAttribute__Hidden> &
-      Scripting$FileAttribute__Hidden &
-      2; // 2
-    static +Normal: Class<Scripting$FileAttribute__Normal> &
-      Scripting$FileAttribute__Normal &
-      0; // 0
-    static +ReadOnly: Class<Scripting$FileAttribute__ReadOnly> &
-      Scripting$FileAttribute__ReadOnly &
-      1; // 1
-    static +System: Class<Scripting$FileAttribute__System> &
-      Scripting$FileAttribute__System &
-      4; // 4
-    static +Volume: Class<Scripting$FileAttribute__Volume> &
-      Scripting$FileAttribute__Volume &
-      8; // 8
-  }
+  declare var Scripting$IOMode: {|
+    +ForAppending: 8, // 8
+    +ForReading: 1, // 1
+    +ForWriting: 2 // 2
+  |};
 
-  declare class Scripting$FileAttribute__Alias mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__Archive
-    mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__Compressed
-    mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__Directory
-    mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__Hidden
-    mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__Normal
-    mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__ReadOnly
-    mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__System
-    mixins Scripting$FileAttribute {}
-  declare class Scripting$FileAttribute__Volume
-    mixins Scripting$FileAttribute {}
+  declare var Scripting$SpecialFolderConst: {|
+    +SystemFolder: 1, // 1
+    +TemporaryFolder: 2, // 2
+    +WindowsFolder: 0 // 0
+  |};
 
-  declare class Scripting$IOMode {
-    constructor(...args: empty): mixed;
-    static +ForAppending: Class<Scripting$IOMode__ForAppending> &
-      Scripting$IOMode__ForAppending &
-      8; // 8
-    static +ForReading: Class<Scripting$IOMode__ForReading> &
-      Scripting$IOMode__ForReading &
-      1; // 1
-    static +ForWriting: Class<Scripting$IOMode__ForWriting> &
-      Scripting$IOMode__ForWriting &
-      2; // 2
-  }
+  declare var Scripting$StandardStreamTypes: {|
+    +StdErr: 2, // 2
+    +StdIn: 0, // 0
+    +StdOut: 1 // 1
+  |};
 
-  declare class Scripting$IOMode__ForAppending mixins Scripting$IOMode {}
-  declare class Scripting$IOMode__ForReading mixins Scripting$IOMode {}
-  declare class Scripting$IOMode__ForWriting mixins Scripting$IOMode {}
-
-  declare class Scripting$SpecialFolderConst {
-    constructor(...args: empty): mixed;
-    static +SystemFolder: Class<Scripting$SpecialFolderConst__SystemFolder> &
-      Scripting$SpecialFolderConst__SystemFolder &
-      1; // 1
-    static +TemporaryFolder: Class<Scripting$SpecialFolderConst__TemporaryFolder> &
-      Scripting$SpecialFolderConst__TemporaryFolder &
-      2; // 2
-    static +WindowsFolder: Class<Scripting$SpecialFolderConst__WindowsFolder> &
-      Scripting$SpecialFolderConst__WindowsFolder &
-      0; // 0
-  }
-
-  declare class Scripting$SpecialFolderConst__SystemFolder
-    mixins Scripting$SpecialFolderConst {}
-  declare class Scripting$SpecialFolderConst__TemporaryFolder
-    mixins Scripting$SpecialFolderConst {}
-  declare class Scripting$SpecialFolderConst__WindowsFolder
-    mixins Scripting$SpecialFolderConst {}
-
-  declare class Scripting$StandardStreamTypes {
-    constructor(...args: empty): mixed;
-    static +StdErr: Class<Scripting$StandardStreamTypes__StdErr> &
-      Scripting$StandardStreamTypes__StdErr &
-      2; // 2
-    static +StdIn: Class<Scripting$StandardStreamTypes__StdIn> &
-      Scripting$StandardStreamTypes__StdIn &
-      0; // 0
-    static +StdOut: Class<Scripting$StandardStreamTypes__StdOut> &
-      Scripting$StandardStreamTypes__StdOut &
-      1; // 1
-  }
-
-  declare class Scripting$StandardStreamTypes__StdErr
-    mixins Scripting$StandardStreamTypes {}
-  declare class Scripting$StandardStreamTypes__StdIn
-    mixins Scripting$StandardStreamTypes {}
-  declare class Scripting$StandardStreamTypes__StdOut
-    mixins Scripting$StandardStreamTypes {}
-
-  declare class Scripting$Tristate {
-    constructor(...args: empty): mixed;
-    static +TristateFalse: Class<Scripting$Tristate__TristateFalse> &
-      Scripting$Tristate__TristateFalse &
-      0; // 0
-    static +TristateMixed: Class<Scripting$Tristate__TristateMixed> &
-      Scripting$Tristate__TristateMixed &
-      -2; // -2
-    static +TristateTrue: Class<Scripting$Tristate__TristateTrue> &
-      Scripting$Tristate__TristateTrue &
-      -1; // -1
-    static +TristateUseDefault: Class<Scripting$Tristate__TristateUseDefault> &
-      Scripting$Tristate__TristateUseDefault &
-      -2; // -2
-  }
-
-  declare class Scripting$Tristate__TristateFalse mixins Scripting$Tristate {}
-  declare class Scripting$Tristate__TristateMixed mixins Scripting$Tristate {}
-  declare class Scripting$Tristate__TristateTrue mixins Scripting$Tristate {}
-  declare class Scripting$Tristate__TristateUseDefault
-    mixins Scripting$Tristate {}
+  declare var Scripting$Tristate: {|
+    +TristateFalse: 0, // 0
+    +TristateMixed: -2, // -2
+    +TristateTrue: -1, // -1
+    +TristateUseDefault: -2 // -2
+  |};
 
   /**
    * Scripting.Dictionary
@@ -194,7 +78,7 @@ declare module "activex-scripting" {
     /**
      * Set or get the string comparison method.
      */
-    CompareMode: Scripting$CompareMethod;
+    CompareMode: $Values<typeof Scripting$CompareMethod>;
 
     /**
      * Get the number of items in the dictionary.
@@ -262,7 +146,7 @@ declare module "activex-scripting" {
     /**
      * Drive type
      */
-    DriveType: Scripting$DriveTypeConst;
+    DriveType: $Values<typeof Scripting$DriveTypeConst>;
 
     /**
      * Filesystem type
@@ -364,7 +248,7 @@ declare module "activex-scripting" {
     /**
      * File attributes
      */
-    Attributes: Scripting$FileAttribute;
+    Attributes: $Values<typeof Scripting$FileAttribute>;
 
     /**
      * Copy this file
@@ -414,8 +298,8 @@ declare module "activex-scripting" {
      * @param [Format=0]
      */
     OpenAsTextStream(
-      Scripting$IOMode?: Scripting$IOMode,
-      Format?: Scripting$Tristate
+      IOMode?: $Values<typeof Scripting$IOMode>,
+      Format?: $Values<typeof Scripting$Tristate>
     ): Scripting$TextStream;
 
     /**
@@ -602,7 +486,7 @@ declare module "activex-scripting" {
      * Get location of various system folders
      */
     GetSpecialFolder(
-      SpecialFolder: Scripting$SpecialFolderConst
+      SpecialFolder: $Values<typeof Scripting$SpecialFolderConst>
     ): Scripting$Folder;
 
     /**
@@ -610,7 +494,7 @@ declare module "activex-scripting" {
      * @param boolean [Unicode=false]
      */
     GetStandardStream(
-      StandardStreamType: Scripting$StandardStreamTypes,
+      StandardStreamType: $Values<typeof Scripting$StandardStreamTypes>,
       Unicode?: boolean
     ): Scripting$TextStream;
 
@@ -637,9 +521,9 @@ declare module "activex-scripting" {
      */
     OpenTextFile(
       FileName: string,
-      Scripting$IOMode?: Scripting$IOMode,
+      IOMode?: $Values<typeof Scripting$IOMode>,
       Create?: boolean,
-      Format?: Scripting$Tristate
+      Format?: $Values<typeof Scripting$Tristate>
     ): Scripting$TextStream;
   }
 
@@ -652,7 +536,7 @@ declare module "activex-scripting" {
     /**
      * Folder attributes
      */
-    Attributes: Scripting$FileAttribute;
+    Attributes: $Values<typeof Scripting$FileAttribute>;
 
     /**
      * Copy this folder
@@ -807,7 +691,7 @@ declare module "activex-scripting" {
     /**
      * Current line number
      */
-    Access$Line: number;
+    Line: number;
 
     /**
      * Read a specific number of characters into a string
@@ -852,18 +736,18 @@ declare module "activex-scripting" {
   }
   declare interface ActiveXObject {
     set<TKey, TValue>(
-      obj: Scripting$Scripting$Dictionary<TKey, TValue>,
+      obj: Scripting$Dictionary<TKey, TValue>,
       propertyName: "Item",
       parameterTypes: [TKey],
       newValue: TValue
     ): void;
   }
   declare interface ActiveXObjectNameMap {
-    "Scripting.Dictionary": Scripting$Scripting$Dictionary;
-    "Scripting.Encoder": Scripting$Scripting$Encoder;
-    "Scripting.FileSystemObject": Scripting$Scripting$FileSystemObject;
+    "Scripting.Dictionary": Scripting$Dictionary<>;
+    "Scripting.Encoder": Scripting$Encoder;
+    "Scripting.FileSystemObject": Scripting$FileSystemObject;
   }
   declare interface EnumeratorConstructor {
-    new<TKey>(dict: Scripting$Scripting$Dictionary<TKey>): Enumerator<TKey>;
+    new<TKey>(dict: Scripting$Dictionary<TKey>): Enumerator<TKey>;
   }
 }
