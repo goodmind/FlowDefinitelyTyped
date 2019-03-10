@@ -43,7 +43,7 @@ export interface Handlebars$RuntimeOptions {
     [name: string]: Function
   };
   partials?: {
-    [name: string]: HandlebarsTemplateDelegate
+    [name: string]: HandlebarsTemplateDelegate<>
   };
   decorators?: {
     [name: string]: Function
@@ -53,8 +53,8 @@ export interface Handlebars$RuntimeOptions {
 }
 
 export interface Handlebars$HelperOptions {
-  fn: Handlebars$TemplateDelegate;
-  inverse: Handlebars$TemplateDelegate;
+  fn: Handlebars$TemplateDelegate<>;
+  inverse: Handlebars$TemplateDelegate<>;
   hash: any;
   data?: any;
 }
@@ -93,11 +93,11 @@ declare export function Handlebars$unregisterHelper(name: string): void;
 
 declare export function Handlebars$registerPartial(
   name: string,
-  fn: Handlebars$Template
+  fn: Handlebars$Template<>
 ): void;
 
 declare export function Handlebars$registerPartial(spec: {
-  [name: string]: HandlebarsTemplateDelegate
+  [name: string]: HandlebarsTemplateDelegate<>
 }): void;
 
 declare export function Handlebars$unregisterPartial(name: string): void;
@@ -122,7 +122,7 @@ declare export function Handlebars$log(level: number, obj: any): void;
 declare export function Handlebars$parse(
   input: string,
   options?: Handlebars$ParseOptions
-): hbs$ASTProgram;
+): hbs$AST$Program;
 
 declare export function Handlebars$compile<T>(
   input: any,
@@ -140,7 +140,7 @@ declare export function Handlebars$template<T>(
 
 declare export function Handlebars$create(): typeof Handlebars;
 
-declare export var Handlebars$escapeExpression: typeof Utils$escapeExpression;
+declare export var Handlebars$escapeExpression: typeof Handlebars$Utils$escapeExpression;
 
 declare export var Handlebars$logger: Logger;
 
@@ -201,62 +201,62 @@ declare export function Handlebars$Utils$isFunction(obj: any): boolean;
 declare var npm$namespace$Handlebars$AST: {
   helpers: typeof Handlebars$AST$helpers
 };
-declare export var Handlebars$AST$helpers: hbs$ASThelpers;
+declare export var Handlebars$AST$helpers: hbs$AST$helpers;
 
 declare interface Handlebars$ICompiler {
-  accept(node: hbs$ASTNode): void;
-  Program(program: hbs$ASTProgram): void;
-  BlockStatement(block: hbs$ASTBlockStatement): void;
-  PartialStatement(partial: hbs$ASTPartialStatement): void;
-  PartialBlockStatement(partial: hbs$ASTPartialBlockStatement): void;
-  DecoratorBlock(decorator: hbs$ASTDecoratorBlock): void;
-  Decorator(decorator: hbs$ASTDecorator): void;
-  MustacheStatement(mustache: hbs$ASTMustacheStatement): void;
-  ContentStatement(content: hbs$ASTContentStatement): void;
-  CommentStatement(comment?: hbs$ASTCommentStatement): void;
-  SubExpression(sexpr: hbs$ASTSubExpression): void;
-  PathExpression(path: hbs$ASTPathExpression): void;
-  StringLiteral(str: hbs$ASTStringLiteral): void;
-  NumberLiteral(num: hbs$ASTNumberLiteral): void;
-  BooleanLiteral(bool: hbs$ASTBooleanLiteral): void;
+  accept(node: hbs$AST$Node): void;
+  Program(program: hbs$AST$Program): void;
+  BlockStatement(block: hbs$AST$BlockStatement): void;
+  PartialStatement(partial: hbs$AST$PartialStatement): void;
+  PartialBlockStatement(partial: hbs$AST$PartialBlockStatement): void;
+  DecoratorBlock(decorator: hbs$AST$DecoratorBlock): void;
+  Decorator(decorator: hbs$AST$Decorator): void;
+  MustacheStatement(mustache: hbs$AST$MustacheStatement): void;
+  ContentStatement(content: hbs$AST$ContentStatement): void;
+  CommentStatement(comment?: hbs$AST$CommentStatement): void;
+  SubExpression(sexpr: hbs$AST$SubExpression): void;
+  PathExpression(path: hbs$AST$PathExpression): void;
+  StringLiteral(str: hbs$AST$StringLiteral): void;
+  NumberLiteral(num: hbs$AST$NumberLiteral): void;
+  BooleanLiteral(bool: hbs$AST$BooleanLiteral): void;
   UndefinedLiteral(): void;
   NullLiteral(): void;
-  Hash(hash: hbs$ASTHash): void;
+  Hash(hash: hbs$AST$Hash): void;
 }
 
-declare export class Handlebars$Visitor mixins ICompiler {
-  accept(node: hbs$ASTNode): void;
-  acceptKey(node: hbs$ASTNode, name: string): void;
-  acceptArray(arr: hbs$ASTExpression[]): void;
-  Program(program: hbs$ASTProgram): void;
-  BlockStatement(block: hbs$ASTBlockStatement): void;
-  PartialStatement(partial: hbs$ASTPartialStatement): void;
-  PartialBlockStatement(partial: hbs$ASTPartialBlockStatement): void;
-  DecoratorBlock(decorator: hbs$ASTDecoratorBlock): void;
-  Decorator(decorator: hbs$ASTDecorator): void;
-  MustacheStatement(mustache: hbs$ASTMustacheStatement): void;
-  ContentStatement(content: hbs$ASTContentStatement): void;
-  CommentStatement(comment?: hbs$ASTCommentStatement): void;
-  SubExpression(sexpr: hbs$ASTSubExpression): void;
-  PathExpression(path: hbs$ASTPathExpression): void;
-  StringLiteral(str: hbs$ASTStringLiteral): void;
-  NumberLiteral(num: hbs$ASTNumberLiteral): void;
-  BooleanLiteral(bool: hbs$ASTBooleanLiteral): void;
+declare export class Handlebars$Visitor mixins Handlebars$ICompiler {
+  accept(node: hbs$AST$Node): void;
+  acceptKey(node: hbs$AST$Node, name: string): void;
+  acceptArray(arr: hbs$AST$Expression[]): void;
+  Program(program: hbs$AST$Program): void;
+  BlockStatement(block: hbs$AST$BlockStatement): void;
+  PartialStatement(partial: hbs$AST$PartialStatement): void;
+  PartialBlockStatement(partial: hbs$AST$PartialBlockStatement): void;
+  DecoratorBlock(decorator: hbs$AST$DecoratorBlock): void;
+  Decorator(decorator: hbs$AST$Decorator): void;
+  MustacheStatement(mustache: hbs$AST$MustacheStatement): void;
+  ContentStatement(content: hbs$AST$ContentStatement): void;
+  CommentStatement(comment?: hbs$AST$CommentStatement): void;
+  SubExpression(sexpr: hbs$AST$SubExpression): void;
+  PathExpression(path: hbs$AST$PathExpression): void;
+  StringLiteral(str: hbs$AST$StringLiteral): void;
+  NumberLiteral(num: hbs$AST$NumberLiteral): void;
+  BooleanLiteral(bool: hbs$AST$BooleanLiteral): void;
   UndefinedLiteral(): void;
   NullLiteral(): void;
-  Hash(hash: hbs$ASTHash): void;
+  Hash(hash: hbs$AST$Hash): void;
 }
 /**
  * Implement this interface on your MVW/MVVM/MVC views such as Backbone.View
  */
 declare interface HandlebarsTemplatable {
-  template: HandlebarsTemplateDelegate;
+  template: HandlebarsTemplateDelegate<>;
 }
 declare type HandlebarsTemplateDelegate<
   T = any
 > = Handlebars$TemplateDelegate<T>;
 declare interface HandlebarsTemplates {
-  [index: string]: HandlebarsTemplateDelegate;
+  [index: string]: HandlebarsTemplateDelegate<>;
 }
 declare interface TemplateSpecification {}
 declare type RuntimeOptions = Handlebars$RuntimeOptions;
@@ -308,9 +308,9 @@ declare interface hbs$AST$Position {
 declare type hbs$AST$Program = {
   body: AST$Statement[],
   blockParams: string[]
-} & Node;
+} & hbs$AST$Node;
 
-declare type hbs$AST$Statement = {} & Node;
+declare type hbs$AST$Statement = {} & hbs$AST$Node;
 
 declare type hbs$AST$MustacheStatement = {
   path: AST$PathExpression | AST$Literal,
@@ -318,9 +318,9 @@ declare type hbs$AST$MustacheStatement = {
   hash: AST$Hash,
   escaped: boolean,
   strip: AST$StripFlags
-} & Statement;
+} & hbs$AST$Statement;
 
-declare type hbs$AST$Decorator = {} & MustacheStatement;
+declare type hbs$AST$Decorator = {} & hbs$AST$MustacheStatement;
 
 declare type hbs$AST$BlockStatement = {
   path: AST$PathExpression,
@@ -331,9 +331,9 @@ declare type hbs$AST$BlockStatement = {
   openStrip: AST$StripFlags,
   inverseStrip: AST$StripFlags,
   closeStrip: AST$StripFlags
-} & Statement;
+} & hbs$AST$Statement;
 
-declare type hbs$AST$DecoratorBlock = {} & BlockStatement;
+declare type hbs$AST$DecoratorBlock = {} & hbs$AST$BlockStatement;
 
 declare type hbs$AST$PartialStatement = {
   name: AST$PathExpression | AST$SubExpression,
@@ -341,7 +341,7 @@ declare type hbs$AST$PartialStatement = {
   hash: AST$Hash,
   indent: string,
   strip: AST$StripFlags
-} & Statement;
+} & hbs$AST$Statement;
 
 declare type hbs$AST$PartialBlockStatement = {
   name: AST$PathExpression | AST$SubExpression,
@@ -350,62 +350,62 @@ declare type hbs$AST$PartialBlockStatement = {
   program: hbs$AST$Program,
   openStrip: AST$StripFlags,
   closeStrip: AST$StripFlags
-} & Statement;
+} & hbs$AST$Statement;
 
 declare type hbs$AST$ContentStatement = {
   value: string,
   original: AST$StripFlags
-} & Statement;
+} & hbs$AST$Statement;
 
 declare type hbs$AST$CommentStatement = {
   value: string,
   strip: AST$StripFlags
-} & Statement;
+} & hbs$AST$Statement;
 
-declare type hbs$AST$Expression = {} & Node;
+declare type hbs$AST$Expression = {} & hbs$AST$Node;
 
 declare type hbs$AST$SubExpression = {
   path: AST$PathExpression,
   params: hbs$AST$Expression[],
   hash: AST$Hash
-} & Expression;
+} & hbs$AST$Expression;
 
 declare type hbs$AST$PathExpression = {
   data: boolean,
   depth: number,
   parts: string[],
   original: string
-} & Expression;
+} & hbs$AST$Expression;
 
-declare type hbs$AST$Literal = {} & Expression;
+declare type hbs$AST$Literal = {} & hbs$AST$Expression;
 
 declare type hbs$AST$StringLiteral = {
   value: string,
   original: string
-} & Literal;
+} & hbs$AST$Literal;
 
 declare type hbs$AST$BooleanLiteral = {
   value: boolean,
   original: boolean
-} & Literal;
+} & hbs$AST$Literal;
 
 declare type hbs$AST$NumberLiteral = {
   value: number,
   original: number
-} & Literal;
+} & hbs$AST$Literal;
 
-declare type hbs$AST$UndefinedLiteral = {} & Literal;
+declare type hbs$AST$UndefinedLiteral = {} & hbs$AST$Literal;
 
-declare type hbs$AST$NullLiteral = {} & Literal;
+declare type hbs$AST$NullLiteral = {} & hbs$AST$Literal;
 
 declare type hbs$AST$Hash = {
   pairs: AST$HashPair[]
-} & Node;
+} & hbs$AST$Node;
 
 declare type hbs$AST$HashPair = {
   key: string,
   value: hbs$AST$Expression
-} & Node;
+} & hbs$AST$Node;
 
 declare interface hbs$AST$StripFlags {
   open: boolean;
