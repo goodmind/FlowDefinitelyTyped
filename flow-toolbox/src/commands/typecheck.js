@@ -9,6 +9,15 @@ const { originalName } = require("../utils");
 
 const baseDir = path.join(__dirname, "../../../");
 
+function fileName(name) {
+  if (name.includes("@")) {
+    const split = name.split("/");
+    const newName = split[1].trim();
+    return newName;
+  }
+  return name;
+}
+
 async function globalTypes() {
   const flowTypes = await glob(
     `${baseDir}/flow-types/types/**/*_v*/!(test_)*.js`
@@ -28,37 +37,49 @@ async function globalTypes() {
         .split("_vx.x.x")[0]
     ])
   ];
-  return types
+  return types;
 }
 
 async function localTypes(names) {
-  const types = (await Promise.all(names.map(async name => {
-    const flowTypes = await glob(
-      `${baseDir}/flow-types/types/**/*_v*/!(test_)${name}.js`
-    );
-    const flowTypesUnformatted = await glob(
-      `${baseDir}/flow-types/unformatted/**/*_v*/!(test_)${name}.js`
-    );
-    return [flowTypes.map(p => [
-      p,
-      p.replace(path.join(baseDir, `flow-types/types/`), "").split("_vx.x.x")[0],
-    ]), flowTypesUnformatted.map(p => [
-      p,
-      p
-        .replace(path.join(baseDir, `flow-types/unformatted/`), "")
-        .split("_vx.x.x")[0]
-    ])]
-  }))).flat(2)
+  const types = (await Promise.all(
+    names.map(async name => {
+      const file = fileName(name);
+      const flowTypes = await glob(
+        `${baseDir}/flow-types/types/**/*_v*/!(test_)${file}.js`
+      );
+      const flowTypesUnformatted = await glob(
+        `${baseDir}/flow-types/unformatted/**/*_v*/!(test_)${file}.js`
+      );
+      return [
+        flowTypes.map(p => [
+          p,
+          p
+            .replace(path.join(baseDir, `flow-types/types/`), "")
+            .split("_vx.x.x")[0]
+        ]),
+        flowTypesUnformatted.map(p => [
+          p,
+          p
+            .replace(path.join(baseDir, `flow-types/unformatted/`), "")
+            .split("_vx.x.x")[0]
+        ])
+      ];
+    })
+  )).flat(2);
   //console.log(types)
-  return types
+  return types;
 }
 
 async function typecheck(names) {
-  const types = names ? await localTypes(names) : await globalTypes()
+  const types = names ? await localTypes(names) : await globalTypes();
   for (const [type, name] of types) {
     console.log(name, type);
     try {
-      const data = await execa("flow", ["focus-check", type]);
+      const data = await execa("flow", [
+        "focus-check",
+        "--show-all-errors",
+        type
+      ]);
       console.log("Ok!");
     } catch (err) {
       console.log("Error!", err);
