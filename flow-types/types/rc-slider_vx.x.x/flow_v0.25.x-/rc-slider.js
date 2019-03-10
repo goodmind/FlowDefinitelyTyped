@@ -5,11 +5,11 @@ declare module "rc-slider" {
 
   declare export interface Marks {
     [number: number]:
-      | JSX.Element
+      | React$Node
       | string
       | {
           style: any,
-          label: string | JSX.Element
+          label: string | React$Node
         };
   }
   declare export interface CommonApiProps {
@@ -53,7 +53,7 @@ declare module "rc-slider" {
     /**
      * A handle generator which could be used to customized handle.
      */
-    handle?: (props: any) => React.ReactNode;
+    handle?: (props: any) => React.Node;
 
     /**
      * If the value is true, it means a continuous value interval, otherwise, it is a independent value.
@@ -223,7 +223,7 @@ declare module "rc-slider" {
   } & CommonApiProps;
 
   declare export interface WithTooltipProps {
-    tipFormatter?: (value: number) => React.ReactNode;
+    tipFormatter?: (value: number) => React.Node;
     tipProps?: $Shape<RCTooltip.Props>;
   }
   declare export default class Slider mixins React.Component<SliderProps> {}
