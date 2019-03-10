@@ -6,12 +6,12 @@ declare module 'angular' {
  * @param {String} namespace - The namespace
  * @param {String} storage - The name of the storage service. Defaults to local storage.
  * @param {String} delimiter - The delimiter to use to separate the namespace and the keys.
- * @returns {storage$INamespacedStoreService}
+ * @returns {a0$storage$INamespacedStoreService}
  */
 getNamespacedStore(
 namespace: string,
 storage?: string,
-delimiter?: string): storage$INamespacedStoreService
+delimiter?: string): a0$storage$INamespacedStoreService
 } & a0$storage$INamespacedStoreService
 
 
