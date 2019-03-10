@@ -34,7 +34,7 @@ declare module "rc-tree" {
     /**
      * tree / subTree's title
      */
-    title?: string | JSX.Element;
+    title?: string | React$Node;
 
     /**
      * whether it is a leaf node
@@ -44,7 +44,7 @@ declare module "rc-tree" {
     /**
      * customize icon. When you pass component, whose render will receive full TreeNode props as component props
      */
-    icon?: JSX.Element | ((props: InternalTreeNodeProps) => JSX.Element);
+    icon?: React$Node | ((props: InternalTreeNodeProps) => React$Node);
   }
   declare export class TreeNode mixins Component<TreeNodeProps> {}
   declare export interface ExpandData {
@@ -144,7 +144,7 @@ declare module "rc-tree" {
     /**
      * whether support checked
      */
-    checkable?: boolean | JSX.Element;
+    checkable?: boolean | React$Node;
 
     /**
      * default expand all treeNodes
@@ -201,7 +201,7 @@ declare module "rc-tree" {
     /**
      * customize icon. When you pass component, whose render will receive full TreeNode props as component props
      */
-    icon?: JSX.Element | ((props: InternalTreeNodeProps) => JSX.Element);
+    icon?: React$Node | ((props: InternalTreeNodeProps) => React$Node);
 
     /**
      * Controlled selected treeNodes(After setting, defaultSelectedKeys will not work)
