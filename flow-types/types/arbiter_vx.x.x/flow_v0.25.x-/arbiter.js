@@ -133,5 +133,5 @@ declare module "arbiter" {
      */
     resubscribe(subscription_id: number): boolean;
   }
-  declare var Arbiter: ArbiterDef$ArbiterDef$ArbiterStatic;
+  declare var Arbiter: ArbiterDef$ArbiterStatic;
 }
