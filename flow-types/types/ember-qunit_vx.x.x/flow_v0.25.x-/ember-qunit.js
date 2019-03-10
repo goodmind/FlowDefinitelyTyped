@@ -128,7 +128,7 @@ declare module "ember-qunit" {
     options?: SetupTestOptions
   ): void;
 
-  declare export class QUnitAdapter mixins undefined.Adapter {}
+  declare export class QUnitAdapter mixins Ember.Test.Adapter {}
   declare export { module, test, skip, only, todo } from "qunit";
 
   declare interface QUnitStartOptions {
@@ -175,7 +175,7 @@ declare module "ember-qunit" {
 declare module "qunit" {
   import type { TestContext } from "ember-test-helpers";
 
-  declare export var module: typeof undefined;
+  declare export var module: typeof QUnit.module;
 
   /**
    * Add a test to run.
