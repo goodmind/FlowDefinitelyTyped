@@ -35,9 +35,9 @@ declare module "react-big-calendar" {
   declare export type Views =
     | View[]
     | {
-        month: boolean | React.SFC | React.Component,
-        week: boolean | React.SFC | React.Component,
-        myweek: boolean | React.SFC | React.Component
+        month: boolean | React.SFC<> | React.Component<>,
+        week: boolean | React.SFC<> | React.Component<>,
+        myweek: boolean | React.SFC<> | React.Component<>
       };
   declare export type Navigate = "PREV" | "NEXT" | "TODAY" | "DATE";
   declare export type Event = { [key: string]: any };
@@ -129,18 +129,22 @@ declare module "react-big-calendar" {
     localizer: DateLocalizer;
   }
   declare export interface Components {
-    event?: React.SFC | React.Component | React.ComponentClass | JSX.Element;
-    eventWrapper?: React.ComponentType<EventWrapperProps>;
+    event?:
+      | React.SFC<>
+      | React.Component<>
+      | React.ComponentClass<>
+      | React$Node;
+    eventWrapper?: React.ComponentType<EventWrapperProps<>>;
     dayWrapper?:
-      | React.SFC
-      | React.Component
-      | React.ComponentClass
-      | JSX.Element;
+      | React.SFC<>
+      | React.Component<>
+      | React.ComponentClass<>
+      | React$Node;
     dateCellWrapper?:
-      | React.SFC
-      | React.Component
-      | React.ComponentClass
-      | JSX.Element;
+      | React.SFC<>
+      | React.Component<>
+      | React.ComponentClass<>
+      | React$Node;
 
     /**
      * component used as a header for each column in the TimeGridHeader
@@ -148,26 +152,62 @@ declare module "react-big-calendar" {
     header?: React.ComponentType<HeaderProps>;
     toolbar?: React.ComponentType<ToolbarProps>;
     agenda?: {
-      date?: React.SFC | React.Component | React.ComponentClass | JSX.Element,
-      time?: React.SFC | React.Component | React.ComponentClass | JSX.Element,
-      event?: React.SFC | React.Component | React.ComponentClass | JSX.Element
+      date?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node,
+      time?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node,
+      event?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node
     };
     day?: {
-      header?: React.SFC | React.Component | React.ComponentClass | JSX.Element,
-      event?: React.SFC | React.Component | React.ComponentClass | JSX.Element
+      header?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node,
+      event?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node
     };
     week?: {
-      header?: React.SFC | React.Component | React.ComponentClass | JSX.Element,
-      event?: React.SFC | React.Component | React.ComponentClass | JSX.Element
+      header?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node,
+      event?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node
     };
     month?: {
-      header?: React.SFC | React.Component | React.ComponentClass | JSX.Element,
+      header?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node,
       dateHeader?:
-        | React.SFC
-        | React.Component
-        | React.ComponentClass
-        | JSX.Element,
-      event?: React.SFC | React.Component | React.ComponentClass | JSX.Element
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node,
+      event?:
+        | React.SFC<>
+        | React.Component<>
+        | React.ComponentClass<>
+        | React$Node
     };
   }
   declare export interface ToolbarProps {
@@ -180,7 +220,7 @@ declare module "react-big-calendar" {
     };
     onNavigate: (navigate: Navigate, date?: Date) => void;
     onView: (view: View) => void;
-    children?: React.ReactNode;
+    children?: React.Node;
   }
   declare export interface EventWrapperProps<T: Event = Event> {
     style?: React.CSSProperties & {
@@ -337,9 +377,9 @@ declare module "react-big-calendar" {
     TResource: { [key: string]: any } = { [key: string]: any }
   > mixins React.Component<BigCalendarProps<TEvent, TResource>> {
     components: {
-      dateCellWrapper: React.ComponentType,
-      dayWrapper: React.ComponentType,
-      eventWrapper: React.ComponentType
+      dateCellWrapper: React.ComponentType<>,
+      dayWrapper: React.ComponentType<>,
+      eventWrapper: React.ComponentType<>
     };
 
     /**
