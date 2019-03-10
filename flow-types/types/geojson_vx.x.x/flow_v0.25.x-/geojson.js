@@ -3,13 +3,13 @@ declare module "geojson" {
    * The valid values for the "type" property of GeoJSON geometry objects.
    * https://tools.ietf.org/html/rfc7946#section-1.4
    */
-  declare export type GeoJsonGeometryTypes = $ElementType<Geometry, "type">;
+  declare export type GeoJsonGeometryTypes = $PropertyType<Geometry, "type">;
 
   /**
    * The value values for the "type" property of GeoJSON Objects.
    * https://tools.ietf.org/html/rfc7946#section-1.4
    */
-  declare export type GeoJsonTypes = $ElementType<GeoJSON, "type">;
+  declare export type GeoJsonTypes = $PropertyType<GeoJSON, "type">;
 
   /**
    * Bounding box
@@ -56,7 +56,7 @@ declare module "geojson" {
   /**
    * Union of GeoJSON objects.
    */
-  declare export type GeoJSON = Geometry | Feature | FeatureCollection;
+  declare export type GeoJSON = Geometry | Feature<> | FeatureCollection<>;
 
   /**
    * Geometry object.
