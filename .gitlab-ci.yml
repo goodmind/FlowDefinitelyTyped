@@ -24,5 +24,4 @@ typecheck:
       - flow-types/typecheck
   script:
     - yarn
-    - cd flow-toolbox
-    - node src/index.js --help
+    - node ./flow-toolbox/src/index.js typecheck
