@@ -18,19 +18,19 @@ declare module "react-json-tree" {
       data: [any] | {},
       itemType: string,
       itemString: string
-    ) => JSX.Element,
+    ) => React$Node,
     labelRenderer?: (
       keyPath: string[],
       nodeType?: string,
       expanded?: boolean,
       expandable?: boolean
-    ) => JSX.Element,
+    ) => React$Node,
     valueRenderer?: (
       displayValue: string | number,
       rawValue?: string | number | boolean | null,
       ...keyPath: (string | number)[]
-    ) => JSX.Element,
-    postprocessValue?: (raw: string) => JSX.Element,
+    ) => React$Node,
+    postprocessValue?: (raw: string) => React$Node,
     isCustomNode?: () => boolean,
     collectionLimit?: number
   } & Props<JSONTreeComponent>;
