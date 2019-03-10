@@ -1,1153 +1,412 @@
 declare module "activex-msforms" {
-  declare class MSForms$fmAction {
-    constructor(...args: empty): mixed;
-    static +fmActionCopy: Class<MSForms$fmAction__fmActionCopy> &
-      MSForms$fmAction__fmActionCopy &
-      1; // 1
-    static +fmActionCut: Class<MSForms$fmAction__fmActionCut> &
-      MSForms$fmAction__fmActionCut &
-      0; // 0
-    static +fmActionDragDrop: Class<MSForms$fmAction__fmActionDragDrop> &
-      MSForms$fmAction__fmActionDragDrop &
-      3; // 3
-    static +fmActionPaste: Class<MSForms$fmAction__fmActionPaste> &
-      MSForms$fmAction__fmActionPaste &
-      2; // 2
-  }
-
-  declare class MSForms$fmAction__fmActionCopy mixins MSForms$fmAction {}
-  declare class MSForms$fmAction__fmActionCut mixins MSForms$fmAction {}
-  declare class MSForms$fmAction__fmActionDragDrop mixins MSForms$fmAction {}
-  declare class MSForms$fmAction__fmActionPaste mixins MSForms$fmAction {}
-
-  declare class MSForms$fmAlignment {
-    constructor(...args: empty): mixed;
-    static +fmAlignmentLeft: Class<MSForms$fmAlignment__fmAlignmentLeft> &
-      MSForms$fmAlignment__fmAlignmentLeft &
-      0; // 0
-    static +fmAlignmentRight: Class<MSForms$fmAlignment__fmAlignmentRight> &
-      MSForms$fmAlignment__fmAlignmentRight &
-      1; // 1
-  }
-
-  declare class MSForms$fmAlignment__fmAlignmentLeft
-    mixins MSForms$fmAlignment {}
-  declare class MSForms$fmAlignment__fmAlignmentRight
-    mixins MSForms$fmAlignment {}
-
-  declare class MSForms$fmBackStyle {
-    constructor(...args: empty): mixed;
-    static +fmBackStyleOpaque: Class<MSForms$fmBackStyle__fmBackStyleOpaque> &
-      MSForms$fmBackStyle__fmBackStyleOpaque &
-      1; // 1
-    static +fmBackStyleTransparent: Class<MSForms$fmBackStyle__fmBackStyleTransparent> &
-      MSForms$fmBackStyle__fmBackStyleTransparent &
-      0; // 0
-  }
-
-  declare class MSForms$fmBackStyle__fmBackStyleOpaque
-    mixins MSForms$fmBackStyle {}
-  declare class MSForms$fmBackStyle__fmBackStyleTransparent
-    mixins MSForms$fmBackStyle {}
-
-  declare class MSForms$fmBorders {
-    constructor(...args: empty): mixed;
-    static +fmBordersBox: Class<MSForms$fmBorders__fmBordersBox> &
-      MSForms$fmBorders__fmBordersBox &
-      1; // 1
-    static +fmBordersLeft: Class<MSForms$fmBorders__fmBordersLeft> &
-      MSForms$fmBorders__fmBordersLeft &
-      2; // 2
-    static +fmBordersNone: Class<MSForms$fmBorders__fmBordersNone> &
-      MSForms$fmBorders__fmBordersNone &
-      0; // 0
-    static +fmBordersTop: Class<MSForms$fmBorders__fmBordersTop> &
-      MSForms$fmBorders__fmBordersTop &
-      3; // 3
-  }
-
-  declare class MSForms$fmBorders__fmBordersBox mixins MSForms$fmBorders {}
-  declare class MSForms$fmBorders__fmBordersLeft mixins MSForms$fmBorders {}
-  declare class MSForms$fmBorders__fmBordersNone mixins MSForms$fmBorders {}
-  declare class MSForms$fmBorders__fmBordersTop mixins MSForms$fmBorders {}
-
-  declare class MSForms$fmBorderStyle {
-    constructor(...args: empty): mixed;
-    static +fmBorderStyleNone: Class<MSForms$fmBorderStyle__fmBorderStyleNone> &
-      MSForms$fmBorderStyle__fmBorderStyleNone &
-      0; // 0
-    static +fmBorderStyleSingle: Class<MSForms$fmBorderStyle__fmBorderStyleSingle> &
-      MSForms$fmBorderStyle__fmBorderStyleSingle &
-      1; // 1
-  }
-
-  declare class MSForms$fmBorderStyle__fmBorderStyleNone
-    mixins MSForms$fmBorderStyle {}
-  declare class MSForms$fmBorderStyle__fmBorderStyleSingle
-    mixins MSForms$fmBorderStyle {}
-
-  declare class MSForms$fmButtonEffect {
-    constructor(...args: empty): mixed;
-    static +fmButtonEffectFlat: Class<MSForms$fmButtonEffect__fmButtonEffectFlat> &
-      MSForms$fmButtonEffect__fmButtonEffectFlat &
-      0; // 0
-    static +fmButtonEffectSunken: Class<MSForms$fmButtonEffect__fmButtonEffectSunken> &
-      MSForms$fmButtonEffect__fmButtonEffectSunken &
-      2; // 2
-  }
-
-  declare class MSForms$fmButtonEffect__fmButtonEffectFlat
-    mixins MSForms$fmButtonEffect {}
-  declare class MSForms$fmButtonEffect__fmButtonEffectSunken
-    mixins MSForms$fmButtonEffect {}
-
-  declare class MSForms$fmButtonStyle {
-    constructor(...args: empty): mixed;
-    static +fmButtonStylePushButton: Class<MSForms$fmButtonStyle__fmButtonStylePushButton> &
-      MSForms$fmButtonStyle__fmButtonStylePushButton &
-      0; // 0
-    static +fmButtonStyleToggleButton: Class<MSForms$fmButtonStyle__fmButtonStyleToggleButton> &
-      MSForms$fmButtonStyle__fmButtonStyleToggleButton &
-      1; // 1
-  }
-
-  declare class MSForms$fmButtonStyle__fmButtonStylePushButton
-    mixins MSForms$fmButtonStyle {}
-  declare class MSForms$fmButtonStyle__fmButtonStyleToggleButton
-    mixins MSForms$fmButtonStyle {}
-
-  declare class MSForms$fmCycle {
-    constructor(...args: empty): mixed;
-    static +fmCycleAllForms: Class<MSForms$fmCycle__fmCycleAllForms> &
-      MSForms$fmCycle__fmCycleAllForms &
-      0; // 0
-    static +fmCycleCurrentForm: Class<MSForms$fmCycle__fmCycleCurrentForm> &
-      MSForms$fmCycle__fmCycleCurrentForm &
-      2; // 2
-  }
-
-  declare class MSForms$fmCycle__fmCycleAllForms mixins MSForms$fmCycle {}
-  declare class MSForms$fmCycle__fmCycleCurrentForm mixins MSForms$fmCycle {}
-
-  declare class MSForms$fmDisplayStyle {
-    constructor(...args: empty): mixed;
-    static +fmDisplayStyleCheckBox: Class<MSForms$fmDisplayStyle__fmDisplayStyleCheckBox> &
-      MSForms$fmDisplayStyle__fmDisplayStyleCheckBox &
-      4; // 4
-    static +fmDisplayStyleCombo: Class<MSForms$fmDisplayStyle__fmDisplayStyleCombo> &
-      MSForms$fmDisplayStyle__fmDisplayStyleCombo &
-      3; // 3
-    static +fmDisplayStyleDropList: Class<MSForms$fmDisplayStyle__fmDisplayStyleDropList> &
-      MSForms$fmDisplayStyle__fmDisplayStyleDropList &
-      7; // 7
-    static +fmDisplayStyleList: Class<MSForms$fmDisplayStyle__fmDisplayStyleList> &
-      MSForms$fmDisplayStyle__fmDisplayStyleList &
-      2; // 2
-    static +fmDisplayStyleOptionButton: Class<MSForms$fmDisplayStyle__fmDisplayStyleOptionButton> &
-      MSForms$fmDisplayStyle__fmDisplayStyleOptionButton &
-      5; // 5
-    static +fmDisplayStyleText: Class<MSForms$fmDisplayStyle__fmDisplayStyleText> &
-      MSForms$fmDisplayStyle__fmDisplayStyleText &
-      1; // 1
-    static +fmDisplayStyleToggle: Class<MSForms$fmDisplayStyle__fmDisplayStyleToggle> &
-      MSForms$fmDisplayStyle__fmDisplayStyleToggle &
-      6; // 6
-  }
-
-  declare class MSForms$fmDisplayStyle__fmDisplayStyleCheckBox
-    mixins MSForms$fmDisplayStyle {}
-  declare class MSForms$fmDisplayStyle__fmDisplayStyleCombo
-    mixins MSForms$fmDisplayStyle {}
-  declare class MSForms$fmDisplayStyle__fmDisplayStyleDropList
-    mixins MSForms$fmDisplayStyle {}
-  declare class MSForms$fmDisplayStyle__fmDisplayStyleList
-    mixins MSForms$fmDisplayStyle {}
-  declare class MSForms$fmDisplayStyle__fmDisplayStyleOptionButton
-    mixins MSForms$fmDisplayStyle {}
-  declare class MSForms$fmDisplayStyle__fmDisplayStyleText
-    mixins MSForms$fmDisplayStyle {}
-  declare class MSForms$fmDisplayStyle__fmDisplayStyleToggle
-    mixins MSForms$fmDisplayStyle {}
-
-  declare class MSForms$fmDragBehavior {
-    constructor(...args: empty): mixed;
-    static +fmDragBehaviorDisabled: Class<MSForms$fmDragBehavior__fmDragBehaviorDisabled> &
-      MSForms$fmDragBehavior__fmDragBehaviorDisabled &
-      0; // 0
-    static +fmDragBehaviorEnabled: Class<MSForms$fmDragBehavior__fmDragBehaviorEnabled> &
-      MSForms$fmDragBehavior__fmDragBehaviorEnabled &
-      1; // 1
-  }
-
-  declare class MSForms$fmDragBehavior__fmDragBehaviorDisabled
-    mixins MSForms$fmDragBehavior {}
-  declare class MSForms$fmDragBehavior__fmDragBehaviorEnabled
-    mixins MSForms$fmDragBehavior {}
-
-  declare class MSForms$fmDragState {
-    constructor(...args: empty): mixed;
-    static +fmDragStateEnter: Class<MSForms$fmDragState__fmDragStateEnter> &
-      MSForms$fmDragState__fmDragStateEnter &
-      0; // 0
-    static +fmDragStateLeave: Class<MSForms$fmDragState__fmDragStateLeave> &
-      MSForms$fmDragState__fmDragStateLeave &
-      1; // 1
-    static +fmDragStateOver: Class<MSForms$fmDragState__fmDragStateOver> &
-      MSForms$fmDragState__fmDragStateOver &
-      2; // 2
-  }
-
-  declare class MSForms$fmDragState__fmDragStateEnter
-    mixins MSForms$fmDragState {}
-  declare class MSForms$fmDragState__fmDragStateLeave
-    mixins MSForms$fmDragState {}
-  declare class MSForms$fmDragState__fmDragStateOver
-    mixins MSForms$fmDragState {}
-
-  declare class MSForms$fmDropButtonStyle {
-    constructor(...args: empty): mixed;
-    static +fmDropButtonStyleArrow: Class<MSForms$fmDropButtonStyle__fmDropButtonStyleArrow> &
-      MSForms$fmDropButtonStyle__fmDropButtonStyleArrow &
-      1; // 1
-    static +fmDropButtonStyleEllipsis: Class<MSForms$fmDropButtonStyle__fmDropButtonStyleEllipsis> &
-      MSForms$fmDropButtonStyle__fmDropButtonStyleEllipsis &
-      2; // 2
-    static +fmDropButtonStylePlain: Class<MSForms$fmDropButtonStyle__fmDropButtonStylePlain> &
-      MSForms$fmDropButtonStyle__fmDropButtonStylePlain &
-      0; // 0
-    static +fmDropButtonStyleReduce: Class<MSForms$fmDropButtonStyle__fmDropButtonStyleReduce> &
-      MSForms$fmDropButtonStyle__fmDropButtonStyleReduce &
-      3; // 3
-  }
-
-  declare class MSForms$fmDropButtonStyle__fmDropButtonStyleArrow
-    mixins MSForms$fmDropButtonStyle {}
-  declare class MSForms$fmDropButtonStyle__fmDropButtonStyleEllipsis
-    mixins MSForms$fmDropButtonStyle {}
-  declare class MSForms$fmDropButtonStyle__fmDropButtonStylePlain
-    mixins MSForms$fmDropButtonStyle {}
-  declare class MSForms$fmDropButtonStyle__fmDropButtonStyleReduce
-    mixins MSForms$fmDropButtonStyle {}
-
-  declare class MSForms$fmDropEffect {
-    constructor(...args: empty): mixed;
-    static +fmDropEffectCopy: Class<MSForms$fmDropEffect__fmDropEffectCopy> &
-      MSForms$fmDropEffect__fmDropEffectCopy &
-      1; // 1
-    static +fmDropEffectCopyOrMove: Class<MSForms$fmDropEffect__fmDropEffectCopyOrMove> &
-      MSForms$fmDropEffect__fmDropEffectCopyOrMove &
-      3; // 3
-    static +fmDropEffectMove: Class<MSForms$fmDropEffect__fmDropEffectMove> &
-      MSForms$fmDropEffect__fmDropEffectMove &
-      2; // 2
-    static +fmDropEffectNone: Class<MSForms$fmDropEffect__fmDropEffectNone> &
-      MSForms$fmDropEffect__fmDropEffectNone &
-      0; // 0
-  }
-
-  declare class MSForms$fmDropEffect__fmDropEffectCopy
-    mixins MSForms$fmDropEffect {}
-  declare class MSForms$fmDropEffect__fmDropEffectCopyOrMove
-    mixins MSForms$fmDropEffect {}
-  declare class MSForms$fmDropEffect__fmDropEffectMove
-    mixins MSForms$fmDropEffect {}
-  declare class MSForms$fmDropEffect__fmDropEffectNone
-    mixins MSForms$fmDropEffect {}
-
-  declare class MSForms$fmEnAutoSize {
-    constructor(...args: empty): mixed;
-    static +_fmEnAutoSizeBoth: Class<MSForms$fmEnAutoSize___fmEnAutoSizeBoth> &
-      MSForms$fmEnAutoSize___fmEnAutoSizeBoth &
-      3; // 3
-    static +_fmEnAutoSizeHorizontal: Class<MSForms$fmEnAutoSize___fmEnAutoSizeHorizontal> &
-      MSForms$fmEnAutoSize___fmEnAutoSizeHorizontal &
-      1; // 1
-    static +_fmEnAutoSizeNone: Class<MSForms$fmEnAutoSize___fmEnAutoSizeNone> &
-      MSForms$fmEnAutoSize___fmEnAutoSizeNone &
-      0; // 0
-    static +_fmEnAutoSizeVertical: Class<MSForms$fmEnAutoSize___fmEnAutoSizeVertical> &
-      MSForms$fmEnAutoSize___fmEnAutoSizeVertical &
-      2; // 2
-  }
-
-  declare class MSForms$fmEnAutoSize___fmEnAutoSizeBoth
-    mixins MSForms$fmEnAutoSize {}
-  declare class MSForms$fmEnAutoSize___fmEnAutoSizeHorizontal
-    mixins MSForms$fmEnAutoSize {}
-  declare class MSForms$fmEnAutoSize___fmEnAutoSizeNone
-    mixins MSForms$fmEnAutoSize {}
-  declare class MSForms$fmEnAutoSize___fmEnAutoSizeVertical
-    mixins MSForms$fmEnAutoSize {}
-
-  declare class MSForms$fmEnterFieldBehavior {
-    constructor(...args: empty): mixed;
-    static +fmEnterFieldBehaviorRecallSelection: Class<MSForms$fmEnterFieldBehavior__fmEnterFieldBehaviorRecallSelection> &
-      MSForms$fmEnterFieldBehavior__fmEnterFieldBehaviorRecallSelection &
-      1; // 1
-    static +fmEnterFieldBehaviorSelectAll: Class<MSForms$fmEnterFieldBehavior__fmEnterFieldBehaviorSelectAll> &
-      MSForms$fmEnterFieldBehavior__fmEnterFieldBehaviorSelectAll &
-      0; // 0
-  }
-
-  declare class MSForms$fmEnterFieldBehavior__fmEnterFieldBehaviorRecallSelection
-    mixins MSForms$fmEnterFieldBehavior {}
-  declare class MSForms$fmEnterFieldBehavior__fmEnterFieldBehaviorSelectAll
-    mixins MSForms$fmEnterFieldBehavior {}
-
-  declare class MSForms$fmIMEMode {
-    constructor(...args: empty): mixed;
-    static +fmIMEModeAlpha: Class<MSForms$fmIMEMode__fmIMEModeAlpha> &
-      MSForms$fmIMEMode__fmIMEModeAlpha &
-      8; // 8
-    static +fmIMEModeAlphaFull: Class<MSForms$fmIMEMode__fmIMEModeAlphaFull> &
-      MSForms$fmIMEMode__fmIMEModeAlphaFull &
-      7; // 7
-    static +fmIMEModeDisable: Class<MSForms$fmIMEMode__fmIMEModeDisable> &
-      MSForms$fmIMEMode__fmIMEModeDisable &
-      3; // 3
-    static +fmIMEModeHangul: Class<MSForms$fmIMEMode__fmIMEModeHangul> &
-      MSForms$fmIMEMode__fmIMEModeHangul &
-      10; // 10
-    static +fmIMEModeHangulFull: Class<MSForms$fmIMEMode__fmIMEModeHangulFull> &
-      MSForms$fmIMEMode__fmIMEModeHangulFull &
-      9; // 9
-    static +fmIMEModeHanzi: Class<MSForms$fmIMEMode__fmIMEModeHanzi> &
-      MSForms$fmIMEMode__fmIMEModeHanzi &
-      12; // 12
-    static +fmIMEModeHanziFull: Class<MSForms$fmIMEMode__fmIMEModeHanziFull> &
-      MSForms$fmIMEMode__fmIMEModeHanziFull &
-      11; // 11
-    static +fmIMEModeHiragana: Class<MSForms$fmIMEMode__fmIMEModeHiragana> &
-      MSForms$fmIMEMode__fmIMEModeHiragana &
-      4; // 4
-    static +fmIMEModeKatakana: Class<MSForms$fmIMEMode__fmIMEModeKatakana> &
-      MSForms$fmIMEMode__fmIMEModeKatakana &
-      5; // 5
-    static +fmIMEModeKatakanaHalf: Class<MSForms$fmIMEMode__fmIMEModeKatakanaHalf> &
-      MSForms$fmIMEMode__fmIMEModeKatakanaHalf &
-      6; // 6
-    static +fmIMEModeNoControl: Class<MSForms$fmIMEMode__fmIMEModeNoControl> &
-      MSForms$fmIMEMode__fmIMEModeNoControl &
-      0; // 0
-    static +fmIMEModeOff: Class<MSForms$fmIMEMode__fmIMEModeOff> &
-      MSForms$fmIMEMode__fmIMEModeOff &
-      2; // 2
-    static +fmIMEModeOn: Class<MSForms$fmIMEMode__fmIMEModeOn> &
-      MSForms$fmIMEMode__fmIMEModeOn &
-      1; // 1
-  }
-
-  declare class MSForms$fmIMEMode__fmIMEModeAlpha mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeAlphaFull
-    mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeDisable mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeHangul mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeHangulFull
-    mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeHanzi mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeHanziFull
-    mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeHiragana mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeKatakana mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeKatakanaHalf
-    mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeNoControl
-    mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeOff mixins MSForms$fmIMEMode {}
-  declare class MSForms$fmIMEMode__fmIMEModeOn mixins MSForms$fmIMEMode {}
-
-  declare class MSForms$fmLayoutEffect {
-    constructor(...args: empty): mixed;
-    static +_fmLayoutEffectRespond: Class<MSForms$fmLayoutEffect___fmLayoutEffectRespond> &
-      MSForms$fmLayoutEffect___fmLayoutEffectRespond &
-      2; // 2
-    static +fmLayoutEffectInitiate: Class<MSForms$fmLayoutEffect__fmLayoutEffectInitiate> &
-      MSForms$fmLayoutEffect__fmLayoutEffectInitiate &
-      1; // 1
-    static +fmLayoutEffectNone: Class<MSForms$fmLayoutEffect__fmLayoutEffectNone> &
-      MSForms$fmLayoutEffect__fmLayoutEffectNone &
-      0; // 0
-  }
-
-  declare class MSForms$fmLayoutEffect___fmLayoutEffectRespond
-    mixins MSForms$fmLayoutEffect {}
-  declare class MSForms$fmLayoutEffect__fmLayoutEffectInitiate
-    mixins MSForms$fmLayoutEffect {}
-  declare class MSForms$fmLayoutEffect__fmLayoutEffectNone
-    mixins MSForms$fmLayoutEffect {}
-
-  declare class MSForms$fmListBoxStyles {
-    constructor(...args: empty): mixed;
-    static +_fmListBoxStylesComboBox: Class<MSForms$fmListBoxStyles___fmListBoxStylesComboBox> &
-      MSForms$fmListBoxStyles___fmListBoxStylesComboBox &
-      2; // 2
-    static +_fmListBoxStylesListBox: Class<MSForms$fmListBoxStyles___fmListBoxStylesListBox> &
-      MSForms$fmListBoxStyles___fmListBoxStylesListBox &
-      1; // 1
-    static +_fmListBoxStylesNone: Class<MSForms$fmListBoxStyles___fmListBoxStylesNone> &
-      MSForms$fmListBoxStyles___fmListBoxStylesNone &
-      0; // 0
-  }
-
-  declare class MSForms$fmListBoxStyles___fmListBoxStylesComboBox
-    mixins MSForms$fmListBoxStyles {}
-  declare class MSForms$fmListBoxStyles___fmListBoxStylesListBox
-    mixins MSForms$fmListBoxStyles {}
-  declare class MSForms$fmListBoxStyles___fmListBoxStylesNone
-    mixins MSForms$fmListBoxStyles {}
-
-  declare class MSForms$fmListStyle {
-    constructor(...args: empty): mixed;
-    static +fmListStyleOption: Class<MSForms$fmListStyle__fmListStyleOption> &
-      MSForms$fmListStyle__fmListStyleOption &
-      1; // 1
-    static +fmListStylePlain: Class<MSForms$fmListStyle__fmListStylePlain> &
-      MSForms$fmListStyle__fmListStylePlain &
-      0; // 0
-  }
-
-  declare class MSForms$fmListStyle__fmListStyleOption
-    mixins MSForms$fmListStyle {}
-  declare class MSForms$fmListStyle__fmListStylePlain
-    mixins MSForms$fmListStyle {}
-
-  declare class MSForms$fmMatchEntry {
-    constructor(...args: empty): mixed;
-    static +fmMatchEntryComplete: Class<MSForms$fmMatchEntry__fmMatchEntryComplete> &
-      MSForms$fmMatchEntry__fmMatchEntryComplete &
-      1; // 1
-    static +fmMatchEntryFirstLetter: Class<MSForms$fmMatchEntry__fmMatchEntryFirstLetter> &
-      MSForms$fmMatchEntry__fmMatchEntryFirstLetter &
-      0; // 0
-    static +fmMatchEntryNone: Class<MSForms$fmMatchEntry__fmMatchEntryNone> &
-      MSForms$fmMatchEntry__fmMatchEntryNone &
-      2; // 2
-  }
-
-  declare class MSForms$fmMatchEntry__fmMatchEntryComplete
-    mixins MSForms$fmMatchEntry {}
-  declare class MSForms$fmMatchEntry__fmMatchEntryFirstLetter
-    mixins MSForms$fmMatchEntry {}
-  declare class MSForms$fmMatchEntry__fmMatchEntryNone
-    mixins MSForms$fmMatchEntry {}
-
-  declare class MSForms$fmMode {
-    constructor(...args: empty): mixed;
-    static +fmModeInherit: Class<MSForms$fmMode__fmModeInherit> &
-      MSForms$fmMode__fmModeInherit &
-      -2; // -2
-    static +fmModeOff: Class<MSForms$fmMode__fmModeOff> &
-      MSForms$fmMode__fmModeOff &
-      0; // 0
-    static +fmModeOn: Class<MSForms$fmMode__fmModeOn> &
-      MSForms$fmMode__fmModeOn &
-      -1; // -1
-  }
-
-  declare class MSForms$fmMode__fmModeInherit mixins MSForms$fmMode {}
-  declare class MSForms$fmMode__fmModeOff mixins MSForms$fmMode {}
-  declare class MSForms$fmMode__fmModeOn mixins MSForms$fmMode {}
-
-  declare class MSForms$fmMousePointer {
-    constructor(...args: empty): mixed;
-    static +fmMousePointerAppStarting: Class<MSForms$fmMousePointer__fmMousePointerAppStarting> &
-      MSForms$fmMousePointer__fmMousePointerAppStarting &
-      13; // 13
-    static +fmMousePointerArrow: Class<MSForms$fmMousePointer__fmMousePointerArrow> &
-      MSForms$fmMousePointer__fmMousePointerArrow &
-      1; // 1
-    static +fmMousePointerCross: Class<MSForms$fmMousePointer__fmMousePointerCross> &
-      MSForms$fmMousePointer__fmMousePointerCross &
-      2; // 2
-    static +fmMousePointerCustom: Class<MSForms$fmMousePointer__fmMousePointerCustom> &
-      MSForms$fmMousePointer__fmMousePointerCustom &
-      99; // 99
-    static +fmMousePointerDefault: Class<MSForms$fmMousePointer__fmMousePointerDefault> &
-      MSForms$fmMousePointer__fmMousePointerDefault &
-      0; // 0
-    static +fmMousePointerHelp: Class<MSForms$fmMousePointer__fmMousePointerHelp> &
-      MSForms$fmMousePointer__fmMousePointerHelp &
-      14; // 14
-    static +fmMousePointerHourGlass: Class<MSForms$fmMousePointer__fmMousePointerHourGlass> &
-      MSForms$fmMousePointer__fmMousePointerHourGlass &
-      11; // 11
-    static +fmMousePointerIBeam: Class<MSForms$fmMousePointer__fmMousePointerIBeam> &
-      MSForms$fmMousePointer__fmMousePointerIBeam &
-      3; // 3
-    static +fmMousePointerNoDrop: Class<MSForms$fmMousePointer__fmMousePointerNoDrop> &
-      MSForms$fmMousePointer__fmMousePointerNoDrop &
-      12; // 12
-    static +fmMousePointerSizeAll: Class<MSForms$fmMousePointer__fmMousePointerSizeAll> &
-      MSForms$fmMousePointer__fmMousePointerSizeAll &
-      15; // 15
-    static +fmMousePointerSizeNESW: Class<MSForms$fmMousePointer__fmMousePointerSizeNESW> &
-      MSForms$fmMousePointer__fmMousePointerSizeNESW &
-      6; // 6
-    static +fmMousePointerSizeNS: Class<MSForms$fmMousePointer__fmMousePointerSizeNS> &
-      MSForms$fmMousePointer__fmMousePointerSizeNS &
-      7; // 7
-    static +fmMousePointerSizeNWSE: Class<MSForms$fmMousePointer__fmMousePointerSizeNWSE> &
-      MSForms$fmMousePointer__fmMousePointerSizeNWSE &
-      8; // 8
-    static +fmMousePointerSizeWE: Class<MSForms$fmMousePointer__fmMousePointerSizeWE> &
-      MSForms$fmMousePointer__fmMousePointerSizeWE &
-      9; // 9
-    static +fmMousePointerUpArrow: Class<MSForms$fmMousePointer__fmMousePointerUpArrow> &
-      MSForms$fmMousePointer__fmMousePointerUpArrow &
-      10; // 10
-  }
-
-  declare class MSForms$fmMousePointer__fmMousePointerAppStarting
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerArrow
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerCross
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerCustom
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerDefault
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerHelp
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerHourGlass
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerIBeam
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerNoDrop
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerSizeAll
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerSizeNESW
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerSizeNS
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerSizeNWSE
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerSizeWE
-    mixins MSForms$fmMousePointer {}
-  declare class MSForms$fmMousePointer__fmMousePointerUpArrow
-    mixins MSForms$fmMousePointer {}
-
-  declare class MSForms$fmMultiSelect {
-    constructor(...args: empty): mixed;
-    static +fmMultiSelectExtended: Class<MSForms$fmMultiSelect__fmMultiSelectExtended> &
-      MSForms$fmMultiSelect__fmMultiSelectExtended &
-      2; // 2
-    static +fmMultiSelectMulti: Class<MSForms$fmMultiSelect__fmMultiSelectMulti> &
-      MSForms$fmMultiSelect__fmMultiSelectMulti &
-      1; // 1
-    static +fmMultiSelectSingle: Class<MSForms$fmMultiSelect__fmMultiSelectSingle> &
-      MSForms$fmMultiSelect__fmMultiSelectSingle &
-      0; // 0
-  }
-
-  declare class MSForms$fmMultiSelect__fmMultiSelectExtended
-    mixins MSForms$fmMultiSelect {}
-  declare class MSForms$fmMultiSelect__fmMultiSelectMulti
-    mixins MSForms$fmMultiSelect {}
-  declare class MSForms$fmMultiSelect__fmMultiSelectSingle
-    mixins MSForms$fmMultiSelect {}
-
-  declare class MSForms$fmOrientation {
-    constructor(...args: empty): mixed;
-    static +fmOrientationAuto: Class<MSForms$fmOrientation__fmOrientationAuto> &
-      MSForms$fmOrientation__fmOrientationAuto &
-      -1; // -1
-    static +fmOrientationHorizontal: Class<MSForms$fmOrientation__fmOrientationHorizontal> &
-      MSForms$fmOrientation__fmOrientationHorizontal &
-      1; // 1
-    static +fmOrientationVertical: Class<MSForms$fmOrientation__fmOrientationVertical> &
-      MSForms$fmOrientation__fmOrientationVertical &
-      0; // 0
-  }
-
-  declare class MSForms$fmOrientation__fmOrientationAuto
-    mixins MSForms$fmOrientation {}
-  declare class MSForms$fmOrientation__fmOrientationHorizontal
-    mixins MSForms$fmOrientation {}
-  declare class MSForms$fmOrientation__fmOrientationVertical
-    mixins MSForms$fmOrientation {}
-
-  declare class MSForms$fmPicPosition {
-    constructor(...args: empty): mixed;
-    static +fmPicPositionBottomCenter: Class<MSForms$fmPicPosition__fmPicPositionBottomCenter> &
-      MSForms$fmPicPosition__fmPicPositionBottomCenter &
-      7; // 7
-    static +fmPicPositionBottomLeft: Class<MSForms$fmPicPosition__fmPicPositionBottomLeft> &
-      MSForms$fmPicPosition__fmPicPositionBottomLeft &
-      6; // 6
-    static +fmPicPositionBottomRight: Class<MSForms$fmPicPosition__fmPicPositionBottomRight> &
-      MSForms$fmPicPosition__fmPicPositionBottomRight &
-      8; // 8
-    static +fmPicPositionCenter: Class<MSForms$fmPicPosition__fmPicPositionCenter> &
-      MSForms$fmPicPosition__fmPicPositionCenter &
-      0; // 0
-    static +fmPicPositionCenterLeft: Class<MSForms$fmPicPosition__fmPicPositionCenterLeft> &
-      MSForms$fmPicPosition__fmPicPositionCenterLeft &
-      4; // 4
-    static +fmPicPositionCenterRight: Class<MSForms$fmPicPosition__fmPicPositionCenterRight> &
-      MSForms$fmPicPosition__fmPicPositionCenterRight &
-      5; // 5
-    static +fmPicPositionTopCenter: Class<MSForms$fmPicPosition__fmPicPositionTopCenter> &
-      MSForms$fmPicPosition__fmPicPositionTopCenter &
-      2; // 2
-    static +fmPicPositionTopLeft: Class<MSForms$fmPicPosition__fmPicPositionTopLeft> &
-      MSForms$fmPicPosition__fmPicPositionTopLeft &
-      1; // 1
-    static +fmPicPositionTopRight: Class<MSForms$fmPicPosition__fmPicPositionTopRight> &
-      MSForms$fmPicPosition__fmPicPositionTopRight &
-      3; // 3
-  }
-
-  declare class MSForms$fmPicPosition__fmPicPositionBottomCenter
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionBottomLeft
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionBottomRight
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionCenter
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionCenterLeft
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionCenterRight
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionTopCenter
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionTopLeft
-    mixins MSForms$fmPicPosition {}
-  declare class MSForms$fmPicPosition__fmPicPositionTopRight
-    mixins MSForms$fmPicPosition {}
-
-  declare class MSForms$fmPictureAlignment {
-    constructor(...args: empty): mixed;
-    static +fmPictureAlignmentBottomLeft: Class<MSForms$fmPictureAlignment__fmPictureAlignmentBottomLeft> &
-      MSForms$fmPictureAlignment__fmPictureAlignmentBottomLeft &
-      3; // 3
-    static +fmPictureAlignmentBottomRight: Class<MSForms$fmPictureAlignment__fmPictureAlignmentBottomRight> &
-      MSForms$fmPictureAlignment__fmPictureAlignmentBottomRight &
-      4; // 4
-    static +fmPictureAlignmentCenter: Class<MSForms$fmPictureAlignment__fmPictureAlignmentCenter> &
-      MSForms$fmPictureAlignment__fmPictureAlignmentCenter &
-      2; // 2
-    static +fmPictureAlignmentTopLeft: Class<MSForms$fmPictureAlignment__fmPictureAlignmentTopLeft> &
-      MSForms$fmPictureAlignment__fmPictureAlignmentTopLeft &
-      0; // 0
-    static +fmPictureAlignmentTopRight: Class<MSForms$fmPictureAlignment__fmPictureAlignmentTopRight> &
-      MSForms$fmPictureAlignment__fmPictureAlignmentTopRight &
-      1; // 1
-  }
-
-  declare class MSForms$fmPictureAlignment__fmPictureAlignmentBottomLeft
-    mixins MSForms$fmPictureAlignment {}
-  declare class MSForms$fmPictureAlignment__fmPictureAlignmentBottomRight
-    mixins MSForms$fmPictureAlignment {}
-  declare class MSForms$fmPictureAlignment__fmPictureAlignmentCenter
-    mixins MSForms$fmPictureAlignment {}
-  declare class MSForms$fmPictureAlignment__fmPictureAlignmentTopLeft
-    mixins MSForms$fmPictureAlignment {}
-  declare class MSForms$fmPictureAlignment__fmPictureAlignmentTopRight
-    mixins MSForms$fmPictureAlignment {}
-
-  declare class MSForms$fmPicturePosition {
-    constructor(...args: empty): mixed;
-    static +fmPicturePositionAboveCenter: Class<MSForms$fmPicturePosition__fmPicturePositionAboveCenter> &
-      MSForms$fmPicturePosition__fmPicturePositionAboveCenter &
-      7; // 7
-    static +fmPicturePositionAboveLeft: Class<MSForms$fmPicturePosition__fmPicturePositionAboveLeft> &
-      MSForms$fmPicturePosition__fmPicturePositionAboveLeft &
-      6; // 6
-    static +fmPicturePositionAboveRight: Class<MSForms$fmPicturePosition__fmPicturePositionAboveRight> &
-      MSForms$fmPicturePosition__fmPicturePositionAboveRight &
-      8; // 8
-    static +fmPicturePositionBelowCenter: Class<MSForms$fmPicturePosition__fmPicturePositionBelowCenter> &
-      MSForms$fmPicturePosition__fmPicturePositionBelowCenter &
-      10; // 10
-    static +fmPicturePositionBelowLeft: Class<MSForms$fmPicturePosition__fmPicturePositionBelowLeft> &
-      MSForms$fmPicturePosition__fmPicturePositionBelowLeft &
-      9; // 9
-    static +fmPicturePositionBelowRight: Class<MSForms$fmPicturePosition__fmPicturePositionBelowRight> &
-      MSForms$fmPicturePosition__fmPicturePositionBelowRight &
-      11; // 11
-    static +fmPicturePositionCenter: Class<MSForms$fmPicturePosition__fmPicturePositionCenter> &
-      MSForms$fmPicturePosition__fmPicturePositionCenter &
-      12; // 12
-    static +fmPicturePositionLeftBottom: Class<MSForms$fmPicturePosition__fmPicturePositionLeftBottom> &
-      MSForms$fmPicturePosition__fmPicturePositionLeftBottom &
-      2; // 2
-    static +fmPicturePositionLeftCenter: Class<MSForms$fmPicturePosition__fmPicturePositionLeftCenter> &
-      MSForms$fmPicturePosition__fmPicturePositionLeftCenter &
-      1; // 1
-    static +fmPicturePositionLeftTop: Class<MSForms$fmPicturePosition__fmPicturePositionLeftTop> &
-      MSForms$fmPicturePosition__fmPicturePositionLeftTop &
-      0; // 0
-    static +fmPicturePositionRightBottom: Class<MSForms$fmPicturePosition__fmPicturePositionRightBottom> &
-      MSForms$fmPicturePosition__fmPicturePositionRightBottom &
-      5; // 5
-    static +fmPicturePositionRightCenter: Class<MSForms$fmPicturePosition__fmPicturePositionRightCenter> &
-      MSForms$fmPicturePosition__fmPicturePositionRightCenter &
-      4; // 4
-    static +fmPicturePositionRightTop: Class<MSForms$fmPicturePosition__fmPicturePositionRightTop> &
-      MSForms$fmPicturePosition__fmPicturePositionRightTop &
-      3; // 3
-  }
-
-  declare class MSForms$fmPicturePosition__fmPicturePositionAboveCenter
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionAboveLeft
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionAboveRight
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionBelowCenter
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionBelowLeft
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionBelowRight
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionCenter
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionLeftBottom
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionLeftCenter
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionLeftTop
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionRightBottom
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionRightCenter
-    mixins MSForms$fmPicturePosition {}
-  declare class MSForms$fmPicturePosition__fmPicturePositionRightTop
-    mixins MSForms$fmPicturePosition {}
-
-  declare class MSForms$fmPictureSizeMode {
-    constructor(...args: empty): mixed;
-    static +fmPictureSizeModeClip: Class<MSForms$fmPictureSizeMode__fmPictureSizeModeClip> &
-      MSForms$fmPictureSizeMode__fmPictureSizeModeClip &
-      0; // 0
-    static +fmPictureSizeModeStretch: Class<MSForms$fmPictureSizeMode__fmPictureSizeModeStretch> &
-      MSForms$fmPictureSizeMode__fmPictureSizeModeStretch &
-      1; // 1
-    static +fmPictureSizeModeZoom: Class<MSForms$fmPictureSizeMode__fmPictureSizeModeZoom> &
-      MSForms$fmPictureSizeMode__fmPictureSizeModeZoom &
-      3; // 3
-  }
-
-  declare class MSForms$fmPictureSizeMode__fmPictureSizeModeClip
-    mixins MSForms$fmPictureSizeMode {}
-  declare class MSForms$fmPictureSizeMode__fmPictureSizeModeStretch
-    mixins MSForms$fmPictureSizeMode {}
-  declare class MSForms$fmPictureSizeMode__fmPictureSizeModeZoom
-    mixins MSForms$fmPictureSizeMode {}
-
-  declare class MSForms$fmRepeatDirection {
-    constructor(...args: empty): mixed;
-    static +_fmRepeatDirectionHorizontal: Class<MSForms$fmRepeatDirection___fmRepeatDirectionHorizontal> &
-      MSForms$fmRepeatDirection___fmRepeatDirectionHorizontal &
-      0; // 0
-    static +_fmRepeatDirectionVertical: Class<MSForms$fmRepeatDirection___fmRepeatDirectionVertical> &
-      MSForms$fmRepeatDirection___fmRepeatDirectionVertical &
-      1; // 1
-  }
-
-  declare class MSForms$fmRepeatDirection___fmRepeatDirectionHorizontal
-    mixins MSForms$fmRepeatDirection {}
-  declare class MSForms$fmRepeatDirection___fmRepeatDirectionVertical
-    mixins MSForms$fmRepeatDirection {}
-
-  declare class MSForms$fmScrollAction {
-    constructor(...args: empty): mixed;
-    static +_fmScrollActionAbsoluteChange: Class<MSForms$fmScrollAction___fmScrollActionAbsoluteChange> &
-      MSForms$fmScrollAction___fmScrollActionAbsoluteChange &
-      7; // 7
-    static +fmScrollActionBegin: Class<MSForms$fmScrollAction__fmScrollActionBegin> &
-      MSForms$fmScrollAction__fmScrollActionBegin &
-      5; // 5
-    static +fmScrollActionControlRequest: Class<MSForms$fmScrollAction__fmScrollActionControlRequest> &
-      MSForms$fmScrollAction__fmScrollActionControlRequest &
-      9; // 9
-    static +fmScrollActionEnd: Class<MSForms$fmScrollAction__fmScrollActionEnd> &
-      MSForms$fmScrollAction__fmScrollActionEnd &
-      6; // 6
-    static +fmScrollActionFocusRequest: Class<MSForms$fmScrollAction__fmScrollActionFocusRequest> &
-      MSForms$fmScrollAction__fmScrollActionFocusRequest &
-      10; // 10
-    static +fmScrollActionLineDown: Class<MSForms$fmScrollAction__fmScrollActionLineDown> &
-      MSForms$fmScrollAction__fmScrollActionLineDown &
-      2; // 2
-    static +fmScrollActionLineUp: Class<MSForms$fmScrollAction__fmScrollActionLineUp> &
-      MSForms$fmScrollAction__fmScrollActionLineUp &
-      1; // 1
-    static +fmScrollActionNoChange: Class<MSForms$fmScrollAction__fmScrollActionNoChange> &
-      MSForms$fmScrollAction__fmScrollActionNoChange &
-      0; // 0
-    static +fmScrollActionPageDown: Class<MSForms$fmScrollAction__fmScrollActionPageDown> &
-      MSForms$fmScrollAction__fmScrollActionPageDown &
-      4; // 4
-    static +fmScrollActionPageUp: Class<MSForms$fmScrollAction__fmScrollActionPageUp> &
-      MSForms$fmScrollAction__fmScrollActionPageUp &
-      3; // 3
-    static +fmScrollActionPropertyChange: Class<MSForms$fmScrollAction__fmScrollActionPropertyChange> &
-      MSForms$fmScrollAction__fmScrollActionPropertyChange &
-      8; // 8
-  }
-
-  declare class MSForms$fmScrollAction___fmScrollActionAbsoluteChange
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionBegin
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionControlRequest
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionEnd
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionFocusRequest
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionLineDown
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionLineUp
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionNoChange
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionPageDown
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionPageUp
-    mixins MSForms$fmScrollAction {}
-  declare class MSForms$fmScrollAction__fmScrollActionPropertyChange
-    mixins MSForms$fmScrollAction {}
-
-  declare class MSForms$fmScrollBars {
-    constructor(...args: empty): mixed;
-    static +fmScrollBarsBoth: Class<MSForms$fmScrollBars__fmScrollBarsBoth> &
-      MSForms$fmScrollBars__fmScrollBarsBoth &
-      3; // 3
-    static +fmScrollBarsHorizontal: Class<MSForms$fmScrollBars__fmScrollBarsHorizontal> &
-      MSForms$fmScrollBars__fmScrollBarsHorizontal &
-      1; // 1
-    static +fmScrollBarsNone: Class<MSForms$fmScrollBars__fmScrollBarsNone> &
-      MSForms$fmScrollBars__fmScrollBarsNone &
-      0; // 0
-    static +fmScrollBarsVertical: Class<MSForms$fmScrollBars__fmScrollBarsVertical> &
-      MSForms$fmScrollBars__fmScrollBarsVertical &
-      2; // 2
-  }
-
-  declare class MSForms$fmScrollBars__fmScrollBarsBoth
-    mixins MSForms$fmScrollBars {}
-  declare class MSForms$fmScrollBars__fmScrollBarsHorizontal
-    mixins MSForms$fmScrollBars {}
-  declare class MSForms$fmScrollBars__fmScrollBarsNone
-    mixins MSForms$fmScrollBars {}
-  declare class MSForms$fmScrollBars__fmScrollBarsVertical
-    mixins MSForms$fmScrollBars {}
-
-  declare class MSForms$fmShowDropButtonWhen {
-    constructor(...args: empty): mixed;
-    static +fmShowDropButtonWhenAlways: Class<MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenAlways> &
-      MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenAlways &
-      2; // 2
-    static +fmShowDropButtonWhenFocus: Class<MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenFocus> &
-      MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenFocus &
-      1; // 1
-    static +fmShowDropButtonWhenNever: Class<MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenNever> &
-      MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenNever &
-      0; // 0
-  }
-
-  declare class MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenAlways
-    mixins MSForms$fmShowDropButtonWhen {}
-  declare class MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenFocus
-    mixins MSForms$fmShowDropButtonWhen {}
-  declare class MSForms$fmShowDropButtonWhen__fmShowDropButtonWhenNever
-    mixins MSForms$fmShowDropButtonWhen {}
-
-  declare class MSForms$fmShowListWhen {
-    constructor(...args: empty): mixed;
-    static +fmShowListWhenAlways: Class<MSForms$fmShowListWhen__fmShowListWhenAlways> &
-      MSForms$fmShowListWhen__fmShowListWhenAlways &
-      3; // 3
-    static +fmShowListWhenButton: Class<MSForms$fmShowListWhen__fmShowListWhenButton> &
-      MSForms$fmShowListWhen__fmShowListWhenButton &
-      1; // 1
-    static +fmShowListWhenFocus: Class<MSForms$fmShowListWhen__fmShowListWhenFocus> &
-      MSForms$fmShowListWhen__fmShowListWhenFocus &
-      2; // 2
-    static +fmShowListWhenNever: Class<MSForms$fmShowListWhen__fmShowListWhenNever> &
-      MSForms$fmShowListWhen__fmShowListWhenNever &
-      0; // 0
-  }
-
-  declare class MSForms$fmShowListWhen__fmShowListWhenAlways
-    mixins MSForms$fmShowListWhen {}
-  declare class MSForms$fmShowListWhen__fmShowListWhenButton
-    mixins MSForms$fmShowListWhen {}
-  declare class MSForms$fmShowListWhen__fmShowListWhenFocus
-    mixins MSForms$fmShowListWhen {}
-  declare class MSForms$fmShowListWhen__fmShowListWhenNever
-    mixins MSForms$fmShowListWhen {}
-
-  declare class MSForms$fmSnapPoint {
-    constructor(...args: empty): mixed;
-    static +fmSnapPointBottomCenter: Class<MSForms$fmSnapPoint__fmSnapPointBottomCenter> &
-      MSForms$fmSnapPoint__fmSnapPointBottomCenter &
-      7; // 7
-    static +fmSnapPointBottomLeft: Class<MSForms$fmSnapPoint__fmSnapPointBottomLeft> &
-      MSForms$fmSnapPoint__fmSnapPointBottomLeft &
-      6; // 6
-    static +fmSnapPointBottomRight: Class<MSForms$fmSnapPoint__fmSnapPointBottomRight> &
-      MSForms$fmSnapPoint__fmSnapPointBottomRight &
-      8; // 8
-    static +fmSnapPointCenter: Class<MSForms$fmSnapPoint__fmSnapPointCenter> &
-      MSForms$fmSnapPoint__fmSnapPointCenter &
-      4; // 4
-    static +fmSnapPointCenterLeft: Class<MSForms$fmSnapPoint__fmSnapPointCenterLeft> &
-      MSForms$fmSnapPoint__fmSnapPointCenterLeft &
-      3; // 3
-    static +fmSnapPointCenterRight: Class<MSForms$fmSnapPoint__fmSnapPointCenterRight> &
-      MSForms$fmSnapPoint__fmSnapPointCenterRight &
-      5; // 5
-    static +fmSnapPointTopCenter: Class<MSForms$fmSnapPoint__fmSnapPointTopCenter> &
-      MSForms$fmSnapPoint__fmSnapPointTopCenter &
-      1; // 1
-    static +fmSnapPointTopLeft: Class<MSForms$fmSnapPoint__fmSnapPointTopLeft> &
-      MSForms$fmSnapPoint__fmSnapPointTopLeft &
-      0; // 0
-    static +fmSnapPointTopRight: Class<MSForms$fmSnapPoint__fmSnapPointTopRight> &
-      MSForms$fmSnapPoint__fmSnapPointTopRight &
-      2; // 2
-  }
-
-  declare class MSForms$fmSnapPoint__fmSnapPointBottomCenter
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointBottomLeft
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointBottomRight
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointCenter
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointCenterLeft
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointCenterRight
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointTopCenter
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointTopLeft
-    mixins MSForms$fmSnapPoint {}
-  declare class MSForms$fmSnapPoint__fmSnapPointTopRight
-    mixins MSForms$fmSnapPoint {}
-
-  declare class MSForms$fmSpecialEffect {
-    constructor(...args: empty): mixed;
-    static +fmSpecialEffectBump: Class<MSForms$fmSpecialEffect__fmSpecialEffectBump> &
-      MSForms$fmSpecialEffect__fmSpecialEffectBump &
-      6; // 6
-    static +fmSpecialEffectEtched: Class<MSForms$fmSpecialEffect__fmSpecialEffectEtched> &
-      MSForms$fmSpecialEffect__fmSpecialEffectEtched &
-      3; // 3
-    static +fmSpecialEffectFlat: Class<MSForms$fmSpecialEffect__fmSpecialEffectFlat> &
-      MSForms$fmSpecialEffect__fmSpecialEffectFlat &
-      0; // 0
-    static +fmSpecialEffectRaised: Class<MSForms$fmSpecialEffect__fmSpecialEffectRaised> &
-      MSForms$fmSpecialEffect__fmSpecialEffectRaised &
-      1; // 1
-    static +fmSpecialEffectSunken: Class<MSForms$fmSpecialEffect__fmSpecialEffectSunken> &
-      MSForms$fmSpecialEffect__fmSpecialEffectSunken &
-      2; // 2
-  }
-
-  declare class MSForms$fmSpecialEffect__fmSpecialEffectBump
-    mixins MSForms$fmSpecialEffect {}
-  declare class MSForms$fmSpecialEffect__fmSpecialEffectEtched
-    mixins MSForms$fmSpecialEffect {}
-  declare class MSForms$fmSpecialEffect__fmSpecialEffectFlat
-    mixins MSForms$fmSpecialEffect {}
-  declare class MSForms$fmSpecialEffect__fmSpecialEffectRaised
-    mixins MSForms$fmSpecialEffect {}
-  declare class MSForms$fmSpecialEffect__fmSpecialEffectSunken
-    mixins MSForms$fmSpecialEffect {}
-
-  declare class MSForms$fmStyle {
-    constructor(...args: empty): mixed;
-    static +fmStyleDropDownCombo: Class<MSForms$fmStyle__fmStyleDropDownCombo> &
-      MSForms$fmStyle__fmStyleDropDownCombo &
-      0; // 0
-    static +fmStyleDropDownList: Class<MSForms$fmStyle__fmStyleDropDownList> &
-      MSForms$fmStyle__fmStyleDropDownList &
-      2; // 2
-  }
-
-  declare class MSForms$fmStyle__fmStyleDropDownCombo mixins MSForms$fmStyle {}
-  declare class MSForms$fmStyle__fmStyleDropDownList mixins MSForms$fmStyle {}
-
-  declare class MSForms$fmTabOrientation {
-    constructor(...args: empty): mixed;
-    static +fmTabOrientationBottom: Class<MSForms$fmTabOrientation__fmTabOrientationBottom> &
-      MSForms$fmTabOrientation__fmTabOrientationBottom &
-      1; // 1
-    static +fmTabOrientationLeft: Class<MSForms$fmTabOrientation__fmTabOrientationLeft> &
-      MSForms$fmTabOrientation__fmTabOrientationLeft &
-      2; // 2
-    static +fmTabOrientationRight: Class<MSForms$fmTabOrientation__fmTabOrientationRight> &
-      MSForms$fmTabOrientation__fmTabOrientationRight &
-      3; // 3
-    static +fmTabOrientationTop: Class<MSForms$fmTabOrientation__fmTabOrientationTop> &
-      MSForms$fmTabOrientation__fmTabOrientationTop &
-      0; // 0
-  }
-
-  declare class MSForms$fmTabOrientation__fmTabOrientationBottom
-    mixins MSForms$fmTabOrientation {}
-  declare class MSForms$fmTabOrientation__fmTabOrientationLeft
-    mixins MSForms$fmTabOrientation {}
-  declare class MSForms$fmTabOrientation__fmTabOrientationRight
-    mixins MSForms$fmTabOrientation {}
-  declare class MSForms$fmTabOrientation__fmTabOrientationTop
-    mixins MSForms$fmTabOrientation {}
-
-  declare class MSForms$fmTabStyle {
-    constructor(...args: empty): mixed;
-    static +fmTabStyleButtons: Class<MSForms$fmTabStyle__fmTabStyleButtons> &
-      MSForms$fmTabStyle__fmTabStyleButtons &
-      1; // 1
-    static +fmTabStyleNone: Class<MSForms$fmTabStyle__fmTabStyleNone> &
-      MSForms$fmTabStyle__fmTabStyleNone &
-      2; // 2
-    static +fmTabStyleTabs: Class<MSForms$fmTabStyle__fmTabStyleTabs> &
-      MSForms$fmTabStyle__fmTabStyleTabs &
-      0; // 0
-  }
-
-  declare class MSForms$fmTabStyle__fmTabStyleButtons
-    mixins MSForms$fmTabStyle {}
-  declare class MSForms$fmTabStyle__fmTabStyleNone mixins MSForms$fmTabStyle {}
-  declare class MSForms$fmTabStyle__fmTabStyleTabs mixins MSForms$fmTabStyle {}
-
-  declare class MSForms$fmTextAlign {
-    constructor(...args: empty): mixed;
-    static +fmTextAlignCenter: Class<MSForms$fmTextAlign__fmTextAlignCenter> &
-      MSForms$fmTextAlign__fmTextAlignCenter &
-      2; // 2
-    static +fmTextAlignLeft: Class<MSForms$fmTextAlign__fmTextAlignLeft> &
-      MSForms$fmTextAlign__fmTextAlignLeft &
-      1; // 1
-    static +fmTextAlignRight: Class<MSForms$fmTextAlign__fmTextAlignRight> &
-      MSForms$fmTextAlign__fmTextAlignRight &
-      3; // 3
-  }
-
-  declare class MSForms$fmTextAlign__fmTextAlignCenter
-    mixins MSForms$fmTextAlign {}
-  declare class MSForms$fmTextAlign__fmTextAlignLeft
-    mixins MSForms$fmTextAlign {}
-  declare class MSForms$fmTextAlign__fmTextAlignRight
-    mixins MSForms$fmTextAlign {}
-
-  declare class MSForms$fmTransitionEffect {
-    constructor(...args: empty): mixed;
-    static +fmTransitionEffectCoverDown: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverDown> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverDown &
-      5; // 5
-    static +fmTransitionEffectCoverLeft: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverLeft> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverLeft &
-      7; // 7
-    static +fmTransitionEffectCoverLeftDown: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverLeftDown> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverLeftDown &
-      6; // 6
-    static +fmTransitionEffectCoverLeftUp: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverLeftUp> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverLeftUp &
-      8; // 8
-    static +fmTransitionEffectCoverRight: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverRight> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverRight &
-      3; // 3
-    static +fmTransitionEffectCoverRightDown: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverRightDown> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverRightDown &
-      4; // 4
-    static +fmTransitionEffectCoverRightUp: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverRightUp> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverRightUp &
-      2; // 2
-    static +fmTransitionEffectCoverUp: Class<MSForms$fmTransitionEffect__fmTransitionEffectCoverUp> &
-      MSForms$fmTransitionEffect__fmTransitionEffectCoverUp &
-      1; // 1
-    static +fmTransitionEffectNone: Class<MSForms$fmTransitionEffect__fmTransitionEffectNone> &
-      MSForms$fmTransitionEffect__fmTransitionEffectNone &
-      0; // 0
-    static +fmTransitionEffectPushDown: Class<MSForms$fmTransitionEffect__fmTransitionEffectPushDown> &
-      MSForms$fmTransitionEffect__fmTransitionEffectPushDown &
-      11; // 11
-    static +fmTransitionEffectPushLeft: Class<MSForms$fmTransitionEffect__fmTransitionEffectPushLeft> &
-      MSForms$fmTransitionEffect__fmTransitionEffectPushLeft &
-      12; // 12
-    static +fmTransitionEffectPushRight: Class<MSForms$fmTransitionEffect__fmTransitionEffectPushRight> &
-      MSForms$fmTransitionEffect__fmTransitionEffectPushRight &
-      10; // 10
-    static +fmTransitionEffectPushUp: Class<MSForms$fmTransitionEffect__fmTransitionEffectPushUp> &
-      MSForms$fmTransitionEffect__fmTransitionEffectPushUp &
-      9; // 9
-  }
-
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverDown
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverLeft
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverLeftDown
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverLeftUp
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverRight
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverRightDown
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverRightUp
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectCoverUp
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectNone
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectPushDown
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectPushLeft
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectPushRight
-    mixins MSForms$fmTransitionEffect {}
-  declare class MSForms$fmTransitionEffect__fmTransitionEffectPushUp
-    mixins MSForms$fmTransitionEffect {}
-
-  declare class MSForms$fmVerticalScrollBarSide {
-    constructor(...args: empty): mixed;
-    static +fmVerticalScrollBarSideLeft: Class<MSForms$fmVerticalScrollBarSide__fmVerticalScrollBarSideLeft> &
-      MSForms$fmVerticalScrollBarSide__fmVerticalScrollBarSideLeft &
-      1; // 1
-    static +fmVerticalScrollBarSideRight: Class<MSForms$fmVerticalScrollBarSide__fmVerticalScrollBarSideRight> &
-      MSForms$fmVerticalScrollBarSide__fmVerticalScrollBarSideRight &
-      0; // 0
-  }
-
-  declare class MSForms$fmVerticalScrollBarSide__fmVerticalScrollBarSideLeft
-    mixins MSForms$fmVerticalScrollBarSide {}
-  declare class MSForms$fmVerticalScrollBarSide__fmVerticalScrollBarSideRight
-    mixins MSForms$fmVerticalScrollBarSide {}
-
-  declare class MSForms$fmZOrder {
-    constructor(...args: empty): mixed;
-    static +fmZOrderBack: Class<MSForms$fmZOrder__fmZOrderBack> &
-      MSForms$fmZOrder__fmZOrderBack &
-      1; // 1
-    static +fmZOrderFront: Class<MSForms$fmZOrder__fmZOrderFront> &
-      MSForms$fmZOrder__fmZOrderFront &
-      0; // 0
-  }
-
-  declare class MSForms$fmZOrder__fmZOrderBack mixins MSForms$fmZOrder {}
-  declare class MSForms$fmZOrder__fmZOrderFront mixins MSForms$fmZOrder {}
+  declare var npm$namespace$MSForms: {
+    fmAction: typeof MSForms$fmAction,
+    fmAlignment: typeof MSForms$fmAlignment,
+    fmBackStyle: typeof MSForms$fmBackStyle,
+    fmBorders: typeof MSForms$fmBorders,
+    fmBorderStyle: typeof MSForms$fmBorderStyle,
+    fmButtonEffect: typeof MSForms$fmButtonEffect,
+    fmButtonStyle: typeof MSForms$fmButtonStyle,
+    fmCycle: typeof MSForms$fmCycle,
+    fmDisplayStyle: typeof MSForms$fmDisplayStyle,
+    fmDragBehavior: typeof MSForms$fmDragBehavior,
+    fmDragState: typeof MSForms$fmDragState,
+    fmDropButtonStyle: typeof MSForms$fmDropButtonStyle,
+    fmDropEffect: typeof MSForms$fmDropEffect,
+    fmEnAutoSize: typeof MSForms$fmEnAutoSize,
+    fmEnterFieldBehavior: typeof MSForms$fmEnterFieldBehavior,
+    fmIMEMode: typeof MSForms$fmIMEMode,
+    fmLayoutEffect: typeof MSForms$fmLayoutEffect,
+    fmListBoxStyles: typeof MSForms$fmListBoxStyles,
+    fmListStyle: typeof MSForms$fmListStyle,
+    fmMatchEntry: typeof MSForms$fmMatchEntry,
+    fmMode: typeof MSForms$fmMode,
+    fmMousePointer: typeof MSForms$fmMousePointer,
+    fmMultiSelect: typeof MSForms$fmMultiSelect,
+    fmOrientation: typeof MSForms$fmOrientation,
+    fmPicPosition: typeof MSForms$fmPicPosition,
+    fmPictureAlignment: typeof MSForms$fmPictureAlignment,
+    fmPicturePosition: typeof MSForms$fmPicturePosition,
+    fmPictureSizeMode: typeof MSForms$fmPictureSizeMode,
+    fmRepeatDirection: typeof MSForms$fmRepeatDirection,
+    fmScrollAction: typeof MSForms$fmScrollAction,
+    fmScrollBars: typeof MSForms$fmScrollBars,
+    fmShowDropButtonWhen: typeof MSForms$fmShowDropButtonWhen,
+    fmShowListWhen: typeof MSForms$fmShowListWhen,
+    fmSnapPoint: typeof MSForms$fmSnapPoint,
+    fmSpecialEffect: typeof MSForms$fmSpecialEffect,
+    fmStyle: typeof MSForms$fmStyle,
+    fmTabOrientation: typeof MSForms$fmTabOrientation,
+    fmTabStyle: typeof MSForms$fmTabStyle,
+    fmTextAlign: typeof MSForms$fmTextAlign,
+    fmTransitionEffect: typeof MSForms$fmTransitionEffect,
+    fmVerticalScrollBarSide: typeof MSForms$fmVerticalScrollBarSide,
+    fmZOrder: typeof MSForms$fmZOrder,
+    CheckBox: typeof MSForms$CheckBox,
+    ComboBox: typeof MSForms$ComboBox,
+    CommandButton: typeof MSForms$CommandButton,
+    Control: typeof MSForms$Control,
+    DataObject: typeof MSForms$DataObject,
+    Frame: typeof MSForms$Frame,
+    HTMLCheckbox: typeof MSForms$HTMLCheckbox,
+    HTMLHidden: typeof MSForms$HTMLHidden,
+    HTMLImage: typeof MSForms$HTMLImage,
+    HTMLOption: typeof MSForms$HTMLOption,
+    HTMLPassword: typeof MSForms$HTMLPassword,
+    HTMLReset: typeof MSForms$HTMLReset,
+    HTMLSelect: typeof MSForms$HTMLSelect,
+    HTMLSubmit: typeof MSForms$HTMLSubmit,
+    HTMLText: typeof MSForms$HTMLText,
+    HTMLTextArea: typeof MSForms$HTMLTextArea,
+    Image: typeof MSForms$Image,
+    Label: typeof MSForms$Label,
+    ListBox: typeof MSForms$ListBox,
+    MultiPage: typeof MSForms$MultiPage,
+    NewFont: typeof MSForms$NewFont,
+    OptionButton: typeof MSForms$OptionButton,
+    Page: typeof MSForms$Page,
+    ReturnBoolean: typeof MSForms$ReturnBoolean,
+    ReturnEffect: typeof MSForms$ReturnEffect,
+    ReturnInteger: typeof MSForms$ReturnInteger,
+    ReturnSingle: typeof MSForms$ReturnSingle,
+    ReturnString: typeof MSForms$ReturnString,
+    ScrollBar: typeof MSForms$ScrollBar,
+    SpinButton: typeof MSForms$SpinButton,
+    Tab: typeof MSForms$Tab,
+    TabStrip: typeof MSForms$TabStrip,
+    TextBox: typeof MSForms$TextBox,
+    ToggleButton: typeof MSForms$ToggleButton,
+    UserForm: typeof MSForms$UserForm
+  };
+
+  declare var MSForms$fmAction: {|
+    +fmActionCopy: 1, // 1
+    +fmActionCut: 0, // 0
+    +fmActionDragDrop: 3, // 3
+    +fmActionPaste: 2 // 2
+  |};
+
+  declare var MSForms$fmAlignment: {|
+    +fmAlignmentLeft: 0, // 0
+    +fmAlignmentRight: 1 // 1
+  |};
+
+  declare var MSForms$fmBackStyle: {|
+    +fmBackStyleOpaque: 1, // 1
+    +fmBackStyleTransparent: 0 // 0
+  |};
+
+  declare var MSForms$fmBorders: {|
+    +fmBordersBox: 1, // 1
+    +fmBordersLeft: 2, // 2
+    +fmBordersNone: 0, // 0
+    +fmBordersTop: 3 // 3
+  |};
+
+  declare var MSForms$fmBorderStyle: {|
+    +fmBorderStyleNone: 0, // 0
+    +fmBorderStyleSingle: 1 // 1
+  |};
+
+  declare var MSForms$fmButtonEffect: {|
+    +fmButtonEffectFlat: 0, // 0
+    +fmButtonEffectSunken: 2 // 2
+  |};
+
+  declare var MSForms$fmButtonStyle: {|
+    +fmButtonStylePushButton: 0, // 0
+    +fmButtonStyleToggleButton: 1 // 1
+  |};
+
+  declare var MSForms$fmCycle: {|
+    +fmCycleAllForms: 0, // 0
+    +fmCycleCurrentForm: 2 // 2
+  |};
+
+  declare var MSForms$fmDisplayStyle: {|
+    +fmDisplayStyleCheckBox: 4, // 4
+    +fmDisplayStyleCombo: 3, // 3
+    +fmDisplayStyleDropList: 7, // 7
+    +fmDisplayStyleList: 2, // 2
+    +fmDisplayStyleOptionButton: 5, // 5
+    +fmDisplayStyleText: 1, // 1
+    +fmDisplayStyleToggle: 6 // 6
+  |};
+
+  declare var MSForms$fmDragBehavior: {|
+    +fmDragBehaviorDisabled: 0, // 0
+    +fmDragBehaviorEnabled: 1 // 1
+  |};
+
+  declare var MSForms$fmDragState: {|
+    +fmDragStateEnter: 0, // 0
+    +fmDragStateLeave: 1, // 1
+    +fmDragStateOver: 2 // 2
+  |};
+
+  declare var MSForms$fmDropButtonStyle: {|
+    +fmDropButtonStyleArrow: 1, // 1
+    +fmDropButtonStyleEllipsis: 2, // 2
+    +fmDropButtonStylePlain: 0, // 0
+    +fmDropButtonStyleReduce: 3 // 3
+  |};
+
+  declare var MSForms$fmDropEffect: {|
+    +fmDropEffectCopy: 1, // 1
+    +fmDropEffectCopyOrMove: 3, // 3
+    +fmDropEffectMove: 2, // 2
+    +fmDropEffectNone: 0 // 0
+  |};
+
+  declare var MSForms$fmEnAutoSize: {|
+    +_fmEnAutoSizeBoth: 3, // 3
+    +_fmEnAutoSizeHorizontal: 1, // 1
+    +_fmEnAutoSizeNone: 0, // 0
+    +_fmEnAutoSizeVertical: 2 // 2
+  |};
+
+  declare var MSForms$fmEnterFieldBehavior: {|
+    +fmEnterFieldBehaviorRecallSelection: 1, // 1
+    +fmEnterFieldBehaviorSelectAll: 0 // 0
+  |};
+
+  declare var MSForms$fmIMEMode: {|
+    +fmIMEModeAlpha: 8, // 8
+    +fmIMEModeAlphaFull: 7, // 7
+    +fmIMEModeDisable: 3, // 3
+    +fmIMEModeHangul: 10, // 10
+    +fmIMEModeHangulFull: 9, // 9
+    +fmIMEModeHanzi: 12, // 12
+    +fmIMEModeHanziFull: 11, // 11
+    +fmIMEModeHiragana: 4, // 4
+    +fmIMEModeKatakana: 5, // 5
+    +fmIMEModeKatakanaHalf: 6, // 6
+    +fmIMEModeNoControl: 0, // 0
+    +fmIMEModeOff: 2, // 2
+    +fmIMEModeOn: 1 // 1
+  |};
+
+  declare var MSForms$fmLayoutEffect: {|
+    +_fmLayoutEffectRespond: 2, // 2
+    +fmLayoutEffectInitiate: 1, // 1
+    +fmLayoutEffectNone: 0 // 0
+  |};
+
+  declare var MSForms$fmListBoxStyles: {|
+    +_fmListBoxStylesComboBox: 2, // 2
+    +_fmListBoxStylesListBox: 1, // 1
+    +_fmListBoxStylesNone: 0 // 0
+  |};
+
+  declare var MSForms$fmListStyle: {|
+    +fmListStyleOption: 1, // 1
+    +fmListStylePlain: 0 // 0
+  |};
+
+  declare var MSForms$fmMatchEntry: {|
+    +fmMatchEntryComplete: 1, // 1
+    +fmMatchEntryFirstLetter: 0, // 0
+    +fmMatchEntryNone: 2 // 2
+  |};
+
+  declare var MSForms$fmMode: {|
+    +fmModeInherit: -2, // -2
+    +fmModeOff: 0, // 0
+    +fmModeOn: -1 // -1
+  |};
+
+  declare var MSForms$fmMousePointer: {|
+    +fmMousePointerAppStarting: 13, // 13
+    +fmMousePointerArrow: 1, // 1
+    +fmMousePointerCross: 2, // 2
+    +fmMousePointerCustom: 99, // 99
+    +fmMousePointerDefault: 0, // 0
+    +fmMousePointerHelp: 14, // 14
+    +fmMousePointerHourGlass: 11, // 11
+    +fmMousePointerIBeam: 3, // 3
+    +fmMousePointerNoDrop: 12, // 12
+    +fmMousePointerSizeAll: 15, // 15
+    +fmMousePointerSizeNESW: 6, // 6
+    +fmMousePointerSizeNS: 7, // 7
+    +fmMousePointerSizeNWSE: 8, // 8
+    +fmMousePointerSizeWE: 9, // 9
+    +fmMousePointerUpArrow: 10 // 10
+  |};
+
+  declare var MSForms$fmMultiSelect: {|
+    +fmMultiSelectExtended: 2, // 2
+    +fmMultiSelectMulti: 1, // 1
+    +fmMultiSelectSingle: 0 // 0
+  |};
+
+  declare var MSForms$fmOrientation: {|
+    +fmOrientationAuto: -1, // -1
+    +fmOrientationHorizontal: 1, // 1
+    +fmOrientationVertical: 0 // 0
+  |};
+
+  declare var MSForms$fmPicPosition: {|
+    +fmPicPositionBottomCenter: 7, // 7
+    +fmPicPositionBottomLeft: 6, // 6
+    +fmPicPositionBottomRight: 8, // 8
+    +fmPicPositionCenter: 0, // 0
+    +fmPicPositionCenterLeft: 4, // 4
+    +fmPicPositionCenterRight: 5, // 5
+    +fmPicPositionTopCenter: 2, // 2
+    +fmPicPositionTopLeft: 1, // 1
+    +fmPicPositionTopRight: 3 // 3
+  |};
+
+  declare var MSForms$fmPictureAlignment: {|
+    +fmPictureAlignmentBottomLeft: 3, // 3
+    +fmPictureAlignmentBottomRight: 4, // 4
+    +fmPictureAlignmentCenter: 2, // 2
+    +fmPictureAlignmentTopLeft: 0, // 0
+    +fmPictureAlignmentTopRight: 1 // 1
+  |};
+
+  declare var MSForms$fmPicturePosition: {|
+    +fmPicturePositionAboveCenter: 7, // 7
+    +fmPicturePositionAboveLeft: 6, // 6
+    +fmPicturePositionAboveRight: 8, // 8
+    +fmPicturePositionBelowCenter: 10, // 10
+    +fmPicturePositionBelowLeft: 9, // 9
+    +fmPicturePositionBelowRight: 11, // 11
+    +fmPicturePositionCenter: 12, // 12
+    +fmPicturePositionLeftBottom: 2, // 2
+    +fmPicturePositionLeftCenter: 1, // 1
+    +fmPicturePositionLeftTop: 0, // 0
+    +fmPicturePositionRightBottom: 5, // 5
+    +fmPicturePositionRightCenter: 4, // 4
+    +fmPicturePositionRightTop: 3 // 3
+  |};
+
+  declare var MSForms$fmPictureSizeMode: {|
+    +fmPictureSizeModeClip: 0, // 0
+    +fmPictureSizeModeStretch: 1, // 1
+    +fmPictureSizeModeZoom: 3 // 3
+  |};
+
+  declare var MSForms$fmRepeatDirection: {|
+    +_fmRepeatDirectionHorizontal: 0, // 0
+    +_fmRepeatDirectionVertical: 1 // 1
+  |};
+
+  declare var MSForms$fmScrollAction: {|
+    +_fmScrollActionAbsoluteChange: 7, // 7
+    +fmScrollActionBegin: 5, // 5
+    +fmScrollActionControlRequest: 9, // 9
+    +fmScrollActionEnd: 6, // 6
+    +fmScrollActionFocusRequest: 10, // 10
+    +fmScrollActionLineDown: 2, // 2
+    +fmScrollActionLineUp: 1, // 1
+    +fmScrollActionNoChange: 0, // 0
+    +fmScrollActionPageDown: 4, // 4
+    +fmScrollActionPageUp: 3, // 3
+    +fmScrollActionPropertyChange: 8 // 8
+  |};
+
+  declare var MSForms$fmScrollBars: {|
+    +fmScrollBarsBoth: 3, // 3
+    +fmScrollBarsHorizontal: 1, // 1
+    +fmScrollBarsNone: 0, // 0
+    +fmScrollBarsVertical: 2 // 2
+  |};
+
+  declare var MSForms$fmShowDropButtonWhen: {|
+    +fmShowDropButtonWhenAlways: 2, // 2
+    +fmShowDropButtonWhenFocus: 1, // 1
+    +fmShowDropButtonWhenNever: 0 // 0
+  |};
+
+  declare var MSForms$fmShowListWhen: {|
+    +fmShowListWhenAlways: 3, // 3
+    +fmShowListWhenButton: 1, // 1
+    +fmShowListWhenFocus: 2, // 2
+    +fmShowListWhenNever: 0 // 0
+  |};
+
+  declare var MSForms$fmSnapPoint: {|
+    +fmSnapPointBottomCenter: 7, // 7
+    +fmSnapPointBottomLeft: 6, // 6
+    +fmSnapPointBottomRight: 8, // 8
+    +fmSnapPointCenter: 4, // 4
+    +fmSnapPointCenterLeft: 3, // 3
+    +fmSnapPointCenterRight: 5, // 5
+    +fmSnapPointTopCenter: 1, // 1
+    +fmSnapPointTopLeft: 0, // 0
+    +fmSnapPointTopRight: 2 // 2
+  |};
+
+  declare var MSForms$fmSpecialEffect: {|
+    +fmSpecialEffectBump: 6, // 6
+    +fmSpecialEffectEtched: 3, // 3
+    +fmSpecialEffectFlat: 0, // 0
+    +fmSpecialEffectRaised: 1, // 1
+    +fmSpecialEffectSunken: 2 // 2
+  |};
+
+  declare var MSForms$fmStyle: {|
+    +fmStyleDropDownCombo: 0, // 0
+    +fmStyleDropDownList: 2 // 2
+  |};
+
+  declare var MSForms$fmTabOrientation: {|
+    +fmTabOrientationBottom: 1, // 1
+    +fmTabOrientationLeft: 2, // 2
+    +fmTabOrientationRight: 3, // 3
+    +fmTabOrientationTop: 0 // 0
+  |};
+
+  declare var MSForms$fmTabStyle: {|
+    +fmTabStyleButtons: 1, // 1
+    +fmTabStyleNone: 2, // 2
+    +fmTabStyleTabs: 0 // 0
+  |};
+
+  declare var MSForms$fmTextAlign: {|
+    +fmTextAlignCenter: 2, // 2
+    +fmTextAlignLeft: 1, // 1
+    +fmTextAlignRight: 3 // 3
+  |};
+
+  declare var MSForms$fmTransitionEffect: {|
+    +fmTransitionEffectCoverDown: 5, // 5
+    +fmTransitionEffectCoverLeft: 7, // 7
+    +fmTransitionEffectCoverLeftDown: 6, // 6
+    +fmTransitionEffectCoverLeftUp: 8, // 8
+    +fmTransitionEffectCoverRight: 3, // 3
+    +fmTransitionEffectCoverRightDown: 4, // 4
+    +fmTransitionEffectCoverRightUp: 2, // 2
+    +fmTransitionEffectCoverUp: 1, // 1
+    +fmTransitionEffectNone: 0, // 0
+    +fmTransitionEffectPushDown: 11, // 11
+    +fmTransitionEffectPushLeft: 12, // 12
+    +fmTransitionEffectPushRight: 10, // 10
+    +fmTransitionEffectPushUp: 9 // 9
+  |};
+
+  declare var MSForms$fmVerticalScrollBarSide: {|
+    +fmVerticalScrollBarSideLeft: 1, // 1
+    +fmVerticalScrollBarSideRight: 0 // 0
+  |};
+
+  declare var MSForms$fmZOrder: {|
+    +fmZOrderBack: 1, // 1
+    +fmZOrderFront: 0 // 0
+  |};
 
   declare class MSForms$CheckBox {
     constructor(): this;
     _Font_Reserved: MSForms$NewFont;
     Accelerator: string;
-    Alignment: MSForms$fmAlignment;
+    Alignment: $Values<typeof MSForms$fmAlignment>;
     AutoSize: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     BordersSuppress: boolean;
     Caption: string;
-    DisplayStyle: MSForms$fmDisplayStyle;
+    DisplayStyle: $Values<typeof MSForms$fmDisplayStyle>;
     Enabled: boolean;
     Font: MSForms$NewFont;
     FontBold: boolean;
@@ -1161,12 +420,12 @@ declare module "activex-msforms" {
     GroupName: string;
     Locked: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
-    MultiSelect: MSForms$fmMultiSelect;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
+    MultiSelect: $Values<typeof MSForms$fmMultiSelect>;
     Picture: stdole.StdPicture;
-    PicturePosition: MSForms$fmPicturePosition;
-    SpecialEffect: MSForms$fmButtonEffect;
-    TextAlign: MSForms$fmTextAlign;
+    PicturePosition: $Values<typeof MSForms$fmPicturePosition>;
+    SpecialEffect: $Values<typeof MSForms$fmButtonEffect>;
+    TextAlign: $Values<typeof MSForms$fmTextAlign>;
     TripleState: boolean;
     Valid: boolean;
     Value: any;
@@ -1181,10 +440,10 @@ declare module "activex-msforms" {
     AutoTab: boolean;
     AutoWordSelect: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     BorderColor: number;
     BordersSuppress: boolean;
-    BorderStyle: MSForms$fmBorderStyle;
+    BorderStyle: $Values<typeof MSForms$fmBorderStyle>;
     BoundColumn: number;
     CanPaste: boolean;
     Clear(): void;
@@ -1198,12 +457,12 @@ declare module "activex-msforms" {
     CurTargetY: number;
     CurX: number;
     Cut(): void;
-    DisplayStyle: MSForms$fmDisplayStyle;
-    DragBehavior: MSForms$fmDragBehavior;
-    DropButtonStyle: MSForms$fmDropButtonStyle;
+    DisplayStyle: $Values<typeof MSForms$fmDisplayStyle>;
+    DragBehavior: $Values<typeof MSForms$fmDragBehavior>;
+    DropButtonStyle: $Values<typeof MSForms$fmDropButtonStyle>;
     DropDown(): void;
     Enabled: boolean;
-    EnterFieldBehavior: MSForms$fmEnterFieldBehavior;
+    EnterFieldBehavior: $Values<typeof MSForms$fmEnterFieldBehavior>;
     Font: MSForms$NewFont;
     FontBold: boolean;
     FontItalic: boolean;
@@ -1214,7 +473,7 @@ declare module "activex-msforms" {
     FontWeight: number;
     ForeColor: number;
     HideSelection: boolean;
-    IMEMode: MSForms$fmIMEMode;
+    IMEMode: $Values<typeof MSForms$fmIMEMode>;
     LineCount: number;
     List(pvargIndex: number, pvargColumn?: number): any;
     List(): SafeArray;
@@ -1222,26 +481,26 @@ declare module "activex-msforms" {
     ListCursor: any;
     ListIndex: number;
     ListRows: number;
-    ListStyle: MSForms$fmListStyle;
+    ListStyle: $Values<typeof MSForms$fmListStyle>;
     ListWidth: number;
     Locked: boolean;
-    MatchEntry: MSForms$fmMatchEntry;
+    MatchEntry: $Values<typeof MSForms$fmMatchEntry>;
     MatchFound: boolean;
     MatchRequired: boolean;
     MaxLength: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     Paste(): void;
     RemoveItem(pvargIndex: number): boolean;
     SelectionMargin: boolean;
     SelLength: number;
     SelStart: number;
     SelText: string;
-    ShowDropButtonWhen: MSForms$fmShowDropButtonWhen;
-    SpecialEffect: MSForms$fmSpecialEffect;
-    Style: MSForms$fmStyle;
+    ShowDropButtonWhen: $Values<typeof MSForms$fmShowDropButtonWhen>;
+    SpecialEffect: $Values<typeof MSForms$fmSpecialEffect>;
+    Style: $Values<typeof MSForms$fmStyle>;
     Text: string;
-    TextAlign: MSForms$fmTextAlign;
+    TextAlign: $Values<typeof MSForms$fmTextAlign>;
     TextColumn: number;
     TextLength: number;
     TopIndex: number;
@@ -1255,7 +514,7 @@ declare module "activex-msforms" {
     Accelerator: string;
     AutoSize: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     Caption: string;
     Enabled: boolean;
     Font: MSForms$NewFont;
@@ -1269,9 +528,9 @@ declare module "activex-msforms" {
     ForeColor: number;
     Locked: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     Picture: stdole.StdPicture;
-    PicturePosition: MSForms$fmPicturePosition;
+    PicturePosition: $Values<typeof MSForms$fmPicturePosition>;
     TakeFocusOnClick: boolean;
     Value: boolean;
     WordWrap: boolean;
@@ -1294,7 +553,7 @@ declare module "activex-msforms" {
     _SetLeft(Left: number): void;
     _SetTop(Top: number): void;
     _SetWidth(Width: number): void;
-    _ZOrder(zPosition: MSForms$fmZOrder): void;
+    _ZOrder(zPosition: $Values<typeof MSForms$fmZOrder>): void;
     BoundValue: any;
     Cancel: boolean;
     ControlSource: string;
@@ -1303,7 +562,7 @@ declare module "activex-msforms" {
     Height: number;
     HelpContextID: number;
     InSelection: boolean;
-    LayoutEffect: MSForms$fmLayoutEffect;
+    LayoutEffect: $Values<typeof MSForms$fmLayoutEffect>;
     Left: number;
     Move(Left?: any, Top?: any, Width?: any, Height?: any, Layout?: any): void;
     Name: string;
@@ -1358,7 +617,7 @@ declare module "activex-msforms" {
     GetText(Format?: any): string;
     PutInClipboard(): void;
     SetText(Text: string, Format?: any): void;
-    StartDrag(OKEffect?: any): MSForms$fmDropEffect;
+    StartDrag(OKEffect?: any): $Values<typeof MSForms$fmDropEffect>;
   }
 
   declare class MSForms$Frame {
@@ -1381,7 +640,7 @@ declare module "activex-msforms" {
     ActiveControl: MSForms$Control;
     BackColor: number;
     BorderColor: number;
-    BorderStyle: MSForms$fmBorderStyle;
+    BorderStyle: $Values<typeof MSForms$fmBorderStyle>;
     CanPaste: boolean;
     CanRedo: boolean;
     CanUndo: boolean;
@@ -1389,8 +648,8 @@ declare module "activex-msforms" {
     MSForms$Controls: MSForms$Controls;
     Copy(): void;
     Cut(): void;
-    Cycle: MSForms$fmCycle;
-    DesignMode: MSForms$fmMode;
+    Cycle: $Values<typeof MSForms$fmCycle>;
+    DesignMode: $Values<typeof MSForms$fmMode>;
     Enabled: boolean;
     Font: MSForms$NewFont;
     ForeColor: number;
@@ -1398,30 +657,30 @@ declare module "activex-msforms" {
     GridY: number;
     InsideHeight: number;
     InsideWidth: number;
-    KeepScrollBarsVisible: MSForms$fmScrollBars;
+    KeepScrollBarsVisible: $Values<typeof MSForms$fmScrollBars>;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     Paste(): void;
     Picture: stdole.StdPicture;
-    PictureAlignment: MSForms$fmPictureAlignment;
-    PictureSizeMode: MSForms$fmPictureSizeMode;
+    PictureAlignment: $Values<typeof MSForms$fmPictureAlignment>;
+    PictureSizeMode: $Values<typeof MSForms$fmPictureSizeMode>;
     PictureTiling: boolean;
     RedoAction(): void;
     Repaint(): void;
     Scroll(xAction?: any, yAction?: any): void;
-    ScrollBars: MSForms$fmScrollBars;
+    ScrollBars: $Values<typeof MSForms$fmScrollBars>;
     ScrollHeight: number;
     ScrollLeft: number;
     ScrollTop: number;
     ScrollWidth: number;
     Selected: MSForms$Controls;
     SetDefaultTabOrder(): void;
-    ShowGridDots: MSForms$fmMode;
-    ShowToolbox: MSForms$fmMode;
-    SnapToGrid: MSForms$fmMode;
-    SpecialEffect: MSForms$fmSpecialEffect;
+    ShowGridDots: $Values<typeof MSForms$fmMode>;
+    ShowToolbox: $Values<typeof MSForms$fmMode>;
+    SnapToGrid: $Values<typeof MSForms$fmMode>;
+    SpecialEffect: $Values<typeof MSForms$fmSpecialEffect>;
     UndoAction(): void;
-    VerticalScrollBarSide: MSForms$fmVerticalScrollBarSide;
+    VerticalScrollBarSide: $Values<typeof MSForms$fmVerticalScrollBarSide>;
     Zoom: number;
   }
 
@@ -1453,7 +712,7 @@ declare module "activex-msforms" {
   declare class MSForms$HTMLOption {
     constructor(): this;
     Checked: boolean;
-    DisplayStyle: MSForms$fmDisplayStyle;
+    DisplayStyle: $Values<typeof MSForms$fmDisplayStyle>;
     HTMLName: string;
     HTMLType: string;
     Value: string;
@@ -1517,17 +776,17 @@ declare module "activex-msforms" {
     constructor(): this;
     AutoSize: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     BorderColor: number;
-    BorderStyle: MSForms$fmBorderStyle;
+    BorderStyle: $Values<typeof MSForms$fmBorderStyle>;
     Enabled: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     Picture: stdole.StdPicture;
-    PictureAlignment: MSForms$fmPictureAlignment;
-    PictureSizeMode: MSForms$fmPictureSizeMode;
+    PictureAlignment: $Values<typeof MSForms$fmPictureAlignment>;
+    PictureSizeMode: $Values<typeof MSForms$fmPictureSizeMode>;
     PictureTiling: boolean;
-    SpecialEffect: MSForms$fmSpecialEffect;
+    SpecialEffect: $Values<typeof MSForms$fmSpecialEffect>;
   }
 
   declare class MSForms$Label {
@@ -1537,9 +796,9 @@ declare module "activex-msforms" {
     Accelerator: string;
     AutoSize: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     BorderColor: number;
-    BorderStyle: MSForms$fmBorderStyle;
+    BorderStyle: $Values<typeof MSForms$fmBorderStyle>;
     Caption: string;
     Enabled: boolean;
     Font: MSForms$NewFont;
@@ -1552,11 +811,11 @@ declare module "activex-msforms" {
     FontWeight: number;
     ForeColor: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     Picture: stdole.StdPicture;
-    PicturePosition: MSForms$fmPicturePosition;
-    SpecialEffect: MSForms$fmSpecialEffect;
-    TextAlign: MSForms$fmTextAlign;
+    PicturePosition: $Values<typeof MSForms$fmPicturePosition>;
+    SpecialEffect: $Values<typeof MSForms$fmSpecialEffect>;
+    TextAlign: $Values<typeof MSForms$fmTextAlign>;
     WordWrap: boolean;
   }
 
@@ -1567,7 +826,7 @@ declare module "activex-msforms" {
     BackColor: number;
     BorderColor: number;
     BordersSuppress: boolean;
-    BorderStyle: MSForms$fmBorderStyle;
+    BorderStyle: $Values<typeof MSForms$fmBorderStyle>;
     BoundColumn: any;
     Clear(): void;
     Column(pvargColumn: number, pvargIndex?: number): any;
@@ -1575,7 +834,7 @@ declare module "activex-msforms" {
     ColumnCount: number;
     ColumnHeads: boolean;
     ColumnWidths: string;
-    DisplayStyle: MSForms$fmDisplayStyle;
+    DisplayStyle: $Values<typeof MSForms$fmDisplayStyle>;
     Enabled: boolean;
     Font: MSForms$NewFont;
     FontBold: boolean;
@@ -1586,25 +845,25 @@ declare module "activex-msforms" {
     FontUnderline: boolean;
     FontWeight: number;
     ForeColor: number;
-    IMEMode: MSForms$fmIMEMode;
+    IMEMode: $Values<typeof MSForms$fmIMEMode>;
     IntegralHeight: boolean;
     List(pvargIndex: number, pvargColumn?: number): any;
     List(): SafeArray;
     ListCount: number;
     ListCursor: any;
     ListIndex: any;
-    ListStyle: MSForms$fmListStyle;
+    ListStyle: $Values<typeof MSForms$fmListStyle>;
     ListWidth: any;
     Locked: boolean;
-    MatchEntry: MSForms$fmMatchEntry;
+    MatchEntry: $Values<typeof MSForms$fmMatchEntry>;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
-    MultiSelect: MSForms$fmMultiSelect;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
+    MultiSelect: $Values<typeof MSForms$fmMultiSelect>;
     RemoveItem(pvargIndex: any): void;
     Selected(pvargIndex: any): boolean;
-    SpecialEffect: MSForms$fmSpecialEffect;
+    SpecialEffect: $Values<typeof MSForms$fmSpecialEffect>;
     Text: string;
-    TextAlign: MSForms$fmTextAlign;
+    TextAlign: $Values<typeof MSForms$fmTextAlign>;
     TextColumn: any;
     TopIndex: any;
     Valid: boolean;
@@ -1632,10 +891,10 @@ declare module "activex-msforms" {
     MultiRow: boolean;
     MSForms$Pages: MSForms$Pages;
     SelectedItem: MSForms$Page;
-    Style: MSForms$fmTabStyle;
+    Style: $Values<typeof MSForms$fmTabStyle>;
     TabFixedHeight: number;
     TabFixedWidth: number;
-    TabOrientation: MSForms$fmTabOrientation;
+    TabOrientation: $Values<typeof MSForms$fmTabOrientation>;
     Value: number;
   }
 
@@ -1655,13 +914,13 @@ declare module "activex-msforms" {
     constructor(): this;
     _Font_Reserved: MSForms$NewFont;
     Accelerator: string;
-    Alignment: MSForms$fmAlignment;
+    Alignment: $Values<typeof MSForms$fmAlignment>;
     AutoSize: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     BordersSuppress: boolean;
     Caption: string;
-    DisplayStyle: MSForms$fmDisplayStyle;
+    DisplayStyle: $Values<typeof MSForms$fmDisplayStyle>;
     Enabled: boolean;
     Font: MSForms$NewFont;
     FontBold: boolean;
@@ -1675,12 +934,12 @@ declare module "activex-msforms" {
     GroupName: string;
     Locked: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
-    MultiSelect: MSForms$fmMultiSelect;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
+    MultiSelect: $Values<typeof MSForms$fmMultiSelect>;
     Picture: stdole.StdPicture;
-    PicturePosition: MSForms$fmPicturePosition;
-    SpecialEffect: MSForms$fmButtonEffect;
-    TextAlign: MSForms$fmTextAlign;
+    PicturePosition: $Values<typeof MSForms$fmPicturePosition>;
+    SpecialEffect: $Values<typeof MSForms$fmButtonEffect>;
+    TextAlign: $Values<typeof MSForms$fmTextAlign>;
     TripleState: boolean;
     Valid: boolean;
     Value: any;
@@ -1713,40 +972,40 @@ declare module "activex-msforms" {
     ControlTipText: string;
     Copy(): void;
     Cut(): void;
-    Cycle: MSForms$fmCycle;
-    DesignMode: MSForms$fmMode;
+    Cycle: $Values<typeof MSForms$fmCycle>;
+    DesignMode: $Values<typeof MSForms$fmMode>;
     Enabled: boolean;
     GridX: number;
     GridY: number;
     Index: number;
     InsideHeight: number;
     InsideWidth: number;
-    KeepScrollBarsVisible: MSForms$fmScrollBars;
+    KeepScrollBarsVisible: $Values<typeof MSForms$fmScrollBars>;
     Name: string;
     Parent: any;
     Paste(): void;
     Picture: stdole.StdPicture;
-    PictureAlignment: MSForms$fmPictureAlignment;
-    PictureSizeMode: MSForms$fmPictureSizeMode;
+    PictureAlignment: $Values<typeof MSForms$fmPictureAlignment>;
+    PictureSizeMode: $Values<typeof MSForms$fmPictureSizeMode>;
     PictureTiling: boolean;
     RedoAction(): void;
     Repaint(): void;
     Scroll(xAction?: any, yAction?: any): void;
-    ScrollBars: MSForms$fmScrollBars;
+    ScrollBars: $Values<typeof MSForms$fmScrollBars>;
     ScrollHeight: number;
     ScrollLeft: number;
     ScrollTop: number;
     ScrollWidth: number;
     Selected: MSForms$Controls;
     SetDefaultTabOrder(): void;
-    ShowGridDots: MSForms$fmMode;
-    ShowToolbox: MSForms$fmMode;
-    SnapToGrid: MSForms$fmMode;
+    ShowGridDots: $Values<typeof MSForms$fmMode>;
+    ShowToolbox: $Values<typeof MSForms$fmMode>;
+    SnapToGrid: $Values<typeof MSForms$fmMode>;
     Tag: string;
-    TransitionEffect: MSForms$fmTransitionEffect;
+    TransitionEffect: $Values<typeof MSForms$fmTransitionEffect>;
     TransitionPeriod: number;
     UndoAction(): void;
-    VerticalScrollBarSide: MSForms$fmVerticalScrollBarSide;
+    VerticalScrollBarSide: $Values<typeof MSForms$fmVerticalScrollBarSide>;
     Visible: boolean;
     Zoom: number;
   }
@@ -1781,7 +1040,7 @@ declare module "activex-msforms" {
 
   declare class MSForms$ReturnEffect {
     constructor(): this;
-    Value: MSForms$fmDropEffect;
+    Value: $Values<typeof MSForms$fmDropEffect>;
   }
 
   declare class MSForms$ReturnInteger {
@@ -1809,8 +1068,8 @@ declare module "activex-msforms" {
     Max: number;
     Min: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
-    Orientation: MSForms$fmOrientation;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
+    Orientation: $Values<typeof MSForms$fmOrientation>;
     ProportionalThumb: boolean;
     SmallChange: number;
     Value: number;
@@ -1825,8 +1084,8 @@ declare module "activex-msforms" {
     Max: number;
     Min: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
-    Orientation: MSForms$fmOrientation;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
+    Orientation: $Values<typeof MSForms$fmOrientation>;
     SmallChange: number;
     Value: number;
   }
@@ -1884,13 +1143,13 @@ declare module "activex-msforms" {
     FontWeight: number;
     ForeColor: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     MultiRow: boolean;
     SelectedItem: MSForms$Tab;
-    Style: MSForms$fmTabStyle;
+    Style: $Values<typeof MSForms$fmTabStyle>;
     TabFixedHeight: number;
     TabFixedWidth: number;
-    TabOrientation: MSForms$fmTabOrientation;
+    TabOrientation: $Values<typeof MSForms$fmTabOrientation>;
     MSForms$Tabs: MSForms$Tabs;
     Value: number;
   }
@@ -1902,10 +1161,10 @@ declare module "activex-msforms" {
     AutoTab: boolean;
     AutoWordSelect: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     BorderColor: number;
     BordersSuppress: boolean;
-    BorderStyle: MSForms$fmBorderStyle;
+    BorderStyle: $Values<typeof MSForms$fmBorderStyle>;
     CanPaste: boolean;
     Copy(): void;
     CurLine: number;
@@ -1914,11 +1173,11 @@ declare module "activex-msforms" {
     CurX: number;
     CurY: number;
     Cut(): void;
-    DisplayStyle: MSForms$fmDisplayStyle;
-    DragBehavior: MSForms$fmDragBehavior;
-    DropButtonStyle: MSForms$fmDropButtonStyle;
+    DisplayStyle: $Values<typeof MSForms$fmDisplayStyle>;
+    DragBehavior: $Values<typeof MSForms$fmDragBehavior>;
+    DropButtonStyle: $Values<typeof MSForms$fmDropButtonStyle>;
     Enabled: boolean;
-    EnterFieldBehavior: MSForms$fmEnterFieldBehavior;
+    EnterFieldBehavior: $Values<typeof MSForms$fmEnterFieldBehavior>;
     EnterKeyBehavior: boolean;
     Font: MSForms$NewFont;
     FontBold: boolean;
@@ -1930,26 +1189,26 @@ declare module "activex-msforms" {
     FontWeight: number;
     ForeColor: number;
     HideSelection: boolean;
-    IMEMode: MSForms$fmIMEMode;
+    IMEMode: $Values<typeof MSForms$fmIMEMode>;
     IntegralHeight: boolean;
     LineCount: number;
     Locked: boolean;
     MaxLength: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     MultiLine: boolean;
     PasswordChar: string;
     Paste(): void;
-    ScrollBars: MSForms$fmScrollBars;
+    ScrollBars: $Values<typeof MSForms$fmScrollBars>;
     SelectionMargin: boolean;
     SelLength: number;
     SelStart: number;
     SelText: string;
-    ShowDropButtonWhen: MSForms$fmShowDropButtonWhen;
-    SpecialEffect: MSForms$fmSpecialEffect;
+    ShowDropButtonWhen: $Values<typeof MSForms$fmShowDropButtonWhen>;
+    SpecialEffect: $Values<typeof MSForms$fmSpecialEffect>;
     TabKeyBehavior: boolean;
     Text: string;
-    TextAlign: MSForms$fmTextAlign;
+    TextAlign: $Values<typeof MSForms$fmTextAlign>;
     TextLength: number;
     Valid: boolean;
     Value: any;
@@ -1960,13 +1219,13 @@ declare module "activex-msforms" {
     constructor(): this;
     _Font_Reserved: MSForms$NewFont;
     Accelerator: string;
-    Alignment: MSForms$fmAlignment;
+    Alignment: $Values<typeof MSForms$fmAlignment>;
     AutoSize: boolean;
     BackColor: number;
-    BackStyle: MSForms$fmBackStyle;
+    BackStyle: $Values<typeof MSForms$fmBackStyle>;
     BordersSuppress: boolean;
     Caption: string;
-    DisplayStyle: MSForms$fmDisplayStyle;
+    DisplayStyle: $Values<typeof MSForms$fmDisplayStyle>;
     Enabled: boolean;
     Font: MSForms$NewFont;
     FontBold: boolean;
@@ -1980,12 +1239,12 @@ declare module "activex-msforms" {
     GroupName: string;
     Locked: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
-    MultiSelect: MSForms$fmMultiSelect;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
+    MultiSelect: $Values<typeof MSForms$fmMultiSelect>;
     Picture: stdole.StdPicture;
-    PicturePosition: MSForms$fmPicturePosition;
-    SpecialEffect: MSForms$fmButtonEffect;
-    TextAlign: MSForms$fmTextAlign;
+    PicturePosition: $Values<typeof MSForms$fmPicturePosition>;
+    SpecialEffect: $Values<typeof MSForms$fmButtonEffect>;
+    TextAlign: $Values<typeof MSForms$fmTextAlign>;
     TripleState: boolean;
     Valid: boolean;
     Value: any;
@@ -2012,7 +1271,7 @@ declare module "activex-msforms" {
     ActiveControl: MSForms$Control;
     BackColor: number;
     BorderColor: number;
-    BorderStyle: MSForms$fmBorderStyle;
+    BorderStyle: $Values<typeof MSForms$fmBorderStyle>;
     CanPaste: boolean;
     CanRedo: boolean;
     CanUndo: boolean;
@@ -2020,8 +1279,8 @@ declare module "activex-msforms" {
     MSForms$Controls: MSForms$Controls;
     Copy(): void;
     Cut(): void;
-    Cycle: MSForms$fmCycle;
-    DesignMode: MSForms$fmMode;
+    Cycle: $Values<typeof MSForms$fmCycle>;
+    DesignMode: $Values<typeof MSForms$fmMode>;
     DrawBuffer: number;
     Enabled: boolean;
     Font: MSForms$NewFont;
@@ -2030,34 +1289,34 @@ declare module "activex-msforms" {
     GridY: number;
     InsideHeight: number;
     InsideWidth: number;
-    KeepScrollBarsVisible: MSForms$fmScrollBars;
+    KeepScrollBarsVisible: $Values<typeof MSForms$fmScrollBars>;
     MouseIcon: stdole.StdPicture;
-    MousePointer: MSForms$fmMousePointer;
+    MousePointer: $Values<typeof MSForms$fmMousePointer>;
     Paste(): void;
     Picture: stdole.StdPicture;
-    PictureAlignment: MSForms$fmPictureAlignment;
-    PictureSizeMode: MSForms$fmPictureSizeMode;
+    PictureAlignment: $Values<typeof MSForms$fmPictureAlignment>;
+    PictureSizeMode: $Values<typeof MSForms$fmPictureSizeMode>;
     PictureTiling: boolean;
     RedoAction(): void;
     Repaint(): void;
     Scroll(xAction?: any, yAction?: any): void;
-    ScrollBars: MSForms$fmScrollBars;
+    ScrollBars: $Values<typeof MSForms$fmScrollBars>;
     ScrollHeight: number;
     ScrollLeft: number;
     ScrollTop: number;
     ScrollWidth: number;
     Selected: MSForms$Controls;
     SetDefaultTabOrder(): void;
-    ShowGridDots: MSForms$fmMode;
-    ShowToolbox: MSForms$fmMode;
-    SnapToGrid: MSForms$fmMode;
-    SpecialEffect: MSForms$fmSpecialEffect;
+    ShowGridDots: $Values<typeof MSForms$fmMode>;
+    ShowToolbox: $Values<typeof MSForms$fmMode>;
+    SnapToGrid: $Values<typeof MSForms$fmMode>;
+    SpecialEffect: $Values<typeof MSForms$fmSpecialEffect>;
     UndoAction(): void;
-    VerticalScrollBarSide: MSForms$fmVerticalScrollBarSide;
+    VerticalScrollBarSide: $Values<typeof MSForms$fmVerticalScrollBarSide>;
     Zoom: number;
   }
 
-  declare type EventHelperTypes$Container_BeforeDragOver_ArgNames = [
+  declare type MSForms$EventHelperTypes$Container_BeforeDragOver_ArgNames = [
     "Cancel",
     "Control",
     "Data",
@@ -2068,7 +1327,7 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare type EventHelperTypes$Container_BeforeDropOrPaste_ArgNames = [
+  declare type MSForms$EventHelperTypes$Container_BeforeDropOrPaste_ArgNames = [
     "Cancel",
     "Control",
     "Action",
@@ -2079,7 +1338,7 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare type EventHelperTypes$Container_Scroll_ArgNames = [
+  declare type MSForms$EventHelperTypes$Container_Scroll_ArgNames = [
     "ActionX",
     "ActionY",
     "RequestDx",
@@ -2088,7 +1347,7 @@ declare module "activex-msforms" {
     "ActualDy"
   ];
 
-  declare type EventHelperTypes$Control_BeforeDragOver_ArgNames = [
+  declare type MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames = [
     "Cancel",
     "Data",
     "X",
@@ -2098,7 +1357,7 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare type EventHelperTypes$Control_BeforeDropOrPaste_ArgNames = [
+  declare type MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames = [
     "Cancel",
     "Action",
     "Data",
@@ -2108,7 +1367,7 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare type EventHelperTypes$Error_ArgNames = [
+  declare type MSForms$EventHelperTypes$Error_ArgNames = [
     "Number",
     "Description",
     "SCode",
@@ -2118,7 +1377,7 @@ declare module "activex-msforms" {
     "CancelDisplay"
   ];
 
-  declare type EventHelperTypes$MultiPage_BeforeDragOver_ArgNames = [
+  declare type MSForms$EventHelperTypes$MultiPage_BeforeDragOver_ArgNames = [
     "Index",
     "Cancel",
     "Control",
@@ -2130,7 +1389,7 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare type EventHelperTypes$MultiPage_BeforeDropOrPaste_ArgNames = [
+  declare type MSForms$EventHelperTypes$MultiPage_BeforeDropOrPaste_ArgNames = [
     "Index",
     "Cancel",
     "Control",
@@ -2142,7 +1401,7 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare type EventHelperTypes$MultiPage_Error_ArgNames = [
+  declare type MSForms$EventHelperTypes$MultiPage_Error_ArgNames = [
     "Index",
     "Number",
     "Description",
@@ -2153,7 +1412,7 @@ declare module "activex-msforms" {
     "CancelDisplay"
   ];
 
-  declare type EventHelperTypes$MultiPage_Scroll_ArgNames = [
+  declare type MSForms$EventHelperTypes$MultiPage_Scroll_ArgNames = [
     "Index",
     "ActionX",
     "ActionY",
@@ -2163,7 +1422,7 @@ declare module "activex-msforms" {
     "ActualDy"
   ];
 
-  declare type EventHelperTypes$TabStrip_BeforeDragOver_ArgNames = [
+  declare type MSForms$EventHelperTypes$TabStrip_BeforeDragOver_ArgNames = [
     "Index",
     "Cancel",
     "Data",
@@ -2174,7 +1433,7 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare type EventHelperTypes$TabStrip_BeforeDropOrPaste_ArgNames = [
+  declare type MSForms$EventHelperTypes$TabStrip_BeforeDropOrPaste_ArgNames = [
     "Index",
     "Cancel",
     "Action",
@@ -2185,21 +1444,21 @@ declare module "activex-msforms" {
     "Shift"
   ];
 
-  declare interface EventHelperTypes$Container_BeforeDragOver_Parameter {
+  declare interface MSForms$EventHelperTypes$Container_BeforeDragOver_Parameter {
     +Cancel: MSForms$ReturnBoolean;
-    +MSForms$Control: MSForms$Control;
+    +Control: MSForms$Control;
     +Data: MSForms$DataObject;
     +Effect: MSForms$ReturnEffect;
     +Shift: number;
-    +State: MSForms$fmDragState;
+    +State: $Values<typeof MSForms$fmDragState>;
     +X: number;
     +Y: number;
   }
 
-  declare interface EventHelperTypes$Container_BeforeDropOrPaste_Parameter {
-    +Action: MSForms$fmAction;
+  declare interface MSForms$EventHelperTypes$Container_BeforeDropOrPaste_Parameter {
+    +Action: $Values<typeof MSForms$fmAction>;
     +Cancel: MSForms$ReturnBoolean;
-    +MSForms$Control: MSForms$Control;
+    +Control: MSForms$Control;
     +Data: MSForms$DataObject;
     +Effect: MSForms$ReturnEffect;
     +Shift: number;
@@ -2207,27 +1466,27 @@ declare module "activex-msforms" {
     +Y: number;
   }
 
-  declare interface EventHelperTypes$Container_Scroll_Parameter {
-    +ActionX: MSForms$fmScrollAction;
-    +ActionY: MSForms$fmScrollAction;
+  declare interface MSForms$EventHelperTypes$Container_Scroll_Parameter {
+    +ActionX: $Values<typeof MSForms$fmScrollAction>;
+    +ActionY: $Values<typeof MSForms$fmScrollAction>;
     +ActualDx: MSForms$ReturnSingle;
     +ActualDy: MSForms$ReturnSingle;
     +RequestDx: number;
     +RequestDy: number;
   }
 
-  declare interface EventHelperTypes$Control_BeforeDragOver_Parameter {
+  declare interface MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter {
     +Cancel: MSForms$ReturnBoolean;
     +Data: MSForms$DataObject;
-    +DragState: MSForms$fmDragState;
+    +DragState: $Values<typeof MSForms$fmDragState>;
     +Effect: MSForms$ReturnEffect;
     +Shift: number;
     +X: number;
     +Y: number;
   }
 
-  declare interface EventHelperTypes$Control_BeforeDropOrPaste_Parameter {
-    +Action: MSForms$fmAction;
+  declare interface MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter {
+    +Action: $Values<typeof MSForms$fmAction>;
     +Cancel: MSForms$ReturnBoolean;
     +Data: MSForms$DataObject;
     +Effect: MSForms$ReturnEffect;
@@ -2236,7 +1495,7 @@ declare module "activex-msforms" {
     +Y: number;
   }
 
-  declare interface EventHelperTypes$Error_Parameter {
+  declare interface MSForms$EventHelperTypes$Error_Parameter {
     +CancelDisplay: MSForms$ReturnBoolean;
     +Description: MSForms$ReturnString;
     +HelpContext: number;
@@ -2246,22 +1505,22 @@ declare module "activex-msforms" {
     +Source: string;
   }
 
-  declare interface EventHelperTypes$MultiPage_BeforeDragOver_Parameter {
+  declare interface MSForms$EventHelperTypes$MultiPage_BeforeDragOver_Parameter {
     +Cancel: MSForms$ReturnBoolean;
-    +MSForms$Control: MSForms$Control;
+    +Control: MSForms$Control;
     +Data: MSForms$DataObject;
     +Effect: MSForms$ReturnEffect;
     +Index: number;
     +Shift: number;
-    +State: MSForms$fmDragState;
+    +State: $Values<typeof MSForms$fmDragState>;
     +X: number;
     +Y: number;
   }
 
-  declare interface EventHelperTypes$MultiPage_BeforeDropOrPaste_Parameter {
-    +Action: MSForms$fmAction;
+  declare interface MSForms$EventHelperTypes$MultiPage_BeforeDropOrPaste_Parameter {
+    +Action: $Values<typeof MSForms$fmAction>;
     +Cancel: MSForms$ReturnBoolean;
-    +MSForms$Control: MSForms$Control;
+    +Control: MSForms$Control;
     +Data: MSForms$DataObject;
     +Effect: MSForms$ReturnEffect;
     +Index: number;
@@ -2270,7 +1529,7 @@ declare module "activex-msforms" {
     +Y: number;
   }
 
-  declare interface EventHelperTypes$MultiPage_Error_Parameter {
+  declare interface MSForms$EventHelperTypes$MultiPage_Error_Parameter {
     +CancelDisplay: MSForms$ReturnBoolean;
     +Description: MSForms$ReturnString;
     +HelpContext: number;
@@ -2281,9 +1540,9 @@ declare module "activex-msforms" {
     +Source: string;
   }
 
-  declare interface EventHelperTypes$MultiPage_Scroll_Parameter {
-    +ActionX: MSForms$fmScrollAction;
-    +ActionY: MSForms$fmScrollAction;
+  declare interface MSForms$EventHelperTypes$MultiPage_Scroll_Parameter {
+    +ActionX: $Values<typeof MSForms$fmScrollAction>;
+    +ActionY: $Values<typeof MSForms$fmScrollAction>;
     +ActualDx: MSForms$ReturnSingle;
     +ActualDy: MSForms$ReturnSingle;
     +Index: number;
@@ -2291,10 +1550,10 @@ declare module "activex-msforms" {
     +RequestDy: number;
   }
 
-  declare interface EventHelperTypes$TabStrip_BeforeDragOver_Parameter {
+  declare interface MSForms$EventHelperTypes$TabStrip_BeforeDragOver_Parameter {
     +Cancel: MSForms$ReturnBoolean;
     +Data: MSForms$DataObject;
-    +DragState: MSForms$fmDragState;
+    +DragState: $Values<typeof MSForms$fmDragState>;
     +Effect: MSForms$ReturnEffect;
     +Index: number;
     +Shift: number;
@@ -2302,8 +1561,8 @@ declare module "activex-msforms" {
     +Y: number;
   }
 
-  declare interface EventHelperTypes$TabStrip_BeforeDropOrPaste_Parameter {
-    +Action: MSForms$fmAction;
+  declare interface MSForms$EventHelperTypes$TabStrip_BeforeDropOrPaste_Parameter {
+    +Action: $Values<typeof MSForms$fmAction>;
     +Cancel: MSForms$ReturnBoolean;
     +Data: MSForms$DataObject;
     +Effect: MSForms$ReturnEffect;
@@ -2314,56 +1573,54 @@ declare module "activex-msforms" {
   }
   declare interface ActiveXObject {
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2374,56 +1631,54 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2434,56 +1689,54 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2494,72 +1747,70 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Control,
+      obj: MSForms$Control,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "AddControl" | "RemoveControl",
       argNames: ["Control"],
       handler: (parameter: {
-        +MSForms$Control: MSForms$MSForms$Control
+        +Control: MSForms$Control
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Container_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Container_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Container_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Container_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2570,15 +1821,15 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "Scroll",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Container_Scroll_ArgNames,
+      argNames: MSForms$EventHelperTypes$Container_Scroll_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Container_Scroll_Parameter
+        parameter: MSForms$EventHelperTypes$Container_Scroll_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "Zoom",
       argNames: ["Percent"],
       handler: (parameter: {
@@ -2586,39 +1837,37 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Image,
+      obj: MSForms$Image,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Image,
+      obj: MSForms$Image,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Image,
+      obj: MSForms$Image,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Image,
+      obj: MSForms$Image,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Image,
+      obj: MSForms$Image,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2629,39 +1878,37 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Label,
+      obj: MSForms$Label,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Label,
+      obj: MSForms$Label,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Label,
+      obj: MSForms$Label,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Label,
+      obj: MSForms$Label,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Label,
+      obj: MSForms$Label,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2672,56 +1919,54 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2732,32 +1977,32 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "AddControl" | "RemoveControl",
       argNames: ["Index", "Control"],
       handler: (parameter: {
         +Index: number,
-        +MSForms$Control: MSForms$MSForms$Control
+        +Control: MSForms$Control
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$MultiPage_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$MultiPage_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$MultiPage_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$MultiPage_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "Click" | "Layout",
       argNames: ["Index"],
       handler: (parameter: {
@@ -2765,41 +2010,41 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "DblClick",
       argNames: ["Index", "Cancel"],
       handler: (parameter: {
         +Index: number,
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_Error_ArgNames,
+      argNames: MSForms$EventHelperTypes$MultiPage_Error_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_Error_Parameter
+        parameter: MSForms$EventHelperTypes$MultiPage_Error_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Index", "Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2811,15 +2056,15 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "Scroll",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_Scroll_ArgNames,
+      argNames: MSForms$EventHelperTypes$MultiPage_Scroll_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$MultiPage_Scroll_Parameter
+        parameter: MSForms$EventHelperTypes$MultiPage_Scroll_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "Zoom",
       argNames: ["Index", "Percent"],
       handler: (parameter: {
@@ -2828,56 +2073,54 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -2888,105 +2131,101 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ScrollBar,
+      obj: MSForms$ScrollBar,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ScrollBar,
+      obj: MSForms$ScrollBar,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ScrollBar,
+      obj: MSForms$ScrollBar,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ScrollBar,
+      obj: MSForms$ScrollBar,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ScrollBar,
+      obj: MSForms$ScrollBar,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$SpinButton,
+      obj: MSForms$SpinButton,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$SpinButton,
+      obj: MSForms$SpinButton,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$SpinButton,
+      obj: MSForms$SpinButton,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$SpinButton,
+      obj: MSForms$SpinButton,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$SpinButton,
+      obj: MSForms$SpinButton,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$TabStrip_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$TabStrip_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$TabStrip_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$TabStrip_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$TabStrip_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$TabStrip_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$TabStrip_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$TabStrip_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "Click",
       argNames: ["Index"],
       handler: (parameter: {
@@ -2994,41 +2233,39 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "DblClick",
       argNames: ["Index", "Cancel"],
       handler: (parameter: {
         +Index: number,
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Index", "Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -3040,56 +2277,54 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -3100,56 +2335,54 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Control_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Control_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -3160,64 +2393,62 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "AddControl" | "RemoveControl",
       argNames: ["Control"],
       handler: (parameter: {
-        +MSForms$Control: MSForms$MSForms$Control
+        +Control: MSForms$Control
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "BeforeDragOver",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDragOver_ArgNames,
+      argNames: MSForms$EventHelperTypes$Container_BeforeDragOver_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDragOver_Parameter
+        parameter: MSForms$EventHelperTypes$Container_BeforeDragOver_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "BeforeDropOrPaste",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDropOrPaste_ArgNames,
+      argNames: MSForms$EventHelperTypes$Container_BeforeDropOrPaste_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Container_BeforeDropOrPaste_Parameter
+        parameter: MSForms$EventHelperTypes$Container_BeforeDropOrPaste_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "DblClick",
       argNames: ["Cancel"],
       handler: (parameter: {
-        +Cancel: MSForms$MSForms$ReturnBoolean
+        +Cancel: MSForms$ReturnBoolean
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "Error",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Error_ArgNames,
-      handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Error_Parameter
-      ) => void
+      argNames: MSForms$EventHelperTypes$Error_ArgNames,
+      handler: (parameter: MSForms$EventHelperTypes$Error_Parameter) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
-        +KeyCode: MSForms$MSForms$ReturnInteger,
+        +KeyCode: MSForms$ReturnInteger,
         +Shift: number
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
-        +KeyAscii: MSForms$MSForms$ReturnInteger
+        +KeyAscii: MSForms$ReturnInteger
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
@@ -3228,15 +2459,15 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "Scroll",
-      argNames: MSForms$EventHelperTypes.EventHelperTypes$Container_Scroll_ArgNames,
+      argNames: MSForms$EventHelperTypes$Container_Scroll_ArgNames,
       handler: (
-        parameter: MSForms$EventHelperTypes.EventHelperTypes$Container_Scroll_Parameter
+        parameter: MSForms$EventHelperTypes$Container_Scroll_Parameter
       ) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "Zoom",
       argNames: ["Percent"],
       handler: (parameter: {
@@ -3244,155 +2475,155 @@ declare module "activex-msforms" {
       }) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CheckBox,
+      obj: MSForms$CheckBox,
       event: "Change" | "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ComboBox,
+      obj: MSForms$ComboBox,
       event: "Change" | "Click" | "DropButtonClick",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$CommandButton,
+      obj: MSForms$CommandButton,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Control,
+      obj: MSForms$Control,
       event: "AfterUpdate" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Frame,
+      obj: MSForms$Frame,
       event: "Click" | "Layout",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLCheckbox,
+      obj: MSForms$HTMLCheckbox,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLHidden,
+      obj: MSForms$HTMLHidden,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLImage,
+      obj: MSForms$HTMLImage,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLOption,
+      obj: MSForms$HTMLOption,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLPassword,
+      obj: MSForms$HTMLPassword,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLReset,
+      obj: MSForms$HTMLReset,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLSelect,
+      obj: MSForms$HTMLSelect,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLSubmit,
+      obj: MSForms$HTMLSubmit,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLText,
+      obj: MSForms$HTMLText,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$HTMLTextArea,
+      obj: MSForms$HTMLTextArea,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Image,
+      obj: MSForms$Image,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$Label,
+      obj: MSForms$Label,
       event: "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       event: "Change" | "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$MultiPage,
+      obj: MSForms$MultiPage,
       event: "Change",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$OptionButton,
+      obj: MSForms$OptionButton,
       event: "Change" | "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ScrollBar,
+      obj: MSForms$ScrollBar,
       event: "Change" | "Scroll",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$SpinButton,
+      obj: MSForms$SpinButton,
       event: "Change" | "SpinDown" | "SpinUp",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TabStrip,
+      obj: MSForms$TabStrip,
       event: "Change",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$TextBox,
+      obj: MSForms$TextBox,
       event: "Change" | "DropButtonClick",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$ToggleButton,
+      obj: MSForms$ToggleButton,
       event: "Change" | "Click",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: MSForms$MSForms$UserForm,
+      obj: MSForms$UserForm,
       event: "Click" | "Layout",
       handler: (parameter: {}) => void
     ): void;
     set(
-      obj: MSForms$MSForms$ComboBox | MSForms$MSForms$ListBox,
+      obj: MSForms$ComboBox | MSForms$ListBox,
       propertyName: "Column" | "List",
       parameterTypes: [number, number] | [number],
       newValue: any
     ): void;
     set(
-      obj: MSForms$MSForms$ComboBox | MSForms$MSForms$ListBox,
+      obj: MSForms$ComboBox | MSForms$ListBox,
       propertyName: "Column" | "List",
       parameterTypes: number[],
       newValue: SafeArray
     ): void;
     set(
-      obj: MSForms$MSForms$ListBox,
+      obj: MSForms$ListBox,
       propertyName: "Selected",
       parameterTypes: [any],
       newValue: boolean
     ): void;
   }
   declare interface ActiveXObjectNameMap {
-    "Forms.Image": MSForms$MSForms$Image;
+    "Forms.Image": MSForms$Image;
   }
 }
