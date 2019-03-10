@@ -1,3 +1,7 @@
+declare var npm$namespace$AltJS: {
+  lifeCycleEvents: typeof AltJS$lifeCycleEvents,
+  Alt: typeof AltJS$Alt
+};
 declare interface AltJS$StoreReduce {
   action: any;
   data: any;
@@ -21,19 +25,22 @@ export interface AltJS$StoreModel<S> {
   waitFor?: (store: AltJS$AltStore<any>) => void;
   onSerialize?: (fn: (data: any) => any) => void;
   onDeserialize?: (fn: (data: any) => any) => void;
-  on?: (event: AltJS$AltJS$lifeCycleEvents, callback: () => any) => void;
+  on?: (
+    event: $Values<typeof AltJS$lifeCycleEvents>,
+    callback: () => any
+  ) => void;
   emitChange?: () => void;
   waitFor?: (
     storeOrStores: AltJS$AltStore<any> | Array<AltJS$AltStore<any>>
   ) => void;
-  otherwise?: (data: any, action: AltJS$AltJS$Action<any>) => void;
+  otherwise?: (data: any, action: AltJS$Action<any>) => void;
   observe?: (alt: AltJS$Alt) => any;
   reduce?: (state: any, config: AltJS$StoreReduce) => Object;
   preventDefault?: () => void;
   afterEach?: (payload: Object, state: Object) => void;
   beforeEach?: (payload: Object, state: Object) => void;
   dispatcher?: any;
-  getInstance?: () => AltJS$AltJS$AltStore<S>;
+  getInstance?: () => AltJS$AltStore<S>;
   alt?: AltJS$Alt;
   displayName?: string;
 }
@@ -63,30 +70,13 @@ export interface AltJS$AltStore<S> {
   emitChange(): void;
 }
 
-declare export class AltJS$lifeCycleEvents {
-  constructor(...args: empty): mixed;
-  static +bootstrap: Class<AltJS$lifeCycleEvents__bootstrap> &
-    AltJS$lifeCycleEvents__bootstrap &
-    0; // 0
-  static +snapshot: Class<AltJS$lifeCycleEvents__snapshot> &
-    AltJS$lifeCycleEvents__snapshot &
-    1; // 1
-  static +init: Class<AltJS$lifeCycleEvents__init> &
-    AltJS$lifeCycleEvents__init &
-    2; // 2
-  static +rollback: Class<AltJS$lifeCycleEvents__rollback> &
-    AltJS$lifeCycleEvents__rollback &
-    3; // 3
-  static +error: Class<AltJS$lifeCycleEvents__error> &
-    AltJS$lifeCycleEvents__error &
-    4; // 4
-}
-
-declare class AltJS$lifeCycleEvents__bootstrap mixins AltJS$lifeCycleEvents {}
-declare class AltJS$lifeCycleEvents__snapshot mixins AltJS$lifeCycleEvents {}
-declare class AltJS$lifeCycleEvents__init mixins AltJS$lifeCycleEvents {}
-declare class AltJS$lifeCycleEvents__rollback mixins AltJS$lifeCycleEvents {}
-declare class AltJS$lifeCycleEvents__error mixins AltJS$lifeCycleEvents {}
+declare export var AltJS$lifeCycleEvents: {|
+  +bootstrap: 0, // 0
+  +snapshot: 1, // 1
+  +init: 2, // 2
+  +rollback: 3, // 3
+  +error: 4 // 4
+|};
 
 export type AltJS$Actions = {
   [action: string]: AltJS$Action<any>
@@ -105,7 +95,7 @@ export interface AltJS$ActionsClass {
 
 declare type AltJS$StateTransform = (
   store: AltJS$StoreModel<any>
-) => AltJS$AltJS$AltStore<any>;
+) => AltJS$AltStore<any>;
 
 declare interface AltJS$AltConfig {
   dispatcher?: any;
@@ -121,38 +111,35 @@ declare class AltJS$Alt {
   bootstrap(jsonData: string): void;
   takeSnapshot(...storeNames: Array<string>): string;
   flush(): Object;
-  recycle(...stores: Array<AltJS$AltJS$AltStore<any>>): void;
+  recycle(...stores: Array<AltJS$AltStore<any>>): void;
   rollback(): void;
   dispatch(
-    action?: AltJS$AltJS$Action<any> | string,
+    action?: AltJS$Action<any> | string,
     data?: Object,
     details?: any
   ): void;
   addActions(
     actionsName: string,
-    AltJS$ActionsClass: AltJS$ActionsClassConstructor
+    ActionsClass: AltJS$ActionsClassConstructor
   ): void;
   createActions<T>(
-    AltJS$ActionsClass: AltJS$ActionsClassConstructor,
+    ActionsClass: AltJS$ActionsClassConstructor,
     exportObj?: Object
   ): T;
   createActions<T>(
-    AltJS$ActionsClass: AltJS$ActionsClassConstructor,
+    ActionsClass: AltJS$ActionsClassConstructor,
     exportObj?: Object,
     ...constructorArgs: Array<any>
   ): T;
   generateActions<T>(...actions: Array<string>): T;
-  getActions(actionsName: string): AltJS$AltJS$Actions;
+  getActions(actionsName: string): AltJS$Actions;
   addStore(
     name: string,
     store: AltJS$StoreModel<any>,
     saveStore?: boolean
   ): void;
-  createStore<S>(
-    store: AltJS$StoreModel<S>,
-    name?: string
-  ): AltJS$AltJS$AltStore<S>;
-  getStore(name: string): AltJS$AltJS$AltStore<any>;
+  createStore<S>(store: AltJS$StoreModel<S>, name?: string): AltJS$AltStore<S>;
+  getStore(name: string): AltJS$AltStore<any>;
 }
 
 export interface AltJS$AltFactory {
@@ -161,7 +148,7 @@ export interface AltJS$AltFactory {
 
 declare type AltJS$ActionsClassConstructor = (
   alt: AltJS$Alt
-) => AltJS$AltJS$ActionsClass;
+) => AltJS$ActionsClass;
 
 declare type AltJS$ActionHandler = (...data: Array<any>) => any;
 
@@ -169,7 +156,7 @@ declare type AltJS$ExportConfig = {
   [key: string]: (...args: Array<any>) => any
 };
 declare module "alt/utils/chromeDebug" {
-  declare function chromeDebug(alt: AltJS$AltJS$Alt): void;
+  declare function chromeDebug(alt: AltJS$Alt): void;
 
   declare export default typeof chromeDebug;
 }
@@ -177,8 +164,8 @@ declare module "alt/AltContainer" {
   import typeof * as React from "react";
 
   declare interface ContainerProps {
-    store?: AltJS$AltJS$AltStore<any>;
-    stores?: Array<AltJS$AltJS$AltStore<any>>;
+    store?: AltJS$AltStore<any>;
+    stores?: Array<AltJS$AltStore<any>>;
     inject?: {
       [key: string]: any
     };
@@ -186,8 +173,8 @@ declare module "alt/AltContainer" {
       [key: string]: Object
     };
     render?: (...props: Array<any>) => React.ReactElement<any>;
-    flux?: AltJS$AltJS$Alt;
-    transform?: (store: AltJS$AltJS$AltStore<any>, actions: any) => any;
+    flux?: AltJS$Alt;
+    transform?: (store: AltJS$AltStore<any>, actions: any) => any;
     shouldComponentUpdate?: (props: any) => boolean;
     component?: React.Component<any>;
   }
@@ -196,6 +183,6 @@ declare module "alt/AltContainer" {
   declare export default typeof AltContainer;
 }
 declare module "alt" {
-  declare var alt: AltJS$AltJS$AltFactory;
+  declare var alt: AltJS$AltFactory;
   declare export default typeof alt;
 }
