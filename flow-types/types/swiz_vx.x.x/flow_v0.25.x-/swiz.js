@@ -1,49 +1,3 @@
-declare module "struct" {
-  declare export function Obj(name: string, options?: IObjOptions): IObj;
-
-  declare export function Field(name: string, options?: IFieldOptions): IField;
-
-  declare export function coerce(value: any, coerceTo: string): any;
-
-  declare export interface IObj {
-    name: string;
-    options: IObjOptions;
-    singular: string;
-    plural: string;
-    fields: IField[];
-  }
-  declare export interface IField {
-    name: string;
-    options: IFieldOptions;
-    src: string;
-    singular: string;
-    plural: string;
-    desc?: string;
-    val?: IChain;
-    attribute: boolean;
-    enumerated: boolean;
-    ignorePublic: boolean;
-    filterFrom: string[];
-    coerceTo: any;
-  }
-  declare export interface IObjOptions {
-    singular?: string;
-    plural?: string;
-    fields?: IField[];
-  }
-  declare export interface IFieldOptions {
-    src?: string;
-    singular?: string;
-    plural?: string;
-    desc?: string;
-    val?: IChain;
-    attribute?: boolean;
-    enumerated?: any;
-    ignorePublic?: boolean;
-    filterFrom?: string[];
-    coerceTo?: string;
-  }
-}
 declare module "swiz" {
   declare export class Cidr {
     constructor(x: string, y?: string): this;
@@ -155,34 +109,34 @@ declare module "swiz" {
     custom(name: string): IChain
   } & IValveSchemaMember;
 
-  declare export function defToValve(def: struct.IObj[]): IValveSchema[];
+  declare export function defToValve(def: struct$IObj[]): IValveSchema[];
 
   declare export class Swiz {
-    constructor(defs: struct.IObj[], options?: ISwizOptions): this;
+    constructor(defs: struct$IObj[], options?: ISwizOptions): this;
     buildObject(obj: any, callback: (err: any, result: any) => void): void;
     buildObjectSync(obj: any): any;
     serializeJson(obj: any): string;
     serializeXml(obj: any): string;
     deserializeXml(xml: string): any;
     serialize(
-      mode: SERIALIZATION,
+      mode: $Values<typeof SERIALIZATION>,
       version: number,
       obj: ISerializable,
       callback: (err: any, result: string) => void
     ): void;
     serializeForPagination(
-      mode: SERIALIZATION,
+      mode: $Values<typeof SERIALIZATION>,
       array: any[],
       metadata: any,
       callback: (err: any, result: string) => void
     ): void;
     deserialize(
-      mode: SERIALIZATION,
+      mode: $Values<typeof SERIALIZATION>,
       version: number,
       raw: string,
       callback: (err: any, result: any) => void
     ): void;
-    getFieldDefinition(stype: string, name: string): struct.IField;
+    getFieldDefinition(stype: string, name: string): struct$IField;
   }
   declare export interface ISerializable {
     getSerializerType(): string;
@@ -199,16 +153,67 @@ declare module "swiz" {
   }
   declare export function stripSerializerTypes(obj: any): any;
 
-  declare export class SERIALIZATION {
-    constructor(...args: empty): mixed;
-    static +SERIALIZATION_JSON: Class<SERIALIZATION__SERIALIZATION_JSON> &
-      SERIALIZATION__SERIALIZATION_JSON &
-      0; // 0
-    static +SERIALIZATION_XML: Class<SERIALIZATION__SERIALIZATION_XML> &
-      SERIALIZATION__SERIALIZATION_XML &
-      1; // 1
+  declare var npm$namespace$struct: {
+    Obj: typeof struct$Obj,
+    Field: typeof struct$Field,
+    coerce: typeof struct$coerce
+  };
+  declare export function struct$Obj(
+    name: string,
+    options?: struct$IObjOptions
+  ): struct$IObj;
+
+  declare export function struct$Field(
+    name: string,
+    options?: struct$IFieldOptions
+  ): struct$IField;
+
+  declare export function struct$coerce(value: any, coerceTo: string): any;
+
+  declare export interface struct$IObj {
+    name: string;
+    options: struct$IObjOptions;
+    singular: string;
+    plural: string;
+    fields: struct$IField[];
   }
 
-  declare class SERIALIZATION__SERIALIZATION_JSON mixins SERIALIZATION {}
-  declare class SERIALIZATION__SERIALIZATION_XML mixins SERIALIZATION {}
+  declare export interface struct$IField {
+    name: string;
+    options: struct$IFieldOptions;
+    src: string;
+    singular: string;
+    plural: string;
+    desc?: string;
+    val?: IChain;
+    attribute: boolean;
+    enumerated: boolean;
+    ignorePublic: boolean;
+    filterFrom: string[];
+    coerceTo: any;
+  }
+
+  declare export interface struct$IObjOptions {
+    singular?: string;
+    plural?: string;
+    fields?: struct$IField[];
+  }
+
+  declare export interface struct$IFieldOptions {
+    src?: string;
+    singular?: string;
+    plural?: string;
+    desc?: string;
+    val?: IChain;
+    attribute?: boolean;
+    enumerated?: any;
+    ignorePublic?: boolean;
+    filterFrom?: string[];
+    coerceTo?: string;
+  }
+
+  declare export var SERIALIZATION: {|
+    +SERIALIZATION_JSON: 0, // 0
+    +SERIALIZATION_XML: 1 // 1
+  |};
 }
