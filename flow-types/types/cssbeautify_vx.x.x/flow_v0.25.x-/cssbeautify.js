@@ -19,5 +19,5 @@ declare module "cssbeautify" {
   }
   declare function beautify(cssText: string, options?: Options): string;
 
-  declare module.exports: typeof beautify;
+  declare export default typeof beautify;
 }
