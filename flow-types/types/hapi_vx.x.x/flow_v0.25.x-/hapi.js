@@ -19,6 +19,8 @@ declare module "hapi" {
 
   import type { ValidationOptions, SchemaMap, Schema } from "joi";
 
+  import typeof * as Podium from "podium";
+
   import type {
     PolicyOptionVariants,
     EnginePrototypeOrObject,
@@ -2981,7 +2983,7 @@ declare module "hapi" {
     /**
      * a class or a prototype function
      */
-    provider?: CacheProvider,
+    provider?: CacheProvider<>,
 
     /**
      * an identifier used later when provisioning or configuring caching for server methods or plugins. Each cache name must be unique. A single item may omit the name option which defines
@@ -3063,7 +3065,7 @@ declare module "hapi" {
      * * * other options passed to the catbox strategy used. Other options are only passed to catbox when engine above is a class or function and ignored if engine is a catbox engine object).
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serveroptionscache)
      */
-    cache?: CacheProvider | ServerOptionsCache | ServerOptionsCache[];
+    cache?: CacheProvider<> | ServerOptionsCache | ServerOptionsCache[];
 
     /**
      * Default value: { minBytes: 1024 }.
