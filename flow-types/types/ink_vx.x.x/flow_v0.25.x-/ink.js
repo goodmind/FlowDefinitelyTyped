@@ -53,7 +53,7 @@ declare module "ink" {
 
   declare export function render(
     tree: InkElement,
-    stream?: NodeJS.WriteStream
+    stream?: NodeJS$WriteStream
   ): () => void;
 
   declare export function renderToString(
@@ -79,24 +79,24 @@ declare module "ink" {
   > {
     state: S;
     render(
-      props: $ElementType<Component, "props">,
-      state: $ElementType<Component, "state">,
-      context: $ElementType<Component, "state">
+      props: $PropertyType<Component<>, "props">,
+      state: $PropertyType<Component<>, "state">,
+      context: $PropertyType<Component<>, "state">
     ): InkElement;
     componentWillMount?: () => void;
     componentDidMount?: () => void;
     componentWillUnmount?: () => void;
     componentWillReceiveProps?: (
-      nextProps: $ElementType<Component, "props">,
-      nextState: $ElementType<Component, "state">
+      nextProps: $PropertyType<Component<>, "props">,
+      nextState: $PropertyType<Component<>, "state">
     ) => void;
     shouldComponentUpdate?: (
-      nextProps: $ElementType<Component, "props">,
-      nextState: $ElementType<Component, "state">
+      nextProps: $PropertyType<Component<>, "props">,
+      nextState: $PropertyType<Component<>, "state">
     ) => void;
     componentWillUpdate?: (
-      nextProps: $ElementType<Component, "props">,
-      nextState: $ElementType<Component, "state">
+      nextProps: $PropertyType<Component<>, "props">,
+      nextState: $PropertyType<Component<>, "state">
     ) => void;
     componentDidUpdate?: () => void;
     getChildContext?: () => () => Record<string, any>;
@@ -107,8 +107,8 @@ declare module "ink" {
     C: Record<string, any> = {}
   > {
     new(
-      props: $ElementType<Component, "props">,
-      context: $ElementType<Component, "state">
+      props: $PropertyType<Component<>, "props">,
+      context: $PropertyType<Component<>, "state">
     ): Component<P, S, C>;
     defaultProps?: Record<string, any>;
     propTypes?: ValidationMap<Record<string, any>>;
@@ -117,7 +117,7 @@ declare module "ink" {
   declare var npm$namespace$h: {
     Fragment: typeof h$Fragment
   };
-  declare var h$Fragment: InkComponent;
+  declare var h$Fragment: InkComponent<>;
   declare export var h$Fragment: typeof h$Fragment;
   declare export var Color: ComponentClass<{
     rgb?: [number, number, number],
@@ -176,6 +176,6 @@ declare module "ink" {
     bgCyanBright?: boolean,
     bgWhiteBright?: boolean
   }>;
-  declare export var Bold: InkComponent;
-  declare export var Underline: InkComponent;
+  declare export var Bold: InkComponent<>;
+  declare export var Underline: InkComponent<>;
 }
