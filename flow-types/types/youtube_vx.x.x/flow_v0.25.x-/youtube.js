@@ -1,109 +1,75 @@
 declare module "youtube" {
+  declare var npm$namespace$YT: {
+    PlayerState: typeof YT$PlayerState,
+    PlayerError: typeof YT$PlayerError,
+    AutoHide: typeof YT$AutoHide,
+    AutoPlay: typeof YT$AutoPlay,
+    ClosedCaptionsLoadPolicy: typeof YT$ClosedCaptionsLoadPolicy,
+    Controls: typeof YT$Controls,
+    KeyboardControls: typeof YT$KeyboardControls,
+    JsApi: typeof YT$JsApi,
+    FullscreenButton: typeof YT$FullscreenButton,
+    IvLoadPolicy: typeof YT$IvLoadPolicy,
+    Loop: typeof YT$Loop,
+    ModestBranding: typeof YT$ModestBranding,
+    PlaysInline: typeof YT$PlaysInline,
+    RelatedVideos: typeof YT$RelatedVideos,
+    ShowInfo: typeof YT$ShowInfo,
+    Player: typeof YT$Player
+  };
+
   /**
    * State of a video player.
    */
-  declare export class YT$PlayerState {
-    constructor(...args: empty): mixed;
-    static +UNSTARTED: Class<YT$PlayerState__UNSTARTED> &
-      YT$PlayerState__UNSTARTED &
-      -1; // -1
-    static +ENDED: Class<YT$PlayerState__ENDED> & YT$PlayerState__ENDED & 0; // 0
-    static +PLAYING: Class<YT$PlayerState__PLAYING> &
-      YT$PlayerState__PLAYING &
-      1; // 1
-    static +PAUSED: Class<YT$PlayerState__PAUSED> & YT$PlayerState__PAUSED & 2; // 2
-    static +BUFFERING: Class<YT$PlayerState__BUFFERING> &
-      YT$PlayerState__BUFFERING &
-      3; // 3
-    static +CUED: Class<YT$PlayerState__CUED> & YT$PlayerState__CUED & 5; // 5
-  }
 
-  declare class YT$PlayerState__UNSTARTED mixins YT$PlayerState {}
-  declare class YT$PlayerState__ENDED mixins YT$PlayerState {}
-  declare class YT$PlayerState__PLAYING mixins YT$PlayerState {}
-  declare class YT$PlayerState__PAUSED mixins YT$PlayerState {}
-  declare class YT$PlayerState__BUFFERING mixins YT$PlayerState {}
-  declare class YT$PlayerState__CUED mixins YT$PlayerState {}
+  declare export var YT$PlayerState: {|
+    +UNSTARTED: -1, // -1
+    +ENDED: 0, // 0
+    +PLAYING: 1, // 1
+    +PAUSED: 2, // 2
+    +BUFFERING: 3, // 3
+    +CUED: 5 // 5
+  |};
 
   /**
    * Known causes for player errors.
    */
-  declare export class YT$PlayerError {
-    constructor(...args: empty): mixed;
-    static +InvalidParam: Class<YT$PlayerError__InvalidParam> &
-      YT$PlayerError__InvalidParam &
-      2; // 2
-    static +Html5Error: Class<YT$PlayerError__Html5Error> &
-      YT$PlayerError__Html5Error &
-      5; // 5
-    static +VideoNotFound: Class<YT$PlayerError__VideoNotFound> &
-      YT$PlayerError__VideoNotFound &
-      100; // 100
-    static +EmbeddingNotAllowed: Class<YT$PlayerError__EmbeddingNotAllowed> &
-      YT$PlayerError__EmbeddingNotAllowed &
-      101; // 101
-    static +EmbeddingNotAllowed2: Class<YT$PlayerError__EmbeddingNotAllowed2> &
-      YT$PlayerError__EmbeddingNotAllowed2 &
-      150; // 150
-  }
 
-  declare class YT$PlayerError__InvalidParam mixins YT$PlayerError {}
-  declare class YT$PlayerError__Html5Error mixins YT$PlayerError {}
-  declare class YT$PlayerError__VideoNotFound mixins YT$PlayerError {}
-  declare class YT$PlayerError__EmbeddingNotAllowed mixins YT$PlayerError {}
-  declare class YT$PlayerError__EmbeddingNotAllowed2 mixins YT$PlayerError {}
+  declare export var YT$PlayerError: {|
+    +InvalidParam: 2, // 2
+    +Html5Error: 5, // 5
+    +VideoNotFound: 100, // 100
+    +EmbeddingNotAllowed: 101, // 101
+    +EmbeddingNotAllowed2: 150 // 150
+  |};
 
   /**
    * Whether to auto-hide video controls.
    */
-  declare export class YT$AutoHide {
-    constructor(...args: empty): mixed;
-    static +AlwaysVisible: Class<YT$AutoHide__AlwaysVisible> &
-      YT$AutoHide__AlwaysVisible &
-      0; // 0
-    static +HideAllControls: Class<YT$AutoHide__HideAllControls> &
-      YT$AutoHide__HideAllControls &
-      1; // 1
-    static +HideProgressBar: Class<YT$AutoHide__HideProgressBar> &
-      YT$AutoHide__HideProgressBar &
-      2; // 2
-  }
 
-  declare class YT$AutoHide__AlwaysVisible mixins YT$AutoHide {}
-  declare class YT$AutoHide__HideAllControls mixins YT$AutoHide {}
-  declare class YT$AutoHide__HideProgressBar mixins YT$AutoHide {}
+  declare export var YT$AutoHide: {|
+    +AlwaysVisible: 0, // 0
+    +HideAllControls: 1, // 1
+    +HideProgressBar: 2 // 2
+  |};
 
   /**
    * Whether to autoplay the video.
    */
-  declare export class YT$AutoPlay {
-    constructor(...args: empty): mixed;
-    static +NoAutoPlay: Class<YT$AutoPlay__NoAutoPlay> &
-      YT$AutoPlay__NoAutoPlay &
-      0; // 0
-    static +AutoPlay: Class<YT$AutoPlay__AutoPlay> & YT$AutoPlay__AutoPlay & 1; // 1
-  }
 
-  declare class YT$AutoPlay__NoAutoPlay mixins YT$AutoPlay {}
-  declare class YT$AutoPlay__AutoPlay mixins YT$AutoPlay {}
+  declare export var YT$AutoPlay: {|
+    +NoAutoPlay: 0, // 0
+    +AutoPlay: 1 // 1
+  |};
 
   /**
    * Whether to use user-preferred or forced caption loading.
    */
-  declare export class YT$ClosedCaptionsLoadPolicy {
-    constructor(...args: empty): mixed;
-    static +UserDefault: Class<YT$ClosedCaptionsLoadPolicy__UserDefault> &
-      YT$ClosedCaptionsLoadPolicy__UserDefault &
-      0; // 0
-    static +ForceOn: Class<YT$ClosedCaptionsLoadPolicy__ForceOn> &
-      YT$ClosedCaptionsLoadPolicy__ForceOn &
-      1; // 1
-  }
 
-  declare class YT$ClosedCaptionsLoadPolicy__UserDefault
-    mixins YT$ClosedCaptionsLoadPolicy {}
-  declare class YT$ClosedCaptionsLoadPolicy__ForceOn
-    mixins YT$ClosedCaptionsLoadPolicy {}
+  declare export var YT$ClosedCaptionsLoadPolicy: {|
+    +UserDefault: 0, // 0
+    +ForceOn: 1 // 1
+  |};
 
   /**
    * Allowed progress bar colors.
@@ -113,76 +79,48 @@ declare module "youtube" {
   /**
    * How video controls are shown.
    */
-  declare export class YT$Controls {
-    constructor(...args: empty): mixed;
-    static +Hide: Class<YT$Controls__Hide> & YT$Controls__Hide & 0; // 0
-    static +ShowLoadPlayer: Class<YT$Controls__ShowLoadPlayer> &
-      YT$Controls__ShowLoadPlayer &
-      1; // 1
-    static +ShowDelayLoadPlayer: Class<YT$Controls__ShowDelayLoadPlayer> &
-      YT$Controls__ShowDelayLoadPlayer &
-      2; // 2
-  }
 
-  declare class YT$Controls__Hide mixins YT$Controls {}
-  declare class YT$Controls__ShowLoadPlayer mixins YT$Controls {}
-  declare class YT$Controls__ShowDelayLoadPlayer mixins YT$Controls {}
+  declare export var YT$Controls: {|
+    +Hide: 0, // 0
+    +ShowLoadPlayer: 1, // 1
+    +ShowDelayLoadPlayer: 2 // 2
+  |};
 
   /**
    * Whether to allow keyboard controls.
    */
-  declare export class YT$KeyboardControls {
-    constructor(...args: empty): mixed;
-    static +Enable: Class<YT$KeyboardControls__Enable> &
-      YT$KeyboardControls__Enable &
-      0; // 0
-    static +Disable: Class<YT$KeyboardControls__Disable> &
-      YT$KeyboardControls__Disable &
-      1; // 1
-  }
 
-  declare class YT$KeyboardControls__Enable mixins YT$KeyboardControls {}
-  declare class YT$KeyboardControls__Disable mixins YT$KeyboardControls {}
+  declare export var YT$KeyboardControls: {|
+    +Enable: 0, // 0
+    +Disable: 1 // 1
+  |};
 
   /**
    * Whether the JavaScript API should be enabled.
    */
-  declare export class YT$JsApi {
-    constructor(...args: empty): mixed;
-    static +Disable: Class<YT$JsApi__Disable> & YT$JsApi__Disable & 0; // 0
-    static +Enable: Class<YT$JsApi__Enable> & YT$JsApi__Enable & 1; // 1
-  }
 
-  declare class YT$JsApi__Disable mixins YT$JsApi {}
-  declare class YT$JsApi__Enable mixins YT$JsApi {}
+  declare export var YT$JsApi: {|
+    +Disable: 0, // 0
+    +Enable: 1 // 1
+  |};
 
   /**
    * Whether to display the full-screen button.
    */
-  declare export class YT$FullscreenButton {
-    constructor(...args: empty): mixed;
-    static +Hide: Class<YT$FullscreenButton__Hide> &
-      YT$FullscreenButton__Hide &
-      0; // 0
-    static +Show: Class<YT$FullscreenButton__Show> &
-      YT$FullscreenButton__Show &
-      1; // 1
-  }
 
-  declare class YT$FullscreenButton__Hide mixins YT$FullscreenButton {}
-  declare class YT$FullscreenButton__Show mixins YT$FullscreenButton {}
+  declare export var YT$FullscreenButton: {|
+    +Hide: 0, // 0
+    +Show: 1 // 1
+  |};
 
   /**
    * Whether to show video annotations.
    */
-  declare export class YT$IvLoadPolicy {
-    constructor(...args: empty): mixed;
-    static +Show: Class<YT$IvLoadPolicy__Show> & YT$IvLoadPolicy__Show & 1; // 1
-    static +Hide: Class<YT$IvLoadPolicy__Hide> & YT$IvLoadPolicy__Hide & 3; // 3
-  }
 
-  declare class YT$IvLoadPolicy__Show mixins YT$IvLoadPolicy {}
-  declare class YT$IvLoadPolicy__Hide mixins YT$IvLoadPolicy {}
+  declare export var YT$IvLoadPolicy: {|
+    +Show: 1, // 1
+    +Hide: 3 // 3
+  |};
 
   /**
    * Which type of content loads in the player.
@@ -210,66 +148,47 @@ declare module "youtube" {
   /**
    * Whether a single video should be looped.
    */
-  declare export class YT$Loop {
-    constructor(...args: empty): mixed;
-    static +SinglePlay: Class<YT$Loop__SinglePlay> & YT$Loop__SinglePlay & 0; // 0
-    static +Loop: Class<YT$Loop__Loop> & YT$Loop__Loop & 1; // 1
-  }
 
-  declare class YT$Loop__SinglePlay mixins YT$Loop {}
-  declare class YT$Loop__Loop mixins YT$Loop {}
+  declare export var YT$Loop: {|
+    +SinglePlay: 0, // 0
+    +Loop: 1 // 1
+  |};
 
   /**
    * Comma separated list of video IDs to play after the URL path's video.
    */
-  declare export class YT$ModestBranding {
-    constructor(...args: empty): mixed;
-    static +Full: Class<YT$ModestBranding__Full> & YT$ModestBranding__Full & 0; // 0
-    static +Modest: Class<YT$ModestBranding__Modest> &
-      YT$ModestBranding__Modest &
-      1; // 1
-  }
 
-  declare class YT$ModestBranding__Full mixins YT$ModestBranding {}
-  declare class YT$ModestBranding__Modest mixins YT$ModestBranding {}
+  declare export var YT$ModestBranding: {|
+    +Full: 0, // 0
+    +Modest: 1 // 1
+  |};
 
   /**
    * Whether to playback video inline or full-screen in an HTML5 player on iOS
    */
-  declare export class YT$PlaysInline {
-    constructor(...args: empty): mixed;
-    static +Fullscreen: Class<YT$PlaysInline__Fullscreen> &
-      YT$PlaysInline__Fullscreen &
-      0; // 0
-    static +Inline: Class<YT$PlaysInline__Inline> & YT$PlaysInline__Inline & 1; // 1
-  }
 
-  declare class YT$PlaysInline__Fullscreen mixins YT$PlaysInline {}
-  declare class YT$PlaysInline__Inline mixins YT$PlaysInline {}
+  declare export var YT$PlaysInline: {|
+    +Fullscreen: 0, // 0
+    +Inline: 1 // 1
+  |};
 
   /**
    * Whether to show related videos after the video finishes.
    */
-  declare export class YT$RelatedVideos {
-    constructor(...args: empty): mixed;
-    static +Hide: Class<YT$RelatedVideos__Hide> & YT$RelatedVideos__Hide & 0; // 0
-    static +Show: Class<YT$RelatedVideos__Show> & YT$RelatedVideos__Show & 1; // 1
-  }
 
-  declare class YT$RelatedVideos__Hide mixins YT$RelatedVideos {}
-  declare class YT$RelatedVideos__Show mixins YT$RelatedVideos {}
+  declare export var YT$RelatedVideos: {|
+    +Hide: 0, // 0
+    +Show: 1 // 1
+  |};
 
   /**
    * Whether to show video information before playing.
    */
-  declare export class YT$ShowInfo {
-    constructor(...args: empty): mixed;
-    static +Hide: Class<YT$ShowInfo__Hide> & YT$ShowInfo__Hide & 0; // 0
-    static +Show: Class<YT$ShowInfo__Show> & YT$ShowInfo__Show & 1; // 1
-  }
 
-  declare class YT$ShowInfo__Hide mixins YT$ShowInfo {}
-  declare class YT$ShowInfo__Show mixins YT$ShowInfo {}
+  declare export var YT$ShowInfo: {|
+    +Hide: 0, // 0
+    +Show: 1 // 1
+  |};
 
   /**
    * Base interface for events triggered by a player.
@@ -288,7 +207,7 @@ declare module "youtube" {
     /**
      * New player state.
      */
-    data: YT$PlayerState
+    data: $Values<typeof YT$PlayerState>
   } & YT$PlayerEvent;
 
   /**
@@ -318,7 +237,7 @@ declare module "youtube" {
     /**
      * Which type of error occurred.
      */
-    data: YT$PlayerError
+    data: $Values<typeof YT$PlayerError>
   } & YT$PlayerEvent;
 
   /**
@@ -418,17 +337,17 @@ declare module "youtube" {
     /**
      * Whether to autohide video controls (by default, HideProgressBar).
      */
-    autohide?: YT$AutoHide;
+    autohide?: $Values<typeof YT$AutoHide>;
 
     /**
      * Whether to autoplay the video (by default, NoAutoPlay).
      */
-    autoplay?: YT$AutoPlay;
+    autoplay?: $Values<typeof YT$AutoPlay>;
 
     /**
      * Whether to use user-preferred or forced caption loading (by default, UserDefault).
      */
-    cc_load_policy?: YT$ClosedCaptionsLoadPolicy;
+    cc_load_policy?: $Values<typeof YT$ClosedCaptionsLoadPolicy>;
 
     /**
      * Player progress bar color
@@ -438,17 +357,17 @@ declare module "youtube" {
     /**
      * How video controls are shown (by default, ShowLoadPlayer).
      */
-    controls?: YT$Controls;
+    controls?: $Values<typeof YT$Controls>;
 
     /**
      * Whether to allow keyboard controls (by default, Enable).
      */
-    disablekb?: YT$KeyboardControls;
+    disablekb?: $Values<typeof YT$KeyboardControls>;
 
     /**
      * Whether the JavaScript API should be enabled (by default, Disable).
      */
-    enablejsapi?: YT$JsApi;
+    enablejsapi?: $Values<typeof YT$JsApi>;
 
     /**
      * Time, in seconds from the beginning of the video, when to stop playing.
@@ -458,7 +377,7 @@ declare module "youtube" {
     /**
      * Whether to display the full-screen button (by default, Show).
      */
-    fs?: YT$FullscreenButton;
+    fs?: $Values<typeof YT$FullscreenButton>;
 
     /**
      * Player language as an ISO 639-1 two-letter language code or fully-specified locale.
@@ -468,7 +387,7 @@ declare module "youtube" {
     /**
      * Whether to show video annotations (by default, Show).
      */
-    iv_load_policy?: YT$IvLoadPolicy;
+    iv_load_policy?: $Values<typeof YT$IvLoadPolicy>;
 
     /**
      * Identifies content that will load.
@@ -486,12 +405,12 @@ declare module "youtube" {
     /**
      * Whether a single video should be looped (by default, SinglePlay).
      */
-    loop?: YT$Loop;
+    loop?: $Values<typeof YT$Loop>;
 
     /**
      * Whether to hide some YouTube branding (by default, Full).
      */
-    modestbranding?: YT$ModestBranding;
+    modestbranding?: $Values<typeof YT$ModestBranding>;
 
     /**
      * Origin domain for additional security if using the JavaScript API.
@@ -506,17 +425,17 @@ declare module "youtube" {
     /**
      * Whether videos play inline or fullscreen in an HTML5 player on iOS. (currently by default, Fullscreen).
      */
-    playsinline?: YT$PlaysInline;
+    playsinline?: $Values<typeof YT$PlaysInline>;
 
     /**
      * Whether to show related videos after the video finishes (by default, Show).
      */
-    rel?: YT$RelatedVideos;
+    rel?: $Values<typeof YT$RelatedVideos>;
 
     /**
      * Whether to show video information before playing (by default, Show).
      */
-    showinfo?: YT$ShowInfo;
+    showinfo?: $Values<typeof YT$ShowInfo>;
 
     /**
      * Time, in seconds from the beginning of the video, when to start playing.
@@ -862,7 +781,7 @@ declare module "youtube" {
     /**
      * @returns Current player state.
      */
-    getPlayerState(): YT$PlayerState;
+    getPlayerState(): $Values<typeof YT$PlayerState>;
 
     /**
      * @returns Elapsed time in seconds since the video started playing.
