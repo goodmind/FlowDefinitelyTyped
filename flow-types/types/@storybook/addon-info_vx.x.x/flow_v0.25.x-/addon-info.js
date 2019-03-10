@@ -13,8 +13,8 @@ declare module "@storybook/addon-info" {
     header?: boolean;
     inline?: boolean;
     source?: boolean;
-    propTables?: React.ComponentType[] | false;
-    propTablesExclude?: React.ComponentType[];
+    propTables?: React.ComponentType<>[] | false;
+    propTablesExclude?: React.ComponentType<>[];
     styles?: { [key: string]: any };
     marksyConf?: { [key: string]: any };
     maxPropsIntoLine?: number;
@@ -28,7 +28,7 @@ declare module "@storybook/addon-info" {
       kind: string,
       story: string
     }
-  ): ReturnType<StoryDecorator>;
+  ): $Call<StoryDecorator>;
 
   declare export function withInfo(
     textOrOptions?: string | Options
