@@ -187,7 +187,7 @@ declare module "@google-cloud/pubsub" {
     create(name: string, callback: PubSub$Snapshot$CreateCallback): void,
     seek(): Promise<any[]>,
     seek(callback: PubSub$Snapshot$SeekCallback): void
-  } & Snapshot;
+  } & PubSub$Snapshot;
 
   declare type PubSub$Snapshot$DeleteCallback = (
     err: Error | null,
