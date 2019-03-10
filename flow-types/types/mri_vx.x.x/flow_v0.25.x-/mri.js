@@ -37,7 +37,7 @@ declare module "mri" {
     /**
      * Default values for flags
      */
-    default?: mri$DictionaryObject;
+    default?: mri$DictionaryObject<>;
     string?: mri$ArrayOrString;
     unknown?: (flag: string) => void;
   }
@@ -47,5 +47,5 @@ declare module "mri" {
      * anything after `--` or between options
      */
     _: $ReadOnlyArray<string>
-  } & DictionaryObject;
+  } & mri$DictionaryObject;
 }
