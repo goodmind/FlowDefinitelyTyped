@@ -9,6 +9,8 @@ declare module "@frctl/fractal" {
 
   import typeof * as VinylFile from "vinyl";
 
+  declare var fractal: typeof npm$namespace$fractal;
+
   declare var npm$namespace$fractal: {
     Fractal: typeof fractal$Fractal,
 
@@ -246,7 +248,7 @@ declare module "@frctl/fractal" {
     isFile: void;
     isVariant: void;
     defaultName: string;
-    utils$lang: string;
+    lang: string;
     editorMode: string;
     editorScope: string;
     viewPath: string;
@@ -446,13 +448,13 @@ declare module "@frctl/fractal" {
     files(): this,
     match(test: string | RegExp | Array<string | RegExp>): this,
     matchItems(
-      items: fractal$core$mixins$Collection<files$File>,
+      items: fractal$core$mixins$Collection<fractal$api$files$File>,
       test: string | RegExp | Array<string | RegExp>
-    ): files$File,
+    ): fractal$api$files$File,
     toVinylArray(): VinylFile[],
     toVinylStream(): ReadableStream,
     gulpify(): ReadableStream
-  } & fractal$core$mixins$Collection<files$File>;
+  } & fractal$core$mixins$Collection<fractal$api$files$File>;
 
   declare interface fractal$api$files$File {
     +isAsset: void;
@@ -509,12 +511,12 @@ declare module "@frctl/fractal" {
     viewDir: string;
     relViewPath: string;
     isDefault: boolean;
-    utils$lang: string;
+    lang: string;
     editorMode: string;
     editorScope: string;
     notes: string;
     alias: string | null;
-    siblings: variants$VariantCollection;
+    siblings: fractal$api$variants$VariantCollection;
     content: string;
     baseHandle: string;
     references: any[];
@@ -552,8 +554,8 @@ declare module "@frctl/fractal" {
     Notifier: typeof fractal$cli$Notifier
   };
   declare class fractal$cli$Cli {
-    console: cli$Console;
-    notify: cli$Notifier;
+    console: fractal$cli$Console;
+    notify: fractal$cli$Notifier;
     has(command: string): boolean;
     get(command: string): any;
     isInteractive(): boolean;
@@ -726,11 +728,11 @@ declare module "@frctl/fractal" {
   declare export class Fractal
     mixins fractal$core$mixins$ConfigurableEmitter<FractalConfig> {
     constructor(config?: FractalConfig): this;
-    api$components: fractal$api$components$ComponentSource;
-    api$docs: fractal$api$docs$DocSource;
-    api$assets: fractal$api$assets$AssetSourceCollection;
-    fractal$cli: fractal$cli$Cli;
-    fractal$web: fractal$web$Web;
+    components: fractal$api$components$ComponentSource;
+    docs: fractal$api$docs$DocSource;
+    assets: fractal$api$assets$AssetSourceCollection;
+    cli: fractal$cli$Cli;
+    web: fractal$web$Web;
     version: string;
     debug: boolean;
     extend(plugin: string | ((core: any) => void)): this;
@@ -843,6 +845,7 @@ declare module "@frctl/fractal" {
     _resolve<T>(value: PromiseLike<T> | T): Promise<T>;
     render(path: string, str: string, context: any, meta: any): Promise<string>;
   }
+  declare var utils: typeof npm$namespace$utils;
 
   declare var npm$namespace$utils: {
     lang: typeof utils$lang,
@@ -901,6 +904,8 @@ declare module "@frctl/fractal" {
     fromPath: string,
     opts?: any
   ): string;
+
+  declare var core: typeof npm$namespace$core;
 
   declare var npm$namespace$core: {
     Component: typeof core$Component,
