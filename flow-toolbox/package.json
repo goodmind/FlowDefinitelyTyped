@@ -1,5 +1,6 @@
 {
   "name": "flow-toolbox",
+  "private": true,
   "bin": {
     "flow-toolbox": "./src/index.js"
   },
