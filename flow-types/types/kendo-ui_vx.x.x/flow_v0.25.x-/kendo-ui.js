@@ -249,11 +249,11 @@ declare module "kendo-ui" {
 
   declare function kendo$format(format: string, ...values: any[]): string;
 
-  declare function kendo$fx(selector: string): effects$Element;
+  declare function kendo$fx(selector: string): kendo$effects$Element;
 
-  declare function kendo$fx(element: drawing$Element): effects$Element;
+  declare function kendo$fx(element: drawing$Element): kendo$effects$Element;
 
-  declare function kendo$fx(element: JQuery): effects$Element;
+  declare function kendo$fx(element: JQuery): kendo$effects$Element;
 
   declare function kendo$init(selector: string, ...namespaces: any[]): void;
 
@@ -264,11 +264,11 @@ declare module "kendo-ui" {
     ...namespaces: any[]
   ): void;
 
-  declare function kendo$observable(data: any): kendo$dataObservableObject;
+  declare function kendo$observable(data: any): kendo$data$ObservableObject;
 
   declare function kendo$observableHierarchy(
     array: any[]
-  ): kendo$dataObservableArray;
+  ): kendo$data$ObservableArray;
 
   declare function kendo$render(
     template: (data: any) => string,
@@ -285,17 +285,17 @@ declare module "kendo-ui" {
   declare function kendo$widgetInstance(
     element: JQuery,
     suite?: typeof kendo$ui
-  ): kendo$uiWidget;
+  ): kendo$ui$Widget;
 
   declare function kendo$widgetInstance(
     element: JQuery,
-    suite?: typeof kendo$mobileui
-  ): kendo$uiWidget;
+    suite?: typeof kendo$mobile$ui
+  ): kendo$ui$Widget;
 
   declare function kendo$widgetInstance(
     element: JQuery,
-    suite?: typeof kendo$datavizui
-  ): kendo$uiWidget;
+    suite?: typeof kendo$dataviz$ui
+  ): kendo$ui$Widget;
 
   declare var kendo$ns: string;
 
@@ -365,7 +365,7 @@ declare module "kendo-ui" {
     static extend(prototype: Object): kendo$Class;
   }
 
-  declare class kendo$Observable mixins Class {
+  declare class kendo$Observable mixins kendo$Class {
     static fn: kendo$Observable;
     static extend(prototype: Object): kendo$Observable;
     init(...args: any[]): void;
@@ -405,34 +405,15 @@ declare module "kendo-ui" {
     init?: (e: ui$ViewEvent) => void;
     show?: (e: ui$ViewEvent) => void;
     hide?: (e: ui$ViewEvent) => void;
-    name?: string;
-    model?: string;
-    reload?: boolean;
-    scroller?: any;
-    stretch?: boolean;
-    title?: string;
-    useNativeScrolling?: boolean;
-    zoom?: boolean;
-    afterShow?: (e: ui$ViewAfterShowEvent) => void;
-    beforeHide?: (e: ui$ViewBeforeHideEvent) => void;
-    beforeShow?: (e: ui$ViewBeforeShowEvent) => void;
-    hide?: (e: ui$ViewHideEvent) => void;
-    init?: (e: ui$ViewInitEvent) => void;
-    show?: (e: ui$ViewShowEvent) => void;
-    transitionStart?: (e: ui$ViewTransitionStartEvent) => void;
-    transitionEnd?: (e: ui$ViewTransitionEndEvent) => void;
   }
 
   declare interface kendo$ViewEvent {
     sender: ui$View;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$View;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$View mixins Observable {
+  declare class kendo$View mixins kendo$Observable {
     constructor(element: drawing$Element, options?: kendo$ViewOptions): this;
     constructor(element: string, options?: kendo$ViewOptions): this;
     element: JQuery;
@@ -445,18 +426,18 @@ declare module "kendo-ui" {
     destroy(): void;
   }
 
-  declare class kendo$ViewContainer mixins Observable {
+  declare class kendo$ViewContainer mixins kendo$Observable {
     view: kendo$View;
   }
 
-  declare class kendo$Layout mixins View {
+  declare class kendo$Layout mixins kendo$View {
     containers: {
       [selector: string]: kendo$ViewContainer
     };
     showIn(selector: string, view: kendo$View, transitionClass?: string): void;
   }
 
-  declare class kendo$History mixins Observable {
+  declare class kendo$History mixins kendo$Observable {
     current: string;
     root: string;
     start(options: Object): void;
@@ -488,19 +469,19 @@ declare module "kendo-ui" {
   declare type kendo$RouterChangeEvent = {
     params: any,
     backButtonPressed: boolean
-  } & RouterEvent;
+  } & kendo$RouterEvent;
 
   declare type kendo$RouterRouteMissingEvent = {
     params: any
-  } & RouterEvent;
+  } & kendo$RouterEvent;
 
-  declare class kendo$Route mixins Class {
+  declare class kendo$Route mixins kendo$Class {
     route: RegExp;
     callback(url: string): void;
     worksWith(url: string): void;
   }
 
-  declare class kendo$Router mixins Observable {
+  declare class kendo$Router mixins kendo$Observable {
     constructor(options?: kendo$RouterOptions): this;
     routes: kendo$Route[];
     init(options?: kendo$RouterOptions): void;
@@ -512,11 +493,113 @@ declare module "kendo-ui" {
   }
 
   declare var npm$namespace$kendo$effects: {
+    enable: typeof kendo$effects$enable,
+    disable: typeof kendo$effects$disable,
     box: typeof kendo$effects$box,
     fillScale: typeof kendo$effects$fillScale,
     fitScale: typeof kendo$effects$fitScale,
     transformOrigin: typeof kendo$effects$transformOrigin
   };
+  declare function kendo$effects$enable(): void;
+
+  declare function kendo$effects$disable(): void;
+
+  declare interface kendo$effects$Element {
+    expand(direction: string): kendo$effects$Expand;
+    expandHorizontal(): kendo$effects$Expand;
+    expandVertical(): kendo$effects$Expand;
+    fade(direction: string): kendo$effects$Fade;
+    fadeIn(): kendo$effects$Fade;
+    fadeOut(): kendo$effects$Fade;
+    flip(axis: string, face: JQuery, back: JQuery): kendo$effects$Flip;
+    flipHorizontal(face: JQuery, back: JQuery): kendo$effects$Flip;
+    flipVertical(face: JQuery, back: JQuery): kendo$effects$Flip;
+    pageturn(axis: string, face: JQuery, back: JQuery): kendo$effects$PageTurn;
+    pageturnHorizontal(face: JQuery, back: JQuery): kendo$effects$PageTurn;
+    pageturnVertical(face: JQuery, back: JQuery): kendo$effects$PageTurn;
+    slideIn(direction: string): kendo$effects$SlideIn;
+    slideInDown(): kendo$effects$SlideIn;
+    slideInLeft(): kendo$effects$SlideIn;
+    slideInRight(): kendo$effects$SlideIn;
+    slideInUp(): kendo$effects$SlideIn;
+    tile(direction: string, previous: JQuery): kendo$effects$Tile;
+    tileDown(previous: JQuery): kendo$effects$Tile;
+    tileLeft(previous: JQuery): kendo$effects$Tile;
+    tileRight(previous: JQuery): kendo$effects$Tile;
+    tileUp(previous: JQuery): kendo$effects$Tile;
+    transfer(target: JQuery): kendo$effects$Transfer;
+    zoom(direction: string): kendo$effects$Zoom;
+    zoomIn(): kendo$effects$Zoom;
+    zoomOut(): kendo$effects$Zoom;
+  }
+
+  declare interface kendo$effects$Effect {
+    play(): JQueryPromise<any>;
+    reverse(): JQueryPromise<any>;
+    duration(value: number): kendo$effects$Effect;
+    add(effect: kendo$effects$Effect): kendo$effects$Effect;
+    stop(): kendo$effects$Effect;
+  }
+
+  declare type kendo$effects$Expand = {
+    duration(value: number): kendo$effects$Expand,
+    direction(value: string): kendo$effects$Expand,
+    stop(): kendo$effects$Expand,
+    add(effect: kendo$effects$Effect): kendo$effects$Expand
+  } & kendo$effects$Effect;
+
+  declare type kendo$effects$Fade = {
+    duration(value: number): kendo$effects$Fade,
+    direction(value: string): kendo$effects$Fade,
+    stop(): kendo$effects$Fade,
+    add(effect: kendo$effects$Effect): kendo$effects$Fade,
+    startValue(value: number): kendo$effects$Fade,
+    endValue(value: number): kendo$effects$Fade
+  } & kendo$effects$Effect;
+
+  declare type kendo$effects$Flip = {
+    duration(value: number): kendo$effects$Flip,
+    direction(value: string): kendo$effects$Flip,
+    stop(): kendo$effects$Flip,
+    add(effect: kendo$effects$Effect): kendo$effects$Flip
+  } & kendo$effects$Effect;
+
+  declare type kendo$effects$PageTurn = {
+    duration(value: number): kendo$effects$PageTurn,
+    direction(value: string): kendo$effects$PageTurn,
+    stop(): kendo$effects$PageTurn,
+    add(effect: kendo$effects$Effect): kendo$effects$PageTurn
+  } & kendo$effects$Effect;
+
+  declare type kendo$effects$SlideIn = {
+    duration(value: number): kendo$effects$SlideIn,
+    direction(value: string): kendo$effects$SlideIn,
+    stop(): kendo$effects$SlideIn,
+    add(effect: kendo$effects$Effect): kendo$effects$SlideIn
+  } & kendo$effects$Effect;
+
+  declare type kendo$effects$Tile = {
+    duration(value: number): kendo$effects$Tile,
+    direction(value: string): kendo$effects$Tile,
+    stop(): kendo$effects$Tile,
+    add(effect: kendo$effects$Effect): kendo$effects$Tile
+  } & kendo$effects$Effect;
+
+  declare type kendo$effects$Transfer = {
+    duration(value: number): kendo$effects$Transfer,
+    stop(): kendo$effects$Transfer,
+    add(effect: kendo$effects$Effect): kendo$effects$Transfer
+  } & kendo$effects$Effect;
+
+  declare type kendo$effects$Zoom = {
+    duration(value: number): kendo$effects$Zoom,
+    direction(value: string): kendo$effects$Zoom,
+    stop(): kendo$effects$Zoom,
+    add(effect: kendo$effects$Effect): kendo$effects$Zoom,
+    startValue(value: number): kendo$effects$Zoom,
+    endValue(value: number): kendo$effects$Zoom
+  } & kendo$effects$Effect;
+
   declare function kendo$effects$box(element: HTMLElement): any;
 
   declare function kendo$effects$fillScale(
@@ -535,15 +618,953 @@ declare module "kendo-ui" {
   ): any;
 
   declare var npm$namespace$kendo$data: {
+    Binding: typeof kendo$data$Binding,
+    BindingTarget: typeof kendo$data$BindingTarget,
+    EventBinding: typeof kendo$data$EventBinding,
+    TemplateBinding: typeof kendo$data$TemplateBinding,
+    Binder: typeof kendo$data$Binder,
+    ObservableObject: typeof kendo$data$ObservableObject,
+    Model: typeof kendo$data$Model,
+    SchedulerEvent: typeof kendo$data$SchedulerEvent,
+    TreeListModel: typeof kendo$data$TreeListModel,
+    TreeListDataSource: typeof kendo$data$TreeListDataSource,
+    GanttTask: typeof kendo$data$GanttTask,
+    GanttDependency: typeof kendo$data$GanttDependency,
+    Node: typeof kendo$data$Node,
+    SchedulerDataSource: typeof kendo$data$SchedulerDataSource,
+    GanttDataSource: typeof kendo$data$GanttDataSource,
+    GanttDependencyDataSource: typeof kendo$data$GanttDependencyDataSource,
+    HierarchicalDataSource: typeof kendo$data$HierarchicalDataSource,
+    PivotDataSource: typeof kendo$data$PivotDataSource,
+    ObservableArray: typeof kendo$data$ObservableArray,
+    DataSource: typeof kendo$data$DataSource,
+    Query: typeof kendo$data$Query,
     transports: typeof npm$namespace$kendo$data$transports
   };
+  declare interface kendo$data$ObservableObjectEvent {
+    sender?: data$ObservableObject;
+    field?: string;
+  }
+
+  declare type kendo$data$ObservableObjectSetEvent = {
+    value?: any,
+    preventDefault?: Function
+  } & kendo$data$ObservableObjectEvent;
+
+  declare class kendo$data$Binding mixins kendo$Observable {
+    source: any;
+    parents: any[];
+    path: string;
+    kendo$observable: boolean;
+    dependencies: {
+      [path: string]: boolean
+    };
+    constructor(parents: any[], path: string): this;
+    change(e: Object): void;
+    start(source: kendo$Observable): void;
+    stop(source: kendo$Observable): void;
+    get(): any;
+    set(value: any): void;
+    destroy(): void;
+  }
+
+  declare class kendo$data$BindingTarget {
+    target: any;
+    options: any;
+    source: any;
+  }
+
+  declare class kendo$data$EventBinding mixins kendo$data$Binding {
+    get(): void;
+  }
+
+  declare class kendo$data$TemplateBinding mixins kendo$data$Binding {
+    constructor(
+      source: kendo$Observable,
+      path: string,
+      template: Function
+    ): this;
+    render(value: Object): string;
+  }
+
+  declare interface kendo$data$Bindings {
+    [key: string]: kendo$data$Binding;
+  }
+
+  declare class kendo$data$Binder mixins kendo$Class {
+    static fn: kendo$data$Binder;
+    element: any;
+    bindings: kendo$data$Bindings;
+    options: data$BinderOptions;
+    constructor(
+      element: any,
+      bindings: kendo$data$Bindings,
+      options?: data$BinderOptions
+    ): this;
+    static extend(prototype: Object): kendo$data$Binder;
+    init(
+      element: any,
+      bindings: kendo$data$Bindings,
+      options?: data$BinderOptions
+    ): void;
+    bind(binding: kendo$data$Binding, attribute: string): void;
+    destroy(): void;
+    refresh(): void;
+    refresh(attribute: string): void;
+  }
+
+  declare interface kendo$data$BinderOptions {}
+
+  declare class kendo$data$ObservableObject mixins kendo$Observable {
+    constructor(value?: any): this;
+    uid: string;
+    init(value?: any): void;
+    get(name: string): any;
+    parent(): kendo$data$ObservableObject;
+    set(name: string, value: any): void;
+    toJSON(): Object;
+  }
+
+  declare class kendo$data$Model mixins kendo$data$ObservableObject {
+    static idField: string;
+    static fields: data$DataSourceSchemaModelFields;
+    idField: string;
+    _defaultId: any;
+    fields: data$DataSourceSchemaModelFields;
+    defaults: {
+      [field: string]: any
+    };
+    id: any;
+    dirty: boolean;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsObject
+    ): typeof kendo$data$Model;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsArray
+    ): typeof kendo$data$Model;
+    constructor(data?: any): this;
+    init(data?: any): void;
+    accept(data?: any): void;
+    editable(field: string): boolean;
+    isNew(): boolean;
+  }
+
+  declare interface kendo$data$SchedulerEventData {
+    description?: string;
+    end?: Date;
+    endTimezone?: string;
+    isAllDay?: boolean;
+    id?: any;
+    start?: Date;
+    startTimezone?: string;
+    recurrenceId?: any;
+    recurrenceRule?: string;
+    recurrenceException?: string;
+    title?: string;
+  }
+
+  declare class kendo$data$SchedulerEvent mixins kendo$data$Model {
+    static idField: string;
+    static fields: data$DataSourceSchemaModelFields;
+    constructor(data?: kendo$data$SchedulerEventData): this;
+    description: string;
+    end: Date;
+    endTimezone: string;
+    isAllDay: boolean;
+    id: any;
+    start: Date;
+    startTimezone: string;
+    recurrenceId: any;
+    recurrenceRule: string;
+    recurrenceException: string;
+    title: string;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsObject
+    ): typeof kendo$data$SchedulerEvent;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsArray
+    ): typeof kendo$data$SchedulerEvent;
+    init(data?: kendo$data$SchedulerEventData): void;
+    clone(options: any, updateUid: boolean): kendo$data$SchedulerEvent;
+    duration(): number;
+    expand(start: Date, end: Date, zone: any): kendo$data$SchedulerEvent[];
+    update(eventInfo: kendo$data$SchedulerEventData): void;
+    isMultiDay(): boolean;
+    isException(): boolean;
+    isOccurrence(): boolean;
+    isRecurring(): boolean;
+    isRecurrenceHead(): boolean;
+    toOccurrence(options: any): kendo$data$SchedulerEvent;
+  }
+
+  declare class kendo$data$TreeListModel mixins kendo$data$Model {
+    static idField: string;
+    static fields: data$DataSourceSchemaModelFields;
+    id: any;
+    parentId: any;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsObject
+    ): typeof kendo$data$TreeListModel;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsArray
+    ): typeof kendo$data$TreeListModel;
+    constructor(data?: any): this;
+    init(data?: any): void;
+    loaded(value: boolean): void;
+    loaded(): boolean;
+  }
+
+  declare class kendo$data$TreeListDataSource mixins kendo$data$DataSource {
+    load(model: kendo$data$TreeListModel): JQueryPromise<any>;
+    childNodes(model: kendo$data$TreeListModel): kendo$data$TreeListModel[];
+    rootNodes(): kendo$data$TreeListModel[];
+    parentNode(model: kendo$data$TreeListModel): kendo$data$TreeListModel;
+    level(model: kendo$data$TreeListModel): number;
+    level(model: any): number;
+    add(model: Object): kendo$data$TreeListModel;
+    add(model: kendo$data$TreeListModel): kendo$data$TreeListModel;
+    at(index: number): kendo$data$TreeListModel;
+    cancelChanges(model?: kendo$data$TreeListModel): void;
+    get(id: any): kendo$data$TreeListModel;
+    getByUid(uid: string): kendo$data$TreeListModel;
+    indexOf(value: kendo$data$TreeListModel): number;
+    insert(
+      index: number,
+      model: kendo$data$TreeListModel
+    ): kendo$data$TreeListModel;
+    insert(index: number, model: Object): kendo$data$TreeListModel;
+    remove(model: kendo$data$TreeListModel): void;
+  }
+
+  declare class kendo$data$GanttTask mixins kendo$data$Model {
+    static idField: string;
+    static fields: data$DataSourceSchemaModelFields;
+    id: any;
+    parentId: number;
+    orderId: number;
+    title: string;
+    start: Date;
+    end: Date;
+    percentComplete: number;
+    summary: boolean;
+    expanded: boolean;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsObject
+    ): typeof kendo$data$GanttTask;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsArray
+    ): typeof kendo$data$GanttTask;
+    constructor(data?: any): this;
+    init(data?: any): void;
+  }
+
+  declare class kendo$data$GanttDependency mixins kendo$data$Model {
+    static idField: string;
+    static fields: data$DataSourceSchemaModelFields;
+    id: any;
+    predecessorId: number;
+    successorId: number;
+    type: number;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsObject
+    ): typeof kendo$data$GanttDependency;
+    static define(
+      options: data$DataSourceSchemaModelWithFieldsArray
+    ): typeof kendo$data$GanttDependency;
+    constructor(data?: any): this;
+    init(data?: any): void;
+  }
+
+  declare class kendo$data$Node mixins kendo$data$Model {
+    children: data$HierarchicalDataSource;
+    append(model: any): void;
+    level(): number;
+    load(id: any): void;
+    loaded(value: boolean): void;
+    loaded(): boolean;
+    parentNode(): kendo$data$Node;
+  }
+
+  declare class kendo$data$SchedulerDataSource mixins kendo$data$DataSource {
+    add(model: Object): kendo$data$SchedulerEvent;
+    add(model: kendo$data$SchedulerEvent): kendo$data$SchedulerEvent;
+    at(index: number): kendo$data$SchedulerEvent;
+    cancelChanges(model?: kendo$data$SchedulerEvent): void;
+    get(id: any): kendo$data$SchedulerEvent;
+    getByUid(uid: string): kendo$data$SchedulerEvent;
+    indexOf(value: kendo$data$SchedulerEvent): number;
+    insert(
+      index: number,
+      model: kendo$data$SchedulerEvent
+    ): kendo$data$SchedulerEvent;
+    insert(index: number, model: Object): kendo$data$SchedulerEvent;
+    remove(model: kendo$data$SchedulerEvent): void;
+  }
+
+  declare class kendo$data$GanttDataSource mixins kendo$data$DataSource {
+    add(model: Object): kendo$data$GanttTask;
+    add(model: kendo$data$GanttTask): kendo$data$GanttTask;
+    at(index: number): kendo$data$GanttTask;
+    cancelChanges(model?: kendo$data$GanttTask): void;
+    get(id: any): kendo$data$GanttTask;
+    getByUid(uid: string): kendo$data$GanttTask;
+    indexOf(value: kendo$data$GanttTask): number;
+    insert(index: number, model: Object): kendo$data$GanttTask;
+    insert(index: number, model: kendo$data$GanttTask): kendo$data$GanttTask;
+    remove(model: kendo$data$GanttTask): void;
+  }
+
+  declare class kendo$data$GanttDependencyDataSource
+    mixins kendo$data$DataSource {
+    add(model: Object): kendo$data$GanttDependency;
+    add(model: kendo$data$GanttDependency): kendo$data$GanttDependency;
+    at(index: number): kendo$data$GanttDependency;
+    cancelChanges(model?: kendo$data$GanttDependency): void;
+    get(id: any): kendo$data$GanttDependency;
+    getByUid(uid: string): kendo$data$GanttDependency;
+    indexOf(value: kendo$data$GanttDependency): number;
+    insert(index: number, model: Object): kendo$data$GanttDependency;
+    insert(
+      index: number,
+      model: kendo$data$GanttDependency
+    ): kendo$data$GanttDependency;
+    remove(model: kendo$data$GanttDependency): void;
+  }
+
+  declare class kendo$data$HierarchicalDataSource mixins kendo$data$DataSource {
+    constructor(options?: data$HierarchicalDataSourceOptions): this;
+    init(options?: data$HierarchicalDataSourceOptions): void;
+  }
+
+  declare type kendo$data$HierarchicalDataSourceOptions = {
+    schema?: data$HierarchicalDataSourceSchema
+  } & kendo$data$DataSourceOptions;
+
+  declare type kendo$data$HierarchicalDataSourceSchema = {
+    model?: data$HierarchicalDataSourceSchemaModel
+  } & kendo$data$DataSourceSchemaWithOptionsModel;
+
+  declare type kendo$data$HierarchicalDataSourceSchemaModel = {
+    hasChildren?: any,
+    children?: any
+  } & kendo$data$DataSourceSchemaModel;
+
+  declare interface kendo$data$PivotDiscoverRequestRestrictionOptions {
+    catalogName: string;
+    cubeName: string;
+  }
+
+  declare interface kendo$data$PivotDiscoverRequestDataOptions {
+    command: string;
+    restrictions: kendo$data$PivotDiscoverRequestRestrictionOptions;
+  }
+
+  declare interface kendo$data$PivotDiscoverRequestOptions {
+    data: kendo$data$PivotDiscoverRequestDataOptions;
+  }
+
+  declare interface kendo$data$PivotTransportConnection {
+    catalog?: string;
+    cube?: string;
+  }
+
+  declare interface kendo$data$PivotTransportDiscover {
+    cache?: boolean;
+    contentType?: string;
+    data?: any;
+    dataType?: string;
+    type?: string;
+    url?: any;
+  }
+
+  declare interface kendo$data$PivotTransport {
+    discover?: any;
+    read?: any;
+  }
+
+  declare type kendo$data$PivotTransportWithObjectOperations = {
+    connection: kendo$data$PivotTransportConnection,
+    discover?: kendo$data$PivotTransportDiscover,
+    read?: data$DataSourceTransportRead
+  } & kendo$data$PivotTransport;
+
+  declare type kendo$data$PivotTransportWithFunctionOperations = {
+    discover?: (options: data$DataSourceTransportOptions) => void,
+    read?: (options: data$DataSourceTransportOptions) => void
+  } & kendo$data$PivotTransport;
+
+  declare interface kendo$data$PivotDataSourceAxisOptions {
+    name: string;
+    expand?: boolean;
+  }
+
+  declare interface kendo$data$PivotDataSourceMeasureOptions {
+    values: string[];
+    axis?: string;
+  }
+
+  declare type kendo$data$PivotDataSourceOptions = {
+    columns?: string[] | kendo$data$PivotDataSourceAxisOptions[],
+    measures?: string[] | kendo$data$PivotDataSourceMeasureOptions,
+    rows?: string[] | kendo$data$PivotDataSourceAxisOptions[],
+    transport?: kendo$data$PivotTransport,
+    schema?: data$PivotSchema
+  } & kendo$data$DataSourceOptions;
+
+  declare interface kendo$data$PivotTupleModel {
+    children: kendo$data$PivotTupleModel[];
+    caption?: string;
+    name: string;
+    levelName?: string;
+    levelNum: number;
+    hasChildren?: boolean;
+    hierarchy?: string;
+  }
+
+  declare interface kendo$data$PivotSchemaRowAxis {
+    tuples: kendo$data$PivotTupleModel[];
+  }
+
+  declare interface kendo$data$PivotSchemaColumnAxis {
+    tuples: kendo$data$PivotTupleModel[];
+  }
+
+  declare interface kendo$data$PivotSchemaAxes {
+    rows: kendo$data$PivotSchemaRowAxis;
+    columns: kendo$data$PivotSchemaColumnAxis;
+  }
+
+  declare type kendo$data$PivotSchema = {
+    axes?: any,
+    catalogs?: any,
+    cubes?: any,
+    cube?: any,
+    data?: any,
+    dimensions?: any,
+    hierarchies?: any,
+    levels?: any,
+    measures?: any
+  } & kendo$data$DataSourceSchema;
+
+  declare class kendo$data$PivotDataSource mixins kendo$data$DataSource {
+    axes(): kendo$data$PivotSchemaAxes;
+    constructor(options?: kendo$data$PivotDataSourceOptions): this;
+    init(options?: kendo$data$PivotDataSourceOptions): void;
+    catalog(val: string): void;
+    catalog(): string;
+    columns(val: string[]): void;
+    columns(): string[];
+    cube(val: string): void;
+    cube(): string;
+    discover(
+      options: kendo$data$PivotDiscoverRequestOptions
+    ): JQueryPromise<any>;
+    measures(val: string[]): void;
+    measures(): string[];
+    measuresAxis(): string;
+    rows(val: string[]): void;
+    rows(): string[];
+    schemaCatalogs(): JQueryPromise<any>;
+    schemaCubes(): JQueryPromise<any>;
+    schemaDimensions(): JQueryPromise<any>;
+    schemaHierarchies(): JQueryPromise<any>;
+    schemaLevels(): JQueryPromise<any>;
+    schemaMeasures(): JQueryPromise<any>;
+  }
+
+  declare interface kendo$data$DataSourceTransport {
+    create?:
+      | string
+      | data$DataSourceTransportCreate
+      | ((options: data$DataSourceTransportOptions) => void);
+    destroy?:
+      | string
+      | data$DataSourceTransportDestroy
+      | ((options: data$DataSourceTransportOptions) => void);
+    push?: Function;
+    submit?: Function;
+    read?:
+      | string
+      | data$DataSourceTransportRead
+      | ((options: data$DataSourceTransportOptions) => void);
+    signalr?:
+      | data$DataSourceTransportSignalr
+      | ((options: data$DataSourceTransportOptions) => void);
+    update?:
+      | string
+      | data$DataSourceTransportUpdate
+      | ((options: data$DataSourceTransportOptions) => void);
+    parameterMap?: (
+      data: data$DataSourceTransportParameterMapData,
+      type: string
+    ) => any;
+  }
+
+  declare interface kendo$data$DataSourceTransportSignalrClient {
+    create?: string;
+    destroy?: string;
+    read?: string;
+    update?: string;
+  }
+
+  declare interface kendo$data$DataSourceTransportSignalrServer {
+    create?: string;
+    destroy?: string;
+    read?: string;
+    update?: string;
+  }
+
+  declare interface kendo$data$DataSourceTransportSignalr {
+    client?: kendo$data$DataSourceTransportSignalrClient;
+    hub?: any;
+    promise?: any;
+    server?: kendo$data$DataSourceTransportSignalrServer;
+  }
+
+  declare interface kendo$data$DataSourceParameterMapDataAggregate {
+    field?: string;
+    aggregate?: string;
+  }
+
+  declare interface kendo$data$DataSourceParameterMapDataGroup {
+    aggregate?: kendo$data$DataSourceParameterMapDataAggregate[];
+    field?: string;
+    dir?: string;
+  }
+
+  declare interface kendo$data$DataSourceParameterMapDataFilter {
+    field?: string;
+    filters?: kendo$data$DataSourceParameterMapDataFilter[];
+    logic?: string;
+    operator?: string;
+    value?: any;
+  }
+
+  declare interface kendo$data$DataSourceParameterMapDataSort {
+    field?: string;
+    dir?: string;
+  }
+
+  declare interface kendo$data$DataSourceTransportParameterMapData {
+    aggregate?: kendo$data$DataSourceParameterMapDataAggregate[];
+    group?: kendo$data$DataSourceParameterMapDataGroup[];
+    filter?: kendo$data$DataSourceParameterMapDataFilter;
+    models?: kendo$data$Model[];
+    page?: number;
+    pageSize?: number;
+    skip?: number;
+    sort?: kendo$data$DataSourceParameterMapDataSort[];
+    take?: number;
+  }
+
+  declare interface kendo$data$DataSourceSchema {
+    model?: any;
+    aggregates?: any;
+    data?: any;
+    errors?: any;
+    groups?: any;
+    parse?: Function;
+    total?: any;
+    type?: string;
+  }
+
+  declare type kendo$data$DataSourceSchemaWithTimezone = {
+    timezone?: String
+  } & kendo$data$DataSourceSchema;
+
+  declare type kendo$data$DataSourceSchemaWithOptionsModel = {
+    model?: data$DataSourceSchemaModel
+  } & kendo$data$DataSourceSchema;
+
+  declare type kendo$data$DataSourceSchemaWithConstructorModel = {
+    model?: typeof kendo$data$Model
+  } & kendo$data$DataSourceSchema;
+
+  declare interface kendo$data$DataSourceSchemaModel {
+    id?: string;
+    fields?: any;
+    [index: string]: any;
+  }
+
+  declare type kendo$data$DataSourceSchemaModelWithFieldsArray = {
+    fields?: data$DataSourceSchemaModelField[]
+  } & kendo$data$DataSourceSchemaModel;
+
+  declare type kendo$data$DataSourceSchemaModelWithFieldsObject = {
+    fields?: data$DataSourceSchemaModelFields
+  } & kendo$data$DataSourceSchemaModel;
+
+  declare interface kendo$data$DataSourceSchemaModelFields {
+    [index: string]: data$DataSourceSchemaModelField;
+  }
+
+  declare interface kendo$data$DataSourceSchemaModelField {
+    field?: string;
+    from?: string;
+    defaultValue?: any;
+    editable?: boolean;
+    nullable?: boolean;
+    parse?: Function;
+    type?: string;
+    validation?: data$DataSourceSchemaModelFieldValidation;
+  }
+
+  declare interface kendo$data$DataSourceSchemaModelFieldValidation {
+    required?: boolean;
+    min?: any;
+    max?: any;
+    minLength?: any;
+    maxLength?: any;
+    [rule: string]: any;
+  }
+
+  declare class kendo$data$ObservableArray mixins kendo$Observable {
+    length: number;
+    [index: number]: any;
+    constructor(array: any[]): this;
+    init(array: any[]): void;
+    empty(): void;
+    every(
+      callback: (
+        item: Object,
+        index: number,
+        source: kendo$data$ObservableArray
+      ) => boolean
+    ): boolean;
+    filter(
+      callback: (
+        item: Object,
+        index: number,
+        source: kendo$data$ObservableArray
+      ) => boolean
+    ): any[];
+    find(
+      callback: (
+        item: Object,
+        index: number,
+        source: kendo$data$ObservableArray
+      ) => boolean
+    ): any;
+    forEach(
+      callback: (
+        item: Object,
+        index: number,
+        source: kendo$data$ObservableArray
+      ) => void
+    ): void;
+    indexOf(item: any): number;
+    join(separator: string): string;
+    map(
+      callback: (
+        item: Object,
+        index: number,
+        source: kendo$data$ObservableArray
+      ) => any
+    ): any[];
+    parent(): kendo$data$ObservableObject;
+    pop(): kendo$data$ObservableObject;
+    push(...items: any[]): number;
+    remove(item: Object): void;
+    shift(): any;
+    slice(begin: number, end?: number): any[];
+    some(
+      callback: (
+        item: Object,
+        index: number,
+        source: kendo$data$ObservableArray
+      ) => boolean
+    ): boolean;
+    splice(start: number): any[];
+    splice(start: number, deleteCount: number, ...items: any[]): any[];
+    toJSON(): any[];
+    unshift(...items: any[]): number;
+    wrap(object: Object, parent: Object): any;
+    wrapAll(source: Object, target: Object): any;
+  }
+
+  declare interface kendo$data$ObservableArrayEvent {
+    field?: string;
+    action?: string;
+    index?: number;
+    items?: kendo$data$Model[];
+  }
+
+  declare class kendo$data$DataSource mixins kendo$Observable {
+    options: data$DataSourceOptions;
+    static create(options?: data$DataSourceOptions): kendo$data$DataSource;
+    constructor(options?: data$DataSourceOptions): this;
+    init(options?: data$DataSourceOptions): void;
+    add(model: Object): kendo$data$Model;
+    add(model: kendo$data$Model): kendo$data$Model;
+    aggregate(val: any): void;
+    aggregate(): any;
+    aggregates(): any;
+    at(index: number): kendo$data$ObservableObject;
+    cancelChanges(model?: kendo$data$Model): void;
+    data(): kendo$data$ObservableArray;
+    data(value: any): void;
+    fetch(callback?: Function): JQueryPromise<any>;
+    filter(filters: data$DataSourceFilterItem): void;
+    filter(filters: data$DataSourceFilterItem[]): void;
+    filter(filters: data$DataSourceFilters): void;
+    filter(): data$DataSourceFilters;
+    get(id: any): kendo$data$Model;
+    getByUid(uid: string): kendo$data$Model;
+    group(groups: any): void;
+    group(): any;
+    hasChanges(): boolean;
+    indexOf(value: kendo$data$ObservableObject): number;
+    insert(index: number, model: kendo$data$Model): kendo$data$Model;
+    insert(index: number, model: Object): kendo$data$Model;
+    online(value: boolean): void;
+    online(): boolean;
+    offlineData(data: any[]): void;
+    offlineData(): any[];
+    page(): number;
+    page(page: number): void;
+    pageSize(): number;
+    pageSize(size: number): void;
+    pushCreate(model: Object): void;
+    pushCreate(models: any[]): void;
+    pushDestroy(model: Object): void;
+    pushDestroy(models: any[]): void;
+    pushUpdate(model: Object): void;
+    pushUpdate(models: any[]): void;
+    query(options?: any): JQueryPromise<any>;
+    read(data?: any): JQueryPromise<any>;
+    remove(model: kendo$data$ObservableObject): void;
+    skip(): number;
+    sort(sort: data$DataSourceSortItem): void;
+    sort(sort: data$DataSourceSortItem[]): void;
+    sort(): data$DataSourceSortItem[];
+    sync(): JQueryPromise<any>;
+    total(): number;
+    totalPages(): number;
+    view(): kendo$data$ObservableArray;
+  }
+
+  declare class kendo$data$Query {
+    kendo$data: any[];
+    static process(
+      data: any[],
+      options: data$DataSourceTransportReadOptionsData
+    ): data$QueryResult;
+    constructor(data: any[]): this;
+    toArray(): any[];
+    range(intex: number, count: number): kendo$data$Query;
+    skip(count: number): kendo$data$Query;
+    take(count: number): kendo$data$Query;
+    select(selector: Function): kendo$data$Query;
+    order(selector: string, dir?: string): kendo$data$Query;
+    order(selector: Function, dir?: string): kendo$data$Query;
+    filter(filters: data$DataSourceFilterItem): kendo$data$Query;
+    filter(filters: data$DataSourceFilterItem[]): kendo$data$Query;
+    filter(filters: data$DataSourceFilters): kendo$data$Query;
+    group(descriptors: data$DataSourceGroupItem): kendo$data$Query;
+    group(descriptors: data$DataSourceGroupItem[]): kendo$data$Query;
+  }
+
+  declare interface kendo$data$QueryResult {
+    total?: number;
+    data?: any[];
+  }
+
+  declare interface kendo$data$DataSourceAggregateItem {
+    field?: string;
+    aggregate?: string;
+  }
+
+  declare interface kendo$data$DataSourceFilter {}
+
+  declare type kendo$data$DataSourceFilterItem = {
+    operator?: string | Function,
+    field?: string,
+    value?: any
+  } & kendo$data$DataSourceFilter;
+
+  declare type kendo$data$DataSourceFilters = {
+    logic?: string,
+    filters?: kendo$data$DataSourceFilter[]
+  } & kendo$data$DataSourceFilter;
+
+  declare interface kendo$data$DataSourceGroupItemAggregate {
+    field?: string;
+    aggregate?: string;
+  }
+
+  declare interface kendo$data$DataSourceGroupItem {
+    field?: string;
+    dir?: string;
+    aggregates?: kendo$data$DataSourceGroupItemAggregate[];
+  }
+
+  declare interface kendo$data$DataSourceSortItem {
+    field?: string;
+    dir?: string;
+  }
+
+  declare type kendo$data$DataSourceTransportCreate = {
+    cache?: boolean,
+    contentType?: string,
+    data?: any,
+    dataType?: string,
+    type?: string,
+    url?: any
+  } & JQueryAjaxSettings;
+
+  declare type kendo$data$DataSourceTransportDestroy = {
+    cache?: boolean,
+    contentType?: string,
+    data?: any,
+    dataType?: string,
+    type?: string,
+    url?: any
+  } & JQueryAjaxSettings;
+
+  declare type kendo$data$DataSourceTransportRead = {
+    cache?: boolean,
+    contentType?: string,
+    data?: any,
+    dataType?: string,
+    type?: string,
+    url?: any
+  } & JQueryAjaxSettings;
+
+  declare type kendo$data$DataSourceTransportUpdate = {
+    cache?: boolean,
+    contentType?: string,
+    data?: any,
+    dataType?: string,
+    type?: string,
+    url?: any
+  } & JQueryAjaxSettings;
+
+  declare type kendo$data$DataSourceTransportWithObjectOperations = {
+    create?: kendo$data$DataSourceTransportCreate,
+    destroy?: kendo$data$DataSourceTransportDestroy,
+    read?: kendo$data$DataSourceTransportRead,
+    update?: kendo$data$DataSourceTransportUpdate
+  } & kendo$data$DataSourceTransport;
+
+  declare type kendo$data$DataSourceTransportWithFunctionOperations = {
+    create?: (options: data$DataSourceTransportOptions) => void,
+    destroy?: (options: data$DataSourceTransportOptions) => void,
+    read?: (options: data$DataSourceTransportReadOptions) => void,
+    update?: (options: data$DataSourceTransportOptions) => void
+  } & kendo$data$DataSourceTransport;
+
+  declare interface kendo$data$DataSourceTransportOptions {
+    success: (data?: any) => void;
+    error: (error?: any) => void;
+    data: any;
+  }
+
+  declare interface kendo$data$DataSourceTransportReadOptionsData {
+    sort?: kendo$data$DataSourceSortItem[];
+    filter?: kendo$data$DataSourceFilters;
+    group?: kendo$data$DataSourceGroupItem[];
+    take?: number;
+    skip?: number;
+  }
+
+  declare type kendo$data$DataSourceTransportReadOptions = {
+    data: kendo$data$DataSourceTransportReadOptionsData
+  } & kendo$data$DataSourceTransportOptions;
+
+  declare interface kendo$data$DataSourceTransportBatchOptionsData {
+    models: any[];
+  }
+
+  declare type kendo$data$DataSourceTransportBatchOptions = {
+    data: kendo$data$DataSourceTransportBatchOptionsData
+  } & kendo$data$DataSourceTransportOptions;
+
+  declare interface kendo$data$DataSourceOptions {
+    aggregate?: kendo$data$DataSourceAggregateItem[];
+    autoSync?: boolean;
+    batch?: boolean;
+    data?: any;
+    filter?: any;
+    group?: kendo$data$DataSourceGroupItem | kendo$data$DataSourceGroupItem[];
+    inPlaceSort?: boolean;
+    offlineStorage?: any;
+    page?: number;
+    pageSize?: number;
+    schema?: kendo$data$DataSourceSchema;
+    serverAggregates?: boolean;
+    serverFiltering?: boolean;
+    serverGrouping?: boolean;
+    serverPaging?: boolean;
+    serverSorting?: boolean;
+    sort?: any;
+    transport?: kendo$data$DataSourceTransport;
+    type?: string;
+    change?: (e: data$DataSourceChangeEvent) => void;
+    error?: (e: data$DataSourceErrorEvent) => void;
+    push?: (e: data$DataSourcePushEvent) => void;
+    sync?: (e: data$DataSourceEvent) => void;
+    requestStart?: (e: data$DataSourceRequestStartEvent) => void;
+    requestEnd?: (e: data$DataSourceRequestEndEvent) => void;
+  }
+
+  declare interface kendo$data$DataSourceEvent {
+    sender?: kendo$data$DataSource;
+  }
+
+  declare interface kendo$data$DataSourceItemOrGroup {}
+
+  declare type kendo$data$DataSourceGroup = {
+    aggregates: any[],
+    field: string,
+    hasSubgroups: boolean,
+    items: kendo$data$DataSourceItemOrGroup[],
+    value: any
+  } & kendo$data$DataSourceItemOrGroup;
+
+  declare type kendo$data$DataSourceChangeEvent = {
+    field?: string,
+    value?: kendo$data$Model,
+    action?: string,
+    index?: number,
+    items?: kendo$data$DataSourceItemOrGroup[],
+    node?: any
+  } & kendo$data$DataSourceEvent;
+
+  declare type kendo$data$DataSourcePushEvent = {
+    items?: kendo$data$DataSourceItemOrGroup[],
+    type?: string
+  } & kendo$data$DataSourceEvent;
+
+  declare type kendo$data$DataSourceErrorEvent = {
+    xhr: JQueryXHR,
+    status: string,
+    errorThrown: any,
+    errors?: any
+  } & kendo$data$DataSourceEvent;
+
+  declare type kendo$data$DataSourceRequestStartEvent = {
+    type?: string,
+    preventDefault(): void
+  } & kendo$data$DataSourceEvent;
+
+  declare type kendo$data$DataSourceRequestEndEvent = {
+    response?: any,
+    type?: string
+  } & kendo$data$DataSourceEvent;
 
   declare var npm$namespace$kendo$data$transports: {
     odata: typeof kendo$data$transports$odata
   };
-  declare var kendo$data$transports$odata: data$DataSourceTransport;
+  declare var kendo$data$transports$odata: kendo$data$DataSourceTransport;
 
   declare var npm$namespace$kendo$ui: {
+    progress: typeof kendo$ui$progress,
+    plugin: typeof kendo$ui$plugin,
+
+    Widget: typeof kendo$ui$Widget,
+    Draggable: typeof kendo$ui$Draggable,
+    DropTarget: typeof kendo$ui$DropTarget,
+    DropTargetArea: typeof kendo$ui$DropTargetArea,
     Alert: typeof kendo$ui$Alert,
     AutoComplete: typeof kendo$ui$AutoComplete,
     Button: typeof kendo$ui$Button,
@@ -602,15 +1623,265 @@ declare module "kendo-ui" {
     TreeView: typeof kendo$ui$TreeView,
     Upload: typeof kendo$ui$Upload,
     Validator: typeof kendo$ui$Validator,
-    Window: typeof kendo$ui$Window
+    Window: typeof kendo$ui$Window,
+    editor: typeof npm$namespace$kendo$ui$editor
   };
-  declare class kendo$ui$Alert mixins undefined.Dialog {
+  declare function kendo$ui$progress(container: JQuery, toggle: boolean): void;
+
+  declare class kendo$ui$Widget mixins kendo$Observable {
+    static fn: any;
+    element: JQuery;
+    options: any;
+    events: string[];
+    static extend(prototype: Object): kendo$ui$Widget;
+    constructor(element: kendo$effects$Element, options?: Object): this;
+    constructor(element: JQuery, options?: Object): this;
+    constructor(selector: String, options?: Object): this;
+    init(element: kendo$effects$Element, options?: Object): void;
+    init(element: JQuery, options?: Object): void;
+    init(selector: String, options?: Object): void;
+    destroy(): void;
+    setOptions(options: Object): void;
+    resize(force?: boolean): void;
+  }
+
+  declare function kendo$ui$plugin(
+    widget: typeof kendo$ui$Widget,
+    register?: typeof kendo$ui,
+    prefix?: String
+  ): void;
+
+  declare function kendo$ui$plugin(
+    widget: any,
+    register?: typeof kendo$ui,
+    prefix?: String
+  ): void;
+
+  declare function kendo$ui$plugin(
+    widget: typeof kendo$ui$Widget,
+    register?: typeof kendo$mobile$ui,
+    prefix?: String
+  ): void;
+
+  declare function kendo$ui$plugin(
+    widget: any,
+    register?: typeof kendo$mobile$ui,
+    prefix?: String
+  ): void;
+
+  declare function kendo$ui$plugin(
+    widget: typeof kendo$ui$Widget,
+    register?: typeof kendo$dataviz$ui,
+    prefix?: String
+  ): void;
+
+  declare function kendo$ui$plugin(
+    widget: any,
+    register?: typeof kendo$dataviz$ui,
+    prefix?: String
+  ): void;
+
+  declare class kendo$ui$Draggable mixins kendo$ui$Widget {
+    element: JQuery;
+    currentTarget: JQuery;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DraggableOptions
+    ): this;
+    options: ui$DraggableOptions;
+    cancelHold(): void;
+  }
+
+  declare interface kendo$ui$DraggableEvent {
+    sender?: kendo$ui$Draggable;
+  }
+
+  declare class kendo$ui$DropTarget mixins kendo$ui$Widget {
+    element: JQuery;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DropTargetOptions
+    ): this;
+    options: ui$DropTargetOptions;
+    static destroyGroup(groupName: string): void;
+  }
+
+  declare interface kendo$ui$DropTargetOptions {
+    group?: string;
+    dragenter?: (e: ui$DropTargetDragenterEvent) => void;
+    dragleave?: (e: ui$DropTargetDragleaveEvent) => void;
+    drop?: (e: ui$DropTargetDropEvent) => void;
+  }
+
+  declare type kendo$ui$DropTargetEvent = {
+    sender?: kendo$ui$DropTarget,
+    draggable?: kendo$ui$Draggable,
+    dropTarget?: JQuery
+  } & JQueryEventObject;
+
+  declare type kendo$ui$DropTargetDragenterEvent = {} & kendo$ui$DropTargetEvent;
+
+  declare type kendo$ui$DropTargetDragleaveEvent = {} & kendo$ui$DropTargetEvent;
+
+  declare type kendo$ui$DropTargetDropEvent = {} & kendo$ui$DropTargetEvent;
+
+  declare class kendo$ui$DropTargetArea mixins kendo$ui$Widget {
+    element: JQuery;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DropTargetAreaOptions
+    ): this;
+    options: ui$DropTargetAreaOptions;
+  }
+
+  declare interface kendo$ui$DropTargetAreaOptions {
+    group?: string;
+    filter?: string;
+    dragenter?: (e: ui$DropTargetAreaDragenterEvent) => void;
+    dragleave?: (e: ui$DropTargetAreaDragleaveEvent) => void;
+    drop?: (e: ui$DropTargetAreaDropEvent) => void;
+  }
+
+  declare interface kendo$ui$DropTargetAreaEvent {
+    sender: kendo$ui$DropTargetArea;
+  }
+
+  declare type kendo$ui$DropTargetAreaDragenterEvent = {
+    draggable?: kendo$ui$Draggable,
+    dropTarget?: JQuery,
+    target?: kendo$effects$Element
+  } & kendo$ui$DropTargetAreaEvent;
+
+  declare type kendo$ui$DropTargetAreaDragleaveEvent = {
+    draggable?: kendo$ui$Draggable,
+    dropTarget?: JQuery,
+    target?: kendo$effects$Element
+  } & kendo$ui$DropTargetAreaEvent;
+
+  declare type kendo$ui$DropTargetAreaDropEvent = {
+    draggable?: kendo$ui$Draggable,
+    dropTarget?: JQuery,
+    target?: kendo$effects$Element
+  } & kendo$ui$DropTargetAreaEvent;
+
+  declare interface kendo$ui$DraggableOptions {
+    axis?: string;
+    autoScroll?: boolean;
+    container?: JQuery;
+    cursorOffset?: any;
+    distance?: number;
+    filter?: string;
+    group?: string;
+    hint?: Function | JQuery;
+    holdToDrag?: boolean;
+    ignore?: string;
+    drag?: (e: kendo$ui$DraggableEvent) => void;
+    dragcancel?: (e: kendo$ui$DraggableEvent) => void;
+    dragend?: (e: kendo$ui$DraggableEvent) => void;
+    dragstart?: (e: kendo$ui$DraggableEvent) => void;
+    hold?: (e: kendo$ui$DraggableEvent) => void;
+  }
+
+  declare interface kendo$ui$GridColumnEditorOptions {
+    field?: string;
+    format?: string;
+    model?: kendo$data$Model;
+    values?: any[];
+  }
+
+  declare interface kendo$ui$GridColumn {
+    editor?: (
+      container: JQuery,
+      options: kendo$ui$GridColumnEditorOptions
+    ) => void;
+    aggregates?: any;
+    attributes?: any;
+    columns?: any;
+    command?:
+      | string
+      | string[]
+      | ui$GridColumnCommandItem
+      | ui$GridColumnCommandItem[];
+    editable?: Function;
+    encoded?: boolean;
+    field?: string;
+    filterable?: boolean | ui$GridColumnFilterable;
+    footerAttributes?: any;
+    footerTemplate?: string | Function;
+    format?: string;
+    groupable?: boolean | ui$GridColumnGroupable;
+    groupHeaderColumnTemplate?: string | Function;
+    groupHeaderTemplate?: string | Function;
+    groupFooterTemplate?: string | Function;
+    headerAttributes?: any;
+    headerTemplate?: string | Function;
+    hidden?: boolean;
+    locked?: boolean;
+    lockable?: boolean;
+    media?: string;
+    minResizableWidth?: number;
+    minScreenWidth?: number;
+    selectable?: boolean;
+    sortable?: boolean | ui$GridColumnSortable;
+    template?: string | Function;
+    title?: string;
+    width?: string | number;
+    values?: any;
+    menu?: boolean;
+  }
+
+  declare interface kendo$ui$TreeListEditorOptions {
+    field?: string;
+    format?: string;
+    model?: kendo$data$Model;
+    values?: any[];
+  }
+
+  declare interface kendo$ui$TreeListColumn {
+    editor?: (
+      container: JQuery,
+      options: kendo$ui$TreeListEditorOptions
+    ) => void;
+    attributes?: any;
+    columns?: any;
+    command?: ui$TreeListColumnCommandItem[];
+    editable?: Function;
+    encoded?: boolean;
+    expandable?: boolean;
+    field?: string;
+    filterable?: boolean | ui$TreeListColumnFilterable;
+    footerTemplate?: string | Function;
+    format?: string;
+    headerAttributes?: any;
+    headerTemplate?: string | Function;
+    minScreenWidth?: number;
+    sortable?: boolean | ui$TreeListColumnSortable;
+    template?: string | Function;
+    title?: string;
+    width?: string | number;
+    hidden?: boolean;
+    menu?: boolean;
+    locked?: boolean;
+    lockable?: boolean;
+  }
+
+  declare var npm$namespace$kendo$ui$editor: {
+    Toolbar: typeof kendo$ui$editor$Toolbar
+  };
+  declare class kendo$ui$editor$Toolbar mixins kendo$ui$Widget {
+    window: kendo$ui$Window;
+  }
+
+  declare class kendo$ui$Alert mixins kendo$ui$Dialog {
     static fn: kendo$ui$Alert;
     options: ui$AlertOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Alert;
-    constructor(element: drawing$Element, options?: ui$AlertOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$AlertOptions
+    ): this;
   }
 
   declare interface kendo$ui$AlertMessages {
@@ -628,22 +1899,22 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$AutoComplete mixins undefined.Widget {
+  declare class kendo$ui$AutoComplete mixins kendo$ui$Widget {
     static fn: kendo$ui$AutoComplete;
     options: ui$AutoCompleteOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     list: JQuery;
     ul: JQuery;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$AutoComplete;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$AutoCompleteOptions
     ): this;
     close(): void;
     dataItem(index: number): any;
-    dataItem(index: drawing$Element): any;
+    dataItem(index: kendo$effects$Element): any;
     dataItem(index: JQuery): any;
     destroy(): void;
     enable(enable: boolean): void;
@@ -653,9 +1924,9 @@ declare module "kendo-ui" {
     refresh(): void;
     search(word: string): void;
     select(item: string): void;
-    select(item: drawing$Element): void;
+    select(item: kendo$effects$Element): void;
     select(item: JQuery): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
     suggest(value: string): void;
     value(): string;
     value(value: string): void;
@@ -686,7 +1957,7 @@ declare module "kendo-ui" {
     name?: string;
     animation?: boolean | kendo$ui$AutoCompleteAnimation;
     autoWidth?: boolean;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     clearButton?: boolean;
     dataTextField?: string;
     delay?: number;
@@ -724,30 +1995,33 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$AutoCompleteChangeEvent = {} & AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteChangeEvent = {} & kendo$ui$AutoCompleteEvent;
 
-  declare type kendo$ui$AutoCompleteCloseEvent = {} & AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteCloseEvent = {} & kendo$ui$AutoCompleteEvent;
 
-  declare type kendo$ui$AutoCompleteDataBoundEvent = {} & AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteDataBoundEvent = {} & kendo$ui$AutoCompleteEvent;
 
   declare type kendo$ui$AutoCompleteFilteringEvent = {
     filter?: any
-  } & AutoCompleteEvent;
+  } & kendo$ui$AutoCompleteEvent;
 
-  declare type kendo$ui$AutoCompleteOpenEvent = {} & AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteOpenEvent = {} & kendo$ui$AutoCompleteEvent;
 
   declare type kendo$ui$AutoCompleteSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & AutoCompleteEvent;
+  } & kendo$ui$AutoCompleteEvent;
 
-  declare class kendo$ui$Button mixins undefined.Widget {
+  declare class kendo$ui$Button mixins kendo$ui$Widget {
     static fn: kendo$ui$Button;
     options: ui$ButtonOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Button;
-    constructor(element: drawing$Element, options?: ui$ButtonOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ButtonOptions
+    ): this;
     enable(toggle: boolean): void;
   }
 
@@ -759,37 +2033,26 @@ declare module "kendo-ui" {
     imageUrl?: string;
     spriteCssClass?: string;
     click?: (e: ui$ButtonClickEvent) => void;
-    name?: string;
-    badge?: string;
-    clickOn?: string;
-    enable?: boolean;
-    icon?: string;
-    click?: (e: ui$ButtonClickEvent) => void;
   }
 
   declare interface kendo$ui$ButtonEvent {
     sender: kendo$ui$Button;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$ui$Button;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$ui$ButtonClickEvent = {
-    event?: any,
-    target?: JQuery,
-    button?: JQuery
-  } & ButtonEvent;
+    event?: any
+  } & kendo$ui$ButtonEvent;
 
-  declare class kendo$ui$ButtonGroup mixins undefined.Widget {
+  declare class kendo$ui$ButtonGroup mixins kendo$ui$Widget {
     static fn: kendo$ui$ButtonGroup;
     options: ui$ButtonGroupOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ButtonGroup;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$ButtonGroupOptions
     ): this;
     badge(button: string, value: string): string;
@@ -823,34 +2086,28 @@ declare module "kendo-ui" {
     selection?: string;
     items?: kendo$ui$ButtonGroupItem[];
     select?: (e: ui$ButtonGroupSelectEvent) => void;
-    name?: string;
-    enable?: boolean;
-    index?: number;
-    selectOn?: string;
-    select?: (e: ui$ButtonGroupSelectEvent) => void;
   }
 
   declare interface kendo$ui$ButtonGroupEvent {
     sender: kendo$ui$ButtonGroup;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$ui$ButtonGroup;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$ui$ButtonGroupSelectEvent = {
-    indices?: any,
-    index?: number
-  } & ButtonGroupEvent;
+    indices?: any
+  } & kendo$ui$ButtonGroupEvent;
 
-  declare class kendo$ui$Calendar mixins undefined.Widget {
+  declare class kendo$ui$Calendar mixins kendo$ui$Widget {
     static fn: kendo$ui$Calendar;
     options: ui$CalendarOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Calendar;
-    constructor(element: drawing$Element, options?: ui$CalendarOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$CalendarOptions
+    ): this;
     current(): Date;
     destroy(): void;
     max(): Date;
@@ -909,13 +2166,13 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$Chat mixins undefined.Widget {
+  declare class kendo$ui$Chat mixins kendo$ui$Widget {
     static fn: kendo$ui$Chat;
     options: ui$ChatOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Chat;
-    constructor(element: drawing$Element, options?: ui$ChatOptions): this;
+    constructor(element: kendo$effects$Element, options?: ui$ChatOptions): this;
     getUser(): any;
     postMessage(message: string): void;
     renderAttachments(options: any, sender: any): void;
@@ -983,30 +2240,30 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$ChatActionClickEvent = {
     text?: string
-  } & ChatEvent;
+  } & kendo$ui$ChatEvent;
 
   declare type kendo$ui$ChatPostEvent = {
     text?: string,
     timestamp?: Date,
     from?: any
-  } & ChatEvent;
+  } & kendo$ui$ChatEvent;
 
   declare type kendo$ui$ChatSendMessageEvent = {
     text?: string
-  } & ChatEvent;
+  } & kendo$ui$ChatEvent;
 
-  declare type kendo$ui$ChatTypingEndEvent = {} & ChatEvent;
+  declare type kendo$ui$ChatTypingEndEvent = {} & kendo$ui$ChatEvent;
 
-  declare type kendo$ui$ChatTypingStartEvent = {} & ChatEvent;
+  declare type kendo$ui$ChatTypingStartEvent = {} & kendo$ui$ChatEvent;
 
-  declare class kendo$ui$ColorPalette mixins undefined.Widget {
+  declare class kendo$ui$ColorPalette mixins kendo$ui$Widget {
     static fn: kendo$ui$ColorPalette;
     options: ui$ColorPaletteOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ColorPalette;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$ColorPaletteOptions
     ): this;
     value(): string;
@@ -1036,14 +2293,14 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$ColorPicker mixins undefined.Widget {
+  declare class kendo$ui$ColorPicker mixins kendo$ui$Widget {
     static fn: kendo$ui$ColorPicker;
     options: ui$ColorPickerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ColorPicker;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$ColorPickerOptions
     ): this;
     close(): void;
@@ -1093,23 +2350,26 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$ColorPickerChangeEvent = {
     value?: string
-  } & ColorPickerEvent;
+  } & kendo$ui$ColorPickerEvent;
 
   declare type kendo$ui$ColorPickerSelectEvent = {
     value?: string
-  } & ColorPickerEvent;
+  } & kendo$ui$ColorPickerEvent;
 
-  declare class kendo$ui$ComboBox mixins undefined.Widget {
+  declare class kendo$ui$ComboBox mixins kendo$ui$Widget {
     static fn: kendo$ui$ComboBox;
     options: ui$ComboBoxOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     input: JQuery;
     list: JQuery;
     ul: JQuery;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ComboBox;
-    constructor(element: drawing$Element, options?: ui$ComboBoxOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ComboBoxOptions
+    ): this;
     close(): void;
     dataItem(index?: number): any;
     destroy(): void;
@@ -1124,7 +2384,7 @@ declare module "kendo-ui" {
     select(li: JQuery): void;
     select(li: number): void;
     select(li: Function): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
     suggest(value: string): void;
     text(): string;
     text(text: string): void;
@@ -1168,7 +2428,7 @@ declare module "kendo-ui" {
     cascadeFrom?: string;
     cascadeFromField?: string;
     clearButton?: boolean;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
@@ -1209,33 +2469,36 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$ComboBoxChangeEvent = {} & ComboBoxEvent;
+  declare type kendo$ui$ComboBoxChangeEvent = {} & kendo$ui$ComboBoxEvent;
 
-  declare type kendo$ui$ComboBoxCloseEvent = {} & ComboBoxEvent;
+  declare type kendo$ui$ComboBoxCloseEvent = {} & kendo$ui$ComboBoxEvent;
 
-  declare type kendo$ui$ComboBoxDataBoundEvent = {} & ComboBoxEvent;
+  declare type kendo$ui$ComboBoxDataBoundEvent = {} & kendo$ui$ComboBoxEvent;
 
   declare type kendo$ui$ComboBoxFilteringEvent = {
     filter?: any
-  } & ComboBoxEvent;
+  } & kendo$ui$ComboBoxEvent;
 
-  declare type kendo$ui$ComboBoxOpenEvent = {} & ComboBoxEvent;
+  declare type kendo$ui$ComboBoxOpenEvent = {} & kendo$ui$ComboBoxEvent;
 
   declare type kendo$ui$ComboBoxSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & ComboBoxEvent;
+  } & kendo$ui$ComboBoxEvent;
 
-  declare type kendo$ui$ComboBoxCascadeEvent = {} & ComboBoxEvent;
+  declare type kendo$ui$ComboBoxCascadeEvent = {} & kendo$ui$ComboBoxEvent;
 
-  declare class kendo$ui$Confirm mixins undefined.Dialog {
+  declare class kendo$ui$Confirm mixins kendo$ui$Dialog {
     static fn: kendo$ui$Confirm;
     options: ui$ConfirmOptions;
     result: JQueryPromise<any>;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Confirm;
-    constructor(element: drawing$Element, options?: ui$ConfirmOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ConfirmOptions
+    ): this;
   }
 
   declare interface kendo$ui$ConfirmMessages {
@@ -1254,39 +2517,45 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$ContextMenu mixins undefined.Widget {
+  declare class kendo$ui$ContextMenu mixins kendo$ui$Widget {
     static fn: kendo$ui$ContextMenu;
     options: ui$ContextMenuOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ContextMenu;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$ContextMenuOptions
     ): this;
-    append(item: any, referenceItem?: string): kendo$uiContextMenu;
-    append(item: any, referenceItem?: JQuery): kendo$uiContextMenu;
-    close(element: drawing$Element): kendo$uiContextMenu;
-    close(element: JQuery): kendo$uiContextMenu;
+    append(item: any, referenceItem?: string): kendo$ui$ContextMenu;
+    append(item: any, referenceItem?: JQuery): kendo$ui$ContextMenu;
+    close(element: kendo$effects$Element): kendo$ui$ContextMenu;
+    close(element: JQuery): kendo$ui$ContextMenu;
     destroy(): void;
-    enable(element: string, enable: boolean): kendo$uiContextMenu;
-    enable(element: drawing$Element, enable: boolean): kendo$uiContextMenu;
-    enable(element: JQuery, enable: boolean): kendo$uiContextMenu;
-    insertAfter(item: any, referenceItem: string): kendo$uiContextMenu;
-    insertAfter(item: any, referenceItem: drawing$Element): kendo$uiContextMenu;
-    insertAfter(item: any, referenceItem: JQuery): kendo$uiContextMenu;
-    insertBefore(item: any, referenceItem: string): kendo$uiContextMenu;
+    enable(element: string, enable: boolean): kendo$ui$ContextMenu;
+    enable(
+      element: kendo$effects$Element,
+      enable: boolean
+    ): kendo$ui$ContextMenu;
+    enable(element: JQuery, enable: boolean): kendo$ui$ContextMenu;
+    insertAfter(item: any, referenceItem: string): kendo$ui$ContextMenu;
+    insertAfter(
+      item: any,
+      referenceItem: kendo$effects$Element
+    ): kendo$ui$ContextMenu;
+    insertAfter(item: any, referenceItem: JQuery): kendo$ui$ContextMenu;
+    insertBefore(item: any, referenceItem: string): kendo$ui$ContextMenu;
     insertBefore(
       item: any,
-      referenceItem: drawing$Element
-    ): kendo$uiContextMenu;
-    insertBefore(item: any, referenceItem: JQuery): kendo$uiContextMenu;
-    open(x: number, y?: number): kendo$uiContextMenu;
-    open(x: drawing$Element, y?: number): kendo$uiContextMenu;
-    open(x: JQuery, y?: number): kendo$uiContextMenu;
-    remove(element: string): kendo$uiContextMenu;
-    remove(element: drawing$Element): kendo$uiContextMenu;
-    remove(element: JQuery): kendo$uiContextMenu;
+      referenceItem: kendo$effects$Element
+    ): kendo$ui$ContextMenu;
+    insertBefore(item: any, referenceItem: JQuery): kendo$ui$ContextMenu;
+    open(x: number, y?: number): kendo$ui$ContextMenu;
+    open(x: kendo$effects$Element, y?: number): kendo$ui$ContextMenu;
+    open(x: JQuery, y?: number): kendo$ui$ContextMenu;
+    remove(element: string): kendo$ui$ContextMenu;
+    remove(element: kendo$effects$Element): kendo$ui$ContextMenu;
+    remove(element: JQuery): kendo$ui$ContextMenu;
   }
 
   declare interface kendo$ui$ContextMenuAnimationClose {
@@ -1333,44 +2602,47 @@ declare module "kendo-ui" {
   }
 
   declare type kendo$ui$ContextMenuCloseEvent = {
-    item?: drawing$Element,
+    item?: kendo$effects$Element,
     type?: string,
-    target?: drawing$Element,
+    target?: kendo$effects$Element,
     event?: JQueryEventObject
-  } & ContextMenuEvent;
+  } & kendo$ui$ContextMenuEvent;
 
   declare type kendo$ui$ContextMenuOpenEvent = {
-    item?: drawing$Element,
+    item?: kendo$effects$Element,
     type?: string,
-    target?: drawing$Element,
+    target?: kendo$effects$Element,
     event?: JQueryEventObject
-  } & ContextMenuEvent;
+  } & kendo$ui$ContextMenuEvent;
 
   declare type kendo$ui$ContextMenuActivateEvent = {
-    item?: drawing$Element,
+    item?: kendo$effects$Element,
     type?: string,
-    target?: drawing$Element
-  } & ContextMenuEvent;
+    target?: kendo$effects$Element
+  } & kendo$ui$ContextMenuEvent;
 
   declare type kendo$ui$ContextMenuDeactivateEvent = {
-    item?: drawing$Element,
+    item?: kendo$effects$Element,
     type?: string,
-    target?: drawing$Element
-  } & ContextMenuEvent;
+    target?: kendo$effects$Element
+  } & kendo$ui$ContextMenuEvent;
 
   declare type kendo$ui$ContextMenuSelectEvent = {
-    item?: drawing$Element,
+    item?: kendo$effects$Element,
     type?: string,
-    target?: drawing$Element
-  } & ContextMenuEvent;
+    target?: kendo$effects$Element
+  } & kendo$ui$ContextMenuEvent;
 
-  declare class kendo$ui$DateInput mixins undefined.Widget {
+  declare class kendo$ui$DateInput mixins kendo$ui$Widget {
     static fn: kendo$ui$DateInput;
     options: ui$DateInputOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$DateInput;
-    constructor(element: drawing$Element, options?: ui$DateInputOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DateInputOptions
+    ): this;
     destroy(): void;
     enable(enable: boolean): void;
     readonly(readonly: boolean): void;
@@ -1413,15 +2685,18 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$DateInputChangeEvent = {} & DateInputEvent;
+  declare type kendo$ui$DateInputChangeEvent = {} & kendo$ui$DateInputEvent;
 
-  declare class kendo$ui$DatePicker mixins undefined.Widget {
+  declare class kendo$ui$DatePicker mixins kendo$ui$Widget {
     static fn: kendo$ui$DatePicker;
     options: ui$DatePickerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$DatePicker;
-    constructor(element: drawing$Element, options?: ui$DatePickerOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DatePickerOptions
+    ): this;
     close(): void;
     destroy(): void;
     enable(enable: boolean): void;
@@ -1489,20 +2764,20 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$DatePickerChangeEvent = {} & DatePickerEvent;
+  declare type kendo$ui$DatePickerChangeEvent = {} & kendo$ui$DatePickerEvent;
 
-  declare type kendo$ui$DatePickerCloseEvent = {} & DatePickerEvent;
+  declare type kendo$ui$DatePickerCloseEvent = {} & kendo$ui$DatePickerEvent;
 
-  declare type kendo$ui$DatePickerOpenEvent = {} & DatePickerEvent;
+  declare type kendo$ui$DatePickerOpenEvent = {} & kendo$ui$DatePickerEvent;
 
-  declare class kendo$ui$DateRangePicker mixins undefined.Widget {
+  declare class kendo$ui$DateRangePicker mixins kendo$ui$Widget {
     static fn: kendo$ui$DateRangePicker;
     options: ui$DateRangePickerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$DateRangePicker;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$DateRangePickerOptions
     ): this;
     close(): void;
@@ -1565,20 +2840,20 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$DateRangePickerChangeEvent = {} & DateRangePickerEvent;
+  declare type kendo$ui$DateRangePickerChangeEvent = {} & kendo$ui$DateRangePickerEvent;
 
-  declare type kendo$ui$DateRangePickerCloseEvent = {} & DateRangePickerEvent;
+  declare type kendo$ui$DateRangePickerCloseEvent = {} & kendo$ui$DateRangePickerEvent;
 
-  declare type kendo$ui$DateRangePickerOpenEvent = {} & DateRangePickerEvent;
+  declare type kendo$ui$DateRangePickerOpenEvent = {} & kendo$ui$DateRangePickerEvent;
 
-  declare class kendo$ui$DateTimePicker mixins undefined.Widget {
+  declare class kendo$ui$DateTimePicker mixins kendo$ui$Widget {
     static fn: kendo$ui$DateTimePicker;
     options: ui$DateTimePickerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$DateTimePicker;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$DateTimePickerOptions
     ): this;
     close(view: string): void;
@@ -1651,32 +2926,35 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$DateTimePickerChangeEvent = {} & DateTimePickerEvent;
+  declare type kendo$ui$DateTimePickerChangeEvent = {} & kendo$ui$DateTimePickerEvent;
 
   declare type kendo$ui$DateTimePickerCloseEvent = {
     view?: string
-  } & DateTimePickerEvent;
+  } & kendo$ui$DateTimePickerEvent;
 
   declare type kendo$ui$DateTimePickerOpenEvent = {
     view?: string
-  } & DateTimePickerEvent;
+  } & kendo$ui$DateTimePickerEvent;
 
-  declare class kendo$ui$Dialog mixins undefined.Widget {
+  declare class kendo$ui$Dialog mixins kendo$ui$Widget {
     static fn: kendo$ui$Dialog;
     options: any;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Dialog;
-    constructor(element: drawing$Element, options?: ui$DialogOptions): this;
-    close(): kendo$uiDialog;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DialogOptions
+    ): this;
+    close(): kendo$ui$Dialog;
     content(): string;
-    content(content?: string): kendo$uiDialog;
-    content(content?: JQuery): kendo$uiDialog;
+    content(content?: string): kendo$ui$Dialog;
+    content(content?: JQuery): kendo$ui$Dialog;
     destroy(): void;
-    open(): kendo$uiDialog;
+    open(): kendo$ui$Dialog;
     title(): string;
-    title(text?: string): kendo$uiDialog;
-    toFront(): kendo$uiDialog;
+    title(text?: string): kendo$ui$Dialog;
+    toFront(): kendo$ui$Dialog;
   }
 
   declare interface kendo$ui$DialogAction {
@@ -1742,12 +3020,12 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$DialogCloseEvent = {
     userTriggered?: boolean
-  } & DialogEvent;
+  } & kendo$ui$DialogEvent;
 
-  declare class kendo$ui$DropDownList mixins undefined.Widget {
+  declare class kendo$ui$DropDownList mixins kendo$ui$Widget {
     static fn: kendo$ui$DropDownList;
     options: ui$DropDownListOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     span: JQuery;
     filterInput: JQuery;
     list: JQuery;
@@ -1756,7 +3034,7 @@ declare module "kendo-ui" {
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$DropDownList;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$DropDownListOptions
     ): this;
     close(): void;
@@ -1774,7 +3052,7 @@ declare module "kendo-ui" {
     select(li: JQuery): void;
     select(li: number): void;
     select(li: Function): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
     text(): string;
     text(text: string): void;
     toggle(toggle: boolean): void;
@@ -1816,7 +3094,7 @@ declare module "kendo-ui" {
     autoWidth?: boolean;
     cascadeFrom?: string;
     cascadeFromField?: string;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
@@ -1856,37 +3134,37 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$DropDownListChangeEvent = {} & DropDownListEvent;
+  declare type kendo$ui$DropDownListChangeEvent = {} & kendo$ui$DropDownListEvent;
 
-  declare type kendo$ui$DropDownListCloseEvent = {} & DropDownListEvent;
+  declare type kendo$ui$DropDownListCloseEvent = {} & kendo$ui$DropDownListEvent;
 
-  declare type kendo$ui$DropDownListDataBoundEvent = {} & DropDownListEvent;
+  declare type kendo$ui$DropDownListDataBoundEvent = {} & kendo$ui$DropDownListEvent;
 
   declare type kendo$ui$DropDownListFilteringEvent = {
     filter?: any
-  } & DropDownListEvent;
+  } & kendo$ui$DropDownListEvent;
 
-  declare type kendo$ui$DropDownListOpenEvent = {} & DropDownListEvent;
+  declare type kendo$ui$DropDownListOpenEvent = {} & kendo$ui$DropDownListEvent;
 
   declare type kendo$ui$DropDownListSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & DropDownListEvent;
+  } & kendo$ui$DropDownListEvent;
 
-  declare type kendo$ui$DropDownListCascadeEvent = {} & DropDownListEvent;
+  declare type kendo$ui$DropDownListCascadeEvent = {} & kendo$ui$DropDownListEvent;
 
-  declare class kendo$ui$DropDownTree mixins undefined.Widget {
+  declare class kendo$ui$DropDownTree mixins kendo$ui$Widget {
     static fn: kendo$ui$DropDownTree;
     options: ui$DropDownTreeOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     tagList: JQuery;
     tree: JQuery;
-    treeview: kendo$uiTreeView;
+    treeview: kendo$ui$TreeView;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$DropDownTree;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$DropDownTreeOptions
     ): this;
     close(): void;
@@ -1898,7 +3176,7 @@ declare module "kendo-ui" {
     readonly(readonly: boolean): void;
     refresh(): void;
     search(word: string): void;
-    setDataSource(dataSource: kendo$dataHierarchicalDataSource): void;
+    setDataSource(dataSource: kendo$data$HierarchicalDataSource): void;
     toggle(toggle?: boolean): void;
     value(): any;
     value(value: any): void;
@@ -1949,7 +3227,7 @@ declare module "kendo-ui" {
     checkboxes?: boolean | kendo$ui$DropDownTreeCheckboxes;
     clearButton?: boolean;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$dataHierarchicalDataSource;
+    dataSource?: any | any | kendo$data$HierarchicalDataSource;
     dataSpriteCssClassField?: string;
     dataTextField?: string | any;
     dataUrlField?: string;
@@ -1988,31 +3266,34 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$DropDownTreeChangeEvent = {} & DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeChangeEvent = {} & kendo$ui$DropDownTreeEvent;
 
-  declare type kendo$ui$DropDownTreeCloseEvent = {} & DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeCloseEvent = {} & kendo$ui$DropDownTreeEvent;
 
-  declare type kendo$ui$DropDownTreeDataBoundEvent = {} & DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeDataBoundEvent = {} & kendo$ui$DropDownTreeEvent;
 
   declare type kendo$ui$DropDownTreeFilteringEvent = {
     filter?: any
-  } & DropDownTreeEvent;
+  } & kendo$ui$DropDownTreeEvent;
 
-  declare type kendo$ui$DropDownTreeOpenEvent = {} & DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeOpenEvent = {} & kendo$ui$DropDownTreeEvent;
 
   declare type kendo$ui$DropDownTreeSelectEvent = {
-    node?: drawing$Element
-  } & DropDownTreeEvent;
+    node?: kendo$effects$Element
+  } & kendo$ui$DropDownTreeEvent;
 
-  declare class kendo$ui$Editor mixins undefined.Widget {
+  declare class kendo$ui$Editor mixins kendo$ui$Widget {
     static fn: kendo$ui$Editor;
     options: ui$EditorOptions;
-    body: drawing$Element;
-    toolbar: kendo$uieditorToolbar;
+    body: kendo$effects$Element;
+    toolbar: kendo$ui$editor$Toolbar;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Editor;
-    constructor(element: drawing$Element, options?: ui$EditorOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$EditorOptions
+    ): this;
     createRange(document?: Document): spreadsheet$Range;
     destroy(): void;
     encodedValue(): string;
@@ -2405,24 +3686,27 @@ declare module "kendo-ui" {
   declare type kendo$ui$EditorExecuteEvent = {
     name?: string,
     command?: any
-  } & EditorEvent;
+  } & kendo$ui$EditorEvent;
 
   declare type kendo$ui$EditorPasteEvent = {
     html?: any
-  } & EditorEvent;
+  } & kendo$ui$EditorEvent;
 
   declare type kendo$ui$EditorPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & EditorEvent;
+  } & kendo$ui$EditorEvent;
 
-  declare class kendo$ui$FilterMenu mixins undefined.Widget {
+  declare class kendo$ui$FilterMenu mixins kendo$ui$Widget {
     static fn: kendo$ui$FilterMenu;
     options: ui$FilterMenuOptions;
     field: string;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$FilterMenu;
-    constructor(element: drawing$Element, options?: ui$FilterMenuOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$FilterMenuOptions
+    ): this;
     clear(): void;
   }
 
@@ -2494,7 +3778,7 @@ declare module "kendo-ui" {
 
   declare interface kendo$ui$FilterMenuOptions {
     name?: string;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     extra?: boolean;
     field?: string;
     messages?: kendo$ui$FilterMenuMessages;
@@ -2507,14 +3791,14 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$FlatColorPicker mixins undefined.Widget {
+  declare class kendo$ui$FlatColorPicker mixins kendo$ui$Widget {
     static fn: kendo$ui$FlatColorPicker;
     options: ui$FlatColorPickerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$FlatColorPicker;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$FlatColorPickerOptions
     ): this;
     focus(): void;
@@ -2549,45 +3833,48 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$FlatColorPickerChangeEvent = {
     value?: string
-  } & FlatColorPickerEvent;
+  } & kendo$ui$FlatColorPickerEvent;
 
-  declare class kendo$ui$Gantt mixins undefined.Widget {
+  declare class kendo$ui$Gantt mixins kendo$ui$Widget {
     static fn: kendo$ui$Gantt;
     options: ui$GanttOptions;
-    dataSource: kendo$dataDataSource;
-    dependencies: kendo$dataGanttDependencyDataSource;
+    dataSource: kendo$data$DataSource;
+    dependencies: kendo$data$GanttDependencyDataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Gantt;
-    constructor(element: drawing$Element, options?: ui$GanttOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$GanttOptions
+    ): this;
     clearSelection(): void;
-    dataItem(row: string): kendo$dataGanttTask;
-    dataItem(row: drawing$Element): kendo$dataGanttTask;
-    dataItem(row: JQuery): kendo$dataGanttTask;
+    dataItem(row: string): kendo$data$GanttTask;
+    dataItem(row: kendo$effects$Element): kendo$data$GanttTask;
+    dataItem(row: JQuery): kendo$data$GanttTask;
     date(date?: Date): Date;
     destroy(): void;
     range(range?: any): any;
     refresh(): void;
     refreshDependencies(): void;
     removeDependency(dependency: string): void;
-    removeDependency(dependency: kendo$dataGanttDependency): void;
+    removeDependency(dependency: kendo$data$GanttDependency): void;
     removeTask(task: string): void;
-    removeTask(task: kendo$dataGanttTask): void;
+    removeTask(task: kendo$data$GanttTask): void;
     saveAsPDF(): JQueryPromise<any>;
     select(): JQuery;
     select(row: string): void;
-    select(row: drawing$Element): void;
+    select(row: kendo$effects$Element): void;
     select(row: JQuery): void;
-    setDataSource(dataSource: kendo$dataGanttDataSource): void;
+    setDataSource(dataSource: kendo$data$GanttDataSource): void;
     setDependenciesDataSource(
-      dataSource: kendo$dataGanttDependencyDataSource
+      dataSource: kendo$data$GanttDependencyDataSource
     ): void;
-    view(): kendo$uiGanttView;
+    view(): kendo$ui$GanttView;
     view(type?: string): void;
   }
 
   declare interface kendo$ui$GanttAssignments {
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataResourceIdField?: string;
     dataTaskIdField?: string;
     dataValueField?: string;
@@ -2695,7 +3982,7 @@ declare module "kendo-ui" {
   declare interface kendo$ui$GanttResources {
     dataFormatField?: string;
     dataColorField?: string;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataTextField?: string;
     field?: string;
   }
@@ -2737,9 +4024,9 @@ declare module "kendo-ui" {
     columnResizeHandleWidth?: number;
     columns?: kendo$ui$GanttColumn[];
     currentTimeMarker?: boolean | kendo$ui$GanttCurrentTimeMarker;
-    dataSource?: any | any | kendo$dataGanttDataSource;
+    dataSource?: any | any | kendo$data$GanttDataSource;
     date?: Date;
-    dependencies?: any | any | kendo$dataGanttDependencyDataSource;
+    dependencies?: any | any | kendo$data$GanttDependencyDataSource;
     editable?: boolean | kendo$ui$GanttEditable;
     navigatable?: boolean;
     workDayStart?: Date;
@@ -2788,90 +4075,90 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$GanttDataBindingEvent = {} & GanttEvent;
+  declare type kendo$ui$GanttDataBindingEvent = {} & kendo$ui$GanttEvent;
 
-  declare type kendo$ui$GanttDataBoundEvent = {} & GanttEvent;
+  declare type kendo$ui$GanttDataBoundEvent = {} & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttAddEvent = {
-    task?: kendo$dataGanttTask,
-    dependency?: kendo$dataGanttDependency
-  } & GanttEvent;
+    task?: kendo$data$GanttTask,
+    dependency?: kendo$data$GanttDependency
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttEditEvent = {
     container?: JQuery,
-    task?: kendo$dataGanttTask
-  } & GanttEvent;
+    task?: kendo$data$GanttTask
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttRemoveEvent = {
-    task?: kendo$dataGanttTask,
+    task?: kendo$data$GanttTask,
     dependencies?: any
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttCancelEvent = {
     container?: JQuery,
-    task?: kendo$dataGanttTask
-  } & GanttEvent;
+    task?: kendo$data$GanttTask
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttSaveEvent = {
-    task?: kendo$dataGanttTask,
+    task?: kendo$data$GanttTask,
     values?: any
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
-  declare type kendo$ui$GanttChangeEvent = {} & GanttEvent;
+  declare type kendo$ui$GanttChangeEvent = {} & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttColumnResizeEvent = {
     column?: any,
     newWidth?: number,
     oldWidth?: number
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttNavigateEvent = {
     view?: string
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttMoveStartEvent = {
-    task?: kendo$dataGanttTask
-  } & GanttEvent;
+    task?: kendo$data$GanttTask
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttMoveEvent = {
-    task?: kendo$dataGanttTask,
+    task?: kendo$data$GanttTask,
     start?: Date,
     end?: Date
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttMoveEndEvent = {
-    task?: kendo$dataGanttTask,
+    task?: kendo$data$GanttTask,
     start?: Date,
     end?: Date
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttResizeStartEvent = {
-    task?: kendo$dataGanttTask
-  } & GanttEvent;
+    task?: kendo$data$GanttTask
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttResizeEvent = {
-    task?: kendo$dataGanttTask,
+    task?: kendo$data$GanttTask,
     start?: Date,
     end?: Date
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
   declare type kendo$ui$GanttResizeEndEvent = {
-    task?: kendo$dataGanttTask,
+    task?: kendo$data$GanttTask,
     start?: Date,
     end?: Date
-  } & GanttEvent;
+  } & kendo$ui$GanttEvent;
 
-  declare class kendo$ui$Grid mixins undefined.Widget {
+  declare class kendo$ui$Grid mixins kendo$ui$Widget {
     static fn: kendo$ui$Grid;
     options: ui$GridOptions;
-    dataSource: kendo$dataDataSource;
-    columns: ui$GridColumn[];
+    dataSource: kendo$data$DataSource;
+    columns: kendo$ui$GridColumn[];
     footer: JQuery;
-    pager: kendo$uiPager;
+    pager: kendo$ui$Pager;
     table: JQuery;
     tbody: JQuery;
     thead: JQuery;
@@ -2882,7 +4169,7 @@ declare module "kendo-ui" {
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Grid;
-    constructor(element: drawing$Element, options?: ui$GridOptions): this;
+    constructor(element: kendo$effects$Element, options?: ui$GridOptions): this;
     addRow(): void;
     autoFitColumn(column: number): void;
     autoFitColumn(column: string): void;
@@ -2890,29 +4177,29 @@ declare module "kendo-ui" {
     cancelChanges(): void;
     cancelRow(): void;
     cellIndex(cell: string): number;
-    cellIndex(cell: drawing$Element): number;
+    cellIndex(cell: kendo$effects$Element): number;
     cellIndex(cell: JQuery): number;
     clearSelection(): void;
     closeCell(isCancel?: boolean): void;
     collapseGroup(row: string): void;
-    collapseGroup(row: drawing$Element): void;
+    collapseGroup(row: kendo$effects$Element): void;
     collapseGroup(row: JQuery): void;
     collapseRow(row: string): void;
-    collapseRow(row: drawing$Element): void;
+    collapseRow(row: kendo$effects$Element): void;
     collapseRow(row: JQuery): void;
     current(): JQuery;
     current(cell: JQuery): void;
-    dataItem(row: string): kendo$dataObservableObject;
-    dataItem(row: drawing$Element): kendo$dataObservableObject;
-    dataItem(row: JQuery): kendo$dataObservableObject;
+    dataItem(row: string): kendo$data$ObservableObject;
+    dataItem(row: kendo$effects$Element): kendo$data$ObservableObject;
+    dataItem(row: JQuery): kendo$data$ObservableObject;
     destroy(): void;
     editCell(cell: JQuery): void;
     editRow(row: JQuery): void;
     expandGroup(row: string): void;
-    expandGroup(row: drawing$Element): void;
+    expandGroup(row: kendo$effects$Element): void;
     expandGroup(row: JQuery): void;
     expandRow(row: string): void;
-    expandRow(row: drawing$Element): void;
+    expandRow(row: kendo$effects$Element): void;
     expandRow(row: JQuery): void;
     getOptions(): ui$GridOptions;
     hideColumn(column: number): void;
@@ -2923,7 +4210,7 @@ declare module "kendo-ui" {
     lockColumn(column: string): void;
     refresh(): void;
     removeRow(row: string): void;
-    removeRow(row: drawing$Element): void;
+    removeRow(row: kendo$effects$Element): void;
     removeRow(row: JQuery): void;
     reorderColumn(destIndex: number, column: any): void;
     resizeColumn(column: any, value: number): void;
@@ -2933,10 +4220,10 @@ declare module "kendo-ui" {
     saveRow(): void;
     select(): JQuery;
     select(rows: string): void;
-    select(rows: drawing$Element): void;
+    select(rows: kendo$effects$Element): void;
     select(rows: JQuery): void;
     selectedKeyNames(): any;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
     setOptions(options: any): void;
     showColumn(column: number): void;
     showColumn(column: string): void;
@@ -2990,7 +4277,7 @@ declare module "kendo-ui" {
   }
 
   declare interface kendo$ui$GridColumnFilterableCell {
-    dataSource?: any | kendo$dataDataSource;
+    dataSource?: any | kendo$data$DataSource;
     dataTextField?: string;
     delay?: number;
     inputWidth?: number;
@@ -3006,7 +4293,7 @@ declare module "kendo-ui" {
     cell?: kendo$ui$GridColumnFilterableCell;
     extra?: boolean;
     multi?: boolean;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     checkAll?: boolean;
     itemTemplate?: Function;
     operators?: any;
@@ -3024,44 +4311,6 @@ declare module "kendo-ui" {
     allowUnsort?: boolean;
     compare?: Function;
     initialDirection?: string;
-  }
-
-  declare interface kendo$ui$GridColumn {
-    editor?: (container: JQuery, options: ui$GridColumnEditorOptions) => void;
-    aggregates?: any;
-    attributes?: any;
-    columns?: any;
-    command?:
-      | string
-      | string[]
-      | kendo$ui$GridColumnCommandItem
-      | kendo$ui$GridColumnCommandItem[];
-    editable?: Function;
-    encoded?: boolean;
-    field?: string;
-    filterable?: boolean | kendo$ui$GridColumnFilterable;
-    footerAttributes?: any;
-    footerTemplate?: string | Function;
-    format?: string;
-    groupable?: boolean | kendo$ui$GridColumnGroupable;
-    groupHeaderColumnTemplate?: string | Function;
-    groupHeaderTemplate?: string | Function;
-    groupFooterTemplate?: string | Function;
-    headerAttributes?: any;
-    headerTemplate?: string | Function;
-    hidden?: boolean;
-    locked?: boolean;
-    lockable?: boolean;
-    media?: string;
-    minResizableWidth?: number;
-    minScreenWidth?: number;
-    selectable?: boolean;
-    sortable?: boolean | kendo$ui$GridColumnSortable;
-    template?: string | Function;
-    title?: string;
-    width?: string | number;
-    values?: any;
-    menu?: boolean;
   }
 
   declare interface kendo$ui$GridEditable {
@@ -3273,7 +4522,7 @@ declare module "kendo-ui" {
     columnResizeHandleWidth?: number;
     columns?: kendo$ui$GridColumn[];
     columnMenu?: boolean | kendo$ui$GridColumnMenu;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     detailTemplate?: string | Function;
     editable?: boolean | string | kendo$ui$GridEditable;
     excel?: kendo$ui$GridExcel;
@@ -3335,183 +4584,186 @@ declare module "kendo-ui" {
   }
 
   declare type kendo$ui$GridBeforeEditEvent = {
-    model?: kendo$dataModel
-  } & GridEvent;
+    model?: kendo$data$Model
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridCancelEvent = {
     container?: JQuery,
-    model?: kendo$dataModel
-  } & GridEvent;
+    model?: kendo$data$Model
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridCellCloseEvent = {
     container?: JQuery,
-    model?: kendo$dataModel,
+    model?: kendo$data$Model,
     type?: string
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
-  declare type kendo$ui$GridChangeEvent = {} & GridEvent;
+  declare type kendo$ui$GridChangeEvent = {} & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnHideEvent = {
     column?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnLockEvent = {
     column?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnReorderEvent = {
     column?: any,
     newIndex?: number,
     oldIndex?: number
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnResizeEvent = {
     column?: any,
     newWidth?: number,
     oldWidth?: number
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnShowEvent = {
     column?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridColumnUnlockEvent = {
     column?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridDataBindingEvent = {
     action?: string,
     index?: number,
     items?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
-  declare type kendo$ui$GridDataBoundEvent = {} & GridEvent;
+  declare type kendo$ui$GridDataBoundEvent = {} & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridDetailCollapseEvent = {
     detailRow?: JQuery,
     masterRow?: JQuery
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridDetailExpandEvent = {
     detailRow?: JQuery,
     masterRow?: JQuery
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridDetailInitEvent = {
-    data?: kendo$dataObservableObject,
+    data?: kendo$data$ObservableObject,
     detailCell?: JQuery,
     detailRow?: JQuery,
     masterRow?: JQuery
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridEditEvent = {
     container?: JQuery,
-    model?: kendo$dataModel
-  } & GridEvent;
+    model?: kendo$data$Model
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridExcelExportEvent = {
     data?: any,
-    workbook?: kendo$ooxmlWorkbook
-  } & GridEvent;
+    workbook?: kendo$ooxml$Workbook
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridFilterEvent = {
     filter?: any,
     field?: string
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridFilterMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridFilterMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridGroupEvent = {
     groups?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridGroupCollapseEvent = {
     element?: JQuery,
     group?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridGroupExpandEvent = {
     element?: JQuery,
     group?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridNavigateEvent = {
     element?: JQuery
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridPageEvent = {
     page?: number
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridRemoveEvent = {
-    model?: kendo$dataModel,
+    model?: kendo$data$Model,
     row?: JQuery
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridSaveEvent = {
-    model?: kendo$dataModel,
+    model?: kendo$data$Model,
     container?: JQuery,
     values?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
-  declare type kendo$ui$GridSaveChangesEvent = {} & GridEvent;
+  declare type kendo$ui$GridSaveChangesEvent = {} & kendo$ui$GridEvent;
 
   declare type kendo$ui$GridSortEvent = {
     sort?: any
-  } & GridEvent;
+  } & kendo$ui$GridEvent;
 
-  declare class kendo$ui$ListBox mixins undefined.Widget {
+  declare class kendo$ui$ListBox mixins kendo$ui$Widget {
     static fn: kendo$ui$ListBox;
     options: ui$ListBoxOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ListBox;
-    constructor(element: drawing$Element, options?: ui$ListBoxOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ListBoxOptions
+    ): this;
     clearSelection(): void;
-    dataItem(element: JQuery): kendo$dataObservableObject;
-    dataItem(element: drawing$Element): kendo$dataObservableObject;
-    dataItem(element: string): kendo$dataObservableObject;
-    dataItems(): kendo$dataObservableArray;
+    dataItem(element: JQuery): kendo$data$ObservableObject;
+    dataItem(element: kendo$effects$Element): kendo$data$ObservableObject;
+    dataItem(element: string): kendo$data$ObservableObject;
+    dataItems(): kendo$data$ObservableArray;
     destroy(): void;
     enable(element: JQuery, enable?: boolean): void;
-    enable(element: drawing$Element, enable?: boolean): void;
+    enable(element: kendo$effects$Element, enable?: boolean): void;
     enable(element: string, enable?: boolean): void;
     items(): any;
     refresh(): void;
     reorder(element: JQuery, index: number): void;
-    reorder(element: drawing$Element, index: number): void;
+    reorder(element: kendo$effects$Element, index: number): void;
     reorder(element: string, index: number): void;
     remove(element: JQuery): void;
-    remove(element: drawing$Element): void;
+    remove(element: kendo$effects$Element): void;
     remove(element: string): void;
     remove(element: any): void;
     select(): JQuery;
     select(items: JQuery): void;
     select(items: any): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
   }
 
   declare interface kendo$ui$ListBoxDraggable {
@@ -3543,7 +4795,7 @@ declare module "kendo-ui" {
     name?: string;
     autoBind?: boolean;
     connectWith?: string;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataTextField?: string;
     dataValueField?: string;
     draggable?: boolean | kendo$ui$ListBoxDraggable;
@@ -3573,56 +4825,59 @@ declare module "kendo-ui" {
   declare type kendo$ui$ListBoxAddEvent = {
     items?: any,
     dataItems?: any
-  } & ListBoxEvent;
+  } & kendo$ui$ListBoxEvent;
 
   declare type kendo$ui$ListBoxDragstartEvent = {
     draggableEvent?: any,
     items?: JQuery
-  } & ListBoxEvent;
+  } & kendo$ui$ListBoxEvent;
 
   declare type kendo$ui$ListBoxDragEvent = {
     items?: JQuery,
     dataItems?: any,
     draggableEvent?: any
-  } & ListBoxEvent;
+  } & kendo$ui$ListBoxEvent;
 
   declare type kendo$ui$ListBoxDropEvent = {
     items?: any,
     dataItems?: any
-  } & ListBoxEvent;
+  } & kendo$ui$ListBoxEvent;
 
   declare type kendo$ui$ListBoxDragendEvent = {
     items?: any,
     dataItems?: any,
     draggableEvent?: any
-  } & ListBoxEvent;
+  } & kendo$ui$ListBoxEvent;
 
   declare type kendo$ui$ListBoxRemoveEvent = {
     items?: any,
     dataItems?: any
-  } & ListBoxEvent;
+  } & kendo$ui$ListBoxEvent;
 
   declare type kendo$ui$ListBoxReorderEvent = {
     items?: any,
     dataItems?: any,
     offset?: number
-  } & ListBoxEvent;
+  } & kendo$ui$ListBoxEvent;
 
-  declare class kendo$ui$ListView mixins undefined.Widget {
+  declare class kendo$ui$ListView mixins kendo$ui$Widget {
     static fn: kendo$ui$ListView;
     options: ui$ListViewOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ListView;
-    constructor(element: drawing$Element, options?: ui$ListViewOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ListViewOptions
+    ): this;
     add(): void;
     cancel(): void;
     clearSelection(): void;
-    dataItem(row: string): kendo$dataObservableObject;
-    dataItem(row: drawing$Element): kendo$dataObservableObject;
-    dataItem(row: JQuery): kendo$dataObservableObject;
-    dataItems(): kendo$dataObservableArray;
+    dataItem(row: string): kendo$data$ObservableObject;
+    dataItem(row: kendo$effects$Element): kendo$data$ObservableObject;
+    dataItem(row: JQuery): kendo$data$ObservableObject;
+    dataItems(): kendo$data$ObservableArray;
     destroy(): void;
     edit(item: JQuery): void;
     items(): any;
@@ -3632,13 +4887,13 @@ declare module "kendo-ui" {
     select(): JQuery;
     select(items: JQuery): void;
     select(items: any): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
   }
 
   declare interface kendo$ui$ListViewOptions {
     name?: string;
     autoBind?: boolean;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     editTemplate?: Function;
     navigatable?: boolean;
     selectable?: boolean | string;
@@ -3651,32 +4906,9 @@ declare module "kendo-ui" {
     edit?: (e: ui$ListViewEditEvent) => void;
     remove?: (e: ui$ListViewRemoveEvent) => void;
     save?: (e: ui$ListViewSaveEvent) => void;
-    name?: string;
-    appendOnRefresh?: boolean;
-    autoBind?: boolean;
-    dataSource?: kendo$dataDataSource | any;
-    endlessScroll?: boolean;
-    fixedHeaders?: boolean;
-    headerTemplate?: string | Function;
-    loadMore?: boolean;
-    messages?: ui$ListViewMessages;
-    pullToRefresh?: boolean;
-    pullParameters?: Function;
-    style?: string;
-    template?: string | Function;
-    type?: string;
-    filterable?: boolean | ui$ListViewFilterable;
-    virtualViewSize?: number;
-    click?: (e: ui$ListViewClickEvent) => void;
-    dataBound?: (e: ui$ListViewEvent) => void;
-    dataBinding?: (e: ui$ListViewEvent) => void;
-    itemChange?: (e: ui$ListViewEvent) => void;
   }
 
   declare interface kendo$ui$ListViewEvent {
-    sender: kendo$ui$ListView;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
     sender: kendo$ui$ListView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
@@ -3684,32 +4916,32 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$ListViewCancelEvent = {
     container?: JQuery,
-    model?: kendo$dataModel
-  } & ListViewEvent;
+    model?: kendo$data$Model
+  } & kendo$ui$ListViewEvent;
 
   declare type kendo$ui$ListViewEditEvent = {
     item?: JQuery,
-    model?: kendo$dataModel
-  } & ListViewEvent;
+    model?: kendo$data$Model
+  } & kendo$ui$ListViewEvent;
 
   declare type kendo$ui$ListViewRemoveEvent = {
     item?: JQuery,
-    model?: kendo$dataModel
-  } & ListViewEvent;
+    model?: kendo$data$Model
+  } & kendo$ui$ListViewEvent;
 
   declare type kendo$ui$ListViewSaveEvent = {
-    model?: kendo$dataModel,
+    model?: kendo$data$Model,
     item?: JQuery
-  } & ListViewEvent;
+  } & kendo$ui$ListViewEvent;
 
-  declare class kendo$ui$MaskedTextBox mixins undefined.Widget {
+  declare class kendo$ui$MaskedTextBox mixins kendo$ui$Widget {
     static fn: kendo$ui$MaskedTextBox;
     options: ui$MaskedTextBoxOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$MaskedTextBox;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$MaskedTextBoxOptions
     ): this;
     destroy(): void;
@@ -3738,16 +4970,16 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$MaskedTextBoxChangeEvent = {} & MaskedTextBoxEvent;
+  declare type kendo$ui$MaskedTextBoxChangeEvent = {} & kendo$ui$MaskedTextBoxEvent;
 
-  declare class kendo$ui$MediaPlayer mixins undefined.Widget {
+  declare class kendo$ui$MediaPlayer mixins kendo$ui$Widget {
     static fn: kendo$ui$MediaPlayer;
     options: ui$MediaPlayerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$MediaPlayer;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$MediaPlayerOptions
     ): this;
     fullScreen(): boolean;
@@ -3765,7 +4997,7 @@ declare module "kendo-ui" {
     seek(milliseconds: number): number;
     stop(): void;
     titlebar(): JQuery;
-    toolbar(): kendo$uiToolBar;
+    toolbar(): kendo$ui$ToolBar;
   }
 
   declare interface kendo$ui$MediaPlayerMedia {
@@ -3807,34 +5039,37 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$Menu mixins undefined.Widget {
+  declare class kendo$ui$Menu mixins kendo$ui$Widget {
     static fn: kendo$ui$Menu;
     options: ui$MenuOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Menu;
-    constructor(element: drawing$Element, options?: ui$MenuOptions): this;
-    append(item: any, referenceItem?: string): kendo$uiMenu;
-    append(item: any, referenceItem?: JQuery): kendo$uiMenu;
-    close(element: string): kendo$uiMenu;
-    close(element: drawing$Element): kendo$uiMenu;
-    close(element: JQuery): kendo$uiMenu;
+    constructor(element: kendo$effects$Element, options?: ui$MenuOptions): this;
+    append(item: any, referenceItem?: string): kendo$ui$Menu;
+    append(item: any, referenceItem?: JQuery): kendo$ui$Menu;
+    close(element: string): kendo$ui$Menu;
+    close(element: kendo$effects$Element): kendo$ui$Menu;
+    close(element: JQuery): kendo$ui$Menu;
     destroy(): void;
-    enable(element: string, enable: boolean): kendo$uiMenu;
-    enable(element: drawing$Element, enable: boolean): kendo$uiMenu;
-    enable(element: JQuery, enable: boolean): kendo$uiMenu;
-    insertAfter(item: any, referenceItem: string): kendo$uiMenu;
-    insertAfter(item: any, referenceItem: drawing$Element): kendo$uiMenu;
-    insertAfter(item: any, referenceItem: JQuery): kendo$uiMenu;
-    insertBefore(item: any, referenceItem: string): kendo$uiMenu;
-    insertBefore(item: any, referenceItem: drawing$Element): kendo$uiMenu;
-    insertBefore(item: any, referenceItem: JQuery): kendo$uiMenu;
-    open(element: string): kendo$uiMenu;
-    open(element: drawing$Element): kendo$uiMenu;
-    open(element: JQuery): kendo$uiMenu;
-    remove(element: string): kendo$uiMenu;
-    remove(element: drawing$Element): kendo$uiMenu;
-    remove(element: JQuery): kendo$uiMenu;
+    enable(element: string, enable: boolean): kendo$ui$Menu;
+    enable(element: kendo$effects$Element, enable: boolean): kendo$ui$Menu;
+    enable(element: JQuery, enable: boolean): kendo$ui$Menu;
+    insertAfter(item: any, referenceItem: string): kendo$ui$Menu;
+    insertAfter(item: any, referenceItem: kendo$effects$Element): kendo$ui$Menu;
+    insertAfter(item: any, referenceItem: JQuery): kendo$ui$Menu;
+    insertBefore(item: any, referenceItem: string): kendo$ui$Menu;
+    insertBefore(
+      item: any,
+      referenceItem: kendo$effects$Element
+    ): kendo$ui$Menu;
+    insertBefore(item: any, referenceItem: JQuery): kendo$ui$Menu;
+    open(element: string): kendo$ui$Menu;
+    open(element: kendo$effects$Element): kendo$ui$Menu;
+    open(element: JQuery): kendo$ui$Menu;
+    remove(element: string): kendo$ui$Menu;
+    remove(element: kendo$effects$Element): kendo$ui$Menu;
+    remove(element: JQuery): kendo$ui$Menu;
   }
 
   declare interface kendo$ui$MenuAnimationClose {
@@ -3887,28 +5122,28 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$MenuCloseEvent = {
     item?: HTMLElement
-  } & MenuEvent;
+  } & kendo$ui$MenuEvent;
 
   declare type kendo$ui$MenuOpenEvent = {
     item?: HTMLElement
-  } & MenuEvent;
+  } & kendo$ui$MenuEvent;
 
   declare type kendo$ui$MenuActivateEvent = {
     item?: HTMLElement
-  } & MenuEvent;
+  } & kendo$ui$MenuEvent;
 
   declare type kendo$ui$MenuDeactivateEvent = {
     item?: HTMLElement
-  } & MenuEvent;
+  } & kendo$ui$MenuEvent;
 
   declare type kendo$ui$MenuSelectEvent = {
     item?: HTMLElement
-  } & MenuEvent;
+  } & kendo$ui$MenuEvent;
 
-  declare class kendo$ui$MultiColumnComboBox mixins undefined.Widget {
+  declare class kendo$ui$MultiColumnComboBox mixins kendo$ui$Widget {
     static fn: kendo$ui$MultiColumnComboBox;
     options: ui$MultiColumnComboBoxOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     input: JQuery;
     list: JQuery;
     ul: JQuery;
@@ -3916,7 +5151,7 @@ declare module "kendo-ui" {
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$MultiColumnComboBox;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$MultiColumnComboBoxOptions
     ): this;
     close(): void;
@@ -3933,7 +5168,7 @@ declare module "kendo-ui" {
     select(li: JQuery): void;
     select(li: number): void;
     select(li: Function): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
     suggest(value: string): void;
     text(): string;
     text(text: string): void;
@@ -3986,7 +5221,7 @@ declare module "kendo-ui" {
     cascadeFromField?: string;
     columns?: kendo$ui$MultiColumnComboBoxColumn[];
     clearButton?: boolean;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
@@ -4029,29 +5264,29 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$MultiColumnComboBoxChangeEvent = {} & MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxChangeEvent = {} & kendo$ui$MultiColumnComboBoxEvent;
 
-  declare type kendo$ui$MultiColumnComboBoxCloseEvent = {} & MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxCloseEvent = {} & kendo$ui$MultiColumnComboBoxEvent;
 
-  declare type kendo$ui$MultiColumnComboBoxDataBoundEvent = {} & MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxDataBoundEvent = {} & kendo$ui$MultiColumnComboBoxEvent;
 
   declare type kendo$ui$MultiColumnComboBoxFilteringEvent = {
     filter?: any
-  } & MultiColumnComboBoxEvent;
+  } & kendo$ui$MultiColumnComboBoxEvent;
 
-  declare type kendo$ui$MultiColumnComboBoxOpenEvent = {} & MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxOpenEvent = {} & kendo$ui$MultiColumnComboBoxEvent;
 
   declare type kendo$ui$MultiColumnComboBoxSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & MultiColumnComboBoxEvent;
+  } & kendo$ui$MultiColumnComboBoxEvent;
 
-  declare type kendo$ui$MultiColumnComboBoxCascadeEvent = {} & MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxCascadeEvent = {} & kendo$ui$MultiColumnComboBoxEvent;
 
-  declare class kendo$ui$MultiSelect mixins undefined.Widget {
+  declare class kendo$ui$MultiSelect mixins kendo$ui$Widget {
     static fn: kendo$ui$MultiSelect;
     options: ui$MultiSelectOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     input: JQuery;
     list: JQuery;
     ul: JQuery;
@@ -4060,7 +5295,7 @@ declare module "kendo-ui" {
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$MultiSelect;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$MultiSelectOptions
     ): this;
     close(): void;
@@ -4073,7 +5308,7 @@ declare module "kendo-ui" {
     readonly(readonly: boolean): void;
     refresh(): void;
     search(word: string): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
     toggle(toggle?: boolean): void;
     value(): any;
     value(value: any): void;
@@ -4114,7 +5349,7 @@ declare module "kendo-ui" {
     autoClose?: boolean;
     autoWidth?: boolean;
     clearButton?: boolean;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
@@ -4154,36 +5389,36 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$MultiSelectChangeEvent = {} & MultiSelectEvent;
+  declare type kendo$ui$MultiSelectChangeEvent = {} & kendo$ui$MultiSelectEvent;
 
-  declare type kendo$ui$MultiSelectCloseEvent = {} & MultiSelectEvent;
+  declare type kendo$ui$MultiSelectCloseEvent = {} & kendo$ui$MultiSelectEvent;
 
-  declare type kendo$ui$MultiSelectDataBoundEvent = {} & MultiSelectEvent;
+  declare type kendo$ui$MultiSelectDataBoundEvent = {} & kendo$ui$MultiSelectEvent;
 
   declare type kendo$ui$MultiSelectFilteringEvent = {
     filter?: any
-  } & MultiSelectEvent;
+  } & kendo$ui$MultiSelectEvent;
 
-  declare type kendo$ui$MultiSelectOpenEvent = {} & MultiSelectEvent;
+  declare type kendo$ui$MultiSelectOpenEvent = {} & kendo$ui$MultiSelectEvent;
 
   declare type kendo$ui$MultiSelectSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & MultiSelectEvent;
+  } & kendo$ui$MultiSelectEvent;
 
   declare type kendo$ui$MultiSelectDeselectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & MultiSelectEvent;
+  } & kendo$ui$MultiSelectEvent;
 
-  declare class kendo$ui$MultiViewCalendar mixins undefined.Widget {
+  declare class kendo$ui$MultiViewCalendar mixins kendo$ui$Widget {
     static fn: kendo$ui$MultiViewCalendar;
     options: ui$MultiViewCalendarOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$MultiViewCalendar;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$MultiViewCalendarOptions
     ): this;
     current(): Date;
@@ -4254,14 +5489,14 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$Notification mixins undefined.Widget {
+  declare class kendo$ui$Notification mixins kendo$ui$Widget {
     static fn: kendo$ui$Notification;
     options: ui$NotificationOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Notification;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$NotificationOptions
     ): this;
     error(data: any): void;
@@ -4324,20 +5559,20 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$NotificationHideEvent = {
     element?: JQuery
-  } & NotificationEvent;
+  } & kendo$ui$NotificationEvent;
 
   declare type kendo$ui$NotificationShowEvent = {
     element?: JQuery
-  } & NotificationEvent;
+  } & kendo$ui$NotificationEvent;
 
-  declare class kendo$ui$NumericTextBox mixins undefined.Widget {
+  declare class kendo$ui$NumericTextBox mixins kendo$ui$Widget {
     static fn: kendo$ui$NumericTextBox;
     options: ui$NumericTextBoxOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$NumericTextBox;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$NumericTextBoxOptions
     ): this;
     destroy(): void;
@@ -4384,18 +5619,21 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$NumericTextBoxChangeEvent = {} & NumericTextBoxEvent;
+  declare type kendo$ui$NumericTextBoxChangeEvent = {} & kendo$ui$NumericTextBoxEvent;
 
-  declare type kendo$ui$NumericTextBoxSpinEvent = {} & NumericTextBoxEvent;
+  declare type kendo$ui$NumericTextBoxSpinEvent = {} & kendo$ui$NumericTextBoxEvent;
 
-  declare class kendo$ui$Pager mixins undefined.Widget {
+  declare class kendo$ui$Pager mixins kendo$ui$Widget {
     static fn: kendo$ui$Pager;
     options: ui$PagerOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Pager;
-    constructor(element: drawing$Element, options?: ui$PagerOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$PagerOptions
+    ): this;
     totalPages(): number;
     pageSize(): number;
     page(): number;
@@ -4422,7 +5660,7 @@ declare module "kendo-ui" {
     name?: string;
     autoBind?: boolean;
     buttonCount?: number;
-    dataSource?: any | kendo$dataDataSource;
+    dataSource?: any | kendo$data$DataSource;
     selectTemplate?: string;
     linkTemplate?: string;
     info?: boolean;
@@ -4441,89 +5679,116 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$PagerChangeEvent = {} & PagerEvent;
+  declare type kendo$ui$PagerChangeEvent = {} & kendo$ui$PagerEvent;
 
-  declare class kendo$ui$PanelBar mixins undefined.Widget {
+  declare class kendo$ui$PanelBar mixins kendo$ui$Widget {
     static fn: kendo$ui$PanelBar;
     options: ui$PanelBarOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$PanelBar;
-    constructor(element: drawing$Element, options?: ui$PanelBarOptions): this;
-    append(item: string, referenceItem?: string): kendo$uiPanelBar;
-    append(item: string, referenceItem?: drawing$Element): kendo$uiPanelBar;
-    append(item: string, referenceItem?: JQuery): kendo$uiPanelBar;
-    append(item: drawing$Element, referenceItem?: string): kendo$uiPanelBar;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$PanelBarOptions
+    ): this;
+    append(item: string, referenceItem?: string): kendo$ui$PanelBar;
     append(
-      item: drawing$Element,
-      referenceItem?: drawing$Element
-    ): kendo$uiPanelBar;
-    append(item: drawing$Element, referenceItem?: JQuery): kendo$uiPanelBar;
-    append(item: JQuery, referenceItem?: string): kendo$uiPanelBar;
-    append(item: JQuery, referenceItem?: drawing$Element): kendo$uiPanelBar;
-    append(item: JQuery, referenceItem?: JQuery): kendo$uiPanelBar;
-    append(item: any, referenceItem?: string): kendo$uiPanelBar;
-    append(item: any, referenceItem?: drawing$Element): kendo$uiPanelBar;
-    append(item: any, referenceItem?: JQuery): kendo$uiPanelBar;
+      item: string,
+      referenceItem?: kendo$effects$Element
+    ): kendo$ui$PanelBar;
+    append(item: string, referenceItem?: JQuery): kendo$ui$PanelBar;
+    append(
+      item: kendo$effects$Element,
+      referenceItem?: string
+    ): kendo$ui$PanelBar;
+    append(
+      item: kendo$effects$Element,
+      referenceItem?: kendo$effects$Element
+    ): kendo$ui$PanelBar;
+    append(
+      item: kendo$effects$Element,
+      referenceItem?: JQuery
+    ): kendo$ui$PanelBar;
+    append(item: JQuery, referenceItem?: string): kendo$ui$PanelBar;
+    append(
+      item: JQuery,
+      referenceItem?: kendo$effects$Element
+    ): kendo$ui$PanelBar;
+    append(item: JQuery, referenceItem?: JQuery): kendo$ui$PanelBar;
+    append(item: any, referenceItem?: string): kendo$ui$PanelBar;
+    append(item: any, referenceItem?: kendo$effects$Element): kendo$ui$PanelBar;
+    append(item: any, referenceItem?: JQuery): kendo$ui$PanelBar;
     clearSelection(): void;
-    collapse(element: string, useAnimation: boolean): kendo$uiPanelBar;
-    collapse(element: drawing$Element, useAnimation: boolean): kendo$uiPanelBar;
-    collapse(element: JQuery, useAnimation: boolean): kendo$uiPanelBar;
+    collapse(element: string, useAnimation: boolean): kendo$ui$PanelBar;
+    collapse(
+      element: kendo$effects$Element,
+      useAnimation: boolean
+    ): kendo$ui$PanelBar;
+    collapse(element: JQuery, useAnimation: boolean): kendo$ui$PanelBar;
     destroy(): void;
     enable(element: string, enable: boolean): void;
-    enable(element: drawing$Element, enable: boolean): void;
+    enable(element: kendo$effects$Element, enable: boolean): void;
     enable(element: JQuery, enable: boolean): void;
-    expand(element: string, useAnimation: boolean): kendo$uiPanelBar;
-    expand(element: drawing$Element, useAnimation: boolean): kendo$uiPanelBar;
-    expand(element: JQuery, useAnimation: boolean): kendo$uiPanelBar;
+    expand(element: string, useAnimation: boolean): kendo$ui$PanelBar;
+    expand(
+      element: kendo$effects$Element,
+      useAnimation: boolean
+    ): kendo$ui$PanelBar;
+    expand(element: JQuery, useAnimation: boolean): kendo$ui$PanelBar;
     insertAfter(item: string, referenceItem: string): void;
-    insertAfter(item: string, referenceItem: drawing$Element): void;
+    insertAfter(item: string, referenceItem: kendo$effects$Element): void;
     insertAfter(item: string, referenceItem: JQuery): void;
-    insertAfter(item: drawing$Element, referenceItem: string): void;
-    insertAfter(item: drawing$Element, referenceItem: drawing$Element): void;
-    insertAfter(item: drawing$Element, referenceItem: JQuery): void;
+    insertAfter(item: kendo$effects$Element, referenceItem: string): void;
+    insertAfter(
+      item: kendo$effects$Element,
+      referenceItem: kendo$effects$Element
+    ): void;
+    insertAfter(item: kendo$effects$Element, referenceItem: JQuery): void;
     insertAfter(item: JQuery, referenceItem: string): void;
-    insertAfter(item: JQuery, referenceItem: drawing$Element): void;
+    insertAfter(item: JQuery, referenceItem: kendo$effects$Element): void;
     insertAfter(item: JQuery, referenceItem: JQuery): void;
     insertAfter(item: any, referenceItem: string): void;
-    insertAfter(item: any, referenceItem: drawing$Element): void;
+    insertAfter(item: any, referenceItem: kendo$effects$Element): void;
     insertAfter(item: any, referenceItem: JQuery): void;
-    insertBefore(item: string, referenceItem: string): kendo$uiPanelBar;
+    insertBefore(item: string, referenceItem: string): kendo$ui$PanelBar;
     insertBefore(
       item: string,
-      referenceItem: drawing$Element
-    ): kendo$uiPanelBar;
-    insertBefore(item: string, referenceItem: JQuery): kendo$uiPanelBar;
+      referenceItem: kendo$effects$Element
+    ): kendo$ui$PanelBar;
+    insertBefore(item: string, referenceItem: JQuery): kendo$ui$PanelBar;
     insertBefore(
-      item: drawing$Element,
+      item: kendo$effects$Element,
       referenceItem: string
-    ): kendo$uiPanelBar;
+    ): kendo$ui$PanelBar;
     insertBefore(
-      item: drawing$Element,
-      referenceItem: drawing$Element
-    ): kendo$uiPanelBar;
+      item: kendo$effects$Element,
+      referenceItem: kendo$effects$Element
+    ): kendo$ui$PanelBar;
     insertBefore(
-      item: drawing$Element,
+      item: kendo$effects$Element,
       referenceItem: JQuery
-    ): kendo$uiPanelBar;
-    insertBefore(item: JQuery, referenceItem: string): kendo$uiPanelBar;
+    ): kendo$ui$PanelBar;
+    insertBefore(item: JQuery, referenceItem: string): kendo$ui$PanelBar;
     insertBefore(
       item: JQuery,
-      referenceItem: drawing$Element
-    ): kendo$uiPanelBar;
-    insertBefore(item: JQuery, referenceItem: JQuery): kendo$uiPanelBar;
-    insertBefore(item: any, referenceItem: string): kendo$uiPanelBar;
-    insertBefore(item: any, referenceItem: drawing$Element): kendo$uiPanelBar;
-    insertBefore(item: any, referenceItem: JQuery): kendo$uiPanelBar;
+      referenceItem: kendo$effects$Element
+    ): kendo$ui$PanelBar;
+    insertBefore(item: JQuery, referenceItem: JQuery): kendo$ui$PanelBar;
+    insertBefore(item: any, referenceItem: string): kendo$ui$PanelBar;
+    insertBefore(
+      item: any,
+      referenceItem: kendo$effects$Element
+    ): kendo$ui$PanelBar;
+    insertBefore(item: any, referenceItem: JQuery): kendo$ui$PanelBar;
     reload(element: string): void;
-    reload(element: drawing$Element): void;
+    reload(element: kendo$effects$Element): void;
     reload(element: JQuery): void;
     remove(element: string): void;
-    remove(element: drawing$Element): void;
+    remove(element: kendo$effects$Element): void;
     remove(element: JQuery): void;
     select(): JQuery;
     select(element?: string): void;
-    select(element?: drawing$Element): void;
+    select(element?: kendo$effects$Element): void;
     select(element?: JQuery): void;
   }
 
@@ -4554,7 +5819,7 @@ declare module "kendo-ui" {
     autoBind?: boolean;
     contentUrls?: any;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$dataHierarchicalDataSource;
+    dataSource?: any | any | kendo$data$HierarchicalDataSource;
     dataSpriteCssClassField?: string;
     dataTextField?: string | any;
     dataUrlField?: string;
@@ -4578,49 +5843,49 @@ declare module "kendo-ui" {
   }
 
   declare type kendo$ui$PanelBarActivateEvent = {
-    item?: drawing$Element
-  } & PanelBarEvent;
+    item?: kendo$effects$Element
+  } & kendo$ui$PanelBarEvent;
 
   declare type kendo$ui$PanelBarCollapseEvent = {
-    item?: drawing$Element
-  } & PanelBarEvent;
+    item?: kendo$effects$Element
+  } & kendo$ui$PanelBarEvent;
 
   declare type kendo$ui$PanelBarContentLoadEvent = {
-    item?: drawing$Element,
-    contentElement?: drawing$Element
-  } & PanelBarEvent;
+    item?: kendo$effects$Element,
+    contentElement?: kendo$effects$Element
+  } & kendo$ui$PanelBarEvent;
 
   declare type kendo$ui$PanelBarDataBoundEvent = {
     node?: JQuery
-  } & PanelBarEvent;
+  } & kendo$ui$PanelBarEvent;
 
   declare type kendo$ui$PanelBarErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & PanelBarEvent;
+  } & kendo$ui$PanelBarEvent;
 
   declare type kendo$ui$PanelBarExpandEvent = {
-    item?: drawing$Element
-  } & PanelBarEvent;
+    item?: kendo$effects$Element
+  } & kendo$ui$PanelBarEvent;
 
   declare type kendo$ui$PanelBarSelectEvent = {
-    item?: drawing$Element
-  } & PanelBarEvent;
+    item?: kendo$effects$Element
+  } & kendo$ui$PanelBarEvent;
 
-  declare class kendo$ui$PivotConfigurator mixins undefined.Widget {
+  declare class kendo$ui$PivotConfigurator mixins kendo$ui$Widget {
     static fn: kendo$ui$PivotConfigurator;
     options: ui$PivotConfiguratorOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$PivotConfigurator;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$PivotConfiguratorOptions
     ): this;
     destroy(): void;
     refresh(): void;
-    setDataSource(dataSource: kendo$dataPivotDataSource): void;
+    setDataSource(dataSource: kendo$data$PivotDataSource): void;
   }
 
   declare interface kendo$ui$PivotConfiguratorMessagesFieldMenuOperators {
@@ -4663,7 +5928,7 @@ declare module "kendo-ui" {
 
   declare interface kendo$ui$PivotConfiguratorOptions {
     name?: string;
-    dataSource?: any | kendo$dataPivotDataSource;
+    dataSource?: any | kendo$data$PivotDataSource;
     filterable?: boolean;
     sortable?: boolean | kendo$ui$PivotConfiguratorSortable;
     height?: number | string;
@@ -4676,21 +5941,24 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$PivotGrid mixins undefined.Widget {
+  declare class kendo$ui$PivotGrid mixins kendo$ui$Widget {
     static fn: kendo$ui$PivotGrid;
     options: ui$PivotGridOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$PivotGrid;
-    constructor(element: drawing$Element, options?: ui$PivotGridOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$PivotGridOptions
+    ): this;
     cellInfo(columnIndex: number, rowIndex: number): any;
     cellInfoByElement(cell: string): any;
-    cellInfoByElement(cell: drawing$Element): any;
+    cellInfoByElement(cell: kendo$effects$Element): any;
     cellInfoByElement(cell: JQuery): any;
     destroy(): void;
     refresh(): void;
-    setDataSource(dataSource: kendo$dataPivotDataSource): void;
+    setDataSource(dataSource: kendo$data$PivotDataSource): void;
     saveAsExcel(): void;
     saveAsPDF(): JQueryPromise<any>;
   }
@@ -4762,7 +6030,7 @@ declare module "kendo-ui" {
 
   declare interface kendo$ui$PivotGridOptions {
     name?: string;
-    dataSource?: any | kendo$dataPivotDataSource;
+    dataSource?: any | kendo$data$PivotDataSource;
     autoBind?: boolean;
     reorderable?: boolean;
     excel?: kendo$ui$PivotGridExcel;
@@ -4791,36 +6059,39 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$PivotGridDataBindingEvent = {} & PivotGridEvent;
+  declare type kendo$ui$PivotGridDataBindingEvent = {} & kendo$ui$PivotGridEvent;
 
-  declare type kendo$ui$PivotGridDataBoundEvent = {} & PivotGridEvent;
+  declare type kendo$ui$PivotGridDataBoundEvent = {} & kendo$ui$PivotGridEvent;
 
   declare type kendo$ui$PivotGridExpandMemberEvent = {
     axis?: string,
     path?: string[]
-  } & PivotGridEvent;
+  } & kendo$ui$PivotGridEvent;
 
   declare type kendo$ui$PivotGridCollapseMemberEvent = {
     axis?: string,
     path?: string[]
-  } & PivotGridEvent;
+  } & kendo$ui$PivotGridEvent;
 
   declare type kendo$ui$PivotGridExcelExportEvent = {
     data?: any,
     workbook?: any
-  } & PivotGridEvent;
+  } & kendo$ui$PivotGridEvent;
 
   declare type kendo$ui$PivotGridPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & PivotGridEvent;
+  } & kendo$ui$PivotGridEvent;
 
-  declare class kendo$ui$Popup mixins undefined.Widget {
+  declare class kendo$ui$Popup mixins kendo$ui$Widget {
     static fn: kendo$ui$Popup;
     options: ui$PopupOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Popup;
-    constructor(element: drawing$Element, options?: ui$PopupOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$PopupOptions
+    ): this;
     close(): void;
     open(): void;
     position(): void;
@@ -4864,15 +6135,15 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$PopupActivateEvent = {} & PopupEvent;
+  declare type kendo$ui$PopupActivateEvent = {} & kendo$ui$PopupEvent;
 
-  declare type kendo$ui$PopupCloseEvent = {} & PopupEvent;
+  declare type kendo$ui$PopupCloseEvent = {} & kendo$ui$PopupEvent;
 
-  declare type kendo$ui$PopupDeactivateEvent = {} & PopupEvent;
+  declare type kendo$ui$PopupDeactivateEvent = {} & kendo$ui$PopupEvent;
 
-  declare type kendo$ui$PopupOpenEvent = {} & PopupEvent;
+  declare type kendo$ui$PopupOpenEvent = {} & kendo$ui$PopupEvent;
 
-  declare class kendo$ui$ProgressBar mixins undefined.Widget {
+  declare class kendo$ui$ProgressBar mixins kendo$ui$Widget {
     static fn: kendo$ui$ProgressBar;
     options: ui$ProgressBarOptions;
     progressStatus: JQuery;
@@ -4881,7 +6152,7 @@ declare module "kendo-ui" {
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ProgressBar;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$ProgressBarOptions
     ): this;
     enable(enable: boolean): void;
@@ -4917,20 +6188,23 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$ProgressBarChangeEvent = {
     value?: number
-  } & ProgressBarEvent;
+  } & kendo$ui$ProgressBarEvent;
 
   declare type kendo$ui$ProgressBarCompleteEvent = {
     value?: number
-  } & ProgressBarEvent;
+  } & kendo$ui$ProgressBarEvent;
 
-  declare class kendo$ui$Prompt mixins undefined.Dialog {
+  declare class kendo$ui$Prompt mixins kendo$ui$Dialog {
     static fn: kendo$ui$Prompt;
     options: ui$PromptOptions;
     result: JQueryPromise<any>;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Prompt;
-    constructor(element: drawing$Element, options?: ui$PromptOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$PromptOptions
+    ): this;
   }
 
   declare interface kendo$ui$PromptMessages {
@@ -4949,14 +6223,14 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$RangeSlider mixins undefined.Widget {
+  declare class kendo$ui$RangeSlider mixins kendo$ui$Widget {
     static fn: kendo$ui$RangeSlider;
     options: ui$RangeSliderOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$RangeSlider;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$RangeSliderOptions
     ): this;
     destroy(): void;
@@ -4999,20 +6273,20 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$RangeSliderChangeEvent = {
     value?: any
-  } & RangeSliderEvent;
+  } & kendo$ui$RangeSliderEvent;
 
   declare type kendo$ui$RangeSliderSlideEvent = {
     value?: any
-  } & RangeSliderEvent;
+  } & kendo$ui$RangeSliderEvent;
 
-  declare class kendo$ui$ResponsivePanel mixins undefined.Widget {
+  declare class kendo$ui$ResponsivePanel mixins kendo$ui$Widget {
     static fn: kendo$ui$ResponsivePanel;
     options: ui$ResponsivePanelOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ResponsivePanel;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$ResponsivePanelOptions
     ): this;
     close(): void;
@@ -5036,16 +6310,19 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$ui$Scheduler mixins undefined.Widget {
+  declare class kendo$ui$Scheduler mixins kendo$ui$Widget {
     static fn: kendo$ui$Scheduler;
     options: ui$SchedulerOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     resources: any;
-    calendar: kendo$uiCalendar;
+    calendar: kendo$ui$Calendar;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Scheduler;
-    constructor(element: drawing$Element, options?: ui$SchedulerOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$SchedulerOptions
+    ): this;
     addEvent(data: any): void;
     cancelEvent(): void;
     data(): void;
@@ -5053,23 +6330,23 @@ declare module "kendo-ui" {
     date(value?: Date): void;
     destroy(): void;
     editEvent(event: string): void;
-    editEvent(event: kendo$dataSchedulerEvent): void;
+    editEvent(event: kendo$data$SchedulerEvent): void;
     items(): any;
-    occurrenceByUid(uid: string): kendo$dataSchedulerEvent;
+    occurrenceByUid(uid: string): kendo$data$SchedulerEvent;
     occurrencesInRange(start: Date, end: Date): any;
     refresh(): void;
     removeEvent(event: string): void;
-    removeEvent(event: kendo$dataSchedulerEvent): void;
+    removeEvent(event: kendo$data$SchedulerEvent): void;
     resourcesBySlot(slot: any): any;
     saveAsPDF(): JQueryPromise<any>;
     saveEvent(): void;
     select(): void;
     select(events: any, options: any): void;
-    setDataSource(dataSource: kendo$dataSchedulerDataSource): void;
+    setDataSource(dataSource: kendo$data$SchedulerDataSource): void;
     slotByPosition(xPosition: number, yPosition: number): any;
-    slotByElement(element: drawing$Element): any;
+    slotByElement(element: kendo$effects$Element): any;
     slotByElement(element: JQuery): any;
-    view(): kendo$uiSchedulerView;
+    view(): kendo$ui$SchedulerView;
     view(type?: string): void;
     viewName(): string;
   }
@@ -5258,7 +6535,7 @@ declare module "kendo-ui" {
 
   declare interface kendo$ui$SchedulerResource {
     dataColorField?: string;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataTextField?: string;
     dataValueField?: string;
     field?: string;
@@ -5327,7 +6604,7 @@ declare module "kendo-ui" {
     allDaySlot?: boolean;
     autoBind?: boolean;
     currentTimeMarker?: boolean | kendo$ui$SchedulerCurrentTimeMarker;
-    dataSource?: any | any | kendo$dataSchedulerDataSource;
+    dataSource?: any | any | kendo$data$SchedulerDataSource;
     date?: Date;
     dateHeaderTemplate?: string | Function;
     editable?: boolean | kendo$ui$SchedulerEditable;
@@ -5385,12 +6662,12 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$SchedulerAddEvent = {
     event?: any
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerCancelEvent = {
     container?: JQuery,
-    event?: kendo$dataSchedulerEvent
-  } & SchedulerEvent;
+    event?: kendo$data$SchedulerEvent
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerChangeEvent = {
     start?: Date,
@@ -5398,77 +6675,80 @@ declare module "kendo-ui" {
     events?: any,
     slots?: any,
     resources?: any
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
-  declare type kendo$ui$SchedulerDataBindingEvent = {} & SchedulerEvent;
+  declare type kendo$ui$SchedulerDataBindingEvent = {} & kendo$ui$SchedulerEvent;
 
-  declare type kendo$ui$SchedulerDataBoundEvent = {} & SchedulerEvent;
+  declare type kendo$ui$SchedulerDataBoundEvent = {} & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerEditEvent = {
     container?: JQuery,
-    event?: kendo$dataSchedulerEvent
-  } & SchedulerEvent;
+    event?: kendo$data$SchedulerEvent
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerMoveStartEvent = {
-    event?: kendo$dataSchedulerEvent
-  } & SchedulerEvent;
+    event?: kendo$data$SchedulerEvent
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerMoveEvent = {
-    event?: kendo$dataSchedulerEvent,
+    event?: kendo$data$SchedulerEvent,
     slot?: any
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerMoveEndEvent = {
     start?: Date,
     end?: Date,
-    event?: kendo$dataSchedulerEvent,
+    event?: kendo$data$SchedulerEvent,
     slot?: any,
     resources?: any
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerNavigateEvent = {
     action?: string,
     date?: Date,
     view?: string
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerRemoveEvent = {
-    event?: kendo$dataSchedulerEvent
-  } & SchedulerEvent;
+    event?: kendo$data$SchedulerEvent
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerResizeStartEvent = {
-    event?: kendo$dataSchedulerEvent
-  } & SchedulerEvent;
+    event?: kendo$data$SchedulerEvent
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerResizeEvent = {
-    event?: kendo$dataSchedulerEvent,
+    event?: kendo$data$SchedulerEvent,
     slot?: any
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerResizeEndEvent = {
     start?: Date,
     end?: Date,
-    event?: kendo$dataSchedulerEvent,
+    event?: kendo$data$SchedulerEvent,
     slot?: any
-  } & SchedulerEvent;
+  } & kendo$ui$SchedulerEvent;
 
   declare type kendo$ui$SchedulerSaveEvent = {
     container?: JQuery,
-    event?: kendo$dataSchedulerEvent
-  } & SchedulerEvent;
+    event?: kendo$data$SchedulerEvent
+  } & kendo$ui$SchedulerEvent;
 
-  declare class kendo$ui$ScrollView mixins undefined.Widget {
+  declare class kendo$ui$ScrollView mixins kendo$ui$Widget {
     static fn: kendo$ui$ScrollView;
     options: ui$ScrollViewOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$ScrollView;
-    constructor(element: drawing$Element, options?: ui$ScrollViewOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ScrollViewOptions
+    ): this;
     content(content: string): void;
     content(content: JQuery): void;
     destroy(): void;
@@ -5476,7 +6756,7 @@ declare module "kendo-ui" {
     prev(): void;
     refresh(): void;
     scrollTo(page: number, instant: boolean): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
   }
 
   declare interface kendo$ui$ScrollViewOptions {
@@ -5484,37 +6764,18 @@ declare module "kendo-ui" {
     autoBind?: boolean;
     bounceVelocityThreshold?: number;
     contentHeight?: number | string;
-    dataSource?: kendo$dataDataSource | any;
+    dataSource?: kendo$data$DataSource | any;
     duration?: number;
     emptyTemplate?: string;
     enablePager?: boolean;
     page?: number;
     template?: string;
     velocityThreshold?: number;
-    change?: (e: ui$ScrollViewChangeEvent) => void;
-    refresh?: (e: ui$ScrollViewRefreshEvent) => void;
-    name?: string;
-    autoBind?: boolean;
-    bounceVelocityThreshold?: number;
-    contentHeight?: number | string;
-    dataSource?: kendo$dataDataSource | any;
-    duration?: number;
-    emptyTemplate?: string;
-    enablePager?: boolean;
-    itemsPerPage?: number;
-    page?: number;
-    pageSize?: number;
-    template?: string;
-    velocityThreshold?: number;
-    changing?: (e: ui$ScrollViewChangingEvent) => void;
     change?: (e: ui$ScrollViewChangeEvent) => void;
     refresh?: (e: ui$ScrollViewRefreshEvent) => void;
   }
 
   declare interface kendo$ui$ScrollViewEvent {
-    sender: kendo$ui$ScrollView;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
     sender: kendo$ui$ScrollView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
@@ -5524,26 +6785,24 @@ declare module "kendo-ui" {
     currentPage?: number,
     nextPage?: number,
     element?: JQuery,
-    data?: any,
-    page?: number,
-    element?: JQuery,
     data?: any
-  } & ScrollViewEvent;
+  } & kendo$ui$ScrollViewEvent;
 
   declare type kendo$ui$ScrollViewRefreshEvent = {
     pageCount?: number,
-    page?: number,
-    pageCount?: number,
     page?: number
-  } & ScrollViewEvent;
+  } & kendo$ui$ScrollViewEvent;
 
-  declare class kendo$ui$Slider mixins undefined.Widget {
+  declare class kendo$ui$Slider mixins kendo$ui$Widget {
     static fn: kendo$ui$Slider;
     options: ui$SliderOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Slider;
-    constructor(element: drawing$Element, options?: ui$SliderOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$SliderOptions
+    ): this;
     destroy(): void;
     enable(enable: boolean): void;
     max(): number;
@@ -5590,19 +6849,22 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$SliderChangeEvent = {
     value?: number
-  } & SliderEvent;
+  } & kendo$ui$SliderEvent;
 
   declare type kendo$ui$SliderSlideEvent = {
     value?: number
-  } & SliderEvent;
+  } & kendo$ui$SliderEvent;
 
-  declare class kendo$ui$Sortable mixins undefined.Widget {
+  declare class kendo$ui$Sortable mixins kendo$ui$Widget {
     static fn: kendo$ui$Sortable;
     options: ui$SortableOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Sortable;
-    constructor(element: drawing$Element, options?: ui$SortableOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$SortableOptions
+    ): this;
     indexOf(element: JQuery): number;
     items(): JQuery;
   }
@@ -5643,14 +6905,14 @@ declare module "kendo-ui" {
   declare type kendo$ui$SortableStartEvent = {
     draggableEvent?: any,
     item?: JQuery
-  } & SortableEvent;
+  } & kendo$ui$SortableEvent;
 
   declare type kendo$ui$SortableMoveEvent = {
     item?: JQuery,
     target?: JQuery,
-    list?: kendo$uiSortable,
+    list?: kendo$ui$Sortable,
     draggableEvent?: any
-  } & SortableEvent;
+  } & kendo$ui$SortableEvent;
 
   declare type kendo$ui$SortableEndEvent = {
     action?: string,
@@ -5658,7 +6920,7 @@ declare module "kendo-ui" {
     oldIndex?: number,
     newIndex?: number,
     draggableEvent?: any
-  } & SortableEvent;
+  } & kendo$ui$SortableEvent;
 
   declare type kendo$ui$SortableChangeEvent = {
     action?: string,
@@ -5666,56 +6928,59 @@ declare module "kendo-ui" {
     oldIndex?: number,
     newIndex?: number,
     draggableEvent?: any
-  } & SortableEvent;
+  } & kendo$ui$SortableEvent;
 
   declare type kendo$ui$SortableCancelEvent = {
     item?: JQuery
-  } & SortableEvent;
+  } & kendo$ui$SortableEvent;
 
-  declare class kendo$ui$Splitter mixins undefined.Widget {
+  declare class kendo$ui$Splitter mixins kendo$ui$Widget {
     static fn: kendo$ui$Splitter;
     options: ui$SplitterOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Splitter;
-    constructor(element: drawing$Element, options?: ui$SplitterOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$SplitterOptions
+    ): this;
     ajaxRequest(pane: string, url: string, data: any): void;
     ajaxRequest(pane: string, url: string, data: string): void;
-    ajaxRequest(pane: drawing$Element, url: string, data: any): void;
-    ajaxRequest(pane: drawing$Element, url: string, data: string): void;
+    ajaxRequest(pane: kendo$effects$Element, url: string, data: any): void;
+    ajaxRequest(pane: kendo$effects$Element, url: string, data: string): void;
     ajaxRequest(pane: JQuery, url: string, data: any): void;
     ajaxRequest(pane: JQuery, url: string, data: string): void;
     append(config?: any): JQuery;
     collapse(pane: string): void;
-    collapse(pane: drawing$Element): void;
+    collapse(pane: kendo$effects$Element): void;
     collapse(pane: JQuery): void;
     destroy(): void;
     expand(pane: string): void;
-    expand(pane: drawing$Element): void;
+    expand(pane: kendo$effects$Element): void;
     expand(pane: JQuery): void;
     insertAfter(config: any, referencePane: string): JQuery;
-    insertAfter(config: any, referencePane: drawing$Element): JQuery;
+    insertAfter(config: any, referencePane: kendo$effects$Element): JQuery;
     insertAfter(config: any, referencePane: JQuery): JQuery;
     insertBefore(config: any, referencePane: string): JQuery;
-    insertBefore(config: any, referencePane: drawing$Element): JQuery;
+    insertBefore(config: any, referencePane: kendo$effects$Element): JQuery;
     insertBefore(config: any, referencePane: JQuery): JQuery;
     max(pane: string, value: string): void;
-    max(pane: drawing$Element, value: string): void;
+    max(pane: kendo$effects$Element, value: string): void;
     max(pane: JQuery, value: string): void;
     min(pane: string, value: string): void;
-    min(pane: drawing$Element, value: string): void;
+    min(pane: kendo$effects$Element, value: string): void;
     min(pane: JQuery, value: string): void;
     remove(pane: string): void;
-    remove(pane: drawing$Element): void;
+    remove(pane: kendo$effects$Element): void;
     remove(pane: JQuery): void;
     size(pane: string): any;
-    size(pane: drawing$Element): any;
+    size(pane: kendo$effects$Element): any;
     size(pane: JQuery): any;
     size(pane: string, value?: string): void;
-    size(pane: drawing$Element, value?: string): void;
+    size(pane: kendo$effects$Element, value?: string): void;
     size(pane: JQuery, value?: string): void;
     toggle(pane: string, expand?: boolean): void;
-    toggle(pane: drawing$Element, expand?: boolean): void;
+    toggle(pane: kendo$effects$Element, expand?: boolean): void;
     toggle(pane: JQuery, expand?: boolean): void;
   }
 
@@ -5750,53 +7015,53 @@ declare module "kendo-ui" {
   }
 
   declare type kendo$ui$SplitterCollapseEvent = {
-    pane?: drawing$Element
-  } & SplitterEvent;
+    pane?: kendo$effects$Element
+  } & kendo$ui$SplitterEvent;
 
   declare type kendo$ui$SplitterContentLoadEvent = {
-    pane?: drawing$Element
-  } & SplitterEvent;
+    pane?: kendo$effects$Element
+  } & kendo$ui$SplitterEvent;
 
   declare type kendo$ui$SplitterErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & SplitterEvent;
+  } & kendo$ui$SplitterEvent;
 
   declare type kendo$ui$SplitterExpandEvent = {
-    pane?: drawing$Element
-  } & SplitterEvent;
+    pane?: kendo$effects$Element
+  } & kendo$ui$SplitterEvent;
 
-  declare class kendo$ui$Spreadsheet mixins undefined.Widget {
+  declare class kendo$ui$Spreadsheet mixins kendo$ui$Widget {
     static fn: kendo$ui$Spreadsheet;
     options: ui$SpreadsheetOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Spreadsheet;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$SpreadsheetOptions
     ): this;
-    activeSheet(): kendo$spreadsheetSheet;
-    activeSheet(sheet?: kendo$spreadsheetSheet): void;
-    cellContextMenu(): kendo$uiContextMenu;
-    rowHeaderContextMenu(): kendo$uiContextMenu;
-    colHeaderContextMenu(): kendo$uiContextMenu;
+    activeSheet(): kendo$spreadsheet$Sheet;
+    activeSheet(sheet?: kendo$spreadsheet$Sheet): void;
+    cellContextMenu(): kendo$ui$ContextMenu;
+    rowHeaderContextMenu(): kendo$ui$ContextMenu;
+    colHeaderContextMenu(): kendo$ui$ContextMenu;
     sheets(): any;
     fromFile(blob: Blob): JQueryPromise<any>;
     fromFile(blob: File): JQueryPromise<any>;
     saveAsExcel(): void;
     saveAsPDF(): JQueryPromise<any>;
-    sheetByName(name: string): kendo$spreadsheetSheet;
-    sheetIndex(sheet: kendo$spreadsheetSheet): number;
-    sheetByIndex(index: number): kendo$spreadsheetSheet;
-    insertSheet(options: any): kendo$spreadsheetSheet;
-    moveSheetToIndex(sheet: kendo$spreadsheetSheet, index: number): void;
+    sheetByName(name: string): kendo$spreadsheet$Sheet;
+    sheetIndex(sheet: kendo$spreadsheet$Sheet): number;
+    sheetByIndex(index: number): kendo$spreadsheet$Sheet;
+    insertSheet(options: any): kendo$spreadsheet$Sheet;
+    moveSheetToIndex(sheet: kendo$spreadsheet$Sheet, index: number): void;
     refresh(): void;
-    removeSheet(sheet: kendo$spreadsheetSheet): void;
+    removeSheet(sheet: kendo$spreadsheet$Sheet): void;
     renameSheet(
-      sheet: kendo$spreadsheetSheet,
+      sheet: kendo$spreadsheet$Sheet,
       newSheetName: string
-    ): kendo$spreadsheetSheet;
+    ): kendo$spreadsheet$Sheet;
     toJSON(): any;
     fromJSON(data: any): void;
     defineName(name: string, value: string, hidden: boolean): void;
@@ -5950,7 +7215,7 @@ declare module "kendo-ui" {
     activeCell?: string;
     name?: string;
     columns?: kendo$ui$SpreadsheetSheetColumn[];
-    dataSource?: kendo$dataDataSource;
+    dataSource?: kendo$data$DataSource;
     filter?: kendo$ui$SpreadsheetSheetFilter;
     frozenColumns?: number;
     frozenRows?: number;
@@ -5974,7 +7239,7 @@ declare module "kendo-ui" {
     columnWidth?: number;
     headerHeight?: number;
     headerWidth?: number;
-    dataSource?: kendo$dataDataSource;
+    dataSource?: kendo$data$DataSource;
     data?: any;
   }
 
@@ -6020,96 +7285,99 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$SpreadsheetInsertSheetEvent = {} & SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetInsertSheetEvent = {} & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetRemoveSheetEvent = {
-    sheet?: kendo$spreadsheetSheet
-  } & SpreadsheetEvent;
+    sheet?: kendo$spreadsheet$Sheet
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetRenameSheetEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     newSheetName?: string
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetSelectSheetEvent = {
-    sheet?: kendo$spreadsheetSheet
-  } & SpreadsheetEvent;
+    sheet?: kendo$spreadsheet$Sheet
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetUnhideColumnEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetUnhideRowEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetHideColumnEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetHideRowEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetDeleteColumnEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetDeleteRowEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetInsertColumnEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetInsertRowEvent = {
-    sheet?: kendo$spreadsheetSheet,
+    sheet?: kendo$spreadsheet$Sheet,
     index?: number
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetSelectEvent = {
-    range?: kendo$spreadsheetRange
-  } & SpreadsheetEvent;
+    range?: kendo$spreadsheet$Range
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetChangeFormatEvent = {
-    range?: kendo$spreadsheetRange
-  } & SpreadsheetEvent;
+    range?: kendo$spreadsheet$Range
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetChangeEvent = {
-    range?: kendo$spreadsheetRange
-  } & SpreadsheetEvent;
+    range?: kendo$spreadsheet$Range
+  } & kendo$ui$SpreadsheetEvent;
 
-  declare type kendo$ui$SpreadsheetRenderEvent = {} & SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetRenderEvent = {} & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetExcelExportEvent = {
     data?: any,
-    workbook?: kendo$ooxmlWorkbook
-  } & SpreadsheetEvent;
+    workbook?: kendo$ooxml$Workbook
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetExcelImportEvent = {
     file?: Blob | File,
     progress?: JQueryPromise<any>
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
   declare type kendo$ui$SpreadsheetPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & SpreadsheetEvent;
+  } & kendo$ui$SpreadsheetEvent;
 
-  declare class kendo$ui$Switch mixins undefined.Widget {
+  declare class kendo$ui$Switch mixins kendo$ui$Widget {
     static fn: kendo$ui$Switch;
     options: ui$SwitchOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Switch;
-    constructor(element: drawing$Element, options?: ui$SwitchOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$SwitchOptions
+    ): this;
     check(): boolean;
     check(check: boolean): void;
     destroy(): void;
@@ -6125,12 +7393,6 @@ declare module "kendo-ui" {
     readonly?: boolean;
     width?: number | string;
     change?: (e: ui$SwitchChangeEvent) => void;
-    name?: string;
-    checked?: boolean;
-    enable?: boolean;
-    offLabel?: string;
-    onLabel?: string;
-    change?: (e: ui$SwitchChangeEvent) => void;
   }
 
   declare interface kendo$ui$SwitchMessages {
@@ -6142,81 +7404,110 @@ declare module "kendo-ui" {
     sender: kendo$ui$Switch;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$ui$Switch;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$ui$SwitchChangeEvent = {
-    checked?: any,
     checked?: any
-  } & SwitchEvent;
+  } & kendo$ui$SwitchEvent;
 
-  declare class kendo$ui$TabStrip mixins undefined.Widget {
+  declare class kendo$ui$TabStrip mixins kendo$ui$Widget {
     static fn: kendo$ui$TabStrip;
     options: ui$TabStripOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     tabGroup: JQuery;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$TabStrip;
-    constructor(element: drawing$Element, options?: ui$TabStripOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$TabStripOptions
+    ): this;
     activateTab(item: JQuery): void;
-    append(tab: any): kendo$uiTabStrip;
-    contentElement(itemIndex: number): drawing$Element;
-    contentHolder(itemIndex: number): drawing$Element;
+    append(tab: any): kendo$ui$TabStrip;
+    contentElement(itemIndex: number): kendo$effects$Element;
+    contentHolder(itemIndex: number): kendo$effects$Element;
     deactivateTab(item: JQuery): void;
     destroy(): void;
-    disable(element: string): kendo$uiTabStrip;
-    disable(element: drawing$Element): kendo$uiTabStrip;
-    disable(element: JQuery): kendo$uiTabStrip;
-    enable(element: string, enable?: boolean): kendo$uiTabStrip;
-    enable(element: drawing$Element, enable?: boolean): kendo$uiTabStrip;
-    enable(element: JQuery, enable?: boolean): kendo$uiTabStrip;
-    insertAfter(item: any, referenceTab: string): kendo$uiTabStrip;
-    insertAfter(item: any, referenceTab: drawing$Element): kendo$uiTabStrip;
-    insertAfter(item: any, referenceTab: JQuery): kendo$uiTabStrip;
-    insertAfter(item: string, referenceTab: string): kendo$uiTabStrip;
-    insertAfter(item: string, referenceTab: drawing$Element): kendo$uiTabStrip;
-    insertAfter(item: string, referenceTab: JQuery): kendo$uiTabStrip;
-    insertAfter(item: drawing$Element, referenceTab: string): kendo$uiTabStrip;
+    disable(element: string): kendo$ui$TabStrip;
+    disable(element: kendo$effects$Element): kendo$ui$TabStrip;
+    disable(element: JQuery): kendo$ui$TabStrip;
+    enable(element: string, enable?: boolean): kendo$ui$TabStrip;
+    enable(element: kendo$effects$Element, enable?: boolean): kendo$ui$TabStrip;
+    enable(element: JQuery, enable?: boolean): kendo$ui$TabStrip;
+    insertAfter(item: any, referenceTab: string): kendo$ui$TabStrip;
     insertAfter(
-      item: drawing$Element,
-      referenceTab: drawing$Element
-    ): kendo$uiTabStrip;
-    insertAfter(item: drawing$Element, referenceTab: JQuery): kendo$uiTabStrip;
-    insertAfter(item: JQuery, referenceTab: string): kendo$uiTabStrip;
-    insertAfter(item: JQuery, referenceTab: drawing$Element): kendo$uiTabStrip;
-    insertAfter(item: JQuery, referenceTab: JQuery): kendo$uiTabStrip;
-    insertBefore(item: any, referenceTab: string): kendo$uiTabStrip;
-    insertBefore(item: any, referenceTab: drawing$Element): kendo$uiTabStrip;
-    insertBefore(item: any, referenceTab: JQuery): kendo$uiTabStrip;
-    insertBefore(item: string, referenceTab: string): kendo$uiTabStrip;
-    insertBefore(item: string, referenceTab: drawing$Element): kendo$uiTabStrip;
-    insertBefore(item: string, referenceTab: JQuery): kendo$uiTabStrip;
-    insertBefore(item: drawing$Element, referenceTab: string): kendo$uiTabStrip;
+      item: any,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertAfter(item: any, referenceTab: JQuery): kendo$ui$TabStrip;
+    insertAfter(item: string, referenceTab: string): kendo$ui$TabStrip;
+    insertAfter(
+      item: string,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertAfter(item: string, referenceTab: JQuery): kendo$ui$TabStrip;
+    insertAfter(
+      item: kendo$effects$Element,
+      referenceTab: string
+    ): kendo$ui$TabStrip;
+    insertAfter(
+      item: kendo$effects$Element,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertAfter(
+      item: kendo$effects$Element,
+      referenceTab: JQuery
+    ): kendo$ui$TabStrip;
+    insertAfter(item: JQuery, referenceTab: string): kendo$ui$TabStrip;
+    insertAfter(
+      item: JQuery,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertAfter(item: JQuery, referenceTab: JQuery): kendo$ui$TabStrip;
+    insertBefore(item: any, referenceTab: string): kendo$ui$TabStrip;
     insertBefore(
-      item: drawing$Element,
-      referenceTab: drawing$Element
-    ): kendo$uiTabStrip;
-    insertBefore(item: drawing$Element, referenceTab: JQuery): kendo$uiTabStrip;
-    insertBefore(item: JQuery, referenceTab: string): kendo$uiTabStrip;
-    insertBefore(item: JQuery, referenceTab: drawing$Element): kendo$uiTabStrip;
-    insertBefore(item: JQuery, referenceTab: JQuery): kendo$uiTabStrip;
+      item: any,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertBefore(item: any, referenceTab: JQuery): kendo$ui$TabStrip;
+    insertBefore(item: string, referenceTab: string): kendo$ui$TabStrip;
+    insertBefore(
+      item: string,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertBefore(item: string, referenceTab: JQuery): kendo$ui$TabStrip;
+    insertBefore(
+      item: kendo$effects$Element,
+      referenceTab: string
+    ): kendo$ui$TabStrip;
+    insertBefore(
+      item: kendo$effects$Element,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertBefore(
+      item: kendo$effects$Element,
+      referenceTab: JQuery
+    ): kendo$ui$TabStrip;
+    insertBefore(item: JQuery, referenceTab: string): kendo$ui$TabStrip;
+    insertBefore(
+      item: JQuery,
+      referenceTab: kendo$effects$Element
+    ): kendo$ui$TabStrip;
+    insertBefore(item: JQuery, referenceTab: JQuery): kendo$ui$TabStrip;
     items(): HTMLCollection;
-    reload(element: string): kendo$uiTabStrip;
-    reload(element: drawing$Element): kendo$uiTabStrip;
-    reload(element: JQuery): kendo$uiTabStrip;
-    remove(element: string): kendo$uiTabStrip;
-    remove(element: number): kendo$uiTabStrip;
-    remove(element: JQuery): kendo$uiTabStrip;
+    reload(element: string): kendo$ui$TabStrip;
+    reload(element: kendo$effects$Element): kendo$ui$TabStrip;
+    reload(element: JQuery): kendo$ui$TabStrip;
+    remove(element: string): kendo$ui$TabStrip;
+    remove(element: number): kendo$ui$TabStrip;
+    remove(element: JQuery): kendo$ui$TabStrip;
     select(): JQuery;
     select(element: string): void;
-    select(element: drawing$Element): void;
+    select(element: kendo$effects$Element): void;
     select(element: JQuery): void;
     select(element: number): void;
     setDataSource(dataSource: any): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
   }
 
   declare interface kendo$ui$TabStripAnimationClose {
@@ -6246,7 +7537,7 @@ declare module "kendo-ui" {
     dataContentField?: string;
     dataContentUrlField?: string;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$dataDataSource;
+    dataSource?: any | any | kendo$data$DataSource;
     dataSpriteCssClass?: string;
     dataTextField?: string;
     dataUrlField?: string;
@@ -6259,53 +7550,49 @@ declare module "kendo-ui" {
     error?: (e: ui$TabStripErrorEvent) => void;
     select?: (e: ui$TabStripSelectEvent) => void;
     show?: (e: ui$TabStripShowEvent) => void;
-    name?: string;
-    selectedIndex?: number;
-    select?: (e: ui$TabStripSelectEvent) => void;
   }
 
   declare interface kendo$ui$TabStripEvent {
     sender: kendo$ui$TabStrip;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$ui$TabStrip;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$ui$TabStripActivateEvent = {
-    item?: drawing$Element,
-    contentElement?: drawing$Element
-  } & TabStripEvent;
+    item?: kendo$effects$Element,
+    contentElement?: kendo$effects$Element
+  } & kendo$ui$TabStripEvent;
 
   declare type kendo$ui$TabStripContentLoadEvent = {
-    item?: drawing$Element,
-    contentElement?: drawing$Element
-  } & TabStripEvent;
+    item?: kendo$effects$Element,
+    contentElement?: kendo$effects$Element
+  } & kendo$ui$TabStripEvent;
 
   declare type kendo$ui$TabStripErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & TabStripEvent;
+  } & kendo$ui$TabStripEvent;
 
   declare type kendo$ui$TabStripSelectEvent = {
-    item?: drawing$Element,
-    contentElement?: drawing$Element,
-    item?: JQuery
-  } & TabStripEvent;
+    item?: kendo$effects$Element,
+    contentElement?: kendo$effects$Element
+  } & kendo$ui$TabStripEvent;
 
   declare type kendo$ui$TabStripShowEvent = {
-    item?: drawing$Element,
-    contentElement?: drawing$Element
-  } & TabStripEvent;
+    item?: kendo$effects$Element,
+    contentElement?: kendo$effects$Element
+  } & kendo$ui$TabStripEvent;
 
-  declare class kendo$ui$TimePicker mixins undefined.Widget {
+  declare class kendo$ui$TimePicker mixins kendo$ui$Widget {
     static fn: kendo$ui$TimePicker;
     options: ui$TimePickerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$TimePicker;
-    constructor(element: drawing$Element, options?: ui$TimePickerOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$TimePickerOptions
+    ): this;
     close(): void;
     destroy(): void;
     enable(enable: boolean): void;
@@ -6361,37 +7648,40 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$ui$TimePickerChangeEvent = {} & TimePickerEvent;
+  declare type kendo$ui$TimePickerChangeEvent = {} & kendo$ui$TimePickerEvent;
 
-  declare type kendo$ui$TimePickerCloseEvent = {} & TimePickerEvent;
+  declare type kendo$ui$TimePickerCloseEvent = {} & kendo$ui$TimePickerEvent;
 
-  declare type kendo$ui$TimePickerOpenEvent = {} & TimePickerEvent;
+  declare type kendo$ui$TimePickerOpenEvent = {} & kendo$ui$TimePickerEvent;
 
-  declare class kendo$ui$ToolBar mixins undefined.Widget {
+  declare class kendo$ui$ToolBar mixins kendo$ui$Widget {
     static fn: kendo$ui$ToolBar;
     options: ui$ToolBarOptions;
     element: JQuery;
     wrapper: JQuery;
-    popup: kendo$uiPopup;
+    popup: kendo$ui$Popup;
     static extend(proto: Object): kendo$ui$ToolBar;
-    constructor(element: drawing$Element, options?: ui$ToolBarOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ToolBarOptions
+    ): this;
     add(command: any): void;
     destroy(): void;
     enable(command: string, enable: boolean): void;
-    enable(command: drawing$Element, enable: boolean): void;
+    enable(command: kendo$effects$Element, enable: boolean): void;
     enable(command: JQuery, enable: boolean): void;
     getSelectedFromGroup(groupName: string): void;
     hide(command: string): void;
-    hide(command: drawing$Element): void;
+    hide(command: kendo$effects$Element): void;
     hide(command: JQuery): void;
     remove(command: string): void;
-    remove(command: drawing$Element): void;
+    remove(command: kendo$effects$Element): void;
     remove(command: JQuery): void;
     show(command: string): void;
-    show(command: drawing$Element): void;
+    show(command: kendo$effects$Element): void;
     show(command: JQuery): void;
     toggle(command: string, state: boolean): void;
-    toggle(command: drawing$Element, state: boolean): void;
+    toggle(command: kendo$effects$Element, state: boolean): void;
     toggle(command: JQuery, state: boolean): void;
   }
 
@@ -6473,35 +7763,35 @@ declare module "kendo-ui" {
   declare type kendo$ui$ToolBarClickEvent = {
     target?: JQuery,
     id?: string
-  } & ToolBarEvent;
+  } & kendo$ui$ToolBarEvent;
 
   declare type kendo$ui$ToolBarCloseEvent = {
     SplitButton?: JQuery
-  } & ToolBarEvent;
+  } & kendo$ui$ToolBarEvent;
 
   declare type kendo$ui$ToolBarOpenEvent = {
     SplitButton?: JQuery
-  } & ToolBarEvent;
+  } & kendo$ui$ToolBarEvent;
 
   declare type kendo$ui$ToolBarToggleEvent = {
     target?: JQuery,
     checked?: boolean,
     id?: string
-  } & ToolBarEvent;
+  } & kendo$ui$ToolBarEvent;
 
-  declare type kendo$ui$ToolBarOverflowCloseEvent = {} & ToolBarEvent;
+  declare type kendo$ui$ToolBarOverflowCloseEvent = {} & kendo$ui$ToolBarEvent;
 
-  declare type kendo$ui$ToolBarOverflowOpenEvent = {} & ToolBarEvent;
+  declare type kendo$ui$ToolBarOverflowOpenEvent = {} & kendo$ui$ToolBarEvent;
 
-  declare class kendo$ui$Tooltip mixins undefined.Widget {
+  declare class kendo$ui$Tooltip mixins kendo$ui$Widget {
     static fn: kendo$ui$Tooltip;
     options: drawing$TooltipOptions;
-    popup: kendo$uiPopup;
+    popup: kendo$ui$Popup;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Tooltip;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: drawing$TooltipOptions
     ): this;
     show(element: JQuery): void;
@@ -6547,26 +7837,6 @@ declare module "kendo-ui" {
     hide?: (e: ui$TooltipEvent) => void;
     requestStart?: (e: ui$TooltipRequestStartEvent) => void;
     error?: (e: ui$TooltipErrorEvent) => void;
-    autoHide?: boolean;
-    content?: string | Function;
-    position?: string;
-    height?: number | string;
-    hideDelay?: number;
-    offset?: number;
-    shared?: boolean;
-    showAfter?: number;
-    showOn?: string;
-    width?: number | string;
-    autoHide?: boolean;
-    content?: string | Function;
-    position?: string;
-    height?: number | string;
-    hideDelay?: number;
-    offset?: number;
-    shared?: boolean;
-    showAfter?: number;
-    showOn?: string;
-    width?: number | string;
   }
 
   declare interface kendo$ui$TooltipEvent {
@@ -6578,20 +7848,23 @@ declare module "kendo-ui" {
   declare type kendo$ui$TooltipRequestStartEvent = {
     target?: JQuery,
     options?: any
-  } & TooltipEvent;
+  } & kendo$ui$TooltipEvent;
 
   declare type kendo$ui$TooltipErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & TooltipEvent;
+  } & kendo$ui$TooltipEvent;
 
-  declare class kendo$ui$Touch mixins undefined.Widget {
+  declare class kendo$ui$Touch mixins kendo$ui$Widget {
     static fn: kendo$ui$Touch;
     options: ui$TouchOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Touch;
-    constructor(element: drawing$Element, options?: ui$TouchOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$TouchOptions
+    ): this;
     cancel(): void;
     destroy(): void;
   }
@@ -6627,71 +7900,71 @@ declare module "kendo-ui" {
   }
 
   declare type kendo$ui$TouchTouchstartEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchDragstartEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchDragEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchDragendEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchTapEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchDoubletapEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchHoldEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchSwipeEvent = {
-    touch?: kendo$mobileuiTouchEventOptions,
+    touch?: kendo$mobile$ui$TouchEventOptions,
     event?: JQueryEventObject,
     direction?: string
-  } & TouchEvent;
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchGesturestartEvent = {
     touches?: any,
     event?: JQueryEventObject,
     distance?: number,
-    center?: kendo$mobileuiPoint
-  } & TouchEvent;
+    center?: kendo$mobile$ui$Point
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchGesturechangeEvent = {
     touches?: any,
     event?: JQueryEventObject,
     distance?: number,
-    center?: kendo$mobileuiPoint
-  } & TouchEvent;
+    center?: kendo$mobile$ui$Point
+  } & kendo$ui$TouchEvent;
 
   declare type kendo$ui$TouchGestureendEvent = {
     touches?: any,
     event?: JQueryEventObject,
     distance?: number,
-    center?: kendo$mobileuiPoint
-  } & TouchEvent;
+    center?: kendo$mobile$ui$Point
+  } & kendo$ui$TouchEvent;
 
-  declare class kendo$ui$TreeList mixins undefined.Widget {
+  declare class kendo$ui$TreeList mixins kendo$ui$Widget {
     static fn: kendo$ui$TreeList;
     options: ui$TreeListOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     columns: any;
     table: JQuery;
     tbody: JQuery;
@@ -6703,9 +7976,12 @@ declare module "kendo-ui" {
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$TreeList;
-    constructor(element: drawing$Element, options?: ui$TreeListOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$TreeListOptions
+    ): this;
     addRow(parentRow: string): void;
-    addRow(parentRow: drawing$Element): void;
+    addRow(parentRow: kendo$effects$Element): void;
     addRow(parentRow: JQuery): void;
     autoFitColumn(column: number): void;
     autoFitColumn(column: string): void;
@@ -6715,32 +7991,32 @@ declare module "kendo-ui" {
     clearSelection(): void;
     closeCell(isCancel?: boolean): void;
     collapse(row: string): JQueryPromise<any>;
-    collapse(row: drawing$Element): JQueryPromise<any>;
+    collapse(row: kendo$effects$Element): JQueryPromise<any>;
     collapse(row: JQuery): JQueryPromise<any>;
-    dataItem(row: string): kendo$dataTreeListModel;
-    dataItem(row: drawing$Element): kendo$dataTreeListModel;
-    dataItem(row: JQuery): kendo$dataTreeListModel;
+    dataItem(row: string): kendo$data$TreeListModel;
+    dataItem(row: kendo$effects$Element): kendo$data$TreeListModel;
+    dataItem(row: JQuery): kendo$data$TreeListModel;
     destroy(): void;
     editCell(cell: JQuery): void;
     editRow(row: JQuery): void;
     expand(row: string): JQueryPromise<any>;
-    expand(row: drawing$Element): JQueryPromise<any>;
+    expand(row: kendo$effects$Element): JQueryPromise<any>;
     expand(row: JQuery): JQueryPromise<any>;
-    itemFor(model: kendo$dataTreeListModel): JQuery;
+    itemFor(model: kendo$data$TreeListModel): JQuery;
     itemFor(model: any): JQuery;
     items(): any;
     refresh(): void;
     removeRow(row: string): void;
-    removeRow(row: drawing$Element): void;
+    removeRow(row: kendo$effects$Element): void;
     removeRow(row: JQuery): void;
     saveAsExcel(): void;
     saveAsPDF(): JQueryPromise<any>;
     saveChanges(): void;
     saveRow(): void;
     select(): JQuery;
-    select(rows: drawing$Element): void;
+    select(rows: kendo$effects$Element): void;
     select(rows: JQuery): void;
-    setDataSource(dataSource: kendo$dataTreeListDataSource): void;
+    setDataSource(dataSource: kendo$data$TreeListDataSource): void;
     showColumn(column: number): void;
     showColumn(column: string): void;
     hideColumn(column: number): void;
@@ -6783,31 +8059,6 @@ declare module "kendo-ui" {
 
   declare interface kendo$ui$TreeListColumnSortable {
     compare?: Function;
-  }
-
-  declare interface kendo$ui$TreeListColumn {
-    editor?: (container: JQuery, options: ui$TreeListEditorOptions) => void;
-    attributes?: any;
-    columns?: any;
-    command?: kendo$ui$TreeListColumnCommandItem[];
-    editable?: Function;
-    encoded?: boolean;
-    expandable?: boolean;
-    field?: string;
-    filterable?: boolean | kendo$ui$TreeListColumnFilterable;
-    footerTemplate?: string | Function;
-    format?: string;
-    headerAttributes?: any;
-    headerTemplate?: string | Function;
-    minScreenWidth?: number;
-    sortable?: boolean | kendo$ui$TreeListColumnSortable;
-    template?: string | Function;
-    title?: string;
-    width?: string | number;
-    hidden?: boolean;
-    menu?: boolean;
-    locked?: boolean;
-    lockable?: boolean;
   }
 
   declare interface kendo$ui$TreeListEditable {
@@ -6973,7 +8224,7 @@ declare module "kendo-ui" {
     resizable?: boolean;
     reorderable?: boolean;
     columnMenu?: boolean | kendo$ui$TreeListColumnMenu;
-    dataSource?: any | any | kendo$dataTreeListDataSource;
+    dataSource?: any | any | kendo$data$TreeListDataSource;
     editable?: boolean | kendo$ui$TreeListEditable;
     excel?: kendo$ui$TreeListExcel;
     filterable?: boolean | kendo$ui$TreeListFilterable;
@@ -7023,159 +8274,162 @@ declare module "kendo-ui" {
   }
 
   declare type kendo$ui$TreeListBeforeEditEvent = {
-    model?: kendo$dataModel
-  } & TreeListEvent;
+    model?: kendo$data$Model
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListCancelEvent = {
     container?: JQuery,
-    model?: kendo$dataTreeListModel
-  } & TreeListEvent;
+    model?: kendo$data$TreeListModel
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListCellCloseEvent = {
     container?: JQuery,
-    model?: kendo$dataModel,
+    model?: kendo$data$Model,
     type?: string
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
-  declare type kendo$ui$TreeListChangeEvent = {} & TreeListEvent;
+  declare type kendo$ui$TreeListChangeEvent = {} & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListCollapseEvent = {
-    model?: kendo$dataTreeListModel
-  } & TreeListEvent;
+    model?: kendo$data$TreeListModel
+  } & kendo$ui$TreeListEvent;
 
-  declare type kendo$ui$TreeListDataBindingEvent = {} & TreeListEvent;
+  declare type kendo$ui$TreeListDataBindingEvent = {} & kendo$ui$TreeListEvent;
 
-  declare type kendo$ui$TreeListDataBoundEvent = {} & TreeListEvent;
+  declare type kendo$ui$TreeListDataBoundEvent = {} & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListDragstartEvent = {
-    source?: kendo$dataTreeListModel
-  } & TreeListEvent;
+    source?: kendo$data$TreeListModel
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListDragEvent = {
-    source?: kendo$dataTreeListModel,
+    source?: kendo$data$TreeListModel,
     target?: JQuery
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListDragendEvent = {
-    source?: kendo$dataTreeListModel,
-    destination?: kendo$dataTreeListModel
-  } & TreeListEvent;
+    source?: kendo$data$TreeListModel,
+    destination?: kendo$data$TreeListModel
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListDropEvent = {
-    source?: kendo$dataTreeListModel,
-    destination?: kendo$dataTreeListModel,
-    dropTarget?: drawing$Element,
+    source?: kendo$data$TreeListModel,
+    destination?: kendo$data$TreeListModel,
+    dropTarget?: kendo$effects$Element,
     valid?: boolean,
     setValid?: boolean
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListEditEvent = {
     container?: JQuery,
-    model?: kendo$dataTreeListModel
-  } & TreeListEvent;
+    model?: kendo$data$TreeListModel
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListExcelExportEvent = {
     data?: any,
     workbook?: any
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListExpandEvent = {
-    model?: kendo$dataTreeListModel
-  } & TreeListEvent;
+    model?: kendo$data$TreeListModel
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListFilterMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListFilterMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListRemoveEvent = {
-    model?: kendo$dataTreeListModel,
+    model?: kendo$data$TreeListModel,
     row?: JQuery
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListSaveEvent = {
-    model?: kendo$dataTreeListModel,
+    model?: kendo$data$TreeListModel,
     container?: JQuery
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
-  declare type kendo$ui$TreeListSaveChangesEvent = {} & TreeListEvent;
+  declare type kendo$ui$TreeListSaveChangesEvent = {} & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnShowEvent = {
     column?: any
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnHideEvent = {
     column?: any
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnReorderEvent = {
     column?: any,
     newIndex?: number,
     oldIndex?: number
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnResizeEvent = {
     column?: any,
     newWidth?: number,
     oldWidth?: number
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnLockEvent = {
     column?: any
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
   declare type kendo$ui$TreeListColumnUnlockEvent = {
     column?: any
-  } & TreeListEvent;
+  } & kendo$ui$TreeListEvent;
 
-  declare class kendo$ui$TreeView mixins undefined.Widget {
+  declare class kendo$ui$TreeView mixins kendo$ui$Widget {
     static fn: kendo$ui$TreeView;
     options: ui$TreeViewOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$TreeView;
-    constructor(element: drawing$Element, options?: ui$TreeViewOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$TreeViewOptions
+    ): this;
     append(nodeData: any, parentNode?: JQuery, success?: Function): JQuery;
     append(nodeData: JQuery, parentNode?: JQuery, success?: Function): JQuery;
     collapse(nodes: JQuery): void;
-    collapse(nodes: drawing$Element): void;
+    collapse(nodes: kendo$effects$Element): void;
     collapse(nodes: string): void;
-    dataItem(node: JQuery): kendo$dataNode;
-    dataItem(node: drawing$Element): kendo$dataNode;
-    dataItem(node: string): kendo$dataNode;
+    dataItem(node: JQuery): kendo$data$Node;
+    dataItem(node: kendo$effects$Element): kendo$data$Node;
+    dataItem(node: string): kendo$data$Node;
     destroy(): void;
     detach(node: JQuery): JQuery;
-    detach(node: drawing$Element): JQuery;
+    detach(node: kendo$effects$Element): JQuery;
     detach(node: string): JQuery;
     enable(nodes: JQuery, enable?: boolean): void;
-    enable(nodes: drawing$Element, enable?: boolean): void;
+    enable(nodes: kendo$effects$Element, enable?: boolean): void;
     enable(nodes: string, enable?: boolean): void;
     enable(nodes: boolean, enable?: boolean): void;
     expand(nodes: JQuery): void;
-    expand(nodes: drawing$Element): void;
+    expand(nodes: kendo$effects$Element): void;
     expand(nodes: string): void;
     expandPath(path: any, complete: Function): void;
-    expandTo(targetNode: kendo$dataNode): void;
+    expandTo(targetNode: kendo$data$Node): void;
     expandTo(targetNode: any): void;
     findByText(text: string): JQuery;
     findByUid(uid: string): JQuery;
@@ -7184,24 +8438,24 @@ declare module "kendo-ui" {
     insertBefore(nodeData: any, referenceNode: JQuery): JQuery;
     items(): any;
     parent(node: JQuery): JQuery;
-    parent(node: drawing$Element): JQuery;
+    parent(node: kendo$effects$Element): JQuery;
     parent(node: string): JQuery;
     remove(node: JQuery): void;
-    remove(node: drawing$Element): void;
+    remove(node: kendo$effects$Element): void;
     remove(node: string): void;
     select(): JQuery;
     select(node?: JQuery): void;
-    select(node?: drawing$Element): void;
+    select(node?: kendo$effects$Element): void;
     select(node?: string): void;
-    setDataSource(dataSource: kendo$dataHierarchicalDataSource): void;
+    setDataSource(dataSource: kendo$data$HierarchicalDataSource): void;
     text(node: JQuery): string;
-    text(node: drawing$Element): string;
+    text(node: kendo$effects$Element): string;
     text(node: string): string;
     text(node: JQuery, newText: string): void;
-    text(node: drawing$Element, newText: string): void;
+    text(node: kendo$effects$Element, newText: string): void;
     text(node: string, newText: string): void;
     toggle(node: JQuery): void;
-    toggle(node: drawing$Element): void;
+    toggle(node: kendo$effects$Element): void;
     toggle(node: string): void;
     updateIndeterminate(node: JQuery): void;
   }
@@ -7240,7 +8494,7 @@ declare module "kendo-ui" {
     autoScroll?: boolean;
     checkboxes?: boolean | kendo$ui$TreeViewCheckboxes;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$dataHierarchicalDataSource;
+    dataSource?: any | any | kendo$data$HierarchicalDataSource;
     dataSpriteCssClassField?: string;
     dataTextField?: string | any;
     dataUrlField?: string;
@@ -7268,64 +8522,67 @@ declare module "kendo-ui" {
   }
 
   declare type kendo$ui$TreeViewCheckEvent = {
-    node?: drawing$Element
-  } & TreeViewEvent;
+    node?: kendo$effects$Element
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewCollapseEvent = {
-    node?: drawing$Element
-  } & TreeViewEvent;
+    node?: kendo$effects$Element
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewDataBoundEvent = {
     node?: JQuery
-  } & TreeViewEvent;
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewDragEvent = {
-    sourceNode?: drawing$Element,
-    dropTarget?: drawing$Element,
+    sourceNode?: kendo$effects$Element,
+    dropTarget?: kendo$effects$Element,
     pageX?: number,
     pageY?: number,
     statusClass?: string,
     setStatusClass?: Function
-  } & TreeViewEvent;
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewDragendEvent = {
-    sourceNode?: drawing$Element,
-    destinationNode?: drawing$Element,
+    sourceNode?: kendo$effects$Element,
+    destinationNode?: kendo$effects$Element,
     dropPosition?: string
-  } & TreeViewEvent;
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewDragstartEvent = {
-    sourceNode?: drawing$Element
-  } & TreeViewEvent;
+    sourceNode?: kendo$effects$Element
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewDropEvent = {
-    sourceNode?: drawing$Element,
-    destinationNode?: drawing$Element,
+    sourceNode?: kendo$effects$Element,
+    destinationNode?: kendo$effects$Element,
     valid?: boolean,
     setValid?: Function,
-    dropTarget?: drawing$Element,
+    dropTarget?: kendo$effects$Element,
     dropPosition?: string
-  } & TreeViewEvent;
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewExpandEvent = {
-    node?: drawing$Element
-  } & TreeViewEvent;
+    node?: kendo$effects$Element
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewNavigateEvent = {
-    node?: drawing$Element
-  } & TreeViewEvent;
+    node?: kendo$effects$Element
+  } & kendo$ui$TreeViewEvent;
 
   declare type kendo$ui$TreeViewSelectEvent = {
-    node?: drawing$Element
-  } & TreeViewEvent;
+    node?: kendo$effects$Element
+  } & kendo$ui$TreeViewEvent;
 
-  declare class kendo$ui$Upload mixins undefined.Widget {
+  declare class kendo$ui$Upload mixins kendo$ui$Widget {
     static fn: kendo$ui$Upload;
     options: ui$UploadOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Upload;
-    constructor(element: drawing$Element, options?: ui$UploadOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$UploadOptions
+    ): this;
     clearAllFiles(): void;
     clearFile(callback: Function): void;
     clearFileByUid(uid: string): void;
@@ -7424,63 +8681,66 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$UploadCancelEvent = {
     files?: any[]
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadClearEvent = {
     e?: any
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadErrorEvent = {
     files?: any[],
     operation?: string,
     XMLHttpRequest?: any
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadPauseEvent = {
     e?: any
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadProgressEvent = {
     files?: any[],
     percentComplete?: number
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadRemoveEvent = {
     files?: any[],
     headers?: any,
     data?: any
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadSelectEvent = {
     e?: any,
     files?: any[]
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadSuccessEvent = {
     files?: any[],
     operation?: string,
     response?: any,
     XMLHttpRequest?: any
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
   declare type kendo$ui$UploadUploadEvent = {
     files?: any[],
     data?: any,
     formData?: any,
     XMLHttpRequest?: any
-  } & UploadEvent;
+  } & kendo$ui$UploadEvent;
 
-  declare class kendo$ui$Validator mixins undefined.Widget {
+  declare class kendo$ui$Validator mixins kendo$ui$Widget {
     static fn: kendo$ui$Validator;
     options: ui$ValidatorOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Validator;
-    constructor(element: drawing$Element, options?: ui$ValidatorOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ValidatorOptions
+    ): this;
     errors(): any;
     hideMessages(): void;
     validate(): boolean;
-    validateInput(input: drawing$Element): boolean;
+    validateInput(input: kendo$effects$Element): boolean;
     validateInput(input: JQuery): boolean;
   }
 
@@ -7502,39 +8762,42 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$ValidatorValidateEvent = {
     valid?: boolean
-  } & ValidatorEvent;
+  } & kendo$ui$ValidatorEvent;
 
   declare type kendo$ui$ValidatorValidateInputEvent = {
     input?: JQuery,
     valid?: boolean
-  } & ValidatorEvent;
+  } & kendo$ui$ValidatorEvent;
 
-  declare class kendo$ui$Window mixins undefined.Widget {
+  declare class kendo$ui$Window mixins kendo$ui$Widget {
     static fn: kendo$ui$Window;
     options: ui$WindowOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$ui$Window;
-    constructor(element: drawing$Element, options?: ui$WindowOptions): this;
-    center(): kendo$uiWindow;
-    close(): kendo$uiWindow;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$WindowOptions
+    ): this;
+    center(): kendo$ui$Window;
+    close(): kendo$ui$Window;
     content(): string;
-    content(content?: string): kendo$uiWindow;
-    content(content?: JQuery): kendo$uiWindow;
+    content(content?: string): kendo$ui$Window;
+    content(content?: JQuery): kendo$ui$Window;
     destroy(): void;
     isMaximized(): boolean;
     isMinimized(): boolean;
-    maximize(): kendo$uiWindow;
-    minimize(): kendo$uiWindow;
-    open(): kendo$uiWindow;
+    maximize(): kendo$ui$Window;
+    minimize(): kendo$ui$Window;
+    open(): kendo$ui$Window;
     pin(): void;
-    refresh(options: any): kendo$uiWindow;
-    restore(): kendo$uiWindow;
+    refresh(options: any): kendo$ui$Window;
+    restore(): kendo$ui$Window;
     setOptions(options: any): void;
     title(): string;
-    title(text?: string): kendo$uiWindow;
-    toFront(): kendo$uiWindow;
-    toggleMaximization(): kendo$uiWindow;
+    title(text?: string): kendo$ui$Window;
+    toFront(): kendo$ui$Window;
+    toggleMaximization(): kendo$ui$Window;
     unpin(): void;
   }
 
@@ -7625,18 +8888,64 @@ declare module "kendo-ui" {
 
   declare type kendo$ui$WindowCloseEvent = {
     userTriggered?: boolean
-  } & WindowEvent;
+  } & kendo$ui$WindowEvent;
 
   declare type kendo$ui$WindowErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & WindowEvent;
+  } & kendo$ui$WindowEvent;
 
   declare var npm$namespace$kendo$mobile: {
+    init: typeof kendo$mobile$init,
+
+    Application: typeof kendo$mobile$Application,
     ui: typeof npm$namespace$kendo$mobile$ui
   };
+  declare function kendo$mobile$init(selector: string): void;
+
+  declare function kendo$mobile$init(element: JQuery): void;
+
+  declare function kendo$mobile$init(element: kendo$effects$Element): void;
+
+  declare class kendo$mobile$Application mixins kendo$Observable {
+    options: mobile$ApplicationOptions;
+    router: kendo$Router;
+    pane: kendo$mobile$ui$Pane;
+    constructor(element?: any, options?: mobile$ApplicationOptions): this;
+    init(element?: any, options?: mobile$ApplicationOptions): void;
+    changeLoadingMessage(text: string): void;
+    hideLoading(): void;
+    navigate(url: string, transition?: string): void;
+    replace(url: string, transition?: string): void;
+    scroller(): kendo$mobile$ui$Scroller;
+    showLoading(): void;
+    view(): kendo$mobile$ui$View;
+  }
+
+  declare interface kendo$mobile$ApplicationOptions {
+    browserHistory?: boolean;
+    hideAddressBar?: boolean;
+    updateDocumentTitle?: boolean;
+    initial?: string;
+    layout?: string;
+    loading?: string;
+    modelScope?: Object;
+    platform?: string;
+    retina?: boolean;
+    serverNavigation?: boolean;
+    skin?: string;
+    statusBarStyle?: string;
+    transition?: string;
+    useNativeScrolling?: boolean;
+    init?: (e: mobile$ApplicationEvent) => void;
+  }
+
+  declare interface kendo$mobile$ApplicationEvent {
+    sender: kendo$mobile$Application;
+  }
 
   declare var npm$namespace$kendo$mobile$ui: {
+    Widget: typeof kendo$mobile$ui$Widget,
     ActionSheet: typeof kendo$mobile$ui$ActionSheet,
     BackButton: typeof kendo$mobile$ui$BackButton,
     Button: typeof kendo$mobile$ui$Button,
@@ -7658,14 +8967,35 @@ declare module "kendo-ui" {
     TabStrip: typeof kendo$mobile$ui$TabStrip,
     View: typeof kendo$mobile$ui$View
   };
-  declare class kendo$mobile$ui$ActionSheet mixins undefined.Widget {
+  declare class kendo$mobile$ui$Widget mixins kendo$ui$Widget {}
+
+  declare interface kendo$mobile$ui$TouchAxis {
+    location?: number;
+    startLocation?: number;
+    client?: number;
+    delta?: number;
+    velocity?: number;
+  }
+
+  declare interface kendo$mobile$ui$TouchEventOptions {
+    target?: JQuery;
+    x?: kendo$mobile$ui$TouchAxis;
+    y?: kendo$mobile$ui$TouchAxis;
+  }
+
+  declare interface kendo$mobile$ui$Point {
+    x?: number;
+    y?: number;
+  }
+
+  declare class kendo$mobile$ui$ActionSheet mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$ActionSheet;
     options: ui$ActionSheetOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$ActionSheet;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$ActionSheetOptions
     ): this;
     close(): void;
@@ -7697,15 +9027,18 @@ declare module "kendo-ui" {
   declare type kendo$mobile$ui$ActionSheetOpenEvent = {
     target?: JQuery,
     context?: JQuery
-  } & ActionSheetEvent;
+  } & kendo$mobile$ui$ActionSheetEvent;
 
-  declare class kendo$mobile$ui$BackButton mixins undefined.Widget {
+  declare class kendo$mobile$ui$BackButton mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$BackButton;
     options: ui$BackButtonOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$BackButton;
-    constructor(element: drawing$Element, options?: ui$BackButtonOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$BackButtonOptions
+    ): this;
     destroy(): void;
   }
 
@@ -7723,16 +9056,16 @@ declare module "kendo-ui" {
   declare type kendo$mobile$ui$BackButtonClickEvent = {
     target?: JQuery,
     button?: JQuery
-  } & BackButtonEvent;
+  } & kendo$mobile$ui$BackButtonEvent;
 
-  declare class kendo$mobile$ui$Button mixins undefined.Widget {
+  declare class kendo$mobile$ui$Button mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Button;
     options: kendo$ui$ButtonOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Button;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: kendo$ui$ButtonOptions
     ): this;
     badge(value: string): string;
@@ -7742,13 +9075,6 @@ declare module "kendo-ui" {
   }
 
   declare interface kendo$mobile$ui$ButtonOptions {
-    name?: string;
-    enable?: boolean;
-    icon?: string;
-    iconClass?: string;
-    imageUrl?: string;
-    spriteCssClass?: string;
-    click?: (e: kendo$ui$ButtonClickEvent) => void;
     name?: string;
     badge?: string;
     clickOn?: string;
@@ -7761,25 +9087,21 @@ declare module "kendo-ui" {
     sender: kendo$mobile$ui$Button;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$Button;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$mobile$ui$ButtonClickEvent = {
-    event?: any,
     target?: JQuery,
     button?: JQuery
-  } & ButtonEvent;
+  } & kendo$mobile$ui$ButtonEvent;
 
-  declare class kendo$mobile$ui$ButtonGroup mixins undefined.Widget {
+  declare class kendo$mobile$ui$ButtonGroup mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$ButtonGroup;
     options: kendo$ui$ButtonGroupOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$ButtonGroup;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: kendo$ui$ButtonGroupOptions
     ): this;
     badge(button: string, value: string): string;
@@ -7797,12 +9119,6 @@ declare module "kendo-ui" {
     name?: string;
     enable?: boolean;
     index?: number;
-    selection?: string;
-    items?: kendo$ui$ButtonGroupItem[];
-    select?: (e: kendo$ui$ButtonGroupSelectEvent) => void;
-    name?: string;
-    enable?: boolean;
-    index?: number;
     selectOn?: string;
     select?: (e: kendo$ui$ButtonGroupSelectEvent) => void;
   }
@@ -7811,24 +9127,20 @@ declare module "kendo-ui" {
     sender: kendo$mobile$ui$ButtonGroup;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$ButtonGroup;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$mobile$ui$ButtonGroupSelectEvent = {
-    indices?: any,
     index?: number
-  } & ButtonGroupEvent;
+  } & kendo$mobile$ui$ButtonGroupEvent;
 
-  declare class kendo$mobile$ui$Collapsible mixins undefined.Widget {
+  declare class kendo$mobile$ui$Collapsible mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Collapsible;
     options: ui$CollapsibleOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Collapsible;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$CollapsibleOptions
     ): this;
     collapse(instant: boolean): void;
@@ -7855,14 +9167,14 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$mobile$ui$DetailButton mixins undefined.Widget {
+  declare class kendo$mobile$ui$DetailButton mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$DetailButton;
     options: ui$DetailButtonOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$DetailButton;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: ui$DetailButtonOptions
     ): this;
     destroy(): void;
@@ -7882,15 +9194,18 @@ declare module "kendo-ui" {
   declare type kendo$mobile$ui$DetailButtonClickEvent = {
     target?: JQuery,
     button?: JQuery
-  } & DetailButtonEvent;
+  } & kendo$mobile$ui$DetailButtonEvent;
 
-  declare class kendo$mobile$ui$Drawer mixins undefined.Widget {
+  declare class kendo$mobile$ui$Drawer mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Drawer;
     options: ui$DrawerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Drawer;
-    constructor(element: drawing$Element, options?: ui$DrawerOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DrawerOptions
+    ): this;
     destroy(): void;
     hide(): void;
     show(): void;
@@ -7917,69 +9232,36 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$mobile$ui$DrawerAfterHideEvent = {} & DrawerEvent;
+  declare type kendo$mobile$ui$DrawerAfterHideEvent = {} & kendo$mobile$ui$DrawerEvent;
 
-  declare type kendo$mobile$ui$DrawerHideEvent = {} & DrawerEvent;
+  declare type kendo$mobile$ui$DrawerHideEvent = {} & kendo$mobile$ui$DrawerEvent;
 
-  declare type kendo$mobile$ui$DrawerInitEvent = {} & DrawerEvent;
+  declare type kendo$mobile$ui$DrawerInitEvent = {} & kendo$mobile$ui$DrawerEvent;
 
-  declare type kendo$mobile$ui$DrawerShowEvent = {} & DrawerEvent;
+  declare type kendo$mobile$ui$DrawerShowEvent = {} & kendo$mobile$ui$DrawerEvent;
 
-  declare class kendo$mobile$ui$Layout mixins undefined.Widget {
+  declare class kendo$mobile$ui$Layout mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Layout;
     options: drawing$LayoutOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Layout;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: drawing$LayoutOptions
     ): this;
   }
 
   declare interface kendo$mobile$ui$LayoutOptions {
     name?: string;
-    alignContent?: string;
-    alignItems?: string;
-    justifyContent?: string;
-    lineSpacing?: number;
-    spacing?: number;
-    orientation?: string;
-    wrap?: boolean;
-    name?: string;
-    alignContent?: string;
-    alignItems?: string;
-    justifyContent?: string;
-    lineSpacing?: number;
-    spacing?: number;
-    orientation?: string;
-    wrap?: boolean;
-    name?: string;
     id?: string;
     platform?: string;
     hide?: (e: ui$LayoutHideEvent) => void;
     init?: (e: ui$LayoutInitEvent) => void;
     show?: (e: ui$LayoutShowEvent) => void;
-    name?: string;
-    alignContent?: string;
-    alignItems?: string;
-    justifyContent?: string;
-    lineSpacing?: number;
-    spacing?: number;
-    orientation?: string;
-    wrap?: boolean;
   }
 
   declare interface kendo$mobile$ui$LayoutEvent {
-    sender: kendo$mobile$ui$Layout;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$Layout;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$Layout;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
     sender: kendo$mobile$ui$Layout;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
@@ -7988,37 +9270,37 @@ declare module "kendo-ui" {
   declare type kendo$mobile$ui$LayoutHideEvent = {
     layout?: JQuery,
     view?: JQuery
-  } & LayoutEvent;
+  } & kendo$mobile$ui$LayoutEvent;
 
   declare type kendo$mobile$ui$LayoutInitEvent = {
     layout?: JQuery
-  } & LayoutEvent;
+  } & kendo$mobile$ui$LayoutEvent;
 
   declare type kendo$mobile$ui$LayoutShowEvent = {
     layout?: JQuery,
     view?: JQuery
-  } & LayoutEvent;
+  } & kendo$mobile$ui$LayoutEvent;
 
-  declare class kendo$mobile$ui$ListView mixins undefined.Widget {
+  declare class kendo$mobile$ui$ListView mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$ListView;
     options: kendo$ui$ListViewOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$ListView;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: kendo$ui$ListViewOptions
     ): this;
     append(dataItems: any): void;
     prepend(dataItems: any): void;
     replace(dataItems: any): void;
     remove(dataItems: any): void;
-    setDataItem(item: JQuery, dataItem: kendo$dataModel): void;
+    setDataItem(item: JQuery, dataItem: kendo$data$Model): void;
     destroy(): void;
     items(): JQuery;
     refresh(): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
   }
 
   declare interface kendo$mobile$ui$ListViewFilterable {
@@ -8038,24 +9320,9 @@ declare module "kendo-ui" {
 
   declare interface kendo$mobile$ui$ListViewOptions {
     name?: string;
-    autoBind?: boolean;
-    dataSource?: any | any | kendo$dataDataSource;
-    editTemplate?: Function;
-    navigatable?: boolean;
-    selectable?: boolean | string;
-    template?: Function;
-    altTemplate?: Function;
-    cancel?: (e: kendo$ui$ListViewCancelEvent) => void;
-    change?: (e: kendo$ui$ListViewEvent) => void;
-    dataBound?: (e: kendo$ui$ListViewEvent) => void;
-    dataBinding?: (e: kendo$ui$ListViewEvent) => void;
-    edit?: (e: kendo$ui$ListViewEditEvent) => void;
-    remove?: (e: kendo$ui$ListViewRemoveEvent) => void;
-    save?: (e: kendo$ui$ListViewSaveEvent) => void;
-    name?: string;
     appendOnRefresh?: boolean;
     autoBind?: boolean;
-    dataSource?: kendo$dataDataSource | any;
+    dataSource?: kendo$data$DataSource | any;
     endlessScroll?: boolean;
     fixedHeaders?: boolean;
     headerTemplate?: string | Function;
@@ -8078,25 +9345,25 @@ declare module "kendo-ui" {
     sender: kendo$mobile$ui$ListView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$ListView;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$mobile$ui$ListViewClickEvent = {
     item?: JQuery,
     target?: JQuery,
     dataItem?: any,
-    button?: kendo$mobileuiButton
-  } & ListViewEvent;
+    button?: kendo$mobile$ui$Button
+  } & kendo$mobile$ui$ListViewEvent;
 
-  declare class kendo$mobile$ui$Loader mixins undefined.Widget {
+  declare class kendo$mobile$ui$Loader mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Loader;
     options: ui$LoaderOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Loader;
-    constructor(element: drawing$Element, options?: ui$LoaderOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$LoaderOptions
+    ): this;
     hide(): void;
     show(): void;
   }
@@ -8111,13 +9378,16 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$mobile$ui$ModalView mixins undefined.Widget {
+  declare class kendo$mobile$ui$ModalView mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$ModalView;
     options: ui$ModalViewOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$ModalView;
-    constructor(element: drawing$Element, options?: ui$ModalViewOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ModalViewOptions
+    ): this;
     close(): void;
     destroy(): void;
     open(target?: JQuery): void;
@@ -8142,23 +9412,26 @@ declare module "kendo-ui" {
 
   declare type kendo$mobile$ui$ModalViewBeforeOpenEvent = {
     target?: JQuery
-  } & ModalViewEvent;
+  } & kendo$mobile$ui$ModalViewEvent;
 
-  declare type kendo$mobile$ui$ModalViewCloseEvent = {} & ModalViewEvent;
+  declare type kendo$mobile$ui$ModalViewCloseEvent = {} & kendo$mobile$ui$ModalViewEvent;
 
-  declare type kendo$mobile$ui$ModalViewInitEvent = {} & ModalViewEvent;
+  declare type kendo$mobile$ui$ModalViewInitEvent = {} & kendo$mobile$ui$ModalViewEvent;
 
   declare type kendo$mobile$ui$ModalViewOpenEvent = {
     target?: JQuery
-  } & ModalViewEvent;
+  } & kendo$mobile$ui$ModalViewEvent;
 
-  declare class kendo$mobile$ui$NavBar mixins undefined.Widget {
+  declare class kendo$mobile$ui$NavBar mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$NavBar;
     options: ui$NavBarOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$NavBar;
-    constructor(element: drawing$Element, options?: ui$NavBarOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$NavBarOptions
+    ): this;
     destroy(): void;
     title(value: string): void;
   }
@@ -8173,19 +9446,19 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$mobile$ui$Pane mixins undefined.Widget {
+  declare class kendo$mobile$ui$Pane mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Pane;
     options: ui$PaneOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Pane;
-    constructor(element: drawing$Element, options?: ui$PaneOptions): this;
+    constructor(element: kendo$effects$Element, options?: ui$PaneOptions): this;
     destroy(): void;
     hideLoading(): void;
     navigate(url: string, transition: string): void;
     replace(url: string, transition: string): void;
     showLoading(): void;
-    view(): kendo$mobileuiView;
+    view(): kendo$mobile$ui$View;
   }
 
   declare interface kendo$mobile$ui$PaneOptions {
@@ -8208,19 +9481,22 @@ declare module "kendo-ui" {
 
   declare type kendo$mobile$ui$PaneNavigateEvent = {
     url?: JQuery
-  } & PaneEvent;
+  } & kendo$mobile$ui$PaneEvent;
 
   declare type kendo$mobile$ui$PaneViewShowEvent = {
-    view?: kendo$mobileuiView
-  } & PaneEvent;
+    view?: kendo$mobile$ui$View
+  } & kendo$mobile$ui$PaneEvent;
 
-  declare class kendo$mobile$ui$PopOver mixins undefined.Widget {
+  declare class kendo$mobile$ui$PopOver mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$PopOver;
     options: ui$PopOverOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$PopOver;
-    constructor(element: drawing$Element, options?: ui$PopOverOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$PopOverOptions
+    ): this;
     close(): void;
     destroy(): void;
     open(target: JQuery): void;
@@ -8252,21 +9528,21 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$mobile$ui$PopOverCloseEvent = {} & PopOverEvent;
+  declare type kendo$mobile$ui$PopOverCloseEvent = {} & kendo$mobile$ui$PopOverEvent;
 
   declare type kendo$mobile$ui$PopOverOpenEvent = {
     target?: JQuery
-  } & PopOverEvent;
+  } & kendo$mobile$ui$PopOverEvent;
 
-  declare class kendo$mobile$ui$ScrollView mixins undefined.Widget {
+  declare class kendo$mobile$ui$ScrollView mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$ScrollView;
     options: kendo$ui$ScrollViewOptions;
-    dataSource: kendo$dataDataSource;
+    dataSource: kendo$data$DataSource;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$ScrollView;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: kendo$ui$ScrollViewOptions
     ): this;
     content(content: string): void;
@@ -8276,7 +9552,7 @@ declare module "kendo-ui" {
     prev(): void;
     refresh(): void;
     scrollTo(page: number, instant: boolean): void;
-    setDataSource(dataSource: kendo$dataDataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
     value(dataItem: any): any;
   }
 
@@ -8285,20 +9561,7 @@ declare module "kendo-ui" {
     autoBind?: boolean;
     bounceVelocityThreshold?: number;
     contentHeight?: number | string;
-    dataSource?: kendo$dataDataSource | any;
-    duration?: number;
-    emptyTemplate?: string;
-    enablePager?: boolean;
-    page?: number;
-    template?: string;
-    velocityThreshold?: number;
-    change?: (e: kendo$ui$ScrollViewChangeEvent) => void;
-    refresh?: (e: kendo$ui$ScrollViewRefreshEvent) => void;
-    name?: string;
-    autoBind?: boolean;
-    bounceVelocityThreshold?: number;
-    contentHeight?: number | string;
-    dataSource?: kendo$dataDataSource | any;
+    dataSource?: kendo$data$DataSource | any;
     duration?: number;
     emptyTemplate?: string;
     enablePager?: boolean;
@@ -8316,40 +9579,34 @@ declare module "kendo-ui" {
     sender: kendo$mobile$ui$ScrollView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$ScrollView;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$mobile$ui$ScrollViewChangingEvent = {
     currentPage?: number,
     nextPage?: number
-  } & ScrollViewEvent;
+  } & kendo$mobile$ui$ScrollViewEvent;
 
   declare type kendo$mobile$ui$ScrollViewChangeEvent = {
-    currentPage?: number,
-    nextPage?: number,
-    element?: JQuery,
-    data?: any,
     page?: number,
     element?: JQuery,
     data?: any
-  } & ScrollViewEvent;
+  } & kendo$mobile$ui$ScrollViewEvent;
 
   declare type kendo$mobile$ui$ScrollViewRefreshEvent = {
     pageCount?: number,
-    page?: number,
-    pageCount?: number,
     page?: number
-  } & ScrollViewEvent;
+  } & kendo$mobile$ui$ScrollViewEvent;
 
-  declare class kendo$mobile$ui$Scroller mixins undefined.Widget {
+  declare class kendo$mobile$ui$Scroller mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Scroller;
     options: ui$ScrollerOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Scroller;
-    constructor(element: drawing$Element, options?: ui$ScrollerOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ScrollerOptions
+    ): this;
     animatedScrollTo(x: number, y: number): void;
     contentResized(): void;
     destroy(): void;
@@ -8393,15 +9650,18 @@ declare module "kendo-ui" {
   declare type kendo$mobile$ui$ScrollerScrollEvent = {
     scrollTop?: number,
     scrollLeft?: number
-  } & ScrollerEvent;
+  } & kendo$mobile$ui$ScrollerEvent;
 
-  declare class kendo$mobile$ui$SplitView mixins undefined.Widget {
+  declare class kendo$mobile$ui$SplitView mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$SplitView;
     options: ui$SplitViewOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$SplitView;
-    constructor(element: drawing$Element, options?: ui$SplitViewOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$SplitViewOptions
+    ): this;
     destroy(): void;
     expandPanes(): void;
     collapsePanes(): void;
@@ -8422,20 +9682,20 @@ declare module "kendo-ui" {
 
   declare type kendo$mobile$ui$SplitViewInitEvent = {
     view?: JQuery
-  } & SplitViewEvent;
+  } & kendo$mobile$ui$SplitViewEvent;
 
   declare type kendo$mobile$ui$SplitViewShowEvent = {
     view?: JQuery
-  } & SplitViewEvent;
+  } & kendo$mobile$ui$SplitViewEvent;
 
-  declare class kendo$mobile$ui$Switch mixins undefined.Widget {
+  declare class kendo$mobile$ui$Switch mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$Switch;
     options: kendo$ui$SwitchOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$Switch;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: kendo$ui$SwitchOptions
     ): this;
     check(): boolean;
@@ -8449,12 +9709,6 @@ declare module "kendo-ui" {
   declare interface kendo$mobile$ui$SwitchOptions {
     name?: string;
     checked?: boolean;
-    enabled?: boolean;
-    readonly?: boolean;
-    width?: number | string;
-    change?: (e: kendo$ui$SwitchChangeEvent) => void;
-    name?: string;
-    checked?: boolean;
     enable?: boolean;
     offLabel?: string;
     onLabel?: string;
@@ -8465,24 +9719,20 @@ declare module "kendo-ui" {
     sender: kendo$mobile$ui$Switch;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$Switch;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$mobile$ui$SwitchChangeEvent = {
-    checked?: any,
     checked?: any
-  } & SwitchEvent;
+  } & kendo$mobile$ui$SwitchEvent;
 
-  declare class kendo$mobile$ui$TabStrip mixins undefined.Widget {
+  declare class kendo$mobile$ui$TabStrip mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$TabStrip;
     options: kendo$ui$TabStripOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$TabStrip;
     constructor(
-      element: drawing$Element,
+      element: kendo$effects$Element,
       options?: kendo$ui$TabStripOptions
     ): this;
     badge(tab: string, value: string): string;
@@ -8499,26 +9749,6 @@ declare module "kendo-ui" {
 
   declare interface kendo$mobile$ui$TabStripOptions {
     name?: string;
-    animation?: boolean | kendo$ui$TabStripAnimation;
-    collapsible?: boolean;
-    contentUrls?: any;
-    dataContentField?: string;
-    dataContentUrlField?: string;
-    dataImageUrlField?: string;
-    dataSource?: any | any | kendo$dataDataSource;
-    dataSpriteCssClass?: string;
-    dataTextField?: string;
-    dataUrlField?: string;
-    navigatable?: boolean;
-    scrollable?: boolean | kendo$ui$TabStripScrollable;
-    tabPosition?: string;
-    value?: string;
-    activate?: (e: kendo$ui$TabStripActivateEvent) => void;
-    contentLoad?: (e: kendo$ui$TabStripContentLoadEvent) => void;
-    error?: (e: kendo$ui$TabStripErrorEvent) => void;
-    select?: (e: kendo$ui$TabStripSelectEvent) => void;
-    show?: (e: kendo$ui$TabStripShowEvent) => void;
-    name?: string;
     selectedIndex?: number;
     select?: (e: kendo$ui$TabStripSelectEvent) => void;
   }
@@ -8527,37 +9757,28 @@ declare module "kendo-ui" {
     sender: kendo$mobile$ui$TabStrip;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$TabStrip;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
   declare type kendo$mobile$ui$TabStripSelectEvent = {
-    item?: drawing$Element,
-    contentElement?: drawing$Element,
     item?: JQuery
-  } & TabStripEvent;
+  } & kendo$mobile$ui$TabStripEvent;
 
-  declare class kendo$mobile$ui$View mixins undefined.Widget {
+  declare class kendo$mobile$ui$View mixins kendo$mobile$ui$Widget {
     static fn: kendo$mobile$ui$View;
     options: kendo$ViewOptions;
     element: JQuery;
     wrapper: JQuery;
     static extend(proto: Object): kendo$mobile$ui$View;
-    constructor(element: drawing$Element, options?: kendo$ViewOptions): this;
+    constructor(
+      element: kendo$effects$Element,
+      options?: kendo$ViewOptions
+    ): this;
     contentElement(): void;
     destroy(): void;
     enable(enable: boolean): void;
   }
 
   declare interface kendo$mobile$ui$ViewOptions {
-    tagName?: string;
-    wrap?: boolean;
-    model?: Object;
-    evalTemplate?: boolean;
-    init?: (e: kendo$ViewEvent) => void;
-    show?: (e: kendo$ViewEvent) => void;
-    hide?: (e: kendo$ViewEvent) => void;
     name?: string;
     model?: string;
     reload?: boolean;
@@ -8580,46 +9801,9309 @@ declare module "kendo-ui" {
     sender: kendo$mobile$ui$View;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$mobile$ui$View;
+  }
+
+  declare type kendo$mobile$ui$ViewAfterShowEvent = {
+    view?: kendo$mobile$ui$View
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare type kendo$mobile$ui$ViewBeforeHideEvent = {
+    view?: kendo$mobile$ui$View
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare type kendo$mobile$ui$ViewBeforeShowEvent = {
+    view?: kendo$mobile$ui$View
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare type kendo$mobile$ui$ViewHideEvent = {
+    view?: kendo$mobile$ui$View
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare type kendo$mobile$ui$ViewInitEvent = {
+    view?: kendo$mobile$ui$View
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare type kendo$mobile$ui$ViewShowEvent = {
+    view?: kendo$mobile$ui$View
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare type kendo$mobile$ui$ViewTransitionStartEvent = {
+    type?: string
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare type kendo$mobile$ui$ViewTransitionEndEvent = {
+    type?: string
+  } & kendo$mobile$ui$ViewEvent;
+
+  declare var npm$namespace$kendo$dataviz: {
+    ChartAxis: typeof kendo$dataviz$ChartAxis,
+    ChartPane: typeof kendo$dataviz$ChartPane,
+    ChartPlotArea: typeof kendo$dataviz$ChartPlotArea,
+    ChartPoint: typeof kendo$dataviz$ChartPoint,
+    ChartSeries: typeof kendo$dataviz$ChartSeries,
+    Navigator: typeof kendo$dataviz$Navigator,
+    ui: typeof npm$namespace$kendo$dataviz$ui,
+    map: typeof npm$namespace$kendo$dataviz$map,
+    diagram: typeof npm$namespace$kendo$dataviz$diagram,
+    drawing: typeof npm$namespace$kendo$dataviz$drawing,
+    geometry: typeof npm$namespace$kendo$dataviz$geometry
+  };
+
+  declare var npm$namespace$kendo$dataviz$ui: {
+    registerTheme: typeof kendo$dataviz$ui$registerTheme,
+    plugin: typeof kendo$dataviz$ui$plugin,
+
+    ArcGauge: typeof kendo$dataviz$ui$ArcGauge,
+    Barcode: typeof kendo$dataviz$ui$Barcode,
+    Chart: typeof kendo$dataviz$ui$Chart,
+    Diagram: typeof kendo$dataviz$ui$Diagram,
+    LinearGauge: typeof kendo$dataviz$ui$LinearGauge,
+    Map: typeof kendo$dataviz$ui$Map,
+    QRCode: typeof kendo$dataviz$ui$QRCode,
+    RadialGauge: typeof kendo$dataviz$ui$RadialGauge,
+    Sparkline: typeof kendo$dataviz$ui$Sparkline,
+    StockChart: typeof kendo$dataviz$ui$StockChart,
+    TreeMap: typeof kendo$dataviz$ui$TreeMap
+  };
+  declare function kendo$dataviz$ui$registerTheme(
+    name: string,
+    options: any
+  ): void;
+
+  declare function kendo$dataviz$ui$plugin(
+    widget: typeof kendo$ui$Widget
+  ): void;
+
+  declare function kendo$dataviz$ui$plugin(widget: any): void;
+
+  declare class kendo$dataviz$ui$ArcGauge mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$ArcGauge;
+    options: ui$ArcGaugeOptions;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$ArcGauge;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ArcGaugeOptions
+    ): this;
+    destroy(): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    redraw(): void;
+    resize(force?: boolean): void;
+    setOptions(options: any): void;
+    svg(): void;
+    imageDataURL(): string;
+    value(): void;
+    value(): void;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeColor {
+    color?: string;
+    from?: number;
+    to?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeGaugeAreaBorder {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeGaugeAreaMargin {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeGaugeArea {
+    background?: string;
+    border?: kendo$dataviz$ui$ArcGaugeGaugeAreaBorder;
+    height?: number;
+    margin?: kendo$dataviz$ui$ArcGaugeGaugeAreaMargin;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeScaleLabelsBorder {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeScaleLabelsMargin {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeScaleLabelsPadding {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeScaleLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$ArcGaugeScaleLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ArcGaugeScaleLabelsMargin;
+    padding?: kendo$dataviz$ui$ArcGaugeScaleLabelsPadding;
+    position?: string;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeScaleMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeScaleMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeScale {
+    endAngle?: number;
+    labels?: kendo$dataviz$ui$ArcGaugeScaleLabels;
+    majorTicks?: kendo$dataviz$ui$ArcGaugeScaleMajorTicks;
+    majorUnit?: number;
+    max?: number;
+    min?: number;
+    minorTicks?: kendo$dataviz$ui$ArcGaugeScaleMinorTicks;
+    minorUnit?: number;
+    rangeLineCap?: string;
+    rangePlaceholderColor?: string;
+    rangeSize?: number;
+    rangeDistance?: number;
+    reverse?: boolean;
+    startAngle?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeExportImageOptions {
+    width?: string;
+    height?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeOptions {
+    name?: string;
+    color?: string;
+    colors?: kendo$dataviz$ui$ArcGaugeColor[];
+    gaugeArea?: kendo$dataviz$ui$ArcGaugeGaugeArea;
+    opacity?: number;
+    renderAs?: string;
+    scale?: kendo$dataviz$ui$ArcGaugeScale;
+    theme?: string;
+    transitions?: boolean;
+    value?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ArcGaugeEvent {
+    sender: kendo$dataviz$ui$ArcGauge;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$mobile$ui$ViewAfterShowEvent = {
-    view?: kendo$mobileuiView
-  } & ViewEvent;
+  declare class kendo$dataviz$ui$Barcode mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$Barcode;
+    options: ui$BarcodeOptions;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$Barcode;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$BarcodeOptions
+    ): this;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    imageDataURL(): string;
+    redraw(): void;
+    resize(force?: boolean): void;
+    svg(): string;
+    value(): string;
+    value(value: number): void;
+    value(value: string): void;
+  }
 
-  declare type kendo$mobile$ui$ViewBeforeHideEvent = {
-    view?: kendo$mobileuiView
-  } & ViewEvent;
+  declare interface kendo$dataviz$ui$BarcodeBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
 
-  declare type kendo$mobile$ui$ViewBeforeShowEvent = {
-    view?: kendo$mobileuiView
-  } & ViewEvent;
+  declare interface kendo$dataviz$ui$BarcodePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
 
-  declare type kendo$mobile$ui$ViewHideEvent = {
-    view?: kendo$mobileuiView
-  } & ViewEvent;
+  declare interface kendo$dataviz$ui$BarcodeTextMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
 
-  declare type kendo$mobile$ui$ViewInitEvent = {
-    view?: kendo$mobileuiView
-  } & ViewEvent;
+  declare interface kendo$dataviz$ui$BarcodeText {
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$BarcodeTextMargin;
+    visible?: boolean;
+  }
 
-  declare type kendo$mobile$ui$ViewShowEvent = {
-    view?: kendo$mobileuiView
-  } & ViewEvent;
+  declare interface kendo$dataviz$ui$BarcodeExportImageOptions {
+    width?: string;
+    height?: string;
+  }
 
-  declare type kendo$mobile$ui$ViewTransitionStartEvent = {
-    type?: string
-  } & ViewEvent;
+  declare interface kendo$dataviz$ui$BarcodeExportSVGOptions {
+    raw?: boolean;
+  }
 
-  declare type kendo$mobile$ui$ViewTransitionEndEvent = {
-    type?: string
-  } & ViewEvent;
+  declare interface kendo$dataviz$ui$BarcodeOptions {
+    name?: string;
+    renderAs?: string;
+    background?: string;
+    border?: kendo$dataviz$ui$BarcodeBorder;
+    checksum?: boolean;
+    color?: string;
+    height?: number;
+    padding?: kendo$dataviz$ui$BarcodePadding;
+    text?: kendo$dataviz$ui$BarcodeText;
+    type?: string;
+    value?: string;
+    width?: number;
+  }
 
-  declare var npm$namespace$kendo$dataviz: {
-    geometry: typeof npm$namespace$kendo$dataviz$geometry
+  declare interface kendo$dataviz$ui$BarcodeEvent {
+    sender: kendo$dataviz$ui$Barcode;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ui$Chart mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$Chart;
+    options: ui$ChartOptions;
+    dataSource: kendo$data$DataSource;
+    surface: kendo$drawing$Surface;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$Chart;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$ChartOptions
+    ): this;
+    destroy(): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    findAxisByName(name: string): kendo$dataviz$ChartAxis;
+    findPaneByIndex(index: number): kendo$dataviz$ChartPane;
+    findPaneByName(name: string): kendo$dataviz$ChartPane;
+    findSeries(callback: Function): kendo$dataviz$ChartSeries;
+    findSeriesByIndex(index: number): kendo$dataviz$ChartSeries;
+    findSeriesByName(name: string): kendo$dataviz$ChartSeries;
+    getAxis(name: string): kendo$dataviz$ChartAxis;
+    hideTooltip(): void;
+    plotArea(): kendo$dataviz$ChartPlotArea;
+    redraw(): void;
+    refresh(): void;
+    resize(force?: boolean): void;
+    saveAsPDF(): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
+    setOptions(options: any): void;
+    showTooltip(filter: Function): void;
+    showTooltip(filter: number): void;
+    showTooltip(filter: Date): void;
+    showTooltip(filter: string): void;
+    svg(): string;
+    imageDataURL(): string;
+    toggleHighlight(show: boolean, options: any): void;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsCrosshairTooltipBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsCrosshairTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartAxisDefaultsCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$ChartAxisDefaultsCrosshairTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsCrosshair {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    tooltip?: kendo$dataviz$ui$ChartAxisDefaultsCrosshairTooltip;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsLabelsRotation {
+    align?: string;
+    angle?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsLabels {
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartAxisDefaultsLabelsMargin;
+    mirror?: boolean;
+    padding?: kendo$dataviz$ui$ChartAxisDefaultsLabelsPadding;
+    rotation?:
+      | string
+      | number
+      | kendo$dataviz$ui$ChartAxisDefaultsLabelsRotation;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsMajorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsPlotBand {
+    color?: string;
+    from?: number;
+    opacity?: number;
+    to?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsTitlePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaultsTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartAxisDefaultsTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartAxisDefaultsTitleMargin;
+    padding?: kendo$dataviz$ui$ChartAxisDefaultsTitlePadding;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartAxisDefaults {
+    background?: string;
+    color?: string;
+    crosshair?: kendo$dataviz$ui$ChartAxisDefaultsCrosshair;
+    labels?: kendo$dataviz$ui$ChartAxisDefaultsLabels;
+    line?: kendo$dataviz$ui$ChartAxisDefaultsLine;
+    majorGridLines?: kendo$dataviz$ui$ChartAxisDefaultsMajorGridLines;
+    majorTicks?: kendo$dataviz$ui$ChartAxisDefaultsMajorTicks;
+    minorGridLines?: kendo$dataviz$ui$ChartAxisDefaultsMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$ChartAxisDefaultsMinorTicks;
+    narrowRange?: boolean;
+    pane?: string;
+    plotBands?: kendo$dataviz$ui$ChartAxisDefaultsPlotBand[];
+    reverse?: boolean;
+    startAngle?: number;
+    title?: kendo$dataviz$ui$ChartAxisDefaultsTitle;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemAutoBaseUnitSteps {
+    milliseconds?: any;
+    seconds?: any;
+    minutes?: any;
+    hours?: any;
+    days?: any;
+    weeks?: any;
+    months?: any;
+    years?: any;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemCrosshairTooltipBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemCrosshairTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartCategoryAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$ChartCategoryAxisItemCrosshairTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemCrosshair {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    tooltip?: kendo$dataviz$ui$ChartCategoryAxisItemCrosshairTooltip;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemLabelsDateFormats {
+    days?: string;
+    hours?: string;
+    months?: string;
+    weeks?: string;
+    years?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemLabelsRotation {
+    align?: string;
+    angle?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartCategoryAxisItemLabelsBorder;
+    color?: string;
+    culture?: string;
+    dateFormats?: kendo$dataviz$ui$ChartCategoryAxisItemLabelsDateFormats;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartCategoryAxisItemLabelsMargin;
+    mirror?: boolean;
+    padding?: kendo$dataviz$ui$ChartCategoryAxisItemLabelsPadding;
+    rotation?:
+      | string
+      | number
+      | kendo$dataviz$ui$ChartCategoryAxisItemLabelsRotation;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemMajorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartCategoryAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartCategoryAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotesLine {
+    dashType?: string;
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartCategoryAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$ChartCategoryAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$ChartCategoryAxisItemNotesLine;
+    data?: kendo$dataviz$ui$ChartCategoryAxisItemNotesDataItem[];
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemPlotBand {
+    color?: string;
+    from?: number;
+    opacity?: number;
+    to?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemSelectMousewheel {
+    reverse?: boolean;
+    zoom?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemSelect {
+    from?: any;
+    max?: any;
+    min?: any;
+    mousewheel?: kendo$dataviz$ui$ChartCategoryAxisItemSelectMousewheel;
+    to?: any;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemTitlePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartCategoryAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartCategoryAxisItemTitleMargin;
+    padding?: kendo$dataviz$ui$ChartCategoryAxisItemTitlePadding;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartCategoryAxisItem {
+    autoBaseUnitSteps?: kendo$dataviz$ui$ChartCategoryAxisItemAutoBaseUnitSteps;
+    axisCrossingValue?: any | Date | any;
+    background?: string;
+    baseUnit?: string;
+    baseUnitStep?: any;
+    categories?: any;
+    color?: string;
+    crosshair?: kendo$dataviz$ui$ChartCategoryAxisItemCrosshair;
+    field?: string;
+    justified?: boolean;
+    labels?: kendo$dataviz$ui$ChartCategoryAxisItemLabels;
+    line?: kendo$dataviz$ui$ChartCategoryAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$ChartCategoryAxisItemMajorGridLines;
+    majorTicks?: kendo$dataviz$ui$ChartCategoryAxisItemMajorTicks;
+    max?: any;
+    maxDateGroups?: number;
+    maxDivisions?: number;
+    min?: any;
+    minorGridLines?: kendo$dataviz$ui$ChartCategoryAxisItemMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$ChartCategoryAxisItemMinorTicks;
+    name?: string;
+    pane?: string;
+    plotBands?: kendo$dataviz$ui$ChartCategoryAxisItemPlotBand[];
+    reverse?: boolean;
+    roundToBaseUnit?: boolean;
+    select?: kendo$dataviz$ui$ChartCategoryAxisItemSelect;
+    startAngle?: number;
+    title?: kendo$dataviz$ui$ChartCategoryAxisItemTitle;
+    type?: string;
+    visible?: boolean;
+    weekStartDay?: number;
+    notes?: kendo$dataviz$ui$ChartCategoryAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$ChartChartAreaBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartChartAreaMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartChartArea {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartChartAreaBorder;
+    height?: number;
+    margin?: kendo$dataviz$ui$ChartChartAreaMargin;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendInactiveItemsLabels {
+    color?: string;
+    font?: string;
+    template?: string | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendInactiveItems {
+    labels?: kendo$dataviz$ui$ChartLegendInactiveItemsLabels;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendItem {
+    cursor?: string;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendLabels {
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartLegendLabelsMargin;
+    padding?: kendo$dataviz$ui$ChartLegendLabelsPadding;
+    template?: string | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegendPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartLegend {
+    align?: string;
+    background?: string;
+    border?: kendo$dataviz$ui$ChartLegendBorder;
+    height?: number;
+    inactiveItems?: kendo$dataviz$ui$ChartLegendInactiveItems;
+    item?: kendo$dataviz$ui$ChartLegendItem;
+    labels?: kendo$dataviz$ui$ChartLegendLabels;
+    margin?: kendo$dataviz$ui$ChartLegendMargin;
+    offsetX?: number;
+    offsetY?: number;
+    orientation?: string;
+    padding?: kendo$dataviz$ui$ChartLegendPadding;
+    position?: string;
+    reverse?: boolean;
+    spacing?: number;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPaneBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPaneMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPanePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPaneTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPaneTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPaneTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartPaneTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartPaneTitleMargin;
+    position?: string;
+    text?: string;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPane {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartPaneBorder;
+    clip?: boolean;
+    height?: number;
+    margin?: kendo$dataviz$ui$ChartPaneMargin;
+    name?: string;
+    padding?: kendo$dataviz$ui$ChartPanePadding;
+    title?: string | kendo$dataviz$ui$ChartPaneTitle;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPannable {
+    key?: string;
+    lock?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPdfMargin {
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+    top?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPdf {
+    author?: string;
+    creator?: string;
+    date?: Date;
+    forceProxy?: boolean;
+    fileName?: string;
+    keywords?: string;
+    landscape?: boolean;
+    margin?: kendo$dataviz$ui$ChartPdfMargin;
+    paperSize?: string | any;
+    proxyURL?: string;
+    proxyTarget?: string;
+    subject?: string;
+    title?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPlotAreaBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPlotAreaMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPlotAreaPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartPlotArea {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartPlotAreaBorder;
+    margin?: kendo$dataviz$ui$ChartPlotAreaMargin;
+    opacity?: number;
+    padding?: kendo$dataviz$ui$ChartPlotAreaPadding;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    opacity?: number | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemConnectors {
+    color?: string | Function;
+    padding?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemErrorBarsLine {
+    width?: number;
+    dashType?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemErrorBars {
+    value?: string | number | any | Function;
+    visual?: Function;
+    xValue?: string | number | any | Function;
+    yValue?: string | number | any | Function;
+    endCaps?: boolean;
+    color?: string;
+    line?: kendo$dataviz$ui$ChartSeriesItemErrorBarsLine;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemExtremesBorder {
+    color?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemExtremes {
+    background?: string | Function;
+    border?: Function | kendo$dataviz$ui$ChartSeriesItemExtremesBorder;
+    size?: number | Function;
+    type?: string | Function;
+    rotation?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemHighlightBorder {
+    color?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemHighlightLine {
+    dashType?: string;
+    color?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemHighlight {
+    border?: kendo$dataviz$ui$ChartSeriesItemHighlightBorder;
+    color?: string;
+    line?: kendo$dataviz$ui$ChartSeriesItemHighlightLine;
+    opacity?: number;
+    toggle?: Function;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsFromBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsFromMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsFromPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsFrom {
+    background?: string | Function;
+    border?: kendo$dataviz$ui$ChartSeriesItemLabelsFromBorder;
+    color?: string | Function;
+    font?: string | Function;
+    format?: string | Function;
+    margin?: kendo$dataviz$ui$ChartSeriesItemLabelsFromMargin;
+    padding?: kendo$dataviz$ui$ChartSeriesItemLabelsFromPadding;
+    position?: string | Function;
+    template?: string | Function;
+    visible?: boolean | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsToBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsToMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsToPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabelsTo {
+    background?: string | Function;
+    border?: kendo$dataviz$ui$ChartSeriesItemLabelsToBorder;
+    color?: string | Function;
+    font?: string | Function;
+    format?: string | Function;
+    margin?: kendo$dataviz$ui$ChartSeriesItemLabelsToMargin;
+    padding?: kendo$dataviz$ui$ChartSeriesItemLabelsToPadding;
+    position?: string | Function;
+    template?: string | Function;
+    visible?: boolean | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLabels {
+    align?: string;
+    background?: string | Function;
+    border?: kendo$dataviz$ui$ChartSeriesItemLabelsBorder;
+    color?: string | Function;
+    distance?: number;
+    font?: string | Function;
+    format?: string | Function;
+    margin?: kendo$dataviz$ui$ChartSeriesItemLabelsMargin;
+    padding?: kendo$dataviz$ui$ChartSeriesItemLabelsPadding;
+    position?: string | Function;
+    rotation?: string | number;
+    template?: string | Function;
+    visible?: boolean | Function;
+    visual?: Function;
+    from?: kendo$dataviz$ui$ChartSeriesItemLabelsFrom;
+    to?: kendo$dataviz$ui$ChartSeriesItemLabelsTo;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemLine {
+    color?: string;
+    opacity?: number;
+    width?: number;
+    style?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemMarkersBorder {
+    color?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemMarkersFromBorder {
+    color?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemMarkersFrom {
+    background?: string | Function;
+    border?: Function | kendo$dataviz$ui$ChartSeriesItemMarkersFromBorder;
+    size?: number | Function;
+    type?: string | Function;
+    visible?: boolean | Function;
+    visual?: Function;
+    rotation?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemMarkersToBorder {
+    color?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemMarkersTo {
+    background?: string | Function;
+    border?: Function | kendo$dataviz$ui$ChartSeriesItemMarkersToBorder;
+    size?: number | Function;
+    type?: string | Function;
+    visible?: boolean | Function;
+    visual?: Function;
+    rotation?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemMarkers {
+    background?: string | Function;
+    border?: Function | kendo$dataviz$ui$ChartSeriesItemMarkersBorder;
+    from?: kendo$dataviz$ui$ChartSeriesItemMarkersFrom;
+    size?: number | Function;
+    to?: kendo$dataviz$ui$ChartSeriesItemMarkersTo;
+    type?: string | Function;
+    visible?: boolean | Function;
+    visual?: Function;
+    rotation?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemNegativeValues {
+    color?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemNotesLine {
+    dashType?: string;
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartSeriesItemNotesIcon;
+    label?: kendo$dataviz$ui$ChartSeriesItemNotesLabel;
+    line?: kendo$dataviz$ui$ChartSeriesItemNotesLine;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemOutliersBorder {
+    color?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemOutliers {
+    background?: string | Function;
+    border?: Function | kendo$dataviz$ui$ChartSeriesItemOutliersBorder;
+    size?: number | Function;
+    type?: string | Function;
+    rotation?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemOverlay {
+    gradient?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemStack {
+    type?: string;
+    group?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemTargetBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemTargetLine {
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemTarget {
+    border?: Function | kendo$dataviz$ui$ChartSeriesItemTargetBorder;
+    color?: string | Function;
+    line?: kendo$dataviz$ui$ChartSeriesItemTargetLine;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItemTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesItemTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$ChartSeriesItemTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesItem {
+    aggregate?: string | Function;
+    axis?: string;
+    border?: kendo$dataviz$ui$ChartSeriesItemBorder;
+    categoryAxis?: string;
+    categoryField?: string;
+    closeField?: string;
+    color?: string | Function;
+    colorField?: string;
+    connectors?: kendo$dataviz$ui$ChartSeriesItemConnectors;
+    currentField?: string;
+    dashType?: string;
+    data?: any;
+    downColor?: string | Function;
+    downColorField?: string;
+    segmentSpacing?: number;
+    summaryField?: string;
+    neckRatio?: number;
+    dynamicSlope?: boolean;
+    dynamicHeight?: boolean;
+    errorBars?: kendo$dataviz$ui$ChartSeriesItemErrorBars;
+    errorLowField?: string;
+    errorHighField?: string;
+    xErrorLowField?: string;
+    xErrorHighField?: string;
+    yErrorLowField?: string;
+    yErrorHighField?: string;
+    explodeField?: string;
+    field?: string;
+    fromField?: string;
+    toField?: string;
+    noteTextField?: string;
+    lowerField?: string;
+    q1Field?: string;
+    medianField?: string;
+    q3Field?: string;
+    upperField?: string;
+    meanField?: string;
+    outliersField?: string;
+    gap?: number;
+    highField?: string;
+    highlight?: kendo$dataviz$ui$ChartSeriesItemHighlight;
+    holeSize?: number;
+    labels?: kendo$dataviz$ui$ChartSeriesItemLabels;
+    line?: string | kendo$dataviz$ui$ChartSeriesItemLine;
+    lowField?: string;
+    margin?: kendo$dataviz$ui$ChartSeriesItemMargin;
+    markers?: kendo$dataviz$ui$ChartSeriesItemMarkers;
+    outliers?: kendo$dataviz$ui$ChartSeriesItemOutliers;
+    extremes?: kendo$dataviz$ui$ChartSeriesItemExtremes;
+    maxSize?: number;
+    minSize?: number;
+    missingValues?: string;
+    style?: string;
+    name?: string;
+    negativeColor?: string;
+    negativeValues?: kendo$dataviz$ui$ChartSeriesItemNegativeValues;
+    opacity?: number;
+    openField?: string;
+    overlay?: kendo$dataviz$ui$ChartSeriesItemOverlay;
+    padding?: number;
+    size?: number;
+    sizeField?: string;
+    spacing?: number;
+    stack?: boolean | string | kendo$dataviz$ui$ChartSeriesItemStack;
+    startAngle?: number;
+    target?: kendo$dataviz$ui$ChartSeriesItemTarget;
+    targetField?: string;
+    tooltip?: kendo$dataviz$ui$ChartSeriesItemTooltip;
+    type?: string;
+    visible?: boolean;
+    visibleInLegend?: boolean;
+    visibleInLegendField?: string;
+    visual?: Function;
+    width?: number;
+    xAxis?: string;
+    xField?: string;
+    yAxis?: string;
+    yField?: string;
+    notes?: kendo$dataviz$ui$ChartSeriesItemNotes;
+    zIndex?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsFromBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsFromMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsFromPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsFrom {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsFromBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsFromMargin;
+    padding?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsFromPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsToBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsToMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsToPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabelsTo {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsToBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsToMargin;
+    padding?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsToPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsMargin;
+    padding?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsPadding;
+    rotation?: string | number;
+    template?: string | Function;
+    visible?: boolean;
+    visual?: Function;
+    from?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsFrom;
+    to?: kendo$dataviz$ui$ChartSeriesDefaultsLabelsTo;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesDefaultsNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesDefaultsNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsNotesLine {
+    dashType?: string;
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsNotes {
+    icon?: kendo$dataviz$ui$ChartSeriesDefaultsNotesIcon;
+    label?: kendo$dataviz$ui$ChartSeriesDefaultsNotesLabel;
+    line?: kendo$dataviz$ui$ChartSeriesDefaultsNotesLine;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsOverlay {
+    gradient?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsStack {
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaultsTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartSeriesDefaultsTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$ChartSeriesDefaultsTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesDefaults {
+    area?: any;
+    bar?: any;
+    border?: kendo$dataviz$ui$ChartSeriesDefaultsBorder;
+    bubble?: any;
+    candlestick?: any;
+    column?: any;
+    donut?: any;
+    gap?: number;
+    labels?: kendo$dataviz$ui$ChartSeriesDefaultsLabels;
+    line?: any;
+    ohlc?: any;
+    overlay?: kendo$dataviz$ui$ChartSeriesDefaultsOverlay;
+    pie?: any;
+    rangeArea?: any;
+    scatter?: any;
+    scatterLine?: any;
+    spacing?: number;
+    stack?: boolean | kendo$dataviz$ui$ChartSeriesDefaultsStack;
+    type?: string;
+    tooltip?: kendo$dataviz$ui$ChartSeriesDefaultsTooltip;
+    verticalArea?: any;
+    verticalLine?: any;
+    verticalRangeArea?: any;
+    visual?: Function;
+    notes?: kendo$dataviz$ui$ChartSeriesDefaultsNotes;
+  }
+
+  declare interface kendo$dataviz$ui$ChartTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartTitlePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartTitle {
+    align?: string;
+    background?: string;
+    border?: kendo$dataviz$ui$ChartTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartTitleMargin;
+    padding?: kendo$dataviz$ui$ChartTitlePadding;
+    position?: string;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    opacity?: number;
+    padding?: kendo$dataviz$ui$ChartTooltipPadding;
+    shared?: boolean;
+    sharedTemplate?: string | Function;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemCrosshairTooltipBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemCrosshairTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartValueAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$ChartValueAxisItemCrosshairTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemCrosshair {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    tooltip?: kendo$dataviz$ui$ChartValueAxisItemCrosshairTooltip;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemLabelsRotation {
+    align?: string;
+    angle?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartValueAxisItemLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartValueAxisItemLabelsMargin;
+    mirror?: boolean;
+    padding?: kendo$dataviz$ui$ChartValueAxisItemLabelsPadding;
+    rotation?:
+      | string
+      | number
+      | kendo$dataviz$ui$ChartValueAxisItemLabelsRotation;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemMajorGridLines {
+    color?: string;
+    dashType?: string;
+    type?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    type?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartValueAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartValueAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartValueAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$ChartValueAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$ChartValueAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartValueAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartValueAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotesLine {
+    dashType?: string;
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartValueAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$ChartValueAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$ChartValueAxisItemNotesLine;
+    data?: kendo$dataviz$ui$ChartValueAxisItemNotesDataItem[];
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemPlotBand {
+    color?: string;
+    from?: number;
+    opacity?: number;
+    to?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemTitlePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartValueAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartValueAxisItemTitleMargin;
+    padding?: kendo$dataviz$ui$ChartValueAxisItemTitlePadding;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartValueAxisItem {
+    axisCrossingValue?: any | Date | any;
+    background?: string;
+    color?: string;
+    crosshair?: kendo$dataviz$ui$ChartValueAxisItemCrosshair;
+    labels?: kendo$dataviz$ui$ChartValueAxisItemLabels;
+    line?: kendo$dataviz$ui$ChartValueAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$ChartValueAxisItemMajorGridLines;
+    majorUnit?: number;
+    max?: number;
+    min?: number;
+    minorGridLines?: kendo$dataviz$ui$ChartValueAxisItemMinorGridLines;
+    majorTicks?: kendo$dataviz$ui$ChartValueAxisItemMajorTicks;
+    minorTicks?: kendo$dataviz$ui$ChartValueAxisItemMinorTicks;
+    minorUnit?: number;
+    name?: string;
+    narrowRange?: boolean;
+    pane?: string;
+    plotBands?: kendo$dataviz$ui$ChartValueAxisItemPlotBand[];
+    reverse?: boolean;
+    title?: kendo$dataviz$ui$ChartValueAxisItemTitle;
+    type?: string;
+    visible?: boolean;
+    notes?: kendo$dataviz$ui$ChartValueAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemCrosshairTooltipBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemCrosshairTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartXAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$ChartXAxisItemCrosshairTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemCrosshair {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    tooltip?: kendo$dataviz$ui$ChartXAxisItemCrosshairTooltip;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemLabelsDateFormats {
+    days?: string;
+    hours?: string;
+    months?: string;
+    weeks?: string;
+    years?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemLabelsRotation {
+    align?: string;
+    angle?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartXAxisItemLabelsBorder;
+    color?: string;
+    culture?: string;
+    dateFormats?: kendo$dataviz$ui$ChartXAxisItemLabelsDateFormats;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartXAxisItemLabelsMargin;
+    mirror?: boolean;
+    padding?: kendo$dataviz$ui$ChartXAxisItemLabelsPadding;
+    rotation?: string | number | kendo$dataviz$ui$ChartXAxisItemLabelsRotation;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemMajorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartXAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartXAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartXAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$ChartXAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$ChartXAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartXAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartXAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotesLine {
+    dashType?: string;
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartXAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$ChartXAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$ChartXAxisItemNotesLine;
+    data?: kendo$dataviz$ui$ChartXAxisItemNotesDataItem[];
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemPlotBand {
+    color?: string;
+    from?: number;
+    opacity?: number;
+    to?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemTitlePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartXAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartXAxisItemTitleMargin;
+    padding?: kendo$dataviz$ui$ChartXAxisItemTitlePadding;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartXAxisItem {
+    axisCrossingValue?: any | Date | any;
+    background?: string;
+    baseUnit?: string;
+    color?: string;
+    crosshair?: kendo$dataviz$ui$ChartXAxisItemCrosshair;
+    labels?: kendo$dataviz$ui$ChartXAxisItemLabels;
+    line?: kendo$dataviz$ui$ChartXAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$ChartXAxisItemMajorGridLines;
+    minorGridLines?: kendo$dataviz$ui$ChartXAxisItemMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$ChartXAxisItemMinorTicks;
+    majorTicks?: kendo$dataviz$ui$ChartXAxisItemMajorTicks;
+    majorUnit?: number;
+    max?: any;
+    min?: any;
+    minorUnit?: number;
+    name?: string;
+    narrowRange?: boolean;
+    pane?: string;
+    plotBands?: kendo$dataviz$ui$ChartXAxisItemPlotBand[];
+    reverse?: boolean;
+    startAngle?: number;
+    title?: kendo$dataviz$ui$ChartXAxisItemTitle;
+    type?: string;
+    visible?: boolean;
+    notes?: kendo$dataviz$ui$ChartXAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemCrosshairTooltipBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemCrosshairTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartYAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$ChartYAxisItemCrosshairTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemCrosshair {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    tooltip?: kendo$dataviz$ui$ChartYAxisItemCrosshairTooltip;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemLabelsDateFormats {
+    days?: string;
+    hours?: string;
+    months?: string;
+    weeks?: string;
+    years?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemLabelsRotation {
+    align?: string;
+    angle?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartYAxisItemLabelsBorder;
+    color?: string;
+    culture?: string;
+    dateFormats?: kendo$dataviz$ui$ChartYAxisItemLabelsDateFormats;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$ChartYAxisItemLabelsMargin;
+    mirror?: boolean;
+    padding?: kendo$dataviz$ui$ChartYAxisItemLabelsPadding;
+    rotation?: number | kendo$dataviz$ui$ChartYAxisItemLabelsRotation;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemMajorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartYAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartYAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartYAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$ChartYAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$ChartYAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartYAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartYAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotesLine {
+    dashType?: string;
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$ChartYAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$ChartYAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$ChartYAxisItemNotesLine;
+    data?: kendo$dataviz$ui$ChartYAxisItemNotesDataItem[];
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemPlotBand {
+    color?: string;
+    from?: number;
+    opacity?: number;
+    to?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemTitlePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$ChartYAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$ChartYAxisItemTitleMargin;
+    padding?: kendo$dataviz$ui$ChartYAxisItemTitlePadding;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$ChartYAxisItem {
+    axisCrossingValue?: any | Date | any;
+    background?: string;
+    baseUnit?: string;
+    color?: string;
+    crosshair?: kendo$dataviz$ui$ChartYAxisItemCrosshair;
+    labels?: kendo$dataviz$ui$ChartYAxisItemLabels;
+    line?: kendo$dataviz$ui$ChartYAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$ChartYAxisItemMajorGridLines;
+    minorGridLines?: kendo$dataviz$ui$ChartYAxisItemMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$ChartYAxisItemMinorTicks;
+    majorTicks?: kendo$dataviz$ui$ChartYAxisItemMajorTicks;
+    majorUnit?: number;
+    max?: any;
+    min?: any;
+    minorUnit?: number;
+    name?: string;
+    narrowRange?: boolean;
+    pane?: string;
+    plotBands?: kendo$dataviz$ui$ChartYAxisItemPlotBand[];
+    reverse?: boolean;
+    title?: kendo$dataviz$ui$ChartYAxisItemTitle;
+    type?: string;
+    visible?: boolean;
+    notes?: kendo$dataviz$ui$ChartYAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$ChartZoomableMousewheel {
+    lock?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartZoomableSelection {
+    key?: string;
+    lock?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartZoomable {
+    mousewheel?: boolean | kendo$dataviz$ui$ChartZoomableMousewheel;
+    selection?: boolean | kendo$dataviz$ui$ChartZoomableSelection;
+  }
+
+  declare interface kendo$dataviz$ui$ChartExportImageOptions {
+    width?: string;
+    height?: string;
+    cors?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$ChartToggleHighlightOptions {
+    series?: string;
+    category?: string;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesClickEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesHoverEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesOverEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$ChartSeriesLeaveEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$ChartOptions {
+    name?: string;
+    autoBind?: boolean;
+    axisDefaults?: kendo$dataviz$ui$ChartAxisDefaults;
+    categoryAxis?:
+      | kendo$dataviz$ui$ChartCategoryAxisItem
+      | kendo$dataviz$ui$ChartCategoryAxisItem[];
+    chartArea?: kendo$dataviz$ui$ChartChartArea;
+    dataSource?: any | any | kendo$data$DataSource;
+    legend?: kendo$dataviz$ui$ChartLegend;
+    panes?: kendo$dataviz$ui$ChartPane[];
+    pannable?: boolean | kendo$dataviz$ui$ChartPannable;
+    pdf?: kendo$dataviz$ui$ChartPdf;
+    persistSeriesVisibility?: boolean;
+    plotArea?: kendo$dataviz$ui$ChartPlotArea;
+    renderAs?: string;
+    series?: kendo$dataviz$ui$ChartSeriesItem[];
+    seriesColors?: any;
+    seriesDefaults?: kendo$dataviz$ui$ChartSeriesDefaults;
+    theme?: string;
+    title?: string | kendo$dataviz$ui$ChartTitle;
+    tooltip?: kendo$dataviz$ui$ChartTooltip;
+    transitions?: boolean;
+    valueAxis?:
+      | kendo$dataviz$ui$ChartValueAxisItem
+      | kendo$dataviz$ui$ChartValueAxisItem[];
+    xAxis?: kendo$dataviz$ui$ChartXAxisItem | kendo$dataviz$ui$ChartXAxisItem[];
+    yAxis?: kendo$dataviz$ui$ChartYAxisItem | kendo$dataviz$ui$ChartYAxisItem[];
+    zoomable?: boolean | kendo$dataviz$ui$ChartZoomable;
+    axisLabelClick?: (e: ui$ChartAxisLabelClickEvent) => void;
+    dataBound?: (e: ui$ChartDataBoundEvent) => void;
+    drag?: (e: ui$ChartDragEvent) => void;
+    dragEnd?: (e: ui$ChartDragEndEvent) => void;
+    dragStart?: (e: ui$ChartDragStartEvent) => void;
+    legendItemClick?: (e: ui$ChartLegendItemClickEvent) => void;
+    legendItemHover?: (e: ui$ChartLegendItemHoverEvent) => void;
+    legendItemLeave?: (e: ui$ChartLegendItemLeaveEvent) => void;
+    noteClick?: (e: ui$ChartNoteClickEvent) => void;
+    noteHover?: (e: ui$ChartNoteHoverEvent) => void;
+    noteLeave?: (e: ui$ChartNoteLeaveEvent) => void;
+    paneRender?: (e: ui$ChartPaneRenderEvent) => void;
+    plotAreaClick?: (e: ui$ChartPlotAreaClickEvent) => void;
+    plotAreaHover?: (e: ui$ChartPlotAreaHoverEvent) => void;
+    plotAreaLeave?: (e: ui$ChartPlotAreaLeaveEvent) => void;
+    render?: (e: ui$ChartRenderEvent) => void;
+    select?: (e: ui$ChartSelectEvent) => void;
+    selectEnd?: (e: ui$ChartSelectEndEvent) => void;
+    selectStart?: (e: ui$ChartSelectStartEvent) => void;
+    seriesClick?: (e: ui$ChartSeriesClickEvent) => void;
+    seriesHover?: (e: ui$ChartSeriesHoverEvent) => void;
+    seriesOver?: (e: ui$ChartSeriesOverEvent) => void;
+    seriesLeave?: (e: ui$ChartSeriesLeaveEvent) => void;
+    zoom?: (e: ui$ChartZoomEvent) => void;
+    zoomEnd?: (e: ui$ChartZoomEndEvent) => void;
+    zoomStart?: (e: ui$ChartZoomStartEvent) => void;
+  }
+
+  declare interface kendo$dataviz$ui$ChartEvent {
+    sender: kendo$dataviz$ui$Chart;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$dataviz$ui$ChartAxisLabelClickEvent = {
+    axis?: any,
+    dataItem?: any,
+    element?: any,
+    index?: any,
+    text?: string,
+    value?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartDataBoundEvent = {} & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartDragEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartDragEndEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartDragStartEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartLegendItemClickEvent = {
+    pointIndex?: number,
+    series?: any,
+    seriesIndex?: number,
+    text?: string,
+    element?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartLegendItemHoverEvent = {
+    element?: any,
+    pointIndex?: number,
+    series?: any,
+    seriesIndex?: number,
+    text?: string
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartLegendItemLeaveEvent = {
+    element?: any,
+    pointIndex?: number,
+    series?: any,
+    seriesIndex?: number,
+    text?: string
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartNoteClickEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    series?: any,
+    value?: any,
+    visual?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartNoteHoverEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    series?: any,
+    value?: any,
+    visual?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartNoteLeaveEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    series?: any,
+    value?: any,
+    visual?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartPaneRenderEvent = {
+    pane?: kendo$dataviz$ChartPane,
+    name?: string,
+    index?: number
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartPlotAreaClickEvent = {
+    category?: any,
+    element?: any,
+    originalEvent?: any,
+    value?: any,
+    x?: any,
+    y?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartPlotAreaHoverEvent = {
+    category?: any,
+    element?: any,
+    originalEvent?: any,
+    value?: any,
+    x?: any,
+    y?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartPlotAreaLeaveEvent = {} & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartRenderEvent = {} & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartSelectEvent = {
+    axis?: any,
+    from?: any,
+    to?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartSelectEndEvent = {
+    axis?: any,
+    from?: any,
+    to?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartSelectStartEvent = {
+    axis?: any,
+    from?: any,
+    to?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartSeriesClickEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$ChartSeriesClickEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartSeriesHoverEvent = {
+    category?: any,
+    categoryPoints?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$ChartSeriesHoverEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartSeriesOverEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$ChartSeriesOverEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartSeriesLeaveEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$ChartSeriesLeaveEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartZoomEvent = {
+    axisRanges?: any,
+    delta?: number,
+    originalEvent?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartZoomEndEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare type kendo$dataviz$ui$ChartZoomStartEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$ChartEvent;
+
+  declare class kendo$dataviz$ui$Diagram mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$Diagram;
+    options: ui$DiagramOptions;
+    dataSource: kendo$data$DataSource;
+    connections: kendo$dataviz$diagram$Connection[];
+    connectionsDataSource: kendo$data$DataSource;
+    shapes: kendo$dataviz$diagram$Shape[];
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$Diagram;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$DiagramOptions
+    ): this;
+    addConnection(connection: any, undoable: boolean): void;
+    addShape(obj: any, undoable: boolean): kendo$dataviz$diagram$Shape;
+    alignShapes(direction: string): void;
+    boundingBox(items: any): kendo$dataviz$diagram$Rect;
+    bringIntoView(obj: any, options: any): void;
+    cancelEdit(): void;
+    clear(): void;
+    connect(source: any, target: any, options: any): void;
+    connected(source: any, target: any): void;
+    copy(): void;
+    createConnection(item: any): void;
+    createShape(item: any): void;
+    cut(): void;
+    destroy(): void;
+    documentToModel(point: any): any;
+    documentToView(point: any): any;
+    edit(item: any): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    focus(): void;
+    getConnectionByModelId(id: string): kendo$dataviz$diagram$Connection;
+    getConnectionByModelId(id: number): kendo$dataviz$diagram$Connection;
+    getConnectionByModelUid(uid: string): kendo$dataviz$diagram$Connection;
+    getShapeById(id: string): any;
+    getShapeByModelId(id: string): kendo$dataviz$diagram$Shape;
+    getShapeByModelId(id: number): kendo$dataviz$diagram$Shape;
+    getShapeByModelUid(uid: string): kendo$dataviz$diagram$Shape;
+    layerToModel(point: any): any;
+    layout(options: any): void;
+    load(json: string): void;
+    modelToDocument(point: any): any;
+    modelToLayer(point: any): any;
+    modelToView(point: any): any;
+    pan(pan: any): void;
+    paste(): void;
+    redo(): void;
+    remove(items: any, undoable: boolean): void;
+    resize(): void;
+    save(): void;
+    saveAsPdf(): JQueryPromise<any>;
+    saveEdit(): void;
+    select(): any;
+    select(elements: kendo$dataviz$diagram$Connection, options: any): void;
+    select(elements: kendo$dataviz$diagram$Shape, options: any): void;
+    select(elements: any, options: any): void;
+    selectAll(): void;
+    selectArea(rect: kendo$dataviz$diagram$Rect): void;
+    setConnectionsDataSource(dataSource: kendo$data$DataSource): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
+    toBack(items: any, undoable: boolean): void;
+    toFront(items: any, undoable: boolean): void;
+    transformPoint(p: any): void;
+    transformRect(r: any): void;
+    undo(): void;
+    viewToDocument(
+      point: kendo$dataviz$diagram$Point
+    ): kendo$dataviz$diagram$Point;
+    viewToModel(
+      point: kendo$dataviz$diagram$Point
+    ): kendo$dataviz$diagram$Point;
+    viewport(): kendo$dataviz$diagram$Rect;
+    zoom(): number;
+    zoom(zoom: number, point: kendo$dataviz$diagram$Point): void;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsContent {
+    color?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    fontStyle?: string;
+    fontWeight?: string;
+    template?: string | Function;
+    text?: string;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsEditableTool {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsEditable {
+    drag?: boolean;
+    remove?: boolean;
+    tools?: kendo$dataviz$ui$DiagramConnectionDefaultsEditableTool[];
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsEndCapFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsEndCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsEndCap {
+    fill?: string | kendo$dataviz$ui$DiagramConnectionDefaultsEndCapFill;
+    stroke?: string | kendo$dataviz$ui$DiagramConnectionDefaultsEndCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsHoverStroke {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsHover {
+    stroke?: kendo$dataviz$ui$DiagramConnectionDefaultsHoverStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsSelectionHandlesFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsSelectionHandlesStroke {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsSelectionHandles {
+    fill?:
+      | string
+      | kendo$dataviz$ui$DiagramConnectionDefaultsSelectionHandlesFill;
+    stroke?: kendo$dataviz$ui$DiagramConnectionDefaultsSelectionHandlesStroke;
+    width?: number;
+    height?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsSelection {
+    handles?: kendo$dataviz$ui$DiagramConnectionDefaultsSelectionHandles;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsStartCapFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsStartCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsStartCap {
+    fill?: string | kendo$dataviz$ui$DiagramConnectionDefaultsStartCapFill;
+    stroke?: string | kendo$dataviz$ui$DiagramConnectionDefaultsStartCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaultsStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionDefaults {
+    content?: kendo$dataviz$ui$DiagramConnectionDefaultsContent;
+    editable?: boolean | kendo$dataviz$ui$DiagramConnectionDefaultsEditable;
+    endCap?: string | kendo$dataviz$ui$DiagramConnectionDefaultsEndCap;
+    fromConnector?: string;
+    hover?: kendo$dataviz$ui$DiagramConnectionDefaultsHover;
+    selectable?: boolean;
+    selection?: kendo$dataviz$ui$DiagramConnectionDefaultsSelection;
+    startCap?: string | kendo$dataviz$ui$DiagramConnectionDefaultsStartCap;
+    stroke?: kendo$dataviz$ui$DiagramConnectionDefaultsStroke;
+    toConnector?: string;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionContent {
+    color?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    fontStyle?: string;
+    fontWeight?: string;
+    template?: string | Function;
+    text?: string;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionEditableTool {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionEditable {
+    tools?: kendo$dataviz$ui$DiagramConnectionEditableTool[];
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionEndCapFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionEndCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionEndCap {
+    fill?: string | kendo$dataviz$ui$DiagramConnectionEndCapFill;
+    stroke?: string | kendo$dataviz$ui$DiagramConnectionEndCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionFrom {
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionHoverStroke {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionHover {
+    stroke?: kendo$dataviz$ui$DiagramConnectionHoverStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionPoint {
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionSelectionHandlesFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionSelectionHandlesStroke {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionSelectionHandles {
+    fill?: string | kendo$dataviz$ui$DiagramConnectionSelectionHandlesFill;
+    stroke?: kendo$dataviz$ui$DiagramConnectionSelectionHandlesStroke;
+    width?: number;
+    height?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionSelection {
+    handles?: kendo$dataviz$ui$DiagramConnectionSelectionHandles;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionStartCapFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionStartCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionStartCap {
+    fill?: string | kendo$dataviz$ui$DiagramConnectionStartCapFill;
+    stroke?: string | kendo$dataviz$ui$DiagramConnectionStartCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnectionTo {
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramConnection {
+    content?: kendo$dataviz$ui$DiagramConnectionContent;
+    editable?: boolean | kendo$dataviz$ui$DiagramConnectionEditable;
+    endCap?: string | kendo$dataviz$ui$DiagramConnectionEndCap;
+    from?: string | kendo$dataviz$ui$DiagramConnectionFrom;
+    fromConnector?: string;
+    hover?: kendo$dataviz$ui$DiagramConnectionHover;
+    points?: kendo$dataviz$ui$DiagramConnectionPoint[];
+    selection?: kendo$dataviz$ui$DiagramConnectionSelection;
+    startCap?: string | kendo$dataviz$ui$DiagramConnectionStartCap;
+    stroke?: kendo$dataviz$ui$DiagramConnectionStroke;
+    to?: string | kendo$dataviz$ui$DiagramConnectionTo;
+    toConnector?: string;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableDragSnap {
+    size?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableDrag {
+    snap?: boolean | kendo$dataviz$ui$DiagramEditableDragSnap;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableResizeHandlesFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableResizeHandlesHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableResizeHandlesHoverStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableResizeHandlesHover {
+    fill?: string | kendo$dataviz$ui$DiagramEditableResizeHandlesHoverFill;
+    stroke?: kendo$dataviz$ui$DiagramEditableResizeHandlesHoverStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableResizeHandlesStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableResizeHandles {
+    fill?: string | kendo$dataviz$ui$DiagramEditableResizeHandlesFill;
+    height?: number;
+    hover?: kendo$dataviz$ui$DiagramEditableResizeHandlesHover;
+    stroke?: kendo$dataviz$ui$DiagramEditableResizeHandlesStroke;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableResize {
+    handles?: kendo$dataviz$ui$DiagramEditableResizeHandles;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableRotateFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableRotateStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableRotate {
+    fill?: kendo$dataviz$ui$DiagramEditableRotateFill;
+    stroke?: kendo$dataviz$ui$DiagramEditableRotateStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditableTool {
+    name?: string;
+    step?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEditable {
+    connectionTemplate?: string | Function;
+    drag?: boolean | kendo$dataviz$ui$DiagramEditableDrag;
+    remove?: boolean;
+    resize?: boolean | kendo$dataviz$ui$DiagramEditableResize;
+    rotate?: boolean | kendo$dataviz$ui$DiagramEditableRotate;
+    shapeTemplate?: string | Function;
+    tools?: kendo$dataviz$ui$DiagramEditableTool[];
+  }
+
+  declare interface kendo$dataviz$ui$DiagramLayoutGrid {
+    componentSpacingX?: number;
+    componentSpacingY?: number;
+    offsetX?: number;
+    offsetY?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramLayout {
+    endRadialAngle?: number;
+    grid?: kendo$dataviz$ui$DiagramLayoutGrid;
+    horizontalSeparation?: number;
+    iterations?: number;
+    layerSeparation?: number;
+    nodeDistance?: number;
+    radialFirstLevelSeparation?: number;
+    radialSeparation?: number;
+    startRadialAngle?: number;
+    subtype?: string;
+    tipOverTreeStartLevel?: number;
+    type?: string;
+    underneathHorizontalOffset?: number;
+    underneathVerticalSeparation?: number;
+    underneathVerticalTopOffset?: number;
+    verticalSeparation?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramPannable {
+    key?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramPdfMargin {
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+    top?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramPdf {
+    author?: string;
+    creator?: string;
+    date?: Date;
+    fileName?: string;
+    forceProxy?: boolean;
+    keywords?: string;
+    landscape?: boolean;
+    margin?: kendo$dataviz$ui$DiagramPdfMargin;
+    paperSize?: string | any;
+    proxyURL?: string;
+    proxyTarget?: string;
+    subject?: string;
+    title?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramSelectableStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramSelectable {
+    key?: string;
+    multiple?: boolean;
+    stroke?: kendo$dataviz$ui$DiagramSelectableStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsHoverStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsHover {
+    fill?:
+      | string
+      | kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsHoverFill;
+    stroke?:
+      | string
+      | kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsHoverStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaults {
+    width?: number;
+    height?: number;
+    hover?: kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsHover;
+    fill?: string | kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsFill;
+    stroke?:
+      | string
+      | kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaultsStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorHoverStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorHover {
+    fill?: string | kendo$dataviz$ui$DiagramShapeDefaultsConnectorHoverFill;
+    stroke?: string | kendo$dataviz$ui$DiagramShapeDefaultsConnectorHoverStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnectorStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsConnector {
+    name?: string;
+    position?: Function;
+    width?: number;
+    height?: number;
+    hover?: kendo$dataviz$ui$DiagramShapeDefaultsConnectorHover;
+    fill?: string | kendo$dataviz$ui$DiagramShapeDefaultsConnectorFill;
+    stroke?: string | kendo$dataviz$ui$DiagramShapeDefaultsConnectorStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsContent {
+    align?: string;
+    color?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    fontStyle?: string;
+    fontWeight?: string;
+    template?: string | Function;
+    text?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsEditableTool {
+    name?: string;
+    step?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsEditable {
+    connect?: boolean;
+    drag?: boolean;
+    remove?: boolean;
+    tools?: kendo$dataviz$ui$DiagramShapeDefaultsEditableTool[];
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsFillGradientStop {
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsFillGradient {
+    type?: string;
+    center?: any;
+    radius?: number;
+    start?: any;
+    end?: any;
+    stops?: kendo$dataviz$ui$DiagramShapeDefaultsFillGradientStop[];
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsFill {
+    color?: string;
+    opacity?: number;
+    gradient?: kendo$dataviz$ui$DiagramShapeDefaultsFillGradient;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsHover {
+    fill?: string | kendo$dataviz$ui$DiagramShapeDefaultsHoverFill;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsRotation {
+    angle?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaultsStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeDefaults {
+    connectors?: kendo$dataviz$ui$DiagramShapeDefaultsConnector[];
+    connectorDefaults?: kendo$dataviz$ui$DiagramShapeDefaultsConnectorDefaults;
+    content?: kendo$dataviz$ui$DiagramShapeDefaultsContent;
+    editable?: boolean | kendo$dataviz$ui$DiagramShapeDefaultsEditable;
+    fill?: string | kendo$dataviz$ui$DiagramShapeDefaultsFill;
+    height?: number;
+    hover?: kendo$dataviz$ui$DiagramShapeDefaultsHover;
+    minHeight?: number;
+    minWidth?: number;
+    path?: string;
+    rotation?: kendo$dataviz$ui$DiagramShapeDefaultsRotation;
+    selectable?: boolean;
+    source?: string;
+    stroke?: kendo$dataviz$ui$DiagramShapeDefaultsStroke;
+    type?: string;
+    visual?: Function;
+    width?: number;
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorDefaultsFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorDefaultsHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorDefaultsHoverStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorDefaultsHover {
+    fill?: string | kendo$dataviz$ui$DiagramShapeConnectorDefaultsHoverFill;
+    stroke?: string | kendo$dataviz$ui$DiagramShapeConnectorDefaultsHoverStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorDefaultsStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorDefaults {
+    width?: number;
+    height?: number;
+    hover?: kendo$dataviz$ui$DiagramShapeConnectorDefaultsHover;
+    fill?: string | kendo$dataviz$ui$DiagramShapeConnectorDefaultsFill;
+    stroke?: string | kendo$dataviz$ui$DiagramShapeConnectorDefaultsStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorHoverStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorHover {
+    fill?: string | kendo$dataviz$ui$DiagramShapeConnectorHoverFill;
+    stroke?: string | kendo$dataviz$ui$DiagramShapeConnectorHoverStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnectorStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeConnector {
+    description?: string;
+    name?: string;
+    position?: Function;
+    width?: number;
+    height?: number;
+    hover?: kendo$dataviz$ui$DiagramShapeConnectorHover;
+    fill?: string | kendo$dataviz$ui$DiagramShapeConnectorFill;
+    stroke?: string | kendo$dataviz$ui$DiagramShapeConnectorStroke;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeContent {
+    align?: string;
+    color?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    fontStyle?: string;
+    fontWeight?: string;
+    template?: string | Function;
+    text?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeEditableTool {
+    name?: string;
+    step?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeEditable {
+    connect?: boolean;
+    tools?: kendo$dataviz$ui$DiagramShapeEditableTool[];
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeFillGradientStop {
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeFillGradient {
+    type?: string;
+    center?: any;
+    radius?: number;
+    start?: any;
+    end?: any;
+    stops?: kendo$dataviz$ui$DiagramShapeFillGradientStop[];
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeFill {
+    color?: string;
+    opacity?: number;
+    gradient?: kendo$dataviz$ui$DiagramShapeFillGradient;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeHover {
+    fill?: string | kendo$dataviz$ui$DiagramShapeHoverFill;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeRotation {
+    angle?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShapeStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramShape {
+    connectors?: kendo$dataviz$ui$DiagramShapeConnector[];
+    connectorDefaults?: kendo$dataviz$ui$DiagramShapeConnectorDefaults;
+    content?: kendo$dataviz$ui$DiagramShapeContent;
+    editable?: boolean | kendo$dataviz$ui$DiagramShapeEditable;
+    fill?: string | kendo$dataviz$ui$DiagramShapeFill;
+    height?: number;
+    hover?: kendo$dataviz$ui$DiagramShapeHover;
+    id?: string;
+    minHeight?: number;
+    minWidth?: number;
+    path?: string;
+    rotation?: kendo$dataviz$ui$DiagramShapeRotation;
+    source?: string;
+    stroke?: kendo$dataviz$ui$DiagramShapeStroke;
+    type?: string;
+    visual?: Function;
+    width?: number;
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramExportImageOptions {
+    width?: string;
+    height?: string;
+    cors?: string;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramSelectOptions {
+    addToSelection?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramOptions {
+    name?: string;
+    autoBind?: boolean;
+    connectionDefaults?: kendo$dataviz$ui$DiagramConnectionDefaults;
+    connections?: kendo$dataviz$ui$DiagramConnection[];
+    connectionsDataSource?: any | any | kendo$data$DataSource;
+    dataSource?: any | any | kendo$data$DataSource;
+    editable?: boolean | kendo$dataviz$ui$DiagramEditable;
+    layout?: kendo$dataviz$ui$DiagramLayout;
+    pannable?: boolean | kendo$dataviz$ui$DiagramPannable;
+    pdf?: kendo$dataviz$ui$DiagramPdf;
+    selectable?: boolean | kendo$dataviz$ui$DiagramSelectable;
+    shapeDefaults?: kendo$dataviz$ui$DiagramShapeDefaults;
+    shapes?: kendo$dataviz$ui$DiagramShape[];
+    template?: string | Function;
+    theme?: string;
+    zoom?: number;
+    zoomMax?: number;
+    zoomMin?: number;
+    zoomRate?: number;
+    add?: (e: ui$DiagramAddEvent) => void;
+    cancel?: (e: ui$DiagramCancelEvent) => void;
+    change?: (e: ui$DiagramChangeEvent) => void;
+    click?: (e: ui$DiagramClickEvent) => void;
+    dataBound?: (e: ui$DiagramDataBoundEvent) => void;
+    drag?: (e: ui$DiagramDragEvent) => void;
+    dragEnd?: (e: ui$DiagramDragEndEvent) => void;
+    dragStart?: (e: ui$DiagramDragStartEvent) => void;
+    edit?: (e: ui$DiagramEditEvent) => void;
+    itemBoundsChange?: (e: ui$DiagramItemBoundsChangeEvent) => void;
+    itemRotate?: (e: ui$DiagramItemRotateEvent) => void;
+    mouseEnter?: (e: ui$DiagramMouseEnterEvent) => void;
+    mouseLeave?: (e: ui$DiagramMouseLeaveEvent) => void;
+    pan?: (e: ui$DiagramPanEvent) => void;
+    remove?: (e: ui$DiagramRemoveEvent) => void;
+    save?: (e: ui$DiagramSaveEvent) => void;
+    select?: (e: ui$DiagramSelectEvent) => void;
+    toolBarClick?: (e: ui$DiagramToolBarClickEvent) => void;
+    zoomEnd?: (e: ui$DiagramZoomEndEvent) => void;
+    zoomStart?: (e: ui$DiagramZoomStartEvent) => void;
+  }
+
+  declare interface kendo$dataviz$ui$DiagramEvent {
+    sender: kendo$dataviz$ui$Diagram;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$dataviz$ui$DiagramAddEvent = {
+    connection?: kendo$dataviz$diagram$Connection,
+    shape?: kendo$dataviz$diagram$Shape
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramCancelEvent = {
+    container?: JQuery,
+    connection?: kendo$data$Model,
+    shape?: kendo$data$Model
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramChangeEvent = {
+    added?: any,
+    removed?: any
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramClickEvent = {
+    item?: any,
+    meta?: any,
+    point?: kendo$dataviz$diagram$Point
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramDataBoundEvent = {} & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramDragEvent = {
+    connectionHandle?: string,
+    connections?: any,
+    shapes?: any
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramDragEndEvent = {
+    connectionHandle?: string,
+    connections?: any,
+    shapes?: any
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramDragStartEvent = {
+    connectionHandle?: string,
+    connections?: any,
+    shapes?: any
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramEditEvent = {
+    container?: JQuery,
+    connection?: kendo$data$Model,
+    shape?: kendo$data$Model
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramItemBoundsChangeEvent = {
+    bounds?: kendo$dataviz$diagram$Rect,
+    item?: kendo$dataviz$diagram$Shape
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramItemRotateEvent = {
+    item?: kendo$dataviz$diagram$Shape
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramMouseEnterEvent = {
+    item?: any
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramMouseLeaveEvent = {
+    item?: any
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramPanEvent = {
+    pan?: kendo$dataviz$diagram$Point
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramRemoveEvent = {
+    connection?: kendo$dataviz$diagram$Connection,
+    shape?: kendo$dataviz$diagram$Shape
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramSaveEvent = {
+    container?: JQuery,
+    connection?: kendo$data$Model,
+    shape?: kendo$data$Model
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramSelectEvent = {
+    selected?: any,
+    deselected?: any
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramToolBarClickEvent = {
+    action?: string,
+    shapes?: any,
+    connections?: any,
+    target?: JQuery
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramZoomEndEvent = {
+    point?: kendo$dataviz$diagram$Point,
+    zoom?: number
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare type kendo$dataviz$ui$DiagramZoomStartEvent = {
+    point?: kendo$dataviz$diagram$Point,
+    zoom?: number
+  } & kendo$dataviz$ui$DiagramEvent;
+
+  declare class kendo$dataviz$ui$LinearGauge mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$LinearGauge;
+    options: ui$LinearGaugeOptions;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$LinearGauge;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$LinearGaugeOptions
+    ): this;
+    allValues(values: any): any;
+    destroy(): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    redraw(): void;
+    resize(force?: boolean): void;
+    setOptions(options: any): void;
+    svg(): void;
+    imageDataURL(): string;
+    value(): void;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeGaugeAreaBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeGaugeAreaMargin {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeGaugeArea {
+    background?: string;
+    border?: kendo$dataviz$ui$LinearGaugeGaugeAreaBorder;
+    height?: number;
+    margin?: kendo$dataviz$ui$LinearGaugeGaugeAreaMargin;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugePointerItemBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugePointerItemTrackBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugePointerItemTrack {
+    border?: kendo$dataviz$ui$LinearGaugePointerItemTrackBorder;
+    color?: string;
+    opacity?: number;
+    size?: number;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugePointerItem {
+    border?: kendo$dataviz$ui$LinearGaugePointerItemBorder;
+    color?: string;
+    margin?: number | any;
+    opacity?: number;
+    shape?: string;
+    size?: number;
+    track?: kendo$dataviz$ui$LinearGaugePointerItemTrack;
+    value?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleLabelsMargin {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleLabelsPadding {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$LinearGaugeScaleLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$LinearGaugeScaleLabelsMargin;
+    padding?: kendo$dataviz$ui$LinearGaugeScaleLabelsPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScaleRange {
+    from?: number;
+    to?: number;
+    opacity?: number;
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeScale {
+    line?: kendo$dataviz$ui$LinearGaugeScaleLine;
+    labels?: kendo$dataviz$ui$LinearGaugeScaleLabels;
+    majorTicks?: kendo$dataviz$ui$LinearGaugeScaleMajorTicks;
+    majorUnit?: number;
+    max?: number;
+    min?: number;
+    minorTicks?: kendo$dataviz$ui$LinearGaugeScaleMinorTicks;
+    minorUnit?: number;
+    mirror?: boolean;
+    ranges?: kendo$dataviz$ui$LinearGaugeScaleRange[];
+    rangePlaceholderColor?: string;
+    rangeSize?: number;
+    reverse?: boolean;
+    vertical?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeExportImageOptions {
+    width?: string;
+    height?: string;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeOptions {
+    name?: string;
+    gaugeArea?: kendo$dataviz$ui$LinearGaugeGaugeArea;
+    pointer?: kendo$dataviz$ui$LinearGaugePointerItem[];
+    renderAs?: string;
+    scale?: kendo$dataviz$ui$LinearGaugeScale;
+    theme?: string;
+    transitions?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$LinearGaugeEvent {
+    sender: kendo$dataviz$ui$LinearGauge;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ui$Map mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$Map;
+    options: ui$MapOptions;
+    layers: any;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$Map;
+    constructor(element: kendo$effects$Element, options?: ui$MapOptions): this;
+    center(): kendo$dataviz$map$Location;
+    center(center: any): void;
+    center(center: kendo$dataviz$map$Location): void;
+    destroy(): void;
+    eventOffset(e: any): kendo$geometry$Point;
+    eventOffset(e: JQueryEventObject): kendo$geometry$Point;
+    eventToLayer(e: any): kendo$geometry$Point;
+    eventToLayer(e: JQueryEventObject): kendo$geometry$Point;
+    eventToLocation(e: any): kendo$geometry$Point;
+    eventToLocation(e: JQueryEventObject): kendo$geometry$Point;
+    eventToView(e: any): kendo$geometry$Point;
+    eventToView(e: JQueryEventObject): kendo$geometry$Point;
+    extent(): kendo$dataviz$map$Extent;
+    extent(extent: kendo$dataviz$map$Extent): void;
+    layerToLocation(point: any, zoom: number): kendo$dataviz$map$Location;
+    layerToLocation(
+      point: kendo$geometry$Point,
+      zoom: number
+    ): kendo$dataviz$map$Location;
+    locationToLayer(location: any, zoom: number): kendo$geometry$Point;
+    locationToLayer(
+      location: kendo$dataviz$map$Location,
+      zoom: number
+    ): kendo$geometry$Point;
+    locationToView(location: any): kendo$geometry$Point;
+    locationToView(location: kendo$dataviz$map$Location): kendo$geometry$Point;
+    resize(force?: boolean): void;
+    setOptions(options: any): void;
+    viewSize(): any;
+    viewToLocation(point: any, zoom: number): kendo$dataviz$map$Location;
+    viewToLocation(
+      point: kendo$geometry$Point,
+      zoom: number
+    ): kendo$dataviz$map$Location;
+    zoom(): number;
+    zoom(level: number): void;
+  }
+
+  declare interface kendo$dataviz$ui$MapControlsAttribution {
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapControlsNavigator {
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapControlsZoom {
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapControls {
+    attribution?: boolean | kendo$dataviz$ui$MapControlsAttribution;
+    navigator?: boolean | kendo$dataviz$ui$MapControlsNavigator;
+    zoom?: boolean | kendo$dataviz$ui$MapControlsZoom;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsBing {
+    attribution?: string;
+    opacity?: number;
+    key?: string;
+    imagerySet?: string;
+    culture?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsBubbleStyleFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsBubbleStyleStroke {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsBubbleStyle {
+    fill?: kendo$dataviz$ui$MapLayerDefaultsBubbleStyleFill;
+    stroke?: kendo$dataviz$ui$MapLayerDefaultsBubbleStyleStroke;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsBubble {
+    attribution?: string;
+    opacity?: number;
+    maxSize?: number;
+    minSize?: number;
+    style?: kendo$dataviz$ui$MapLayerDefaultsBubbleStyle;
+    symbol?: string | Function;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipAnimationClose {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipAnimationOpen {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipAnimation {
+    close?: kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipAnimationClose;
+    open?: kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipAnimationOpen;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipContent {
+    url?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsMarkerTooltip {
+    autoHide?: boolean;
+    animation?: kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipAnimation;
+    content?:
+      | string
+      | Function
+      | kendo$dataviz$ui$MapLayerDefaultsMarkerTooltipContent;
+    template?: string;
+    callout?: boolean;
+    iframe?: boolean;
+    height?: number;
+    width?: number;
+    position?: string;
+    showAfter?: number;
+    showOn?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsMarker {
+    shape?: string;
+    tooltip?: kendo$dataviz$ui$MapLayerDefaultsMarkerTooltip;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsShapeStyleFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsShapeStyleStroke {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsShapeStyle {
+    fill?: kendo$dataviz$ui$MapLayerDefaultsShapeStyleFill;
+    stroke?: kendo$dataviz$ui$MapLayerDefaultsShapeStyleStroke;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsShape {
+    attribution?: string;
+    opacity?: number;
+    style?: kendo$dataviz$ui$MapLayerDefaultsShapeStyle;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaultsTile {
+    urlTemplate?: string;
+    attribution?: string;
+    subdomains?: any;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerDefaults {
+    marker?: kendo$dataviz$ui$MapLayerDefaultsMarker;
+    shape?: kendo$dataviz$ui$MapLayerDefaultsShape;
+    bubble?: kendo$dataviz$ui$MapLayerDefaultsBubble;
+    tileSize?: number;
+    tile?: kendo$dataviz$ui$MapLayerDefaultsTile;
+    bing?: kendo$dataviz$ui$MapLayerDefaultsBing;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerStyleFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerStyleStroke {
+    color?: string;
+    dashType?: number;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerStyle {
+    fill?: kendo$dataviz$ui$MapLayerStyleFill;
+    stroke?: kendo$dataviz$ui$MapLayerStyleStroke;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerTooltipAnimationClose {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerTooltipAnimationOpen {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerTooltipAnimation {
+    close?: kendo$dataviz$ui$MapLayerTooltipAnimationClose;
+    open?: kendo$dataviz$ui$MapLayerTooltipAnimationOpen;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerTooltipContent {
+    url?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayerTooltip {
+    autoHide?: boolean;
+    animation?: kendo$dataviz$ui$MapLayerTooltipAnimation;
+    content?: string | Function | kendo$dataviz$ui$MapLayerTooltipContent;
+    template?: string;
+    callout?: boolean;
+    iframe?: boolean;
+    height?: number;
+    width?: number;
+    position?: string;
+    showAfter?: number;
+    showOn?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapLayer {
+    attribution?: string;
+    autoBind?: boolean;
+    dataSource?: any | any | kendo$data$DataSource;
+    extent?: any | kendo$dataviz$map$Extent;
+    key?: string;
+    imagerySet?: string;
+    culture?: string;
+    locationField?: string;
+    shape?: string;
+    tileSize?: number;
+    titleField?: string;
+    tooltip?: kendo$dataviz$ui$MapLayerTooltip;
+    maxSize?: number;
+    minSize?: number;
+    maxZoom?: number;
+    minZoom?: number;
+    opacity?: number;
+    subdomains?: any;
+    symbol?: string | Function;
+    type?: string;
+    style?: kendo$dataviz$ui$MapLayerStyle;
+    urlTemplate?: string;
+    valueField?: string;
+    zIndex?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerDefaultsTooltipAnimationClose {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerDefaultsTooltipAnimationOpen {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerDefaultsTooltipAnimation {
+    close?: kendo$dataviz$ui$MapMarkerDefaultsTooltipAnimationClose;
+    open?: kendo$dataviz$ui$MapMarkerDefaultsTooltipAnimationOpen;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerDefaultsTooltipContent {
+    url?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerDefaultsTooltip {
+    autoHide?: boolean;
+    animation?: kendo$dataviz$ui$MapMarkerDefaultsTooltipAnimation;
+    content?:
+      | string
+      | Function
+      | kendo$dataviz$ui$MapMarkerDefaultsTooltipContent;
+    template?: string;
+    callout?: boolean;
+    iframe?: boolean;
+    height?: number;
+    width?: number;
+    position?: string;
+    showAfter?: number;
+    showOn?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerDefaults {
+    shape?: string;
+    tooltip?: kendo$dataviz$ui$MapMarkerDefaultsTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerTooltipAnimationClose {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerTooltipAnimationOpen {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerTooltipAnimation {
+    close?: kendo$dataviz$ui$MapMarkerTooltipAnimationClose;
+    open?: kendo$dataviz$ui$MapMarkerTooltipAnimationOpen;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerTooltipContent {
+    url?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarkerTooltip {
+    autoHide?: boolean;
+    animation?: kendo$dataviz$ui$MapMarkerTooltipAnimation;
+    content?: string | Function | kendo$dataviz$ui$MapMarkerTooltipContent;
+    template?: string;
+    callout?: boolean;
+    iframe?: boolean;
+    height?: number;
+    width?: number;
+    position?: string;
+    showAfter?: number;
+    showOn?: string;
+  }
+
+  declare interface kendo$dataviz$ui$MapMarker {
+    location?: any | kendo$dataviz$map$Location;
+    shape?: string;
+    title?: string;
+    tooltip?: kendo$dataviz$ui$MapMarkerTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$MapOptions {
+    name?: string;
+    center?: any | kendo$dataviz$map$Location;
+    controls?: kendo$dataviz$ui$MapControls;
+    layerDefaults?: kendo$dataviz$ui$MapLayerDefaults;
+    layers?: kendo$dataviz$ui$MapLayer[];
+    markerDefaults?: kendo$dataviz$ui$MapMarkerDefaults;
+    markers?: kendo$dataviz$ui$MapMarker[];
+    minZoom?: number;
+    maxZoom?: number;
+    minSize?: number;
+    pannable?: boolean;
+    wraparound?: boolean;
+    zoom?: number;
+    zoomable?: boolean;
+    beforeReset?: (e: ui$MapBeforeResetEvent) => void;
+    click?: (e: ui$MapClickEvent) => void;
+    markerActivate?: (e: ui$MapMarkerActivateEvent) => void;
+    markerCreated?: (e: ui$MapMarkerCreatedEvent) => void;
+    markerClick?: (e: ui$MapMarkerClickEvent) => void;
+    pan?: (e: ui$MapPanEvent) => void;
+    panEnd?: (e: ui$MapPanEndEvent) => void;
+    reset?: (e: ui$MapResetEvent) => void;
+    shapeClick?: (e: ui$MapShapeClickEvent) => void;
+    shapeCreated?: (e: ui$MapShapeCreatedEvent) => void;
+    shapeFeatureCreated?: (e: ui$MapShapeFeatureCreatedEvent) => void;
+    shapeMouseEnter?: (e: ui$MapShapeMouseEnterEvent) => void;
+    shapeMouseLeave?: (e: ui$MapShapeMouseLeaveEvent) => void;
+    zoomStart?: (e: ui$MapZoomStartEvent) => void;
+    zoomEnd?: (e: ui$MapZoomEndEvent) => void;
+  }
+
+  declare interface kendo$dataviz$ui$MapEvent {
+    sender: kendo$dataviz$ui$Map;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$dataviz$ui$MapBeforeResetEvent = {} & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapClickEvent = {
+    location?: kendo$dataviz$map$Location,
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapMarkerActivateEvent = {
+    marker?: kendo$dataviz$map$Marker,
+    layer?: kendo$dataviz$map$Marker
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapMarkerCreatedEvent = {
+    marker?: kendo$dataviz$map$Marker,
+    layer?: kendo$dataviz$map$Marker
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapMarkerClickEvent = {
+    marker?: kendo$dataviz$map$Marker,
+    layer?: kendo$dataviz$map$Marker
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapPanEvent = {
+    origin?: kendo$dataviz$map$Location,
+    center?: kendo$dataviz$map$Location,
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapPanEndEvent = {
+    origin?: kendo$dataviz$map$Location,
+    center?: kendo$dataviz$map$Location,
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapResetEvent = {} & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapShapeClickEvent = {
+    layer?: kendo$dataviz$map$layer$Shape,
+    shape?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapShapeCreatedEvent = {
+    layer?: kendo$dataviz$map$layer$Shape,
+    shape?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapShapeFeatureCreatedEvent = {
+    dataItem?: any,
+    layer?: kendo$dataviz$map$layer$Shape,
+    group?: kendo$drawing$Group,
+    properties?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapShapeMouseEnterEvent = {
+    layer?: kendo$dataviz$map$layer$Shape,
+    shape?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapShapeMouseLeaveEvent = {
+    layer?: kendo$dataviz$map$layer$Shape,
+    shape?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapZoomStartEvent = {
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare type kendo$dataviz$ui$MapZoomEndEvent = {
+    originalEvent?: any
+  } & kendo$dataviz$ui$MapEvent;
+
+  declare class kendo$dataviz$ui$QRCode mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$QRCode;
+    options: ui$QRCodeOptions;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$QRCode;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$QRCodeOptions
+    ): this;
+    destroy(): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    imageDataURL(): string;
+    redraw(): void;
+    resize(force?: boolean): void;
+    setOptions(options: any): void;
+    svg(): string;
+    value(options: string): void;
+    value(options: number): void;
+  }
+
+  declare interface kendo$dataviz$ui$QRCodeBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$QRCodeExportImageOptions {
+    width?: string;
+    height?: string;
+  }
+
+  declare interface kendo$dataviz$ui$QRCodeExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$QRCodeOptions {
+    name?: string;
+    background?: string;
+    border?: kendo$dataviz$ui$QRCodeBorder;
+    color?: string;
+    encoding?: string;
+    errorCorrection?: string;
+    padding?: number;
+    renderAs?: string;
+    size?: number | string;
+    value?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$QRCodeEvent {
+    sender: kendo$dataviz$ui$QRCode;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ui$RadialGauge mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$RadialGauge;
+    options: ui$RadialGaugeOptions;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$RadialGauge;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$RadialGaugeOptions
+    ): this;
+    allValues(values?: any): any;
+    destroy(): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    redraw(): void;
+    resize(force?: boolean): void;
+    setOptions(options: any): void;
+    svg(): void;
+    imageDataURL(): string;
+    value(): void;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeGaugeAreaBorder {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeGaugeAreaMargin {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeGaugeArea {
+    background?: string;
+    border?: kendo$dataviz$ui$RadialGaugeGaugeAreaBorder;
+    height?: number;
+    margin?: kendo$dataviz$ui$RadialGaugeGaugeAreaMargin;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugePointerItemCap {
+    color?: string;
+    size?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugePointerItem {
+    cap?: kendo$dataviz$ui$RadialGaugePointerItemCap;
+    color?: string;
+    length?: number;
+    value?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScaleLabelsBorder {
+    color?: string;
+    dashType?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScaleLabelsMargin {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScaleLabelsPadding {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScaleLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$RadialGaugeScaleLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$RadialGaugeScaleLabelsMargin;
+    padding?: kendo$dataviz$ui$RadialGaugeScaleLabelsPadding;
+    position?: string;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScaleMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScaleMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScaleRange {
+    from?: number;
+    to?: number;
+    opacity?: number;
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeScale {
+    endAngle?: number;
+    labels?: kendo$dataviz$ui$RadialGaugeScaleLabels;
+    majorTicks?: kendo$dataviz$ui$RadialGaugeScaleMajorTicks;
+    majorUnit?: number;
+    max?: number;
+    min?: number;
+    minorTicks?: kendo$dataviz$ui$RadialGaugeScaleMinorTicks;
+    minorUnit?: number;
+    ranges?: kendo$dataviz$ui$RadialGaugeScaleRange[];
+    rangePlaceholderColor?: string;
+    rangeSize?: number;
+    rangeDistance?: number;
+    reverse?: boolean;
+    startAngle?: number;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeExportImageOptions {
+    width?: string;
+    height?: string;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeOptions {
+    name?: string;
+    gaugeArea?: kendo$dataviz$ui$RadialGaugeGaugeArea;
+    pointer?: kendo$dataviz$ui$RadialGaugePointerItem[];
+    renderAs?: string;
+    scale?: kendo$dataviz$ui$RadialGaugeScale;
+    theme?: string;
+    transitions?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$RadialGaugeEvent {
+    sender: kendo$dataviz$ui$RadialGauge;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ui$Sparkline mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$Sparkline;
+    options: ui$SparklineOptions;
+    dataSource: kendo$data$DataSource;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$Sparkline;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$SparklineOptions
+    ): this;
+    destroy(): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    refresh(): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
+    setOptions(options: any): void;
+    svg(): string;
+    imageDataURL(): string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemCrosshairTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineCategoryAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemCrosshair {
+    color?: string;
+    width?: number;
+    opacity?: number;
+    dashType?: number;
+    visible?: boolean;
+    tooltip?: kendo$dataviz$ui$SparklineCategoryAxisItemCrosshairTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineCategoryAxisItemLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: number | any;
+    mirror?: boolean;
+    padding?: number | any;
+    rotation?: number;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+    culture?: string;
+    dateFormats?: any;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemMajorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemMajorTicks {
+    size?: number;
+    visible?: boolean;
+    color?: string;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemMinorTicks {
+    size?: number;
+    visible?: boolean;
+    color?: string;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotesLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesLine;
+    data?: kendo$dataviz$ui$SparklineCategoryAxisItemNotesDataItem[];
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemPlotBand {
+    from?: number;
+    to?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineCategoryAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: number | any;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineCategoryAxisItem {
+    axisCrossingValue?: any | Date | any;
+    categories?: any;
+    color?: string;
+    field?: string;
+    justified?: boolean;
+    labels?: kendo$dataviz$ui$SparklineCategoryAxisItemLabels;
+    line?: kendo$dataviz$ui$SparklineCategoryAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$SparklineCategoryAxisItemMajorGridLines;
+    majorTicks?: kendo$dataviz$ui$SparklineCategoryAxisItemMajorTicks;
+    minorGridLines?: kendo$dataviz$ui$SparklineCategoryAxisItemMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$SparklineCategoryAxisItemMinorTicks;
+    name?: string;
+    plotBands?: kendo$dataviz$ui$SparklineCategoryAxisItemPlotBand[];
+    reverse?: boolean;
+    title?: kendo$dataviz$ui$SparklineCategoryAxisItemTitle;
+    type?: string;
+    autoBaseUnitSteps?: any;
+    baseUnit?: string;
+    baseUnitStep?: any;
+    max?: any;
+    min?: any;
+    roundToBaseUnit?: boolean;
+    weekStartDay?: number;
+    maxDateGroups?: number;
+    maxDivisions?: number;
+    visible?: boolean;
+    crosshair?: kendo$dataviz$ui$SparklineCategoryAxisItemCrosshair;
+    notes?: kendo$dataviz$ui$SparklineCategoryAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineChartAreaBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineChartArea {
+    background?: string;
+    opacity?: number;
+    border?: kendo$dataviz$ui$SparklineChartAreaBorder;
+    height?: number;
+    margin?: number | any;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklinePlotAreaBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklinePlotArea {
+    background?: string;
+    opacity?: number;
+    border?: kendo$dataviz$ui$SparklinePlotAreaBorder;
+    margin?: number | any;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    opacity?: number | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemConnectors {
+    color?: string;
+    padding?: number;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemHighlightBorder {
+    width?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemHighlight {
+    border?: kendo$dataviz$ui$SparklineSeriesItemHighlightBorder;
+    color?: string;
+    opacity?: number;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemLabelsBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemLabels {
+    align?: string;
+    background?: string | Function;
+    border?: kendo$dataviz$ui$SparklineSeriesItemLabelsBorder;
+    color?: string | Function;
+    distance?: number;
+    font?: string | Function;
+    format?: string | Function;
+    margin?: number | any;
+    padding?: number | any;
+    position?: string | Function;
+    template?: string | Function;
+    visible?: boolean | Function;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemLine {
+    color?: string;
+    opacity?: number;
+    width?: string;
+    style?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemMarkersBorder {
+    color?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemMarkers {
+    background?: string | Function;
+    border?: Function | kendo$dataviz$ui$SparklineSeriesItemMarkersBorder;
+    size?: number | Function;
+    type?: string | Function;
+    visible?: boolean | Function;
+    rotation?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineSeriesItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineSeriesItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemNotesLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$SparklineSeriesItemNotesIcon;
+    label?: kendo$dataviz$ui$SparklineSeriesItemNotesLabel;
+    line?: kendo$dataviz$ui$SparklineSeriesItemNotesLine;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemOverlay {
+    gradient?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemStack {
+    type?: string;
+    group?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemTargetBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemTargetLine {
+    width?: any | Function;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemTarget {
+    line?: kendo$dataviz$ui$SparklineSeriesItemTargetLine;
+    color?: string | Function;
+    border?: Function | kendo$dataviz$ui$SparklineSeriesItemTargetBorder;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItemTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineSeriesItemTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesItem {
+    type?: string;
+    dashType?: string;
+    data?: any;
+    explodeField?: string;
+    currentField?: string;
+    targetField?: string;
+    field?: string;
+    name?: string;
+    highlight?: kendo$dataviz$ui$SparklineSeriesItemHighlight;
+    aggregate?: string | Function;
+    axis?: string;
+    border?: kendo$dataviz$ui$SparklineSeriesItemBorder;
+    categoryField?: string;
+    color?: string | Function;
+    colorField?: string;
+    connectors?: kendo$dataviz$ui$SparklineSeriesItemConnectors;
+    gap?: number;
+    labels?: kendo$dataviz$ui$SparklineSeriesItemLabels;
+    line?: string | kendo$dataviz$ui$SparklineSeriesItemLine;
+    markers?: kendo$dataviz$ui$SparklineSeriesItemMarkers;
+    missingValues?: string;
+    style?: string;
+    negativeColor?: string;
+    opacity?: number;
+    overlay?: kendo$dataviz$ui$SparklineSeriesItemOverlay;
+    padding?: number;
+    size?: number;
+    startAngle?: number;
+    spacing?: number;
+    stack?: boolean | string | kendo$dataviz$ui$SparklineSeriesItemStack;
+    tooltip?: kendo$dataviz$ui$SparklineSeriesItemTooltip;
+    width?: number;
+    target?: kendo$dataviz$ui$SparklineSeriesItemTarget;
+    notes?: kendo$dataviz$ui$SparklineSeriesItemNotes;
+    zIndex?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesDefaultsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesDefaultsLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesDefaultsLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineSeriesDefaultsLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: number | any;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesDefaultsStack {
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesDefaultsTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesDefaultsTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineSeriesDefaultsTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesDefaults {
+    area?: any;
+    bar?: any;
+    border?: kendo$dataviz$ui$SparklineSeriesDefaultsBorder;
+    column?: any;
+    gap?: number;
+    labels?: kendo$dataviz$ui$SparklineSeriesDefaultsLabels;
+    line?: any;
+    overlay?: any;
+    pie?: any;
+    spacing?: number;
+    stack?: boolean | kendo$dataviz$ui$SparklineSeriesDefaultsStack;
+    type?: string;
+    tooltip?: kendo$dataviz$ui$SparklineSeriesDefaultsTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+    shared?: boolean;
+    sharedTemplate?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemCrosshairTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineValueAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemCrosshair {
+    color?: string;
+    width?: number;
+    opacity?: number;
+    dashType?: number;
+    visible?: boolean;
+    tooltip?: kendo$dataviz$ui$SparklineValueAxisItemCrosshairTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineValueAxisItemLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: number | any;
+    mirror?: boolean;
+    padding?: number | any;
+    rotation?: number;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemMajorGridLines {
+    color?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemMajorTicks {
+    size?: number;
+    visible?: boolean;
+    color?: string;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemMinorTicks {
+    size?: number;
+    color?: string;
+    width?: number;
+    visible?: boolean;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$SparklineValueAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineValueAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineValueAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotesLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$SparklineValueAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$SparklineValueAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$SparklineValueAxisItemNotesLine;
+    data?: kendo$dataviz$ui$SparklineValueAxisItemNotesDataItem[];
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemPlotBand {
+    from?: number;
+    to?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$SparklineValueAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: number | any;
+    padding?: number | any;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineValueAxisItem {
+    axisCrossingValue?: any | Date | any;
+    color?: string;
+    labels?: kendo$dataviz$ui$SparklineValueAxisItemLabels;
+    line?: kendo$dataviz$ui$SparklineValueAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$SparklineValueAxisItemMajorGridLines;
+    majorTicks?: kendo$dataviz$ui$SparklineValueAxisItemMajorTicks;
+    majorUnit?: number;
+    max?: number;
+    min?: number;
+    minorGridLines?: kendo$dataviz$ui$SparklineValueAxisItemMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$SparklineValueAxisItemMinorTicks;
+    minorUnit?: number;
+    name?: any;
+    narrowRange?: boolean;
+    plotBands?: kendo$dataviz$ui$SparklineValueAxisItemPlotBand[];
+    reverse?: boolean;
+    title?: kendo$dataviz$ui$SparklineValueAxisItemTitle;
+    visible?: boolean;
+    crosshair?: kendo$dataviz$ui$SparklineValueAxisItemCrosshair;
+    notes?: kendo$dataviz$ui$SparklineValueAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineExportImageOptions {
+    width?: string;
+    height?: string;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesClickEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesHoverEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesOverEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineSeriesLeaveEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineOptions {
+    name?: string;
+    axisDefaults?: any;
+    categoryAxis?:
+      | kendo$dataviz$ui$SparklineCategoryAxisItem
+      | kendo$dataviz$ui$SparklineCategoryAxisItem[];
+    chartArea?: kendo$dataviz$ui$SparklineChartArea;
+    data?: any;
+    dataSource?: any;
+    autoBind?: boolean;
+    plotArea?: kendo$dataviz$ui$SparklinePlotArea;
+    pointWidth?: number;
+    renderAs?: string;
+    series?: kendo$dataviz$ui$SparklineSeriesItem[];
+    seriesColors?: any;
+    seriesDefaults?: kendo$dataviz$ui$SparklineSeriesDefaults;
+    theme?: string;
+    tooltip?: kendo$dataviz$ui$SparklineTooltip;
+    transitions?: boolean;
+    type?: string;
+    valueAxis?:
+      | kendo$dataviz$ui$SparklineValueAxisItem
+      | kendo$dataviz$ui$SparklineValueAxisItem[];
+    axisLabelClick?: (e: ui$SparklineAxisLabelClickEvent) => void;
+    dataBound?: (e: ui$SparklineEvent) => void;
+    dragStart?: (e: ui$SparklineDragStartEvent) => void;
+    drag?: (e: ui$SparklineDragEvent) => void;
+    dragEnd?: (e: ui$SparklineDragEndEvent) => void;
+    paneRender?: (e: ui$SparklinePaneRenderEvent) => void;
+    plotAreaClick?: (e: ui$SparklinePlotAreaClickEvent) => void;
+    plotAreaHover?: (e: ui$SparklinePlotAreaHoverEvent) => void;
+    plotAreaLeave?: (e: ui$SparklinePlotAreaLeaveEvent) => void;
+    seriesClick?: (e: ui$SparklineSeriesClickEvent) => void;
+    seriesHover?: (e: ui$SparklineSeriesHoverEvent) => void;
+    seriesOver?: (e: ui$SparklineSeriesOverEvent) => void;
+    seriesLeave?: (e: ui$SparklineSeriesLeaveEvent) => void;
+    zoomStart?: (e: ui$SparklineZoomStartEvent) => void;
+    zoom?: (e: ui$SparklineZoomEvent) => void;
+    zoomEnd?: (e: ui$SparklineZoomEndEvent) => void;
+  }
+
+  declare interface kendo$dataviz$ui$SparklineEvent {
+    sender: kendo$dataviz$ui$Sparkline;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$dataviz$ui$SparklineAxisLabelClickEvent = {
+    axis?: any,
+    value?: any,
+    text?: any,
+    index?: any,
+    dataItem?: any,
+    element?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineDragStartEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineDragEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineDragEndEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklinePaneRenderEvent = {
+    pane?: kendo$dataviz$ChartPane,
+    name?: string,
+    index?: number
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklinePlotAreaClickEvent = {
+    value?: any,
+    category?: any,
+    element?: any,
+    x?: any,
+    y?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklinePlotAreaHoverEvent = {
+    category?: any,
+    element?: any,
+    originalEvent?: any,
+    value?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklinePlotAreaLeaveEvent = {} & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineSeriesClickEvent = {
+    value?: any,
+    category?: any,
+    series?: kendo$dataviz$ui$SparklineSeriesClickEventSeries,
+    dataItem?: any,
+    element?: any,
+    percentage?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineSeriesHoverEvent = {
+    value?: any,
+    category?: any,
+    series?: kendo$dataviz$ui$SparklineSeriesHoverEventSeries,
+    dataItem?: any,
+    element?: any,
+    percentage?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineSeriesOverEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$SparklineSeriesOverEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineSeriesLeaveEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$SparklineSeriesLeaveEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineZoomStartEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineZoomEvent = {
+    axisRanges?: any,
+    delta?: number,
+    originalEvent?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare type kendo$dataviz$ui$SparklineZoomEndEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$SparklineEvent;
+
+  declare class kendo$dataviz$ui$StockChart mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$StockChart;
+    options: ui$StockChartOptions;
+    dataSource: kendo$data$DataSource;
+    navigator: kendo$dataviz$Navigator;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$StockChart;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$StockChartOptions
+    ): this;
+    destroy(): void;
+    exportImage(options: any): JQueryPromise<any>;
+    exportPDF(options?: kendo$drawing$PDFOptions): JQueryPromise<any>;
+    exportSVG(options: any): JQueryPromise<any>;
+    redraw(): void;
+    refresh(): void;
+    resize(force?: boolean): void;
+    setDataSource(dataSource: kendo$data$DataSource): void;
+    setOptions(options: any): void;
+    svg(): string;
+    imageDataURL(): string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemAutoBaseUnitSteps {
+    days?: any;
+    hours?: any;
+    minutes?: any;
+    months?: any;
+    weeks?: any;
+    years?: any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemCrosshairTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartCategoryAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemCrosshair {
+    color?: string;
+    width?: number;
+    opacity?: number;
+    dashType?: number;
+    visible?: boolean;
+    tooltip?: kendo$dataviz$ui$StockChartCategoryAxisItemCrosshairTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartCategoryAxisItemLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: number | any;
+    mirror?: boolean;
+    padding?: number | any;
+    rotation?: number;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+    culture?: string;
+    dateFormats?: any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemMajorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemMajorTicks {
+    color?: string;
+    size?: number;
+    width?: number;
+    visible?: boolean;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemMinorTicks {
+    size?: number;
+    visible?: boolean;
+    color?: string;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotesLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesLine;
+    data?: kendo$dataviz$ui$StockChartCategoryAxisItemNotesDataItem[];
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemPlotBand {
+    from?: number;
+    to?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemSelectMousewheel {
+    reverse?: boolean;
+    zoom?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemSelect {
+    from?: string | Date;
+    to?: string | Date;
+    min?: any;
+    max?: any;
+    mousewheel?: kendo$dataviz$ui$StockChartCategoryAxisItemSelectMousewheel;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartCategoryAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: number | any;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartCategoryAxisItem {
+    axisCrossingValue?: any | Date | any;
+    categories?: any;
+    color?: string;
+    field?: string;
+    justified?: boolean;
+    labels?: kendo$dataviz$ui$StockChartCategoryAxisItemLabels;
+    line?: kendo$dataviz$ui$StockChartCategoryAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$StockChartCategoryAxisItemMajorGridLines;
+    majorTicks?: kendo$dataviz$ui$StockChartCategoryAxisItemMajorTicks;
+    minorGridLines?: kendo$dataviz$ui$StockChartCategoryAxisItemMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$StockChartCategoryAxisItemMinorTicks;
+    name?: string;
+    pane?: string;
+    plotBands?: kendo$dataviz$ui$StockChartCategoryAxisItemPlotBand[];
+    reverse?: boolean;
+    select?: kendo$dataviz$ui$StockChartCategoryAxisItemSelect;
+    title?: kendo$dataviz$ui$StockChartCategoryAxisItemTitle;
+    type?: string;
+    autoBaseUnitSteps?: kendo$dataviz$ui$StockChartCategoryAxisItemAutoBaseUnitSteps;
+    background?: string;
+    baseUnit?: string;
+    baseUnitStep?: any;
+    max?: any;
+    min?: any;
+    roundToBaseUnit?: boolean;
+    weekStartDay?: number;
+    maxDateGroups?: number;
+    maxDivisions?: number;
+    visible?: boolean;
+    crosshair?: kendo$dataviz$ui$StockChartCategoryAxisItemCrosshair;
+    notes?: kendo$dataviz$ui$StockChartCategoryAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartChartAreaBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartChartArea {
+    background?: string;
+    opacity?: number;
+    border?: kendo$dataviz$ui$StockChartChartAreaBorder;
+    height?: number;
+    margin?: number | any;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartLegendBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartLegendInactiveItemsLabels {
+    color?: string;
+    font?: string;
+    template?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartLegendInactiveItemsMarkers {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartLegendInactiveItems {
+    labels?: kendo$dataviz$ui$StockChartLegendInactiveItemsLabels;
+    markers?: kendo$dataviz$ui$StockChartLegendInactiveItemsMarkers;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartLegendItem {
+    cursor?: string;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartLegendLabels {
+    color?: string;
+    font?: string;
+    template?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartLegend {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartLegendBorder;
+    item?: kendo$dataviz$ui$StockChartLegendItem;
+    labels?: kendo$dataviz$ui$StockChartLegendLabels;
+    margin?: number | any;
+    offsetX?: number;
+    offsetY?: number;
+    padding?: number | any;
+    position?: string;
+    reverse?: boolean;
+    visible?: boolean;
+    inactiveItems?: kendo$dataviz$ui$StockChartLegendInactiveItems;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisAutoBaseUnitSteps {
+    seconds?: any;
+    minutes?: any;
+    hours?: any;
+    days?: any;
+    weeks?: any;
+    months?: any;
+    years?: any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshairTooltipBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshairTooltipPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshairTooltipPadding;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshair {
+    color?: string;
+    opacity?: number;
+    tooltip?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshairTooltip;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsDateFormats {
+    days?: string;
+    hours?: string;
+    months?: string;
+    weeks?: string;
+    years?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsPadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsBorder;
+    color?: string;
+    culture?: string;
+    dateFormats?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsDateFormats;
+    font?: string;
+    format?: string;
+    margin?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsMargin;
+    mirror?: boolean;
+    padding?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabelsPadding;
+    rotation?: number;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisMajorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisMajorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisMinorTicks {
+    color?: string;
+    size?: number;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemIcon;
+    label?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemLabel;
+    line?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesIcon;
+    label?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesLabel;
+    line?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesLine;
+    data?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotesDataItem[];
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisPlotBand {
+    color?: string;
+    from?: number;
+    opacity?: number;
+    to?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitlePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitleMargin;
+    padding?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitlePadding;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorCategoryAxis {
+    autoBaseUnitSteps?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisAutoBaseUnitSteps;
+    axisCrossingValue?: any | Date | any;
+    background?: string;
+    baseUnit?: string;
+    baseUnitStep?: any;
+    categories?: any;
+    color?: string;
+    crosshair?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisCrosshair;
+    field?: string;
+    justified?: boolean;
+    labels?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisLabels;
+    line?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisLine;
+    majorGridLines?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisMajorGridLines;
+    majorTicks?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisMajorTicks;
+    max?: any;
+    maxDateGroups?: number;
+    min?: any;
+    minorGridLines?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisMinorTicks;
+    plotBands?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisPlotBand[];
+    reverse?: boolean;
+    roundToBaseUnit?: boolean;
+    title?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisTitle;
+    visible?: boolean;
+    weekStartDay?: number;
+    notes?: kendo$dataviz$ui$StockChartNavigatorCategoryAxisNotes;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorHint {
+    visible?: boolean;
+    template?: string | Function;
+    format?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorPaneBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorPaneMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorPanePadding {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorPaneTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorPaneTitleMargin {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorPaneTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorPaneTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: kendo$dataviz$ui$StockChartNavigatorPaneTitleMargin;
+    position?: string;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorPane {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorPaneBorder;
+    height?: number;
+    margin?: kendo$dataviz$ui$StockChartNavigatorPaneMargin;
+    name?: string;
+    padding?: kendo$dataviz$ui$StockChartNavigatorPanePadding;
+    title?: string | kendo$dataviz$ui$StockChartNavigatorPaneTitle;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSelectMousewheel {
+    reverse?: boolean;
+    zoom?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSelect {
+    from?: Date;
+    mousewheel?: boolean | kendo$dataviz$ui$StockChartNavigatorSelectMousewheel;
+    to?: Date;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemHighlightBorder {
+    width?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemHighlightLine {
+    width?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemHighlight {
+    border?: kendo$dataviz$ui$StockChartNavigatorSeriesItemHighlightBorder;
+    color?: string;
+    line?: kendo$dataviz$ui$StockChartNavigatorSeriesItemHighlightLine;
+    opacity?: number;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorSeriesItemLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: number | any;
+    padding?: number | any;
+    position?: string;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemLine {
+    color?: string;
+    opacity?: number;
+    width?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemMarkersBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemMarkers {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorSeriesItemMarkersBorder;
+    rotation?: number | Function;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemOverlay {
+    gradient?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemStack {
+    type?: string;
+    group?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItemTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorSeriesItemTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigatorSeriesItem {
+    type?: string;
+    dashType?: string;
+    data?: any;
+    highField?: string;
+    field?: string;
+    categoryField?: string;
+    name?: string;
+    highlight?: kendo$dataviz$ui$StockChartNavigatorSeriesItemHighlight;
+    aggregate?: string | Function;
+    axis?: string;
+    border?: kendo$dataviz$ui$StockChartNavigatorSeriesItemBorder;
+    closeField?: string;
+    color?: string;
+    colorField?: string;
+    downColor?: string;
+    downColorField?: string;
+    gap?: number;
+    labels?: kendo$dataviz$ui$StockChartNavigatorSeriesItemLabels;
+    line?: string | kendo$dataviz$ui$StockChartNavigatorSeriesItemLine;
+    lowField?: string;
+    markers?: kendo$dataviz$ui$StockChartNavigatorSeriesItemMarkers;
+    missingValues?: string;
+    style?: string;
+    opacity?: number;
+    openField?: string;
+    overlay?: kendo$dataviz$ui$StockChartNavigatorSeriesItemOverlay;
+    spacing?: number;
+    stack?:
+      | boolean
+      | string
+      | kendo$dataviz$ui$StockChartNavigatorSeriesItemStack;
+    tooltip?: kendo$dataviz$ui$StockChartNavigatorSeriesItemTooltip;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartNavigator {
+    categoryAxis?: kendo$dataviz$ui$StockChartNavigatorCategoryAxis;
+    dataSource?: any;
+    autoBind?: boolean;
+    dateField?: string;
+    pane?: kendo$dataviz$ui$StockChartNavigatorPane;
+    series?: kendo$dataviz$ui$StockChartNavigatorSeriesItem[];
+    select?: kendo$dataviz$ui$StockChartNavigatorSelect;
+    hint?: kendo$dataviz$ui$StockChartNavigatorHint;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPaneBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPaneTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPaneTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartPaneTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: number | any;
+    position?: string;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPane {
+    name?: string;
+    margin?: number | any;
+    padding?: number | any;
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartPaneBorder;
+    clip?: boolean;
+    height?: number;
+    title?: string | kendo$dataviz$ui$StockChartPaneTitle;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPdfMargin {
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+    top?: number | string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPdf {
+    author?: string;
+    creator?: string;
+    date?: Date;
+    forceProxy?: boolean;
+    fileName?: string;
+    keywords?: string;
+    landscape?: boolean;
+    margin?: kendo$dataviz$ui$StockChartPdfMargin;
+    paperSize?: string | any;
+    proxyURL?: string;
+    proxyTarget?: string;
+    subject?: string;
+    title?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPlotAreaBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartPlotArea {
+    background?: string;
+    opacity?: number;
+    border?: kendo$dataviz$ui$StockChartPlotAreaBorder;
+    margin?: number | any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    opacity?: number | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemHighlightBorder {
+    width?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemHighlightLine {
+    width?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemHighlight {
+    visible?: boolean;
+    border?: kendo$dataviz$ui$StockChartSeriesItemHighlightBorder;
+    color?: string;
+    line?: kendo$dataviz$ui$StockChartSeriesItemHighlightLine;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemLabelsBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemLabels {
+    background?: string | Function;
+    border?: kendo$dataviz$ui$StockChartSeriesItemLabelsBorder;
+    color?: string | Function;
+    font?: string | Function;
+    format?: string | Function;
+    margin?: number | any;
+    padding?: number | any;
+    position?: string | Function;
+    template?: string | Function;
+    visible?: boolean | Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemLine {
+    color?: string;
+    opacity?: number;
+    width?: string;
+    style?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemMarkersBorder {
+    color?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemMarkers {
+    background?: string | Function;
+    border?: Function | kendo$dataviz$ui$StockChartSeriesItemMarkersBorder;
+    size?: number | Function;
+    rotation?: number | Function;
+    type?: string | Function;
+    visible?: boolean | Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartSeriesItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartSeriesItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemNotesLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$StockChartSeriesItemNotesIcon;
+    label?: kendo$dataviz$ui$StockChartSeriesItemNotesLabel;
+    line?: kendo$dataviz$ui$StockChartSeriesItemNotesLine;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemOverlay {
+    gradient?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemStack {
+    type?: string;
+    group?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemTargetBorder {
+    color?: string | Function;
+    dashType?: string | Function;
+    width?: number | Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemTargetLine {
+    width?: any | Function;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemTarget {
+    line?: kendo$dataviz$ui$StockChartSeriesItemTargetLine;
+    color?: string | Function;
+    border?: Function | kendo$dataviz$ui$StockChartSeriesItemTargetBorder;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItemTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartSeriesItemTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesItem {
+    type?: string;
+    dashType?: string;
+    data?: any;
+    highField?: string;
+    field?: string;
+    categoryField?: string;
+    currentField?: string;
+    targetField?: string;
+    name?: string;
+    highlight?: kendo$dataviz$ui$StockChartSeriesItemHighlight;
+    aggregate?: string | Function;
+    axis?: string;
+    border?: kendo$dataviz$ui$StockChartSeriesItemBorder;
+    closeField?: string;
+    color?: string | Function;
+    colorField?: string;
+    downColor?: string | Function;
+    downColorField?: string;
+    gap?: number;
+    labels?: kendo$dataviz$ui$StockChartSeriesItemLabels;
+    line?: string | kendo$dataviz$ui$StockChartSeriesItemLine;
+    lowField?: string;
+    markers?: kendo$dataviz$ui$StockChartSeriesItemMarkers;
+    missingValues?: string;
+    style?: string;
+    negativeColor?: string;
+    opacity?: number;
+    openField?: string;
+    overlay?: kendo$dataviz$ui$StockChartSeriesItemOverlay;
+    spacing?: number;
+    stack?: boolean | string | kendo$dataviz$ui$StockChartSeriesItemStack;
+    tooltip?: kendo$dataviz$ui$StockChartSeriesItemTooltip;
+    visibleInLegend?: boolean;
+    width?: number;
+    target?: kendo$dataviz$ui$StockChartSeriesItemTarget;
+    notes?: kendo$dataviz$ui$StockChartSeriesItemNotes;
+    zIndex?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesDefaultsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesDefaultsLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesDefaultsLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartSeriesDefaultsLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: number | any;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesDefaultsStack {
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesDefaultsTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesDefaultsTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartSeriesDefaultsTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesDefaults {
+    area?: any;
+    candlestick?: any;
+    ohlc?: any;
+    border?: kendo$dataviz$ui$StockChartSeriesDefaultsBorder;
+    column?: any;
+    gap?: number;
+    labels?: kendo$dataviz$ui$StockChartSeriesDefaultsLabels;
+    line?: any;
+    overlay?: any;
+    pie?: any;
+    spacing?: number;
+    stack?: boolean | kendo$dataviz$ui$StockChartSeriesDefaultsStack;
+    type?: string;
+    tooltip?: kendo$dataviz$ui$StockChartSeriesDefaultsTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartTitle {
+    align?: string;
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartTitleBorder;
+    font?: string;
+    color?: string;
+    margin?: number | any;
+    padding?: number | any;
+    position?: string;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+    shared?: boolean;
+    sharedTemplate?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemCrosshairTooltipBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemCrosshairTooltip {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartValueAxisItemCrosshairTooltipBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    padding?: number | any;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemCrosshair {
+    color?: string;
+    width?: number;
+    opacity?: number;
+    dashType?: number;
+    visible?: boolean;
+    tooltip?: kendo$dataviz$ui$StockChartValueAxisItemCrosshairTooltip;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemLabelsBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemLabels {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartValueAxisItemLabelsBorder;
+    color?: string;
+    font?: string;
+    format?: string;
+    margin?: number | any;
+    mirror?: boolean;
+    padding?: number | any;
+    rotation?: number;
+    skip?: number;
+    step?: number;
+    template?: string | Function;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemLine {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemMajorGridLines {
+    color?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemMajorTicks {
+    size?: number;
+    visible?: boolean;
+    color?: string;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemMinorGridLines {
+    color?: string;
+    dashType?: string;
+    visible?: boolean;
+    width?: number;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemMinorTicks {
+    size?: number;
+    color?: string;
+    width?: number;
+    visible?: boolean;
+    step?: number;
+    skip?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    text?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesDataItem {
+    value?: any;
+    position?: string;
+    icon?: kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemIcon;
+    label?: kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemLabel;
+    line?: kendo$dataviz$ui$StockChartValueAxisItemNotesDataItemLine;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesIconBorder {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesIcon {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartValueAxisItemNotesIconBorder;
+    size?: number;
+    type?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesLabelBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesLabel {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartValueAxisItemNotesLabelBorder;
+    color?: string;
+    font?: string;
+    template?: string | Function;
+    visible?: boolean;
+    rotation?: number;
+    format?: string;
+    position?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotesLine {
+    width?: number;
+    color?: string;
+    length?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemNotes {
+    position?: string;
+    icon?: kendo$dataviz$ui$StockChartValueAxisItemNotesIcon;
+    label?: kendo$dataviz$ui$StockChartValueAxisItemNotesLabel;
+    line?: kendo$dataviz$ui$StockChartValueAxisItemNotesLine;
+    data?: kendo$dataviz$ui$StockChartValueAxisItemNotesDataItem[];
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemPlotBand {
+    from?: number;
+    to?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemTitleBorder {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItemTitle {
+    background?: string;
+    border?: kendo$dataviz$ui$StockChartValueAxisItemTitleBorder;
+    color?: string;
+    font?: string;
+    margin?: number | any;
+    padding?: number | any;
+    position?: string;
+    rotation?: number;
+    text?: string;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartValueAxisItem {
+    axisCrossingValue?: any | Date | any;
+    background?: string;
+    color?: string;
+    labels?: kendo$dataviz$ui$StockChartValueAxisItemLabels;
+    line?: kendo$dataviz$ui$StockChartValueAxisItemLine;
+    majorGridLines?: kendo$dataviz$ui$StockChartValueAxisItemMajorGridLines;
+    majorTicks?: kendo$dataviz$ui$StockChartValueAxisItemMajorTicks;
+    majorUnit?: number;
+    max?: number;
+    min?: number;
+    minorGridLines?: kendo$dataviz$ui$StockChartValueAxisItemMinorGridLines;
+    minorTicks?: kendo$dataviz$ui$StockChartValueAxisItemMinorTicks;
+    minorUnit?: number;
+    name?: any;
+    narrowRange?: boolean;
+    pane?: string;
+    plotBands?: kendo$dataviz$ui$StockChartValueAxisItemPlotBand[];
+    reverse?: boolean;
+    title?: kendo$dataviz$ui$StockChartValueAxisItemTitle;
+    visible?: boolean;
+    crosshair?: kendo$dataviz$ui$StockChartValueAxisItemCrosshair;
+    notes?: kendo$dataviz$ui$StockChartValueAxisItemNotes;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartExportImageOptions {
+    width?: string;
+    height?: string;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartExportSVGOptions {
+    raw?: boolean;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesClickEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesHoverEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesOverEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartSeriesLeaveEventSeries {
+    type?: string;
+    name?: string;
+    data?: any;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartOptions {
+    name?: string;
+    dateField?: string;
+    navigator?: kendo$dataviz$ui$StockChartNavigator;
+    axisDefaults?: any;
+    categoryAxis?:
+      | kendo$dataviz$ui$StockChartCategoryAxisItem
+      | kendo$dataviz$ui$StockChartCategoryAxisItem[];
+    chartArea?: kendo$dataviz$ui$StockChartChartArea;
+    dataSource?: any;
+    autoBind?: boolean;
+    legend?: kendo$dataviz$ui$StockChartLegend;
+    panes?: kendo$dataviz$ui$StockChartPane[];
+    pdf?: kendo$dataviz$ui$StockChartPdf;
+    persistSeriesVisibility?: boolean;
+    plotArea?: kendo$dataviz$ui$StockChartPlotArea;
+    renderAs?: string;
+    series?: kendo$dataviz$ui$StockChartSeriesItem[];
+    seriesColors?: any;
+    seriesDefaults?: kendo$dataviz$ui$StockChartSeriesDefaults;
+    theme?: string;
+    title?: kendo$dataviz$ui$StockChartTitle;
+    tooltip?: kendo$dataviz$ui$StockChartTooltip;
+    transitions?: boolean;
+    valueAxis?:
+      | kendo$dataviz$ui$StockChartValueAxisItem
+      | kendo$dataviz$ui$StockChartValueAxisItem[];
+    axisLabelClick?: (e: ui$StockChartAxisLabelClickEvent) => void;
+    dataBound?: (e: ui$StockChartEvent) => void;
+    dragStart?: (e: ui$StockChartDragStartEvent) => void;
+    drag?: (e: ui$StockChartDragEvent) => void;
+    dragEnd?: (e: ui$StockChartDragEndEvent) => void;
+    legendItemClick?: (e: ui$StockChartLegendItemClickEvent) => void;
+    legendItemHover?: (e: ui$StockChartLegendItemHoverEvent) => void;
+    legendItemLeave?: (e: ui$StockChartLegendItemLeaveEvent) => void;
+    noteClick?: (e: ui$StockChartNoteClickEvent) => void;
+    noteHover?: (e: ui$StockChartNoteHoverEvent) => void;
+    noteLeave?: (e: ui$StockChartNoteLeaveEvent) => void;
+    paneRender?: (e: ui$StockChartPaneRenderEvent) => void;
+    plotAreaClick?: (e: ui$StockChartPlotAreaClickEvent) => void;
+    plotAreaHover?: (e: ui$StockChartPlotAreaHoverEvent) => void;
+    plotAreaLeave?: (e: ui$StockChartPlotAreaLeaveEvent) => void;
+    render?: (e: ui$StockChartRenderEvent) => void;
+    select?: (e: ui$StockChartSelectEvent) => void;
+    selectEnd?: (e: ui$StockChartSelectEndEvent) => void;
+    selectStart?: (e: ui$StockChartSelectStartEvent) => void;
+    seriesClick?: (e: ui$StockChartSeriesClickEvent) => void;
+    seriesHover?: (e: ui$StockChartSeriesHoverEvent) => void;
+    seriesOver?: (e: ui$StockChartSeriesOverEvent) => void;
+    seriesLeave?: (e: ui$StockChartSeriesLeaveEvent) => void;
+    zoomStart?: (e: ui$StockChartZoomStartEvent) => void;
+    zoom?: (e: ui$StockChartZoomEvent) => void;
+    zoomEnd?: (e: ui$StockChartZoomEndEvent) => void;
+  }
+
+  declare interface kendo$dataviz$ui$StockChartEvent {
+    sender: kendo$dataviz$ui$StockChart;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$dataviz$ui$StockChartAxisLabelClickEvent = {
+    axis?: any,
+    value?: any,
+    text?: any,
+    index?: any,
+    dataItem?: any,
+    element?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartDragStartEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartDragEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartDragEndEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartLegendItemClickEvent = {
+    text?: string,
+    series?: any,
+    seriesIndex?: number,
+    pointIndex?: number,
+    element?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartLegendItemHoverEvent = {
+    text?: string,
+    series?: any,
+    seriesIndex?: number,
+    pointIndex?: number,
+    element?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartLegendItemLeaveEvent = {
+    element?: any,
+    pointIndex?: number,
+    series?: any,
+    seriesIndex?: number,
+    text?: string
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartNoteClickEvent = {
+    category?: any,
+    element?: any,
+    value?: any,
+    series?: any,
+    dataItem?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartNoteHoverEvent = {
+    category?: any,
+    element?: any,
+    value?: any,
+    series?: any,
+    dataItem?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartNoteLeaveEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    series?: any,
+    value?: any,
+    visual?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartPaneRenderEvent = {
+    pane?: kendo$dataviz$ui$StockChart,
+    name?: string,
+    index?: number
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartPlotAreaClickEvent = {
+    value?: any,
+    category?: any,
+    element?: any,
+    x?: any,
+    y?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartPlotAreaHoverEvent = {
+    category?: any,
+    element?: any,
+    originalEvent?: any,
+    value?: any,
+    x?: any,
+    y?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartPlotAreaLeaveEvent = {} & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartRenderEvent = {} & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartSelectEvent = {
+    axis?: any,
+    from?: Date,
+    to?: Date
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartSelectEndEvent = {
+    axis?: any,
+    from?: Date,
+    to?: Date
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartSelectStartEvent = {
+    axis?: any,
+    from?: Date,
+    to?: Date
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartSeriesClickEvent = {
+    value?: any,
+    category?: any,
+    series?: kendo$dataviz$ui$StockChartSeriesClickEventSeries,
+    dataItem?: any,
+    element?: any,
+    percentage?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartSeriesHoverEvent = {
+    value?: any,
+    category?: any,
+    series?: kendo$dataviz$ui$StockChartSeriesHoverEventSeries,
+    dataItem?: any,
+    element?: any,
+    percentage?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartSeriesOverEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$StockChartSeriesOverEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartSeriesLeaveEvent = {
+    category?: any,
+    dataItem?: any,
+    element?: any,
+    originalEvent?: any,
+    percentage?: any,
+    series?: kendo$dataviz$ui$StockChartSeriesLeaveEventSeries,
+    stackValue?: any,
+    value?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartZoomStartEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartZoomEvent = {
+    axisRanges?: any,
+    delta?: number,
+    originalEvent?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare type kendo$dataviz$ui$StockChartZoomEndEvent = {
+    axisRanges?: any,
+    originalEvent?: any
+  } & kendo$dataviz$ui$StockChartEvent;
+
+  declare class kendo$dataviz$ui$TreeMap mixins kendo$ui$Widget {
+    static fn: kendo$dataviz$ui$TreeMap;
+    options: ui$TreeMapOptions;
+    dataSource: kendo$data$DataSource;
+    element: JQuery;
+    wrapper: JQuery;
+    static extend(proto: Object): kendo$dataviz$ui$TreeMap;
+    constructor(
+      element: kendo$effects$Element,
+      options?: ui$TreeMapOptions
+    ): this;
+  }
+
+  declare interface kendo$dataviz$ui$TreeMapOptions {
+    name?: string;
+    dataSource?: any | any | kendo$data$HierarchicalDataSource;
+    autoBind?: boolean;
+    type?: string;
+    theme?: string;
+    valueField?: string;
+    colorField?: string;
+    textField?: string;
+    template?: string | Function;
+    colors?: any;
+    itemCreated?: (e: ui$TreeMapItemCreatedEvent) => void;
+    dataBound?: (e: ui$TreeMapDataBoundEvent) => void;
+  }
+
+  declare interface kendo$dataviz$ui$TreeMapEvent {
+    sender: kendo$dataviz$ui$TreeMap;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$dataviz$ui$TreeMapItemCreatedEvent = {
+    element?: JQuery | kendo$effects$Element
+  } & kendo$dataviz$ui$TreeMapEvent;
+
+  declare type kendo$dataviz$ui$TreeMapDataBoundEvent = {} & kendo$dataviz$ui$TreeMapEvent;
+
+  declare var npm$namespace$kendo$dataviz$map: {
+    BingLayer: typeof kendo$dataviz$map$BingLayer,
+    Extent: typeof kendo$dataviz$map$Extent,
+    Layer: typeof kendo$dataviz$map$Layer,
+    Location: typeof kendo$dataviz$map$Location,
+    Marker: typeof kendo$dataviz$map$Marker,
+    MarkerLayer: typeof kendo$dataviz$map$MarkerLayer,
+    ShapeLayer: typeof kendo$dataviz$map$ShapeLayer,
+    TileLayer: typeof kendo$dataviz$map$TileLayer,
+    layer: typeof npm$namespace$kendo$dataviz$map$layer
   };
+
+  declare var npm$namespace$kendo$dataviz$map$layer: {
+    Shape: typeof kendo$dataviz$map$layer$Shape
+  };
+  declare class kendo$dataviz$map$layer$Shape {}
+
+  declare class kendo$dataviz$map$BingLayer mixins kendo$dataviz$map$TileLayer {
+    options: map$BingLayerOptions;
+    dataviz$map: kendo$dataviz$ui$Map;
+    constructor(
+      map: kendo$dataviz$ui$Map,
+      options?: map$BingLayerOptions
+    ): this;
+    show(): void;
+    hide(): void;
+    imagerySet(): void;
+  }
+
+  declare interface kendo$dataviz$map$BingLayerOptions {
+    name?: string;
+    baseUrl?: string;
+    imagerySet?: string;
+  }
+
+  declare interface kendo$dataviz$map$BingLayerEvent {
+    sender: kendo$dataviz$map$BingLayer;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$map$Extent mixins kendo$Class {
+    options: map$ExtentOptions;
+    nw: kendo$dataviz$map$Location;
+    se: kendo$dataviz$map$Location;
+    constructor(
+      nw: kendo$dataviz$map$Location | any,
+      se: kendo$dataviz$map$Location | any
+    ): this;
+    static create(
+      a: kendo$dataviz$map$Location,
+      b?: kendo$dataviz$map$Location
+    ): kendo$dataviz$map$Extent;
+    static create(
+      a: kendo$dataviz$map$Location,
+      b?: any
+    ): kendo$dataviz$map$Extent;
+    static create(
+      a: any,
+      b?: kendo$dataviz$map$Location
+    ): kendo$dataviz$map$Extent;
+    static create(a: any, b?: any): kendo$dataviz$map$Extent;
+    contains(location: kendo$dataviz$map$Location): boolean;
+    containsAny(locations: any): boolean;
+    center(): kendo$dataviz$map$Location;
+    include(location: kendo$dataviz$map$Location): void;
+    includeAll(locations: any): void;
+    edges(): any;
+    toArray(): any;
+    overlaps(extent: kendo$dataviz$map$Extent): boolean;
+  }
+
+  declare interface kendo$dataviz$map$ExtentOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$map$ExtentEvent {
+    sender: kendo$dataviz$map$Extent;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$map$Layer mixins kendo$Class {
+    options: map$LayerOptions;
+    dataviz$map: kendo$dataviz$ui$Map;
+    constructor(map: kendo$dataviz$ui$Map, options?: map$LayerOptions): this;
+    show(): void;
+    hide(): void;
+  }
+
+  declare interface kendo$dataviz$map$LayerOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$map$LayerEvent {
+    sender: kendo$dataviz$map$Layer;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$map$Location mixins kendo$Class {
+    options: map$LocationOptions;
+    lat: number;
+    lng: number;
+    constructor(lat: number, lng: number): this;
+    static create(lat: number, lng?: number): kendo$dataviz$map$Location;
+    static create(lat: any, lng?: number): kendo$dataviz$map$Location;
+    static create(
+      lat: kendo$dataviz$map$Location,
+      lng?: number
+    ): kendo$dataviz$map$Location;
+    static fromLngLat(lnglat: any): kendo$dataviz$map$Location;
+    static fromLatLng(lnglat: any): kendo$dataviz$map$Location;
+    clone(): kendo$dataviz$map$Location;
+    destination(
+      destination: kendo$dataviz$map$Location,
+      bearing: number
+    ): number;
+    distanceTo(distance: number, bearing: number): kendo$dataviz$map$Location;
+    equals(location: kendo$dataviz$map$Location): boolean;
+    round(digits: number): kendo$dataviz$map$Location;
+    toArray(): any;
+    toString(): string;
+    wrap(): kendo$dataviz$map$Location;
+  }
+
+  declare interface kendo$dataviz$map$LocationOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$map$LocationEvent {
+    sender: kendo$dataviz$map$Location;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$map$Marker mixins kendo$Observable {
+    options: map$MarkerOptions;
+    constructor(options?: map$MarkerOptions): this;
+    location(): kendo$dataviz$map$Location;
+    location(location: any): void;
+    location(location: kendo$dataviz$map$Location): void;
+  }
+
+  declare interface kendo$dataviz$map$MarkerTooltipAnimationClose {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$map$MarkerTooltipAnimationOpen {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$map$MarkerTooltipAnimation {
+    close?: kendo$dataviz$map$MarkerTooltipAnimationClose;
+    open?: kendo$dataviz$map$MarkerTooltipAnimationOpen;
+  }
+
+  declare interface kendo$dataviz$map$MarkerTooltipContent {
+    url?: string;
+  }
+
+  declare interface kendo$dataviz$map$MarkerTooltip {
+    autoHide?: boolean;
+    animation?: kendo$dataviz$map$MarkerTooltipAnimation;
+    content?: string | Function | kendo$dataviz$map$MarkerTooltipContent;
+    template?: string;
+    callout?: boolean;
+    iframe?: boolean;
+    height?: number;
+    width?: number;
+    position?: string;
+    showAfter?: number;
+    showOn?: string;
+  }
+
+  declare interface kendo$dataviz$map$MarkerOptions {
+    name?: string;
+    location?: any | kendo$dataviz$map$Location;
+    shape?: string;
+    title?: string;
+    tooltip?: kendo$dataviz$map$MarkerTooltip;
+  }
+
+  declare interface kendo$dataviz$map$MarkerEvent {
+    sender: kendo$dataviz$map$Marker;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$map$MarkerLayer mixins kendo$dataviz$map$Layer {
+    options: map$MarkerLayerOptions;
+    dataviz$map: kendo$dataviz$ui$Map;
+    items: any;
+    constructor(
+      map: kendo$dataviz$ui$Map,
+      options?: map$MarkerLayerOptions
+    ): this;
+    add(marker: kendo$dataviz$map$Marker): void;
+    clear(): void;
+    hide(): void;
+    remove(marker: kendo$dataviz$map$Marker): void;
+    setDataSource(dataSource: any): void;
+    show(): void;
+  }
+
+  declare interface kendo$dataviz$map$MarkerLayerOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$map$MarkerLayerEvent {
+    sender: kendo$dataviz$map$MarkerLayer;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$map$ShapeLayer mixins kendo$dataviz$map$Layer {
+    options: map$ShapeLayerOptions;
+    dataviz$map: kendo$dataviz$ui$Map;
+    constructor(
+      map: kendo$dataviz$ui$Map,
+      options?: map$ShapeLayerOptions
+    ): this;
+    show(): void;
+    hide(): void;
+    setDataSource(): void;
+  }
+
+  declare interface kendo$dataviz$map$ShapeLayerOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$map$ShapeLayerEvent {
+    sender: kendo$dataviz$map$ShapeLayer;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$map$TileLayer mixins kendo$dataviz$map$Layer {
+    options: map$TileLayerOptions;
+    dataviz$map: kendo$dataviz$ui$Map;
+    constructor(
+      map: kendo$dataviz$ui$Map,
+      options?: map$TileLayerOptions
+    ): this;
+    show(): void;
+    hide(): void;
+  }
+
+  declare interface kendo$dataviz$map$TileLayerOptions {
+    name?: string;
+    urlTemplate?: string;
+    subdomains?: any;
+    tileSize?: number;
+  }
+
+  declare interface kendo$dataviz$map$TileLayerEvent {
+    sender: kendo$dataviz$map$TileLayer;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ChartAxis mixins kendo$Observable {
+    options: dataviz$ChartAxisOptions;
+    range(): any;
+    slot(from: string, to?: string, limit?: boolean): kendo$geometry$Rect;
+    slot(from: string, to?: number, limit?: boolean): kendo$geometry$Rect;
+    slot(from: string, to?: Date, limit?: boolean): kendo$geometry$Rect;
+    slot(from: number, to?: string, limit?: boolean): kendo$geometry$Rect;
+    slot(from: number, to?: number, limit?: boolean): kendo$geometry$Rect;
+    slot(from: number, to?: Date, limit?: boolean): kendo$geometry$Rect;
+    slot(from: Date, to?: string, limit?: boolean): kendo$geometry$Rect;
+    slot(from: Date, to?: number, limit?: boolean): kendo$geometry$Rect;
+    slot(from: Date, to?: Date, limit?: boolean): kendo$geometry$Rect;
+    value(point: kendo$geometry$Point): void;
+    valueRange(): void;
+  }
+
+  declare interface kendo$dataviz$ChartAxisOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$ChartAxisEvent {
+    sender: kendo$dataviz$ChartAxis;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ChartPane mixins kendo$Observable {
+    options: dataviz$ChartPaneOptions;
+    chartsVisual: kendo$drawing$Group;
+    visual: kendo$drawing$Group;
+    findAxisByName(name: string): kendo$dataviz$ChartAxis;
+    series(): any;
+  }
+
+  declare interface kendo$dataviz$ChartPaneOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$ChartPaneEvent {
+    sender: kendo$dataviz$ChartPane;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ChartPlotArea mixins kendo$Observable {
+    options: dataviz$ChartPlotAreaOptions;
+    backgroundVisual: kendo$drawing$MultiPath;
+    visual: kendo$drawing$Group;
+  }
+
+  declare interface kendo$dataviz$ChartPlotAreaOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$ChartPlotAreaEvent {
+    sender: kendo$dataviz$ChartPlotArea;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ChartPoint mixins kendo$Observable {
+    options: dataviz$ChartPointOptions;
+    category: string | Date | number;
+    dataItem: any;
+    percentage: number;
+    runningTotal: number;
+    total: number;
+    value: number;
+    visual: kendo$drawing$Element;
+  }
+
+  declare interface kendo$dataviz$ChartPointOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$ChartPointEvent {
+    sender: kendo$dataviz$ChartPoint;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$ChartSeries mixins kendo$Observable {
+    options: dataviz$ChartSeriesOptions;
+    data(): any;
+    data(data: any): void;
+    findPoint(callback: Function): kendo$dataviz$ChartPoint;
+    points(): any;
+    points(filter: Function): void;
+    toggleHighlight(show: boolean, filter: Function): void;
+    toggleHighlight(show: boolean, filter: any): void;
+    toggleVisibility(show: boolean, filter: Function): void;
+  }
+
+  declare interface kendo$dataviz$ChartSeriesOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$ChartSeriesEvent {
+    sender: kendo$dataviz$ChartSeries;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$Navigator mixins kendo$Observable {
+    options: dataviz$NavigatorOptions;
+    select(): any;
+    select(): void;
+  }
+
+  declare interface kendo$dataviz$NavigatorOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$NavigatorEvent {
+    sender: kendo$dataviz$Navigator;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare var npm$namespace$kendo$dataviz$diagram: {
+    Circle: typeof kendo$dataviz$diagram$Circle,
+    Connection: typeof kendo$dataviz$diagram$Connection,
+    Connector: typeof kendo$dataviz$diagram$Connector,
+    Group: typeof kendo$dataviz$diagram$Group,
+    Image: typeof kendo$dataviz$diagram$Image,
+    Layout: typeof kendo$dataviz$diagram$Layout,
+    Line: typeof kendo$dataviz$diagram$Line,
+    Path: typeof kendo$dataviz$diagram$Path,
+    Point: typeof kendo$dataviz$diagram$Point,
+    Polyline: typeof kendo$dataviz$diagram$Polyline,
+    Rect: typeof kendo$dataviz$diagram$Rect,
+    Rectangle: typeof kendo$dataviz$diagram$Rectangle,
+    Shape: typeof kendo$dataviz$diagram$Shape,
+    TextBlock: typeof kendo$dataviz$diagram$TextBlock
+  };
+  declare class kendo$dataviz$diagram$Circle mixins kendo$Observable {
+    options: geometry$CircleOptions;
+    drawingElement: kendo$drawing$Circle;
+    constructor(options?: geometry$CircleOptions): this;
+    position(): void;
+    position(offset: kendo$dataviz$diagram$Point): void;
+    rotate(angle: number, center: kendo$dataviz$diagram$Point): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$CircleFillGradientStop {
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$CircleFillGradient {
+    type?: string;
+    center?: any;
+    radius?: number;
+    start?: any;
+    end?: any;
+    stops?: kendo$dataviz$diagram$CircleFillGradientStop[];
+  }
+
+  declare interface kendo$dataviz$diagram$CircleFill {
+    color?: string;
+    opacity?: number;
+    gradient?: kendo$dataviz$diagram$CircleFillGradient;
+  }
+
+  declare interface kendo$dataviz$diagram$CircleStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$CircleOptions {
+    name?: string;
+    fill?: string | kendo$dataviz$diagram$CircleFill;
+    stroke?: kendo$dataviz$diagram$CircleStroke;
+    center?: any;
+    radius?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$CircleEvent {
+    sender: kendo$dataviz$diagram$Circle;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Connection mixins kendo$Observable {
+    options: diagram$ConnectionOptions;
+    dataItem: any;
+    from: kendo$dataviz$diagram$Shape;
+    sourceConnector: kendo$dataviz$diagram$Connector;
+    targetConnector: kendo$dataviz$diagram$Connector;
+    to: kendo$dataviz$diagram$Shape;
+    constructor(options?: diagram$ConnectionOptions): this;
+    source(): any;
+    source(source: kendo$dataviz$diagram$Shape): void;
+    source(source: kendo$dataviz$diagram$Point): void;
+    source(source: kendo$dataviz$diagram$Connector): void;
+    sourcePoint(): kendo$dataviz$diagram$Point;
+    target(): any;
+    target(target: kendo$dataviz$diagram$Shape): void;
+    target(target: kendo$dataviz$diagram$Point): void;
+    target(target: kendo$dataviz$diagram$Connector): void;
+    targetPoint(): kendo$dataviz$diagram$Point;
+    select(value: boolean): void;
+    type(): void;
+    type(value: string): void;
+    points(): any;
+    allPoints(): any;
+    redraw(options?: any): void;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionContent {
+    color?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    fontStyle?: string;
+    fontWeight?: string;
+    template?: string | Function;
+    text?: string;
+    visual?: Function;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionEndCapFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionEndCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionEndCap {
+    fill?: string | kendo$dataviz$diagram$ConnectionEndCapFill;
+    stroke?: string | kendo$dataviz$diagram$ConnectionEndCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionHoverStroke {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionHover {
+    stroke?: kendo$dataviz$diagram$ConnectionHoverStroke;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionPoint {
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionStartCapFill {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionStartCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionStartCap {
+    fill?: string | kendo$dataviz$diagram$ConnectionStartCapFill;
+    stroke?: string | kendo$dataviz$diagram$ConnectionStartCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionStroke {
+    color?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionOptions {
+    name?: string;
+    content?: kendo$dataviz$diagram$ConnectionContent;
+    fromConnector?: string;
+    fromX?: number;
+    fromY?: number;
+    stroke?: kendo$dataviz$diagram$ConnectionStroke;
+    hover?: kendo$dataviz$diagram$ConnectionHover;
+    startCap?: string | kendo$dataviz$diagram$ConnectionStartCap;
+    endCap?: string | kendo$dataviz$diagram$ConnectionEndCap;
+    points?: kendo$dataviz$diagram$ConnectionPoint[];
+    selectable?: boolean;
+    toConnector?: string;
+    toX?: number;
+    toY?: number;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectionEvent {
+    sender: kendo$dataviz$diagram$Connection;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Connector mixins kendo$Observable {
+    options: diagram$ConnectorOptions;
+    connections: any;
+    shape: kendo$dataviz$diagram$Shape;
+    constructor(options?: diagram$ConnectorOptions): this;
+    position(): kendo$dataviz$diagram$Point;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectorFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectorHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectorHoverStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectorHover {
+    fill?: string | kendo$dataviz$diagram$ConnectorHoverFill;
+    stroke?: string | kendo$dataviz$diagram$ConnectorHoverStroke;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectorStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectorOptions {
+    name?: string;
+    width?: number;
+    height?: number;
+    hover?: kendo$dataviz$diagram$ConnectorHover;
+    fill?: string | kendo$dataviz$diagram$ConnectorFill;
+    stroke?: string | kendo$dataviz$diagram$ConnectorStroke;
+  }
+
+  declare interface kendo$dataviz$diagram$ConnectorEvent {
+    sender: kendo$dataviz$diagram$Connector;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Group mixins kendo$Observable {
+    options: drawing$GroupOptions;
+    drawingElement: kendo$drawing$Group;
+    constructor(options?: drawing$GroupOptions): this;
+    append(element: any): void;
+    clear(): void;
+    remove(element: any): void;
+    position(): void;
+    position(offset: kendo$dataviz$diagram$Point): void;
+    rotate(angle: number, center: kendo$dataviz$diagram$Point): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$GroupOptions {
+    name?: string;
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$GroupEvent {
+    sender: kendo$dataviz$diagram$Group;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Image mixins kendo$Observable {
+    options: drawing$ImageOptions;
+    drawingElement: kendo$drawing$Image;
+    constructor(options?: drawing$ImageOptions): this;
+    position(): void;
+    position(offset: kendo$dataviz$diagram$Point): void;
+    rotate(angle: number, center: kendo$dataviz$diagram$Point): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$ImageOptions {
+    name?: string;
+    height?: number;
+    width?: number;
+    x?: number;
+    y?: number;
+    source?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ImageEvent {
+    sender: kendo$dataviz$diagram$Image;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Layout mixins kendo$Observable {
+    options: kendo$mobile$ui$LayoutOptions;
+    drawingElement: kendo$drawing$Layout;
+    constructor(
+      rect: kendo$dataviz$diagram$Rect,
+      options?: kendo$mobile$ui$LayoutOptions
+    ): this;
+    append(element: any): void;
+    clear(): void;
+    rect(): kendo$dataviz$diagram$Rect;
+    rect(rect: kendo$dataviz$diagram$Rect): void;
+    reflow(): void;
+    remove(element: any): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$LayoutOptions {
+    name?: string;
+    alignContent?: string;
+    alignItems?: string;
+    justifyContent?: string;
+    lineSpacing?: number;
+    spacing?: number;
+    orientation?: string;
+    wrap?: boolean;
+  }
+
+  declare interface kendo$dataviz$diagram$LayoutEvent {
+    sender: kendo$dataviz$diagram$Layout;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Line mixins kendo$Observable {
+    options: diagram$LineOptions;
+    drawingElement: kendo$drawing$Path;
+    constructor(options?: diagram$LineOptions): this;
+    position(): void;
+    position(offset: kendo$dataviz$diagram$Point): void;
+    rotate(angle: number, center: kendo$dataviz$diagram$Point): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$LineStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$LineOptions {
+    name?: string;
+    stroke?: kendo$dataviz$diagram$LineStroke;
+    from?: any;
+    to?: any;
+  }
+
+  declare interface kendo$dataviz$diagram$LineEvent {
+    sender: kendo$dataviz$diagram$Line;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Path mixins kendo$Observable {
+    options: drawing$PathOptions;
+    drawingElement: kendo$drawing$Path;
+    constructor(options?: drawing$PathOptions): this;
+    data(): string;
+    data(path: string): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$PathEndCapFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PathEndCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PathEndCap {
+    fill?: string | kendo$dataviz$diagram$PathEndCapFill;
+    stroke?: string | kendo$dataviz$diagram$PathEndCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$PathFillGradientStop {
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PathFillGradient {
+    type?: string;
+    center?: any;
+    radius?: number;
+    start?: any;
+    end?: any;
+    stops?: kendo$dataviz$diagram$PathFillGradientStop[];
+  }
+
+  declare interface kendo$dataviz$diagram$PathFill {
+    color?: string;
+    opacity?: number;
+    gradient?: kendo$dataviz$diagram$PathFillGradient;
+  }
+
+  declare interface kendo$dataviz$diagram$PathStartCapFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PathStartCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PathStartCap {
+    fill?: string | kendo$dataviz$diagram$PathStartCapFill;
+    stroke?: string | kendo$dataviz$diagram$PathStartCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$PathStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PathOptions {
+    name?: string;
+    data?: string;
+    endCap?: string | kendo$dataviz$diagram$PathEndCap;
+    fill?: string | kendo$dataviz$diagram$PathFill;
+    height?: number;
+    startCap?: string | kendo$dataviz$diagram$PathStartCap;
+    stroke?: kendo$dataviz$diagram$PathStroke;
+    width?: number;
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PathEvent {
+    sender: kendo$dataviz$diagram$Path;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Point mixins kendo$Observable {
+    options: geometry$PointOptions;
+    x: number;
+    y: number;
+    constructor(x: number, y: number): this;
+  }
+
+  declare interface kendo$dataviz$diagram$PointOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$PointEvent {
+    sender: kendo$dataviz$diagram$Point;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Polyline mixins kendo$Observable {
+    options: diagram$PolylineOptions;
+    drawingElement: kendo$drawing$Path;
+    constructor(options?: diagram$PolylineOptions): this;
+    points(): any;
+    points(points: any): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineEndCapFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineEndCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineEndCap {
+    fill?: string | kendo$dataviz$diagram$PolylineEndCapFill;
+    stroke?: string | kendo$dataviz$diagram$PolylineEndCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineFillGradientStop {
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineFillGradient {
+    type?: string;
+    center?: any;
+    radius?: number;
+    start?: any;
+    end?: any;
+    stops?: kendo$dataviz$diagram$PolylineFillGradientStop[];
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineFill {
+    color?: string;
+    opacity?: number;
+    gradient?: kendo$dataviz$diagram$PolylineFillGradient;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineStartCapFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineStartCapStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineStartCap {
+    fill?: string | kendo$dataviz$diagram$PolylineStartCapFill;
+    stroke?: string | kendo$dataviz$diagram$PolylineStartCapStroke;
+    type?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineOptions {
+    name?: string;
+    endCap?: string | kendo$dataviz$diagram$PolylineEndCap;
+    fill?: string | kendo$dataviz$diagram$PolylineFill;
+    startCap?: string | kendo$dataviz$diagram$PolylineStartCap;
+    stroke?: kendo$dataviz$diagram$PolylineStroke;
+  }
+
+  declare interface kendo$dataviz$diagram$PolylineEvent {
+    sender: kendo$dataviz$diagram$Polyline;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Rect mixins kendo$Observable {
+    options: geometry$RectOptions;
+    constructor(options?: geometry$RectOptions): this;
+    position(): void;
+    position(offset: kendo$dataviz$diagram$Point): void;
+    rotate(angle: number, center: kendo$dataviz$diagram$Point): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$RectOptions {
+    name?: string;
+    height?: number;
+    width?: number;
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$RectEvent {
+    sender: kendo$dataviz$diagram$Rect;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Rectangle mixins kendo$Observable {
+    options: diagram$RectangleOptions;
+    drawingElement: kendo$drawing$Path;
+    constructor(options?: diagram$RectangleOptions): this;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$RectangleFillGradientStop {
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$RectangleFillGradient {
+    type?: string;
+    center?: any;
+    radius?: number;
+    start?: any;
+    end?: any;
+    stops?: kendo$dataviz$diagram$RectangleFillGradientStop[];
+  }
+
+  declare interface kendo$dataviz$diagram$RectangleFill {
+    color?: string;
+    opacity?: number;
+    gradient?: kendo$dataviz$diagram$RectangleFillGradient;
+  }
+
+  declare interface kendo$dataviz$diagram$RectangleStroke {
+    color?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$RectangleOptions {
+    name?: string;
+    fill?: string | kendo$dataviz$diagram$RectangleFill;
+    height?: number;
+    stroke?: kendo$dataviz$diagram$RectangleStroke;
+    width?: number;
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$RectangleEvent {
+    sender: kendo$dataviz$diagram$Rectangle;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$Shape mixins kendo$Observable {
+    options: diagram$ShapeOptions;
+    connectors: any;
+    dataItem: any;
+    shapeVisual: any;
+    visual: kendo$dataviz$diagram$Group;
+    constructor(options?: diagram$ShapeOptions): this;
+    position(): void;
+    position(point: kendo$dataviz$diagram$Point): void;
+    clone(): kendo$dataviz$diagram$Shape;
+    select(value: boolean): void;
+    connections(type: string): void;
+    getConnector(): void;
+    getPosition(side: string): void;
+    redraw(options: any): void;
+    redrawVisual(): void;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeConnectorDefaultsFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeConnectorDefaultsHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeConnectorDefaultsHoverStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeConnectorDefaultsHover {
+    fill?: string | kendo$dataviz$diagram$ShapeConnectorDefaultsHoverFill;
+    stroke?: string | kendo$dataviz$diagram$ShapeConnectorDefaultsHoverStroke;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeConnectorDefaultsStroke {
+    color?: string;
+    dashType?: string;
+    width?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeConnectorDefaults {
+    width?: number;
+    height?: number;
+    hover?: kendo$dataviz$diagram$ShapeConnectorDefaultsHover;
+    fill?: string | kendo$dataviz$diagram$ShapeConnectorDefaultsFill;
+    stroke?: string | kendo$dataviz$diagram$ShapeConnectorDefaultsStroke;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeConnector {
+    name?: string;
+    description?: string;
+    position?: Function;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeContent {
+    align?: string;
+    color?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    fontStyle?: string;
+    fontWeight?: string;
+    text?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeEditable {
+    connect?: boolean;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeFillGradientStop {
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeFillGradient {
+    type?: string;
+    center?: any;
+    radius?: number;
+    start?: any;
+    end?: any;
+    stops?: kendo$dataviz$diagram$ShapeFillGradientStop[];
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeFill {
+    color?: string;
+    opacity?: number;
+    gradient?: kendo$dataviz$diagram$ShapeFillGradient;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeHoverFill {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeHover {
+    fill?: string | kendo$dataviz$diagram$ShapeHoverFill;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeRotation {
+    angle?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeStroke {
+    color?: string;
+    width?: number;
+    dashType?: string;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeOptions {
+    name?: string;
+    id?: string;
+    editable?: boolean | kendo$dataviz$diagram$ShapeEditable;
+    path?: string;
+    stroke?: kendo$dataviz$diagram$ShapeStroke;
+    type?: string;
+    x?: number;
+    y?: number;
+    minWidth?: number;
+    minHeight?: number;
+    width?: number;
+    height?: number;
+    fill?: string | kendo$dataviz$diagram$ShapeFill;
+    hover?: kendo$dataviz$diagram$ShapeHover;
+    connectors?: kendo$dataviz$diagram$ShapeConnector[];
+    rotation?: kendo$dataviz$diagram$ShapeRotation;
+    content?: kendo$dataviz$diagram$ShapeContent;
+    selectable?: boolean;
+    visual?: Function;
+    connectorDefaults?: kendo$dataviz$diagram$ShapeConnectorDefaults;
+  }
+
+  declare interface kendo$dataviz$diagram$ShapeEvent {
+    sender: kendo$dataviz$diagram$Shape;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$diagram$TextBlock mixins kendo$Observable {
+    options: diagram$TextBlockOptions;
+    drawingElement: kendo$drawing$Text;
+    constructor(options?: diagram$TextBlockOptions): this;
+    content(): string;
+    content(content: string): void;
+    position(): void;
+    position(offset: kendo$dataviz$diagram$Point): void;
+    rotate(angle: number, center: kendo$dataviz$diagram$Point): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$diagram$TextBlockOptions {
+    name?: string;
+    color?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    fontStyle?: string;
+    fontWeight?: string;
+    height?: number;
+    text?: string;
+    width?: number;
+    x?: number;
+    y?: number;
+  }
+
+  declare interface kendo$dataviz$diagram$TextBlockEvent {
+    sender: kendo$dataviz$diagram$TextBlock;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare var npm$namespace$kendo$dataviz$drawing: {
+    Arc: typeof kendo$dataviz$drawing$Arc,
+    Circle: typeof kendo$dataviz$drawing$Circle,
+    Element: typeof kendo$dataviz$drawing$Element,
+    Gradient: typeof kendo$dataviz$drawing$Gradient,
+    GradientStop: typeof kendo$dataviz$drawing$GradientStop,
+    Group: typeof kendo$dataviz$drawing$Group,
+    Image: typeof kendo$dataviz$drawing$Image,
+    Layout: typeof kendo$dataviz$drawing$Layout,
+    LinearGradient: typeof kendo$dataviz$drawing$LinearGradient,
+    MultiPath: typeof kendo$dataviz$drawing$MultiPath,
+    OptionsStore: typeof kendo$dataviz$drawing$OptionsStore,
+    Path: typeof kendo$dataviz$drawing$Path,
+    RadialGradient: typeof kendo$dataviz$drawing$RadialGradient,
+    Rect: typeof kendo$dataviz$drawing$Rect,
+    Segment: typeof kendo$dataviz$drawing$Segment,
+    Surface: typeof kendo$dataviz$drawing$Surface,
+    Text: typeof kendo$dataviz$drawing$Text
+  };
+  declare class kendo$dataviz$drawing$Arc mixins kendo$drawing$Element {
+    options: geometry$ArcOptions;
+    constructor(
+      geometry: kendo$geometry$Arc,
+      options?: geometry$ArcOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    geometry(): kendo$geometry$Arc;
+    geometry(value: kendo$geometry$Arc): void;
+    fill(color: string, opacity?: number): kendo$drawing$Arc;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Arc;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$ArcOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$ArcEvent {
+    sender: kendo$dataviz$drawing$Arc;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$Circle mixins kendo$drawing$Element {
+    options: kendo$dataviz$diagram$CircleOptions;
+    constructor(
+      geometry: kendo$geometry$Circle,
+      options?: kendo$dataviz$diagram$CircleOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    geometry(): kendo$geometry$Circle;
+    geometry(value: kendo$geometry$Circle): void;
+    fill(color: string, opacity?: number): kendo$drawing$Circle;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(
+      color: string,
+      width?: number,
+      opacity?: number
+    ): kendo$drawing$Circle;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$CircleOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$CircleEvent {
+    sender: kendo$dataviz$drawing$Circle;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$Element mixins kendo$Class {
+    options: drawing$ElementOptions;
+    parent: kendo$drawing$Group;
+    constructor(options?: drawing$ElementOptions): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    opacity(): number;
+    opacity(opacity: number): void;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$ElementOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    opacity?: number;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$ElementEvent {
+    sender: kendo$dataviz$drawing$Element;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$FillOptions {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare class kendo$dataviz$drawing$Gradient mixins kendo$Class {
+    options: drawing$GradientOptions;
+    stops: any;
+    constructor(options?: drawing$GradientOptions): this;
+    addStop(
+      offset: number,
+      color: string,
+      opacity: number
+    ): kendo$drawing$GradientStop;
+    removeStop(stop: kendo$drawing$GradientStop): void;
+  }
+
+  declare interface kendo$dataviz$drawing$GradientOptions {
+    name?: string;
+    stops?: any;
+  }
+
+  declare interface kendo$dataviz$drawing$GradientEvent {
+    sender: kendo$dataviz$drawing$Gradient;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$GradientStop mixins kendo$Class {
+    options: drawing$GradientStopOptions;
+    constructor(options?: drawing$GradientStopOptions): this;
+  }
+
+  declare interface kendo$dataviz$drawing$GradientStopOptions {
+    name?: string;
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$dataviz$drawing$GradientStopEvent {
+    sender: kendo$dataviz$drawing$GradientStop;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$Group mixins kendo$drawing$Element {
+    options: kendo$dataviz$diagram$GroupOptions;
+    children: any;
+    constructor(options?: kendo$dataviz$diagram$GroupOptions): this;
+    append(element: kendo$drawing$Element): void;
+    clear(): void;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    insert(position: number, element: kendo$drawing$Element): void;
+    opacity(): number;
+    opacity(opacity: number): void;
+    remove(element: kendo$drawing$Element): void;
+    removeAt(index: number): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$GroupOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    opacity?: number;
+    pdf?: kendo$drawing$PDFOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$GroupEvent {
+    sender: kendo$dataviz$drawing$Group;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$Image mixins kendo$drawing$Element {
+    options: kendo$dataviz$diagram$ImageOptions;
+    constructor(src: string, rect: kendo$geometry$Rect): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    opacity(): number;
+    opacity(opacity: number): void;
+    src(): string;
+    src(value: string): void;
+    rect(): kendo$geometry$Rect;
+    rect(value: kendo$geometry$Rect): void;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$ImageOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    opacity?: number;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$ImageEvent {
+    sender: kendo$dataviz$drawing$Image;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$Layout mixins kendo$drawing$Group {
+    options: kendo$dataviz$diagram$LayoutOptions;
+    constructor(
+      rect: kendo$geometry$Rect,
+      options?: kendo$dataviz$diagram$LayoutOptions
+    ): this;
+    rect(): kendo$geometry$Rect;
+    rect(rect: kendo$geometry$Rect): void;
+    reflow(): void;
+  }
+
+  declare interface kendo$dataviz$drawing$LayoutOptions {
+    name?: string;
+    alignContent?: string;
+    alignItems?: string;
+    justifyContent?: string;
+    lineSpacing?: number;
+    spacing?: number;
+    orientation?: string;
+    wrap?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$LayoutEvent {
+    sender: kendo$dataviz$drawing$Layout;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$LinearGradient
+    mixins kendo$drawing$Gradient {
+    options: drawing$LinearGradientOptions;
+    stops: any;
+    constructor(options?: drawing$LinearGradientOptions): this;
+    addStop(
+      offset: number,
+      color: string,
+      opacity: number
+    ): kendo$drawing$GradientStop;
+    end(): kendo$geometry$Point;
+    end(end: any): void;
+    end(end: kendo$geometry$Point): void;
+    start(): kendo$geometry$Point;
+    start(start: any): void;
+    start(start: kendo$geometry$Point): void;
+    removeStop(stop: kendo$drawing$GradientStop): void;
+  }
+
+  declare interface kendo$dataviz$drawing$LinearGradientOptions {
+    name?: string;
+    stops?: any;
+  }
+
+  declare interface kendo$dataviz$drawing$LinearGradientEvent {
+    sender: kendo$dataviz$drawing$LinearGradient;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$MultiPath mixins kendo$drawing$Element {
+    options: drawing$MultiPathOptions;
+    paths: any;
+    constructor(options?: drawing$MultiPathOptions): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    close(): kendo$drawing$MultiPath;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    curveTo(
+      controlOut: any,
+      controlIn: any,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: any,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    fill(color: string, opacity?: number): kendo$drawing$MultiPath;
+    lineTo(x: number, y?: number): kendo$drawing$MultiPath;
+    lineTo(x: any, y?: number): kendo$drawing$MultiPath;
+    lineTo(x: kendo$geometry$Point, y?: number): kendo$drawing$MultiPath;
+    moveTo(x: number, y?: number): kendo$drawing$MultiPath;
+    moveTo(x: any, y?: number): kendo$drawing$MultiPath;
+    moveTo(x: kendo$geometry$Point, y?: number): kendo$drawing$MultiPath;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(
+      color: string,
+      width?: number,
+      opacity?: number
+    ): kendo$drawing$MultiPath;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$MultiPathOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$MultiPathEvent {
+    sender: kendo$dataviz$drawing$MultiPath;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$OptionsStore mixins kendo$Class {
+    options: drawing$OptionsStoreOptions;
+    observer: any;
+    constructor(options?: drawing$OptionsStoreOptions): this;
+    get(field: string): any;
+    set(field: string, value: any): void;
+  }
+
+  declare interface kendo$dataviz$drawing$OptionsStoreOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$drawing$OptionsStoreEvent {
+    sender: kendo$dataviz$drawing$OptionsStore;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$PDFOptions {
+    creator?: string;
+    date?: Date;
+    imgDPI?: number;
+    keywords?: string;
+    landscape?: boolean;
+    margin?: any;
+    paperSize?: any;
+    subject?: string;
+    title?: string;
+  }
+
+  declare class kendo$dataviz$drawing$Path mixins kendo$drawing$Element {
+    options: kendo$dataviz$diagram$PathOptions;
+    segments: any;
+    constructor(options?: kendo$dataviz$diagram$PathOptions): this;
+    static fromArc(arc: kendo$geometry$Arc, options?: any): kendo$drawing$Path;
+    static fromPoints(points: any, options?: any): kendo$drawing$Path;
+    static fromRect(
+      rect: kendo$geometry$Rect,
+      options?: any
+    ): kendo$drawing$Path;
+    static parse(svgPath: string, options?: any): kendo$drawing$MultiPath;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    close(): kendo$drawing$Path;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    curveTo(controlOut: any, controlIn: any, endPoint: any): kendo$drawing$Path;
+    curveTo(
+      controlOut: any,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: any
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    fill(color: string, opacity?: number): kendo$drawing$Path;
+    lineTo(x: number, y?: number): kendo$drawing$Path;
+    lineTo(x: any, y?: number): kendo$drawing$Path;
+    lineTo(x: kendo$geometry$Point, y?: number): kendo$drawing$Path;
+    moveTo(x: number, y?: number): kendo$drawing$Path;
+    moveTo(x: any, y?: number): kendo$drawing$Path;
+    moveTo(x: kendo$geometry$Point, y?: number): kendo$drawing$Path;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Path;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$PathOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$PathEvent {
+    sender: kendo$dataviz$drawing$Path;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$RadialGradient
+    mixins kendo$drawing$Gradient {
+    options: drawing$RadialGradientOptions;
+    stops: any;
+    constructor(options?: drawing$RadialGradientOptions): this;
+    addStop(
+      offset: number,
+      color: string,
+      opacity: number
+    ): kendo$drawing$GradientStop;
+    center(): kendo$geometry$Point;
+    center(center: any): void;
+    center(center: kendo$geometry$Point): void;
+    radius(): number;
+    radius(value: number): void;
+    removeStop(stop: kendo$drawing$GradientStop): void;
+  }
+
+  declare interface kendo$dataviz$drawing$RadialGradientOptions {
+    name?: string;
+    center?: any | kendo$geometry$Point;
+    radius?: number;
+    stops?: any;
+  }
+
+  declare interface kendo$dataviz$drawing$RadialGradientEvent {
+    sender: kendo$dataviz$drawing$RadialGradient;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$Rect mixins kendo$drawing$Element {
+    options: kendo$dataviz$diagram$RectOptions;
+    constructor(
+      geometry: kendo$geometry$Rect,
+      options?: kendo$dataviz$diagram$RectOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    geometry(): kendo$geometry$Rect;
+    geometry(value: kendo$geometry$Rect): void;
+    fill(color: string, opacity?: number): kendo$drawing$Rect;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Rect;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$RectOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$RectEvent {
+    sender: kendo$dataviz$drawing$Rect;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$dataviz$drawing$Segment mixins kendo$Class {
+    options: drawing$SegmentOptions;
+    constructor(
+      anchor: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      controlOut: kendo$geometry$Point
+    ): this;
+    anchor(): kendo$geometry$Point;
+    anchor(value: kendo$geometry$Point): void;
+    controlIn(): kendo$geometry$Point;
+    controlIn(value: kendo$geometry$Point): void;
+    controlOut(): kendo$geometry$Point;
+    controlOut(value: kendo$geometry$Point): void;
+  }
+
+  declare interface kendo$dataviz$drawing$SegmentOptions {
+    name?: string;
+  }
+
+  declare interface kendo$dataviz$drawing$SegmentEvent {
+    sender: kendo$dataviz$drawing$Segment;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$StrokeOptions {
+    color?: string;
+    dashType?: string;
+    lineCap?: string;
+    lineJoin?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare class kendo$dataviz$drawing$Surface mixins kendo$Observable {
+    options: drawing$SurfaceOptions;
+    constructor(options?: drawing$SurfaceOptions): this;
+    static create(element: JQuery, options?: any): kendo$drawing$Surface;
+    static create(
+      element: kendo$dataviz$drawing$Element,
+      options?: any
+    ): kendo$drawing$Surface;
+    element: JQuery;
+    clear(): void;
+    draw(element: kendo$drawing$Element): void;
+    eventTarget(e: any): kendo$drawing$Element;
+    hideTooltip(): void;
+    resize(force?: boolean): void;
+    showTooltip(element: kendo$drawing$Element, options?: any): void;
+  }
+
+  declare interface kendo$dataviz$drawing$SurfaceTooltipAnimationClose {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$drawing$SurfaceTooltipAnimationOpen {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$dataviz$drawing$SurfaceTooltipAnimation {
+    close?: kendo$dataviz$drawing$SurfaceTooltipAnimationClose;
+    open?: kendo$dataviz$drawing$SurfaceTooltipAnimationOpen;
+  }
+
+  declare interface kendo$dataviz$drawing$SurfaceTooltip {
+    animation?: boolean | kendo$dataviz$drawing$SurfaceTooltipAnimation;
+    appendTo?: string | JQuery;
+  }
+
+  declare interface kendo$dataviz$drawing$SurfaceOptions {
+    name?: string;
+    type?: string;
+    height?: string;
+    width?: string;
+    tooltip?: kendo$dataviz$drawing$SurfaceTooltip;
+    click?: (e: drawing$SurfaceClickEvent) => void;
+    mouseenter?: (e: drawing$SurfaceMouseenterEvent) => void;
+    mouseleave?: (e: drawing$SurfaceMouseleaveEvent) => void;
+    tooltipClose?: (e: drawing$SurfaceTooltipCloseEvent) => void;
+    tooltipOpen?: (e: drawing$SurfaceTooltipOpenEvent) => void;
+  }
+
+  declare interface kendo$dataviz$drawing$SurfaceEvent {
+    sender: kendo$dataviz$drawing$Surface;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$dataviz$drawing$SurfaceClickEvent = {
+    element?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$dataviz$drawing$SurfaceEvent;
+
+  declare type kendo$dataviz$drawing$SurfaceMouseenterEvent = {
+    element?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$dataviz$drawing$SurfaceEvent;
+
+  declare type kendo$dataviz$drawing$SurfaceMouseleaveEvent = {
+    element?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$dataviz$drawing$SurfaceEvent;
+
+  declare type kendo$dataviz$drawing$SurfaceTooltipCloseEvent = {
+    element?: kendo$drawing$Element,
+    target?: kendo$drawing$Element
+  } & kendo$dataviz$drawing$SurfaceEvent;
+
+  declare type kendo$dataviz$drawing$SurfaceTooltipOpenEvent = {
+    element?: kendo$drawing$Element,
+    target?: kendo$drawing$Element
+  } & kendo$dataviz$drawing$SurfaceEvent;
+
+  declare class kendo$dataviz$drawing$Text mixins kendo$drawing$Element {
+    options: drawing$TextOptions;
+    constructor(
+      content: string,
+      position: kendo$geometry$Point,
+      options?: drawing$TextOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    content(): string;
+    content(value: string): void;
+    fill(color: string, opacity?: number): kendo$drawing$Text;
+    opacity(): number;
+    opacity(opacity: number): void;
+    position(): kendo$geometry$Point;
+    position(value: kendo$geometry$Point): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Text;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$dataviz$drawing$TextOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    font?: string;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$TextEvent {
+    sender: kendo$dataviz$drawing$Text;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$dataviz$drawing$TooltipOptions {
+    autoHide?: boolean;
+    content?: string | Function;
+    position?: string;
+    height?: number | string;
+    hideDelay?: number;
+    offset?: number;
+    shared?: boolean;
+    showAfter?: number;
+    showOn?: string;
+    width?: number | string;
+  }
 
   declare var npm$namespace$kendo$dataviz$geometry: {
     Arc: typeof kendo$dataviz$geometry$Arc,
@@ -8630,54 +19114,35 @@ declare module "kendo-ui" {
     Size: typeof kendo$dataviz$geometry$Size,
     Transformation: typeof kendo$dataviz$geometry$Transformation
   };
-  declare class kendo$dataviz$geometry$Arc mixins Observable {
-    options: geometry$ArcOptions;
+  declare class kendo$dataviz$geometry$Arc mixins kendo$Observable {
+    options: kendo$dataviz$drawing$ArcOptions;
     anticlockwise: boolean;
-    center: kendo$geometryPoint;
+    center: kendo$geometry$Point;
     endAngle: number;
     radiusX: number;
     radiusY: number;
     startAngle: number;
     constructor(
-      center: any | kendo$geometryPoint,
-      options?: geometry$ArcOptions
+      center: any | kendo$geometry$Point,
+      options?: kendo$dataviz$drawing$ArcOptions
     ): this;
-    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
+    bbox(matrix: kendo$geometry$Matrix): kendo$geometry$Rect;
     getAnticlockwise(): boolean;
-    getCenter(): kendo$geometryPoint;
+    getCenter(): kendo$geometry$Point;
     getEndAngle(): number;
     getRadiusX(): number;
     getRadiusY(): number;
     getStartAngle(): number;
-    pointAt(angle: number): kendo$geometryPoint;
-    setAnticlockwise(value: boolean): kendo$geometryArc;
-    setCenter(value: kendo$geometryPoint): kendo$geometryArc;
-    setEndAngle(value: number): kendo$geometryArc;
-    setRadiusX(value: number): kendo$geometryArc;
-    setRadiusY(value: number): kendo$geometryArc;
-    setStartAngle(value: number): kendo$geometryArc;
+    pointAt(angle: number): kendo$geometry$Point;
+    setAnticlockwise(value: boolean): kendo$geometry$Arc;
+    setCenter(value: kendo$geometry$Point): kendo$geometry$Arc;
+    setEndAngle(value: number): kendo$geometry$Arc;
+    setRadiusX(value: number): kendo$geometry$Arc;
+    setRadiusY(value: number): kendo$geometry$Arc;
+    setStartAngle(value: number): kendo$geometry$Arc;
   }
 
   declare interface kendo$dataviz$geometry$ArcOptions {
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
-    name?: string;
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
     name?: string;
   }
 
@@ -8685,58 +19150,25 @@ declare module "kendo-ui" {
     sender: kendo$dataviz$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Arc;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Arc;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Arc;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$dataviz$geometry$Circle mixins Observable {
-    options: geometry$CircleOptions;
-    center: kendo$geometryPoint;
+  declare class kendo$dataviz$geometry$Circle mixins kendo$Observable {
+    options: kendo$dataviz$drawing$CircleOptions;
+    center: kendo$geometry$Point;
     radius: number;
-    constructor(center: any | kendo$geometryPoint, radius: number): this;
-    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
-    clone(): kendo$geometryCircle;
-    equals(other: kendo$geometryCircle): boolean;
-    getCenter(): kendo$geometryPoint;
+    constructor(center: any | kendo$geometry$Point, radius: number): this;
+    bbox(matrix: kendo$geometry$Matrix): kendo$geometry$Rect;
+    clone(): kendo$geometry$Circle;
+    equals(other: kendo$geometry$Circle): boolean;
+    getCenter(): kendo$geometry$Point;
     getRadius(): number;
-    pointAt(angle: number): kendo$geometryPoint;
-    setCenter(value: kendo$geometryPoint): kendo$geometryPoint;
-    setCenter(value: any): kendo$geometryPoint;
-    setRadius(value: number): kendo$geometryCircle;
+    pointAt(angle: number): kendo$geometry$Point;
+    setCenter(value: kendo$geometry$Point): kendo$geometry$Point;
+    setCenter(value: any): kendo$geometry$Point;
+    setRadius(value: number): kendo$geometry$Circle;
   }
 
   declare interface kendo$dataviz$geometry$CircleOptions {
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
-    name?: string;
-    name?: string;
-    fill?: string | diagram$CircleFill;
-    stroke?: diagram$CircleStroke;
-    center?: any;
-    radius?: number;
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
     name?: string;
   }
 
@@ -8744,21 +19176,9 @@ declare module "kendo-ui" {
     sender: kendo$dataviz$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$dataviz$geometry$Matrix mixins Observable {
+  declare class kendo$dataviz$geometry$Matrix mixins kendo$Observable {
     options: geometry$MatrixOptions;
     a: number;
     b: number;
@@ -8766,20 +19186,19 @@ declare module "kendo-ui" {
     d: number;
     e: number;
     f: number;
-    static rotate(angle: number, x: number, y: number): kendo$geometryMatrix;
-    static scale(scaleX: number, scaleY: number): kendo$geometryMatrix;
-    static translate(x: number, y: number): kendo$geometryMatrix;
-    static unit(): kendo$geometryMatrix;
-    clone(): kendo$geometryMatrix;
-    equals(other: kendo$geometryMatrix): boolean;
-    round(digits: number): kendo$geometryMatrix;
-    multiplyCopy(matrix: kendo$geometryMatrix): kendo$geometryMatrix;
+    static rotate(angle: number, x: number, y: number): kendo$geometry$Matrix;
+    static scale(scaleX: number, scaleY: number): kendo$geometry$Matrix;
+    static translate(x: number, y: number): kendo$geometry$Matrix;
+    static unit(): kendo$geometry$Matrix;
+    clone(): kendo$geometry$Matrix;
+    equals(other: kendo$geometry$Matrix): boolean;
+    round(digits: number): kendo$geometry$Matrix;
+    multiplyCopy(matrix: kendo$geometry$Matrix): kendo$geometry$Matrix;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
   }
 
   declare interface kendo$dataviz$geometry$MatrixOptions {
-    name?: string;
     name?: string;
   }
 
@@ -8787,50 +19206,47 @@ declare module "kendo-ui" {
     sender: kendo$dataviz$geometry$Matrix;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Matrix;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$dataviz$geometry$Point mixins Observable {
-    options: geometry$PointOptions;
+  declare class kendo$dataviz$geometry$Point mixins kendo$Observable {
+    options: kendo$dataviz$diagram$PointOptions;
     x: number;
     y: number;
     constructor(x: number, y: number): this;
-    static create(x: number, y: number): kendo$geometryPoint;
-    static create(x: any, y: number): kendo$geometryPoint;
-    static create(x: kendo$geometryPoint, y: number): kendo$geometryPoint;
-    static min(): kendo$geometryPoint;
-    static max(): kendo$geometryPoint;
-    static minPoint(): kendo$geometryPoint;
-    static maxPoint(): kendo$geometryPoint;
-    clone(): kendo$geometryPoint;
-    distanceTo(point: kendo$geometryPoint): number;
-    equals(other: kendo$geometryPoint): boolean;
+    static create(x: number, y: number): kendo$geometry$Point;
+    static create(x: any, y: number): kendo$geometry$Point;
+    static create(x: kendo$geometry$Point, y: number): kendo$geometry$Point;
+    static min(): kendo$geometry$Point;
+    static max(): kendo$geometry$Point;
+    static minPoint(): kendo$geometry$Point;
+    static maxPoint(): kendo$geometry$Point;
+    clone(): kendo$geometry$Point;
+    distanceTo(point: kendo$geometry$Point): number;
+    equals(other: kendo$geometry$Point): boolean;
     getX(): number;
     getY(): number;
-    move(x: number, y: number): kendo$geometryPoint;
-    rotate(angle: number, center: kendo$geometryPoint): kendo$geometryPoint;
-    rotate(angle: number, center: any): kendo$geometryPoint;
-    round(digits: number): kendo$geometryPoint;
-    scale(scaleX: number, scaleY: number): kendo$geometryPoint;
-    scaleCopy(scaleX: number, scaleY: number): kendo$geometryPoint;
-    setX(value: number): kendo$geometryPoint;
-    setY(value: number): kendo$geometryPoint;
+    move(x: number, y: number): kendo$geometry$Point;
+    rotate(angle: number, center: kendo$geometry$Point): kendo$geometry$Point;
+    rotate(angle: number, center: any): kendo$geometry$Point;
+    round(digits: number): kendo$geometry$Point;
+    scale(scaleX: number, scaleY: number): kendo$geometry$Point;
+    scaleCopy(scaleX: number, scaleY: number): kendo$geometry$Point;
+    setX(value: number): kendo$geometry$Point;
+    setY(value: number): kendo$geometry$Point;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
-    transform(tansformation: kendo$geometryTransformation): kendo$geometryPoint;
+    transform(
+      tansformation: kendo$geometry$Transformation
+    ): kendo$geometry$Point;
     transformCopy(
-      tansformation: kendo$geometryTransformation
-    ): kendo$geometryPoint;
-    translate(dx: number, dy: number): kendo$geometryPoint;
-    translateWith(vector: kendo$geometryPoint): kendo$geometryPoint;
-    translateWith(vector: any): kendo$geometryPoint;
+      tansformation: kendo$geometry$Transformation
+    ): kendo$geometry$Point;
+    translate(dx: number, dy: number): kendo$geometry$Point;
+    translateWith(vector: kendo$geometry$Point): kendo$geometry$Point;
+    translateWith(vector: any): kendo$geometry$Point;
   }
 
   declare interface kendo$dataviz$geometry$PointOptions {
-    name?: string;
-    name?: string;
     name?: string;
   }
 
@@ -8838,73 +19254,43 @@ declare module "kendo-ui" {
     sender: kendo$dataviz$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Point;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Point;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$dataviz$geometry$Rect mixins Observable {
-    options: geometry$RectOptions;
-    origin: kendo$geometryPoint;
-    size: kendo$geometrySize;
+  declare class kendo$dataviz$geometry$Rect mixins kendo$Observable {
+    options: kendo$dataviz$drawing$RectOptions;
+    origin: kendo$geometry$Point;
+    size: kendo$geometry$Size;
     constructor(
-      origin: kendo$geometryPoint | any,
-      size: kendo$geometrySize | any
+      origin: kendo$geometry$Point | any,
+      size: kendo$geometry$Size | any
     ): this;
     static fromPoints(
-      pointA: kendo$geometryPoint,
-      pointB: kendo$geometryPoint
-    ): kendo$geometryRect;
+      pointA: kendo$geometry$Point,
+      pointB: kendo$geometry$Point
+    ): kendo$geometry$Rect;
     static union(
-      rectA: kendo$geometryRect,
-      rectB: kendo$geometryRect
-    ): kendo$geometryRect;
-    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
-    bottomLeft(): kendo$geometryPoint;
-    bottomRight(): kendo$geometryPoint;
-    center(): kendo$geometryPoint;
-    clone(): kendo$geometryRect;
-    equals(other: kendo$geometryRect): boolean;
-    getOrigin(): kendo$geometryPoint;
-    getSize(): kendo$geometrySize;
+      rectA: kendo$geometry$Rect,
+      rectB: kendo$geometry$Rect
+    ): kendo$geometry$Rect;
+    bbox(matrix: kendo$geometry$Matrix): kendo$geometry$Rect;
+    bottomLeft(): kendo$geometry$Point;
+    bottomRight(): kendo$geometry$Point;
+    center(): kendo$geometry$Point;
+    clone(): kendo$geometry$Rect;
+    equals(other: kendo$geometry$Rect): boolean;
+    getOrigin(): kendo$geometry$Point;
+    getSize(): kendo$geometry$Size;
     height(): number;
-    setOrigin(value: kendo$geometryPoint): kendo$geometryRect;
-    setOrigin(value: any): kendo$geometryRect;
-    setSize(value: kendo$geometrySize): kendo$geometryRect;
-    setSize(value: any): kendo$geometryRect;
-    topLeft(): kendo$geometryPoint;
-    topRight(): kendo$geometryPoint;
+    setOrigin(value: kendo$geometry$Point): kendo$geometry$Rect;
+    setOrigin(value: any): kendo$geometry$Rect;
+    setSize(value: kendo$geometry$Size): kendo$geometry$Rect;
+    setSize(value: any): kendo$geometry$Rect;
+    topLeft(): kendo$geometry$Point;
+    topRight(): kendo$geometry$Point;
     width(): number;
   }
 
   declare interface kendo$dataviz$geometry$RectOptions {
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
-    name?: string;
-    name?: string;
-    height?: number;
-    width?: number;
-    x?: number;
-    y?: number;
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
     name?: string;
   }
 
@@ -8912,40 +19298,27 @@ declare module "kendo-ui" {
     sender: kendo$dataviz$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$dataviz$geometry$Size mixins Observable {
+  declare class kendo$dataviz$geometry$Size mixins kendo$Observable {
     options: geometry$SizeOptions;
     width: number;
     height: number;
-    static create(width: number, height: number): kendo$geometrySize;
-    static create(width: any, height: number): kendo$geometrySize;
+    static create(width: number, height: number): kendo$geometry$Size;
+    static create(width: any, height: number): kendo$geometry$Size;
     static create(
-      width: kendo$geometrySize,
+      width: kendo$geometry$Size,
       height: number
-    ): kendo$geometrySize;
-    clone(): kendo$geometrySize;
-    equals(other: kendo$geometrySize): boolean;
+    ): kendo$geometry$Size;
+    clone(): kendo$geometry$Size;
+    equals(other: kendo$geometry$Size): boolean;
     getWidth(): number;
     getHeight(): number;
-    setWidth(value: number): kendo$geometrySize;
-    setHeight(value: number): kendo$geometrySize;
+    setWidth(value: number): kendo$geometry$Size;
+    setHeight(value: number): kendo$geometry$Size;
   }
 
   declare interface kendo$dataviz$geometry$SizeOptions {
-    name?: string;
     name?: string;
   }
 
@@ -8953,37 +19326,30 @@ declare module "kendo-ui" {
     sender: kendo$dataviz$geometry$Size;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$dataviz$geometry$Size;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$dataviz$geometry$Transformation mixins Observable {
+  declare class kendo$dataviz$geometry$Transformation mixins kendo$Observable {
     options: geometry$TransformationOptions;
-    clone(): kendo$geometryTransformation;
-    equals(other: kendo$geometryTransformation): boolean;
-    matrix(): kendo$geometryMatrix;
+    clone(): kendo$geometry$Transformation;
+    equals(other: kendo$geometry$Transformation): boolean;
+    matrix(): kendo$geometry$Matrix;
     multiply(
-      transformation: kendo$geometryTransformation
-    ): kendo$geometryTransformation;
-    rotate(angle: number, center: any): kendo$geometryTransformation;
+      transformation: kendo$geometry$Transformation
+    ): kendo$geometry$Transformation;
+    rotate(angle: number, center: any): kendo$geometry$Transformation;
     rotate(
       angle: number,
-      center: kendo$geometryPoint
-    ): kendo$geometryTransformation;
-    scale(scaleX: number, scaleY: number): kendo$geometryTransformation;
-    translate(x: number, y: number): kendo$geometryTransformation;
+      center: kendo$geometry$Point
+    ): kendo$geometry$Transformation;
+    scale(scaleX: number, scaleY: number): kendo$geometry$Transformation;
+    translate(x: number, y: number): kendo$geometry$Transformation;
   }
 
   declare interface kendo$dataviz$geometry$TransformationOptions {
     name?: string;
-    name?: string;
   }
 
   declare interface kendo$dataviz$geometry$TransformationEvent {
-    sender: kendo$dataviz$geometry$Transformation;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
     sender: kendo$dataviz$geometry$Transformation;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
@@ -9000,11 +19366,783 @@ declare module "kendo-ui" {
     vAlign: typeof kendo$drawing$vAlign,
     vStack: typeof kendo$drawing$vStack,
     vWrap: typeof kendo$drawing$vWrap,
-    wrap: typeof kendo$drawing$wrap
+    wrap: typeof kendo$drawing$wrap,
+
+    Arc: typeof kendo$drawing$Arc,
+    Circle: typeof kendo$drawing$Circle,
+    Element: typeof kendo$drawing$Element,
+    Gradient: typeof kendo$drawing$Gradient,
+    GradientStop: typeof kendo$drawing$GradientStop,
+    Group: typeof kendo$drawing$Group,
+    Image: typeof kendo$drawing$Image,
+    Layout: typeof kendo$drawing$Layout,
+    LinearGradient: typeof kendo$drawing$LinearGradient,
+    MultiPath: typeof kendo$drawing$MultiPath,
+    OptionsStore: typeof kendo$drawing$OptionsStore,
+    Path: typeof kendo$drawing$Path,
+    RadialGradient: typeof kendo$drawing$RadialGradient,
+    Rect: typeof kendo$drawing$Rect,
+    Segment: typeof kendo$drawing$Segment,
+    Surface: typeof kendo$drawing$Surface,
+    Text: typeof kendo$drawing$Text,
+    pdf: typeof npm$namespace$kendo$drawing$pdf
   };
+
+  declare var npm$namespace$kendo$drawing$pdf: {
+    saveAs: typeof kendo$drawing$pdf$saveAs
+  };
+  declare function kendo$drawing$pdf$saveAs(
+    group: kendo$drawing$Group,
+    fileName: string,
+    proxyUrl?: string,
+    callback?: Function
+  ): void;
+
+  declare class kendo$drawing$Arc mixins kendo$drawing$Element {
+    options: kendo$dataviz$geometry$ArcOptions;
+    constructor(
+      geometry: kendo$geometry$Arc,
+      options?: kendo$dataviz$geometry$ArcOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    geometry(): kendo$geometry$Arc;
+    geometry(value: kendo$geometry$Arc): void;
+    fill(color: string, opacity?: number): kendo$drawing$Arc;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Arc;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$ArcOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$ArcEvent {
+    sender: kendo$drawing$Arc;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$Circle mixins kendo$drawing$Element {
+    options: kendo$dataviz$geometry$CircleOptions;
+    constructor(
+      geometry: kendo$geometry$Circle,
+      options?: kendo$dataviz$geometry$CircleOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    geometry(): kendo$geometry$Circle;
+    geometry(value: kendo$geometry$Circle): void;
+    fill(color: string, opacity?: number): kendo$drawing$Circle;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(
+      color: string,
+      width?: number,
+      opacity?: number
+    ): kendo$drawing$Circle;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$CircleOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$CircleEvent {
+    sender: kendo$drawing$Circle;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$Element mixins kendo$Class {
+    options: kendo$dataviz$drawing$ElementOptions;
+    parent: kendo$drawing$Group;
+    constructor(options?: kendo$dataviz$drawing$ElementOptions): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    opacity(): number;
+    opacity(opacity: number): void;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$ElementOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    opacity?: number;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$ElementEvent {
+    sender: kendo$drawing$Element;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$drawing$FillOptions {
+    color?: string;
+    opacity?: number;
+  }
+
+  declare class kendo$drawing$Gradient mixins kendo$Class {
+    options: kendo$dataviz$drawing$GradientOptions;
+    stops: any;
+    constructor(options?: kendo$dataviz$drawing$GradientOptions): this;
+    addStop(
+      offset: number,
+      color: string,
+      opacity: number
+    ): kendo$drawing$GradientStop;
+    removeStop(stop: kendo$drawing$GradientStop): void;
+  }
+
+  declare interface kendo$drawing$GradientOptions {
+    name?: string;
+    stops?: any;
+  }
+
+  declare interface kendo$drawing$GradientEvent {
+    sender: kendo$drawing$Gradient;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$GradientStop mixins kendo$Class {
+    options: kendo$dataviz$drawing$GradientStopOptions;
+    constructor(options?: kendo$dataviz$drawing$GradientStopOptions): this;
+  }
+
+  declare interface kendo$drawing$GradientStopOptions {
+    name?: string;
+    offset?: number;
+    color?: string;
+    opacity?: number;
+  }
+
+  declare interface kendo$drawing$GradientStopEvent {
+    sender: kendo$drawing$GradientStop;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$Group mixins kendo$drawing$Element {
+    options: kendo$dataviz$drawing$GroupOptions;
+    children: any;
+    constructor(options?: kendo$dataviz$drawing$GroupOptions): this;
+    append(element: kendo$drawing$Element): void;
+    clear(): void;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    insert(position: number, element: kendo$drawing$Element): void;
+    opacity(): number;
+    opacity(opacity: number): void;
+    remove(element: kendo$drawing$Element): void;
+    removeAt(index: number): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$GroupOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    opacity?: number;
+    pdf?: kendo$drawing$PDFOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$GroupEvent {
+    sender: kendo$drawing$Group;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$Image mixins kendo$drawing$Element {
+    options: kendo$dataviz$drawing$ImageOptions;
+    constructor(src: string, rect: kendo$geometry$Rect): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    opacity(): number;
+    opacity(opacity: number): void;
+    src(): string;
+    src(value: string): void;
+    rect(): kendo$geometry$Rect;
+    rect(value: kendo$geometry$Rect): void;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$ImageOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    opacity?: number;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$ImageEvent {
+    sender: kendo$drawing$Image;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$Layout mixins kendo$drawing$Group {
+    options: kendo$dataviz$drawing$LayoutOptions;
+    constructor(
+      rect: kendo$geometry$Rect,
+      options?: kendo$dataviz$drawing$LayoutOptions
+    ): this;
+    rect(): kendo$geometry$Rect;
+    rect(rect: kendo$geometry$Rect): void;
+    reflow(): void;
+  }
+
+  declare interface kendo$drawing$LayoutOptions {
+    name?: string;
+    alignContent?: string;
+    alignItems?: string;
+    justifyContent?: string;
+    lineSpacing?: number;
+    spacing?: number;
+    orientation?: string;
+    wrap?: boolean;
+  }
+
+  declare interface kendo$drawing$LayoutEvent {
+    sender: kendo$drawing$Layout;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$LinearGradient mixins kendo$drawing$Gradient {
+    options: kendo$dataviz$drawing$LinearGradientOptions;
+    stops: any;
+    constructor(options?: kendo$dataviz$drawing$LinearGradientOptions): this;
+    addStop(
+      offset: number,
+      color: string,
+      opacity: number
+    ): kendo$drawing$GradientStop;
+    end(): kendo$geometry$Point;
+    end(end: any): void;
+    end(end: kendo$geometry$Point): void;
+    start(): kendo$geometry$Point;
+    start(start: any): void;
+    start(start: kendo$geometry$Point): void;
+    removeStop(stop: kendo$drawing$GradientStop): void;
+  }
+
+  declare interface kendo$drawing$LinearGradientOptions {
+    name?: string;
+    stops?: any;
+  }
+
+  declare interface kendo$drawing$LinearGradientEvent {
+    sender: kendo$drawing$LinearGradient;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$MultiPath mixins kendo$drawing$Element {
+    options: kendo$dataviz$drawing$MultiPathOptions;
+    paths: any;
+    constructor(options?: kendo$dataviz$drawing$MultiPathOptions): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    close(): kendo$drawing$MultiPath;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    curveTo(
+      controlOut: any,
+      controlIn: any,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: any,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$MultiPath;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$MultiPath;
+    fill(color: string, opacity?: number): kendo$drawing$MultiPath;
+    lineTo(x: number, y?: number): kendo$drawing$MultiPath;
+    lineTo(x: any, y?: number): kendo$drawing$MultiPath;
+    lineTo(x: kendo$geometry$Point, y?: number): kendo$drawing$MultiPath;
+    moveTo(x: number, y?: number): kendo$drawing$MultiPath;
+    moveTo(x: any, y?: number): kendo$drawing$MultiPath;
+    moveTo(x: kendo$geometry$Point, y?: number): kendo$drawing$MultiPath;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(
+      color: string,
+      width?: number,
+      opacity?: number
+    ): kendo$drawing$MultiPath;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$MultiPathOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$MultiPathEvent {
+    sender: kendo$drawing$MultiPath;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$OptionsStore mixins kendo$Class {
+    options: kendo$dataviz$drawing$OptionsStoreOptions;
+    observer: any;
+    constructor(options?: kendo$dataviz$drawing$OptionsStoreOptions): this;
+    get(field: string): any;
+    set(field: string, value: any): void;
+  }
+
+  declare interface kendo$drawing$OptionsStoreOptions {
+    name?: string;
+  }
+
+  declare interface kendo$drawing$OptionsStoreEvent {
+    sender: kendo$drawing$OptionsStore;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$drawing$PDFOptions {
+    creator?: string;
+    date?: Date;
+    imgDPI?: number;
+    keywords?: string;
+    landscape?: boolean;
+    margin?: any;
+    paperSize?: any;
+    subject?: string;
+    title?: string;
+  }
+
+  declare class kendo$drawing$Path mixins kendo$drawing$Element {
+    options: kendo$dataviz$drawing$PathOptions;
+    segments: any;
+    constructor(options?: kendo$dataviz$drawing$PathOptions): this;
+    static fromArc(arc: kendo$geometry$Arc, options?: any): kendo$drawing$Path;
+    static fromPoints(points: any, options?: any): kendo$drawing$Path;
+    static fromRect(
+      rect: kendo$geometry$Rect,
+      options?: any
+    ): kendo$drawing$Path;
+    static parse(svgPath: string, options?: any): kendo$drawing$MultiPath;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    close(): kendo$drawing$Path;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    curveTo(controlOut: any, controlIn: any, endPoint: any): kendo$drawing$Path;
+    curveTo(
+      controlOut: any,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: any,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: any
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: any,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: any
+    ): kendo$drawing$Path;
+    curveTo(
+      controlOut: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      endPoint: kendo$geometry$Point
+    ): kendo$drawing$Path;
+    fill(color: string, opacity?: number): kendo$drawing$Path;
+    lineTo(x: number, y?: number): kendo$drawing$Path;
+    lineTo(x: any, y?: number): kendo$drawing$Path;
+    lineTo(x: kendo$geometry$Point, y?: number): kendo$drawing$Path;
+    moveTo(x: number, y?: number): kendo$drawing$Path;
+    moveTo(x: any, y?: number): kendo$drawing$Path;
+    moveTo(x: kendo$geometry$Point, y?: number): kendo$drawing$Path;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Path;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$PathOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$PathEvent {
+    sender: kendo$drawing$Path;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$RadialGradient mixins kendo$drawing$Gradient {
+    options: kendo$dataviz$drawing$RadialGradientOptions;
+    stops: any;
+    constructor(options?: kendo$dataviz$drawing$RadialGradientOptions): this;
+    addStop(
+      offset: number,
+      color: string,
+      opacity: number
+    ): kendo$drawing$GradientStop;
+    center(): kendo$geometry$Point;
+    center(center: any): void;
+    center(center: kendo$geometry$Point): void;
+    radius(): number;
+    radius(value: number): void;
+    removeStop(stop: kendo$drawing$GradientStop): void;
+  }
+
+  declare interface kendo$drawing$RadialGradientOptions {
+    name?: string;
+    center?: any | kendo$geometry$Point;
+    radius?: number;
+    stops?: any;
+  }
+
+  declare interface kendo$drawing$RadialGradientEvent {
+    sender: kendo$drawing$RadialGradient;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$Rect mixins kendo$drawing$Element {
+    options: kendo$dataviz$geometry$RectOptions;
+    constructor(
+      geometry: kendo$geometry$Rect,
+      options?: kendo$dataviz$geometry$RectOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    geometry(): kendo$geometry$Rect;
+    geometry(value: kendo$geometry$Rect): void;
+    fill(color: string, opacity?: number): kendo$drawing$Rect;
+    opacity(): number;
+    opacity(opacity: number): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Rect;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$RectOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$RectEvent {
+    sender: kendo$drawing$Rect;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare class kendo$drawing$Segment mixins kendo$Class {
+    options: kendo$dataviz$drawing$SegmentOptions;
+    constructor(
+      anchor: kendo$geometry$Point,
+      controlIn: kendo$geometry$Point,
+      controlOut: kendo$geometry$Point
+    ): this;
+    anchor(): kendo$geometry$Point;
+    anchor(value: kendo$geometry$Point): void;
+    controlIn(): kendo$geometry$Point;
+    controlIn(value: kendo$geometry$Point): void;
+    controlOut(): kendo$geometry$Point;
+    controlOut(value: kendo$geometry$Point): void;
+  }
+
+  declare interface kendo$drawing$SegmentOptions {
+    name?: string;
+  }
+
+  declare interface kendo$drawing$SegmentEvent {
+    sender: kendo$drawing$Segment;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$drawing$StrokeOptions {
+    color?: string;
+    dashType?: string;
+    lineCap?: string;
+    lineJoin?: string;
+    opacity?: number;
+    width?: number;
+  }
+
+  declare class kendo$drawing$Surface mixins kendo$Observable {
+    options: kendo$dataviz$drawing$SurfaceOptions;
+    constructor(options?: kendo$dataviz$drawing$SurfaceOptions): this;
+    static create(element: JQuery, options?: any): kendo$drawing$Surface;
+    static create(
+      element: kendo$drawing$Element,
+      options?: any
+    ): kendo$drawing$Surface;
+    element: JQuery;
+    clear(): void;
+    draw(element: kendo$drawing$Element): void;
+    eventTarget(e: any): kendo$drawing$Element;
+    hideTooltip(): void;
+    resize(force?: boolean): void;
+    showTooltip(element: kendo$drawing$Element, options?: any): void;
+  }
+
+  declare interface kendo$drawing$SurfaceTooltipAnimationClose {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$drawing$SurfaceTooltipAnimationOpen {
+    effects?: string;
+    duration?: number;
+  }
+
+  declare interface kendo$drawing$SurfaceTooltipAnimation {
+    close?: kendo$drawing$SurfaceTooltipAnimationClose;
+    open?: kendo$drawing$SurfaceTooltipAnimationOpen;
+  }
+
+  declare interface kendo$drawing$SurfaceTooltip {
+    animation?: boolean | kendo$drawing$SurfaceTooltipAnimation;
+    appendTo?: string | JQuery;
+  }
+
+  declare interface kendo$drawing$SurfaceOptions {
+    name?: string;
+    type?: string;
+    height?: string;
+    width?: string;
+    tooltip?: kendo$drawing$SurfaceTooltip;
+    click?: (e: kendo$dataviz$drawing$SurfaceClickEvent) => void;
+    mouseenter?: (e: kendo$dataviz$drawing$SurfaceMouseenterEvent) => void;
+    mouseleave?: (e: kendo$dataviz$drawing$SurfaceMouseleaveEvent) => void;
+    tooltipClose?: (e: kendo$dataviz$drawing$SurfaceTooltipCloseEvent) => void;
+    tooltipOpen?: (e: kendo$dataviz$drawing$SurfaceTooltipOpenEvent) => void;
+  }
+
+  declare interface kendo$drawing$SurfaceEvent {
+    sender: kendo$drawing$Surface;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare type kendo$drawing$SurfaceClickEvent = {
+    element?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$drawing$SurfaceEvent;
+
+  declare type kendo$drawing$SurfaceMouseenterEvent = {
+    element?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$drawing$SurfaceEvent;
+
+  declare type kendo$drawing$SurfaceMouseleaveEvent = {
+    element?: kendo$drawing$Element,
+    originalEvent?: any
+  } & kendo$drawing$SurfaceEvent;
+
+  declare type kendo$drawing$SurfaceTooltipCloseEvent = {
+    element?: kendo$drawing$Element,
+    target?: kendo$drawing$Element
+  } & kendo$drawing$SurfaceEvent;
+
+  declare type kendo$drawing$SurfaceTooltipOpenEvent = {
+    element?: kendo$drawing$Element,
+    target?: kendo$drawing$Element
+  } & kendo$drawing$SurfaceEvent;
+
+  declare class kendo$drawing$Text mixins kendo$drawing$Element {
+    options: kendo$dataviz$drawing$TextOptions;
+    constructor(
+      content: string,
+      position: kendo$geometry$Point,
+      options?: kendo$dataviz$drawing$TextOptions
+    ): this;
+    bbox(): kendo$geometry$Rect;
+    clip(): kendo$drawing$Path;
+    clip(clip: kendo$drawing$Path): void;
+    clippedBBox(): kendo$geometry$Rect;
+    containsPoint(point: kendo$geometry$Point): boolean;
+    content(): string;
+    content(value: string): void;
+    fill(color: string, opacity?: number): kendo$drawing$Text;
+    opacity(): number;
+    opacity(opacity: number): void;
+    position(): kendo$geometry$Point;
+    position(value: kendo$geometry$Point): void;
+    stroke(color: string, width?: number, opacity?: number): kendo$drawing$Text;
+    transform(): kendo$geometry$Transformation;
+    transform(transform: kendo$geometry$Transformation): void;
+    visible(): boolean;
+    visible(visible: boolean): void;
+  }
+
+  declare interface kendo$drawing$TextOptions {
+    name?: string;
+    clip?: kendo$drawing$Path;
+    cursor?: string;
+    fill?: kendo$drawing$FillOptions;
+    font?: string;
+    opacity?: number;
+    stroke?: kendo$drawing$StrokeOptions;
+    tooltip?: kendo$drawing$TooltipOptions;
+    transform?: kendo$geometry$Transformation;
+    visible?: boolean;
+  }
+
+  declare interface kendo$drawing$TextEvent {
+    sender: kendo$drawing$Text;
+    preventDefault: Function;
+    isDefaultPrevented(): boolean;
+  }
+
+  declare interface kendo$drawing$TooltipOptions {
+    autoHide?: boolean;
+    content?: string | Function;
+    position?: string;
+    height?: number | string;
+    hideDelay?: number;
+    offset?: number;
+    shared?: boolean;
+    showAfter?: number;
+    showOn?: string;
+    width?: number | string;
+  }
+
   declare function kendo$drawing$align(
     elements: any,
-    rect: kendo$geometryRect,
+    rect: kendo$geometry$Rect,
     alignment: string
   ): void;
 
@@ -9014,30 +20152,30 @@ declare module "kendo-ui" {
   ): JQueryPromise<any>;
 
   declare function kendo$drawing$exportImage(
-    group: kendo$drawingGroup,
+    group: kendo$drawing$Group,
     options: any
   ): JQueryPromise<any>;
 
   declare function kendo$drawing$exportPDF(
-    group: kendo$drawingGroup,
-    options: kendo$drawingPDFOptions
+    group: kendo$drawing$Group,
+    options: kendo$drawing$PDFOptions
   ): JQueryPromise<any>;
 
   declare function kendo$drawing$exportSVG(
-    group: kendo$drawingGroup,
+    group: kendo$drawing$Group,
     options: any
   ): JQueryPromise<any>;
 
   declare function kendo$drawing$fit(
-    element: kendo$drawingElement,
-    rect: kendo$geometryRect
+    element: kendo$drawing$Element,
+    rect: kendo$geometry$Rect
   ): void;
 
   declare function kendo$drawing$stack(elements: any): void;
 
   declare function kendo$drawing$vAlign(
     elements: any,
-    rect: kendo$geometryRect,
+    rect: kendo$geometry$Rect,
     alignment: string
   ): void;
 
@@ -9045,12 +20183,12 @@ declare module "kendo-ui" {
 
   declare function kendo$drawing$vWrap(
     elements: any,
-    rect: kendo$geometryRect
+    rect: kendo$geometry$Rect
   ): any;
 
   declare function kendo$drawing$wrap(
     elements: any,
-    rect: kendo$geometryRect
+    rect: kendo$geometry$Rect
   ): any;
 
   declare var npm$namespace$kendo$geometry: {
@@ -9062,54 +20200,35 @@ declare module "kendo-ui" {
     Size: typeof kendo$geometry$Size,
     Transformation: typeof kendo$geometry$Transformation
   };
-  declare class kendo$geometry$Arc mixins Observable {
-    options: kendo$dataviz$geometry$ArcOptions;
+  declare class kendo$geometry$Arc mixins kendo$Observable {
+    options: kendo$drawing$ArcOptions;
     anticlockwise: boolean;
-    center: kendo$geometryPoint;
+    center: kendo$geometry$Point;
     endAngle: number;
     radiusX: number;
     radiusY: number;
     startAngle: number;
     constructor(
-      center: any | kendo$geometryPoint,
-      options?: kendo$dataviz$geometry$ArcOptions
+      center: any | kendo$geometry$Point,
+      options?: kendo$drawing$ArcOptions
     ): this;
-    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
+    bbox(matrix: kendo$geometry$Matrix): kendo$geometry$Rect;
     getAnticlockwise(): boolean;
-    getCenter(): kendo$geometryPoint;
+    getCenter(): kendo$geometry$Point;
     getEndAngle(): number;
     getRadiusX(): number;
     getRadiusY(): number;
     getStartAngle(): number;
-    pointAt(angle: number): kendo$geometryPoint;
-    setAnticlockwise(value: boolean): kendo$geometryArc;
-    setCenter(value: kendo$geometryPoint): kendo$geometryArc;
-    setEndAngle(value: number): kendo$geometryArc;
-    setRadiusX(value: number): kendo$geometryArc;
-    setRadiusY(value: number): kendo$geometryArc;
-    setStartAngle(value: number): kendo$geometryArc;
+    pointAt(angle: number): kendo$geometry$Point;
+    setAnticlockwise(value: boolean): kendo$geometry$Arc;
+    setCenter(value: kendo$geometry$Point): kendo$geometry$Arc;
+    setEndAngle(value: number): kendo$geometry$Arc;
+    setRadiusX(value: number): kendo$geometry$Arc;
+    setRadiusY(value: number): kendo$geometry$Arc;
+    setStartAngle(value: number): kendo$geometry$Arc;
   }
 
   declare interface kendo$geometry$ArcOptions {
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
-    name?: string;
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
     name?: string;
   }
 
@@ -9117,58 +20236,25 @@ declare module "kendo-ui" {
     sender: kendo$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Arc;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Arc;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Arc;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$geometry$Circle mixins Observable {
-    options: kendo$dataviz$geometry$CircleOptions;
-    center: kendo$geometryPoint;
+  declare class kendo$geometry$Circle mixins kendo$Observable {
+    options: kendo$drawing$CircleOptions;
+    center: kendo$geometry$Point;
     radius: number;
-    constructor(center: any | kendo$geometryPoint, radius: number): this;
-    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
-    clone(): kendo$geometryCircle;
-    equals(other: kendo$geometryCircle): boolean;
-    getCenter(): kendo$geometryPoint;
+    constructor(center: any | kendo$geometry$Point, radius: number): this;
+    bbox(matrix: kendo$geometry$Matrix): kendo$geometry$Rect;
+    clone(): kendo$geometry$Circle;
+    equals(other: kendo$geometry$Circle): boolean;
+    getCenter(): kendo$geometry$Point;
     getRadius(): number;
-    pointAt(angle: number): kendo$geometryPoint;
-    setCenter(value: kendo$geometryPoint): kendo$geometryPoint;
-    setCenter(value: any): kendo$geometryPoint;
-    setRadius(value: number): kendo$geometryCircle;
+    pointAt(angle: number): kendo$geometry$Point;
+    setCenter(value: kendo$geometry$Point): kendo$geometry$Point;
+    setCenter(value: any): kendo$geometry$Point;
+    setRadius(value: number): kendo$geometry$Circle;
   }
 
   declare interface kendo$geometry$CircleOptions {
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
-    name?: string;
-    name?: string;
-    fill?: string | diagram$CircleFill;
-    stroke?: diagram$CircleStroke;
-    center?: any;
-    radius?: number;
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
     name?: string;
   }
 
@@ -9176,21 +20262,9 @@ declare module "kendo-ui" {
     sender: kendo$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Circle;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$geometry$Matrix mixins Observable {
+  declare class kendo$geometry$Matrix mixins kendo$Observable {
     options: kendo$dataviz$geometry$MatrixOptions;
     a: number;
     b: number;
@@ -9198,20 +20272,19 @@ declare module "kendo-ui" {
     d: number;
     e: number;
     f: number;
-    static rotate(angle: number, x: number, y: number): kendo$geometryMatrix;
-    static scale(scaleX: number, scaleY: number): kendo$geometryMatrix;
-    static translate(x: number, y: number): kendo$geometryMatrix;
-    static unit(): kendo$geometryMatrix;
-    clone(): kendo$geometryMatrix;
-    equals(other: kendo$geometryMatrix): boolean;
-    round(digits: number): kendo$geometryMatrix;
-    multiplyCopy(matrix: kendo$geometryMatrix): kendo$geometryMatrix;
+    static rotate(angle: number, x: number, y: number): kendo$geometry$Matrix;
+    static scale(scaleX: number, scaleY: number): kendo$geometry$Matrix;
+    static translate(x: number, y: number): kendo$geometry$Matrix;
+    static unit(): kendo$geometry$Matrix;
+    clone(): kendo$geometry$Matrix;
+    equals(other: kendo$geometry$Matrix): boolean;
+    round(digits: number): kendo$geometry$Matrix;
+    multiplyCopy(matrix: kendo$geometry$Matrix): kendo$geometry$Matrix;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
   }
 
   declare interface kendo$geometry$MatrixOptions {
-    name?: string;
     name?: string;
   }
 
@@ -9219,50 +20292,47 @@ declare module "kendo-ui" {
     sender: kendo$geometry$Matrix;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Matrix;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$geometry$Point mixins Observable {
+  declare class kendo$geometry$Point mixins kendo$Observable {
     options: kendo$dataviz$geometry$PointOptions;
     x: number;
     y: number;
     constructor(x: number, y: number): this;
-    static create(x: number, y: number): kendo$geometryPoint;
-    static create(x: any, y: number): kendo$geometryPoint;
-    static create(x: kendo$geometryPoint, y: number): kendo$geometryPoint;
-    static min(): kendo$geometryPoint;
-    static max(): kendo$geometryPoint;
-    static minPoint(): kendo$geometryPoint;
-    static maxPoint(): kendo$geometryPoint;
-    clone(): kendo$geometryPoint;
-    distanceTo(point: kendo$geometryPoint): number;
-    equals(other: kendo$geometryPoint): boolean;
+    static create(x: number, y: number): kendo$geometry$Point;
+    static create(x: any, y: number): kendo$geometry$Point;
+    static create(x: kendo$geometry$Point, y: number): kendo$geometry$Point;
+    static min(): kendo$geometry$Point;
+    static max(): kendo$geometry$Point;
+    static minPoint(): kendo$geometry$Point;
+    static maxPoint(): kendo$geometry$Point;
+    clone(): kendo$geometry$Point;
+    distanceTo(point: kendo$geometry$Point): number;
+    equals(other: kendo$geometry$Point): boolean;
     getX(): number;
     getY(): number;
-    move(x: number, y: number): kendo$geometryPoint;
-    rotate(angle: number, center: kendo$geometryPoint): kendo$geometryPoint;
-    rotate(angle: number, center: any): kendo$geometryPoint;
-    round(digits: number): kendo$geometryPoint;
-    scale(scaleX: number, scaleY: number): kendo$geometryPoint;
-    scaleCopy(scaleX: number, scaleY: number): kendo$geometryPoint;
-    setX(value: number): kendo$geometryPoint;
-    setY(value: number): kendo$geometryPoint;
+    move(x: number, y: number): kendo$geometry$Point;
+    rotate(angle: number, center: kendo$geometry$Point): kendo$geometry$Point;
+    rotate(angle: number, center: any): kendo$geometry$Point;
+    round(digits: number): kendo$geometry$Point;
+    scale(scaleX: number, scaleY: number): kendo$geometry$Point;
+    scaleCopy(scaleX: number, scaleY: number): kendo$geometry$Point;
+    setX(value: number): kendo$geometry$Point;
+    setY(value: number): kendo$geometry$Point;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
-    transform(tansformation: kendo$geometryTransformation): kendo$geometryPoint;
+    transform(
+      tansformation: kendo$geometry$Transformation
+    ): kendo$geometry$Point;
     transformCopy(
-      tansformation: kendo$geometryTransformation
-    ): kendo$geometryPoint;
-    translate(dx: number, dy: number): kendo$geometryPoint;
-    translateWith(vector: kendo$geometryPoint): kendo$geometryPoint;
-    translateWith(vector: any): kendo$geometryPoint;
+      tansformation: kendo$geometry$Transformation
+    ): kendo$geometry$Point;
+    translate(dx: number, dy: number): kendo$geometry$Point;
+    translateWith(vector: kendo$geometry$Point): kendo$geometry$Point;
+    translateWith(vector: any): kendo$geometry$Point;
   }
 
   declare interface kendo$geometry$PointOptions {
-    name?: string;
-    name?: string;
     name?: string;
   }
 
@@ -9270,73 +20340,43 @@ declare module "kendo-ui" {
     sender: kendo$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Point;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Point;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$geometry$Rect mixins Observable {
-    options: kendo$dataviz$geometry$RectOptions;
-    origin: kendo$geometryPoint;
-    size: kendo$geometrySize;
+  declare class kendo$geometry$Rect mixins kendo$Observable {
+    options: kendo$drawing$RectOptions;
+    origin: kendo$geometry$Point;
+    size: kendo$geometry$Size;
     constructor(
-      origin: kendo$geometryPoint | any,
-      size: kendo$geometrySize | any
+      origin: kendo$geometry$Point | any,
+      size: kendo$geometry$Size | any
     ): this;
     static fromPoints(
-      pointA: kendo$geometryPoint,
-      pointB: kendo$geometryPoint
-    ): kendo$geometryRect;
+      pointA: kendo$geometry$Point,
+      pointB: kendo$geometry$Point
+    ): kendo$geometry$Rect;
     static union(
-      rectA: kendo$geometryRect,
-      rectB: kendo$geometryRect
-    ): kendo$geometryRect;
-    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
-    bottomLeft(): kendo$geometryPoint;
-    bottomRight(): kendo$geometryPoint;
-    center(): kendo$geometryPoint;
-    clone(): kendo$geometryRect;
-    equals(other: kendo$geometryRect): boolean;
-    getOrigin(): kendo$geometryPoint;
-    getSize(): kendo$geometrySize;
+      rectA: kendo$geometry$Rect,
+      rectB: kendo$geometry$Rect
+    ): kendo$geometry$Rect;
+    bbox(matrix: kendo$geometry$Matrix): kendo$geometry$Rect;
+    bottomLeft(): kendo$geometry$Point;
+    bottomRight(): kendo$geometry$Point;
+    center(): kendo$geometry$Point;
+    clone(): kendo$geometry$Rect;
+    equals(other: kendo$geometry$Rect): boolean;
+    getOrigin(): kendo$geometry$Point;
+    getSize(): kendo$geometry$Size;
     height(): number;
-    setOrigin(value: kendo$geometryPoint): kendo$geometryRect;
-    setOrigin(value: any): kendo$geometryRect;
-    setSize(value: kendo$geometrySize): kendo$geometryRect;
-    setSize(value: any): kendo$geometryRect;
-    topLeft(): kendo$geometryPoint;
-    topRight(): kendo$geometryPoint;
+    setOrigin(value: kendo$geometry$Point): kendo$geometry$Rect;
+    setOrigin(value: any): kendo$geometry$Rect;
+    setSize(value: kendo$geometry$Size): kendo$geometry$Rect;
+    setSize(value: any): kendo$geometry$Rect;
+    topLeft(): kendo$geometry$Point;
+    topRight(): kendo$geometry$Point;
     width(): number;
   }
 
   declare interface kendo$geometry$RectOptions {
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
-    name?: string;
-    name?: string;
-    height?: number;
-    width?: number;
-    x?: number;
-    y?: number;
-    name?: string;
-    clip?: kendo$drawingPath;
-    cursor?: string;
-    fill?: kendo$drawingFillOptions;
-    opacity?: number;
-    stroke?: kendo$drawingStrokeOptions;
-    tooltip?: kendo$drawingTooltipOptions;
-    transform?: kendo$geometryTransformation;
-    visible?: boolean;
     name?: string;
   }
 
@@ -9344,40 +20384,27 @@ declare module "kendo-ui" {
     sender: kendo$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Rect;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$geometry$Size mixins Observable {
+  declare class kendo$geometry$Size mixins kendo$Observable {
     options: kendo$dataviz$geometry$SizeOptions;
     width: number;
     height: number;
-    static create(width: number, height: number): kendo$geometrySize;
-    static create(width: any, height: number): kendo$geometrySize;
+    static create(width: number, height: number): kendo$geometry$Size;
+    static create(width: any, height: number): kendo$geometry$Size;
     static create(
-      width: kendo$geometrySize,
+      width: kendo$geometry$Size,
       height: number
-    ): kendo$geometrySize;
-    clone(): kendo$geometrySize;
-    equals(other: kendo$geometrySize): boolean;
+    ): kendo$geometry$Size;
+    clone(): kendo$geometry$Size;
+    equals(other: kendo$geometry$Size): boolean;
     getWidth(): number;
     getHeight(): number;
-    setWidth(value: number): kendo$geometrySize;
-    setHeight(value: number): kendo$geometrySize;
+    setWidth(value: number): kendo$geometry$Size;
+    setHeight(value: number): kendo$geometry$Size;
   }
 
   declare interface kendo$geometry$SizeOptions {
-    name?: string;
     name?: string;
   }
 
@@ -9385,30 +20412,26 @@ declare module "kendo-ui" {
     sender: kendo$geometry$Size;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Size;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$geometry$Transformation mixins Observable {
+  declare class kendo$geometry$Transformation mixins kendo$Observable {
     options: kendo$dataviz$geometry$TransformationOptions;
-    clone(): kendo$geometryTransformation;
-    equals(other: kendo$geometryTransformation): boolean;
-    matrix(): kendo$geometryMatrix;
+    clone(): kendo$geometry$Transformation;
+    equals(other: kendo$geometry$Transformation): boolean;
+    matrix(): kendo$geometry$Matrix;
     multiply(
-      transformation: kendo$geometryTransformation
-    ): kendo$geometryTransformation;
-    rotate(angle: number, center: any): kendo$geometryTransformation;
+      transformation: kendo$geometry$Transformation
+    ): kendo$geometry$Transformation;
+    rotate(angle: number, center: any): kendo$geometry$Transformation;
     rotate(
       angle: number,
-      center: kendo$geometryPoint
-    ): kendo$geometryTransformation;
-    scale(scaleX: number, scaleY: number): kendo$geometryTransformation;
-    translate(x: number, y: number): kendo$geometryTransformation;
+      center: kendo$geometry$Point
+    ): kendo$geometry$Transformation;
+    scale(scaleX: number, scaleY: number): kendo$geometry$Transformation;
+    translate(x: number, y: number): kendo$geometry$Transformation;
   }
 
   declare interface kendo$geometry$TransformationOptions {
-    name?: string;
     name?: string;
   }
 
@@ -9416,12 +20439,9 @@ declare module "kendo-ui" {
     sender: kendo$geometry$Transformation;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: kendo$geometry$Transformation;
-    preventDefault: Function;
-    isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$Color mixins Observable {
+  declare class kendo$Color mixins kendo$Observable {
     options: kendo$ColorOptions;
     diff(): number;
     equals(): boolean;
@@ -9550,7 +20570,7 @@ declare module "kendo-ui" {
 
   declare function kendo$bind(
     element: string,
-    viewModel: kendo$dataObservableObject,
+    viewModel: kendo$data$ObservableObject,
     namespace?: any
   ): void;
 
@@ -9562,19 +20582,19 @@ declare module "kendo-ui" {
 
   declare function kendo$bind(
     element: JQuery,
-    viewModel: kendo$dataObservableObject,
+    viewModel: kendo$data$ObservableObject,
     namespace?: any
   ): void;
 
   declare function kendo$bind(
-    element: drawing$Element,
+    element: kendo$drawing$Element,
     viewModel: any,
     namespace?: any
   ): void;
 
   declare function kendo$bind(
-    element: drawing$Element,
-    viewModel: kendo$dataObservableObject,
+    element: kendo$drawing$Element,
+    viewModel: kendo$data$ObservableObject,
     namespace?: any
   ): void;
 
@@ -9586,7 +20606,7 @@ declare module "kendo-ui" {
 
   declare function kendo$destroy(element: JQuery): void;
 
-  declare function kendo$destroy(element: drawing$Element): void;
+  declare function kendo$destroy(element: kendo$drawing$Element): void;
 
   declare function kendo$guid(): string;
 
@@ -9634,13 +20654,16 @@ declare module "kendo-ui" {
 
   declare function kendo$proxyModelSetters(): void;
 
-  declare function kendo$proxyModelSetters(data: kendo$dataModel): void;
+  declare function kendo$proxyModelSetters(data: kendo$data$Model): void;
 
   declare function kendo$resize(element: string, force: boolean): void;
 
   declare function kendo$resize(element: JQuery, force: boolean): void;
 
-  declare function kendo$resize(element: drawing$Element, force: boolean): void;
+  declare function kendo$resize(
+    element: kendo$drawing$Element,
+    force: boolean
+  ): void;
 
   declare function kendo$saveAs(options: any): void;
 
@@ -9652,7 +20675,7 @@ declare module "kendo-ui" {
 
   declare function kendo$touchScroller(element: JQuery): void;
 
-  declare function kendo$touchScroller(element: drawing$Element): void;
+  declare function kendo$touchScroller(element: kendo$drawing$Element): void;
 
   declare function kendo$toString(
     value: Date,
@@ -9670,7 +20693,7 @@ declare module "kendo-ui" {
 
   declare function kendo$unbind(element: JQuery): void;
 
-  declare function kendo$unbind(element: drawing$Element): void;
+  declare function kendo$unbind(element: kendo$drawing$Element): void;
 
   declare var npm$namespace$kendo$pdf: {
     defineFont: typeof kendo$pdf$defineFont
@@ -9750,7 +20773,7 @@ declare module "kendo-ui" {
     TopFilter: typeof kendo$spreadsheet$TopFilter,
     ValueFilter: typeof kendo$spreadsheet$ValueFilter
   };
-  declare class kendo$spreadsheet$CustomFilter mixins Observable {
+  declare class kendo$spreadsheet$CustomFilter mixins kendo$Observable {
     options: spreadsheet$CustomFilterOptions;
     init(options: any): void;
   }
@@ -9765,7 +20788,7 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$spreadsheet$DynamicFilter mixins Observable {
+  declare class kendo$spreadsheet$DynamicFilter mixins kendo$Observable {
     options: spreadsheet$DynamicFilterOptions;
     init(options: any): void;
   }
@@ -9780,7 +20803,7 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$spreadsheet$Range mixins Observable {
+  declare class kendo$spreadsheet$Range mixins kendo$Observable {
     options: spreadsheet$RangeOptions;
     background(): string;
     background(value?: string): void;
@@ -9858,7 +20881,7 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$spreadsheet$Sheet mixins Observable {
+  declare class kendo$spreadsheet$Sheet mixins kendo$Observable {
     options: spreadsheet$SheetOptions;
     clearFilter(indexes: number): void;
     clearFilter(indexes: any): void;
@@ -9876,17 +20899,17 @@ declare module "kendo-ui" {
     hideRow(index: number): void;
     insertColumn(index: number): void;
     insertRow(index: number): void;
-    range(ref: string): kendo$spreadsheetRange;
+    range(ref: string): kendo$spreadsheet$Range;
     range(
       rowIndex: number,
       columnIndex: number,
       rowCount?: number,
       columnCount?: number
-    ): kendo$spreadsheetRange;
+    ): kendo$spreadsheet$Range;
     rowHeight(): void;
     rowHeight(index: number, width?: number): void;
-    selection(): kendo$spreadsheetRange;
-    setDataSource(dataSource: kendo$dataDataSource, columns?: any): void;
+    selection(): kendo$spreadsheet$Range;
+    setDataSource(dataSource: kendo$data$DataSource, columns?: any): void;
     showGridLines(): boolean;
     showGridLines(showGridLines?: boolean): void;
     toJSON(): void;
@@ -9905,9 +20928,9 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare type kendo$spreadsheet$SheetChangeEvent = {} & SheetEvent;
+  declare type kendo$spreadsheet$SheetChangeEvent = {} & kendo$spreadsheet$SheetEvent;
 
-  declare class kendo$spreadsheet$TopFilter mixins Observable {
+  declare class kendo$spreadsheet$TopFilter mixins kendo$Observable {
     options: spreadsheet$TopFilterOptions;
     init(options: any): void;
   }
@@ -9922,7 +20945,7 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$spreadsheet$ValueFilter mixins Observable {
+  declare class kendo$spreadsheet$ValueFilter mixins kendo$Observable {
     options: spreadsheet$ValueFilterOptions;
     init(options: any): void;
   }
@@ -9940,7 +20963,7 @@ declare module "kendo-ui" {
   declare var npm$namespace$kendo$ooxml: {
     Workbook: typeof kendo$ooxml$Workbook
   };
-  declare class kendo$ooxml$Workbook mixins Observable {
+  declare class kendo$ooxml$Workbook mixins kendo$Observable {
     options: ooxml$WorkbookOptions;
     sheets: ooxml$WorkbookSheet[];
     constructor(options?: ooxml$WorkbookOptions): this;
@@ -10042,7 +21065,7 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
   declare interface HTMLElement {
-    kendoBindingTarget: kendo$dataBindingTarget;
+    kendoBindingTarget: kendo$data$BindingTarget;
   }
   declare interface JQueryAjaxSettings {}
   declare interface JQueryXHR {}
@@ -10051,285 +21074,287 @@ declare module "kendo-ui" {
   declare interface JQuery {
     data(key: any): any;
     kendoAlert(): JQuery;
-    kendoAlert(options: kendo$uiAlertOptions): JQuery;
-    data(key: "kendoAlert"): kendo$uiAlert;
+    kendoAlert(options: kendo$ui$AlertOptions): JQuery;
+    data(key: "kendoAlert"): kendo$ui$Alert;
     kendoArcGauge(): JQuery;
-    kendoArcGauge(options: kendo$datavizuiArcGaugeOptions): JQuery;
-    data(key: "kendoArcGauge"): kendo$datavizuiArcGauge;
+    kendoArcGauge(options: kendo$dataviz$ui$ArcGaugeOptions): JQuery;
+    data(key: "kendoArcGauge"): kendo$dataviz$ui$ArcGauge;
     kendoAutoComplete(): JQuery;
-    kendoAutoComplete(options: kendo$uiAutoCompleteOptions): JQuery;
-    data(key: "kendoAutoComplete"): kendo$uiAutoComplete;
+    kendoAutoComplete(options: kendo$ui$AutoCompleteOptions): JQuery;
+    data(key: "kendoAutoComplete"): kendo$ui$AutoComplete;
     kendoBarcode(): JQuery;
-    kendoBarcode(options: kendo$datavizuiBarcodeOptions): JQuery;
-    data(key: "kendoBarcode"): kendo$datavizuiBarcode;
+    kendoBarcode(options: kendo$dataviz$ui$BarcodeOptions): JQuery;
+    data(key: "kendoBarcode"): kendo$dataviz$ui$Barcode;
     kendoButton(): JQuery;
-    kendoButton(options: kendo$uiButtonOptions): JQuery;
-    data(key: "kendoButton"): kendo$uiButton;
+    kendoButton(options: kendo$ui$ButtonOptions): JQuery;
+    data(key: "kendoButton"): kendo$ui$Button;
     kendoButtonGroup(): JQuery;
-    kendoButtonGroup(options: kendo$uiButtonGroupOptions): JQuery;
-    data(key: "kendoButtonGroup"): kendo$uiButtonGroup;
+    kendoButtonGroup(options: kendo$ui$ButtonGroupOptions): JQuery;
+    data(key: "kendoButtonGroup"): kendo$ui$ButtonGroup;
     kendoCalendar(): JQuery;
-    kendoCalendar(options: kendo$uiCalendarOptions): JQuery;
-    data(key: "kendoCalendar"): kendo$uiCalendar;
+    kendoCalendar(options: kendo$ui$CalendarOptions): JQuery;
+    data(key: "kendoCalendar"): kendo$ui$Calendar;
     kendoChart(): JQuery;
-    kendoChart(options: kendo$datavizuiChartOptions): JQuery;
-    data(key: "kendoChart"): kendo$datavizuiChart;
+    kendoChart(options: kendo$dataviz$ui$ChartOptions): JQuery;
+    data(key: "kendoChart"): kendo$dataviz$ui$Chart;
     kendoChat(): JQuery;
-    kendoChat(options: kendo$uiChatOptions): JQuery;
-    data(key: "kendoChat"): kendo$uiChat;
+    kendoChat(options: kendo$ui$ChatOptions): JQuery;
+    data(key: "kendoChat"): kendo$ui$Chat;
     kendoColorPalette(): JQuery;
-    kendoColorPalette(options: kendo$uiColorPaletteOptions): JQuery;
-    data(key: "kendoColorPalette"): kendo$uiColorPalette;
+    kendoColorPalette(options: kendo$ui$ColorPaletteOptions): JQuery;
+    data(key: "kendoColorPalette"): kendo$ui$ColorPalette;
     kendoColorPicker(): JQuery;
-    kendoColorPicker(options: kendo$uiColorPickerOptions): JQuery;
-    data(key: "kendoColorPicker"): kendo$uiColorPicker;
+    kendoColorPicker(options: kendo$ui$ColorPickerOptions): JQuery;
+    data(key: "kendoColorPicker"): kendo$ui$ColorPicker;
     kendoComboBox(): JQuery;
-    kendoComboBox(options: kendo$uiComboBoxOptions): JQuery;
-    data(key: "kendoComboBox"): kendo$uiComboBox;
+    kendoComboBox(options: kendo$ui$ComboBoxOptions): JQuery;
+    data(key: "kendoComboBox"): kendo$ui$ComboBox;
     kendoConfirm(): JQuery;
-    kendoConfirm(options: kendo$uiConfirmOptions): JQuery;
-    data(key: "kendoConfirm"): kendo$uiConfirm;
+    kendoConfirm(options: kendo$ui$ConfirmOptions): JQuery;
+    data(key: "kendoConfirm"): kendo$ui$Confirm;
     kendoContextMenu(): JQuery;
-    kendoContextMenu(options: kendo$uiContextMenuOptions): JQuery;
-    data(key: "kendoContextMenu"): kendo$uiContextMenu;
+    kendoContextMenu(options: kendo$ui$ContextMenuOptions): JQuery;
+    data(key: "kendoContextMenu"): kendo$ui$ContextMenu;
     kendoDateInput(): JQuery;
-    kendoDateInput(options: kendo$uiDateInputOptions): JQuery;
-    data(key: "kendoDateInput"): kendo$uiDateInput;
+    kendoDateInput(options: kendo$ui$DateInputOptions): JQuery;
+    data(key: "kendoDateInput"): kendo$ui$DateInput;
     kendoDatePicker(): JQuery;
-    kendoDatePicker(options: kendo$uiDatePickerOptions): JQuery;
-    data(key: "kendoDatePicker"): kendo$uiDatePicker;
+    kendoDatePicker(options: kendo$ui$DatePickerOptions): JQuery;
+    data(key: "kendoDatePicker"): kendo$ui$DatePicker;
     kendoDateRangePicker(): JQuery;
-    kendoDateRangePicker(options: kendo$uiDateRangePickerOptions): JQuery;
-    data(key: "kendoDateRangePicker"): kendo$uiDateRangePicker;
+    kendoDateRangePicker(options: kendo$ui$DateRangePickerOptions): JQuery;
+    data(key: "kendoDateRangePicker"): kendo$ui$DateRangePicker;
     kendoDateTimePicker(): JQuery;
-    kendoDateTimePicker(options: kendo$uiDateTimePickerOptions): JQuery;
-    data(key: "kendoDateTimePicker"): kendo$uiDateTimePicker;
+    kendoDateTimePicker(options: kendo$ui$DateTimePickerOptions): JQuery;
+    data(key: "kendoDateTimePicker"): kendo$ui$DateTimePicker;
     kendoDiagram(): JQuery;
-    kendoDiagram(options: kendo$datavizuiDiagramOptions): JQuery;
-    data(key: "kendoDiagram"): kendo$datavizuiDiagram;
+    kendoDiagram(options: kendo$dataviz$ui$DiagramOptions): JQuery;
+    data(key: "kendoDiagram"): kendo$dataviz$ui$Diagram;
     kendoDialog(): JQuery;
-    kendoDialog(options: kendo$uiDialogOptions): JQuery;
-    data(key: "kendoDialog"): kendo$uiDialog;
+    kendoDialog(options: kendo$ui$DialogOptions): JQuery;
+    data(key: "kendoDialog"): kendo$ui$Dialog;
     kendoDraggable(): JQuery;
-    kendoDraggable(options: kendo$uiDraggableOptions): JQuery;
-    data(key: "kendoDraggable"): kendo$uiDraggable;
+    kendoDraggable(options: kendo$ui$DraggableOptions): JQuery;
+    data(key: "kendoDraggable"): kendo$ui$Draggable;
     kendoDropDownList(): JQuery;
-    kendoDropDownList(options: kendo$uiDropDownListOptions): JQuery;
-    data(key: "kendoDropDownList"): kendo$uiDropDownList;
+    kendoDropDownList(options: kendo$ui$DropDownListOptions): JQuery;
+    data(key: "kendoDropDownList"): kendo$ui$DropDownList;
     kendoDropDownTree(): JQuery;
-    kendoDropDownTree(options: kendo$uiDropDownTreeOptions): JQuery;
-    data(key: "kendoDropDownTree"): kendo$uiDropDownTree;
+    kendoDropDownTree(options: kendo$ui$DropDownTreeOptions): JQuery;
+    data(key: "kendoDropDownTree"): kendo$ui$DropDownTree;
     kendoDropTarget(): JQuery;
-    kendoDropTarget(options: kendo$uiDropTargetOptions): JQuery;
-    data(key: "kendoDropTarget"): kendo$uiDropTarget;
+    kendoDropTarget(options: kendo$ui$DropTargetOptions): JQuery;
+    data(key: "kendoDropTarget"): kendo$ui$DropTarget;
     kendoDropTargetArea(): JQuery;
-    kendoDropTargetArea(options: kendo$uiDropTargetAreaOptions): JQuery;
-    data(key: "kendoDropTargetArea"): kendo$uiDropTargetArea;
+    kendoDropTargetArea(options: kendo$ui$DropTargetAreaOptions): JQuery;
+    data(key: "kendoDropTargetArea"): kendo$ui$DropTargetArea;
     kendoEditor(): JQuery;
-    kendoEditor(options: kendo$uiEditorOptions): JQuery;
-    data(key: "kendoEditor"): kendo$uiEditor;
+    kendoEditor(options: kendo$ui$EditorOptions): JQuery;
+    data(key: "kendoEditor"): kendo$ui$Editor;
     kendoFilterMenu(): JQuery;
-    kendoFilterMenu(options: kendo$uiFilterMenuOptions): JQuery;
-    data(key: "kendoFilterMenu"): kendo$uiFilterMenu;
+    kendoFilterMenu(options: kendo$ui$FilterMenuOptions): JQuery;
+    data(key: "kendoFilterMenu"): kendo$ui$FilterMenu;
     kendoFlatColorPicker(): JQuery;
-    kendoFlatColorPicker(options: kendo$uiFlatColorPickerOptions): JQuery;
-    data(key: "kendoFlatColorPicker"): kendo$uiFlatColorPicker;
+    kendoFlatColorPicker(options: kendo$ui$FlatColorPickerOptions): JQuery;
+    data(key: "kendoFlatColorPicker"): kendo$ui$FlatColorPicker;
     kendoGantt(): JQuery;
-    kendoGantt(options: kendo$uiGanttOptions): JQuery;
-    data(key: "kendoGantt"): kendo$uiGantt;
+    kendoGantt(options: kendo$ui$GanttOptions): JQuery;
+    data(key: "kendoGantt"): kendo$ui$Gantt;
     kendoGrid(): JQuery;
-    kendoGrid(options: kendo$uiGridOptions): JQuery;
-    data(key: "kendoGrid"): kendo$uiGrid;
+    kendoGrid(options: kendo$ui$GridOptions): JQuery;
+    data(key: "kendoGrid"): kendo$ui$Grid;
     kendoLinearGauge(): JQuery;
-    kendoLinearGauge(options: kendo$datavizuiLinearGaugeOptions): JQuery;
-    data(key: "kendoLinearGauge"): kendo$datavizuiLinearGauge;
+    kendoLinearGauge(options: kendo$dataviz$ui$LinearGaugeOptions): JQuery;
+    data(key: "kendoLinearGauge"): kendo$dataviz$ui$LinearGauge;
     kendoListBox(): JQuery;
-    kendoListBox(options: kendo$uiListBoxOptions): JQuery;
-    data(key: "kendoListBox"): kendo$uiListBox;
+    kendoListBox(options: kendo$ui$ListBoxOptions): JQuery;
+    data(key: "kendoListBox"): kendo$ui$ListBox;
     kendoListView(): JQuery;
-    kendoListView(options: kendo$uiListViewOptions): JQuery;
-    data(key: "kendoListView"): kendo$uiListView;
+    kendoListView(options: kendo$ui$ListViewOptions): JQuery;
+    data(key: "kendoListView"): kendo$ui$ListView;
     kendoMap(): JQuery;
-    kendoMap(options: kendo$datavizuiMapOptions): JQuery;
-    data(key: "kendoMap"): kendo$datavizuiMap;
+    kendoMap(options: kendo$dataviz$ui$MapOptions): JQuery;
+    data(key: "kendoMap"): kendo$dataviz$ui$Map;
     kendoMaskedTextBox(): JQuery;
-    kendoMaskedTextBox(options: kendo$uiMaskedTextBoxOptions): JQuery;
-    data(key: "kendoMaskedTextBox"): kendo$uiMaskedTextBox;
+    kendoMaskedTextBox(options: kendo$ui$MaskedTextBoxOptions): JQuery;
+    data(key: "kendoMaskedTextBox"): kendo$ui$MaskedTextBox;
     kendoMediaPlayer(): JQuery;
-    kendoMediaPlayer(options: kendo$uiMediaPlayerOptions): JQuery;
-    data(key: "kendoMediaPlayer"): kendo$uiMediaPlayer;
+    kendoMediaPlayer(options: kendo$ui$MediaPlayerOptions): JQuery;
+    data(key: "kendoMediaPlayer"): kendo$ui$MediaPlayer;
     kendoMenu(): JQuery;
-    kendoMenu(options: kendo$uiMenuOptions): JQuery;
-    data(key: "kendoMenu"): kendo$uiMenu;
+    kendoMenu(options: kendo$ui$MenuOptions): JQuery;
+    data(key: "kendoMenu"): kendo$ui$Menu;
     kendoMobileActionSheet(): JQuery;
-    kendoMobileActionSheet(options: kendo$mobileuiActionSheetOptions): JQuery;
-    data(key: "kendoMobileActionSheet"): kendo$mobileuiActionSheet;
+    kendoMobileActionSheet(options: kendo$mobile$ui$ActionSheetOptions): JQuery;
+    data(key: "kendoMobileActionSheet"): kendo$mobile$ui$ActionSheet;
     kendoMobileBackButton(): JQuery;
-    kendoMobileBackButton(options: kendo$mobileuiBackButtonOptions): JQuery;
-    data(key: "kendoMobileBackButton"): kendo$mobileuiBackButton;
+    kendoMobileBackButton(options: kendo$mobile$ui$BackButtonOptions): JQuery;
+    data(key: "kendoMobileBackButton"): kendo$mobile$ui$BackButton;
     kendoMobileButton(): JQuery;
-    kendoMobileButton(options: kendo$mobileuiButtonOptions): JQuery;
-    data(key: "kendoMobileButton"): kendo$mobileuiButton;
+    kendoMobileButton(options: kendo$mobile$ui$ButtonOptions): JQuery;
+    data(key: "kendoMobileButton"): kendo$mobile$ui$Button;
     kendoMobileButtonGroup(): JQuery;
-    kendoMobileButtonGroup(options: kendo$mobileuiButtonGroupOptions): JQuery;
-    data(key: "kendoMobileButtonGroup"): kendo$mobileuiButtonGroup;
+    kendoMobileButtonGroup(options: kendo$mobile$ui$ButtonGroupOptions): JQuery;
+    data(key: "kendoMobileButtonGroup"): kendo$mobile$ui$ButtonGroup;
     kendoMobileCollapsible(): JQuery;
-    kendoMobileCollapsible(options: kendo$mobileuiCollapsibleOptions): JQuery;
-    data(key: "kendoMobileCollapsible"): kendo$mobileuiCollapsible;
+    kendoMobileCollapsible(options: kendo$mobile$ui$CollapsibleOptions): JQuery;
+    data(key: "kendoMobileCollapsible"): kendo$mobile$ui$Collapsible;
     kendoMobileDetailButton(): JQuery;
-    kendoMobileDetailButton(options: kendo$mobileuiDetailButtonOptions): JQuery;
-    data(key: "kendoMobileDetailButton"): kendo$mobileuiDetailButton;
+    kendoMobileDetailButton(
+      options: kendo$mobile$ui$DetailButtonOptions
+    ): JQuery;
+    data(key: "kendoMobileDetailButton"): kendo$mobile$ui$DetailButton;
     kendoMobileDrawer(): JQuery;
-    kendoMobileDrawer(options: kendo$mobileuiDrawerOptions): JQuery;
-    data(key: "kendoMobileDrawer"): kendo$mobileuiDrawer;
+    kendoMobileDrawer(options: kendo$mobile$ui$DrawerOptions): JQuery;
+    data(key: "kendoMobileDrawer"): kendo$mobile$ui$Drawer;
     kendoMobileLayout(): JQuery;
-    kendoMobileLayout(options: kendo$mobileuiLayoutOptions): JQuery;
-    data(key: "kendoMobileLayout"): kendo$mobileuiLayout;
+    kendoMobileLayout(options: kendo$mobile$ui$LayoutOptions): JQuery;
+    data(key: "kendoMobileLayout"): kendo$mobile$ui$Layout;
     kendoMobileListView(): JQuery;
-    kendoMobileListView(options: kendo$mobileuiListViewOptions): JQuery;
-    data(key: "kendoMobileListView"): kendo$mobileuiListView;
+    kendoMobileListView(options: kendo$mobile$ui$ListViewOptions): JQuery;
+    data(key: "kendoMobileListView"): kendo$mobile$ui$ListView;
     kendoMobileLoader(): JQuery;
-    kendoMobileLoader(options: kendo$mobileuiLoaderOptions): JQuery;
-    data(key: "kendoMobileLoader"): kendo$mobileuiLoader;
+    kendoMobileLoader(options: kendo$mobile$ui$LoaderOptions): JQuery;
+    data(key: "kendoMobileLoader"): kendo$mobile$ui$Loader;
     kendoMobileModalView(): JQuery;
-    kendoMobileModalView(options: kendo$mobileuiModalViewOptions): JQuery;
-    data(key: "kendoMobileModalView"): kendo$mobileuiModalView;
+    kendoMobileModalView(options: kendo$mobile$ui$ModalViewOptions): JQuery;
+    data(key: "kendoMobileModalView"): kendo$mobile$ui$ModalView;
     kendoMobileNavBar(): JQuery;
-    kendoMobileNavBar(options: kendo$mobileuiNavBarOptions): JQuery;
-    data(key: "kendoMobileNavBar"): kendo$mobileuiNavBar;
+    kendoMobileNavBar(options: kendo$mobile$ui$NavBarOptions): JQuery;
+    data(key: "kendoMobileNavBar"): kendo$mobile$ui$NavBar;
     kendoMobilePane(): JQuery;
-    kendoMobilePane(options: kendo$mobileuiPaneOptions): JQuery;
-    data(key: "kendoMobilePane"): kendo$mobileuiPane;
+    kendoMobilePane(options: kendo$mobile$ui$PaneOptions): JQuery;
+    data(key: "kendoMobilePane"): kendo$mobile$ui$Pane;
     kendoMobilePopOver(): JQuery;
-    kendoMobilePopOver(options: kendo$mobileuiPopOverOptions): JQuery;
-    data(key: "kendoMobilePopOver"): kendo$mobileuiPopOver;
+    kendoMobilePopOver(options: kendo$mobile$ui$PopOverOptions): JQuery;
+    data(key: "kendoMobilePopOver"): kendo$mobile$ui$PopOver;
     kendoMobileScrollView(): JQuery;
-    kendoMobileScrollView(options: kendo$mobileuiScrollViewOptions): JQuery;
-    data(key: "kendoMobileScrollView"): kendo$mobileuiScrollView;
+    kendoMobileScrollView(options: kendo$mobile$ui$ScrollViewOptions): JQuery;
+    data(key: "kendoMobileScrollView"): kendo$mobile$ui$ScrollView;
     kendoMobileScroller(): JQuery;
-    kendoMobileScroller(options: kendo$mobileuiScrollerOptions): JQuery;
-    data(key: "kendoMobileScroller"): kendo$mobileuiScroller;
+    kendoMobileScroller(options: kendo$mobile$ui$ScrollerOptions): JQuery;
+    data(key: "kendoMobileScroller"): kendo$mobile$ui$Scroller;
     kendoMobileSplitView(): JQuery;
-    kendoMobileSplitView(options: kendo$mobileuiSplitViewOptions): JQuery;
-    data(key: "kendoMobileSplitView"): kendo$mobileuiSplitView;
+    kendoMobileSplitView(options: kendo$mobile$ui$SplitViewOptions): JQuery;
+    data(key: "kendoMobileSplitView"): kendo$mobile$ui$SplitView;
     kendoMobileSwitch(): JQuery;
-    kendoMobileSwitch(options: kendo$mobileuiSwitchOptions): JQuery;
-    data(key: "kendoMobileSwitch"): kendo$mobileuiSwitch;
+    kendoMobileSwitch(options: kendo$mobile$ui$SwitchOptions): JQuery;
+    data(key: "kendoMobileSwitch"): kendo$mobile$ui$Switch;
     kendoMobileTabStrip(): JQuery;
-    kendoMobileTabStrip(options: kendo$mobileuiTabStripOptions): JQuery;
-    data(key: "kendoMobileTabStrip"): kendo$mobileuiTabStrip;
+    kendoMobileTabStrip(options: kendo$mobile$ui$TabStripOptions): JQuery;
+    data(key: "kendoMobileTabStrip"): kendo$mobile$ui$TabStrip;
     kendoMobileView(): JQuery;
-    kendoMobileView(options: kendo$mobileuiViewOptions): JQuery;
-    data(key: "kendoMobileView"): kendo$mobileuiView;
+    kendoMobileView(options: kendo$mobile$ui$ViewOptions): JQuery;
+    data(key: "kendoMobileView"): kendo$mobile$ui$View;
     kendoMultiColumnComboBox(): JQuery;
     kendoMultiColumnComboBox(
-      options: kendo$uiMultiColumnComboBoxOptions
+      options: kendo$ui$MultiColumnComboBoxOptions
     ): JQuery;
-    data(key: "kendoMultiColumnComboBox"): kendo$uiMultiColumnComboBox;
+    data(key: "kendoMultiColumnComboBox"): kendo$ui$MultiColumnComboBox;
     kendoMultiSelect(): JQuery;
-    kendoMultiSelect(options: kendo$uiMultiSelectOptions): JQuery;
-    data(key: "kendoMultiSelect"): kendo$uiMultiSelect;
+    kendoMultiSelect(options: kendo$ui$MultiSelectOptions): JQuery;
+    data(key: "kendoMultiSelect"): kendo$ui$MultiSelect;
     kendoMultiViewCalendar(): JQuery;
-    kendoMultiViewCalendar(options: kendo$uiMultiViewCalendarOptions): JQuery;
-    data(key: "kendoMultiViewCalendar"): kendo$uiMultiViewCalendar;
+    kendoMultiViewCalendar(options: kendo$ui$MultiViewCalendarOptions): JQuery;
+    data(key: "kendoMultiViewCalendar"): kendo$ui$MultiViewCalendar;
     kendoNotification(): JQuery;
-    kendoNotification(options: kendo$uiNotificationOptions): JQuery;
-    data(key: "kendoNotification"): kendo$uiNotification;
+    kendoNotification(options: kendo$ui$NotificationOptions): JQuery;
+    data(key: "kendoNotification"): kendo$ui$Notification;
     kendoNumericTextBox(): JQuery;
-    kendoNumericTextBox(options: kendo$uiNumericTextBoxOptions): JQuery;
-    data(key: "kendoNumericTextBox"): kendo$uiNumericTextBox;
+    kendoNumericTextBox(options: kendo$ui$NumericTextBoxOptions): JQuery;
+    data(key: "kendoNumericTextBox"): kendo$ui$NumericTextBox;
     kendoPager(): JQuery;
-    kendoPager(options: kendo$uiPagerOptions): JQuery;
-    data(key: "kendoPager"): kendo$uiPager;
+    kendoPager(options: kendo$ui$PagerOptions): JQuery;
+    data(key: "kendoPager"): kendo$ui$Pager;
     kendoPanelBar(): JQuery;
-    kendoPanelBar(options: kendo$uiPanelBarOptions): JQuery;
-    data(key: "kendoPanelBar"): kendo$uiPanelBar;
+    kendoPanelBar(options: kendo$ui$PanelBarOptions): JQuery;
+    data(key: "kendoPanelBar"): kendo$ui$PanelBar;
     kendoPivotConfigurator(): JQuery;
-    kendoPivotConfigurator(options: kendo$uiPivotConfiguratorOptions): JQuery;
-    data(key: "kendoPivotConfigurator"): kendo$uiPivotConfigurator;
+    kendoPivotConfigurator(options: kendo$ui$PivotConfiguratorOptions): JQuery;
+    data(key: "kendoPivotConfigurator"): kendo$ui$PivotConfigurator;
     kendoPivotGrid(): JQuery;
-    kendoPivotGrid(options: kendo$uiPivotGridOptions): JQuery;
-    data(key: "kendoPivotGrid"): kendo$uiPivotGrid;
+    kendoPivotGrid(options: kendo$ui$PivotGridOptions): JQuery;
+    data(key: "kendoPivotGrid"): kendo$ui$PivotGrid;
     kendoPopup(): JQuery;
-    kendoPopup(options: kendo$uiPopupOptions): JQuery;
-    data(key: "kendoPopup"): kendo$uiPopup;
+    kendoPopup(options: kendo$ui$PopupOptions): JQuery;
+    data(key: "kendoPopup"): kendo$ui$Popup;
     kendoProgressBar(): JQuery;
-    kendoProgressBar(options: kendo$uiProgressBarOptions): JQuery;
-    data(key: "kendoProgressBar"): kendo$uiProgressBar;
+    kendoProgressBar(options: kendo$ui$ProgressBarOptions): JQuery;
+    data(key: "kendoProgressBar"): kendo$ui$ProgressBar;
     kendoPrompt(): JQuery;
-    kendoPrompt(options: kendo$uiPromptOptions): JQuery;
-    data(key: "kendoPrompt"): kendo$uiPrompt;
+    kendoPrompt(options: kendo$ui$PromptOptions): JQuery;
+    data(key: "kendoPrompt"): kendo$ui$Prompt;
     kendoQRCode(): JQuery;
-    kendoQRCode(options: kendo$datavizuiQRCodeOptions): JQuery;
-    data(key: "kendoQRCode"): kendo$datavizuiQRCode;
+    kendoQRCode(options: kendo$dataviz$ui$QRCodeOptions): JQuery;
+    data(key: "kendoQRCode"): kendo$dataviz$ui$QRCode;
     kendoRadialGauge(): JQuery;
-    kendoRadialGauge(options: kendo$datavizuiRadialGaugeOptions): JQuery;
-    data(key: "kendoRadialGauge"): kendo$datavizuiRadialGauge;
+    kendoRadialGauge(options: kendo$dataviz$ui$RadialGaugeOptions): JQuery;
+    data(key: "kendoRadialGauge"): kendo$dataviz$ui$RadialGauge;
     kendoRangeSlider(): JQuery;
-    kendoRangeSlider(options: kendo$uiRangeSliderOptions): JQuery;
-    data(key: "kendoRangeSlider"): kendo$uiRangeSlider;
+    kendoRangeSlider(options: kendo$ui$RangeSliderOptions): JQuery;
+    data(key: "kendoRangeSlider"): kendo$ui$RangeSlider;
     kendoResponsivePanel(): JQuery;
-    kendoResponsivePanel(options: kendo$uiResponsivePanelOptions): JQuery;
-    data(key: "kendoResponsivePanel"): kendo$uiResponsivePanel;
+    kendoResponsivePanel(options: kendo$ui$ResponsivePanelOptions): JQuery;
+    data(key: "kendoResponsivePanel"): kendo$ui$ResponsivePanel;
     kendoScheduler(): JQuery;
-    kendoScheduler(options: kendo$uiSchedulerOptions): JQuery;
-    data(key: "kendoScheduler"): kendo$uiScheduler;
+    kendoScheduler(options: kendo$ui$SchedulerOptions): JQuery;
+    data(key: "kendoScheduler"): kendo$ui$Scheduler;
     kendoScrollView(): JQuery;
-    kendoScrollView(options: kendo$uiScrollViewOptions): JQuery;
-    data(key: "kendoScrollView"): kendo$uiScrollView;
+    kendoScrollView(options: kendo$ui$ScrollViewOptions): JQuery;
+    data(key: "kendoScrollView"): kendo$ui$ScrollView;
     kendoSlider(): JQuery;
-    kendoSlider(options: kendo$uiSliderOptions): JQuery;
-    data(key: "kendoSlider"): kendo$uiSlider;
+    kendoSlider(options: kendo$ui$SliderOptions): JQuery;
+    data(key: "kendoSlider"): kendo$ui$Slider;
     kendoSortable(): JQuery;
-    kendoSortable(options: kendo$uiSortableOptions): JQuery;
-    data(key: "kendoSortable"): kendo$uiSortable;
+    kendoSortable(options: kendo$ui$SortableOptions): JQuery;
+    data(key: "kendoSortable"): kendo$ui$Sortable;
     kendoSparkline(): JQuery;
-    kendoSparkline(options: kendo$datavizuiSparklineOptions): JQuery;
-    data(key: "kendoSparkline"): kendo$datavizuiSparkline;
+    kendoSparkline(options: kendo$dataviz$ui$SparklineOptions): JQuery;
+    data(key: "kendoSparkline"): kendo$dataviz$ui$Sparkline;
     kendoSplitter(): JQuery;
-    kendoSplitter(options: kendo$uiSplitterOptions): JQuery;
-    data(key: "kendoSplitter"): kendo$uiSplitter;
+    kendoSplitter(options: kendo$ui$SplitterOptions): JQuery;
+    data(key: "kendoSplitter"): kendo$ui$Splitter;
     kendoSpreadsheet(): JQuery;
-    kendoSpreadsheet(options: kendo$uiSpreadsheetOptions): JQuery;
-    data(key: "kendoSpreadsheet"): kendo$uiSpreadsheet;
+    kendoSpreadsheet(options: kendo$ui$SpreadsheetOptions): JQuery;
+    data(key: "kendoSpreadsheet"): kendo$ui$Spreadsheet;
     kendoStockChart(): JQuery;
-    kendoStockChart(options: kendo$datavizuiStockChartOptions): JQuery;
-    data(key: "kendoStockChart"): kendo$datavizuiStockChart;
+    kendoStockChart(options: kendo$dataviz$ui$StockChartOptions): JQuery;
+    data(key: "kendoStockChart"): kendo$dataviz$ui$StockChart;
     kendoSwitch(): JQuery;
-    kendoSwitch(options: kendo$uiSwitchOptions): JQuery;
-    data(key: "kendoSwitch"): kendo$uiSwitch;
+    kendoSwitch(options: kendo$ui$SwitchOptions): JQuery;
+    data(key: "kendoSwitch"): kendo$ui$Switch;
     kendoTabStrip(): JQuery;
-    kendoTabStrip(options: kendo$uiTabStripOptions): JQuery;
-    data(key: "kendoTabStrip"): kendo$uiTabStrip;
+    kendoTabStrip(options: kendo$ui$TabStripOptions): JQuery;
+    data(key: "kendoTabStrip"): kendo$ui$TabStrip;
     kendoTimePicker(): JQuery;
-    kendoTimePicker(options: kendo$uiTimePickerOptions): JQuery;
-    data(key: "kendoTimePicker"): kendo$uiTimePicker;
+    kendoTimePicker(options: kendo$ui$TimePickerOptions): JQuery;
+    data(key: "kendoTimePicker"): kendo$ui$TimePicker;
     kendoToolBar(): JQuery;
-    kendoToolBar(options: kendo$uiToolBarOptions): JQuery;
-    data(key: "kendoToolBar"): kendo$uiToolBar;
+    kendoToolBar(options: kendo$ui$ToolBarOptions): JQuery;
+    data(key: "kendoToolBar"): kendo$ui$ToolBar;
     kendoTooltip(): JQuery;
-    kendoTooltip(options: kendo$uiTooltipOptions): JQuery;
-    data(key: "kendoTooltip"): kendo$uiTooltip;
+    kendoTooltip(options: kendo$ui$TooltipOptions): JQuery;
+    data(key: "kendoTooltip"): kendo$ui$Tooltip;
     kendoTouch(): JQuery;
-    kendoTouch(options: kendo$uiTouchOptions): JQuery;
-    data(key: "kendoTouch"): kendo$uiTouch;
+    kendoTouch(options: kendo$ui$TouchOptions): JQuery;
+    data(key: "kendoTouch"): kendo$ui$Touch;
     kendoTreeList(): JQuery;
-    kendoTreeList(options: kendo$uiTreeListOptions): JQuery;
-    data(key: "kendoTreeList"): kendo$uiTreeList;
+    kendoTreeList(options: kendo$ui$TreeListOptions): JQuery;
+    data(key: "kendoTreeList"): kendo$ui$TreeList;
     kendoTreeMap(): JQuery;
-    kendoTreeMap(options: kendo$datavizuiTreeMapOptions): JQuery;
-    data(key: "kendoTreeMap"): kendo$datavizuiTreeMap;
+    kendoTreeMap(options: kendo$dataviz$ui$TreeMapOptions): JQuery;
+    data(key: "kendoTreeMap"): kendo$dataviz$ui$TreeMap;
     kendoTreeView(): JQuery;
-    kendoTreeView(options: kendo$uiTreeViewOptions): JQuery;
-    data(key: "kendoTreeView"): kendo$uiTreeView;
+    kendoTreeView(options: kendo$ui$TreeViewOptions): JQuery;
+    data(key: "kendoTreeView"): kendo$ui$TreeView;
     kendoUpload(): JQuery;
-    kendoUpload(options: kendo$uiUploadOptions): JQuery;
-    data(key: "kendoUpload"): kendo$uiUpload;
+    kendoUpload(options: kendo$ui$UploadOptions): JQuery;
+    data(key: "kendoUpload"): kendo$ui$Upload;
     kendoValidator(): JQuery;
-    kendoValidator(options: kendo$uiValidatorOptions): JQuery;
-    data(key: "kendoValidator"): kendo$uiValidator;
+    kendoValidator(options: kendo$ui$ValidatorOptions): JQuery;
+    data(key: "kendoValidator"): kendo$ui$Validator;
     kendoWindow(): JQuery;
-    kendoWindow(options: kendo$uiWindowOptions): JQuery;
-    data(key: "kendoWindow"): kendo$uiWindow;
+    kendoWindow(options: kendo$ui$WindowOptions): JQuery;
+    data(key: "kendoWindow"): kendo$ui$Window;
   }
 }
