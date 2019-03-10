@@ -511,7 +511,7 @@ declare module "leaflet" {
 
   declare export class Layer mixins Evented {
     constructor(options?: LayerOptions): this;
-    addTo(map: Map | LayerGroup): this;
+    addTo(map: Map | LayerGroup<>): this;
     remove(): this;
     removeFrom(map: Map): this;
     getPane(name?: string): HTMLElement | void;
@@ -797,7 +797,7 @@ declare module "leaflet" {
   declare export function polyline(
     latlngs: LatLngExpression[] | LatLngExpression[][],
     options?: PolylineOptions
-  ): Polyline;
+  ): Polyline<>;
 
   declare export class Polygon<P = any>
     mixins Polyline<geojson.Polygon | geojson.MultiPolygon, P> {
@@ -812,7 +812,7 @@ declare module "leaflet" {
   declare export function polygon(
     latlngs: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][],
     options?: PolylineOptions
-  ): Polygon;
+  ): Polygon<>;
 
   declare export class Rectangle<P = any> mixins Polygon<P> {
     constructor(
@@ -824,7 +824,7 @@ declare module "leaflet" {
   declare export function rectangle(
     latLngBounds: LatLngBoundsExpression,
     options?: PolylineOptions
-  ): Rectangle;
+  ): Rectangle<>;
 
   declare export type CircleMarkerOptions = {
     radius?: number
@@ -843,7 +843,7 @@ declare module "leaflet" {
   declare export function circleMarker(
     latlng: LatLngExpression,
     options?: CircleMarkerOptions
-  ): CircleMarker;
+  ): CircleMarker<>;
 
   declare export class Circle<P = any> mixins CircleMarker<P> {
     constructor(latlng: LatLngExpression, options?: CircleMarkerOptions): this;
@@ -857,13 +857,13 @@ declare module "leaflet" {
   declare export function circle(
     latlng: LatLngExpression,
     options?: CircleMarkerOptions
-  ): Circle;
+  ): Circle<>;
 
   declare export function circle(
     latlng: LatLngExpression,
     radius: number,
     options?: CircleMarkerOptions
-  ): Circle;
+  ): Circle<>;
 
   declare export type RendererOptions = {
     padding?: number
@@ -970,7 +970,7 @@ declare module "leaflet" {
   declare export function layerGroup(
     layers?: Layer[],
     options?: LayerOptions
-  ): LayerGroup;
+  ): LayerGroup<>;
 
   /**
    * Extended LayerGroup that also has mouse events (propagated from
@@ -1002,7 +1002,7 @@ declare module "leaflet" {
   /**
    * Create a feature group, optionally given an initial set of layers.
    */
-  declare export function featureGroup(layers?: Layer[]): FeatureGroup;
+  declare export function featureGroup(layers?: Layer[]): FeatureGroup<>;
 
   declare export type StyleFunction<P = any> = (
     feature?: geojson.Feature<geojson.GeometryObject, P>
@@ -1776,7 +1776,7 @@ declare module "leaflet" {
     static imagePath: string;
     constructor(options?: Icon$DefaultIconOptions): this;
   }
-  declare export function icon(options: IconOptions): Icon;
+  declare export function icon(options: IconOptions): Icon<>;
 
   declare export type DivIconOptions = {
     html?: string | false,
@@ -1793,7 +1793,7 @@ declare module "leaflet" {
   declare export function divIcon(options?: DivIconOptions): DivIcon;
 
   declare export type MarkerOptions = {
-    icon?: Icon | DivIcon,
+    icon?: Icon<> | DivIcon,
     clickable?: boolean,
     draggable?: boolean,
     keyboard?: boolean,
@@ -1811,7 +1811,7 @@ declare module "leaflet" {
     getLatLng(): LatLng;
     setLatLng(latlng: LatLngExpression): this;
     setZIndexOffset(offset: number): this;
-    setIcon(icon: Icon | DivIcon): this;
+    setIcon(icon: Icon<> | DivIcon): this;
     setOpacity(opacity: number): this;
     getElement(): HTMLElement | void;
     options: MarkerOptions;
@@ -1821,7 +1821,7 @@ declare module "leaflet" {
   declare export function marker(
     latlng: LatLngExpression,
     options?: MarkerOptions
-  ): Marker;
+  ): Marker<>;
 
   declare var npm$namespace$Browser: {
     ie: typeof Browser$ie,
