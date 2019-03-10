@@ -6,8 +6,8 @@ declare module "react-copy-write" {
   declare type Mutator<T> = (mutator: MutateFn<T>) => void;
   declare type SelectorFn<T> = (state: T) => AnyDeepMemberOfState<T>;
   declare type RenderFn<T> = (
-    ...state: Array<$ReadOnly<ReturnType<SelectorFn<T>>>>
-  ) => JSX.Element | JSX.Element[] | null;
+    ...state: Array<$ReadOnly<$Call<SelectorFn<T>>>>
+  ) => React$Node | React$Node[] | null;
   declare interface ConsumerPropsBase<T> {
     select?: Array<SelectorFn<T>>;
   }
@@ -24,7 +24,7 @@ declare module "react-copy-write" {
     | ConsumerPropsImplicitRender<T>;
   declare class Consumer<T> mixins Component<ConsumerProps<T>> {}
   declare interface ProviderProps<T> {
-    children: JSX.Element | JSX.Element[];
+    children: React$Node | React$Node[];
     initialState?: $Shape<T>;
   }
   declare class Provider<T> mixins Component<ProviderProps<T>> {}
