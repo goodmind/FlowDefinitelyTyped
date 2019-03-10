@@ -8,7 +8,7 @@ declare module '@ember/component' {
 	import typeof ActionSupport from '@ember/component/-private/action-support';
 
 	declare interface TemplateFactory {
-___htmlbars_inline_precompile_template_factory: any
+__htmlbars_inline_precompile_template_factory: any
 } 
 	
 /**
