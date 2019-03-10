@@ -1,375 +1,393 @@
-declare type longrunning$Operation =
-  | longrunning$UnfinishedOperation
-  | longrunning$FailedOperation
-  | longrunning$SuccessfulOperation;
-
-declare interface longrunning$BaseOperation {
-  name: string;
-  metadata: any;
-  done: boolean;
-}
-
-declare type longrunning$UnfinishedOperation = {
-  done: false
-} & longrunning$BaseOperation;
-
-declare type longrunning$FailedOperation = {
-  done: true,
-  error: longrunning$Status
-} & longrunning$BaseOperation;
-
-declare type longrunning$SuccessfulOperation = {
-  done: true,
-  response: any
-} & longrunning$BaseOperation;
-
-declare interface longrunning$Status {
-  code: number;
-  message: string;
-  details: any[];
-}
-declare interface gax$BackoffSettings {
-  initialRetryDelayMillis: number;
-  retryDelayMultiplier: number;
-  maxRetryDelayMillis: number;
-  initialRpcTimeoutMillis: number;
-  maxRpcTimeoutMillis: number;
-  totalTimeoutMillis: number;
-}
-
-declare interface gax$RetryOptions {
-  retryCodes: string[];
-  backoffSettings: gax$BackoffSettings;
-}
-
-declare interface gax$CallOptions {
-  timeout?: number;
-  retry?: gax$RetryOptions;
-  autoPaginate?: boolean;
-  pageToken?: any;
-  isBundling?: boolean;
-  longrunning?: gax$BackoffSettings;
-  promise?: PromiseConstructor;
-}
-
-declare interface gax$Operation {
-  grpcOp: longrunninggax$Operation;
-  longrunningDescriptor: any;
-  backoffSettings: gax$BackoffSettings;
-  callOptions?: gax$CallOptions;
-}
-declare interface DateTimeVariants$DateTime {
-  date_time: string;
-}
-
-declare interface DateTimeVariants$DateTimePeriod {
-  startDateTime: DateTimeVariants$DateTime;
-  endDateTime: DateTimeVariants$DateTime;
-}
-
-declare interface DateTimeVariants$DatePeriod {
-  startDate: entities$Date;
-  endDate: entities$Date;
-}
-
-declare interface DateTimeVariants$TimePeriod {
-  startTime: string;
-  endTime: string;
-}
-declare type entities$DateTime =
-  | string
-  | DateTimeVariantsDateTimeVariants$DatePeriod
-  | DateTimeVariantsDateTimeVariants$TimePeriod
-  | DateTimeVariantsentities$DateTime
-  | DateTimeVariantsDateTimeVariants$DateTimePeriod;
-
-declare interface entities$Duration {
-  unit: string;
-  amount: number;
-}
-
-declare type entities$Date = string;
-
-declare type entities$Time = string;
-declare class v2beta1$AgentsClient mixins v2$v2beta1$AgentsClient {}
-
-declare class v2beta1$ContextsClient mixins v2$v2beta1$ContextsClient {
-  environmentSessionPath(
-    project: string,
-    environment: string,
-    user: string,
-    session: string
-  ): string;
-  environmentContextPath(
-    project: string,
-    environment: string,
-    user: string,
-    session: string,
-    context: string
-  ): string;
-  matchProjectFromEnvironmentSessionName(
-    environmentSessionName: string
-  ): string;
-  matchEnvironmentFromEnvironmentSessionName(
-    environmentSessionName: string
-  ): string;
-  matchUserFromEnvironmentSessionName(environmentSessionName: string): string;
-  matchSessionFromEnvironmentSessionName(
-    environmentSessionName: string
-  ): string;
-  matchProjectFromEnvironmentContextName(
-    environmentContextName: string
-  ): string;
-  matchEnvironmentFromEnvironmentContextName(
-    environmentContextName: string
-  ): string;
-  matchUserFromEnvironmentContextName(environmentContextName: string): string;
-  matchSessionFromEnvironmentContextName(
-    environmentContextName: string
-  ): string;
-  matchContextFromEnvironmentContextName(
-    environmentContextName: string
-  ): string;
-}
-
-declare class v2beta1$EntityTypesClient mixins v2$v2beta1$EntityTypesClient {}
-
-declare class v2beta1$IntentsClient mixins v2$v2beta1$IntentsClient {}
-
-declare class v2beta1$SessionEntityTypesClient
-  mixins v2$v2beta1$SessionEntityTypesClient {}
-
-declare class v2beta1$SessionsClient mixins v2$v2beta1$SessionsClient {
-  environmentSessionPath(
-    project: string,
-    environment: string,
-    user: string,
-    session: string
-  ): string;
-  matchProjectFromEnvironmentSessionName(
-    environmentSessionName: string
-  ): string;
-  matchEnvironmentFromEnvironmentSessionName(
-    environmentSessionName: string
-  ): string;
-  matchUserFromEnvironmentSessionName(environmentSessionName: string): string;
-  matchSessionFromEnvironmentSessionName(
-    environmentSessionName: string
-  ): string;
-}
-declare class v2$AgentsClient {
-  constructor(options?: ClientOptions): this;
-  servicePath: string;
-  port: number;
-  scopes: string[];
-  getProjectId(): Promise<string>;
-  getProjectId(callback?: (error: Error, id: string) => string): void;
-  getAgent(
-    request: GetAgentRequest,
-    options?: gaxgax$CallOptions,
-    cb?: (err: Error, agent: Agent) => void
-  ): Promise<[Agent]>;
-  searchAgents(
-    request: SearchAgentRequest,
-    options?: gaxgax$CallOptions,
-    cb?: (err: Error, agents: Agent[], arg3: any, response: any) => void
-  ): Promise<Agent[]>;
-  searchAgentsStream(
-    request: SearchAgentRequest,
-    options?: gaxgax$CallOptions
-  ): any;
-  trainAgent(
-    request: TrainAgentRequest,
-    options?: gaxgax$CallOptions,
-    cb?: (err: Error, operation: gaxgax$Operation) => void
-  ): Promise<[gaxgax$Operation]>;
-  exportAgent(
-    request: ExportAgentRequest,
-    options?: gaxgax$CallOptions,
-    cb?: (err: Error, operation: gaxgax$Operation) => void
-  ): Promise<[gaxgax$Operation]>;
-  importAgent(
-    request: ImportAgentRequest,
-    options?: gaxgax$CallOptions,
-    cb?: (err: Error, operation: gaxgax$Operation) => void
-  ): Promise<[gaxgax$Operation]>;
-  restoreAgent(
-    request: RestoreAgentRequest,
-    options?: gaxgax$CallOptions,
-    cb?: (err: Error, operation: gaxgax$Operation) => void
-  ): Promise<[gaxgax$Operation]>;
-}
-
-declare class v2$ContextsClient {
-  constructor(options?: ClientOptions): this;
-  servicePath: string;
-  port: number;
-  scopes: string[];
-  getProjectId(): Promise<string>;
-  getProjectId(callback?: (error: Error, id: string) => string): void;
-  listContexts(
-    request: ListContextsRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[Context[]]>;
-  listContextsStream(
-    request: ListContextsRequest,
-    options?: gaxgax$CallOptions
-  ): any;
-  getContext(
-    request: GetContextRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[Context]>;
-  createContext(
-    request: CreateContextReqeust,
-    options?: gaxgax$CallOptions
-  ): Promise<[Context]>;
-  updateContext(
-    request: UpdateContextRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[Context]>;
-  deleteContext(
-    request: DeleteContextRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<void>;
-  deleteAllContexts(
-    request: DeleteAllContextsRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<void>;
-  sessionPath(project: string, session: string): string;
-  contextPath(project: string, session: string, context: string): string;
-  matchProjectFromContextName(name: string): string;
-  matchSessionFromContextName(name: string): string;
-  matchContextFromContextName(name: string): string;
-  matchProjectFromSessionName(name: string): string;
-  matchSessionFromSessionName(name: string): string;
-}
-
-declare class v2$EntityTypesClient {
-  constructor(options?: ClientOptions): this;
-  servicePath: string;
-  port: number;
-  scopes: string[];
-  getProjectId(): Promise<string>;
-  getProjectId(callback?: (error: Error, id: string) => string): void;
-  listEntityTypes(
-    request: ListEntityTypesRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[EntityType[]]>;
-  listEntityTypesStream(
-    request: ListEntityTypesRequest,
-    options?: gaxgax$CallOptions
-  ): any;
-  getEntityType(
-    request: GetEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[EntityType]>;
-  createEntityType(
-    request: CreateEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[EntityType]>;
-  updateEntityType(
-    request: UpdateEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[EntityType]>;
-  deleteEntityType(
-    request: DeleteEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<void>;
-  projectAgentPath(project: string): string;
-  entityTypePath(project: string, entityType: string): string;
-  matchProjectFromProjectAgentName(entityTypeName: string): string;
-  matchProjectFromEntityTypeName(entityTypeName: string): string;
-  matchEntityTypeFromEntityTypeName(entityTypeName: string): string;
-}
-
-declare class v2$IntentsClient {
-  constructor(options?: ClientOptions): this;
-  servicePath: string;
-  port: number;
-  scopes: string[];
-  getProjectId(): Promise<string>;
-  getProjectId(callback?: (error: Error, id: string) => string): void;
-  listIntents(
-    request: ListIntentsRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[Intent[]]>;
-  getIntent(
-    request: GetIntentRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[Intent]>;
-  createIntent(
-    request: CreateIntentRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[Intent]>;
-  updateIntent(
-    request: UpdateIntentRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[Intent]>;
-  deleteIntent(
-    request: DeleteIntentRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<void>;
-  projectAgentPath(project: string): string;
-  intentPath(project: string, intent: string): string;
-  agentPath(project: string, agent: string): string;
-  matchProjectFromProjectAgentName(projectAgentName: string): string;
-  matchProjectFromIntentName(intentName: string): string;
-  matchIntentFromIntentName(intentName: string): string;
-  matchProjectFromAgentName(agentName: string): string;
-  matchAgentFromAgentName(agentName: string): string;
-}
-
-declare class v2$SessionEntityTypesClient {
-  constructor(options?: ClientOptions): this;
-  servicePath: string;
-  port: number;
-  scopes: string[];
-  getProjectId(): Promise<string>;
-  getProjectId(callback?: (error: Error, id: string) => string): void;
-  listSessionEntityTypes(
-    request: ListSessionEntityTypesRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[SessionEntityType[]]>;
-  getSessionEntityType(
-    request: GetSessionEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[SessionEntityType]>;
-  createSessionEntityType(
-    request: CreateSessionEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[SessionEntityType]>;
-  updateSessionEntityType(
-    request: UpdateSessionEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<[SessionEntityType]>;
-  deleteSessionEntityType(
-    request: DeleteSessionEntityTypeRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<void>;
-}
-
-declare class v2$SessionsClient {
-  constructor(options?: ClientOptions): this;
-  servicePath: string;
-  port: number;
-  scopes: string[];
-  getProjectId(): Promise<string>;
-  getProjectId(callback?: (error: Error, id: string) => string): void;
-  detectIntent(
-    request: DetectIntentRequest,
-    options?: gaxgax$CallOptions
-  ): Promise<DetectIntentResponse[]>;
-  streamingDetectIntent(options?: gaxgax$CallOptions): Promise<any>;
-  sessionPath(projectId: string, sessionId: string): string;
-}
 declare module "dialogflow" {
-  declare export class AgentsClient mixins v2$v2$AgentsClient {}
-  declare export class ContextsClient mixins v2$v2$ContextsClient {}
-  declare export class EntityTypesClient mixins v2$v2$EntityTypesClient {}
-  declare export class IntentsClient mixins v2$v2$IntentsClient {}
+  declare var npm$namespace$v2: {
+    AgentsClient: typeof v2$AgentsClient,
+    ContextsClient: typeof v2$ContextsClient,
+    EntityTypesClient: typeof v2$EntityTypesClient,
+    IntentsClient: typeof v2$IntentsClient,
+    SessionEntityTypesClient: typeof v2$SessionEntityTypesClient,
+    SessionsClient: typeof v2$SessionsClient
+  };
+  declare class v2$AgentsClient {
+    constructor(options?: ClientOptions): this;
+    servicePath: string;
+    port: number;
+    scopes: string[];
+    getProjectId(): Promise<string>;
+    getProjectId(callback?: (error: Error, id: string) => string): void;
+    getAgent(
+      request: GetAgentRequest,
+      options?: gax$CallOptions,
+      cb?: (err: Error, agent: Agent) => void
+    ): Promise<[Agent]>;
+    searchAgents(
+      request: SearchAgentRequest,
+      options?: gax$CallOptions,
+      cb?: (err: Error, agents: Agent[], arg3: any, response: any) => void
+    ): Promise<Agent[]>;
+    searchAgentsStream(
+      request: SearchAgentRequest,
+      options?: gax$CallOptions
+    ): any;
+    trainAgent(
+      request: TrainAgentRequest,
+      options?: gax$CallOptions,
+      cb?: (err: Error, operation: gax$Operation) => void
+    ): Promise<[gax$Operation]>;
+    exportAgent(
+      request: ExportAgentRequest,
+      options?: gax$CallOptions,
+      cb?: (err: Error, operation: gax$Operation) => void
+    ): Promise<[gax$Operation]>;
+    importAgent(
+      request: ImportAgentRequest,
+      options?: gax$CallOptions,
+      cb?: (err: Error, operation: gax$Operation) => void
+    ): Promise<[gax$Operation]>;
+    restoreAgent(
+      request: RestoreAgentRequest,
+      options?: gax$CallOptions,
+      cb?: (err: Error, operation: gax$Operation) => void
+    ): Promise<[gax$Operation]>;
+  }
+
+  declare class v2$ContextsClient {
+    constructor(options?: ClientOptions): this;
+    servicePath: string;
+    port: number;
+    scopes: string[];
+    getProjectId(): Promise<string>;
+    getProjectId(callback?: (error: Error, id: string) => string): void;
+    listContexts(
+      request: ListContextsRequest,
+      options?: gax$CallOptions
+    ): Promise<[Context<>[]]>;
+    listContextsStream(
+      request: ListContextsRequest,
+      options?: gax$CallOptions
+    ): any;
+    getContext(
+      request: GetContextRequest,
+      options?: gax$CallOptions
+    ): Promise<[Context<>]>;
+    createContext(
+      request: CreateContextReqeust,
+      options?: gax$CallOptions
+    ): Promise<[Context<>]>;
+    updateContext(
+      request: UpdateContextRequest,
+      options?: gax$CallOptions
+    ): Promise<[Context<>]>;
+    deleteContext(
+      request: DeleteContextRequest,
+      options?: gax$CallOptions
+    ): Promise<void>;
+    deleteAllContexts(
+      request: DeleteAllContextsRequest,
+      options?: gax$CallOptions
+    ): Promise<void>;
+    sessionPath(project: string, session: string): string;
+    contextPath(project: string, session: string, context: string): string;
+    matchProjectFromContextName(name: string): string;
+    matchSessionFromContextName(name: string): string;
+    matchContextFromContextName(name: string): string;
+    matchProjectFromSessionName(name: string): string;
+    matchSessionFromSessionName(name: string): string;
+  }
+
+  declare class v2$EntityTypesClient {
+    constructor(options?: ClientOptions): this;
+    servicePath: string;
+    port: number;
+    scopes: string[];
+    getProjectId(): Promise<string>;
+    getProjectId(callback?: (error: Error, id: string) => string): void;
+    listEntityTypes(
+      request: ListEntityTypesRequest,
+      options?: gax$CallOptions
+    ): Promise<[EntityType[]]>;
+    listEntityTypesStream(
+      request: ListEntityTypesRequest,
+      options?: gax$CallOptions
+    ): any;
+    getEntityType(
+      request: GetEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<[EntityType]>;
+    createEntityType(
+      request: CreateEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<[EntityType]>;
+    updateEntityType(
+      request: UpdateEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<[EntityType]>;
+    deleteEntityType(
+      request: DeleteEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<void>;
+    projectAgentPath(project: string): string;
+    entityTypePath(project: string, entityType: string): string;
+    matchProjectFromProjectAgentName(entityTypeName: string): string;
+    matchProjectFromEntityTypeName(entityTypeName: string): string;
+    matchEntityTypeFromEntityTypeName(entityTypeName: string): string;
+  }
+
+  declare class v2$IntentsClient {
+    constructor(options?: ClientOptions): this;
+    servicePath: string;
+    port: number;
+    scopes: string[];
+    getProjectId(): Promise<string>;
+    getProjectId(callback?: (error: Error, id: string) => string): void;
+    listIntents(
+      request: ListIntentsRequest,
+      options?: gax$CallOptions
+    ): Promise<[Intent[]]>;
+    getIntent(
+      request: GetIntentRequest,
+      options?: gax$CallOptions
+    ): Promise<[Intent]>;
+    createIntent(
+      request: CreateIntentRequest,
+      options?: gax$CallOptions
+    ): Promise<[Intent]>;
+    updateIntent(
+      request: UpdateIntentRequest,
+      options?: gax$CallOptions
+    ): Promise<[Intent]>;
+    deleteIntent(
+      request: DeleteIntentRequest,
+      options?: gax$CallOptions
+    ): Promise<void>;
+    projectAgentPath(project: string): string;
+    intentPath(project: string, intent: string): string;
+    agentPath(project: string, agent: string): string;
+    matchProjectFromProjectAgentName(projectAgentName: string): string;
+    matchProjectFromIntentName(intentName: string): string;
+    matchIntentFromIntentName(intentName: string): string;
+    matchProjectFromAgentName(agentName: string): string;
+    matchAgentFromAgentName(agentName: string): string;
+  }
+
+  declare class v2$SessionEntityTypesClient {
+    constructor(options?: ClientOptions): this;
+    servicePath: string;
+    port: number;
+    scopes: string[];
+    getProjectId(): Promise<string>;
+    getProjectId(callback?: (error: Error, id: string) => string): void;
+    listSessionEntityTypes(
+      request: ListSessionEntityTypesRequest,
+      options?: gax$CallOptions
+    ): Promise<[SessionEntityType[]]>;
+    getSessionEntityType(
+      request: GetSessionEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<[SessionEntityType]>;
+    createSessionEntityType(
+      request: CreateSessionEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<[SessionEntityType]>;
+    updateSessionEntityType(
+      request: UpdateSessionEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<[SessionEntityType]>;
+    deleteSessionEntityType(
+      request: DeleteSessionEntityTypeRequest,
+      options?: gax$CallOptions
+    ): Promise<void>;
+  }
+
+  declare class v2$SessionsClient {
+    constructor(options?: ClientOptions): this;
+    servicePath: string;
+    port: number;
+    scopes: string[];
+    getProjectId(): Promise<string>;
+    getProjectId(callback?: (error: Error, id: string) => string): void;
+    detectIntent(
+      request: DetectIntentRequest,
+      options?: gax$CallOptions
+    ): Promise<DetectIntentResponse[]>;
+    streamingDetectIntent(options?: gax$CallOptions): Promise<any>;
+    sessionPath(projectId: string, sessionId: string): string;
+  }
+
+  declare var npm$namespace$v2beta1: {
+    AgentsClient: typeof v2beta1$AgentsClient,
+    ContextsClient: typeof v2beta1$ContextsClient,
+    EntityTypesClient: typeof v2beta1$EntityTypesClient,
+    IntentsClient: typeof v2beta1$IntentsClient,
+    SessionEntityTypesClient: typeof v2beta1$SessionEntityTypesClient,
+    SessionsClient: typeof v2beta1$SessionsClient
+  };
+  declare class v2beta1$AgentsClient mixins v2$AgentsClient {}
+
+  declare class v2beta1$ContextsClient mixins v2$ContextsClient {
+    environmentSessionPath(
+      project: string,
+      environment: string,
+      user: string,
+      session: string
+    ): string;
+    environmentContextPath(
+      project: string,
+      environment: string,
+      user: string,
+      session: string,
+      context: string
+    ): string;
+    matchProjectFromEnvironmentSessionName(
+      environmentSessionName: string
+    ): string;
+    matchEnvironmentFromEnvironmentSessionName(
+      environmentSessionName: string
+    ): string;
+    matchUserFromEnvironmentSessionName(environmentSessionName: string): string;
+    matchSessionFromEnvironmentSessionName(
+      environmentSessionName: string
+    ): string;
+    matchProjectFromEnvironmentContextName(
+      environmentContextName: string
+    ): string;
+    matchEnvironmentFromEnvironmentContextName(
+      environmentContextName: string
+    ): string;
+    matchUserFromEnvironmentContextName(environmentContextName: string): string;
+    matchSessionFromEnvironmentContextName(
+      environmentContextName: string
+    ): string;
+    matchContextFromEnvironmentContextName(
+      environmentContextName: string
+    ): string;
+  }
+
+  declare class v2beta1$EntityTypesClient mixins v2$EntityTypesClient {}
+
+  declare class v2beta1$IntentsClient mixins v2$IntentsClient {}
+
+  declare class v2beta1$SessionEntityTypesClient
+    mixins v2$SessionEntityTypesClient {}
+
+  declare class v2beta1$SessionsClient mixins v2$SessionsClient {
+    environmentSessionPath(
+      project: string,
+      environment: string,
+      user: string,
+      session: string
+    ): string;
+    matchProjectFromEnvironmentSessionName(
+      environmentSessionName: string
+    ): string;
+    matchEnvironmentFromEnvironmentSessionName(
+      environmentSessionName: string
+    ): string;
+    matchUserFromEnvironmentSessionName(environmentSessionName: string): string;
+    matchSessionFromEnvironmentSessionName(
+      environmentSessionName: string
+    ): string;
+  }
+  declare export class AgentsClient mixins v2$AgentsClient {}
+  declare export class ContextsClient mixins v2$ContextsClient {}
+  declare export class EntityTypesClient mixins v2$EntityTypesClient {}
+  declare export class IntentsClient mixins v2$IntentsClient {}
   declare export class SessionEntityTypesClient
-    mixins v2$v2$SessionEntityTypesClient {}
-  declare export class SessionsClient mixins v2$v2$SessionsClient {}
+    mixins v2$SessionEntityTypesClient {}
+  declare export class SessionsClient mixins v2$SessionsClient {}
+  declare interface entities$DateTimeVariants$DateTime {
+    date_time: string;
+  }
+
+  declare interface entities$DateTimeVariants$DateTimePeriod {
+    startDateTime: entities$DateTimeVariants$DateTime;
+    endDateTime: entities$DateTimeVariants$DateTime;
+  }
+
+  declare interface entities$DateTimeVariants$DatePeriod {
+    startDate: entities$Date;
+    endDate: entities$Date;
+  }
+
+  declare interface entities$DateTimeVariants$TimePeriod {
+    startTime: string;
+    endTime: string;
+  }
+
+  declare type entities$DateTime =
+    | string
+    | entities$DateTimeVariants$DatePeriod
+    | entities$DateTimeVariants$TimePeriod
+    | entities$DateTimeVariants$DateTime
+    | entities$DateTimeVariants$DateTimePeriod;
+
+  declare interface entities$Duration {
+    unit: string;
+    amount: number;
+  }
+
+  declare type entities$Date = string;
+
+  declare type entities$Time = string;
+  declare interface gax$BackoffSettings {
+    initialRetryDelayMillis: number;
+    retryDelayMultiplier: number;
+    maxRetryDelayMillis: number;
+    initialRpcTimeoutMillis: number;
+    maxRpcTimeoutMillis: number;
+    totalTimeoutMillis: number;
+  }
+
+  declare interface gax$RetryOptions {
+    retryCodes: string[];
+    backoffSettings: gax$BackoffSettings;
+  }
+
+  declare interface gax$CallOptions {
+    timeout?: number;
+    retry?: gax$RetryOptions;
+    autoPaginate?: boolean;
+    pageToken?: any;
+    isBundling?: boolean;
+    longrunning?: gax$BackoffSettings;
+    promise?: PromiseConstructor;
+  }
+
+  declare interface gax$Operation {
+    grpcOp: longrunning$Operation;
+    longrunningDescriptor: any;
+    backoffSettings: gax$BackoffSettings;
+    callOptions?: gax$CallOptions;
+  }
+  declare type longrunning$Operation =
+    | longrunning$UnfinishedOperation
+    | longrunning$FailedOperation
+    | longrunning$SuccessfulOperation;
+
+  declare interface longrunning$BaseOperation {
+    name: string;
+    metadata: any;
+    done: boolean;
+  }
+
+  declare type longrunning$UnfinishedOperation = {
+    done: false
+  } & longrunning$BaseOperation;
+
+  declare type longrunning$FailedOperation = {
+    done: true,
+    error: longrunning$Status
+  } & longrunning$BaseOperation;
+
+  declare type longrunning$SuccessfulOperation = {
+    done: true,
+    response: any
+  } & longrunning$BaseOperation;
+
+  declare interface longrunning$Status {
+    code: number;
+    message: string;
+    details: any[];
+  }
   declare export interface GetAgentRequest {
     parent: string;
   }
@@ -403,10 +421,10 @@ declare module "dialogflow" {
   }
   declare export interface CreateContextReqeust {
     parent: string;
-    context: Context;
+    context: Context<>;
   }
   declare export interface UpdateContextRequest {
-    context: Context;
+    context: Context<>;
     updatemask?: any;
   }
   declare export interface DeleteContextRequest {
@@ -465,25 +483,25 @@ declare module "dialogflow" {
   declare export interface ListIntentsRequest {
     parent: string;
     languageCode?: string;
-    intentView?: IntentView;
+    intentView?: $Values<typeof IntentView>;
     pageSize?: number;
   }
   declare export interface GetIntentRequest {
     name: string;
     languageCode?: string;
-    intentView?: IntentView;
+    intentView?: $Values<typeof IntentView>;
   }
   declare export interface CreateIntentRequest {
     parent: string;
     intent: Intent;
     languageCode?: string;
-    intentView?: IntentView;
+    intentView?: $Values<typeof IntentView>;
   }
   declare export interface UpdateIntentRequest {
     intent: Intent;
     languageCode?: string;
     updateMask?: any;
-    intentView?: IntentView;
+    intentView?: $Values<typeof IntentView>;
   }
   declare export interface DeleteIntentRequest {
     name: string;
@@ -510,7 +528,7 @@ declare module "dialogflow" {
     fulfillmentMessages: Message[];
     webhookSource: string;
     webhookPayload: any;
-    outputContexts: Context[];
+    outputContexts: Context<>[];
     intent: Intent;
     intentDetectionConfidence: number;
     sentimentAnalysisResult?: {
@@ -522,70 +540,30 @@ declare module "dialogflow" {
     diagnosticInfo: any;
   }
   declare export interface Status {
-    code: StatusCode;
+    code: $Values<typeof StatusCode>;
     message: string;
     details: any[];
   }
-  declare export class StatusCode {
-    constructor(...args: empty): mixed;
-    static +OK: Class<StatusCode__OK> & StatusCode__OK & 0; // 0
-    static +CANCELLED: Class<StatusCode__CANCELLED> & StatusCode__CANCELLED & 1; // 1
-    static +UNKNOWN: Class<StatusCode__UNKNOWN> & StatusCode__UNKNOWN & 2; // 2
-    static +INVALID_ARGUMENT: Class<StatusCode__INVALID_ARGUMENT> &
-      StatusCode__INVALID_ARGUMENT &
-      3; // 3
-    static +DEADLINE_EXCEEDED: Class<StatusCode__DEADLINE_EXCEEDED> &
-      StatusCode__DEADLINE_EXCEEDED &
-      4; // 4
-    static +NOT_FOUND: Class<StatusCode__NOT_FOUND> & StatusCode__NOT_FOUND & 5; // 5
-    static +ALREADY_EXISTS: Class<StatusCode__ALREADY_EXISTS> &
-      StatusCode__ALREADY_EXISTS &
-      6; // 6
-    static +PERMISSION_DENIED: Class<StatusCode__PERMISSION_DENIED> &
-      StatusCode__PERMISSION_DENIED &
-      7; // 7
-    static +UNAUTHENTICATED: Class<StatusCode__UNAUTHENTICATED> &
-      StatusCode__UNAUTHENTICATED &
-      16; // 16
-    static +RESOURCE_EXHAUSTED: Class<StatusCode__RESOURCE_EXHAUSTED> &
-      StatusCode__RESOURCE_EXHAUSTED &
-      8; // 8
-    static +FAILED_PRECONDITION: Class<StatusCode__FAILED_PRECONDITION> &
-      StatusCode__FAILED_PRECONDITION &
-      9; // 9
-    static +ABORTED: Class<StatusCode__ABORTED> & StatusCode__ABORTED & 10; // 10
-    static +OUT_OF_RANGE: Class<StatusCode__OUT_OF_RANGE> &
-      StatusCode__OUT_OF_RANGE &
-      11; // 11
-    static +UNIMPLEMENTED: Class<StatusCode__UNIMPLEMENTED> &
-      StatusCode__UNIMPLEMENTED &
-      12; // 12
-    static +INTERNAL: Class<StatusCode__INTERNAL> & StatusCode__INTERNAL & 13; // 13
-    static +UNAVAILABLE: Class<StatusCode__UNAVAILABLE> &
-      StatusCode__UNAVAILABLE &
-      14; // 14
-    static +DATA_LOSS: Class<StatusCode__DATA_LOSS> &
-      StatusCode__DATA_LOSS &
-      15; // 15
-  }
 
-  declare class StatusCode__OK mixins StatusCode {}
-  declare class StatusCode__CANCELLED mixins StatusCode {}
-  declare class StatusCode__UNKNOWN mixins StatusCode {}
-  declare class StatusCode__INVALID_ARGUMENT mixins StatusCode {}
-  declare class StatusCode__DEADLINE_EXCEEDED mixins StatusCode {}
-  declare class StatusCode__NOT_FOUND mixins StatusCode {}
-  declare class StatusCode__ALREADY_EXISTS mixins StatusCode {}
-  declare class StatusCode__PERMISSION_DENIED mixins StatusCode {}
-  declare class StatusCode__UNAUTHENTICATED mixins StatusCode {}
-  declare class StatusCode__RESOURCE_EXHAUSTED mixins StatusCode {}
-  declare class StatusCode__FAILED_PRECONDITION mixins StatusCode {}
-  declare class StatusCode__ABORTED mixins StatusCode {}
-  declare class StatusCode__OUT_OF_RANGE mixins StatusCode {}
-  declare class StatusCode__UNIMPLEMENTED mixins StatusCode {}
-  declare class StatusCode__INTERNAL mixins StatusCode {}
-  declare class StatusCode__UNAVAILABLE mixins StatusCode {}
-  declare class StatusCode__DATA_LOSS mixins StatusCode {}
+  declare export var StatusCode: {|
+    +OK: 0, // 0
+    +CANCELLED: 1, // 1
+    +UNKNOWN: 2, // 2
+    +INVALID_ARGUMENT: 3, // 3
+    +DEADLINE_EXCEEDED: 4, // 4
+    +NOT_FOUND: 5, // 5
+    +ALREADY_EXISTS: 6, // 6
+    +PERMISSION_DENIED: 7, // 7
+    +UNAUTHENTICATED: 16, // 16
+    +RESOURCE_EXHAUSTED: 8, // 8
+    +FAILED_PRECONDITION: 9, // 9
+    +ABORTED: 10, // 10
+    +OUT_OF_RANGE: 11, // 11
+    +UNIMPLEMENTED: 12, // 12
+    +INTERNAL: 13, // 13
+    +UNAVAILABLE: 14, // 14
+    +DATA_LOSS: 15 // 15
+  |};
 
   declare export interface Agent {
     parent: string;
@@ -596,7 +574,7 @@ declare module "dialogflow" {
     description?: string;
     avatarUri?: string;
     enableLogging?: boolean;
-    matchMode?: MatchMode;
+    matchMode?: $Values<typeof MatchMode>;
     classificationThreshold?: number;
   }
   declare export interface Context<N = string, T = any> {
@@ -608,25 +586,15 @@ declare module "dialogflow" {
     name: string;
     entities: EntitySynonyms[];
     displayName: string;
-    kind: EntityKind;
-    autoExpansionMode: EntityAutoExpansionMode;
-  }
-  declare export class MatchMode {
-    constructor(...args: empty): mixed;
-    static +MATCH_MODE_UNSPECIFIED: Class<MatchMode__MATCH_MODE_UNSPECIFIED> &
-      MatchMode__MATCH_MODE_UNSPECIFIED &
-      "MATCH_MODE_UNSPECIFIED"; // "MATCH_MODE_UNSPECIFIED"
-    static +MATCH_MODE_HYBRID: Class<MatchMode__MATCH_MODE_HYBRID> &
-      MatchMode__MATCH_MODE_HYBRID &
-      "MATCH_MODE_HYBRID"; // "MATCH_MODE_HYBRID"
-    static +MATCH_MODE_ML_ONLY: Class<MatchMode__MATCH_MODE_ML_ONLY> &
-      MatchMode__MATCH_MODE_ML_ONLY &
-      "MATCH_MODE_ML_ONLY"; // "MATCH_MODE_ML_ONLY"
+    kind: $Values<typeof EntityKind>;
+    autoExpansionMode: $Values<typeof EntityAutoExpansionMode>;
   }
 
-  declare class MatchMode__MATCH_MODE_UNSPECIFIED mixins MatchMode {}
-  declare class MatchMode__MATCH_MODE_HYBRID mixins MatchMode {}
-  declare class MatchMode__MATCH_MODE_ML_ONLY mixins MatchMode {}
+  declare export var MatchMode: {|
+    +MATCH_MODE_UNSPECIFIED: "MATCH_MODE_UNSPECIFIED", // "MATCH_MODE_UNSPECIFIED"
+    +MATCH_MODE_HYBRID: "MATCH_MODE_HYBRID", // "MATCH_MODE_HYBRID"
+    +MATCH_MODE_ML_ONLY: "MATCH_MODE_ML_ONLY" // "MATCH_MODE_ML_ONLY"
+  |};
 
   declare export interface Credentials {
     client_email: string;
@@ -645,46 +613,21 @@ declare module "dialogflow" {
     synonyms: string[];
     value: string;
   }
-  declare export class EntityKind {
-    constructor(...args: empty): mixed;
-    static +KIND_MAP: Class<EntityKind__KIND_MAP> &
-      EntityKind__KIND_MAP &
-      "KIND_MAP"; // "KIND_MAP"
-    static +KIND_LIST: Class<EntityKind__KIND_LIST> &
-      EntityKind__KIND_LIST &
-      "KIND_LIST"; // "KIND_LIST"
-  }
 
-  declare class EntityKind__KIND_MAP mixins EntityKind {}
-  declare class EntityKind__KIND_LIST mixins EntityKind {}
+  declare export var EntityKind: {|
+    +KIND_MAP: "KIND_MAP", // "KIND_MAP"
+    +KIND_LIST: "KIND_LIST" // "KIND_LIST"
+  |};
 
-  declare export class EntityAutoExpansionMode {
-    constructor(...args: empty): mixed;
-    static +AUTO_EXPANSION_MODE_DEFAULT: Class<EntityAutoExpansionMode__AUTO_EXPANSION_MODE_DEFAULT> &
-      EntityAutoExpansionMode__AUTO_EXPANSION_MODE_DEFAULT &
-      "AUTO_EXPANSION_MODE_DEFAULT"; // "AUTO_EXPANSION_MODE_DEFAULT"
-    static +AUTO_EXPANSION_MODE_UNSPECIFIED: Class<EntityAutoExpansionMode__AUTO_EXPANSION_MODE_UNSPECIFIED> &
-      EntityAutoExpansionMode__AUTO_EXPANSION_MODE_UNSPECIFIED &
-      "AUTO_EXPANSION_MODE_UNSPECIFIED"; // "AUTO_EXPANSION_MODE_UNSPECIFIED"
-  }
+  declare export var EntityAutoExpansionMode: {|
+    +AUTO_EXPANSION_MODE_DEFAULT: "AUTO_EXPANSION_MODE_DEFAULT", // "AUTO_EXPANSION_MODE_DEFAULT"
+    +AUTO_EXPANSION_MODE_UNSPECIFIED: "AUTO_EXPANSION_MODE_UNSPECIFIED" // "AUTO_EXPANSION_MODE_UNSPECIFIED"
+  |};
 
-  declare class EntityAutoExpansionMode__AUTO_EXPANSION_MODE_DEFAULT
-    mixins EntityAutoExpansionMode {}
-  declare class EntityAutoExpansionMode__AUTO_EXPANSION_MODE_UNSPECIFIED
-    mixins EntityAutoExpansionMode {}
-
-  declare export class IntentView {
-    constructor(...args: empty): mixed;
-    static +INTENT_VIEW_UNSPECIFIED: Class<IntentView__INTENT_VIEW_UNSPECIFIED> &
-      IntentView__INTENT_VIEW_UNSPECIFIED &
-      "INTENT_VIEW_UNSPECIFIED"; // "INTENT_VIEW_UNSPECIFIED"
-    static +INTENT_VIEW_FULL: Class<IntentView__INTENT_VIEW_FULL> &
-      IntentView__INTENT_VIEW_FULL &
-      "INTENT_VIEW_FULL"; // "INTENT_VIEW_FULL"
-  }
-
-  declare class IntentView__INTENT_VIEW_UNSPECIFIED mixins IntentView {}
-  declare class IntentView__INTENT_VIEW_FULL mixins IntentView {}
+  declare export var IntentView: {|
+    +INTENT_VIEW_UNSPECIFIED: "INTENT_VIEW_UNSPECIFIED", // "INTENT_VIEW_UNSPECIFIED"
+    +INTENT_VIEW_FULL: "INTENT_VIEW_FULL" // "INTENT_VIEW_FULL"
+  |};
 
   declare export interface Intent {
     name: string;
@@ -697,7 +640,7 @@ declare module "dialogflow" {
     events?: string[];
     trainingPhrases?: TrainingPhrase[];
     action?: string;
-    outputContexts?: Context[];
+    outputContexts?: Context<>[];
     resetContexts?: boolean;
     parameters?: Parameter[];
     messages?: Message[];
@@ -767,7 +710,7 @@ declare module "dialogflow" {
   declare export interface QueryParams {
     timeZone?: string;
     geoLocation?: LatLong;
-    contexts?: Context[];
+    contexts?: Context<>[];
     resetContexts?: boolean;
     sessionEntityTypes?: SessionEntityType[];
     payload?: any;
@@ -796,7 +739,7 @@ declare module "dialogflow" {
     fulfillmentMessages?: Message[];
     source?: string;
     payload?: any;
-    outputContexts?: Context[];
+    outputContexts?: Context<>[];
     followupEventInput?: EventInput;
   }
 }
