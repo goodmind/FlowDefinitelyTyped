@@ -4,13 +4,13 @@ declare module "eslint-scope" {
   import typeof * as estree from "estree";
 
   declare export var version: string;
-  declare export class ScopeManager mixins undefined.ScopeManager {
+  declare export class ScopeManager mixins eslint.Scope.ScopeManager {
     scopes: Scope[];
     globalScope: Scope;
     acquire(node: {}, inner?: boolean): Scope | null;
     getDeclaredVariables(node: {}): Variable[];
   }
-  declare export class Scope mixins undefined.Scope {
+  declare export class Scope mixins eslint.Scope.Scope {
     type:
       | "block"
       | "catch"
@@ -34,13 +34,13 @@ declare module "eslint-scope" {
     through: Reference[];
     functionExpressionScope: boolean;
   }
-  declare export class Variable mixins undefined.Variable {
+  declare export class Variable mixins eslint.Scope.Variable {
     name: string;
     identifiers: estree.Identifier[];
     references: Reference[];
     defs: eslint.Scope.Definition[];
   }
-  declare export class Reference mixins undefined.Reference {
+  declare export class Reference mixins eslint.Scope.Reference {
     identifier: estree.Identifier;
     from: Scope;
     resolved: Variable | null;
