@@ -10,8 +10,8 @@ declare module "redux-infinite-scroll" {
     loader?: any;
     showLoader?: boolean;
     loadMore(): void;
-    items?: JSX.Element[];
-    children?: JSX.Element[];
+    items?: React$Node[];
+    children?: React$Node[];
     holderType?: string;
   }
   declare class InfiniteScoller
