@@ -1,4749 +1,1544 @@
 declare module "activex-outlook" {
-  declare class Outlook$OlAccountType {
-    constructor(...args: empty): mixed;
-    static +olExchange: Class<Outlook$OlAccountType__olExchange> &
-      Outlook$OlAccountType__olExchange &
-      0; // 0
-    static +olHttp: Class<Outlook$OlAccountType__olHttp> &
-      Outlook$OlAccountType__olHttp &
-      3; // 3
-    static +olImap: Class<Outlook$OlAccountType__olImap> &
-      Outlook$OlAccountType__olImap &
-      1; // 1
-    static +olOtherAccount: Class<Outlook$OlAccountType__olOtherAccount> &
-      Outlook$OlAccountType__olOtherAccount &
-      5; // 5
-    static +olPop3: Class<Outlook$OlAccountType__olPop3> &
-      Outlook$OlAccountType__olPop3 &
-      2; // 2
-  }
-
-  declare class Outlook$OlAccountType__olExchange
-    mixins Outlook$OlAccountType {}
-  declare class Outlook$OlAccountType__olHttp mixins Outlook$OlAccountType {}
-  declare class Outlook$OlAccountType__olImap mixins Outlook$OlAccountType {}
-  declare class Outlook$OlAccountType__olOtherAccount
-    mixins Outlook$OlAccountType {}
-  declare class Outlook$OlAccountType__olPop3 mixins Outlook$OlAccountType {}
-
-  declare class Outlook$OlActionCopyLike {
-    constructor(...args: empty): mixed;
-    static +olForward: Class<Outlook$OlActionCopyLike__olForward> &
-      Outlook$OlActionCopyLike__olForward &
-      2; // 2
-    static +olReply: Class<Outlook$OlActionCopyLike__olReply> &
-      Outlook$OlActionCopyLike__olReply &
-      0; // 0
-    static +olReplyAll: Class<Outlook$OlActionCopyLike__olReplyAll> &
-      Outlook$OlActionCopyLike__olReplyAll &
-      1; // 1
-    static +olReplyFolder: Class<Outlook$OlActionCopyLike__olReplyFolder> &
-      Outlook$OlActionCopyLike__olReplyFolder &
-      3; // 3
-    static +olRespond: Class<Outlook$OlActionCopyLike__olRespond> &
-      Outlook$OlActionCopyLike__olRespond &
-      4; // 4
-  }
-
-  declare class Outlook$OlActionCopyLike__olForward
-    mixins Outlook$OlActionCopyLike {}
-  declare class Outlook$OlActionCopyLike__olReply
-    mixins Outlook$OlActionCopyLike {}
-  declare class Outlook$OlActionCopyLike__olReplyAll
-    mixins Outlook$OlActionCopyLike {}
-  declare class Outlook$OlActionCopyLike__olReplyFolder
-    mixins Outlook$OlActionCopyLike {}
-  declare class Outlook$OlActionCopyLike__olRespond
-    mixins Outlook$OlActionCopyLike {}
-
-  declare class Outlook$OlActionReplyStyle {
-    constructor(...args: empty): mixed;
-    static +olEmbedOriginalItem: Class<Outlook$OlActionReplyStyle__olEmbedOriginalItem> &
-      Outlook$OlActionReplyStyle__olEmbedOriginalItem &
-      1; // 1
-    static +olIncludeOriginalText: Class<Outlook$OlActionReplyStyle__olIncludeOriginalText> &
-      Outlook$OlActionReplyStyle__olIncludeOriginalText &
-      2; // 2
-    static +olIndentOriginalText: Class<Outlook$OlActionReplyStyle__olIndentOriginalText> &
-      Outlook$OlActionReplyStyle__olIndentOriginalText &
-      3; // 3
-    static +olLinkOriginalItem: Class<Outlook$OlActionReplyStyle__olLinkOriginalItem> &
-      Outlook$OlActionReplyStyle__olLinkOriginalItem &
-      4; // 4
-    static +olOmitOriginalText: Class<Outlook$OlActionReplyStyle__olOmitOriginalText> &
-      Outlook$OlActionReplyStyle__olOmitOriginalText &
-      0; // 0
-    static +olReplyTickOriginalText: Class<Outlook$OlActionReplyStyle__olReplyTickOriginalText> &
-      Outlook$OlActionReplyStyle__olReplyTickOriginalText &
-      1000; // 1000
-    static +olUserPreference: Class<Outlook$OlActionReplyStyle__olUserPreference> &
-      Outlook$OlActionReplyStyle__olUserPreference &
-      5; // 5
-  }
-
-  declare class Outlook$OlActionReplyStyle__olEmbedOriginalItem
-    mixins Outlook$OlActionReplyStyle {}
-  declare class Outlook$OlActionReplyStyle__olIncludeOriginalText
-    mixins Outlook$OlActionReplyStyle {}
-  declare class Outlook$OlActionReplyStyle__olIndentOriginalText
-    mixins Outlook$OlActionReplyStyle {}
-  declare class Outlook$OlActionReplyStyle__olLinkOriginalItem
-    mixins Outlook$OlActionReplyStyle {}
-  declare class Outlook$OlActionReplyStyle__olOmitOriginalText
-    mixins Outlook$OlActionReplyStyle {}
-  declare class Outlook$OlActionReplyStyle__olReplyTickOriginalText
-    mixins Outlook$OlActionReplyStyle {}
-  declare class Outlook$OlActionReplyStyle__olUserPreference
-    mixins Outlook$OlActionReplyStyle {}
-
-  declare class Outlook$OlActionResponseStyle {
-    constructor(...args: empty): mixed;
-    static +olOpen: Class<Outlook$OlActionResponseStyle__olOpen> &
-      Outlook$OlActionResponseStyle__olOpen &
-      0; // 0
-    static +olPrompt: Class<Outlook$OlActionResponseStyle__olPrompt> &
-      Outlook$OlActionResponseStyle__olPrompt &
-      2; // 2
-    static +olSend: Class<Outlook$OlActionResponseStyle__olSend> &
-      Outlook$OlActionResponseStyle__olSend &
-      1; // 1
-  }
-
-  declare class Outlook$OlActionResponseStyle__olOpen
-    mixins Outlook$OlActionResponseStyle {}
-  declare class Outlook$OlActionResponseStyle__olPrompt
-    mixins Outlook$OlActionResponseStyle {}
-  declare class Outlook$OlActionResponseStyle__olSend
-    mixins Outlook$OlActionResponseStyle {}
-
-  declare class Outlook$OlActionShowOn {
-    constructor(...args: empty): mixed;
-    static +olDontShow: Class<Outlook$OlActionShowOn__olDontShow> &
-      Outlook$OlActionShowOn__olDontShow &
-      0; // 0
-    static +olMenu: Class<Outlook$OlActionShowOn__olMenu> &
-      Outlook$OlActionShowOn__olMenu &
-      1; // 1
-    static +olMenuAndToolbar: Class<Outlook$OlActionShowOn__olMenuAndToolbar> &
-      Outlook$OlActionShowOn__olMenuAndToolbar &
-      2; // 2
-  }
-
-  declare class Outlook$OlActionShowOn__olDontShow
-    mixins Outlook$OlActionShowOn {}
-  declare class Outlook$OlActionShowOn__olMenu mixins Outlook$OlActionShowOn {}
-  declare class Outlook$OlActionShowOn__olMenuAndToolbar
-    mixins Outlook$OlActionShowOn {}
-
-  declare class Outlook$OlAddressEntryUserType {
-    constructor(...args: empty): mixed;
-    static +olExchangeAgentAddressEntry: Class<Outlook$OlAddressEntryUserType__olExchangeAgentAddressEntry> &
-      Outlook$OlAddressEntryUserType__olExchangeAgentAddressEntry &
-      3; // 3
-    static +olExchangeDistributionListAddressEntry: Class<Outlook$OlAddressEntryUserType__olExchangeDistributionListAddressEntry> &
-      Outlook$OlAddressEntryUserType__olExchangeDistributionListAddressEntry &
-      1; // 1
-    static +olExchangeOrganizationAddressEntry: Class<Outlook$OlAddressEntryUserType__olExchangeOrganizationAddressEntry> &
-      Outlook$OlAddressEntryUserType__olExchangeOrganizationAddressEntry &
-      4; // 4
-    static +olExchangePublicFolderAddressEntry: Class<Outlook$OlAddressEntryUserType__olExchangePublicFolderAddressEntry> &
-      Outlook$OlAddressEntryUserType__olExchangePublicFolderAddressEntry &
-      2; // 2
-    static +olExchangeRemoteUserAddressEntry: Class<Outlook$OlAddressEntryUserType__olExchangeRemoteUserAddressEntry> &
-      Outlook$OlAddressEntryUserType__olExchangeRemoteUserAddressEntry &
-      5; // 5
-    static +olExchangeUserAddressEntry: Class<Outlook$OlAddressEntryUserType__olExchangeUserAddressEntry> &
-      Outlook$OlAddressEntryUserType__olExchangeUserAddressEntry &
-      0; // 0
-    static +olLdapAddressEntry: Class<Outlook$OlAddressEntryUserType__olLdapAddressEntry> &
-      Outlook$OlAddressEntryUserType__olLdapAddressEntry &
-      20; // 20
-    static +olOtherAddressEntry: Class<Outlook$OlAddressEntryUserType__olOtherAddressEntry> &
-      Outlook$OlAddressEntryUserType__olOtherAddressEntry &
-      40; // 40
-    static +olOutlookContactAddressEntry: Class<Outlook$OlAddressEntryUserType__olOutlookContactAddressEntry> &
-      Outlook$OlAddressEntryUserType__olOutlookContactAddressEntry &
-      10; // 10
-    static +olOutlookDistributionListAddressEntry: Class<Outlook$OlAddressEntryUserType__olOutlookDistributionListAddressEntry> &
-      Outlook$OlAddressEntryUserType__olOutlookDistributionListAddressEntry &
-      11; // 11
-    static +olSmtpAddressEntry: Class<Outlook$OlAddressEntryUserType__olSmtpAddressEntry> &
-      Outlook$OlAddressEntryUserType__olSmtpAddressEntry &
-      30; // 30
-  }
-
-  declare class Outlook$OlAddressEntryUserType__olExchangeAgentAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olExchangeDistributionListAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olExchangeOrganizationAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olExchangePublicFolderAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olExchangeRemoteUserAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olExchangeUserAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olLdapAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olOtherAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olOutlookContactAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olOutlookDistributionListAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-  declare class Outlook$OlAddressEntryUserType__olSmtpAddressEntry
-    mixins Outlook$OlAddressEntryUserType {}
-
-  declare class Outlook$OlAddressListType {
-    constructor(...args: empty): mixed;
-    static +olCustomAddressList: Class<Outlook$OlAddressListType__olCustomAddressList> &
-      Outlook$OlAddressListType__olCustomAddressList &
-      4; // 4
-    static +olExchangeContainer: Class<Outlook$OlAddressListType__olExchangeContainer> &
-      Outlook$OlAddressListType__olExchangeContainer &
-      1; // 1
-    static +olExchangeGlobalAddressList: Class<Outlook$OlAddressListType__olExchangeGlobalAddressList> &
-      Outlook$OlAddressListType__olExchangeGlobalAddressList &
-      0; // 0
-    static +olOutlookAddressList: Class<Outlook$OlAddressListType__olOutlookAddressList> &
-      Outlook$OlAddressListType__olOutlookAddressList &
-      2; // 2
-    static +olOutlookLdapAddressList: Class<Outlook$OlAddressListType__olOutlookLdapAddressList> &
-      Outlook$OlAddressListType__olOutlookLdapAddressList &
-      3; // 3
-  }
-
-  declare class Outlook$OlAddressListType__olCustomAddressList
-    mixins Outlook$OlAddressListType {}
-  declare class Outlook$OlAddressListType__olExchangeContainer
-    mixins Outlook$OlAddressListType {}
-  declare class Outlook$OlAddressListType__olExchangeGlobalAddressList
-    mixins Outlook$OlAddressListType {}
-  declare class Outlook$OlAddressListType__olOutlookAddressList
-    mixins Outlook$OlAddressListType {}
-  declare class Outlook$OlAddressListType__olOutlookLdapAddressList
-    mixins Outlook$OlAddressListType {}
-
-  declare class Outlook$OlAlign {
-    constructor(...args: empty): mixed;
-    static +olAlignCenter: Class<Outlook$OlAlign__olAlignCenter> &
-      Outlook$OlAlign__olAlignCenter &
-      1; // 1
-    static +olAlignLeft: Class<Outlook$OlAlign__olAlignLeft> &
-      Outlook$OlAlign__olAlignLeft &
-      0; // 0
-    static +olAlignRight: Class<Outlook$OlAlign__olAlignRight> &
-      Outlook$OlAlign__olAlignRight &
-      2; // 2
-  }
-
-  declare class Outlook$OlAlign__olAlignCenter mixins Outlook$OlAlign {}
-  declare class Outlook$OlAlign__olAlignLeft mixins Outlook$OlAlign {}
-  declare class Outlook$OlAlign__olAlignRight mixins Outlook$OlAlign {}
-
-  declare class Outlook$OlAlignment {
-    constructor(...args: empty): mixed;
-    static +olAlignmentLeft: Class<Outlook$OlAlignment__olAlignmentLeft> &
-      Outlook$OlAlignment__olAlignmentLeft &
-      0; // 0
-    static +olAlignmentRight: Class<Outlook$OlAlignment__olAlignmentRight> &
-      Outlook$OlAlignment__olAlignmentRight &
-      1; // 1
-  }
-
-  declare class Outlook$OlAlignment__olAlignmentLeft
-    mixins Outlook$OlAlignment {}
-  declare class Outlook$OlAlignment__olAlignmentRight
-    mixins Outlook$OlAlignment {}
-
-  declare class Outlook$OlAlwaysDeleteConversation {
-    constructor(...args: empty): mixed;
-    static +olAlwaysDelete: Class<Outlook$OlAlwaysDeleteConversation__olAlwaysDelete> &
-      Outlook$OlAlwaysDeleteConversation__olAlwaysDelete &
-      1; // 1
-    static +olAlwaysDeleteUnsupported: Class<Outlook$OlAlwaysDeleteConversation__olAlwaysDeleteUnsupported> &
-      Outlook$OlAlwaysDeleteConversation__olAlwaysDeleteUnsupported &
-      2; // 2
-    static +olDoNotDelete: Class<Outlook$OlAlwaysDeleteConversation__olDoNotDelete> &
-      Outlook$OlAlwaysDeleteConversation__olDoNotDelete &
-      0; // 0
-  }
-
-  declare class Outlook$OlAlwaysDeleteConversation__olAlwaysDelete
-    mixins Outlook$OlAlwaysDeleteConversation {}
-  declare class Outlook$OlAlwaysDeleteConversation__olAlwaysDeleteUnsupported
-    mixins Outlook$OlAlwaysDeleteConversation {}
-  declare class Outlook$OlAlwaysDeleteConversation__olDoNotDelete
-    mixins Outlook$OlAlwaysDeleteConversation {}
-
-  declare class Outlook$OlAppointmentCopyOptions {
-    constructor(...args: empty): mixed;
-    static +olCopyAsAccept: Class<Outlook$OlAppointmentCopyOptions__olCopyAsAccept> &
-      Outlook$OlAppointmentCopyOptions__olCopyAsAccept &
-      2; // 2
-    static +olCreateAppointment: Class<Outlook$OlAppointmentCopyOptions__olCreateAppointment> &
-      Outlook$OlAppointmentCopyOptions__olCreateAppointment &
-      1; // 1
-    static +olPromptUser: Class<Outlook$OlAppointmentCopyOptions__olPromptUser> &
-      Outlook$OlAppointmentCopyOptions__olPromptUser &
-      0; // 0
-  }
-
-  declare class Outlook$OlAppointmentCopyOptions__olCopyAsAccept
-    mixins Outlook$OlAppointmentCopyOptions {}
-  declare class Outlook$OlAppointmentCopyOptions__olCreateAppointment
-    mixins Outlook$OlAppointmentCopyOptions {}
-  declare class Outlook$OlAppointmentCopyOptions__olPromptUser
-    mixins Outlook$OlAppointmentCopyOptions {}
-
-  declare class Outlook$OlAppointmentTimeField {
-    constructor(...args: empty): mixed;
-    static +olAppointmentTimeFieldEnd: Class<Outlook$OlAppointmentTimeField__olAppointmentTimeFieldEnd> &
-      Outlook$OlAppointmentTimeField__olAppointmentTimeFieldEnd &
-      3; // 3
-    static +olAppointmentTimeFieldNone: Class<Outlook$OlAppointmentTimeField__olAppointmentTimeFieldNone> &
-      Outlook$OlAppointmentTimeField__olAppointmentTimeFieldNone &
-      1; // 1
-    static +olAppointmentTimeFieldStart: Class<Outlook$OlAppointmentTimeField__olAppointmentTimeFieldStart> &
-      Outlook$OlAppointmentTimeField__olAppointmentTimeFieldStart &
-      2; // 2
-  }
-
-  declare class Outlook$OlAppointmentTimeField__olAppointmentTimeFieldEnd
-    mixins Outlook$OlAppointmentTimeField {}
-  declare class Outlook$OlAppointmentTimeField__olAppointmentTimeFieldNone
-    mixins Outlook$OlAppointmentTimeField {}
-  declare class Outlook$OlAppointmentTimeField__olAppointmentTimeFieldStart
-    mixins Outlook$OlAppointmentTimeField {}
-
-  declare class Outlook$OlAttachmentBlockLevel {
-    constructor(...args: empty): mixed;
-    static +olAttachmentBlockLevelNone: Class<Outlook$OlAttachmentBlockLevel__olAttachmentBlockLevelNone> &
-      Outlook$OlAttachmentBlockLevel__olAttachmentBlockLevelNone &
-      0; // 0
-    static +olAttachmentBlockLevelOpen: Class<Outlook$OlAttachmentBlockLevel__olAttachmentBlockLevelOpen> &
-      Outlook$OlAttachmentBlockLevel__olAttachmentBlockLevelOpen &
-      1; // 1
-  }
-
-  declare class Outlook$OlAttachmentBlockLevel__olAttachmentBlockLevelNone
-    mixins Outlook$OlAttachmentBlockLevel {}
-  declare class Outlook$OlAttachmentBlockLevel__olAttachmentBlockLevelOpen
-    mixins Outlook$OlAttachmentBlockLevel {}
-
-  declare class Outlook$OlAttachmentType {
-    constructor(...args: empty): mixed;
-    static +olByReference: Class<Outlook$OlAttachmentType__olByReference> &
-      Outlook$OlAttachmentType__olByReference &
-      4; // 4
-    static +olByValue: Class<Outlook$OlAttachmentType__olByValue> &
-      Outlook$OlAttachmentType__olByValue &
-      1; // 1
-    static +olEmbeddeditem: Class<Outlook$OlAttachmentType__olEmbeddeditem> &
-      Outlook$OlAttachmentType__olEmbeddeditem &
-      5; // 5
-    static +olOLE: Class<Outlook$OlAttachmentType__olOLE> &
-      Outlook$OlAttachmentType__olOLE &
-      6; // 6
-  }
-
-  declare class Outlook$OlAttachmentType__olByReference
-    mixins Outlook$OlAttachmentType {}
-  declare class Outlook$OlAttachmentType__olByValue
-    mixins Outlook$OlAttachmentType {}
-  declare class Outlook$OlAttachmentType__olEmbeddeditem
-    mixins Outlook$OlAttachmentType {}
-  declare class Outlook$OlAttachmentType__olOLE
-    mixins Outlook$OlAttachmentType {}
-
-  declare class Outlook$OlAutoDiscoverConnectionMode {
-    constructor(...args: empty): mixed;
-    static +olAutoDiscoverConnectionExternal: Class<Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionExternal> &
-      Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionExternal &
-      1; // 1
-    static +olAutoDiscoverConnectionInternal: Class<Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionInternal> &
-      Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionInternal &
-      2; // 2
-    static +olAutoDiscoverConnectionInternalDomain: Class<Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionInternalDomain> &
-      Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionInternalDomain &
-      3; // 3
-    static +olAutoDiscoverConnectionUnknown: Class<Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionUnknown> &
-      Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionUnknown &
-      0; // 0
-  }
-
-  declare class Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionExternal
-    mixins Outlook$OlAutoDiscoverConnectionMode {}
-  declare class Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionInternal
-    mixins Outlook$OlAutoDiscoverConnectionMode {}
-  declare class Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionInternalDomain
-    mixins Outlook$OlAutoDiscoverConnectionMode {}
-  declare class Outlook$OlAutoDiscoverConnectionMode__olAutoDiscoverConnectionUnknown
-    mixins Outlook$OlAutoDiscoverConnectionMode {}
-
-  declare class Outlook$OlAutoPreview {
-    constructor(...args: empty): mixed;
-    static +olAutoPreviewAll: Class<Outlook$OlAutoPreview__olAutoPreviewAll> &
-      Outlook$OlAutoPreview__olAutoPreviewAll &
-      0; // 0
-    static +olAutoPreviewNone: Class<Outlook$OlAutoPreview__olAutoPreviewNone> &
-      Outlook$OlAutoPreview__olAutoPreviewNone &
-      2; // 2
-    static +olAutoPreviewUnread: Class<Outlook$OlAutoPreview__olAutoPreviewUnread> &
-      Outlook$OlAutoPreview__olAutoPreviewUnread &
-      1; // 1
-  }
-
-  declare class Outlook$OlAutoPreview__olAutoPreviewAll
-    mixins Outlook$OlAutoPreview {}
-  declare class Outlook$OlAutoPreview__olAutoPreviewNone
-    mixins Outlook$OlAutoPreview {}
-  declare class Outlook$OlAutoPreview__olAutoPreviewUnread
-    mixins Outlook$OlAutoPreview {}
-
-  declare class Outlook$OlBackStyle {
-    constructor(...args: empty): mixed;
-    static +olBackStyleOpaque: Class<Outlook$OlBackStyle__olBackStyleOpaque> &
-      Outlook$OlBackStyle__olBackStyleOpaque &
-      1; // 1
-    static +olBackStyleTransparent: Class<Outlook$OlBackStyle__olBackStyleTransparent> &
-      Outlook$OlBackStyle__olBackStyleTransparent &
-      0; // 0
-  }
-
-  declare class Outlook$OlBackStyle__olBackStyleOpaque
-    mixins Outlook$OlBackStyle {}
-  declare class Outlook$OlBackStyle__olBackStyleTransparent
-    mixins Outlook$OlBackStyle {}
-
-  declare class Outlook$OlBodyFormat {
-    constructor(...args: empty): mixed;
-    static +olFormatHTML: Class<Outlook$OlBodyFormat__olFormatHTML> &
-      Outlook$OlBodyFormat__olFormatHTML &
-      2; // 2
-    static +olFormatPlain: Class<Outlook$OlBodyFormat__olFormatPlain> &
-      Outlook$OlBodyFormat__olFormatPlain &
-      1; // 1
-    static +olFormatRichText: Class<Outlook$OlBodyFormat__olFormatRichText> &
-      Outlook$OlBodyFormat__olFormatRichText &
-      3; // 3
-    static +olFormatUnspecified: Class<Outlook$OlBodyFormat__olFormatUnspecified> &
-      Outlook$OlBodyFormat__olFormatUnspecified &
-      0; // 0
-  }
-
-  declare class Outlook$OlBodyFormat__olFormatHTML
-    mixins Outlook$OlBodyFormat {}
-  declare class Outlook$OlBodyFormat__olFormatPlain
-    mixins Outlook$OlBodyFormat {}
-  declare class Outlook$OlBodyFormat__olFormatRichText
-    mixins Outlook$OlBodyFormat {}
-  declare class Outlook$OlBodyFormat__olFormatUnspecified
-    mixins Outlook$OlBodyFormat {}
-
-  declare class Outlook$OlBorderStyle {
-    constructor(...args: empty): mixed;
-    static +olBorderStyleNone: Class<Outlook$OlBorderStyle__olBorderStyleNone> &
-      Outlook$OlBorderStyle__olBorderStyleNone &
-      0; // 0
-    static +olBorderStyleSingle: Class<Outlook$OlBorderStyle__olBorderStyleSingle> &
-      Outlook$OlBorderStyle__olBorderStyleSingle &
-      1; // 1
-  }
-
-  declare class Outlook$OlBorderStyle__olBorderStyleNone
-    mixins Outlook$OlBorderStyle {}
-  declare class Outlook$OlBorderStyle__olBorderStyleSingle
-    mixins Outlook$OlBorderStyle {}
-
-  declare class Outlook$OlBusinessCardType {
-    constructor(...args: empty): mixed;
-    static +olBusinessCardTypeInterConnect: Class<Outlook$OlBusinessCardType__olBusinessCardTypeInterConnect> &
-      Outlook$OlBusinessCardType__olBusinessCardTypeInterConnect &
-      1; // 1
-    static +olBusinessCardTypeOutlook: Class<Outlook$OlBusinessCardType__olBusinessCardTypeOutlook> &
-      Outlook$OlBusinessCardType__olBusinessCardTypeOutlook &
-      0; // 0
-  }
-
-  declare class Outlook$OlBusinessCardType__olBusinessCardTypeInterConnect
-    mixins Outlook$OlBusinessCardType {}
-  declare class Outlook$OlBusinessCardType__olBusinessCardTypeOutlook
-    mixins Outlook$OlBusinessCardType {}
-
-  declare class Outlook$OlBusyStatus {
-    constructor(...args: empty): mixed;
-    static +olBusy: Class<Outlook$OlBusyStatus__olBusy> &
-      Outlook$OlBusyStatus__olBusy &
-      2; // 2
-    static +olFree: Class<Outlook$OlBusyStatus__olFree> &
-      Outlook$OlBusyStatus__olFree &
-      0; // 0
-    static +olOutOfOffice: Class<Outlook$OlBusyStatus__olOutOfOffice> &
-      Outlook$OlBusyStatus__olOutOfOffice &
-      3; // 3
-    static +olTentative: Class<Outlook$OlBusyStatus__olTentative> &
-      Outlook$OlBusyStatus__olTentative &
-      1; // 1
-  }
-
-  declare class Outlook$OlBusyStatus__olBusy mixins Outlook$OlBusyStatus {}
-  declare class Outlook$OlBusyStatus__olFree mixins Outlook$OlBusyStatus {}
-  declare class Outlook$OlBusyStatus__olOutOfOffice
-    mixins Outlook$OlBusyStatus {}
-  declare class Outlook$OlBusyStatus__olTentative mixins Outlook$OlBusyStatus {}
-
-  declare class Outlook$OlCalendarDetail {
-    constructor(...args: empty): mixed;
-    static +olFreeBusyAndSubject: Class<Outlook$OlCalendarDetail__olFreeBusyAndSubject> &
-      Outlook$OlCalendarDetail__olFreeBusyAndSubject &
-      1; // 1
-    static +olFreeBusyOnly: Class<Outlook$OlCalendarDetail__olFreeBusyOnly> &
-      Outlook$OlCalendarDetail__olFreeBusyOnly &
-      0; // 0
-    static +olFullDetails: Class<Outlook$OlCalendarDetail__olFullDetails> &
-      Outlook$OlCalendarDetail__olFullDetails &
-      2; // 2
-  }
-
-  declare class Outlook$OlCalendarDetail__olFreeBusyAndSubject
-    mixins Outlook$OlCalendarDetail {}
-  declare class Outlook$OlCalendarDetail__olFreeBusyOnly
-    mixins Outlook$OlCalendarDetail {}
-  declare class Outlook$OlCalendarDetail__olFullDetails
-    mixins Outlook$OlCalendarDetail {}
-
-  declare class Outlook$OlCalendarMailFormat {
-    constructor(...args: empty): mixed;
-    static +olCalendarMailFormatDailySchedule: Class<Outlook$OlCalendarMailFormat__olCalendarMailFormatDailySchedule> &
-      Outlook$OlCalendarMailFormat__olCalendarMailFormatDailySchedule &
-      0; // 0
-    static +olCalendarMailFormatEventList: Class<Outlook$OlCalendarMailFormat__olCalendarMailFormatEventList> &
-      Outlook$OlCalendarMailFormat__olCalendarMailFormatEventList &
-      1; // 1
-  }
-
-  declare class Outlook$OlCalendarMailFormat__olCalendarMailFormatDailySchedule
-    mixins Outlook$OlCalendarMailFormat {}
-  declare class Outlook$OlCalendarMailFormat__olCalendarMailFormatEventList
-    mixins Outlook$OlCalendarMailFormat {}
-
-  declare class Outlook$OlCalendarViewMode {
-    constructor(...args: empty): mixed;
-    static +olCalendarView5DayWeek: Class<Outlook$OlCalendarViewMode__olCalendarView5DayWeek> &
-      Outlook$OlCalendarViewMode__olCalendarView5DayWeek &
-      4; // 4
-    static +olCalendarViewDay: Class<Outlook$OlCalendarViewMode__olCalendarViewDay> &
-      Outlook$OlCalendarViewMode__olCalendarViewDay &
-      0; // 0
-    static +olCalendarViewMonth: Class<Outlook$OlCalendarViewMode__olCalendarViewMonth> &
-      Outlook$OlCalendarViewMode__olCalendarViewMonth &
-      2; // 2
-    static +olCalendarViewMultiDay: Class<Outlook$OlCalendarViewMode__olCalendarViewMultiDay> &
-      Outlook$OlCalendarViewMode__olCalendarViewMultiDay &
-      3; // 3
-    static +olCalendarViewWeek: Class<Outlook$OlCalendarViewMode__olCalendarViewWeek> &
-      Outlook$OlCalendarViewMode__olCalendarViewWeek &
-      1; // 1
-  }
-
-  declare class Outlook$OlCalendarViewMode__olCalendarView5DayWeek
-    mixins Outlook$OlCalendarViewMode {}
-  declare class Outlook$OlCalendarViewMode__olCalendarViewDay
-    mixins Outlook$OlCalendarViewMode {}
-  declare class Outlook$OlCalendarViewMode__olCalendarViewMonth
-    mixins Outlook$OlCalendarViewMode {}
-  declare class Outlook$OlCalendarViewMode__olCalendarViewMultiDay
-    mixins Outlook$OlCalendarViewMode {}
-  declare class Outlook$OlCalendarViewMode__olCalendarViewWeek
-    mixins Outlook$OlCalendarViewMode {}
-
-  declare class Outlook$OlCategoryColor {
-    constructor(...args: empty): mixed;
-    static +olCategoryColorBlack: Class<Outlook$OlCategoryColor__olCategoryColorBlack> &
-      Outlook$OlCategoryColor__olCategoryColorBlack &
-      15; // 15
-    static +olCategoryColorBlue: Class<Outlook$OlCategoryColor__olCategoryColorBlue> &
-      Outlook$OlCategoryColor__olCategoryColorBlue &
-      8; // 8
-    static +olCategoryColorDarkBlue: Class<Outlook$OlCategoryColor__olCategoryColorDarkBlue> &
-      Outlook$OlCategoryColor__olCategoryColorDarkBlue &
-      23; // 23
-    static +olCategoryColorDarkGray: Class<Outlook$OlCategoryColor__olCategoryColorDarkGray> &
-      Outlook$OlCategoryColor__olCategoryColorDarkGray &
-      14; // 14
-    static +olCategoryColorDarkGreen: Class<Outlook$OlCategoryColor__olCategoryColorDarkGreen> &
-      Outlook$OlCategoryColor__olCategoryColorDarkGreen &
-      20; // 20
-    static +olCategoryColorDarkMaroon: Class<Outlook$OlCategoryColor__olCategoryColorDarkMaroon> &
-      Outlook$OlCategoryColor__olCategoryColorDarkMaroon &
-      25; // 25
-    static +olCategoryColorDarkOlive: Class<Outlook$OlCategoryColor__olCategoryColorDarkOlive> &
-      Outlook$OlCategoryColor__olCategoryColorDarkOlive &
-      22; // 22
-    static +olCategoryColorDarkOrange: Class<Outlook$OlCategoryColor__olCategoryColorDarkOrange> &
-      Outlook$OlCategoryColor__olCategoryColorDarkOrange &
-      17; // 17
-    static +olCategoryColorDarkPeach: Class<Outlook$OlCategoryColor__olCategoryColorDarkPeach> &
-      Outlook$OlCategoryColor__olCategoryColorDarkPeach &
-      18; // 18
-    static +olCategoryColorDarkPurple: Class<Outlook$OlCategoryColor__olCategoryColorDarkPurple> &
-      Outlook$OlCategoryColor__olCategoryColorDarkPurple &
-      24; // 24
-    static +olCategoryColorDarkRed: Class<Outlook$OlCategoryColor__olCategoryColorDarkRed> &
-      Outlook$OlCategoryColor__olCategoryColorDarkRed &
-      16; // 16
-    static +olCategoryColorDarkSteel: Class<Outlook$OlCategoryColor__olCategoryColorDarkSteel> &
-      Outlook$OlCategoryColor__olCategoryColorDarkSteel &
-      12; // 12
-    static +olCategoryColorDarkTeal: Class<Outlook$OlCategoryColor__olCategoryColorDarkTeal> &
-      Outlook$OlCategoryColor__olCategoryColorDarkTeal &
-      21; // 21
-    static +olCategoryColorDarkYellow: Class<Outlook$OlCategoryColor__olCategoryColorDarkYellow> &
-      Outlook$OlCategoryColor__olCategoryColorDarkYellow &
-      19; // 19
-    static +olCategoryColorGray: Class<Outlook$OlCategoryColor__olCategoryColorGray> &
-      Outlook$OlCategoryColor__olCategoryColorGray &
-      13; // 13
-    static +olCategoryColorGreen: Class<Outlook$OlCategoryColor__olCategoryColorGreen> &
-      Outlook$OlCategoryColor__olCategoryColorGreen &
-      5; // 5
-    static +olCategoryColorMaroon: Class<Outlook$OlCategoryColor__olCategoryColorMaroon> &
-      Outlook$OlCategoryColor__olCategoryColorMaroon &
-      10; // 10
-    static +olCategoryColorNone: Class<Outlook$OlCategoryColor__olCategoryColorNone> &
-      Outlook$OlCategoryColor__olCategoryColorNone &
-      0; // 0
-    static +olCategoryColorOlive: Class<Outlook$OlCategoryColor__olCategoryColorOlive> &
-      Outlook$OlCategoryColor__olCategoryColorOlive &
-      7; // 7
-    static +olCategoryColorOrange: Class<Outlook$OlCategoryColor__olCategoryColorOrange> &
-      Outlook$OlCategoryColor__olCategoryColorOrange &
-      2; // 2
-    static +olCategoryColorPeach: Class<Outlook$OlCategoryColor__olCategoryColorPeach> &
-      Outlook$OlCategoryColor__olCategoryColorPeach &
-      3; // 3
-    static +olCategoryColorPurple: Class<Outlook$OlCategoryColor__olCategoryColorPurple> &
-      Outlook$OlCategoryColor__olCategoryColorPurple &
-      9; // 9
-    static +olCategoryColorRed: Class<Outlook$OlCategoryColor__olCategoryColorRed> &
-      Outlook$OlCategoryColor__olCategoryColorRed &
-      1; // 1
-    static +olCategoryColorSteel: Class<Outlook$OlCategoryColor__olCategoryColorSteel> &
-      Outlook$OlCategoryColor__olCategoryColorSteel &
-      11; // 11
-    static +olCategoryColorTeal: Class<Outlook$OlCategoryColor__olCategoryColorTeal> &
-      Outlook$OlCategoryColor__olCategoryColorTeal &
-      6; // 6
-    static +olCategoryColorYellow: Class<Outlook$OlCategoryColor__olCategoryColorYellow> &
-      Outlook$OlCategoryColor__olCategoryColorYellow &
-      4; // 4
-  }
-
-  declare class Outlook$OlCategoryColor__olCategoryColorBlack
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorBlue
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkBlue
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkGray
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkGreen
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkMaroon
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkOlive
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkOrange
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkPeach
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkPurple
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkRed
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkSteel
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkTeal
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorDarkYellow
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorGray
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorGreen
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorMaroon
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorNone
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorOlive
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorOrange
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorPeach
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorPurple
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorRed
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorSteel
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorTeal
-    mixins Outlook$OlCategoryColor {}
-  declare class Outlook$OlCategoryColor__olCategoryColorYellow
-    mixins Outlook$OlCategoryColor {}
-
-  declare class Outlook$OlCategoryShortcutKey {
-    constructor(...args: empty): mixed;
-    static +olCategoryShortcutKeyCtrlF10: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF10> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF10 &
-      9; // 9
-    static +olCategoryShortcutKeyCtrlF11: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF11> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF11 &
-      10; // 10
-    static +olCategoryShortcutKeyCtrlF12: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF12> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF12 &
-      11; // 11
-    static +olCategoryShortcutKeyCtrlF2: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF2> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF2 &
-      1; // 1
-    static +olCategoryShortcutKeyCtrlF3: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF3> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF3 &
-      2; // 2
-    static +olCategoryShortcutKeyCtrlF4: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF4> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF4 &
-      3; // 3
-    static +olCategoryShortcutKeyCtrlF5: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF5> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF5 &
-      4; // 4
-    static +olCategoryShortcutKeyCtrlF6: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF6> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF6 &
-      5; // 5
-    static +olCategoryShortcutKeyCtrlF7: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF7> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF7 &
-      6; // 6
-    static +olCategoryShortcutKeyCtrlF8: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF8> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF8 &
-      7; // 7
-    static +olCategoryShortcutKeyCtrlF9: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF9> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF9 &
-      8; // 8
-    static +olCategoryShortcutKeyNone: Class<Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyNone> &
-      Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyNone &
-      0; // 0
-  }
-
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF10
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF11
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF12
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF2
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF3
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF4
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF5
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF6
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF7
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF8
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyCtrlF9
-    mixins Outlook$OlCategoryShortcutKey {}
-  declare class Outlook$OlCategoryShortcutKey__olCategoryShortcutKeyNone
-    mixins Outlook$OlCategoryShortcutKey {}
-
-  declare class Outlook$OlColor {
-    constructor(...args: empty): mixed;
-    static +olAutoColor: Class<Outlook$OlColor__olAutoColor> &
-      Outlook$OlColor__olAutoColor &
-      0; // 0
-    static +olColorAqua: Class<Outlook$OlColor__olColorAqua> &
-      Outlook$OlColor__olColorAqua &
-      15; // 15
-    static +olColorBlack: Class<Outlook$OlColor__olColorBlack> &
-      Outlook$OlColor__olColorBlack &
-      1; // 1
-    static +olColorBlue: Class<Outlook$OlColor__olColorBlue> &
-      Outlook$OlColor__olColorBlue &
-      13; // 13
-    static +olColorFuchsia: Class<Outlook$OlColor__olColorFuchsia> &
-      Outlook$OlColor__olColorFuchsia &
-      14; // 14
-    static +olColorGray: Class<Outlook$OlColor__olColorGray> &
-      Outlook$OlColor__olColorGray &
-      8; // 8
-    static +olColorGreen: Class<Outlook$OlColor__olColorGreen> &
-      Outlook$OlColor__olColorGreen &
-      3; // 3
-    static +olColorLime: Class<Outlook$OlColor__olColorLime> &
-      Outlook$OlColor__olColorLime &
-      11; // 11
-    static +olColorMaroon: Class<Outlook$OlColor__olColorMaroon> &
-      Outlook$OlColor__olColorMaroon &
-      2; // 2
-    static +olColorNavy: Class<Outlook$OlColor__olColorNavy> &
-      Outlook$OlColor__olColorNavy &
-      5; // 5
-    static +olColorOlive: Class<Outlook$OlColor__olColorOlive> &
-      Outlook$OlColor__olColorOlive &
-      4; // 4
-    static +olColorPurple: Class<Outlook$OlColor__olColorPurple> &
-      Outlook$OlColor__olColorPurple &
-      6; // 6
-    static +olColorRed: Class<Outlook$OlColor__olColorRed> &
-      Outlook$OlColor__olColorRed &
-      10; // 10
-    static +olColorSilver: Class<Outlook$OlColor__olColorSilver> &
-      Outlook$OlColor__olColorSilver &
-      9; // 9
-    static +olColorTeal: Class<Outlook$OlColor__olColorTeal> &
-      Outlook$OlColor__olColorTeal &
-      7; // 7
-    static +olColorWhite: Class<Outlook$OlColor__olColorWhite> &
-      Outlook$OlColor__olColorWhite &
-      16; // 16
-    static +olColorYellow: Class<Outlook$OlColor__olColorYellow> &
-      Outlook$OlColor__olColorYellow &
-      12; // 12
-  }
-
-  declare class Outlook$OlColor__olAutoColor mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorAqua mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorBlack mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorBlue mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorFuchsia mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorGray mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorGreen mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorLime mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorMaroon mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorNavy mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorOlive mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorPurple mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorRed mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorSilver mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorTeal mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorWhite mixins Outlook$OlColor {}
-  declare class Outlook$OlColor__olColorYellow mixins Outlook$OlColor {}
-
-  declare class Outlook$OlComboBoxStyle {
-    constructor(...args: empty): mixed;
-    static +olComboBoxStyleCombo: Class<Outlook$OlComboBoxStyle__olComboBoxStyleCombo> &
-      Outlook$OlComboBoxStyle__olComboBoxStyleCombo &
-      0; // 0
-    static +olComboBoxStyleList: Class<Outlook$OlComboBoxStyle__olComboBoxStyleList> &
-      Outlook$OlComboBoxStyle__olComboBoxStyleList &
-      2; // 2
-  }
-
-  declare class Outlook$OlComboBoxStyle__olComboBoxStyleCombo
-    mixins Outlook$OlComboBoxStyle {}
-  declare class Outlook$OlComboBoxStyle__olComboBoxStyleList
-    mixins Outlook$OlComboBoxStyle {}
-
-  declare class Outlook$OlContactPhoneNumber {
-    constructor(...args: empty): mixed;
-    static +olContactPhoneAssistant: Class<Outlook$OlContactPhoneNumber__olContactPhoneAssistant> &
-      Outlook$OlContactPhoneNumber__olContactPhoneAssistant &
-      0; // 0
-    static +olContactPhoneBusiness: Class<Outlook$OlContactPhoneNumber__olContactPhoneBusiness> &
-      Outlook$OlContactPhoneNumber__olContactPhoneBusiness &
-      1; // 1
-    static +olContactPhoneBusiness2: Class<Outlook$OlContactPhoneNumber__olContactPhoneBusiness2> &
-      Outlook$OlContactPhoneNumber__olContactPhoneBusiness2 &
-      2; // 2
-    static +olContactPhoneBusinessFax: Class<Outlook$OlContactPhoneNumber__olContactPhoneBusinessFax> &
-      Outlook$OlContactPhoneNumber__olContactPhoneBusinessFax &
-      3; // 3
-    static +olContactPhoneCallback: Class<Outlook$OlContactPhoneNumber__olContactPhoneCallback> &
-      Outlook$OlContactPhoneNumber__olContactPhoneCallback &
-      4; // 4
-    static +olContactPhoneCar: Class<Outlook$OlContactPhoneNumber__olContactPhoneCar> &
-      Outlook$OlContactPhoneNumber__olContactPhoneCar &
-      5; // 5
-    static +olContactPhoneCompany: Class<Outlook$OlContactPhoneNumber__olContactPhoneCompany> &
-      Outlook$OlContactPhoneNumber__olContactPhoneCompany &
-      6; // 6
-    static +olContactPhoneHome: Class<Outlook$OlContactPhoneNumber__olContactPhoneHome> &
-      Outlook$OlContactPhoneNumber__olContactPhoneHome &
-      7; // 7
-    static +olContactPhoneHome2: Class<Outlook$OlContactPhoneNumber__olContactPhoneHome2> &
-      Outlook$OlContactPhoneNumber__olContactPhoneHome2 &
-      8; // 8
-    static +olContactPhoneHomeFax: Class<Outlook$OlContactPhoneNumber__olContactPhoneHomeFax> &
-      Outlook$OlContactPhoneNumber__olContactPhoneHomeFax &
-      9; // 9
-    static +olContactPhoneISDN: Class<Outlook$OlContactPhoneNumber__olContactPhoneISDN> &
-      Outlook$OlContactPhoneNumber__olContactPhoneISDN &
-      10; // 10
-    static +olContactPhoneMobile: Class<Outlook$OlContactPhoneNumber__olContactPhoneMobile> &
-      Outlook$OlContactPhoneNumber__olContactPhoneMobile &
-      11; // 11
-    static +olContactPhoneOther: Class<Outlook$OlContactPhoneNumber__olContactPhoneOther> &
-      Outlook$OlContactPhoneNumber__olContactPhoneOther &
-      12; // 12
-    static +olContactPhoneOtherFax: Class<Outlook$OlContactPhoneNumber__olContactPhoneOtherFax> &
-      Outlook$OlContactPhoneNumber__olContactPhoneOtherFax &
-      13; // 13
-    static +olContactPhonePager: Class<Outlook$OlContactPhoneNumber__olContactPhonePager> &
-      Outlook$OlContactPhoneNumber__olContactPhonePager &
-      14; // 14
-    static +olContactPhonePrimary: Class<Outlook$OlContactPhoneNumber__olContactPhonePrimary> &
-      Outlook$OlContactPhoneNumber__olContactPhonePrimary &
-      15; // 15
-    static +olContactPhoneRadio: Class<Outlook$OlContactPhoneNumber__olContactPhoneRadio> &
-      Outlook$OlContactPhoneNumber__olContactPhoneRadio &
-      16; // 16
-    static +olContactPhoneTelex: Class<Outlook$OlContactPhoneNumber__olContactPhoneTelex> &
-      Outlook$OlContactPhoneNumber__olContactPhoneTelex &
-      17; // 17
-    static +olContactPhoneTTYTTD: Class<Outlook$OlContactPhoneNumber__olContactPhoneTTYTTD> &
-      Outlook$OlContactPhoneNumber__olContactPhoneTTYTTD &
-      18; // 18
-  }
-
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneAssistant
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneBusiness
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneBusiness2
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneBusinessFax
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneCallback
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneCar
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneCompany
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneHome
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneHome2
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneHomeFax
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneISDN
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneMobile
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneOther
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneOtherFax
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhonePager
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhonePrimary
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneRadio
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneTelex
-    mixins Outlook$OlContactPhoneNumber {}
-  declare class Outlook$OlContactPhoneNumber__olContactPhoneTTYTTD
-    mixins Outlook$OlContactPhoneNumber {}
-
-  declare class Outlook$OlContextMenu {
-    constructor(...args: empty): mixed;
-    static +olAttachmentContextMenu: Class<Outlook$OlContextMenu__olAttachmentContextMenu> &
-      Outlook$OlContextMenu__olAttachmentContextMenu &
-      3; // 3
-    static +olFolderContextMenu: Class<Outlook$OlContextMenu__olFolderContextMenu> &
-      Outlook$OlContextMenu__olFolderContextMenu &
-      2; // 2
-    static +olItemContextMenu: Class<Outlook$OlContextMenu__olItemContextMenu> &
-      Outlook$OlContextMenu__olItemContextMenu &
-      0; // 0
-    static +olShortcutContextMenu: Class<Outlook$OlContextMenu__olShortcutContextMenu> &
-      Outlook$OlContextMenu__olShortcutContextMenu &
-      5; // 5
-    static +olStoreContextMenu: Class<Outlook$OlContextMenu__olStoreContextMenu> &
-      Outlook$OlContextMenu__olStoreContextMenu &
-      4; // 4
-    static +olViewContextMenu: Class<Outlook$OlContextMenu__olViewContextMenu> &
-      Outlook$OlContextMenu__olViewContextMenu &
-      1; // 1
-  }
-
-  declare class Outlook$OlContextMenu__olAttachmentContextMenu
-    mixins Outlook$OlContextMenu {}
-  declare class Outlook$OlContextMenu__olFolderContextMenu
-    mixins Outlook$OlContextMenu {}
-  declare class Outlook$OlContextMenu__olItemContextMenu
-    mixins Outlook$OlContextMenu {}
-  declare class Outlook$OlContextMenu__olShortcutContextMenu
-    mixins Outlook$OlContextMenu {}
-  declare class Outlook$OlContextMenu__olStoreContextMenu
-    mixins Outlook$OlContextMenu {}
-  declare class Outlook$OlContextMenu__olViewContextMenu
-    mixins Outlook$OlContextMenu {}
-
-  declare class Outlook$OlDaysOfWeek {
-    constructor(...args: empty): mixed;
-    static +olFriday: Class<Outlook$OlDaysOfWeek__olFriday> &
-      Outlook$OlDaysOfWeek__olFriday &
-      32; // 32
-    static +olMonday: Class<Outlook$OlDaysOfWeek__olMonday> &
-      Outlook$OlDaysOfWeek__olMonday &
-      2; // 2
-    static +olSaturday: Class<Outlook$OlDaysOfWeek__olSaturday> &
-      Outlook$OlDaysOfWeek__olSaturday &
-      64; // 64
-    static +olSunday: Class<Outlook$OlDaysOfWeek__olSunday> &
-      Outlook$OlDaysOfWeek__olSunday &
-      1; // 1
-    static +olThursday: Class<Outlook$OlDaysOfWeek__olThursday> &
-      Outlook$OlDaysOfWeek__olThursday &
-      16; // 16
-    static +olTuesday: Class<Outlook$OlDaysOfWeek__olTuesday> &
-      Outlook$OlDaysOfWeek__olTuesday &
-      4; // 4
-    static +olWednesday: Class<Outlook$OlDaysOfWeek__olWednesday> &
-      Outlook$OlDaysOfWeek__olWednesday &
-      8; // 8
-  }
-
-  declare class Outlook$OlDaysOfWeek__olFriday mixins Outlook$OlDaysOfWeek {}
-  declare class Outlook$OlDaysOfWeek__olMonday mixins Outlook$OlDaysOfWeek {}
-  declare class Outlook$OlDaysOfWeek__olSaturday mixins Outlook$OlDaysOfWeek {}
-  declare class Outlook$OlDaysOfWeek__olSunday mixins Outlook$OlDaysOfWeek {}
-  declare class Outlook$OlDaysOfWeek__olThursday mixins Outlook$OlDaysOfWeek {}
-  declare class Outlook$OlDaysOfWeek__olTuesday mixins Outlook$OlDaysOfWeek {}
-  declare class Outlook$OlDaysOfWeek__olWednesday mixins Outlook$OlDaysOfWeek {}
-
-  declare class Outlook$OlDayWeekTimeScale {
-    constructor(...args: empty): mixed;
-    static +olTimeScale10Minutes: Class<Outlook$OlDayWeekTimeScale__olTimeScale10Minutes> &
-      Outlook$OlDayWeekTimeScale__olTimeScale10Minutes &
-      2; // 2
-    static +olTimeScale15Minutes: Class<Outlook$OlDayWeekTimeScale__olTimeScale15Minutes> &
-      Outlook$OlDayWeekTimeScale__olTimeScale15Minutes &
-      3; // 3
-    static +olTimeScale30Minutes: Class<Outlook$OlDayWeekTimeScale__olTimeScale30Minutes> &
-      Outlook$OlDayWeekTimeScale__olTimeScale30Minutes &
-      4; // 4
-    static +olTimeScale5Minutes: Class<Outlook$OlDayWeekTimeScale__olTimeScale5Minutes> &
-      Outlook$OlDayWeekTimeScale__olTimeScale5Minutes &
-      0; // 0
-    static +olTimeScale60Minutes: Class<Outlook$OlDayWeekTimeScale__olTimeScale60Minutes> &
-      Outlook$OlDayWeekTimeScale__olTimeScale60Minutes &
-      5; // 5
-    static +olTimeScale6Minutes: Class<Outlook$OlDayWeekTimeScale__olTimeScale6Minutes> &
-      Outlook$OlDayWeekTimeScale__olTimeScale6Minutes &
-      1; // 1
-  }
-
-  declare class Outlook$OlDayWeekTimeScale__olTimeScale10Minutes
-    mixins Outlook$OlDayWeekTimeScale {}
-  declare class Outlook$OlDayWeekTimeScale__olTimeScale15Minutes
-    mixins Outlook$OlDayWeekTimeScale {}
-  declare class Outlook$OlDayWeekTimeScale__olTimeScale30Minutes
-    mixins Outlook$OlDayWeekTimeScale {}
-  declare class Outlook$OlDayWeekTimeScale__olTimeScale5Minutes
-    mixins Outlook$OlDayWeekTimeScale {}
-  declare class Outlook$OlDayWeekTimeScale__olTimeScale60Minutes
-    mixins Outlook$OlDayWeekTimeScale {}
-  declare class Outlook$OlDayWeekTimeScale__olTimeScale6Minutes
-    mixins Outlook$OlDayWeekTimeScale {}
-
-  declare class Outlook$OlDefaultExpandCollapseSetting {
-    constructor(...args: empty): mixed;
-    static +olAllCollapsed: Class<Outlook$OlDefaultExpandCollapseSetting__olAllCollapsed> &
-      Outlook$OlDefaultExpandCollapseSetting__olAllCollapsed &
-      1; // 1
-    static +olAllExpanded: Class<Outlook$OlDefaultExpandCollapseSetting__olAllExpanded> &
-      Outlook$OlDefaultExpandCollapseSetting__olAllExpanded &
-      0; // 0
-    static +olLastViewed: Class<Outlook$OlDefaultExpandCollapseSetting__olLastViewed> &
-      Outlook$OlDefaultExpandCollapseSetting__olLastViewed &
-      2; // 2
-  }
-
-  declare class Outlook$OlDefaultExpandCollapseSetting__olAllCollapsed
-    mixins Outlook$OlDefaultExpandCollapseSetting {}
-  declare class Outlook$OlDefaultExpandCollapseSetting__olAllExpanded
-    mixins Outlook$OlDefaultExpandCollapseSetting {}
-  declare class Outlook$OlDefaultExpandCollapseSetting__olLastViewed
-    mixins Outlook$OlDefaultExpandCollapseSetting {}
-
-  declare class Outlook$OlDefaultFolders {
-    constructor(...args: empty): mixed;
-    static +olFolderCalendar: Class<Outlook$OlDefaultFolders__olFolderCalendar> &
-      Outlook$OlDefaultFolders__olFolderCalendar &
-      9; // 9
-    static +olFolderConflicts: Class<Outlook$OlDefaultFolders__olFolderConflicts> &
-      Outlook$OlDefaultFolders__olFolderConflicts &
-      19; // 19
-    static +olFolderContacts: Class<Outlook$OlDefaultFolders__olFolderContacts> &
-      Outlook$OlDefaultFolders__olFolderContacts &
-      10; // 10
-    static +olFolderDeletedItems: Class<Outlook$OlDefaultFolders__olFolderDeletedItems> &
-      Outlook$OlDefaultFolders__olFolderDeletedItems &
-      3; // 3
-    static +olFolderDrafts: Class<Outlook$OlDefaultFolders__olFolderDrafts> &
-      Outlook$OlDefaultFolders__olFolderDrafts &
-      16; // 16
-    static +olFolderInbox: Class<Outlook$OlDefaultFolders__olFolderInbox> &
-      Outlook$OlDefaultFolders__olFolderInbox &
-      6; // 6
-    static +olFolderJournal: Class<Outlook$OlDefaultFolders__olFolderJournal> &
-      Outlook$OlDefaultFolders__olFolderJournal &
-      11; // 11
-    static +olFolderJunk: Class<Outlook$OlDefaultFolders__olFolderJunk> &
-      Outlook$OlDefaultFolders__olFolderJunk &
-      23; // 23
-    static +olFolderLocalFailures: Class<Outlook$OlDefaultFolders__olFolderLocalFailures> &
-      Outlook$OlDefaultFolders__olFolderLocalFailures &
-      21; // 21
-    static +olFolderManagedEmail: Class<Outlook$OlDefaultFolders__olFolderManagedEmail> &
-      Outlook$OlDefaultFolders__olFolderManagedEmail &
-      29; // 29
-    static +olFolderNotes: Class<Outlook$OlDefaultFolders__olFolderNotes> &
-      Outlook$OlDefaultFolders__olFolderNotes &
-      12; // 12
-    static +olFolderOutbox: Class<Outlook$OlDefaultFolders__olFolderOutbox> &
-      Outlook$OlDefaultFolders__olFolderOutbox &
-      4; // 4
-    static +olFolderRssFeeds: Class<Outlook$OlDefaultFolders__olFolderRssFeeds> &
-      Outlook$OlDefaultFolders__olFolderRssFeeds &
-      25; // 25
-    static +olFolderSentMail: Class<Outlook$OlDefaultFolders__olFolderSentMail> &
-      Outlook$OlDefaultFolders__olFolderSentMail &
-      5; // 5
-    static +olFolderServerFailures: Class<Outlook$OlDefaultFolders__olFolderServerFailures> &
-      Outlook$OlDefaultFolders__olFolderServerFailures &
-      22; // 22
-    static +olFolderSuggestedContacts: Class<Outlook$OlDefaultFolders__olFolderSuggestedContacts> &
-      Outlook$OlDefaultFolders__olFolderSuggestedContacts &
-      30; // 30
-    static +olFolderSyncIssues: Class<Outlook$OlDefaultFolders__olFolderSyncIssues> &
-      Outlook$OlDefaultFolders__olFolderSyncIssues &
-      20; // 20
-    static +olFolderTasks: Class<Outlook$OlDefaultFolders__olFolderTasks> &
-      Outlook$OlDefaultFolders__olFolderTasks &
-      13; // 13
-    static +olFolderToDo: Class<Outlook$OlDefaultFolders__olFolderToDo> &
-      Outlook$OlDefaultFolders__olFolderToDo &
-      28; // 28
-    static +olPublicFoldersAllPublicFolders: Class<Outlook$OlDefaultFolders__olPublicFoldersAllPublicFolders> &
-      Outlook$OlDefaultFolders__olPublicFoldersAllPublicFolders &
-      18; // 18
-  }
-
-  declare class Outlook$OlDefaultFolders__olFolderCalendar
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderConflicts
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderContacts
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderDeletedItems
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderDrafts
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderInbox
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderJournal
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderJunk
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderLocalFailures
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderManagedEmail
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderNotes
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderOutbox
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderRssFeeds
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderSentMail
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderServerFailures
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderSuggestedContacts
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderSyncIssues
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderTasks
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olFolderToDo
-    mixins Outlook$OlDefaultFolders {}
-  declare class Outlook$OlDefaultFolders__olPublicFoldersAllPublicFolders
-    mixins Outlook$OlDefaultFolders {}
-
-  declare class Outlook$OlDefaultSelectNamesDisplayMode {
-    constructor(...args: empty): mixed;
-    static +olDefaultDelegates: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultDelegates> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultDelegates &
-      6; // 6
-    static +olDefaultMail: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMail> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMail &
-      1; // 1
-    static +olDefaultMeeting: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMeeting> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMeeting &
-      2; // 2
-    static +olDefaultMembers: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMembers> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMembers &
-      5; // 5
-    static +olDefaultPickRooms: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultPickRooms> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultPickRooms &
-      8; // 8
-    static +olDefaultSharingRequest: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultSharingRequest> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultSharingRequest &
-      4; // 4
-    static +olDefaultSingleName: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultSingleName> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultSingleName &
-      7; // 7
-    static +olDefaultTask: Class<Outlook$OlDefaultSelectNamesDisplayMode__olDefaultTask> &
-      Outlook$OlDefaultSelectNamesDisplayMode__olDefaultTask &
-      3; // 3
-  }
-
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultDelegates
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMail
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMeeting
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultMembers
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultPickRooms
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultSharingRequest
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultSingleName
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-  declare class Outlook$OlDefaultSelectNamesDisplayMode__olDefaultTask
-    mixins Outlook$OlDefaultSelectNamesDisplayMode {}
-
-  declare class Outlook$OlDisplayType {
-    constructor(...args: empty): mixed;
-    static +olAgent: Class<Outlook$OlDisplayType__olAgent> &
-      Outlook$OlDisplayType__olAgent &
-      3; // 3
-    static +olDistList: Class<Outlook$OlDisplayType__olDistList> &
-      Outlook$OlDisplayType__olDistList &
-      1; // 1
-    static +olForum: Class<Outlook$OlDisplayType__olForum> &
-      Outlook$OlDisplayType__olForum &
-      2; // 2
-    static +olOrganization: Class<Outlook$OlDisplayType__olOrganization> &
-      Outlook$OlDisplayType__olOrganization &
-      4; // 4
-    static +olPrivateDistList: Class<Outlook$OlDisplayType__olPrivateDistList> &
-      Outlook$OlDisplayType__olPrivateDistList &
-      5; // 5
-    static +olRemoteUser: Class<Outlook$OlDisplayType__olRemoteUser> &
-      Outlook$OlDisplayType__olRemoteUser &
-      6; // 6
-    static +olUser: Class<Outlook$OlDisplayType__olUser> &
-      Outlook$OlDisplayType__olUser &
-      0; // 0
-  }
-
-  declare class Outlook$OlDisplayType__olAgent mixins Outlook$OlDisplayType {}
-  declare class Outlook$OlDisplayType__olDistList
-    mixins Outlook$OlDisplayType {}
-  declare class Outlook$OlDisplayType__olForum mixins Outlook$OlDisplayType {}
-  declare class Outlook$OlDisplayType__olOrganization
-    mixins Outlook$OlDisplayType {}
-  declare class Outlook$OlDisplayType__olPrivateDistList
-    mixins Outlook$OlDisplayType {}
-  declare class Outlook$OlDisplayType__olRemoteUser
-    mixins Outlook$OlDisplayType {}
-  declare class Outlook$OlDisplayType__olUser mixins Outlook$OlDisplayType {}
-
-  declare class Outlook$OlDownloadState {
-    constructor(...args: empty): mixed;
-    static +olFullItem: Class<Outlook$OlDownloadState__olFullItem> &
-      Outlook$OlDownloadState__olFullItem &
-      1; // 1
-    static +olHeaderOnly: Class<Outlook$OlDownloadState__olHeaderOnly> &
-      Outlook$OlDownloadState__olHeaderOnly &
-      0; // 0
-  }
-
-  declare class Outlook$OlDownloadState__olFullItem
-    mixins Outlook$OlDownloadState {}
-  declare class Outlook$OlDownloadState__olHeaderOnly
-    mixins Outlook$OlDownloadState {}
-
-  declare class Outlook$OlDragBehavior {
-    constructor(...args: empty): mixed;
-    static +olDragBehaviorDisabled: Class<Outlook$OlDragBehavior__olDragBehaviorDisabled> &
-      Outlook$OlDragBehavior__olDragBehaviorDisabled &
-      0; // 0
-    static +olDragBehaviorEnabled: Class<Outlook$OlDragBehavior__olDragBehaviorEnabled> &
-      Outlook$OlDragBehavior__olDragBehaviorEnabled &
-      1; // 1
-  }
-
-  declare class Outlook$OlDragBehavior__olDragBehaviorDisabled
-    mixins Outlook$OlDragBehavior {}
-  declare class Outlook$OlDragBehavior__olDragBehaviorEnabled
-    mixins Outlook$OlDragBehavior {}
-
-  declare class Outlook$OlEditorType {
-    constructor(...args: empty): mixed;
-    static +olEditorHTML: Class<Outlook$OlEditorType__olEditorHTML> &
-      Outlook$OlEditorType__olEditorHTML &
-      2; // 2
-    static +olEditorRTF: Class<Outlook$OlEditorType__olEditorRTF> &
-      Outlook$OlEditorType__olEditorRTF &
-      3; // 3
-    static +olEditorText: Class<Outlook$OlEditorType__olEditorText> &
-      Outlook$OlEditorType__olEditorText &
-      1; // 1
-    static +olEditorWord: Class<Outlook$OlEditorType__olEditorWord> &
-      Outlook$OlEditorType__olEditorWord &
-      4; // 4
-  }
-
-  declare class Outlook$OlEditorType__olEditorHTML
-    mixins Outlook$OlEditorType {}
-  declare class Outlook$OlEditorType__olEditorRTF mixins Outlook$OlEditorType {}
-  declare class Outlook$OlEditorType__olEditorText
-    mixins Outlook$OlEditorType {}
-  declare class Outlook$OlEditorType__olEditorWord
-    mixins Outlook$OlEditorType {}
-
-  declare class Outlook$OlEnterFieldBehavior {
-    constructor(...args: empty): mixed;
-    static +olEnterFieldBehaviorRecallSelection: Class<Outlook$OlEnterFieldBehavior__olEnterFieldBehaviorRecallSelection> &
-      Outlook$OlEnterFieldBehavior__olEnterFieldBehaviorRecallSelection &
-      1; // 1
-    static +olEnterFieldBehaviorSelectAll: Class<Outlook$OlEnterFieldBehavior__olEnterFieldBehaviorSelectAll> &
-      Outlook$OlEnterFieldBehavior__olEnterFieldBehaviorSelectAll &
-      0; // 0
-  }
-
-  declare class Outlook$OlEnterFieldBehavior__olEnterFieldBehaviorRecallSelection
-    mixins Outlook$OlEnterFieldBehavior {}
-  declare class Outlook$OlEnterFieldBehavior__olEnterFieldBehaviorSelectAll
-    mixins Outlook$OlEnterFieldBehavior {}
-
-  declare class Outlook$OlExchangeConnectionMode {
-    constructor(...args: empty): mixed;
-    static +olCachedConnectedDrizzle: Class<Outlook$OlExchangeConnectionMode__olCachedConnectedDrizzle> &
-      Outlook$OlExchangeConnectionMode__olCachedConnectedDrizzle &
-      600; // 600
-    static +olCachedConnectedFull: Class<Outlook$OlExchangeConnectionMode__olCachedConnectedFull> &
-      Outlook$OlExchangeConnectionMode__olCachedConnectedFull &
-      700; // 700
-    static +olCachedConnectedHeaders: Class<Outlook$OlExchangeConnectionMode__olCachedConnectedHeaders> &
-      Outlook$OlExchangeConnectionMode__olCachedConnectedHeaders &
-      500; // 500
-    static +olCachedDisconnected: Class<Outlook$OlExchangeConnectionMode__olCachedDisconnected> &
-      Outlook$OlExchangeConnectionMode__olCachedDisconnected &
-      400; // 400
-    static +olCachedOffline: Class<Outlook$OlExchangeConnectionMode__olCachedOffline> &
-      Outlook$OlExchangeConnectionMode__olCachedOffline &
-      200; // 200
-    static +olDisconnected: Class<Outlook$OlExchangeConnectionMode__olDisconnected> &
-      Outlook$OlExchangeConnectionMode__olDisconnected &
-      300; // 300
-    static +olNoExchange: Class<Outlook$OlExchangeConnectionMode__olNoExchange> &
-      Outlook$OlExchangeConnectionMode__olNoExchange &
-      0; // 0
-    static +olOffline: Class<Outlook$OlExchangeConnectionMode__olOffline> &
-      Outlook$OlExchangeConnectionMode__olOffline &
-      100; // 100
-    static +olOnline: Class<Outlook$OlExchangeConnectionMode__olOnline> &
-      Outlook$OlExchangeConnectionMode__olOnline &
-      800; // 800
-  }
-
-  declare class Outlook$OlExchangeConnectionMode__olCachedConnectedDrizzle
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olCachedConnectedFull
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olCachedConnectedHeaders
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olCachedDisconnected
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olCachedOffline
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olDisconnected
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olNoExchange
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olOffline
-    mixins Outlook$OlExchangeConnectionMode {}
-  declare class Outlook$OlExchangeConnectionMode__olOnline
-    mixins Outlook$OlExchangeConnectionMode {}
-
-  declare class Outlook$OlExchangeStoreType {
-    constructor(...args: empty): mixed;
-    static +olAdditionalExchangeMailbox: Class<Outlook$OlExchangeStoreType__olAdditionalExchangeMailbox> &
-      Outlook$OlExchangeStoreType__olAdditionalExchangeMailbox &
-      4; // 4
-    static +olExchangeMailbox: Class<Outlook$OlExchangeStoreType__olExchangeMailbox> &
-      Outlook$OlExchangeStoreType__olExchangeMailbox &
-      1; // 1
-    static +olExchangePublicFolder: Class<Outlook$OlExchangeStoreType__olExchangePublicFolder> &
-      Outlook$OlExchangeStoreType__olExchangePublicFolder &
-      2; // 2
-    static +olNotExchange: Class<Outlook$OlExchangeStoreType__olNotExchange> &
-      Outlook$OlExchangeStoreType__olNotExchange &
-      3; // 3
-    static +olPrimaryExchangeMailbox: Class<Outlook$OlExchangeStoreType__olPrimaryExchangeMailbox> &
-      Outlook$OlExchangeStoreType__olPrimaryExchangeMailbox &
-      0; // 0
-  }
-
-  declare class Outlook$OlExchangeStoreType__olAdditionalExchangeMailbox
-    mixins Outlook$OlExchangeStoreType {}
-  declare class Outlook$OlExchangeStoreType__olExchangeMailbox
-    mixins Outlook$OlExchangeStoreType {}
-  declare class Outlook$OlExchangeStoreType__olExchangePublicFolder
-    mixins Outlook$OlExchangeStoreType {}
-  declare class Outlook$OlExchangeStoreType__olNotExchange
-    mixins Outlook$OlExchangeStoreType {}
-  declare class Outlook$OlExchangeStoreType__olPrimaryExchangeMailbox
-    mixins Outlook$OlExchangeStoreType {}
-
-  declare class Outlook$OlFlagIcon {
-    constructor(...args: empty): mixed;
-    static +olBlueFlagIcon: Class<Outlook$OlFlagIcon__olBlueFlagIcon> &
-      Outlook$OlFlagIcon__olBlueFlagIcon &
-      5; // 5
-    static +olGreenFlagIcon: Class<Outlook$OlFlagIcon__olGreenFlagIcon> &
-      Outlook$OlFlagIcon__olGreenFlagIcon &
-      3; // 3
-    static +olNoFlagIcon: Class<Outlook$OlFlagIcon__olNoFlagIcon> &
-      Outlook$OlFlagIcon__olNoFlagIcon &
-      0; // 0
-    static +olOrangeFlagIcon: Class<Outlook$OlFlagIcon__olOrangeFlagIcon> &
-      Outlook$OlFlagIcon__olOrangeFlagIcon &
-      2; // 2
-    static +olPurpleFlagIcon: Class<Outlook$OlFlagIcon__olPurpleFlagIcon> &
-      Outlook$OlFlagIcon__olPurpleFlagIcon &
-      1; // 1
-    static +olRedFlagIcon: Class<Outlook$OlFlagIcon__olRedFlagIcon> &
-      Outlook$OlFlagIcon__olRedFlagIcon &
-      6; // 6
-    static +olYellowFlagIcon: Class<Outlook$OlFlagIcon__olYellowFlagIcon> &
-      Outlook$OlFlagIcon__olYellowFlagIcon &
-      4; // 4
-  }
-
-  declare class Outlook$OlFlagIcon__olBlueFlagIcon mixins Outlook$OlFlagIcon {}
-  declare class Outlook$OlFlagIcon__olGreenFlagIcon mixins Outlook$OlFlagIcon {}
-  declare class Outlook$OlFlagIcon__olNoFlagIcon mixins Outlook$OlFlagIcon {}
-  declare class Outlook$OlFlagIcon__olOrangeFlagIcon
-    mixins Outlook$OlFlagIcon {}
-  declare class Outlook$OlFlagIcon__olPurpleFlagIcon
-    mixins Outlook$OlFlagIcon {}
-  declare class Outlook$OlFlagIcon__olRedFlagIcon mixins Outlook$OlFlagIcon {}
-  declare class Outlook$OlFlagIcon__olYellowFlagIcon
-    mixins Outlook$OlFlagIcon {}
-
-  declare class Outlook$OlFlagStatus {
-    constructor(...args: empty): mixed;
-    static +olFlagComplete: Class<Outlook$OlFlagStatus__olFlagComplete> &
-      Outlook$OlFlagStatus__olFlagComplete &
-      1; // 1
-    static +olFlagMarked: Class<Outlook$OlFlagStatus__olFlagMarked> &
-      Outlook$OlFlagStatus__olFlagMarked &
-      2; // 2
-    static +olNoFlag: Class<Outlook$OlFlagStatus__olNoFlag> &
-      Outlook$OlFlagStatus__olNoFlag &
-      0; // 0
-  }
-
-  declare class Outlook$OlFlagStatus__olFlagComplete
-    mixins Outlook$OlFlagStatus {}
-  declare class Outlook$OlFlagStatus__olFlagMarked
-    mixins Outlook$OlFlagStatus {}
-  declare class Outlook$OlFlagStatus__olNoFlag mixins Outlook$OlFlagStatus {}
-
-  declare class Outlook$OlFolderDisplayMode {
-    constructor(...args: empty): mixed;
-    static +olFolderDisplayFolderOnly: Class<Outlook$OlFolderDisplayMode__olFolderDisplayFolderOnly> &
-      Outlook$OlFolderDisplayMode__olFolderDisplayFolderOnly &
-      1; // 1
-    static +olFolderDisplayNoNavigation: Class<Outlook$OlFolderDisplayMode__olFolderDisplayNoNavigation> &
-      Outlook$OlFolderDisplayMode__olFolderDisplayNoNavigation &
-      2; // 2
-    static +olFolderDisplayNormal: Class<Outlook$OlFolderDisplayMode__olFolderDisplayNormal> &
-      Outlook$OlFolderDisplayMode__olFolderDisplayNormal &
-      0; // 0
-  }
-
-  declare class Outlook$OlFolderDisplayMode__olFolderDisplayFolderOnly
-    mixins Outlook$OlFolderDisplayMode {}
-  declare class Outlook$OlFolderDisplayMode__olFolderDisplayNoNavigation
-    mixins Outlook$OlFolderDisplayMode {}
-  declare class Outlook$OlFolderDisplayMode__olFolderDisplayNormal
-    mixins Outlook$OlFolderDisplayMode {}
-
-  declare class Outlook$OlFormatCurrency {
-    constructor(...args: empty): mixed;
-    static +olFormatCurrencyDecimal: Class<Outlook$OlFormatCurrency__olFormatCurrencyDecimal> &
-      Outlook$OlFormatCurrency__olFormatCurrencyDecimal &
-      1; // 1
-    static +olFormatCurrencyNonDecimal: Class<Outlook$OlFormatCurrency__olFormatCurrencyNonDecimal> &
-      Outlook$OlFormatCurrency__olFormatCurrencyNonDecimal &
-      2; // 2
-  }
-
-  declare class Outlook$OlFormatCurrency__olFormatCurrencyDecimal
-    mixins Outlook$OlFormatCurrency {}
-  declare class Outlook$OlFormatCurrency__olFormatCurrencyNonDecimal
-    mixins Outlook$OlFormatCurrency {}
-
-  declare class Outlook$OlFormatDateTime {
-    constructor(...args: empty): mixed;
-    static +olFormatDateTimeBestFit: Class<Outlook$OlFormatDateTime__olFormatDateTimeBestFit> &
-      Outlook$OlFormatDateTime__olFormatDateTimeBestFit &
-      17; // 17
-    static +olFormatDateTimeLongDate: Class<Outlook$OlFormatDateTime__olFormatDateTimeLongDate> &
-      Outlook$OlFormatDateTime__olFormatDateTimeLongDate &
-      6; // 6
-    static +olFormatDateTimeLongDateReversed: Class<Outlook$OlFormatDateTime__olFormatDateTimeLongDateReversed> &
-      Outlook$OlFormatDateTime__olFormatDateTimeLongDateReversed &
-      7; // 7
-    static +OlFormatDateTimeLongDayDate: Class<Outlook$OlFormatDateTime__OlFormatDateTimeLongDayDate> &
-      Outlook$OlFormatDateTime__OlFormatDateTimeLongDayDate &
-      5; // 5
-    static +olFormatDateTimeLongDayDateTime: Class<Outlook$OlFormatDateTime__olFormatDateTimeLongDayDateTime> &
-      Outlook$OlFormatDateTime__olFormatDateTimeLongDayDateTime &
-      1; // 1
-    static +olFormatDateTimeLongTime: Class<Outlook$OlFormatDateTime__olFormatDateTimeLongTime> &
-      Outlook$OlFormatDateTime__olFormatDateTimeLongTime &
-      15; // 15
-    static +olFormatDateTimeShortDate: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortDate> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortDate &
-      8; // 8
-    static +olFormatDateTimeShortDateNumOnly: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortDateNumOnly> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortDateNumOnly &
-      9; // 9
-    static +olFormatDateTimeShortDateTime: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortDateTime> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortDateTime &
-      2; // 2
-    static +olFormatDateTimeShortDayDate: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortDayDate> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortDayDate &
-      13; // 13
-    static +olFormatDateTimeShortDayDateTime: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortDayDateTime> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortDayDateTime &
-      3; // 3
-    static +olFormatDateTimeShortDayMonth: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortDayMonth> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortDayMonth &
-      10; // 10
-    static +olFormatDateTimeShortDayMonthDateTime: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortDayMonthDateTime> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortDayMonthDateTime &
-      4; // 4
-    static +olFormatDateTimeShortMonthYear: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortMonthYear> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortMonthYear &
-      11; // 11
-    static +olFormatDateTimeShortMonthYearNumOnly: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortMonthYearNumOnly> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortMonthYearNumOnly &
-      12; // 12
-    static +olFormatDateTimeShortTime: Class<Outlook$OlFormatDateTime__olFormatDateTimeShortTime> &
-      Outlook$OlFormatDateTime__olFormatDateTimeShortTime &
-      16; // 16
-  }
-
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeBestFit
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeLongDate
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeLongDateReversed
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__OlFormatDateTimeLongDayDate
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeLongDayDateTime
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeLongTime
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortDate
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortDateNumOnly
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortDateTime
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortDayDate
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortDayDateTime
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortDayMonth
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortDayMonthDateTime
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortMonthYear
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortMonthYearNumOnly
-    mixins Outlook$OlFormatDateTime {}
-  declare class Outlook$OlFormatDateTime__olFormatDateTimeShortTime
-    mixins Outlook$OlFormatDateTime {}
-
-  declare class Outlook$OlFormatDuration {
-    constructor(...args: empty): mixed;
-    static +olFormatDurationLong: Class<Outlook$OlFormatDuration__olFormatDurationLong> &
-      Outlook$OlFormatDuration__olFormatDurationLong &
-      2; // 2
-    static +olFormatDurationLongBusiness: Class<Outlook$OlFormatDuration__olFormatDurationLongBusiness> &
-      Outlook$OlFormatDuration__olFormatDurationLongBusiness &
-      4; // 4
-    static +olFormatDurationShort: Class<Outlook$OlFormatDuration__olFormatDurationShort> &
-      Outlook$OlFormatDuration__olFormatDurationShort &
-      1; // 1
-    static +olFormatDurationShortBusiness: Class<Outlook$OlFormatDuration__olFormatDurationShortBusiness> &
-      Outlook$OlFormatDuration__olFormatDurationShortBusiness &
-      3; // 3
-  }
-
-  declare class Outlook$OlFormatDuration__olFormatDurationLong
-    mixins Outlook$OlFormatDuration {}
-  declare class Outlook$OlFormatDuration__olFormatDurationLongBusiness
-    mixins Outlook$OlFormatDuration {}
-  declare class Outlook$OlFormatDuration__olFormatDurationShort
-    mixins Outlook$OlFormatDuration {}
-  declare class Outlook$OlFormatDuration__olFormatDurationShortBusiness
-    mixins Outlook$OlFormatDuration {}
-
-  declare class Outlook$OlFormatEnumeration {
-    constructor(...args: empty): mixed;
-    static +olFormatEnumBitmap: Class<Outlook$OlFormatEnumeration__olFormatEnumBitmap> &
-      Outlook$OlFormatEnumeration__olFormatEnumBitmap &
-      1; // 1
-    static +olFormatEnumText: Class<Outlook$OlFormatEnumeration__olFormatEnumText> &
-      Outlook$OlFormatEnumeration__olFormatEnumText &
-      2; // 2
-  }
-
-  declare class Outlook$OlFormatEnumeration__olFormatEnumBitmap
-    mixins Outlook$OlFormatEnumeration {}
-  declare class Outlook$OlFormatEnumeration__olFormatEnumText
-    mixins Outlook$OlFormatEnumeration {}
-
-  declare class Outlook$OlFormatInteger {
-    constructor(...args: empty): mixed;
-    static +olFormatIntegerComputer1: Class<Outlook$OlFormatInteger__olFormatIntegerComputer1> &
-      Outlook$OlFormatInteger__olFormatIntegerComputer1 &
-      2; // 2
-    static +olFormatIntegerComputer2: Class<Outlook$OlFormatInteger__olFormatIntegerComputer2> &
-      Outlook$OlFormatInteger__olFormatIntegerComputer2 &
-      3; // 3
-    static +olFormatIntegerComputer3: Class<Outlook$OlFormatInteger__olFormatIntegerComputer3> &
-      Outlook$OlFormatInteger__olFormatIntegerComputer3 &
-      4; // 4
-    static +olFormatIntegerPlain: Class<Outlook$OlFormatInteger__olFormatIntegerPlain> &
-      Outlook$OlFormatInteger__olFormatIntegerPlain &
-      1; // 1
-  }
-
-  declare class Outlook$OlFormatInteger__olFormatIntegerComputer1
-    mixins Outlook$OlFormatInteger {}
-  declare class Outlook$OlFormatInteger__olFormatIntegerComputer2
-    mixins Outlook$OlFormatInteger {}
-  declare class Outlook$OlFormatInteger__olFormatIntegerComputer3
-    mixins Outlook$OlFormatInteger {}
-  declare class Outlook$OlFormatInteger__olFormatIntegerPlain
-    mixins Outlook$OlFormatInteger {}
-
-  declare class Outlook$OlFormatKeywords {
-    constructor(...args: empty): mixed;
-    static +olFormatKeywordsText: Class<Outlook$OlFormatKeywords__olFormatKeywordsText> &
-      Outlook$OlFormatKeywords__olFormatKeywordsText &
-      1; // 1
-  }
-
-  declare class Outlook$OlFormatKeywords__olFormatKeywordsText
-    mixins Outlook$OlFormatKeywords {}
-
-  declare class Outlook$OlFormatNumber {
-    constructor(...args: empty): mixed;
-    static +olFormatNumber1Decimal: Class<Outlook$OlFormatNumber__olFormatNumber1Decimal> &
-      Outlook$OlFormatNumber__olFormatNumber1Decimal &
-      3; // 3
-    static +olFormatNumber2Decimal: Class<Outlook$OlFormatNumber__olFormatNumber2Decimal> &
-      Outlook$OlFormatNumber__olFormatNumber2Decimal &
-      4; // 4
-    static +olFormatNumberAllDigits: Class<Outlook$OlFormatNumber__olFormatNumberAllDigits> &
-      Outlook$OlFormatNumber__olFormatNumberAllDigits &
-      1; // 1
-    static +olFormatNumberComputer1: Class<Outlook$OlFormatNumber__olFormatNumberComputer1> &
-      Outlook$OlFormatNumber__olFormatNumberComputer1 &
-      6; // 6
-    static +olFormatNumberComputer2: Class<Outlook$OlFormatNumber__olFormatNumberComputer2> &
-      Outlook$OlFormatNumber__olFormatNumberComputer2 &
-      7; // 7
-    static +olFormatNumberComputer3: Class<Outlook$OlFormatNumber__olFormatNumberComputer3> &
-      Outlook$OlFormatNumber__olFormatNumberComputer3 &
-      8; // 8
-    static +olFormatNumberRaw: Class<Outlook$OlFormatNumber__olFormatNumberRaw> &
-      Outlook$OlFormatNumber__olFormatNumberRaw &
-      9; // 9
-    static +olFormatNumberScientific: Class<Outlook$OlFormatNumber__olFormatNumberScientific> &
-      Outlook$OlFormatNumber__olFormatNumberScientific &
-      5; // 5
-    static +olFormatNumberTruncated: Class<Outlook$OlFormatNumber__olFormatNumberTruncated> &
-      Outlook$OlFormatNumber__olFormatNumberTruncated &
-      2; // 2
-  }
-
-  declare class Outlook$OlFormatNumber__olFormatNumber1Decimal
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumber2Decimal
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumberAllDigits
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumberComputer1
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumberComputer2
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumberComputer3
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumberRaw
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumberScientific
-    mixins Outlook$OlFormatNumber {}
-  declare class Outlook$OlFormatNumber__olFormatNumberTruncated
-    mixins Outlook$OlFormatNumber {}
-
-  declare class Outlook$OlFormatPercent {
-    constructor(...args: empty): mixed;
-    static +olFormatPercent1Decimal: Class<Outlook$OlFormatPercent__olFormatPercent1Decimal> &
-      Outlook$OlFormatPercent__olFormatPercent1Decimal &
-      2; // 2
-    static +olFormatPercent2Decimal: Class<Outlook$OlFormatPercent__olFormatPercent2Decimal> &
-      Outlook$OlFormatPercent__olFormatPercent2Decimal &
-      3; // 3
-    static +olFormatPercentAllDigits: Class<Outlook$OlFormatPercent__olFormatPercentAllDigits> &
-      Outlook$OlFormatPercent__olFormatPercentAllDigits &
-      4; // 4
-    static +olFormatPercentRounded: Class<Outlook$OlFormatPercent__olFormatPercentRounded> &
-      Outlook$OlFormatPercent__olFormatPercentRounded &
-      1; // 1
-  }
-
-  declare class Outlook$OlFormatPercent__olFormatPercent1Decimal
-    mixins Outlook$OlFormatPercent {}
-  declare class Outlook$OlFormatPercent__olFormatPercent2Decimal
-    mixins Outlook$OlFormatPercent {}
-  declare class Outlook$OlFormatPercent__olFormatPercentAllDigits
-    mixins Outlook$OlFormatPercent {}
-  declare class Outlook$OlFormatPercent__olFormatPercentRounded
-    mixins Outlook$OlFormatPercent {}
-
-  declare class Outlook$OlFormatSmartFrom {
-    constructor(...args: empty): mixed;
-    static +olFormatSmartFromFromOnly: Class<Outlook$OlFormatSmartFrom__olFormatSmartFromFromOnly> &
-      Outlook$OlFormatSmartFrom__olFormatSmartFromFromOnly &
-      2; // 2
-    static +olFormatSmartFromFromTo: Class<Outlook$OlFormatSmartFrom__olFormatSmartFromFromTo> &
-      Outlook$OlFormatSmartFrom__olFormatSmartFromFromTo &
-      1; // 1
-  }
-
-  declare class Outlook$OlFormatSmartFrom__olFormatSmartFromFromOnly
-    mixins Outlook$OlFormatSmartFrom {}
-  declare class Outlook$OlFormatSmartFrom__olFormatSmartFromFromTo
-    mixins Outlook$OlFormatSmartFrom {}
-
-  declare class Outlook$OlFormatText {
-    constructor(...args: empty): mixed;
-    static +olFormatTextText: Class<Outlook$OlFormatText__olFormatTextText> &
-      Outlook$OlFormatText__olFormatTextText &
-      1; // 1
-  }
-
-  declare class Outlook$OlFormatText__olFormatTextText
-    mixins Outlook$OlFormatText {}
-
-  declare class Outlook$OlFormatYesNo {
-    constructor(...args: empty): mixed;
-    static +olFormatYesNoIcon: Class<Outlook$OlFormatYesNo__olFormatYesNoIcon> &
-      Outlook$OlFormatYesNo__olFormatYesNoIcon &
-      4; // 4
-    static +olFormatYesNoOnOff: Class<Outlook$OlFormatYesNo__olFormatYesNoOnOff> &
-      Outlook$OlFormatYesNo__olFormatYesNoOnOff &
-      2; // 2
-    static +olFormatYesNoTrueFalse: Class<Outlook$OlFormatYesNo__olFormatYesNoTrueFalse> &
-      Outlook$OlFormatYesNo__olFormatYesNoTrueFalse &
-      3; // 3
-    static +olFormatYesNoYesNo: Class<Outlook$OlFormatYesNo__olFormatYesNoYesNo> &
-      Outlook$OlFormatYesNo__olFormatYesNoYesNo &
-      1; // 1
-  }
-
-  declare class Outlook$OlFormatYesNo__olFormatYesNoIcon
-    mixins Outlook$OlFormatYesNo {}
-  declare class Outlook$OlFormatYesNo__olFormatYesNoOnOff
-    mixins Outlook$OlFormatYesNo {}
-  declare class Outlook$OlFormatYesNo__olFormatYesNoTrueFalse
-    mixins Outlook$OlFormatYesNo {}
-  declare class Outlook$OlFormatYesNo__olFormatYesNoYesNo
-    mixins Outlook$OlFormatYesNo {}
-
-  declare class Outlook$OlFormRegionIcon {
-    constructor(...args: empty): mixed;
-    static +olFormRegionIconDefault: Class<Outlook$OlFormRegionIcon__olFormRegionIconDefault> &
-      Outlook$OlFormRegionIcon__olFormRegionIconDefault &
-      1; // 1
-    static +olFormRegionIconEncrypted: Class<Outlook$OlFormRegionIcon__olFormRegionIconEncrypted> &
-      Outlook$OlFormRegionIcon__olFormRegionIconEncrypted &
-      9; // 9
-    static +olFormRegionIconForwarded: Class<Outlook$OlFormRegionIcon__olFormRegionIconForwarded> &
-      Outlook$OlFormRegionIcon__olFormRegionIconForwarded &
-      5; // 5
-    static +olFormRegionIconPage: Class<Outlook$OlFormRegionIcon__olFormRegionIconPage> &
-      Outlook$OlFormRegionIcon__olFormRegionIconPage &
-      11; // 11
-    static +olFormRegionIconRead: Class<Outlook$OlFormRegionIcon__olFormRegionIconRead> &
-      Outlook$OlFormRegionIcon__olFormRegionIconRead &
-      3; // 3
-    static +olFormRegionIconRecurring: Class<Outlook$OlFormRegionIcon__olFormRegionIconRecurring> &
-      Outlook$OlFormRegionIcon__olFormRegionIconRecurring &
-      12; // 12
-    static +olFormRegionIconReplied: Class<Outlook$OlFormRegionIcon__olFormRegionIconReplied> &
-      Outlook$OlFormRegionIcon__olFormRegionIconReplied &
-      4; // 4
-    static +olFormRegionIconSigned: Class<Outlook$OlFormRegionIcon__olFormRegionIconSigned> &
-      Outlook$OlFormRegionIcon__olFormRegionIconSigned &
-      8; // 8
-    static +olFormRegionIconSubmitted: Class<Outlook$OlFormRegionIcon__olFormRegionIconSubmitted> &
-      Outlook$OlFormRegionIcon__olFormRegionIconSubmitted &
-      7; // 7
-    static +olFormRegionIconUnread: Class<Outlook$OlFormRegionIcon__olFormRegionIconUnread> &
-      Outlook$OlFormRegionIcon__olFormRegionIconUnread &
-      2; // 2
-    static +olFormRegionIconUnsent: Class<Outlook$OlFormRegionIcon__olFormRegionIconUnsent> &
-      Outlook$OlFormRegionIcon__olFormRegionIconUnsent &
-      6; // 6
-    static +olFormRegionIconWindow: Class<Outlook$OlFormRegionIcon__olFormRegionIconWindow> &
-      Outlook$OlFormRegionIcon__olFormRegionIconWindow &
-      10; // 10
-  }
-
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconDefault
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconEncrypted
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconForwarded
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconPage
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconRead
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconRecurring
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconReplied
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconSigned
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconSubmitted
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconUnread
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconUnsent
-    mixins Outlook$OlFormRegionIcon {}
-  declare class Outlook$OlFormRegionIcon__olFormRegionIconWindow
-    mixins Outlook$OlFormRegionIcon {}
-
-  declare class Outlook$OlFormRegionMode {
-    constructor(...args: empty): mixed;
-    static +olFormRegionCompose: Class<Outlook$OlFormRegionMode__olFormRegionCompose> &
-      Outlook$OlFormRegionMode__olFormRegionCompose &
-      1; // 1
-    static +olFormRegionPreview: Class<Outlook$OlFormRegionMode__olFormRegionPreview> &
-      Outlook$OlFormRegionMode__olFormRegionPreview &
-      2; // 2
-    static +olFormRegionRead: Class<Outlook$OlFormRegionMode__olFormRegionRead> &
-      Outlook$OlFormRegionMode__olFormRegionRead &
-      0; // 0
-  }
-
-  declare class Outlook$OlFormRegionMode__olFormRegionCompose
-    mixins Outlook$OlFormRegionMode {}
-  declare class Outlook$OlFormRegionMode__olFormRegionPreview
-    mixins Outlook$OlFormRegionMode {}
-  declare class Outlook$OlFormRegionMode__olFormRegionRead
-    mixins Outlook$OlFormRegionMode {}
-
-  declare class Outlook$OlFormRegionSize {
-    constructor(...args: empty): mixed;
-    static +olFormRegionTypeAdjoining: Class<Outlook$OlFormRegionSize__olFormRegionTypeAdjoining> &
-      Outlook$OlFormRegionSize__olFormRegionTypeAdjoining &
-      1; // 1
-    static +olFormRegionTypeSeparate: Class<Outlook$OlFormRegionSize__olFormRegionTypeSeparate> &
-      Outlook$OlFormRegionSize__olFormRegionTypeSeparate &
-      0; // 0
-  }
-
-  declare class Outlook$OlFormRegionSize__olFormRegionTypeAdjoining
-    mixins Outlook$OlFormRegionSize {}
-  declare class Outlook$OlFormRegionSize__olFormRegionTypeSeparate
-    mixins Outlook$OlFormRegionSize {}
-
-  declare class Outlook$OlFormRegistry {
-    constructor(...args: empty): mixed;
-    static +olDefaultRegistry: Class<Outlook$OlFormRegistry__olDefaultRegistry> &
-      Outlook$OlFormRegistry__olDefaultRegistry &
-      0; // 0
-    static +olFolderRegistry: Class<Outlook$OlFormRegistry__olFolderRegistry> &
-      Outlook$OlFormRegistry__olFolderRegistry &
-      3; // 3
-    static +olOrganizationRegistry: Class<Outlook$OlFormRegistry__olOrganizationRegistry> &
-      Outlook$OlFormRegistry__olOrganizationRegistry &
-      4; // 4
-    static +olPersonalRegistry: Class<Outlook$OlFormRegistry__olPersonalRegistry> &
-      Outlook$OlFormRegistry__olPersonalRegistry &
-      2; // 2
-  }
-
-  declare class Outlook$OlFormRegistry__olDefaultRegistry
-    mixins Outlook$OlFormRegistry {}
-  declare class Outlook$OlFormRegistry__olFolderRegistry
-    mixins Outlook$OlFormRegistry {}
-  declare class Outlook$OlFormRegistry__olOrganizationRegistry
-    mixins Outlook$OlFormRegistry {}
-  declare class Outlook$OlFormRegistry__olPersonalRegistry
-    mixins Outlook$OlFormRegistry {}
-
-  declare class Outlook$OlGender {
-    constructor(...args: empty): mixed;
-    static +olFemale: Class<Outlook$OlGender__olFemale> &
-      Outlook$OlGender__olFemale &
-      1; // 1
-    static +olMale: Class<Outlook$OlGender__olMale> &
-      Outlook$OlGender__olMale &
-      2; // 2
-    static +olUnspecified: Class<Outlook$OlGender__olUnspecified> &
-      Outlook$OlGender__olUnspecified &
-      0; // 0
-  }
-
-  declare class Outlook$OlGender__olFemale mixins Outlook$OlGender {}
-  declare class Outlook$OlGender__olMale mixins Outlook$OlGender {}
-  declare class Outlook$OlGender__olUnspecified mixins Outlook$OlGender {}
-
-  declare class Outlook$OlGridLineStyle {
-    constructor(...args: empty): mixed;
-    static +olGridLineDashes: Class<Outlook$OlGridLineStyle__olGridLineDashes> &
-      Outlook$OlGridLineStyle__olGridLineDashes &
-      3; // 3
-    static +olGridLineLargeDots: Class<Outlook$OlGridLineStyle__olGridLineLargeDots> &
-      Outlook$OlGridLineStyle__olGridLineLargeDots &
-      2; // 2
-    static +olGridLineNone: Class<Outlook$OlGridLineStyle__olGridLineNone> &
-      Outlook$OlGridLineStyle__olGridLineNone &
-      0; // 0
-    static +olGridLineSmallDots: Class<Outlook$OlGridLineStyle__olGridLineSmallDots> &
-      Outlook$OlGridLineStyle__olGridLineSmallDots &
-      1; // 1
-    static +olGridLineSolid: Class<Outlook$OlGridLineStyle__olGridLineSolid> &
-      Outlook$OlGridLineStyle__olGridLineSolid &
-      4; // 4
-  }
-
-  declare class Outlook$OlGridLineStyle__olGridLineDashes
-    mixins Outlook$OlGridLineStyle {}
-  declare class Outlook$OlGridLineStyle__olGridLineLargeDots
-    mixins Outlook$OlGridLineStyle {}
-  declare class Outlook$OlGridLineStyle__olGridLineNone
-    mixins Outlook$OlGridLineStyle {}
-  declare class Outlook$OlGridLineStyle__olGridLineSmallDots
-    mixins Outlook$OlGridLineStyle {}
-  declare class Outlook$OlGridLineStyle__olGridLineSolid
-    mixins Outlook$OlGridLineStyle {}
-
-  declare class Outlook$OlGroupType {
-    constructor(...args: empty): mixed;
-    static +olCustomFoldersGroup: Class<Outlook$OlGroupType__olCustomFoldersGroup> &
-      Outlook$OlGroupType__olCustomFoldersGroup &
-      0; // 0
-    static +olFavoriteFoldersGroup: Class<Outlook$OlGroupType__olFavoriteFoldersGroup> &
-      Outlook$OlGroupType__olFavoriteFoldersGroup &
-      4; // 4
-    static +olMyFoldersGroup: Class<Outlook$OlGroupType__olMyFoldersGroup> &
-      Outlook$OlGroupType__olMyFoldersGroup &
-      1; // 1
-    static +olOtherFoldersGroup: Class<Outlook$OlGroupType__olOtherFoldersGroup> &
-      Outlook$OlGroupType__olOtherFoldersGroup &
-      3; // 3
-    static +olPeopleFoldersGroup: Class<Outlook$OlGroupType__olPeopleFoldersGroup> &
-      Outlook$OlGroupType__olPeopleFoldersGroup &
-      2; // 2
-    static +olReadOnlyGroup: Class<Outlook$OlGroupType__olReadOnlyGroup> &
-      Outlook$OlGroupType__olReadOnlyGroup &
-      6; // 6
-    static +olRoomsGroup: Class<Outlook$OlGroupType__olRoomsGroup> &
-      Outlook$OlGroupType__olRoomsGroup &
-      5; // 5
-  }
-
-  declare class Outlook$OlGroupType__olCustomFoldersGroup
-    mixins Outlook$OlGroupType {}
-  declare class Outlook$OlGroupType__olFavoriteFoldersGroup
-    mixins Outlook$OlGroupType {}
-  declare class Outlook$OlGroupType__olMyFoldersGroup
-    mixins Outlook$OlGroupType {}
-  declare class Outlook$OlGroupType__olOtherFoldersGroup
-    mixins Outlook$OlGroupType {}
-  declare class Outlook$OlGroupType__olPeopleFoldersGroup
-    mixins Outlook$OlGroupType {}
-  declare class Outlook$OlGroupType__olReadOnlyGroup
-    mixins Outlook$OlGroupType {}
-  declare class Outlook$OlGroupType__olRoomsGroup mixins Outlook$OlGroupType {}
-
-  declare class Outlook$OlHorizontalLayout {
-    constructor(...args: empty): mixed;
-    static +olHorizontalLayoutAlignCenter: Class<Outlook$OlHorizontalLayout__olHorizontalLayoutAlignCenter> &
-      Outlook$OlHorizontalLayout__olHorizontalLayoutAlignCenter &
-      1; // 1
-    static +olHorizontalLayoutAlignLeft: Class<Outlook$OlHorizontalLayout__olHorizontalLayoutAlignLeft> &
-      Outlook$OlHorizontalLayout__olHorizontalLayoutAlignLeft &
-      0; // 0
-    static +olHorizontalLayoutAlignRight: Class<Outlook$OlHorizontalLayout__olHorizontalLayoutAlignRight> &
-      Outlook$OlHorizontalLayout__olHorizontalLayoutAlignRight &
-      2; // 2
-    static +olHorizontalLayoutGrow: Class<Outlook$OlHorizontalLayout__olHorizontalLayoutGrow> &
-      Outlook$OlHorizontalLayout__olHorizontalLayoutGrow &
-      3; // 3
-  }
-
-  declare class Outlook$OlHorizontalLayout__olHorizontalLayoutAlignCenter
-    mixins Outlook$OlHorizontalLayout {}
-  declare class Outlook$OlHorizontalLayout__olHorizontalLayoutAlignLeft
-    mixins Outlook$OlHorizontalLayout {}
-  declare class Outlook$OlHorizontalLayout__olHorizontalLayoutAlignRight
-    mixins Outlook$OlHorizontalLayout {}
-  declare class Outlook$OlHorizontalLayout__olHorizontalLayoutGrow
-    mixins Outlook$OlHorizontalLayout {}
-
-  declare class Outlook$OlIconViewPlacement {
-    constructor(...args: empty): mixed;
-    static +olIconAutoArrange: Class<Outlook$OlIconViewPlacement__olIconAutoArrange> &
-      Outlook$OlIconViewPlacement__olIconAutoArrange &
-      2; // 2
-    static +olIconDoNotArrange: Class<Outlook$OlIconViewPlacement__olIconDoNotArrange> &
-      Outlook$OlIconViewPlacement__olIconDoNotArrange &
-      0; // 0
-    static +olIconLineUp: Class<Outlook$OlIconViewPlacement__olIconLineUp> &
-      Outlook$OlIconViewPlacement__olIconLineUp &
-      1; // 1
-    static +olIconSortAndAutoArrange: Class<Outlook$OlIconViewPlacement__olIconSortAndAutoArrange> &
-      Outlook$OlIconViewPlacement__olIconSortAndAutoArrange &
-      3; // 3
-  }
-
-  declare class Outlook$OlIconViewPlacement__olIconAutoArrange
-    mixins Outlook$OlIconViewPlacement {}
-  declare class Outlook$OlIconViewPlacement__olIconDoNotArrange
-    mixins Outlook$OlIconViewPlacement {}
-  declare class Outlook$OlIconViewPlacement__olIconLineUp
-    mixins Outlook$OlIconViewPlacement {}
-  declare class Outlook$OlIconViewPlacement__olIconSortAndAutoArrange
-    mixins Outlook$OlIconViewPlacement {}
-
-  declare class Outlook$OlIconViewType {
-    constructor(...args: empty): mixed;
-    static +olIconViewLarge: Class<Outlook$OlIconViewType__olIconViewLarge> &
-      Outlook$OlIconViewType__olIconViewLarge &
-      0; // 0
-    static +olIconViewList: Class<Outlook$OlIconViewType__olIconViewList> &
-      Outlook$OlIconViewType__olIconViewList &
-      2; // 2
-    static +olIconViewSmall: Class<Outlook$OlIconViewType__olIconViewSmall> &
-      Outlook$OlIconViewType__olIconViewSmall &
-      1; // 1
-  }
-
-  declare class Outlook$OlIconViewType__olIconViewLarge
-    mixins Outlook$OlIconViewType {}
-  declare class Outlook$OlIconViewType__olIconViewList
-    mixins Outlook$OlIconViewType {}
-  declare class Outlook$OlIconViewType__olIconViewSmall
-    mixins Outlook$OlIconViewType {}
-
-  declare class Outlook$OlImportance {
-    constructor(...args: empty): mixed;
-    static +olImportanceHigh: Class<Outlook$OlImportance__olImportanceHigh> &
-      Outlook$OlImportance__olImportanceHigh &
-      2; // 2
-    static +olImportanceLow: Class<Outlook$OlImportance__olImportanceLow> &
-      Outlook$OlImportance__olImportanceLow &
-      0; // 0
-    static +olImportanceNormal: Class<Outlook$OlImportance__olImportanceNormal> &
-      Outlook$OlImportance__olImportanceNormal &
-      1; // 1
-  }
-
-  declare class Outlook$OlImportance__olImportanceHigh
-    mixins Outlook$OlImportance {}
-  declare class Outlook$OlImportance__olImportanceLow
-    mixins Outlook$OlImportance {}
-  declare class Outlook$OlImportance__olImportanceNormal
-    mixins Outlook$OlImportance {}
-
-  declare class Outlook$OlInspectorClose {
-    constructor(...args: empty): mixed;
-    static +olDiscard: Class<Outlook$OlInspectorClose__olDiscard> &
-      Outlook$OlInspectorClose__olDiscard &
-      1; // 1
-    static +olPromptForSave: Class<Outlook$OlInspectorClose__olPromptForSave> &
-      Outlook$OlInspectorClose__olPromptForSave &
-      2; // 2
-    static +olSave: Class<Outlook$OlInspectorClose__olSave> &
-      Outlook$OlInspectorClose__olSave &
-      0; // 0
-  }
-
-  declare class Outlook$OlInspectorClose__olDiscard
-    mixins Outlook$OlInspectorClose {}
-  declare class Outlook$OlInspectorClose__olPromptForSave
-    mixins Outlook$OlInspectorClose {}
-  declare class Outlook$OlInspectorClose__olSave
-    mixins Outlook$OlInspectorClose {}
-
-  declare class Outlook$OlItemType {
-    constructor(...args: empty): mixed;
-    static +olAppointmentItem: Class<Outlook$OlItemType__olAppointmentItem> &
-      Outlook$OlItemType__olAppointmentItem &
-      1; // 1
-    static +olContactItem: Class<Outlook$OlItemType__olContactItem> &
-      Outlook$OlItemType__olContactItem &
-      2; // 2
-    static +olDistributionListItem: Class<Outlook$OlItemType__olDistributionListItem> &
-      Outlook$OlItemType__olDistributionListItem &
-      7; // 7
-    static +olJournalItem: Class<Outlook$OlItemType__olJournalItem> &
-      Outlook$OlItemType__olJournalItem &
-      4; // 4
-    static +olMailItem: Class<Outlook$OlItemType__olMailItem> &
-      Outlook$OlItemType__olMailItem &
-      0; // 0
-    static +olMobileItemMMS: Class<Outlook$OlItemType__olMobileItemMMS> &
-      Outlook$OlItemType__olMobileItemMMS &
-      12; // 12
-    static +olMobileItemSMS: Class<Outlook$OlItemType__olMobileItemSMS> &
-      Outlook$OlItemType__olMobileItemSMS &
-      11; // 11
-    static +olNoteItem: Class<Outlook$OlItemType__olNoteItem> &
-      Outlook$OlItemType__olNoteItem &
-      5; // 5
-    static +olPostItem: Class<Outlook$OlItemType__olPostItem> &
-      Outlook$OlItemType__olPostItem &
-      6; // 6
-    static +olTaskItem: Class<Outlook$OlItemType__olTaskItem> &
-      Outlook$OlItemType__olTaskItem &
-      3; // 3
-  }
-
-  declare class Outlook$OlItemType__olAppointmentItem
-    mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olContactItem mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olDistributionListItem
-    mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olJournalItem mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olMailItem mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olMobileItemMMS mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olMobileItemSMS mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olNoteItem mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olPostItem mixins Outlook$OlItemType {}
-  declare class Outlook$OlItemType__olTaskItem mixins Outlook$OlItemType {}
-
-  declare class Outlook$OlJournalRecipientType {
-    constructor(...args: empty): mixed;
-    static +olAssociatedContact: Class<Outlook$OlJournalRecipientType__olAssociatedContact> &
-      Outlook$OlJournalRecipientType__olAssociatedContact &
-      1; // 1
-  }
-
-  declare class Outlook$OlJournalRecipientType__olAssociatedContact
-    mixins Outlook$OlJournalRecipientType {}
-
-  declare class Outlook$OlMailingAddress {
-    constructor(...args: empty): mixed;
-    static +olBusiness: Class<Outlook$OlMailingAddress__olBusiness> &
-      Outlook$OlMailingAddress__olBusiness &
-      2; // 2
-    static +olHome: Class<Outlook$OlMailingAddress__olHome> &
-      Outlook$OlMailingAddress__olHome &
-      1; // 1
-    static +olNone: Class<Outlook$OlMailingAddress__olNone> &
-      Outlook$OlMailingAddress__olNone &
-      0; // 0
-    static +olOther: Class<Outlook$OlMailingAddress__olOther> &
-      Outlook$OlMailingAddress__olOther &
-      3; // 3
-  }
-
-  declare class Outlook$OlMailingAddress__olBusiness
-    mixins Outlook$OlMailingAddress {}
-  declare class Outlook$OlMailingAddress__olHome
-    mixins Outlook$OlMailingAddress {}
-  declare class Outlook$OlMailingAddress__olNone
-    mixins Outlook$OlMailingAddress {}
-  declare class Outlook$OlMailingAddress__olOther
-    mixins Outlook$OlMailingAddress {}
-
-  declare class Outlook$OlMailRecipientType {
-    constructor(...args: empty): mixed;
-    static +olBCC: Class<Outlook$OlMailRecipientType__olBCC> &
-      Outlook$OlMailRecipientType__olBCC &
-      3; // 3
-    static +olCC: Class<Outlook$OlMailRecipientType__olCC> &
-      Outlook$OlMailRecipientType__olCC &
-      2; // 2
-    static +olOriginator: Class<Outlook$OlMailRecipientType__olOriginator> &
-      Outlook$OlMailRecipientType__olOriginator &
-      0; // 0
-    static +olTo: Class<Outlook$OlMailRecipientType__olTo> &
-      Outlook$OlMailRecipientType__olTo &
-      1; // 1
-  }
-
-  declare class Outlook$OlMailRecipientType__olBCC
-    mixins Outlook$OlMailRecipientType {}
-  declare class Outlook$OlMailRecipientType__olCC
-    mixins Outlook$OlMailRecipientType {}
-  declare class Outlook$OlMailRecipientType__olOriginator
-    mixins Outlook$OlMailRecipientType {}
-  declare class Outlook$OlMailRecipientType__olTo
-    mixins Outlook$OlMailRecipientType {}
-
-  declare class Outlook$OlMarkInterval {
-    constructor(...args: empty): mixed;
-    static +olMarkComplete: Class<Outlook$OlMarkInterval__olMarkComplete> &
-      Outlook$OlMarkInterval__olMarkComplete &
-      5; // 5
-    static +olMarkNextWeek: Class<Outlook$OlMarkInterval__olMarkNextWeek> &
-      Outlook$OlMarkInterval__olMarkNextWeek &
-      3; // 3
-    static +olMarkNoDate: Class<Outlook$OlMarkInterval__olMarkNoDate> &
-      Outlook$OlMarkInterval__olMarkNoDate &
-      4; // 4
-    static +olMarkThisWeek: Class<Outlook$OlMarkInterval__olMarkThisWeek> &
-      Outlook$OlMarkInterval__olMarkThisWeek &
-      2; // 2
-    static +olMarkToday: Class<Outlook$OlMarkInterval__olMarkToday> &
-      Outlook$OlMarkInterval__olMarkToday &
-      0; // 0
-    static +olMarkTomorrow: Class<Outlook$OlMarkInterval__olMarkTomorrow> &
-      Outlook$OlMarkInterval__olMarkTomorrow &
-      1; // 1
-  }
-
-  declare class Outlook$OlMarkInterval__olMarkComplete
-    mixins Outlook$OlMarkInterval {}
-  declare class Outlook$OlMarkInterval__olMarkNextWeek
-    mixins Outlook$OlMarkInterval {}
-  declare class Outlook$OlMarkInterval__olMarkNoDate
-    mixins Outlook$OlMarkInterval {}
-  declare class Outlook$OlMarkInterval__olMarkThisWeek
-    mixins Outlook$OlMarkInterval {}
-  declare class Outlook$OlMarkInterval__olMarkToday
-    mixins Outlook$OlMarkInterval {}
-  declare class Outlook$OlMarkInterval__olMarkTomorrow
-    mixins Outlook$OlMarkInterval {}
-
-  declare class Outlook$OlMatchEntry {
-    constructor(...args: empty): mixed;
-    static +olMatchEntryComplete: Class<Outlook$OlMatchEntry__olMatchEntryComplete> &
-      Outlook$OlMatchEntry__olMatchEntryComplete &
-      1; // 1
-    static +olMatchEntryFirstLetter: Class<Outlook$OlMatchEntry__olMatchEntryFirstLetter> &
-      Outlook$OlMatchEntry__olMatchEntryFirstLetter &
-      0; // 0
-    static +olMatchEntryNone: Class<Outlook$OlMatchEntry__olMatchEntryNone> &
-      Outlook$OlMatchEntry__olMatchEntryNone &
-      2; // 2
-  }
-
-  declare class Outlook$OlMatchEntry__olMatchEntryComplete
-    mixins Outlook$OlMatchEntry {}
-  declare class Outlook$OlMatchEntry__olMatchEntryFirstLetter
-    mixins Outlook$OlMatchEntry {}
-  declare class Outlook$OlMatchEntry__olMatchEntryNone
-    mixins Outlook$OlMatchEntry {}
-
-  declare class Outlook$OlMeetingRecipientType {
-    constructor(...args: empty): mixed;
-    static +olOptional: Class<Outlook$OlMeetingRecipientType__olOptional> &
-      Outlook$OlMeetingRecipientType__olOptional &
-      2; // 2
-    static +olOrganizer: Class<Outlook$OlMeetingRecipientType__olOrganizer> &
-      Outlook$OlMeetingRecipientType__olOrganizer &
-      0; // 0
-    static +olRequired: Class<Outlook$OlMeetingRecipientType__olRequired> &
-      Outlook$OlMeetingRecipientType__olRequired &
-      1; // 1
-    static +olResource: Class<Outlook$OlMeetingRecipientType__olResource> &
-      Outlook$OlMeetingRecipientType__olResource &
-      3; // 3
-  }
-
-  declare class Outlook$OlMeetingRecipientType__olOptional
-    mixins Outlook$OlMeetingRecipientType {}
-  declare class Outlook$OlMeetingRecipientType__olOrganizer
-    mixins Outlook$OlMeetingRecipientType {}
-  declare class Outlook$OlMeetingRecipientType__olRequired
-    mixins Outlook$OlMeetingRecipientType {}
-  declare class Outlook$OlMeetingRecipientType__olResource
-    mixins Outlook$OlMeetingRecipientType {}
-
-  declare class Outlook$OlMeetingResponse {
-    constructor(...args: empty): mixed;
-    static +olMeetingAccepted: Class<Outlook$OlMeetingResponse__olMeetingAccepted> &
-      Outlook$OlMeetingResponse__olMeetingAccepted &
-      3; // 3
-    static +olMeetingDeclined: Class<Outlook$OlMeetingResponse__olMeetingDeclined> &
-      Outlook$OlMeetingResponse__olMeetingDeclined &
-      4; // 4
-    static +olMeetingTentative: Class<Outlook$OlMeetingResponse__olMeetingTentative> &
-      Outlook$OlMeetingResponse__olMeetingTentative &
-      2; // 2
-  }
-
-  declare class Outlook$OlMeetingResponse__olMeetingAccepted
-    mixins Outlook$OlMeetingResponse {}
-  declare class Outlook$OlMeetingResponse__olMeetingDeclined
-    mixins Outlook$OlMeetingResponse {}
-  declare class Outlook$OlMeetingResponse__olMeetingTentative
-    mixins Outlook$OlMeetingResponse {}
-
-  declare class Outlook$OlMeetingStatus {
-    constructor(...args: empty): mixed;
-    static +olMeeting: Class<Outlook$OlMeetingStatus__olMeeting> &
-      Outlook$OlMeetingStatus__olMeeting &
-      1; // 1
-    static +olMeetingCanceled: Class<Outlook$OlMeetingStatus__olMeetingCanceled> &
-      Outlook$OlMeetingStatus__olMeetingCanceled &
-      5; // 5
-    static +olMeetingReceived: Class<Outlook$OlMeetingStatus__olMeetingReceived> &
-      Outlook$OlMeetingStatus__olMeetingReceived &
-      3; // 3
-    static +olMeetingReceivedAndCanceled: Class<Outlook$OlMeetingStatus__olMeetingReceivedAndCanceled> &
-      Outlook$OlMeetingStatus__olMeetingReceivedAndCanceled &
-      7; // 7
-    static +olNonMeeting: Class<Outlook$OlMeetingStatus__olNonMeeting> &
-      Outlook$OlMeetingStatus__olNonMeeting &
-      0; // 0
-  }
-
-  declare class Outlook$OlMeetingStatus__olMeeting
-    mixins Outlook$OlMeetingStatus {}
-  declare class Outlook$OlMeetingStatus__olMeetingCanceled
-    mixins Outlook$OlMeetingStatus {}
-  declare class Outlook$OlMeetingStatus__olMeetingReceived
-    mixins Outlook$OlMeetingStatus {}
-  declare class Outlook$OlMeetingStatus__olMeetingReceivedAndCanceled
-    mixins Outlook$OlMeetingStatus {}
-  declare class Outlook$OlMeetingStatus__olNonMeeting
-    mixins Outlook$OlMeetingStatus {}
-
-  declare class Outlook$OlMobileFormat {
-    constructor(...args: empty): mixed;
-    static +olMMS: Class<Outlook$OlMobileFormat__olMMS> &
-      Outlook$OlMobileFormat__olMMS &
-      1; // 1
-    static +olSMS: Class<Outlook$OlMobileFormat__olSMS> &
-      Outlook$OlMobileFormat__olSMS &
-      0; // 0
-  }
-
-  declare class Outlook$OlMobileFormat__olMMS mixins Outlook$OlMobileFormat {}
-  declare class Outlook$OlMobileFormat__olSMS mixins Outlook$OlMobileFormat {}
-
-  declare class Outlook$OlMouseButton {
-    constructor(...args: empty): mixed;
-    static +olMouseButtonLeft: Class<Outlook$OlMouseButton__olMouseButtonLeft> &
-      Outlook$OlMouseButton__olMouseButtonLeft &
-      1; // 1
-    static +olMouseButtonMiddle: Class<Outlook$OlMouseButton__olMouseButtonMiddle> &
-      Outlook$OlMouseButton__olMouseButtonMiddle &
-      4; // 4
-    static +olMouseButtonRight: Class<Outlook$OlMouseButton__olMouseButtonRight> &
-      Outlook$OlMouseButton__olMouseButtonRight &
-      2; // 2
-  }
-
-  declare class Outlook$OlMouseButton__olMouseButtonLeft
-    mixins Outlook$OlMouseButton {}
-  declare class Outlook$OlMouseButton__olMouseButtonMiddle
-    mixins Outlook$OlMouseButton {}
-  declare class Outlook$OlMouseButton__olMouseButtonRight
-    mixins Outlook$OlMouseButton {}
-
-  declare class Outlook$OlMousePointer {
-    constructor(...args: empty): mixed;
-    static +olMousePointerAppStarting: Class<Outlook$OlMousePointer__olMousePointerAppStarting> &
-      Outlook$OlMousePointer__olMousePointerAppStarting &
-      13; // 13
-    static +olMousePointerArrow: Class<Outlook$OlMousePointer__olMousePointerArrow> &
-      Outlook$OlMousePointer__olMousePointerArrow &
-      1; // 1
-    static +olMousePointerCross: Class<Outlook$OlMousePointer__olMousePointerCross> &
-      Outlook$OlMousePointer__olMousePointerCross &
-      2; // 2
-    static +olMousePointerCustom: Class<Outlook$OlMousePointer__olMousePointerCustom> &
-      Outlook$OlMousePointer__olMousePointerCustom &
-      99; // 99
-    static +olMousePointerDefault: Class<Outlook$OlMousePointer__olMousePointerDefault> &
-      Outlook$OlMousePointer__olMousePointerDefault &
-      0; // 0
-    static +olMousePointerHelp: Class<Outlook$OlMousePointer__olMousePointerHelp> &
-      Outlook$OlMousePointer__olMousePointerHelp &
-      14; // 14
-    static +olMousePointerHourGlass: Class<Outlook$OlMousePointer__olMousePointerHourGlass> &
-      Outlook$OlMousePointer__olMousePointerHourGlass &
-      11; // 11
-    static +olMousePointerIBeam: Class<Outlook$OlMousePointer__olMousePointerIBeam> &
-      Outlook$OlMousePointer__olMousePointerIBeam &
-      3; // 3
-    static +olMousePointerNoDrop: Class<Outlook$OlMousePointer__olMousePointerNoDrop> &
-      Outlook$OlMousePointer__olMousePointerNoDrop &
-      12; // 12
-    static +olMousePointerSizeAll: Class<Outlook$OlMousePointer__olMousePointerSizeAll> &
-      Outlook$OlMousePointer__olMousePointerSizeAll &
-      15; // 15
-    static +olMousePointerSizeNESW: Class<Outlook$OlMousePointer__olMousePointerSizeNESW> &
-      Outlook$OlMousePointer__olMousePointerSizeNESW &
-      6; // 6
-    static +olMousePointerSizeNS: Class<Outlook$OlMousePointer__olMousePointerSizeNS> &
-      Outlook$OlMousePointer__olMousePointerSizeNS &
-      7; // 7
-    static +olMousePointerSizeNWSE: Class<Outlook$OlMousePointer__olMousePointerSizeNWSE> &
-      Outlook$OlMousePointer__olMousePointerSizeNWSE &
-      8; // 8
-    static +olMousePointerSizeWE: Class<Outlook$OlMousePointer__olMousePointerSizeWE> &
-      Outlook$OlMousePointer__olMousePointerSizeWE &
-      9; // 9
-    static +olMousePointerUpArrow: Class<Outlook$OlMousePointer__olMousePointerUpArrow> &
-      Outlook$OlMousePointer__olMousePointerUpArrow &
-      10; // 10
-  }
-
-  declare class Outlook$OlMousePointer__olMousePointerAppStarting
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerArrow
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerCross
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerCustom
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerDefault
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerHelp
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerHourGlass
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerIBeam
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerNoDrop
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerSizeAll
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerSizeNESW
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerSizeNS
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerSizeNWSE
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerSizeWE
-    mixins Outlook$OlMousePointer {}
-  declare class Outlook$OlMousePointer__olMousePointerUpArrow
-    mixins Outlook$OlMousePointer {}
-
-  declare class Outlook$OlMultiLine {
-    constructor(...args: empty): mixed;
-    static +olAlwaysMultiLine: Class<Outlook$OlMultiLine__olAlwaysMultiLine> &
-      Outlook$OlMultiLine__olAlwaysMultiLine &
-      2; // 2
-    static +olAlwaysSingleLine: Class<Outlook$OlMultiLine__olAlwaysSingleLine> &
-      Outlook$OlMultiLine__olAlwaysSingleLine &
-      1; // 1
-    static +olWidthMultiLine: Class<Outlook$OlMultiLine__olWidthMultiLine> &
-      Outlook$OlMultiLine__olWidthMultiLine &
-      0; // 0
-  }
-
-  declare class Outlook$OlMultiLine__olAlwaysMultiLine
-    mixins Outlook$OlMultiLine {}
-  declare class Outlook$OlMultiLine__olAlwaysSingleLine
-    mixins Outlook$OlMultiLine {}
-  declare class Outlook$OlMultiLine__olWidthMultiLine
-    mixins Outlook$OlMultiLine {}
-
-  declare class Outlook$OlMultiSelect {
-    constructor(...args: empty): mixed;
-    static +olMultiSelectExtended: Class<Outlook$OlMultiSelect__olMultiSelectExtended> &
-      Outlook$OlMultiSelect__olMultiSelectExtended &
-      2; // 2
-    static +olMultiSelectMulti: Class<Outlook$OlMultiSelect__olMultiSelectMulti> &
-      Outlook$OlMultiSelect__olMultiSelectMulti &
-      1; // 1
-    static +olMultiSelectSingle: Class<Outlook$OlMultiSelect__olMultiSelectSingle> &
-      Outlook$OlMultiSelect__olMultiSelectSingle &
-      0; // 0
-  }
-
-  declare class Outlook$OlMultiSelect__olMultiSelectExtended
-    mixins Outlook$OlMultiSelect {}
-  declare class Outlook$OlMultiSelect__olMultiSelectMulti
-    mixins Outlook$OlMultiSelect {}
-  declare class Outlook$OlMultiSelect__olMultiSelectSingle
-    mixins Outlook$OlMultiSelect {}
-
-  declare class Outlook$OlNavigationModuleType {
-    constructor(...args: empty): mixed;
-    static +olModuleCalendar: Class<Outlook$OlNavigationModuleType__olModuleCalendar> &
-      Outlook$OlNavigationModuleType__olModuleCalendar &
-      1; // 1
-    static +olModuleContacts: Class<Outlook$OlNavigationModuleType__olModuleContacts> &
-      Outlook$OlNavigationModuleType__olModuleContacts &
-      2; // 2
-    static +olModuleFolderList: Class<Outlook$OlNavigationModuleType__olModuleFolderList> &
-      Outlook$OlNavigationModuleType__olModuleFolderList &
-      6; // 6
-    static +olModuleJournal: Class<Outlook$OlNavigationModuleType__olModuleJournal> &
-      Outlook$OlNavigationModuleType__olModuleJournal &
-      4; // 4
-    static +olModuleMail: Class<Outlook$OlNavigationModuleType__olModuleMail> &
-      Outlook$OlNavigationModuleType__olModuleMail &
-      0; // 0
-    static +olModuleNotes: Class<Outlook$OlNavigationModuleType__olModuleNotes> &
-      Outlook$OlNavigationModuleType__olModuleNotes &
-      5; // 5
-    static +olModuleShortcuts: Class<Outlook$OlNavigationModuleType__olModuleShortcuts> &
-      Outlook$OlNavigationModuleType__olModuleShortcuts &
-      7; // 7
-    static +olModuleSolutions: Class<Outlook$OlNavigationModuleType__olModuleSolutions> &
-      Outlook$OlNavigationModuleType__olModuleSolutions &
-      8; // 8
-    static +olModuleTasks: Class<Outlook$OlNavigationModuleType__olModuleTasks> &
-      Outlook$OlNavigationModuleType__olModuleTasks &
-      3; // 3
-  }
-
-  declare class Outlook$OlNavigationModuleType__olModuleCalendar
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleContacts
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleFolderList
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleJournal
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleMail
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleNotes
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleShortcuts
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleSolutions
-    mixins Outlook$OlNavigationModuleType {}
-  declare class Outlook$OlNavigationModuleType__olModuleTasks
-    mixins Outlook$OlNavigationModuleType {}
-
-  declare class Outlook$OlNetMeetingType {
-    constructor(...args: empty): mixed;
-    static +olExchangeConferencing: Class<Outlook$OlNetMeetingType__olExchangeConferencing> &
-      Outlook$OlNetMeetingType__olExchangeConferencing &
-      2; // 2
-    static +olNetMeeting: Class<Outlook$OlNetMeetingType__olNetMeeting> &
-      Outlook$OlNetMeetingType__olNetMeeting &
-      0; // 0
-    static +olNetShow: Class<Outlook$OlNetMeetingType__olNetShow> &
-      Outlook$OlNetMeetingType__olNetShow &
-      1; // 1
-  }
-
-  declare class Outlook$OlNetMeetingType__olExchangeConferencing
-    mixins Outlook$OlNetMeetingType {}
-  declare class Outlook$OlNetMeetingType__olNetMeeting
-    mixins Outlook$OlNetMeetingType {}
-  declare class Outlook$OlNetMeetingType__olNetShow
-    mixins Outlook$OlNetMeetingType {}
-
-  declare class Outlook$OlNoteColor {
-    constructor(...args: empty): mixed;
-    static +olBlue: Class<Outlook$OlNoteColor__olBlue> &
-      Outlook$OlNoteColor__olBlue &
-      0; // 0
-    static +olGreen: Class<Outlook$OlNoteColor__olGreen> &
-      Outlook$OlNoteColor__olGreen &
-      1; // 1
-    static +olPink: Class<Outlook$OlNoteColor__olPink> &
-      Outlook$OlNoteColor__olPink &
-      2; // 2
-    static +olWhite: Class<Outlook$OlNoteColor__olWhite> &
-      Outlook$OlNoteColor__olWhite &
-      4; // 4
-    static +olYellow: Class<Outlook$OlNoteColor__olYellow> &
-      Outlook$OlNoteColor__olYellow &
-      3; // 3
-  }
-
-  declare class Outlook$OlNoteColor__olBlue mixins Outlook$OlNoteColor {}
-  declare class Outlook$OlNoteColor__olGreen mixins Outlook$OlNoteColor {}
-  declare class Outlook$OlNoteColor__olPink mixins Outlook$OlNoteColor {}
-  declare class Outlook$OlNoteColor__olWhite mixins Outlook$OlNoteColor {}
-  declare class Outlook$OlNoteColor__olYellow mixins Outlook$OlNoteColor {}
-
-  declare class Outlook$OlObjectClass {
-    constructor(...args: empty): mixed;
-    static +olAccount: Class<Outlook$OlObjectClass__olAccount> &
-      Outlook$OlObjectClass__olAccount &
-      105; // 105
-    static +olAccountRuleCondition: Class<Outlook$OlObjectClass__olAccountRuleCondition> &
-      Outlook$OlObjectClass__olAccountRuleCondition &
-      135; // 135
-    static +olAccounts: Class<Outlook$OlObjectClass__olAccounts> &
-      Outlook$OlObjectClass__olAccounts &
-      106; // 106
-    static +olAction: Class<Outlook$OlObjectClass__olAction> &
-      Outlook$OlObjectClass__olAction &
-      32; // 32
-    static +olActions: Class<Outlook$OlObjectClass__olActions> &
-      Outlook$OlObjectClass__olActions &
-      33; // 33
-    static +olAddressEntries: Class<Outlook$OlObjectClass__olAddressEntries> &
-      Outlook$OlObjectClass__olAddressEntries &
-      21; // 21
-    static +olAddressEntry: Class<Outlook$OlObjectClass__olAddressEntry> &
-      Outlook$OlObjectClass__olAddressEntry &
-      8; // 8
-    static +olAddressList: Class<Outlook$OlObjectClass__olAddressList> &
-      Outlook$OlObjectClass__olAddressList &
-      7; // 7
-    static +olAddressLists: Class<Outlook$OlObjectClass__olAddressLists> &
-      Outlook$OlObjectClass__olAddressLists &
-      20; // 20
-    static +olAddressRuleCondition: Class<Outlook$OlObjectClass__olAddressRuleCondition> &
-      Outlook$OlObjectClass__olAddressRuleCondition &
-      170; // 170
-    static +olApplication: Class<Outlook$OlObjectClass__olApplication> &
-      Outlook$OlObjectClass__olApplication &
-      0; // 0
-    static +olAppointment: Class<Outlook$OlObjectClass__olAppointment> &
-      Outlook$OlObjectClass__olAppointment &
-      26; // 26
-    static +olAssignToCategoryRuleAction: Class<Outlook$OlObjectClass__olAssignToCategoryRuleAction> &
-      Outlook$OlObjectClass__olAssignToCategoryRuleAction &
-      122; // 122
-    static +olAttachment: Class<Outlook$OlObjectClass__olAttachment> &
-      Outlook$OlObjectClass__olAttachment &
-      5; // 5
-    static +olAttachments: Class<Outlook$OlObjectClass__olAttachments> &
-      Outlook$OlObjectClass__olAttachments &
-      18; // 18
-    static +olAttachmentSelection: Class<Outlook$OlObjectClass__olAttachmentSelection> &
-      Outlook$OlObjectClass__olAttachmentSelection &
-      169; // 169
-    static +olAutoFormatRule: Class<Outlook$OlObjectClass__olAutoFormatRule> &
-      Outlook$OlObjectClass__olAutoFormatRule &
-      147; // 147
-    static +olAutoFormatRules: Class<Outlook$OlObjectClass__olAutoFormatRules> &
-      Outlook$OlObjectClass__olAutoFormatRules &
-      148; // 148
-    static +olCalendarModule: Class<Outlook$OlObjectClass__olCalendarModule> &
-      Outlook$OlObjectClass__olCalendarModule &
-      159; // 159
-    static +olCalendarSharing: Class<Outlook$OlObjectClass__olCalendarSharing> &
-      Outlook$OlObjectClass__olCalendarSharing &
-      151; // 151
-    static +olCategories: Class<Outlook$OlObjectClass__olCategories> &
-      Outlook$OlObjectClass__olCategories &
-      153; // 153
-    static +olCategory: Class<Outlook$OlObjectClass__olCategory> &
-      Outlook$OlObjectClass__olCategory &
-      152; // 152
-    static +olCategoryRuleCondition: Class<Outlook$OlObjectClass__olCategoryRuleCondition> &
-      Outlook$OlObjectClass__olCategoryRuleCondition &
-      130; // 130
-    static +olClassBusinessCardView: Class<Outlook$OlObjectClass__olClassBusinessCardView> &
-      Outlook$OlObjectClass__olClassBusinessCardView &
-      168; // 168
-    static +olClassCalendarView: Class<Outlook$OlObjectClass__olClassCalendarView> &
-      Outlook$OlObjectClass__olClassCalendarView &
-      139; // 139
-    static +olClassCardView: Class<Outlook$OlObjectClass__olClassCardView> &
-      Outlook$OlObjectClass__olClassCardView &
-      138; // 138
-    static +olClassIconView: Class<Outlook$OlObjectClass__olClassIconView> &
-      Outlook$OlObjectClass__olClassIconView &
-      137; // 137
-    static +olClassNavigationPane: Class<Outlook$OlObjectClass__olClassNavigationPane> &
-      Outlook$OlObjectClass__olClassNavigationPane &
-      155; // 155
-    static +olClassTableView: Class<Outlook$OlObjectClass__olClassTableView> &
-      Outlook$OlObjectClass__olClassTableView &
-      136; // 136
-    static +olClassTimeLineView: Class<Outlook$OlObjectClass__olClassTimeLineView> &
-      Outlook$OlObjectClass__olClassTimeLineView &
-      140; // 140
-    static +olClassTimeZone: Class<Outlook$OlObjectClass__olClassTimeZone> &
-      Outlook$OlObjectClass__olClassTimeZone &
-      174; // 174
-    static +olClassTimeZones: Class<Outlook$OlObjectClass__olClassTimeZones> &
-      Outlook$OlObjectClass__olClassTimeZones &
-      175; // 175
-    static +olColumn: Class<Outlook$OlObjectClass__olColumn> &
-      Outlook$OlObjectClass__olColumn &
-      154; // 154
-    static +olColumnFormat: Class<Outlook$OlObjectClass__olColumnFormat> &
-      Outlook$OlObjectClass__olColumnFormat &
-      149; // 149
-    static +olColumns: Class<Outlook$OlObjectClass__olColumns> &
-      Outlook$OlObjectClass__olColumns &
-      150; // 150
-    static +olConflict: Class<Outlook$OlObjectClass__olConflict> &
-      Outlook$OlObjectClass__olConflict &
-      102; // 102
-    static +olConflicts: Class<Outlook$OlObjectClass__olConflicts> &
-      Outlook$OlObjectClass__olConflicts &
-      103; // 103
-    static +olContact: Class<Outlook$OlObjectClass__olContact> &
-      Outlook$OlObjectClass__olContact &
-      40; // 40
-    static +olContactsModule: Class<Outlook$OlObjectClass__olContactsModule> &
-      Outlook$OlObjectClass__olContactsModule &
-      160; // 160
-    static +olConversation: Class<Outlook$OlObjectClass__olConversation> &
-      Outlook$OlObjectClass__olConversation &
-      178; // 178
-    static +olConversationHeader: Class<Outlook$OlObjectClass__olConversationHeader> &
-      Outlook$OlObjectClass__olConversationHeader &
-      182; // 182
-    static +olDistributionList: Class<Outlook$OlObjectClass__olDistributionList> &
-      Outlook$OlObjectClass__olDistributionList &
-      69; // 69
-    static +olDocument: Class<Outlook$OlObjectClass__olDocument> &
-      Outlook$OlObjectClass__olDocument &
-      41; // 41
-    static +olException: Class<Outlook$OlObjectClass__olException> &
-      Outlook$OlObjectClass__olException &
-      30; // 30
-    static +olExceptions: Class<Outlook$OlObjectClass__olExceptions> &
-      Outlook$OlObjectClass__olExceptions &
-      29; // 29
-    static +olExchangeDistributionList: Class<Outlook$OlObjectClass__olExchangeDistributionList> &
-      Outlook$OlObjectClass__olExchangeDistributionList &
-      111; // 111
-    static +olExchangeUser: Class<Outlook$OlObjectClass__olExchangeUser> &
-      Outlook$OlObjectClass__olExchangeUser &
-      110; // 110
-    static +olExplorer: Class<Outlook$OlObjectClass__olExplorer> &
-      Outlook$OlObjectClass__olExplorer &
-      34; // 34
-    static +olExplorers: Class<Outlook$OlObjectClass__olExplorers> &
-      Outlook$OlObjectClass__olExplorers &
-      60; // 60
-    static +olFolder: Class<Outlook$OlObjectClass__olFolder> &
-      Outlook$OlObjectClass__olFolder &
-      2; // 2
-    static +olFolders: Class<Outlook$OlObjectClass__olFolders> &
-      Outlook$OlObjectClass__olFolders &
-      15; // 15
-    static +olFormDescription: Class<Outlook$OlObjectClass__olFormDescription> &
-      Outlook$OlObjectClass__olFormDescription &
-      37; // 37
-    static +olFormNameRuleCondition: Class<Outlook$OlObjectClass__olFormNameRuleCondition> &
-      Outlook$OlObjectClass__olFormNameRuleCondition &
-      131; // 131
-    static +olFormRegion: Class<Outlook$OlObjectClass__olFormRegion> &
-      Outlook$OlObjectClass__olFormRegion &
-      129; // 129
-    static +olFromRssFeedRuleCondition: Class<Outlook$OlObjectClass__olFromRssFeedRuleCondition> &
-      Outlook$OlObjectClass__olFromRssFeedRuleCondition &
-      173; // 173
-    static +olFromRuleCondition: Class<Outlook$OlObjectClass__olFromRuleCondition> &
-      Outlook$OlObjectClass__olFromRuleCondition &
-      132; // 132
-    static +olImportanceRuleCondition: Class<Outlook$OlObjectClass__olImportanceRuleCondition> &
-      Outlook$OlObjectClass__olImportanceRuleCondition &
-      128; // 128
-    static +olInspector: Class<Outlook$OlObjectClass__olInspector> &
-      Outlook$OlObjectClass__olInspector &
-      35; // 35
-    static +olInspectors: Class<Outlook$OlObjectClass__olInspectors> &
-      Outlook$OlObjectClass__olInspectors &
-      61; // 61
-    static +olItemProperties: Class<Outlook$OlObjectClass__olItemProperties> &
-      Outlook$OlObjectClass__olItemProperties &
-      98; // 98
-    static +olItemProperty: Class<Outlook$OlObjectClass__olItemProperty> &
-      Outlook$OlObjectClass__olItemProperty &
-      99; // 99
-    static +olItems: Class<Outlook$OlObjectClass__olItems> &
-      Outlook$OlObjectClass__olItems &
-      16; // 16
-    static +olJournal: Class<Outlook$OlObjectClass__olJournal> &
-      Outlook$OlObjectClass__olJournal &
-      42; // 42
-    static +olJournalModule: Class<Outlook$OlObjectClass__olJournalModule> &
-      Outlook$OlObjectClass__olJournalModule &
-      162; // 162
-    static +olLink: Class<Outlook$OlObjectClass__olLink> &
-      Outlook$OlObjectClass__olLink &
-      75; // 75
-    static +olLinks: Class<Outlook$OlObjectClass__olLinks> &
-      Outlook$OlObjectClass__olLinks &
-      76; // 76
-    static +olMail: Class<Outlook$OlObjectClass__olMail> &
-      Outlook$OlObjectClass__olMail &
-      43; // 43
-    static +olMailModule: Class<Outlook$OlObjectClass__olMailModule> &
-      Outlook$OlObjectClass__olMailModule &
-      158; // 158
-    static +olMarkAsTaskRuleAction: Class<Outlook$OlObjectClass__olMarkAsTaskRuleAction> &
-      Outlook$OlObjectClass__olMarkAsTaskRuleAction &
-      124; // 124
-    static +olMeetingCancellation: Class<Outlook$OlObjectClass__olMeetingCancellation> &
-      Outlook$OlObjectClass__olMeetingCancellation &
-      54; // 54
-    static +olMeetingForwardNotification: Class<Outlook$OlObjectClass__olMeetingForwardNotification> &
-      Outlook$OlObjectClass__olMeetingForwardNotification &
-      181; // 181
-    static +olMeetingRequest: Class<Outlook$OlObjectClass__olMeetingRequest> &
-      Outlook$OlObjectClass__olMeetingRequest &
-      53; // 53
-    static +olMeetingResponseNegative: Class<Outlook$OlObjectClass__olMeetingResponseNegative> &
-      Outlook$OlObjectClass__olMeetingResponseNegative &
-      55; // 55
-    static +olMeetingResponsePositive: Class<Outlook$OlObjectClass__olMeetingResponsePositive> &
-      Outlook$OlObjectClass__olMeetingResponsePositive &
-      56; // 56
-    static +olMeetingResponseTentative: Class<Outlook$OlObjectClass__olMeetingResponseTentative> &
-      Outlook$OlObjectClass__olMeetingResponseTentative &
-      57; // 57
-    static +olMobile: Class<Outlook$OlObjectClass__olMobile> &
-      Outlook$OlObjectClass__olMobile &
-      176; // 176
-    static +olMoveOrCopyRuleAction: Class<Outlook$OlObjectClass__olMoveOrCopyRuleAction> &
-      Outlook$OlObjectClass__olMoveOrCopyRuleAction &
-      118; // 118
-    static +olNamespace: Class<Outlook$OlObjectClass__olNamespace> &
-      Outlook$OlObjectClass__olNamespace &
-      1; // 1
-    static +olNavigationFolder: Class<Outlook$OlObjectClass__olNavigationFolder> &
-      Outlook$OlObjectClass__olNavigationFolder &
-      167; // 167
-    static +olNavigationFolders: Class<Outlook$OlObjectClass__olNavigationFolders> &
-      Outlook$OlObjectClass__olNavigationFolders &
-      166; // 166
-    static +olNavigationGroup: Class<Outlook$OlObjectClass__olNavigationGroup> &
-      Outlook$OlObjectClass__olNavigationGroup &
-      165; // 165
-    static +olNavigationGroups: Class<Outlook$OlObjectClass__olNavigationGroups> &
-      Outlook$OlObjectClass__olNavigationGroups &
-      164; // 164
-    static +olNavigationModule: Class<Outlook$OlObjectClass__olNavigationModule> &
-      Outlook$OlObjectClass__olNavigationModule &
-      157; // 157
-    static +olNavigationModules: Class<Outlook$OlObjectClass__olNavigationModules> &
-      Outlook$OlObjectClass__olNavigationModules &
-      156; // 156
-    static +olNewItemAlertRuleAction: Class<Outlook$OlObjectClass__olNewItemAlertRuleAction> &
-      Outlook$OlObjectClass__olNewItemAlertRuleAction &
-      125; // 125
-    static +olNote: Class<Outlook$OlObjectClass__olNote> &
-      Outlook$OlObjectClass__olNote &
-      44; // 44
-    static +olNotesModule: Class<Outlook$OlObjectClass__olNotesModule> &
-      Outlook$OlObjectClass__olNotesModule &
-      163; // 163
-    static +olOrderField: Class<Outlook$OlObjectClass__olOrderField> &
-      Outlook$OlObjectClass__olOrderField &
-      144; // 144
-    static +olOrderFields: Class<Outlook$OlObjectClass__olOrderFields> &
-      Outlook$OlObjectClass__olOrderFields &
-      145; // 145
-    static +olOutlookBarGroup: Class<Outlook$OlObjectClass__olOutlookBarGroup> &
-      Outlook$OlObjectClass__olOutlookBarGroup &
-      66; // 66
-    static +olOutlookBarGroups: Class<Outlook$OlObjectClass__olOutlookBarGroups> &
-      Outlook$OlObjectClass__olOutlookBarGroups &
-      65; // 65
-    static +olOutlookBarPane: Class<Outlook$OlObjectClass__olOutlookBarPane> &
-      Outlook$OlObjectClass__olOutlookBarPane &
-      63; // 63
-    static +olOutlookBarShortcut: Class<Outlook$OlObjectClass__olOutlookBarShortcut> &
-      Outlook$OlObjectClass__olOutlookBarShortcut &
-      68; // 68
-    static +olOutlookBarShortcuts: Class<Outlook$OlObjectClass__olOutlookBarShortcuts> &
-      Outlook$OlObjectClass__olOutlookBarShortcuts &
-      67; // 67
-    static +olOutlookBarStorage: Class<Outlook$OlObjectClass__olOutlookBarStorage> &
-      Outlook$OlObjectClass__olOutlookBarStorage &
-      64; // 64
-    static +olOutspace: Class<Outlook$OlObjectClass__olOutspace> &
-      Outlook$OlObjectClass__olOutspace &
-      180; // 180
-    static +olPages: Class<Outlook$OlObjectClass__olPages> &
-      Outlook$OlObjectClass__olPages &
-      36; // 36
-    static +olPanes: Class<Outlook$OlObjectClass__olPanes> &
-      Outlook$OlObjectClass__olPanes &
-      62; // 62
-    static +olPlaySoundRuleAction: Class<Outlook$OlObjectClass__olPlaySoundRuleAction> &
-      Outlook$OlObjectClass__olPlaySoundRuleAction &
-      123; // 123
-    static +olPost: Class<Outlook$OlObjectClass__olPost> &
-      Outlook$OlObjectClass__olPost &
-      45; // 45
-    static +olPropertyAccessor: Class<Outlook$OlObjectClass__olPropertyAccessor> &
-      Outlook$OlObjectClass__olPropertyAccessor &
-      112; // 112
-    static +olPropertyPages: Class<Outlook$OlObjectClass__olPropertyPages> &
-      Outlook$OlObjectClass__olPropertyPages &
-      71; // 71
-    static +olPropertyPageSite: Class<Outlook$OlObjectClass__olPropertyPageSite> &
-      Outlook$OlObjectClass__olPropertyPageSite &
-      70; // 70
-    static +olRecipient: Class<Outlook$OlObjectClass__olRecipient> &
-      Outlook$OlObjectClass__olRecipient &
-      4; // 4
-    static +olRecipients: Class<Outlook$OlObjectClass__olRecipients> &
-      Outlook$OlObjectClass__olRecipients &
-      17; // 17
-    static +olRecurrencePattern: Class<Outlook$OlObjectClass__olRecurrencePattern> &
-      Outlook$OlObjectClass__olRecurrencePattern &
-      28; // 28
-    static +olReminder: Class<Outlook$OlObjectClass__olReminder> &
-      Outlook$OlObjectClass__olReminder &
-      101; // 101
-    static +olReminders: Class<Outlook$OlObjectClass__olReminders> &
-      Outlook$OlObjectClass__olReminders &
-      100; // 100
-    static +olRemote: Class<Outlook$OlObjectClass__olRemote> &
-      Outlook$OlObjectClass__olRemote &
-      47; // 47
-    static +olReport: Class<Outlook$OlObjectClass__olReport> &
-      Outlook$OlObjectClass__olReport &
-      46; // 46
-    static +olResults: Class<Outlook$OlObjectClass__olResults> &
-      Outlook$OlObjectClass__olResults &
-      78; // 78
-    static +olRow: Class<Outlook$OlObjectClass__olRow> &
-      Outlook$OlObjectClass__olRow &
-      121; // 121
-    static +olRule: Class<Outlook$OlObjectClass__olRule> &
-      Outlook$OlObjectClass__olRule &
-      115; // 115
-    static +olRuleAction: Class<Outlook$OlObjectClass__olRuleAction> &
-      Outlook$OlObjectClass__olRuleAction &
-      117; // 117
-    static +olRuleActions: Class<Outlook$OlObjectClass__olRuleActions> &
-      Outlook$OlObjectClass__olRuleActions &
-      116; // 116
-    static +olRuleCondition: Class<Outlook$OlObjectClass__olRuleCondition> &
-      Outlook$OlObjectClass__olRuleCondition &
-      127; // 127
-    static +olRuleConditions: Class<Outlook$OlObjectClass__olRuleConditions> &
-      Outlook$OlObjectClass__olRuleConditions &
-      126; // 126
-    static +olRules: Class<Outlook$OlObjectClass__olRules> &
-      Outlook$OlObjectClass__olRules &
-      114; // 114
-    static +olSearch: Class<Outlook$OlObjectClass__olSearch> &
-      Outlook$OlObjectClass__olSearch &
-      77; // 77
-    static +olSelection: Class<Outlook$OlObjectClass__olSelection> &
-      Outlook$OlObjectClass__olSelection &
-      74; // 74
-    static +olSelectNamesDialog: Class<Outlook$OlObjectClass__olSelectNamesDialog> &
-      Outlook$OlObjectClass__olSelectNamesDialog &
-      109; // 109
-    static +olSenderInAddressListRuleCondition: Class<Outlook$OlObjectClass__olSenderInAddressListRuleCondition> &
-      Outlook$OlObjectClass__olSenderInAddressListRuleCondition &
-      133; // 133
-    static +olSendRuleAction: Class<Outlook$OlObjectClass__olSendRuleAction> &
-      Outlook$OlObjectClass__olSendRuleAction &
-      119; // 119
-    static +olSharing: Class<Outlook$OlObjectClass__olSharing> &
-      Outlook$OlObjectClass__olSharing &
-      104; // 104
-    static +olSimpleItems: Class<Outlook$OlObjectClass__olSimpleItems> &
-      Outlook$OlObjectClass__olSimpleItems &
-      179; // 179
-    static +olSolutionsModule: Class<Outlook$OlObjectClass__olSolutionsModule> &
-      Outlook$OlObjectClass__olSolutionsModule &
-      177; // 177
-    static +olStorageItem: Class<Outlook$OlObjectClass__olStorageItem> &
-      Outlook$OlObjectClass__olStorageItem &
-      113; // 113
-    static +olStore: Class<Outlook$OlObjectClass__olStore> &
-      Outlook$OlObjectClass__olStore &
-      107; // 107
-    static +olStores: Class<Outlook$OlObjectClass__olStores> &
-      Outlook$OlObjectClass__olStores &
-      108; // 108
-    static +olSyncObject: Class<Outlook$OlObjectClass__olSyncObject> &
-      Outlook$OlObjectClass__olSyncObject &
-      72; // 72
-    static +olSyncObjects: Class<Outlook$OlObjectClass__olSyncObjects> &
-      Outlook$OlObjectClass__olSyncObjects &
-      73; // 73
-    static +olTable: Class<Outlook$OlObjectClass__olTable> &
-      Outlook$OlObjectClass__olTable &
-      120; // 120
-    static +olTask: Class<Outlook$OlObjectClass__olTask> &
-      Outlook$OlObjectClass__olTask &
-      48; // 48
-    static +olTaskRequest: Class<Outlook$OlObjectClass__olTaskRequest> &
-      Outlook$OlObjectClass__olTaskRequest &
-      49; // 49
-    static +olTaskRequestAccept: Class<Outlook$OlObjectClass__olTaskRequestAccept> &
-      Outlook$OlObjectClass__olTaskRequestAccept &
-      51; // 51
-    static +olTaskRequestDecline: Class<Outlook$OlObjectClass__olTaskRequestDecline> &
-      Outlook$OlObjectClass__olTaskRequestDecline &
-      52; // 52
-    static +olTaskRequestUpdate: Class<Outlook$OlObjectClass__olTaskRequestUpdate> &
-      Outlook$OlObjectClass__olTaskRequestUpdate &
-      50; // 50
-    static +olTasksModule: Class<Outlook$OlObjectClass__olTasksModule> &
-      Outlook$OlObjectClass__olTasksModule &
-      161; // 161
-    static +olTextRuleCondition: Class<Outlook$OlObjectClass__olTextRuleCondition> &
-      Outlook$OlObjectClass__olTextRuleCondition &
-      134; // 134
-    static +olUserDefinedProperties: Class<Outlook$OlObjectClass__olUserDefinedProperties> &
-      Outlook$OlObjectClass__olUserDefinedProperties &
-      172; // 172
-    static +olUserDefinedProperty: Class<Outlook$OlObjectClass__olUserDefinedProperty> &
-      Outlook$OlObjectClass__olUserDefinedProperty &
-      171; // 171
-    static +olUserProperties: Class<Outlook$OlObjectClass__olUserProperties> &
-      Outlook$OlObjectClass__olUserProperties &
-      38; // 38
-    static +olUserProperty: Class<Outlook$OlObjectClass__olUserProperty> &
-      Outlook$OlObjectClass__olUserProperty &
-      39; // 39
-    static +olView: Class<Outlook$OlObjectClass__olView> &
-      Outlook$OlObjectClass__olView &
-      80; // 80
-    static +olViewField: Class<Outlook$OlObjectClass__olViewField> &
-      Outlook$OlObjectClass__olViewField &
-      142; // 142
-    static +olViewFields: Class<Outlook$OlObjectClass__olViewFields> &
-      Outlook$OlObjectClass__olViewFields &
-      141; // 141
-    static +olViewFont: Class<Outlook$OlObjectClass__olViewFont> &
-      Outlook$OlObjectClass__olViewFont &
-      146; // 146
-    static +olViews: Class<Outlook$OlObjectClass__olViews> &
-      Outlook$OlObjectClass__olViews &
-      79; // 79
-  }
-
-  declare class Outlook$OlObjectClass__olAccount mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAccountRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAccounts
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAction mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olActions mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAddressEntries
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAddressEntry
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAddressList
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAddressLists
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAddressRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olApplication
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAppointment
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAssignToCategoryRuleAction
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAttachment
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAttachments
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAttachmentSelection
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAutoFormatRule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olAutoFormatRules
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olCalendarModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olCalendarSharing
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olCategories
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olCategory
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olCategoryRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassBusinessCardView
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassCalendarView
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassCardView
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassIconView
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassNavigationPane
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassTableView
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassTimeLineView
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassTimeZone
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olClassTimeZones
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olColumn mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olColumnFormat
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olColumns mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olConflict
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olConflicts
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olContact mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olContactsModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olConversation
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olConversationHeader
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olDistributionList
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olDocument
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olException
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olExceptions
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olExchangeDistributionList
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olExchangeUser
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olExplorer
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olExplorers
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olFolder mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olFolders mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olFormDescription
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olFormNameRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olFormRegion
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olFromRssFeedRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olFromRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olImportanceRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olInspector
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olInspectors
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olItemProperties
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olItemProperty
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olItems mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olJournal mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olJournalModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olLink mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olLinks mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMail mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMailModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMarkAsTaskRuleAction
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMeetingCancellation
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMeetingForwardNotification
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMeetingRequest
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMeetingResponseNegative
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMeetingResponsePositive
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMeetingResponseTentative
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMobile mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olMoveOrCopyRuleAction
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNamespace
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNavigationFolder
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNavigationFolders
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNavigationGroup
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNavigationGroups
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNavigationModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNavigationModules
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNewItemAlertRuleAction
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNote mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olNotesModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOrderField
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOrderFields
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOutlookBarGroup
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOutlookBarGroups
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOutlookBarPane
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOutlookBarShortcut
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOutlookBarShortcuts
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOutlookBarStorage
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olOutspace
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olPages mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olPanes mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olPlaySoundRuleAction
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olPost mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olPropertyAccessor
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olPropertyPages
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olPropertyPageSite
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRecipient
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRecipients
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRecurrencePattern
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olReminder
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olReminders
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRemote mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olReport mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olResults mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRow mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRule mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRuleAction
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRuleActions
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRuleConditions
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olRules mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSearch mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSelection
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSelectNamesDialog
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSenderInAddressListRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSendRuleAction
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSharing mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSimpleItems
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSolutionsModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olStorageItem
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olStore mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olStores mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSyncObject
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olSyncObjects
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTable mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTask mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTaskRequest
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTaskRequestAccept
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTaskRequestDecline
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTaskRequestUpdate
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTasksModule
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olTextRuleCondition
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olUserDefinedProperties
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olUserDefinedProperty
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olUserProperties
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olUserProperty
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olView mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olViewField
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olViewFields
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olViewFont
-    mixins Outlook$OlObjectClass {}
-  declare class Outlook$OlObjectClass__olViews mixins Outlook$OlObjectClass {}
-
-  declare class Outlook$OlOfficeDocItemsType {
-    constructor(...args: empty): mixed;
-    static +olExcelWorkSheetItem: Class<Outlook$OlOfficeDocItemsType__olExcelWorkSheetItem> &
-      Outlook$OlOfficeDocItemsType__olExcelWorkSheetItem &
-      8; // 8
-    static +olPowerPointShowItem: Class<Outlook$OlOfficeDocItemsType__olPowerPointShowItem> &
-      Outlook$OlOfficeDocItemsType__olPowerPointShowItem &
-      10; // 10
-    static +olWordDocumentItem: Class<Outlook$OlOfficeDocItemsType__olWordDocumentItem> &
-      Outlook$OlOfficeDocItemsType__olWordDocumentItem &
-      9; // 9
-  }
-
-  declare class Outlook$OlOfficeDocItemsType__olExcelWorkSheetItem
-    mixins Outlook$OlOfficeDocItemsType {}
-  declare class Outlook$OlOfficeDocItemsType__olPowerPointShowItem
-    mixins Outlook$OlOfficeDocItemsType {}
-  declare class Outlook$OlOfficeDocItemsType__olWordDocumentItem
-    mixins Outlook$OlOfficeDocItemsType {}
-
-  declare class Outlook$OlOutlookBarViewType {
-    constructor(...args: empty): mixed;
-    static +olLargeIcon: Class<Outlook$OlOutlookBarViewType__olLargeIcon> &
-      Outlook$OlOutlookBarViewType__olLargeIcon &
-      0; // 0
-    static +olSmallIcon: Class<Outlook$OlOutlookBarViewType__olSmallIcon> &
-      Outlook$OlOutlookBarViewType__olSmallIcon &
-      1; // 1
-  }
-
-  declare class Outlook$OlOutlookBarViewType__olLargeIcon
-    mixins Outlook$OlOutlookBarViewType {}
-  declare class Outlook$OlOutlookBarViewType__olSmallIcon
-    mixins Outlook$OlOutlookBarViewType {}
-
-  declare class Outlook$OlPageType {
-    constructor(...args: empty): mixed;
-    static +olPageTypePlanner: Class<Outlook$OlPageType__olPageTypePlanner> &
-      Outlook$OlPageType__olPageTypePlanner &
-      0; // 0
-    static +olPageTypeTracker: Class<Outlook$OlPageType__olPageTypeTracker> &
-      Outlook$OlPageType__olPageTypeTracker &
-      1; // 1
-  }
-
-  declare class Outlook$OlPageType__olPageTypePlanner
-    mixins Outlook$OlPageType {}
-  declare class Outlook$OlPageType__olPageTypeTracker
-    mixins Outlook$OlPageType {}
-
-  declare class Outlook$OlPane {
-    constructor(...args: empty): mixed;
-    static +olFolderList: Class<Outlook$OlPane__olFolderList> &
-      Outlook$OlPane__olFolderList &
-      2; // 2
-    static +olNavigationPane: Class<Outlook$OlPane__olNavigationPane> &
-      Outlook$OlPane__olNavigationPane &
-      4; // 4
-    static +olOutlookBar: Class<Outlook$OlPane__olOutlookBar> &
-      Outlook$OlPane__olOutlookBar &
-      1; // 1
-    static +olPreview: Class<Outlook$OlPane__olPreview> &
-      Outlook$OlPane__olPreview &
-      3; // 3
-    static +olToDoBar: Class<Outlook$OlPane__olToDoBar> &
-      Outlook$OlPane__olToDoBar &
-      5; // 5
-  }
-
-  declare class Outlook$OlPane__olFolderList mixins Outlook$OlPane {}
-  declare class Outlook$OlPane__olNavigationPane mixins Outlook$OlPane {}
-  declare class Outlook$OlPane__olOutlookBar mixins Outlook$OlPane {}
-  declare class Outlook$OlPane__olPreview mixins Outlook$OlPane {}
-  declare class Outlook$OlPane__olToDoBar mixins Outlook$OlPane {}
-
-  declare class Outlook$OlPermission {
-    constructor(...args: empty): mixed;
-    static +olDoNotForward: Class<Outlook$OlPermission__olDoNotForward> &
-      Outlook$OlPermission__olDoNotForward &
-      1; // 1
-    static +olPermissionTemplate: Class<Outlook$OlPermission__olPermissionTemplate> &
-      Outlook$OlPermission__olPermissionTemplate &
-      2; // 2
-    static +olUnrestricted: Class<Outlook$OlPermission__olUnrestricted> &
-      Outlook$OlPermission__olUnrestricted &
-      0; // 0
-  }
-
-  declare class Outlook$OlPermission__olDoNotForward
-    mixins Outlook$OlPermission {}
-  declare class Outlook$OlPermission__olPermissionTemplate
-    mixins Outlook$OlPermission {}
-  declare class Outlook$OlPermission__olUnrestricted
-    mixins Outlook$OlPermission {}
-
-  declare class Outlook$OlPermissionService {
-    constructor(...args: empty): mixed;
-    static +olPassport: Class<Outlook$OlPermissionService__olPassport> &
-      Outlook$OlPermissionService__olPassport &
-      2; // 2
-    static +olUnknown: Class<Outlook$OlPermissionService__olUnknown> &
-      Outlook$OlPermissionService__olUnknown &
-      0; // 0
-    static +olWindows: Class<Outlook$OlPermissionService__olWindows> &
-      Outlook$OlPermissionService__olWindows &
-      1; // 1
-  }
-
-  declare class Outlook$OlPermissionService__olPassport
-    mixins Outlook$OlPermissionService {}
-  declare class Outlook$OlPermissionService__olUnknown
-    mixins Outlook$OlPermissionService {}
-  declare class Outlook$OlPermissionService__olWindows
-    mixins Outlook$OlPermissionService {}
-
-  declare class Outlook$OlPictureAlignment {
-    constructor(...args: empty): mixed;
-    static +olPictureAlignmentLeft: Class<Outlook$OlPictureAlignment__olPictureAlignmentLeft> &
-      Outlook$OlPictureAlignment__olPictureAlignmentLeft &
-      0; // 0
-    static +olPictureAlignmentTop: Class<Outlook$OlPictureAlignment__olPictureAlignmentTop> &
-      Outlook$OlPictureAlignment__olPictureAlignmentTop &
-      1; // 1
-  }
-
-  declare class Outlook$OlPictureAlignment__olPictureAlignmentLeft
-    mixins Outlook$OlPictureAlignment {}
-  declare class Outlook$OlPictureAlignment__olPictureAlignmentTop
-    mixins Outlook$OlPictureAlignment {}
-
-  declare class Outlook$OlRecipientSelectors {
-    constructor(...args: empty): mixed;
-    static +olShowNone: Class<Outlook$OlRecipientSelectors__olShowNone> &
-      Outlook$OlRecipientSelectors__olShowNone &
-      0; // 0
-    static +olShowTo: Class<Outlook$OlRecipientSelectors__olShowTo> &
-      Outlook$OlRecipientSelectors__olShowTo &
-      1; // 1
-    static +olShowToCc: Class<Outlook$OlRecipientSelectors__olShowToCc> &
-      Outlook$OlRecipientSelectors__olShowToCc &
-      2; // 2
-    static +olShowToCcBcc: Class<Outlook$OlRecipientSelectors__olShowToCcBcc> &
-      Outlook$OlRecipientSelectors__olShowToCcBcc &
-      3; // 3
-  }
-
-  declare class Outlook$OlRecipientSelectors__olShowNone
-    mixins Outlook$OlRecipientSelectors {}
-  declare class Outlook$OlRecipientSelectors__olShowTo
-    mixins Outlook$OlRecipientSelectors {}
-  declare class Outlook$OlRecipientSelectors__olShowToCc
-    mixins Outlook$OlRecipientSelectors {}
-  declare class Outlook$OlRecipientSelectors__olShowToCcBcc
-    mixins Outlook$OlRecipientSelectors {}
-
-  declare class Outlook$OlRecurrenceState {
-    constructor(...args: empty): mixed;
-    static +olApptException: Class<Outlook$OlRecurrenceState__olApptException> &
-      Outlook$OlRecurrenceState__olApptException &
-      3; // 3
-    static +olApptMaster: Class<Outlook$OlRecurrenceState__olApptMaster> &
-      Outlook$OlRecurrenceState__olApptMaster &
-      1; // 1
-    static +olApptNotRecurring: Class<Outlook$OlRecurrenceState__olApptNotRecurring> &
-      Outlook$OlRecurrenceState__olApptNotRecurring &
-      0; // 0
-    static +olApptOccurrence: Class<Outlook$OlRecurrenceState__olApptOccurrence> &
-      Outlook$OlRecurrenceState__olApptOccurrence &
-      2; // 2
-  }
-
-  declare class Outlook$OlRecurrenceState__olApptException
-    mixins Outlook$OlRecurrenceState {}
-  declare class Outlook$OlRecurrenceState__olApptMaster
-    mixins Outlook$OlRecurrenceState {}
-  declare class Outlook$OlRecurrenceState__olApptNotRecurring
-    mixins Outlook$OlRecurrenceState {}
-  declare class Outlook$OlRecurrenceState__olApptOccurrence
-    mixins Outlook$OlRecurrenceState {}
-
-  declare class Outlook$OlRecurrenceType {
-    constructor(...args: empty): mixed;
-    static +olRecursDaily: Class<Outlook$OlRecurrenceType__olRecursDaily> &
-      Outlook$OlRecurrenceType__olRecursDaily &
-      0; // 0
-    static +olRecursMonthly: Class<Outlook$OlRecurrenceType__olRecursMonthly> &
-      Outlook$OlRecurrenceType__olRecursMonthly &
-      2; // 2
-    static +olRecursMonthNth: Class<Outlook$OlRecurrenceType__olRecursMonthNth> &
-      Outlook$OlRecurrenceType__olRecursMonthNth &
-      3; // 3
-    static +olRecursWeekly: Class<Outlook$OlRecurrenceType__olRecursWeekly> &
-      Outlook$OlRecurrenceType__olRecursWeekly &
-      1; // 1
-    static +olRecursYearly: Class<Outlook$OlRecurrenceType__olRecursYearly> &
-      Outlook$OlRecurrenceType__olRecursYearly &
-      5; // 5
-    static +olRecursYearNth: Class<Outlook$OlRecurrenceType__olRecursYearNth> &
-      Outlook$OlRecurrenceType__olRecursYearNth &
-      6; // 6
-  }
-
-  declare class Outlook$OlRecurrenceType__olRecursDaily
-    mixins Outlook$OlRecurrenceType {}
-  declare class Outlook$OlRecurrenceType__olRecursMonthly
-    mixins Outlook$OlRecurrenceType {}
-  declare class Outlook$OlRecurrenceType__olRecursMonthNth
-    mixins Outlook$OlRecurrenceType {}
-  declare class Outlook$OlRecurrenceType__olRecursWeekly
-    mixins Outlook$OlRecurrenceType {}
-  declare class Outlook$OlRecurrenceType__olRecursYearly
-    mixins Outlook$OlRecurrenceType {}
-  declare class Outlook$OlRecurrenceType__olRecursYearNth
-    mixins Outlook$OlRecurrenceType {}
-
-  declare class Outlook$OlReferenceType {
-    constructor(...args: empty): mixed;
-    static +olStrong: Class<Outlook$OlReferenceType__olStrong> &
-      Outlook$OlReferenceType__olStrong &
-      1; // 1
-    static +olWeak: Class<Outlook$OlReferenceType__olWeak> &
-      Outlook$OlReferenceType__olWeak &
-      0; // 0
-  }
-
-  declare class Outlook$OlReferenceType__olStrong
-    mixins Outlook$OlReferenceType {}
-  declare class Outlook$OlReferenceType__olWeak
-    mixins Outlook$OlReferenceType {}
-
-  declare class Outlook$OlRemoteStatus {
-    constructor(...args: empty): mixed;
-    static +olMarkedForCopy: Class<Outlook$OlRemoteStatus__olMarkedForCopy> &
-      Outlook$OlRemoteStatus__olMarkedForCopy &
-      3; // 3
-    static +olMarkedForDelete: Class<Outlook$OlRemoteStatus__olMarkedForDelete> &
-      Outlook$OlRemoteStatus__olMarkedForDelete &
-      4; // 4
-    static +olMarkedForDownload: Class<Outlook$OlRemoteStatus__olMarkedForDownload> &
-      Outlook$OlRemoteStatus__olMarkedForDownload &
-      2; // 2
-    static +olRemoteStatusNone: Class<Outlook$OlRemoteStatus__olRemoteStatusNone> &
-      Outlook$OlRemoteStatus__olRemoteStatusNone &
-      0; // 0
-    static +olUnMarked: Class<Outlook$OlRemoteStatus__olUnMarked> &
-      Outlook$OlRemoteStatus__olUnMarked &
-      1; // 1
-  }
-
-  declare class Outlook$OlRemoteStatus__olMarkedForCopy
-    mixins Outlook$OlRemoteStatus {}
-  declare class Outlook$OlRemoteStatus__olMarkedForDelete
-    mixins Outlook$OlRemoteStatus {}
-  declare class Outlook$OlRemoteStatus__olMarkedForDownload
-    mixins Outlook$OlRemoteStatus {}
-  declare class Outlook$OlRemoteStatus__olRemoteStatusNone
-    mixins Outlook$OlRemoteStatus {}
-  declare class Outlook$OlRemoteStatus__olUnMarked
-    mixins Outlook$OlRemoteStatus {}
-
-  declare class Outlook$OlResponseStatus {
-    constructor(...args: empty): mixed;
-    static +olResponseAccepted: Class<Outlook$OlResponseStatus__olResponseAccepted> &
-      Outlook$OlResponseStatus__olResponseAccepted &
-      3; // 3
-    static +olResponseDeclined: Class<Outlook$OlResponseStatus__olResponseDeclined> &
-      Outlook$OlResponseStatus__olResponseDeclined &
-      4; // 4
-    static +olResponseNone: Class<Outlook$OlResponseStatus__olResponseNone> &
-      Outlook$OlResponseStatus__olResponseNone &
-      0; // 0
-    static +olResponseNotResponded: Class<Outlook$OlResponseStatus__olResponseNotResponded> &
-      Outlook$OlResponseStatus__olResponseNotResponded &
-      5; // 5
-    static +olResponseOrganized: Class<Outlook$OlResponseStatus__olResponseOrganized> &
-      Outlook$OlResponseStatus__olResponseOrganized &
-      1; // 1
-    static +olResponseTentative: Class<Outlook$OlResponseStatus__olResponseTentative> &
-      Outlook$OlResponseStatus__olResponseTentative &
-      2; // 2
-  }
-
-  declare class Outlook$OlResponseStatus__olResponseAccepted
-    mixins Outlook$OlResponseStatus {}
-  declare class Outlook$OlResponseStatus__olResponseDeclined
-    mixins Outlook$OlResponseStatus {}
-  declare class Outlook$OlResponseStatus__olResponseNone
-    mixins Outlook$OlResponseStatus {}
-  declare class Outlook$OlResponseStatus__olResponseNotResponded
-    mixins Outlook$OlResponseStatus {}
-  declare class Outlook$OlResponseStatus__olResponseOrganized
-    mixins Outlook$OlResponseStatus {}
-  declare class Outlook$OlResponseStatus__olResponseTentative
-    mixins Outlook$OlResponseStatus {}
-
-  declare class Outlook$OlRuleActionType {
-    constructor(...args: empty): mixed;
-    static +olRuleActionAssignToCategory: Class<Outlook$OlRuleActionType__olRuleActionAssignToCategory> &
-      Outlook$OlRuleActionType__olRuleActionAssignToCategory &
-      2; // 2
-    static +olRuleActionCcMessage: Class<Outlook$OlRuleActionType__olRuleActionCcMessage> &
-      Outlook$OlRuleActionType__olRuleActionCcMessage &
-      27; // 27
-    static +olRuleActionClearCategories: Class<Outlook$OlRuleActionType__olRuleActionClearCategories> &
-      Outlook$OlRuleActionType__olRuleActionClearCategories &
-      30; // 30
-    static +olRuleActionCopyToFolder: Class<Outlook$OlRuleActionType__olRuleActionCopyToFolder> &
-      Outlook$OlRuleActionType__olRuleActionCopyToFolder &
-      5; // 5
-    static +olRuleActionCustomAction: Class<Outlook$OlRuleActionType__olRuleActionCustomAction> &
-      Outlook$OlRuleActionType__olRuleActionCustomAction &
-      22; // 22
-    static +olRuleActionDefer: Class<Outlook$OlRuleActionType__olRuleActionDefer> &
-      Outlook$OlRuleActionType__olRuleActionDefer &
-      28; // 28
-    static +olRuleActionDelete: Class<Outlook$OlRuleActionType__olRuleActionDelete> &
-      Outlook$OlRuleActionType__olRuleActionDelete &
-      3; // 3
-    static +olRuleActionDeletePermanently: Class<Outlook$OlRuleActionType__olRuleActionDeletePermanently> &
-      Outlook$OlRuleActionType__olRuleActionDeletePermanently &
-      4; // 4
-    static +olRuleActionDesktopAlert: Class<Outlook$OlRuleActionType__olRuleActionDesktopAlert> &
-      Outlook$OlRuleActionType__olRuleActionDesktopAlert &
-      24; // 24
-    static +olRuleActionFlagClear: Class<Outlook$OlRuleActionType__olRuleActionFlagClear> &
-      Outlook$OlRuleActionType__olRuleActionFlagClear &
-      13; // 13
-    static +olRuleActionFlagColor: Class<Outlook$OlRuleActionType__olRuleActionFlagColor> &
-      Outlook$OlRuleActionType__olRuleActionFlagColor &
-      12; // 12
-    static +olRuleActionFlagForActionInDays: Class<Outlook$OlRuleActionType__olRuleActionFlagForActionInDays> &
-      Outlook$OlRuleActionType__olRuleActionFlagForActionInDays &
-      11; // 11
-    static +olRuleActionForward: Class<Outlook$OlRuleActionType__olRuleActionForward> &
-      Outlook$OlRuleActionType__olRuleActionForward &
-      6; // 6
-    static +olRuleActionForwardAsAttachment: Class<Outlook$OlRuleActionType__olRuleActionForwardAsAttachment> &
-      Outlook$OlRuleActionType__olRuleActionForwardAsAttachment &
-      7; // 7
-    static +olRuleActionImportance: Class<Outlook$OlRuleActionType__olRuleActionImportance> &
-      Outlook$OlRuleActionType__olRuleActionImportance &
-      14; // 14
-    static +olRuleActionMarkAsTask: Class<Outlook$OlRuleActionType__olRuleActionMarkAsTask> &
-      Outlook$OlRuleActionType__olRuleActionMarkAsTask &
-      29; // 29
-    static +olRuleActionMarkRead: Class<Outlook$OlRuleActionType__olRuleActionMarkRead> &
-      Outlook$OlRuleActionType__olRuleActionMarkRead &
-      19; // 19
-    static +olRuleActionMoveToFolder: Class<Outlook$OlRuleActionType__olRuleActionMoveToFolder> &
-      Outlook$OlRuleActionType__olRuleActionMoveToFolder &
-      1; // 1
-    static +olRuleActionNewItemAlert: Class<Outlook$OlRuleActionType__olRuleActionNewItemAlert> &
-      Outlook$OlRuleActionType__olRuleActionNewItemAlert &
-      23; // 23
-    static +olRuleActionNotifyDelivery: Class<Outlook$OlRuleActionType__olRuleActionNotifyDelivery> &
-      Outlook$OlRuleActionType__olRuleActionNotifyDelivery &
-      26; // 26
-    static +olRuleActionNotifyRead: Class<Outlook$OlRuleActionType__olRuleActionNotifyRead> &
-      Outlook$OlRuleActionType__olRuleActionNotifyRead &
-      25; // 25
-    static +olRuleActionPlaySound: Class<Outlook$OlRuleActionType__olRuleActionPlaySound> &
-      Outlook$OlRuleActionType__olRuleActionPlaySound &
-      17; // 17
-    static +olRuleActionPrint: Class<Outlook$OlRuleActionType__olRuleActionPrint> &
-      Outlook$OlRuleActionType__olRuleActionPrint &
-      16; // 16
-    static +olRuleActionRedirect: Class<Outlook$OlRuleActionType__olRuleActionRedirect> &
-      Outlook$OlRuleActionType__olRuleActionRedirect &
-      8; // 8
-    static +olRuleActionRunScript: Class<Outlook$OlRuleActionType__olRuleActionRunScript> &
-      Outlook$OlRuleActionType__olRuleActionRunScript &
-      20; // 20
-    static +olRuleActionSensitivity: Class<Outlook$OlRuleActionType__olRuleActionSensitivity> &
-      Outlook$OlRuleActionType__olRuleActionSensitivity &
-      15; // 15
-    static +olRuleActionServerReply: Class<Outlook$OlRuleActionType__olRuleActionServerReply> &
-      Outlook$OlRuleActionType__olRuleActionServerReply &
-      9; // 9
-    static +olRuleActionStartApplication: Class<Outlook$OlRuleActionType__olRuleActionStartApplication> &
-      Outlook$OlRuleActionType__olRuleActionStartApplication &
-      18; // 18
-    static +olRuleActionStop: Class<Outlook$OlRuleActionType__olRuleActionStop> &
-      Outlook$OlRuleActionType__olRuleActionStop &
-      21; // 21
-    static +olRuleActionTemplate: Class<Outlook$OlRuleActionType__olRuleActionTemplate> &
-      Outlook$OlRuleActionType__olRuleActionTemplate &
-      10; // 10
-    static +olRuleActionUnknown: Class<Outlook$OlRuleActionType__olRuleActionUnknown> &
-      Outlook$OlRuleActionType__olRuleActionUnknown &
-      0; // 0
-  }
-
-  declare class Outlook$OlRuleActionType__olRuleActionAssignToCategory
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionCcMessage
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionClearCategories
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionCopyToFolder
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionCustomAction
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionDefer
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionDelete
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionDeletePermanently
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionDesktopAlert
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionFlagClear
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionFlagColor
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionFlagForActionInDays
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionForward
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionForwardAsAttachment
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionImportance
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionMarkAsTask
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionMarkRead
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionMoveToFolder
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionNewItemAlert
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionNotifyDelivery
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionNotifyRead
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionPlaySound
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionPrint
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionRedirect
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionRunScript
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionSensitivity
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionServerReply
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionStartApplication
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionStop
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionTemplate
-    mixins Outlook$OlRuleActionType {}
-  declare class Outlook$OlRuleActionType__olRuleActionUnknown
-    mixins Outlook$OlRuleActionType {}
-
-  declare class Outlook$OlRuleConditionType {
-    constructor(...args: empty): mixed;
-    static +olConditionAccount: Class<Outlook$OlRuleConditionType__olConditionAccount> &
-      Outlook$OlRuleConditionType__olConditionAccount &
-      3; // 3
-    static +olConditionAnyCategory: Class<Outlook$OlRuleConditionType__olConditionAnyCategory> &
-      Outlook$OlRuleConditionType__olConditionAnyCategory &
-      29; // 29
-    static +olConditionBody: Class<Outlook$OlRuleConditionType__olConditionBody> &
-      Outlook$OlRuleConditionType__olConditionBody &
-      13; // 13
-    static +olConditionBodyOrSubject: Class<Outlook$OlRuleConditionType__olConditionBodyOrSubject> &
-      Outlook$OlRuleConditionType__olConditionBodyOrSubject &
-      14; // 14
-    static +olConditionCategory: Class<Outlook$OlRuleConditionType__olConditionCategory> &
-      Outlook$OlRuleConditionType__olConditionCategory &
-      18; // 18
-    static +olConditionCc: Class<Outlook$OlRuleConditionType__olConditionCc> &
-      Outlook$OlRuleConditionType__olConditionCc &
-      9; // 9
-    static +olConditionDateRange: Class<Outlook$OlRuleConditionType__olConditionDateRange> &
-      Outlook$OlRuleConditionType__olConditionDateRange &
-      22; // 22
-    static +olConditionFlaggedForAction: Class<Outlook$OlRuleConditionType__olConditionFlaggedForAction> &
-      Outlook$OlRuleConditionType__olConditionFlaggedForAction &
-      8; // 8
-    static +olConditionFormName: Class<Outlook$OlRuleConditionType__olConditionFormName> &
-      Outlook$OlRuleConditionType__olConditionFormName &
-      23; // 23
-    static +olConditionFrom: Class<Outlook$OlRuleConditionType__olConditionFrom> &
-      Outlook$OlRuleConditionType__olConditionFrom &
-      1; // 1
-    static +olConditionFromAnyRssFeed: Class<Outlook$OlRuleConditionType__olConditionFromAnyRssFeed> &
-      Outlook$OlRuleConditionType__olConditionFromAnyRssFeed &
-      31; // 31
-    static +olConditionFromRssFeed: Class<Outlook$OlRuleConditionType__olConditionFromRssFeed> &
-      Outlook$OlRuleConditionType__olConditionFromRssFeed &
-      30; // 30
-    static +olConditionHasAttachment: Class<Outlook$OlRuleConditionType__olConditionHasAttachment> &
-      Outlook$OlRuleConditionType__olConditionHasAttachment &
-      20; // 20
-    static +olConditionImportance: Class<Outlook$OlRuleConditionType__olConditionImportance> &
-      Outlook$OlRuleConditionType__olConditionImportance &
-      6; // 6
-    static +olConditionLocalMachineOnly: Class<Outlook$OlRuleConditionType__olConditionLocalMachineOnly> &
-      Outlook$OlRuleConditionType__olConditionLocalMachineOnly &
-      27; // 27
-    static +olConditionMeetingInviteOrUpdate: Class<Outlook$OlRuleConditionType__olConditionMeetingInviteOrUpdate> &
-      Outlook$OlRuleConditionType__olConditionMeetingInviteOrUpdate &
-      26; // 26
-    static +olConditionMessageHeader: Class<Outlook$OlRuleConditionType__olConditionMessageHeader> &
-      Outlook$OlRuleConditionType__olConditionMessageHeader &
-      15; // 15
-    static +olConditionNotTo: Class<Outlook$OlRuleConditionType__olConditionNotTo> &
-      Outlook$OlRuleConditionType__olConditionNotTo &
-      11; // 11
-    static +olConditionOnlyToMe: Class<Outlook$OlRuleConditionType__olConditionOnlyToMe> &
-      Outlook$OlRuleConditionType__olConditionOnlyToMe &
-      4; // 4
-    static +olConditionOOF: Class<Outlook$OlRuleConditionType__olConditionOOF> &
-      Outlook$OlRuleConditionType__olConditionOOF &
-      19; // 19
-    static +olConditionOtherMachine: Class<Outlook$OlRuleConditionType__olConditionOtherMachine> &
-      Outlook$OlRuleConditionType__olConditionOtherMachine &
-      28; // 28
-    static +olConditionProperty: Class<Outlook$OlRuleConditionType__olConditionProperty> &
-      Outlook$OlRuleConditionType__olConditionProperty &
-      24; // 24
-    static +olConditionRecipientAddress: Class<Outlook$OlRuleConditionType__olConditionRecipientAddress> &
-      Outlook$OlRuleConditionType__olConditionRecipientAddress &
-      16; // 16
-    static +olConditionSenderAddress: Class<Outlook$OlRuleConditionType__olConditionSenderAddress> &
-      Outlook$OlRuleConditionType__olConditionSenderAddress &
-      17; // 17
-    static +olConditionSenderInAddressBook: Class<Outlook$OlRuleConditionType__olConditionSenderInAddressBook> &
-      Outlook$OlRuleConditionType__olConditionSenderInAddressBook &
-      25; // 25
-    static +olConditionSensitivity: Class<Outlook$OlRuleConditionType__olConditionSensitivity> &
-      Outlook$OlRuleConditionType__olConditionSensitivity &
-      7; // 7
-    static +olConditionSentTo: Class<Outlook$OlRuleConditionType__olConditionSentTo> &
-      Outlook$OlRuleConditionType__olConditionSentTo &
-      12; // 12
-    static +olConditionSizeRange: Class<Outlook$OlRuleConditionType__olConditionSizeRange> &
-      Outlook$OlRuleConditionType__olConditionSizeRange &
-      21; // 21
-    static +olConditionSubject: Class<Outlook$OlRuleConditionType__olConditionSubject> &
-      Outlook$OlRuleConditionType__olConditionSubject &
-      2; // 2
-    static +olConditionTo: Class<Outlook$OlRuleConditionType__olConditionTo> &
-      Outlook$OlRuleConditionType__olConditionTo &
-      5; // 5
-    static +olConditionToOrCc: Class<Outlook$OlRuleConditionType__olConditionToOrCc> &
-      Outlook$OlRuleConditionType__olConditionToOrCc &
-      10; // 10
-    static +olConditionUnknown: Class<Outlook$OlRuleConditionType__olConditionUnknown> &
-      Outlook$OlRuleConditionType__olConditionUnknown &
-      0; // 0
-  }
-
-  declare class Outlook$OlRuleConditionType__olConditionAccount
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionAnyCategory
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionBody
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionBodyOrSubject
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionCategory
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionCc
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionDateRange
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionFlaggedForAction
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionFormName
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionFrom
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionFromAnyRssFeed
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionFromRssFeed
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionHasAttachment
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionImportance
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionLocalMachineOnly
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionMeetingInviteOrUpdate
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionMessageHeader
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionNotTo
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionOnlyToMe
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionOOF
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionOtherMachine
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionProperty
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionRecipientAddress
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionSenderAddress
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionSenderInAddressBook
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionSensitivity
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionSentTo
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionSizeRange
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionSubject
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionTo
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionToOrCc
-    mixins Outlook$OlRuleConditionType {}
-  declare class Outlook$OlRuleConditionType__olConditionUnknown
-    mixins Outlook$OlRuleConditionType {}
-
-  declare class Outlook$OlRuleExecuteOption {
-    constructor(...args: empty): mixed;
-    static +olRuleExecuteAllMessages: Class<Outlook$OlRuleExecuteOption__olRuleExecuteAllMessages> &
-      Outlook$OlRuleExecuteOption__olRuleExecuteAllMessages &
-      0; // 0
-    static +olRuleExecuteReadMessages: Class<Outlook$OlRuleExecuteOption__olRuleExecuteReadMessages> &
-      Outlook$OlRuleExecuteOption__olRuleExecuteReadMessages &
-      1; // 1
-    static +olRuleExecuteUnreadMessages: Class<Outlook$OlRuleExecuteOption__olRuleExecuteUnreadMessages> &
-      Outlook$OlRuleExecuteOption__olRuleExecuteUnreadMessages &
-      2; // 2
-  }
-
-  declare class Outlook$OlRuleExecuteOption__olRuleExecuteAllMessages
-    mixins Outlook$OlRuleExecuteOption {}
-  declare class Outlook$OlRuleExecuteOption__olRuleExecuteReadMessages
-    mixins Outlook$OlRuleExecuteOption {}
-  declare class Outlook$OlRuleExecuteOption__olRuleExecuteUnreadMessages
-    mixins Outlook$OlRuleExecuteOption {}
-
-  declare class Outlook$OlRuleType {
-    constructor(...args: empty): mixed;
-    static +olRuleReceive: Class<Outlook$OlRuleType__olRuleReceive> &
-      Outlook$OlRuleType__olRuleReceive &
-      0; // 0
-    static +olRuleSend: Class<Outlook$OlRuleType__olRuleSend> &
-      Outlook$OlRuleType__olRuleSend &
-      1; // 1
-  }
-
-  declare class Outlook$OlRuleType__olRuleReceive mixins Outlook$OlRuleType {}
-  declare class Outlook$OlRuleType__olRuleSend mixins Outlook$OlRuleType {}
-
-  declare class Outlook$OlSaveAsType {
-    constructor(...args: empty): mixed;
-    static +olDoc: Class<Outlook$OlSaveAsType__olDoc> &
-      Outlook$OlSaveAsType__olDoc &
-      4; // 4
-    static +olHTML: Class<Outlook$OlSaveAsType__olHTML> &
-      Outlook$OlSaveAsType__olHTML &
-      5; // 5
-    static +olICal: Class<Outlook$OlSaveAsType__olICal> &
-      Outlook$OlSaveAsType__olICal &
-      8; // 8
-    static +olMHTML: Class<Outlook$OlSaveAsType__olMHTML> &
-      Outlook$OlSaveAsType__olMHTML &
-      10; // 10
-    static +olMSG: Class<Outlook$OlSaveAsType__olMSG> &
-      Outlook$OlSaveAsType__olMSG &
-      3; // 3
-    static +olMSGUnicode: Class<Outlook$OlSaveAsType__olMSGUnicode> &
-      Outlook$OlSaveAsType__olMSGUnicode &
-      9; // 9
-    static +olRTF: Class<Outlook$OlSaveAsType__olRTF> &
-      Outlook$OlSaveAsType__olRTF &
-      1; // 1
-    static +olTemplate: Class<Outlook$OlSaveAsType__olTemplate> &
-      Outlook$OlSaveAsType__olTemplate &
-      2; // 2
-    static +olTXT: Class<Outlook$OlSaveAsType__olTXT> &
-      Outlook$OlSaveAsType__olTXT &
-      0; // 0
-    static +olVCal: Class<Outlook$OlSaveAsType__olVCal> &
-      Outlook$OlSaveAsType__olVCal &
-      7; // 7
-    static +olVCard: Class<Outlook$OlSaveAsType__olVCard> &
-      Outlook$OlSaveAsType__olVCard &
-      6; // 6
-  }
-
-  declare class Outlook$OlSaveAsType__olDoc mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olHTML mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olICal mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olMHTML mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olMSG mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olMSGUnicode
-    mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olRTF mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olTemplate mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olTXT mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olVCal mixins Outlook$OlSaveAsType {}
-  declare class Outlook$OlSaveAsType__olVCard mixins Outlook$OlSaveAsType {}
-
-  declare class Outlook$OlScrollBars {
-    constructor(...args: empty): mixed;
-    static +olScrollBarsBoth: Class<Outlook$OlScrollBars__olScrollBarsBoth> &
-      Outlook$OlScrollBars__olScrollBarsBoth &
-      3; // 3
-    static +olScrollBarsHorizontal: Class<Outlook$OlScrollBars__olScrollBarsHorizontal> &
-      Outlook$OlScrollBars__olScrollBarsHorizontal &
-      1; // 1
-    static +olScrollBarsNone: Class<Outlook$OlScrollBars__olScrollBarsNone> &
-      Outlook$OlScrollBars__olScrollBarsNone &
-      0; // 0
-    static +olScrollBarsVertical: Class<Outlook$OlScrollBars__olScrollBarsVertical> &
-      Outlook$OlScrollBars__olScrollBarsVertical &
-      2; // 2
-  }
-
-  declare class Outlook$OlScrollBars__olScrollBarsBoth
-    mixins Outlook$OlScrollBars {}
-  declare class Outlook$OlScrollBars__olScrollBarsHorizontal
-    mixins Outlook$OlScrollBars {}
-  declare class Outlook$OlScrollBars__olScrollBarsNone
-    mixins Outlook$OlScrollBars {}
-  declare class Outlook$OlScrollBars__olScrollBarsVertical
-    mixins Outlook$OlScrollBars {}
-
-  declare class Outlook$OlSearchScope {
-    constructor(...args: empty): mixed;
-    static +olSearchScopeAllFolders: Class<Outlook$OlSearchScope__olSearchScopeAllFolders> &
-      Outlook$OlSearchScope__olSearchScopeAllFolders &
-      1; // 1
-    static +olSearchScopeAllOutlookItems: Class<Outlook$OlSearchScope__olSearchScopeAllOutlookItems> &
-      Outlook$OlSearchScope__olSearchScopeAllOutlookItems &
-      2; // 2
-    static +olSearchScopeCurrentFolder: Class<Outlook$OlSearchScope__olSearchScopeCurrentFolder> &
-      Outlook$OlSearchScope__olSearchScopeCurrentFolder &
-      0; // 0
-    static +olSearchScopeSubfolders: Class<Outlook$OlSearchScope__olSearchScopeSubfolders> &
-      Outlook$OlSearchScope__olSearchScopeSubfolders &
-      3; // 3
-  }
-
-  declare class Outlook$OlSearchScope__olSearchScopeAllFolders
-    mixins Outlook$OlSearchScope {}
-  declare class Outlook$OlSearchScope__olSearchScopeAllOutlookItems
-    mixins Outlook$OlSearchScope {}
-  declare class Outlook$OlSearchScope__olSearchScopeCurrentFolder
-    mixins Outlook$OlSearchScope {}
-  declare class Outlook$OlSearchScope__olSearchScopeSubfolders
-    mixins Outlook$OlSearchScope {}
-
-  declare class Outlook$OlSelectionContents {
-    constructor(...args: empty): mixed;
-    static +olConversationHeaders: Class<Outlook$OlSelectionContents__olConversationHeaders> &
-      Outlook$OlSelectionContents__olConversationHeaders &
-      1; // 1
-  }
-
-  declare class Outlook$OlSelectionContents__olConversationHeaders
-    mixins Outlook$OlSelectionContents {}
-
-  declare class Outlook$OlSelectionLocation {
-    constructor(...args: empty): mixed;
-    static +olAttachmentWell: Class<Outlook$OlSelectionLocation__olAttachmentWell> &
-      Outlook$OlSelectionLocation__olAttachmentWell &
-      4; // 4
-    static +olDailyTaskList: Class<Outlook$OlSelectionLocation__olDailyTaskList> &
-      Outlook$OlSelectionLocation__olDailyTaskList &
-      3; // 3
-    static +olToDoBarAppointmentList: Class<Outlook$OlSelectionLocation__olToDoBarAppointmentList> &
-      Outlook$OlSelectionLocation__olToDoBarAppointmentList &
-      2; // 2
-    static +olToDoBarTaskList: Class<Outlook$OlSelectionLocation__olToDoBarTaskList> &
-      Outlook$OlSelectionLocation__olToDoBarTaskList &
-      1; // 1
-    static +olViewList: Class<Outlook$OlSelectionLocation__olViewList> &
-      Outlook$OlSelectionLocation__olViewList &
-      0; // 0
-  }
-
-  declare class Outlook$OlSelectionLocation__olAttachmentWell
-    mixins Outlook$OlSelectionLocation {}
-  declare class Outlook$OlSelectionLocation__olDailyTaskList
-    mixins Outlook$OlSelectionLocation {}
-  declare class Outlook$OlSelectionLocation__olToDoBarAppointmentList
-    mixins Outlook$OlSelectionLocation {}
-  declare class Outlook$OlSelectionLocation__olToDoBarTaskList
-    mixins Outlook$OlSelectionLocation {}
-  declare class Outlook$OlSelectionLocation__olViewList
-    mixins Outlook$OlSelectionLocation {}
-
-  declare class Outlook$OlSensitivity {
-    constructor(...args: empty): mixed;
-    static +olConfidential: Class<Outlook$OlSensitivity__olConfidential> &
-      Outlook$OlSensitivity__olConfidential &
-      3; // 3
-    static +olNormal: Class<Outlook$OlSensitivity__olNormal> &
-      Outlook$OlSensitivity__olNormal &
-      0; // 0
-    static +olPersonal: Class<Outlook$OlSensitivity__olPersonal> &
-      Outlook$OlSensitivity__olPersonal &
-      1; // 1
-    static +olPrivate: Class<Outlook$OlSensitivity__olPrivate> &
-      Outlook$OlSensitivity__olPrivate &
-      2; // 2
-  }
-
-  declare class Outlook$OlSensitivity__olConfidential
-    mixins Outlook$OlSensitivity {}
-  declare class Outlook$OlSensitivity__olNormal mixins Outlook$OlSensitivity {}
-  declare class Outlook$OlSensitivity__olPersonal
-    mixins Outlook$OlSensitivity {}
-  declare class Outlook$OlSensitivity__olPrivate mixins Outlook$OlSensitivity {}
-
-  declare class Outlook$OlSharingMsgType {
-    constructor(...args: empty): mixed;
-    static +olSharingMsgTypeInvite: Class<Outlook$OlSharingMsgType__olSharingMsgTypeInvite> &
-      Outlook$OlSharingMsgType__olSharingMsgTypeInvite &
-      2; // 2
-    static +olSharingMsgTypeInviteAndRequest: Class<Outlook$OlSharingMsgType__olSharingMsgTypeInviteAndRequest> &
-      Outlook$OlSharingMsgType__olSharingMsgTypeInviteAndRequest &
-      3; // 3
-    static +olSharingMsgTypeRequest: Class<Outlook$OlSharingMsgType__olSharingMsgTypeRequest> &
-      Outlook$OlSharingMsgType__olSharingMsgTypeRequest &
-      1; // 1
-    static +olSharingMsgTypeResponseAllow: Class<Outlook$OlSharingMsgType__olSharingMsgTypeResponseAllow> &
-      Outlook$OlSharingMsgType__olSharingMsgTypeResponseAllow &
-      4; // 4
-    static +olSharingMsgTypeResponseDeny: Class<Outlook$OlSharingMsgType__olSharingMsgTypeResponseDeny> &
-      Outlook$OlSharingMsgType__olSharingMsgTypeResponseDeny &
-      5; // 5
-    static +olSharingMsgTypeUnknown: Class<Outlook$OlSharingMsgType__olSharingMsgTypeUnknown> &
-      Outlook$OlSharingMsgType__olSharingMsgTypeUnknown &
-      0; // 0
-  }
-
-  declare class Outlook$OlSharingMsgType__olSharingMsgTypeInvite
-    mixins Outlook$OlSharingMsgType {}
-  declare class Outlook$OlSharingMsgType__olSharingMsgTypeInviteAndRequest
-    mixins Outlook$OlSharingMsgType {}
-  declare class Outlook$OlSharingMsgType__olSharingMsgTypeRequest
-    mixins Outlook$OlSharingMsgType {}
-  declare class Outlook$OlSharingMsgType__olSharingMsgTypeResponseAllow
-    mixins Outlook$OlSharingMsgType {}
-  declare class Outlook$OlSharingMsgType__olSharingMsgTypeResponseDeny
-    mixins Outlook$OlSharingMsgType {}
-  declare class Outlook$OlSharingMsgType__olSharingMsgTypeUnknown
-    mixins Outlook$OlSharingMsgType {}
-
-  declare class Outlook$OlSharingProvider {
-    constructor(...args: empty): mixed;
-    static +olProviderExchange: Class<Outlook$OlSharingProvider__olProviderExchange> &
-      Outlook$OlSharingProvider__olProviderExchange &
-      1; // 1
-    static +olProviderFederate: Class<Outlook$OlSharingProvider__olProviderFederate> &
-      Outlook$OlSharingProvider__olProviderFederate &
-      7; // 7
-    static +olProviderICal: Class<Outlook$OlSharingProvider__olProviderICal> &
-      Outlook$OlSharingProvider__olProviderICal &
-      4; // 4
-    static +olProviderPubCal: Class<Outlook$OlSharingProvider__olProviderPubCal> &
-      Outlook$OlSharingProvider__olProviderPubCal &
-      3; // 3
-    static +olProviderRSS: Class<Outlook$OlSharingProvider__olProviderRSS> &
-      Outlook$OlSharingProvider__olProviderRSS &
-      6; // 6
-    static +olProviderSharePoint: Class<Outlook$OlSharingProvider__olProviderSharePoint> &
-      Outlook$OlSharingProvider__olProviderSharePoint &
-      5; // 5
-    static +olProviderUnknown: Class<Outlook$OlSharingProvider__olProviderUnknown> &
-      Outlook$OlSharingProvider__olProviderUnknown &
-      0; // 0
-    static +olProviderWebCal: Class<Outlook$OlSharingProvider__olProviderWebCal> &
-      Outlook$OlSharingProvider__olProviderWebCal &
-      2; // 2
-  }
-
-  declare class Outlook$OlSharingProvider__olProviderExchange
-    mixins Outlook$OlSharingProvider {}
-  declare class Outlook$OlSharingProvider__olProviderFederate
-    mixins Outlook$OlSharingProvider {}
-  declare class Outlook$OlSharingProvider__olProviderICal
-    mixins Outlook$OlSharingProvider {}
-  declare class Outlook$OlSharingProvider__olProviderPubCal
-    mixins Outlook$OlSharingProvider {}
-  declare class Outlook$OlSharingProvider__olProviderRSS
-    mixins Outlook$OlSharingProvider {}
-  declare class Outlook$OlSharingProvider__olProviderSharePoint
-    mixins Outlook$OlSharingProvider {}
-  declare class Outlook$OlSharingProvider__olProviderUnknown
-    mixins Outlook$OlSharingProvider {}
-  declare class Outlook$OlSharingProvider__olProviderWebCal
-    mixins Outlook$OlSharingProvider {}
-
-  declare class Outlook$OlShiftState {
-    constructor(...args: empty): mixed;
-    static +olShiftStateAltMask: Class<Outlook$OlShiftState__olShiftStateAltMask> &
-      Outlook$OlShiftState__olShiftStateAltMask &
-      4; // 4
-    static +olShiftStateCtrlMask: Class<Outlook$OlShiftState__olShiftStateCtrlMask> &
-      Outlook$OlShiftState__olShiftStateCtrlMask &
-      2; // 2
-    static +olShiftStateShiftMask: Class<Outlook$OlShiftState__olShiftStateShiftMask> &
-      Outlook$OlShiftState__olShiftStateShiftMask &
-      1; // 1
-  }
-
-  declare class Outlook$OlShiftState__olShiftStateAltMask
-    mixins Outlook$OlShiftState {}
-  declare class Outlook$OlShiftState__olShiftStateCtrlMask
-    mixins Outlook$OlShiftState {}
-  declare class Outlook$OlShiftState__olShiftStateShiftMask
-    mixins Outlook$OlShiftState {}
-
-  declare class Outlook$OlShowItemCount {
-    constructor(...args: empty): mixed;
-    static +olNoItemCount: Class<Outlook$OlShowItemCount__olNoItemCount> &
-      Outlook$OlShowItemCount__olNoItemCount &
-      0; // 0
-    static +olShowTotalItemCount: Class<Outlook$OlShowItemCount__olShowTotalItemCount> &
-      Outlook$OlShowItemCount__olShowTotalItemCount &
-      2; // 2
-    static +olShowUnreadItemCount: Class<Outlook$OlShowItemCount__olShowUnreadItemCount> &
-      Outlook$OlShowItemCount__olShowUnreadItemCount &
-      1; // 1
-  }
-
-  declare class Outlook$OlShowItemCount__olNoItemCount
-    mixins Outlook$OlShowItemCount {}
-  declare class Outlook$OlShowItemCount__olShowTotalItemCount
-    mixins Outlook$OlShowItemCount {}
-  declare class Outlook$OlShowItemCount__olShowUnreadItemCount
-    mixins Outlook$OlShowItemCount {}
-
-  declare class Outlook$OlSolutionScope {
-    constructor(...args: empty): mixed;
-    static +olHideInDefaultModules: Class<Outlook$OlSolutionScope__olHideInDefaultModules> &
-      Outlook$OlSolutionScope__olHideInDefaultModules &
-      0; // 0
-    static +olShowInDefaultModules: Class<Outlook$OlSolutionScope__olShowInDefaultModules> &
-      Outlook$OlSolutionScope__olShowInDefaultModules &
-      1; // 1
-  }
-
-  declare class Outlook$OlSolutionScope__olHideInDefaultModules
-    mixins Outlook$OlSolutionScope {}
-  declare class Outlook$OlSolutionScope__olShowInDefaultModules
-    mixins Outlook$OlSolutionScope {}
-
-  declare class Outlook$OlSortOrder {
-    constructor(...args: empty): mixed;
-    static +olAscending: Class<Outlook$OlSortOrder__olAscending> &
-      Outlook$OlSortOrder__olAscending &
-      1; // 1
-    static +olDescending: Class<Outlook$OlSortOrder__olDescending> &
-      Outlook$OlSortOrder__olDescending &
-      2; // 2
-    static +olSortNone: Class<Outlook$OlSortOrder__olSortNone> &
-      Outlook$OlSortOrder__olSortNone &
-      0; // 0
-  }
-
-  declare class Outlook$OlSortOrder__olAscending mixins Outlook$OlSortOrder {}
-  declare class Outlook$OlSortOrder__olDescending mixins Outlook$OlSortOrder {}
-  declare class Outlook$OlSortOrder__olSortNone mixins Outlook$OlSortOrder {}
-
-  declare class Outlook$OlSpecialFolders {
-    constructor(...args: empty): mixed;
-    static +olSpecialFolderAllTasks: Class<Outlook$OlSpecialFolders__olSpecialFolderAllTasks> &
-      Outlook$OlSpecialFolders__olSpecialFolderAllTasks &
-      0; // 0
-    static +olSpecialFolderReminders: Class<Outlook$OlSpecialFolders__olSpecialFolderReminders> &
-      Outlook$OlSpecialFolders__olSpecialFolderReminders &
-      1; // 1
-  }
-
-  declare class Outlook$OlSpecialFolders__olSpecialFolderAllTasks
-    mixins Outlook$OlSpecialFolders {}
-  declare class Outlook$OlSpecialFolders__olSpecialFolderReminders
-    mixins Outlook$OlSpecialFolders {}
-
-  declare class Outlook$OlStorageIdentifierType {
-    constructor(...args: empty): mixed;
-    static +olIdentifyByEntryID: Class<Outlook$OlStorageIdentifierType__olIdentifyByEntryID> &
-      Outlook$OlStorageIdentifierType__olIdentifyByEntryID &
-      1; // 1
-    static +olIdentifyByMessageClass: Class<Outlook$OlStorageIdentifierType__olIdentifyByMessageClass> &
-      Outlook$OlStorageIdentifierType__olIdentifyByMessageClass &
-      2; // 2
-    static +olIdentifyBySubject: Class<Outlook$OlStorageIdentifierType__olIdentifyBySubject> &
-      Outlook$OlStorageIdentifierType__olIdentifyBySubject &
-      0; // 0
-  }
-
-  declare class Outlook$OlStorageIdentifierType__olIdentifyByEntryID
-    mixins Outlook$OlStorageIdentifierType {}
-  declare class Outlook$OlStorageIdentifierType__olIdentifyByMessageClass
-    mixins Outlook$OlStorageIdentifierType {}
-  declare class Outlook$OlStorageIdentifierType__olIdentifyBySubject
-    mixins Outlook$OlStorageIdentifierType {}
-
-  declare class Outlook$OlStoreType {
-    constructor(...args: empty): mixed;
-    static +olStoreANSI: Class<Outlook$OlStoreType__olStoreANSI> &
-      Outlook$OlStoreType__olStoreANSI &
-      3; // 3
-    static +olStoreDefault: Class<Outlook$OlStoreType__olStoreDefault> &
-      Outlook$OlStoreType__olStoreDefault &
-      1; // 1
-    static +olStoreUnicode: Class<Outlook$OlStoreType__olStoreUnicode> &
-      Outlook$OlStoreType__olStoreUnicode &
-      2; // 2
-  }
-
-  declare class Outlook$OlStoreType__olStoreANSI mixins Outlook$OlStoreType {}
-  declare class Outlook$OlStoreType__olStoreDefault
-    mixins Outlook$OlStoreType {}
-  declare class Outlook$OlStoreType__olStoreUnicode
-    mixins Outlook$OlStoreType {}
-
-  declare class Outlook$OlSyncState {
-    constructor(...args: empty): mixed;
-    static +olSyncStarted: Class<Outlook$OlSyncState__olSyncStarted> &
-      Outlook$OlSyncState__olSyncStarted &
-      1; // 1
-    static +olSyncStopped: Class<Outlook$OlSyncState__olSyncStopped> &
-      Outlook$OlSyncState__olSyncStopped &
-      0; // 0
-  }
-
-  declare class Outlook$OlSyncState__olSyncStarted mixins Outlook$OlSyncState {}
-  declare class Outlook$OlSyncState__olSyncStopped mixins Outlook$OlSyncState {}
-
-  declare class Outlook$OlTableContents {
-    constructor(...args: empty): mixed;
-    static +olHiddenItems: Class<Outlook$OlTableContents__olHiddenItems> &
-      Outlook$OlTableContents__olHiddenItems &
-      1; // 1
-    static +olUserItems: Class<Outlook$OlTableContents__olUserItems> &
-      Outlook$OlTableContents__olUserItems &
-      0; // 0
-  }
-
-  declare class Outlook$OlTableContents__olHiddenItems
-    mixins Outlook$OlTableContents {}
-  declare class Outlook$OlTableContents__olUserItems
-    mixins Outlook$OlTableContents {}
-
-  declare class Outlook$OlTaskDelegationState {
-    constructor(...args: empty): mixed;
-    static +olTaskDelegationAccepted: Class<Outlook$OlTaskDelegationState__olTaskDelegationAccepted> &
-      Outlook$OlTaskDelegationState__olTaskDelegationAccepted &
-      2; // 2
-    static +olTaskDelegationDeclined: Class<Outlook$OlTaskDelegationState__olTaskDelegationDeclined> &
-      Outlook$OlTaskDelegationState__olTaskDelegationDeclined &
-      3; // 3
-    static +olTaskDelegationUnknown: Class<Outlook$OlTaskDelegationState__olTaskDelegationUnknown> &
-      Outlook$OlTaskDelegationState__olTaskDelegationUnknown &
-      1; // 1
-    static +olTaskNotDelegated: Class<Outlook$OlTaskDelegationState__olTaskNotDelegated> &
-      Outlook$OlTaskDelegationState__olTaskNotDelegated &
-      0; // 0
-  }
-
-  declare class Outlook$OlTaskDelegationState__olTaskDelegationAccepted
-    mixins Outlook$OlTaskDelegationState {}
-  declare class Outlook$OlTaskDelegationState__olTaskDelegationDeclined
-    mixins Outlook$OlTaskDelegationState {}
-  declare class Outlook$OlTaskDelegationState__olTaskDelegationUnknown
-    mixins Outlook$OlTaskDelegationState {}
-  declare class Outlook$OlTaskDelegationState__olTaskNotDelegated
-    mixins Outlook$OlTaskDelegationState {}
-
-  declare class Outlook$OlTaskOwnership {
-    constructor(...args: empty): mixed;
-    static +olDelegatedTask: Class<Outlook$OlTaskOwnership__olDelegatedTask> &
-      Outlook$OlTaskOwnership__olDelegatedTask &
-      1; // 1
-    static +olNewTask: Class<Outlook$OlTaskOwnership__olNewTask> &
-      Outlook$OlTaskOwnership__olNewTask &
-      0; // 0
-    static +olOwnTask: Class<Outlook$OlTaskOwnership__olOwnTask> &
-      Outlook$OlTaskOwnership__olOwnTask &
-      2; // 2
-  }
-
-  declare class Outlook$OlTaskOwnership__olDelegatedTask
-    mixins Outlook$OlTaskOwnership {}
-  declare class Outlook$OlTaskOwnership__olNewTask
-    mixins Outlook$OlTaskOwnership {}
-  declare class Outlook$OlTaskOwnership__olOwnTask
-    mixins Outlook$OlTaskOwnership {}
-
-  declare class Outlook$OlTaskRecipientType {
-    constructor(...args: empty): mixed;
-    static +olFinalStatus: Class<Outlook$OlTaskRecipientType__olFinalStatus> &
-      Outlook$OlTaskRecipientType__olFinalStatus &
-      3; // 3
-    static +olUpdate: Class<Outlook$OlTaskRecipientType__olUpdate> &
-      Outlook$OlTaskRecipientType__olUpdate &
-      2; // 2
-  }
-
-  declare class Outlook$OlTaskRecipientType__olFinalStatus
-    mixins Outlook$OlTaskRecipientType {}
-  declare class Outlook$OlTaskRecipientType__olUpdate
-    mixins Outlook$OlTaskRecipientType {}
-
-  declare class Outlook$OlTaskResponse {
-    constructor(...args: empty): mixed;
-    static +olTaskAccept: Class<Outlook$OlTaskResponse__olTaskAccept> &
-      Outlook$OlTaskResponse__olTaskAccept &
-      2; // 2
-    static +olTaskAssign: Class<Outlook$OlTaskResponse__olTaskAssign> &
-      Outlook$OlTaskResponse__olTaskAssign &
-      1; // 1
-    static +olTaskDecline: Class<Outlook$OlTaskResponse__olTaskDecline> &
-      Outlook$OlTaskResponse__olTaskDecline &
-      3; // 3
-    static +olTaskSimple: Class<Outlook$OlTaskResponse__olTaskSimple> &
-      Outlook$OlTaskResponse__olTaskSimple &
-      0; // 0
-  }
-
-  declare class Outlook$OlTaskResponse__olTaskAccept
-    mixins Outlook$OlTaskResponse {}
-  declare class Outlook$OlTaskResponse__olTaskAssign
-    mixins Outlook$OlTaskResponse {}
-  declare class Outlook$OlTaskResponse__olTaskDecline
-    mixins Outlook$OlTaskResponse {}
-  declare class Outlook$OlTaskResponse__olTaskSimple
-    mixins Outlook$OlTaskResponse {}
-
-  declare class Outlook$OlTaskStatus {
-    constructor(...args: empty): mixed;
-    static +olTaskComplete: Class<Outlook$OlTaskStatus__olTaskComplete> &
-      Outlook$OlTaskStatus__olTaskComplete &
-      2; // 2
-    static +olTaskDeferred: Class<Outlook$OlTaskStatus__olTaskDeferred> &
-      Outlook$OlTaskStatus__olTaskDeferred &
-      4; // 4
-    static +olTaskInProgress: Class<Outlook$OlTaskStatus__olTaskInProgress> &
-      Outlook$OlTaskStatus__olTaskInProgress &
-      1; // 1
-    static +olTaskNotStarted: Class<Outlook$OlTaskStatus__olTaskNotStarted> &
-      Outlook$OlTaskStatus__olTaskNotStarted &
-      0; // 0
-    static +olTaskWaiting: Class<Outlook$OlTaskStatus__olTaskWaiting> &
-      Outlook$OlTaskStatus__olTaskWaiting &
-      3; // 3
-  }
-
-  declare class Outlook$OlTaskStatus__olTaskComplete
-    mixins Outlook$OlTaskStatus {}
-  declare class Outlook$OlTaskStatus__olTaskDeferred
-    mixins Outlook$OlTaskStatus {}
-  declare class Outlook$OlTaskStatus__olTaskInProgress
-    mixins Outlook$OlTaskStatus {}
-  declare class Outlook$OlTaskStatus__olTaskNotStarted
-    mixins Outlook$OlTaskStatus {}
-  declare class Outlook$OlTaskStatus__olTaskWaiting
-    mixins Outlook$OlTaskStatus {}
-
-  declare class Outlook$OlTextAlign {
-    constructor(...args: empty): mixed;
-    static +olTextAlignCenter: Class<Outlook$OlTextAlign__olTextAlignCenter> &
-      Outlook$OlTextAlign__olTextAlignCenter &
-      2; // 2
-    static +olTextAlignLeft: Class<Outlook$OlTextAlign__olTextAlignLeft> &
-      Outlook$OlTextAlign__olTextAlignLeft &
-      1; // 1
-    static +olTextAlignRight: Class<Outlook$OlTextAlign__olTextAlignRight> &
-      Outlook$OlTextAlign__olTextAlignRight &
-      3; // 3
-  }
-
-  declare class Outlook$OlTextAlign__olTextAlignCenter
-    mixins Outlook$OlTextAlign {}
-  declare class Outlook$OlTextAlign__olTextAlignLeft
-    mixins Outlook$OlTextAlign {}
-  declare class Outlook$OlTextAlign__olTextAlignRight
-    mixins Outlook$OlTextAlign {}
-
-  declare class Outlook$OlTimelineViewMode {
-    constructor(...args: empty): mixed;
-    static +olTimelineViewDay: Class<Outlook$OlTimelineViewMode__olTimelineViewDay> &
-      Outlook$OlTimelineViewMode__olTimelineViewDay &
-      0; // 0
-    static +olTimelineViewMonth: Class<Outlook$OlTimelineViewMode__olTimelineViewMonth> &
-      Outlook$OlTimelineViewMode__olTimelineViewMonth &
-      2; // 2
-    static +olTimelineViewWeek: Class<Outlook$OlTimelineViewMode__olTimelineViewWeek> &
-      Outlook$OlTimelineViewMode__olTimelineViewWeek &
-      1; // 1
-  }
-
-  declare class Outlook$OlTimelineViewMode__olTimelineViewDay
-    mixins Outlook$OlTimelineViewMode {}
-  declare class Outlook$OlTimelineViewMode__olTimelineViewMonth
-    mixins Outlook$OlTimelineViewMode {}
-  declare class Outlook$OlTimelineViewMode__olTimelineViewWeek
-    mixins Outlook$OlTimelineViewMode {}
-
-  declare class Outlook$OlTimeStyle {
-    constructor(...args: empty): mixed;
-    static +olTimeStyleShortDuration: Class<Outlook$OlTimeStyle__olTimeStyleShortDuration> &
-      Outlook$OlTimeStyle__olTimeStyleShortDuration &
-      4; // 4
-    static +olTimeStyleTimeDuration: Class<Outlook$OlTimeStyle__olTimeStyleTimeDuration> &
-      Outlook$OlTimeStyle__olTimeStyleTimeDuration &
-      1; // 1
-    static +olTimeStyleTimeOnly: Class<Outlook$OlTimeStyle__olTimeStyleTimeOnly> &
-      Outlook$OlTimeStyle__olTimeStyleTimeOnly &
-      0; // 0
-  }
-
-  declare class Outlook$OlTimeStyle__olTimeStyleShortDuration
-    mixins Outlook$OlTimeStyle {}
-  declare class Outlook$OlTimeStyle__olTimeStyleTimeDuration
-    mixins Outlook$OlTimeStyle {}
-  declare class Outlook$OlTimeStyle__olTimeStyleTimeOnly
-    mixins Outlook$OlTimeStyle {}
-
-  declare class Outlook$OlTrackingStatus {
-    constructor(...args: empty): mixed;
-    static +olTrackingDelivered: Class<Outlook$OlTrackingStatus__olTrackingDelivered> &
-      Outlook$OlTrackingStatus__olTrackingDelivered &
-      1; // 1
-    static +olTrackingNone: Class<Outlook$OlTrackingStatus__olTrackingNone> &
-      Outlook$OlTrackingStatus__olTrackingNone &
-      0; // 0
-    static +olTrackingNotDelivered: Class<Outlook$OlTrackingStatus__olTrackingNotDelivered> &
-      Outlook$OlTrackingStatus__olTrackingNotDelivered &
-      2; // 2
-    static +olTrackingNotRead: Class<Outlook$OlTrackingStatus__olTrackingNotRead> &
-      Outlook$OlTrackingStatus__olTrackingNotRead &
-      3; // 3
-    static +olTrackingRead: Class<Outlook$OlTrackingStatus__olTrackingRead> &
-      Outlook$OlTrackingStatus__olTrackingRead &
-      6; // 6
-    static +olTrackingRecallFailure: Class<Outlook$OlTrackingStatus__olTrackingRecallFailure> &
-      Outlook$OlTrackingStatus__olTrackingRecallFailure &
-      4; // 4
-    static +olTrackingRecallSuccess: Class<Outlook$OlTrackingStatus__olTrackingRecallSuccess> &
-      Outlook$OlTrackingStatus__olTrackingRecallSuccess &
-      5; // 5
-    static +olTrackingReplied: Class<Outlook$OlTrackingStatus__olTrackingReplied> &
-      Outlook$OlTrackingStatus__olTrackingReplied &
-      7; // 7
-  }
-
-  declare class Outlook$OlTrackingStatus__olTrackingDelivered
-    mixins Outlook$OlTrackingStatus {}
-  declare class Outlook$OlTrackingStatus__olTrackingNone
-    mixins Outlook$OlTrackingStatus {}
-  declare class Outlook$OlTrackingStatus__olTrackingNotDelivered
-    mixins Outlook$OlTrackingStatus {}
-  declare class Outlook$OlTrackingStatus__olTrackingNotRead
-    mixins Outlook$OlTrackingStatus {}
-  declare class Outlook$OlTrackingStatus__olTrackingRead
-    mixins Outlook$OlTrackingStatus {}
-  declare class Outlook$OlTrackingStatus__olTrackingRecallFailure
-    mixins Outlook$OlTrackingStatus {}
-  declare class Outlook$OlTrackingStatus__olTrackingRecallSuccess
-    mixins Outlook$OlTrackingStatus {}
-  declare class Outlook$OlTrackingStatus__olTrackingReplied
-    mixins Outlook$OlTrackingStatus {}
-
-  declare class Outlook$OlUserPropertyType {
-    constructor(...args: empty): mixed;
-    static +olCombination: Class<Outlook$OlUserPropertyType__olCombination> &
-      Outlook$OlUserPropertyType__olCombination &
-      19; // 19
-    static +olCurrency: Class<Outlook$OlUserPropertyType__olCurrency> &
-      Outlook$OlUserPropertyType__olCurrency &
-      14; // 14
-    static +olDateTime: Class<Outlook$OlUserPropertyType__olDateTime> &
-      Outlook$OlUserPropertyType__olDateTime &
-      5; // 5
-    static +olDuration: Class<Outlook$OlUserPropertyType__olDuration> &
-      Outlook$OlUserPropertyType__olDuration &
-      7; // 7
-    static +olEnumeration: Class<Outlook$OlUserPropertyType__olEnumeration> &
-      Outlook$OlUserPropertyType__olEnumeration &
-      21; // 21
-    static +olFormula: Class<Outlook$OlUserPropertyType__olFormula> &
-      Outlook$OlUserPropertyType__olFormula &
-      18; // 18
-    static +olInteger: Class<Outlook$OlUserPropertyType__olInteger> &
-      Outlook$OlUserPropertyType__olInteger &
-      20; // 20
-    static +olKeywords: Class<Outlook$OlUserPropertyType__olKeywords> &
-      Outlook$OlUserPropertyType__olKeywords &
-      11; // 11
-    static +olNumber: Class<Outlook$OlUserPropertyType__olNumber> &
-      Outlook$OlUserPropertyType__olNumber &
-      3; // 3
-    static +olOutlookInternal: Class<Outlook$OlUserPropertyType__olOutlookInternal> &
-      Outlook$OlUserPropertyType__olOutlookInternal &
-      0; // 0
-    static +olPercent: Class<Outlook$OlUserPropertyType__olPercent> &
-      Outlook$OlUserPropertyType__olPercent &
-      12; // 12
-    static +olSmartFrom: Class<Outlook$OlUserPropertyType__olSmartFrom> &
-      Outlook$OlUserPropertyType__olSmartFrom &
-      22; // 22
-    static +olText: Class<Outlook$OlUserPropertyType__olText> &
-      Outlook$OlUserPropertyType__olText &
-      1; // 1
-    static +olYesNo: Class<Outlook$OlUserPropertyType__olYesNo> &
-      Outlook$OlUserPropertyType__olYesNo &
-      6; // 6
-  }
-
-  declare class Outlook$OlUserPropertyType__olCombination
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olCurrency
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olDateTime
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olDuration
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olEnumeration
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olFormula
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olInteger
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olKeywords
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olNumber
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olOutlookInternal
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olPercent
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olSmartFrom
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olText
-    mixins Outlook$OlUserPropertyType {}
-  declare class Outlook$OlUserPropertyType__olYesNo
-    mixins Outlook$OlUserPropertyType {}
-
-  declare class Outlook$OlVerticalLayout {
-    constructor(...args: empty): mixed;
-    static +olVerticalLayoutAlignBottom: Class<Outlook$OlVerticalLayout__olVerticalLayoutAlignBottom> &
-      Outlook$OlVerticalLayout__olVerticalLayoutAlignBottom &
-      2; // 2
-    static +olVerticalLayoutAlignMiddle: Class<Outlook$OlVerticalLayout__olVerticalLayoutAlignMiddle> &
-      Outlook$OlVerticalLayout__olVerticalLayoutAlignMiddle &
-      1; // 1
-    static +olVerticalLayoutAlignTop: Class<Outlook$OlVerticalLayout__olVerticalLayoutAlignTop> &
-      Outlook$OlVerticalLayout__olVerticalLayoutAlignTop &
-      0; // 0
-    static +olVerticalLayoutGrow: Class<Outlook$OlVerticalLayout__olVerticalLayoutGrow> &
-      Outlook$OlVerticalLayout__olVerticalLayoutGrow &
-      3; // 3
-  }
-
-  declare class Outlook$OlVerticalLayout__olVerticalLayoutAlignBottom
-    mixins Outlook$OlVerticalLayout {}
-  declare class Outlook$OlVerticalLayout__olVerticalLayoutAlignMiddle
-    mixins Outlook$OlVerticalLayout {}
-  declare class Outlook$OlVerticalLayout__olVerticalLayoutAlignTop
-    mixins Outlook$OlVerticalLayout {}
-  declare class Outlook$OlVerticalLayout__olVerticalLayoutGrow
-    mixins Outlook$OlVerticalLayout {}
-
-  declare class Outlook$OlViewSaveOption {
-    constructor(...args: empty): mixed;
-    static +olViewSaveOptionAllFoldersOfType: Class<Outlook$OlViewSaveOption__olViewSaveOptionAllFoldersOfType> &
-      Outlook$OlViewSaveOption__olViewSaveOptionAllFoldersOfType &
-      2; // 2
-    static +olViewSaveOptionThisFolderEveryone: Class<Outlook$OlViewSaveOption__olViewSaveOptionThisFolderEveryone> &
-      Outlook$OlViewSaveOption__olViewSaveOptionThisFolderEveryone &
-      0; // 0
-    static +olViewSaveOptionThisFolderOnlyMe: Class<Outlook$OlViewSaveOption__olViewSaveOptionThisFolderOnlyMe> &
-      Outlook$OlViewSaveOption__olViewSaveOptionThisFolderOnlyMe &
-      1; // 1
-  }
-
-  declare class Outlook$OlViewSaveOption__olViewSaveOptionAllFoldersOfType
-    mixins Outlook$OlViewSaveOption {}
-  declare class Outlook$OlViewSaveOption__olViewSaveOptionThisFolderEveryone
-    mixins Outlook$OlViewSaveOption {}
-  declare class Outlook$OlViewSaveOption__olViewSaveOptionThisFolderOnlyMe
-    mixins Outlook$OlViewSaveOption {}
-
-  declare class Outlook$OlViewType {
-    constructor(...args: empty): mixed;
-    static +olBusinessCardView: Class<Outlook$OlViewType__olBusinessCardView> &
-      Outlook$OlViewType__olBusinessCardView &
-      5; // 5
-    static +olCalendarView: Class<Outlook$OlViewType__olCalendarView> &
-      Outlook$OlViewType__olCalendarView &
-      2; // 2
-    static +olCardView: Class<Outlook$OlViewType__olCardView> &
-      Outlook$OlViewType__olCardView &
-      1; // 1
-    static +olDailyTaskListView: Class<Outlook$OlViewType__olDailyTaskListView> &
-      Outlook$OlViewType__olDailyTaskListView &
-      6; // 6
-    static +olIconView: Class<Outlook$OlViewType__olIconView> &
-      Outlook$OlViewType__olIconView &
-      3; // 3
-    static +olTableView: Class<Outlook$OlViewType__olTableView> &
-      Outlook$OlViewType__olTableView &
-      0; // 0
-    static +olTimelineView: Class<Outlook$OlViewType__olTimelineView> &
-      Outlook$OlViewType__olTimelineView &
-      4; // 4
-  }
-
-  declare class Outlook$OlViewType__olBusinessCardView
-    mixins Outlook$OlViewType {}
-  declare class Outlook$OlViewType__olCalendarView mixins Outlook$OlViewType {}
-  declare class Outlook$OlViewType__olCardView mixins Outlook$OlViewType {}
-  declare class Outlook$OlViewType__olDailyTaskListView
-    mixins Outlook$OlViewType {}
-  declare class Outlook$OlViewType__olIconView mixins Outlook$OlViewType {}
-  declare class Outlook$OlViewType__olTableView mixins Outlook$OlViewType {}
-  declare class Outlook$OlViewType__olTimelineView mixins Outlook$OlViewType {}
-
-  declare class Outlook$OlWindowState {
-    constructor(...args: empty): mixed;
-    static +olMaximized: Class<Outlook$OlWindowState__olMaximized> &
-      Outlook$OlWindowState__olMaximized &
-      0; // 0
-    static +olMinimized: Class<Outlook$OlWindowState__olMinimized> &
-      Outlook$OlWindowState__olMinimized &
-      1; // 1
-    static +olNormalWindow: Class<Outlook$OlWindowState__olNormalWindow> &
-      Outlook$OlWindowState__olNormalWindow &
-      2; // 2
-  }
-
-  declare class Outlook$OlWindowState__olMaximized
-    mixins Outlook$OlWindowState {}
-  declare class Outlook$OlWindowState__olMinimized
-    mixins Outlook$OlWindowState {}
-  declare class Outlook$OlWindowState__olNormalWindow
-    mixins Outlook$OlWindowState {}
+  declare var npm$namespace$Outlook: {
+    OlAccountType: typeof Outlook$OlAccountType,
+    OlActionCopyLike: typeof Outlook$OlActionCopyLike,
+    OlActionReplyStyle: typeof Outlook$OlActionReplyStyle,
+    OlActionResponseStyle: typeof Outlook$OlActionResponseStyle,
+    OlActionShowOn: typeof Outlook$OlActionShowOn,
+    OlAddressEntryUserType: typeof Outlook$OlAddressEntryUserType,
+    OlAddressListType: typeof Outlook$OlAddressListType,
+    OlAlign: typeof Outlook$OlAlign,
+    OlAlignment: typeof Outlook$OlAlignment,
+    OlAlwaysDeleteConversation: typeof Outlook$OlAlwaysDeleteConversation,
+    OlAppointmentCopyOptions: typeof Outlook$OlAppointmentCopyOptions,
+    OlAppointmentTimeField: typeof Outlook$OlAppointmentTimeField,
+    OlAttachmentBlockLevel: typeof Outlook$OlAttachmentBlockLevel,
+    OlAttachmentType: typeof Outlook$OlAttachmentType,
+    OlAutoDiscoverConnectionMode: typeof Outlook$OlAutoDiscoverConnectionMode,
+    OlAutoPreview: typeof Outlook$OlAutoPreview,
+    OlBackStyle: typeof Outlook$OlBackStyle,
+    OlBodyFormat: typeof Outlook$OlBodyFormat,
+    OlBorderStyle: typeof Outlook$OlBorderStyle,
+    OlBusinessCardType: typeof Outlook$OlBusinessCardType,
+    OlBusyStatus: typeof Outlook$OlBusyStatus,
+    OlCalendarDetail: typeof Outlook$OlCalendarDetail,
+    OlCalendarMailFormat: typeof Outlook$OlCalendarMailFormat,
+    OlCalendarViewMode: typeof Outlook$OlCalendarViewMode,
+    OlCategoryColor: typeof Outlook$OlCategoryColor,
+    OlCategoryShortcutKey: typeof Outlook$OlCategoryShortcutKey,
+    OlColor: typeof Outlook$OlColor,
+    OlComboBoxStyle: typeof Outlook$OlComboBoxStyle,
+    OlContactPhoneNumber: typeof Outlook$OlContactPhoneNumber,
+    OlContextMenu: typeof Outlook$OlContextMenu,
+    OlDaysOfWeek: typeof Outlook$OlDaysOfWeek,
+    OlDayWeekTimeScale: typeof Outlook$OlDayWeekTimeScale,
+    OlDefaultExpandCollapseSetting: typeof Outlook$OlDefaultExpandCollapseSetting,
+    OlDefaultFolders: typeof Outlook$OlDefaultFolders,
+    OlDefaultSelectNamesDisplayMode: typeof Outlook$OlDefaultSelectNamesDisplayMode,
+    OlDisplayType: typeof Outlook$OlDisplayType,
+    OlDownloadState: typeof Outlook$OlDownloadState,
+    OlDragBehavior: typeof Outlook$OlDragBehavior,
+    OlEditorType: typeof Outlook$OlEditorType,
+    OlEnterFieldBehavior: typeof Outlook$OlEnterFieldBehavior,
+    OlExchangeConnectionMode: typeof Outlook$OlExchangeConnectionMode,
+    OlExchangeStoreType: typeof Outlook$OlExchangeStoreType,
+    OlFlagIcon: typeof Outlook$OlFlagIcon,
+    OlFlagStatus: typeof Outlook$OlFlagStatus,
+    OlFolderDisplayMode: typeof Outlook$OlFolderDisplayMode,
+    OlFormatCurrency: typeof Outlook$OlFormatCurrency,
+    OlFormatDateTime: typeof Outlook$OlFormatDateTime,
+    OlFormatDuration: typeof Outlook$OlFormatDuration,
+    OlFormatEnumeration: typeof Outlook$OlFormatEnumeration,
+    OlFormatInteger: typeof Outlook$OlFormatInteger,
+    OlFormatKeywords: typeof Outlook$OlFormatKeywords,
+    OlFormatNumber: typeof Outlook$OlFormatNumber,
+    OlFormatPercent: typeof Outlook$OlFormatPercent,
+    OlFormatSmartFrom: typeof Outlook$OlFormatSmartFrom,
+    OlFormatText: typeof Outlook$OlFormatText,
+    OlFormatYesNo: typeof Outlook$OlFormatYesNo,
+    OlFormRegionIcon: typeof Outlook$OlFormRegionIcon,
+    OlFormRegionMode: typeof Outlook$OlFormRegionMode,
+    OlFormRegionSize: typeof Outlook$OlFormRegionSize,
+    OlFormRegistry: typeof Outlook$OlFormRegistry,
+    OlGender: typeof Outlook$OlGender,
+    OlGridLineStyle: typeof Outlook$OlGridLineStyle,
+    OlGroupType: typeof Outlook$OlGroupType,
+    OlHorizontalLayout: typeof Outlook$OlHorizontalLayout,
+    OlIconViewPlacement: typeof Outlook$OlIconViewPlacement,
+    OlIconViewType: typeof Outlook$OlIconViewType,
+    OlImportance: typeof Outlook$OlImportance,
+    OlInspectorClose: typeof Outlook$OlInspectorClose,
+    OlItemType: typeof Outlook$OlItemType,
+    OlJournalRecipientType: typeof Outlook$OlJournalRecipientType,
+    OlMailingAddress: typeof Outlook$OlMailingAddress,
+    OlMailRecipientType: typeof Outlook$OlMailRecipientType,
+    OlMarkInterval: typeof Outlook$OlMarkInterval,
+    OlMatchEntry: typeof Outlook$OlMatchEntry,
+    OlMeetingRecipientType: typeof Outlook$OlMeetingRecipientType,
+    OlMeetingResponse: typeof Outlook$OlMeetingResponse,
+    OlMeetingStatus: typeof Outlook$OlMeetingStatus,
+    OlMobileFormat: typeof Outlook$OlMobileFormat,
+    OlMouseButton: typeof Outlook$OlMouseButton,
+    OlMousePointer: typeof Outlook$OlMousePointer,
+    OlMultiLine: typeof Outlook$OlMultiLine,
+    OlMultiSelect: typeof Outlook$OlMultiSelect,
+    OlNavigationModuleType: typeof Outlook$OlNavigationModuleType,
+    OlNetMeetingType: typeof Outlook$OlNetMeetingType,
+    OlNoteColor: typeof Outlook$OlNoteColor,
+    OlObjectClass: typeof Outlook$OlObjectClass,
+    OlOfficeDocItemsType: typeof Outlook$OlOfficeDocItemsType,
+    OlOutlookBarViewType: typeof Outlook$OlOutlookBarViewType,
+    OlPageType: typeof Outlook$OlPageType,
+    OlPane: typeof Outlook$OlPane,
+    OlPermission: typeof Outlook$OlPermission,
+    OlPermissionService: typeof Outlook$OlPermissionService,
+    OlPictureAlignment: typeof Outlook$OlPictureAlignment,
+    OlRecipientSelectors: typeof Outlook$OlRecipientSelectors,
+    OlRecurrenceState: typeof Outlook$OlRecurrenceState,
+    OlRecurrenceType: typeof Outlook$OlRecurrenceType,
+    OlReferenceType: typeof Outlook$OlReferenceType,
+    OlRemoteStatus: typeof Outlook$OlRemoteStatus,
+    OlResponseStatus: typeof Outlook$OlResponseStatus,
+    OlRuleActionType: typeof Outlook$OlRuleActionType,
+    OlRuleConditionType: typeof Outlook$OlRuleConditionType,
+    OlRuleExecuteOption: typeof Outlook$OlRuleExecuteOption,
+    OlRuleType: typeof Outlook$OlRuleType,
+    OlSaveAsType: typeof Outlook$OlSaveAsType,
+    OlScrollBars: typeof Outlook$OlScrollBars,
+    OlSearchScope: typeof Outlook$OlSearchScope,
+    OlSelectionContents: typeof Outlook$OlSelectionContents,
+    OlSelectionLocation: typeof Outlook$OlSelectionLocation,
+    OlSensitivity: typeof Outlook$OlSensitivity,
+    OlSharingMsgType: typeof Outlook$OlSharingMsgType,
+    OlSharingProvider: typeof Outlook$OlSharingProvider,
+    OlShiftState: typeof Outlook$OlShiftState,
+    OlShowItemCount: typeof Outlook$OlShowItemCount,
+    OlSolutionScope: typeof Outlook$OlSolutionScope,
+    OlSortOrder: typeof Outlook$OlSortOrder,
+    OlSpecialFolders: typeof Outlook$OlSpecialFolders,
+    OlStorageIdentifierType: typeof Outlook$OlStorageIdentifierType,
+    OlStoreType: typeof Outlook$OlStoreType,
+    OlSyncState: typeof Outlook$OlSyncState,
+    OlTableContents: typeof Outlook$OlTableContents,
+    OlTaskDelegationState: typeof Outlook$OlTaskDelegationState,
+    OlTaskOwnership: typeof Outlook$OlTaskOwnership,
+    OlTaskRecipientType: typeof Outlook$OlTaskRecipientType,
+    OlTaskResponse: typeof Outlook$OlTaskResponse,
+    OlTaskStatus: typeof Outlook$OlTaskStatus,
+    OlTextAlign: typeof Outlook$OlTextAlign,
+    OlTimelineViewMode: typeof Outlook$OlTimelineViewMode,
+    OlTimeStyle: typeof Outlook$OlTimeStyle,
+    OlTrackingStatus: typeof Outlook$OlTrackingStatus,
+    OlUserPropertyType: typeof Outlook$OlUserPropertyType,
+    OlVerticalLayout: typeof Outlook$OlVerticalLayout,
+    OlViewSaveOption: typeof Outlook$OlViewSaveOption,
+    OlViewType: typeof Outlook$OlViewType,
+    OlWindowState: typeof Outlook$OlWindowState,
+    _DocSiteControl: typeof Outlook$_DocSiteControl,
+    _RecipientControl: typeof Outlook$_RecipientControl,
+    Account: typeof Outlook$Account,
+    AccountRuleCondition: typeof Outlook$AccountRuleCondition,
+    Accounts: typeof Outlook$Accounts,
+    AccountSelector: typeof Outlook$AccountSelector,
+    Action: typeof Outlook$Action,
+    Actions: typeof Outlook$Actions,
+    AddressEntries: typeof Outlook$AddressEntries,
+    AddressEntry: typeof Outlook$AddressEntry,
+    AddressList: typeof Outlook$AddressList,
+    AddressLists: typeof Outlook$AddressLists,
+    AddressRuleCondition: typeof Outlook$AddressRuleCondition,
+    Application: typeof Outlook$Application,
+    AppointmentItem: typeof Outlook$AppointmentItem,
+    AssignToCategoryRuleAction: typeof Outlook$AssignToCategoryRuleAction,
+    Attachment: typeof Outlook$Attachment,
+    Attachments: typeof Outlook$Attachments,
+    AttachmentSelection: typeof Outlook$AttachmentSelection,
+    AutoFormatRule: typeof Outlook$AutoFormatRule,
+    AutoFormatRules: typeof Outlook$AutoFormatRules,
+    BusinessCardView: typeof Outlook$BusinessCardView,
+    CalendarModule: typeof Outlook$CalendarModule,
+    CalendarSharing: typeof Outlook$CalendarSharing,
+    CalendarView: typeof Outlook$CalendarView,
+    CardView: typeof Outlook$CardView,
+    Categories: typeof Outlook$Categories,
+    Category: typeof Outlook$Category,
+    CategoryRuleCondition: typeof Outlook$CategoryRuleCondition,
+    Column: typeof Outlook$Column,
+    ColumnFormat: typeof Outlook$ColumnFormat,
+    Columns: typeof Outlook$Columns,
+    Conflict: typeof Outlook$Conflict,
+    Conflicts: typeof Outlook$Conflicts,
+    ContactItem: typeof Outlook$ContactItem,
+    ContactsModule: typeof Outlook$ContactsModule,
+    Conversation: typeof Outlook$Conversation,
+    ConversationHeader: typeof Outlook$ConversationHeader,
+    DistListItem: typeof Outlook$DistListItem,
+    DocumentItem: typeof Outlook$DocumentItem,
+    DoNotUseMeFolder: typeof Outlook$DoNotUseMeFolder,
+    Exception: typeof Outlook$Exception,
+    Exceptions: typeof Outlook$Exceptions,
+    ExchangeDistributionList: typeof Outlook$ExchangeDistributionList,
+    ExchangeUser: typeof Outlook$ExchangeUser,
+    Explorer: typeof Outlook$Explorer,
+    Explorers: typeof Outlook$Explorers,
+    Folder: typeof Outlook$Folder,
+    Folders: typeof Outlook$Folders,
+    FormDescription: typeof Outlook$FormDescription,
+    FormNameRuleCondition: typeof Outlook$FormNameRuleCondition,
+    FormRegion: typeof Outlook$FormRegion,
+    FormRegionStartup: typeof Outlook$FormRegionStartup,
+    FromRssFeedRuleCondition: typeof Outlook$FromRssFeedRuleCondition,
+    IconView: typeof Outlook$IconView,
+    ImportanceRuleCondition: typeof Outlook$ImportanceRuleCondition,
+    Inspector: typeof Outlook$Inspector,
+    Inspectors: typeof Outlook$Inspectors,
+    ItemProperties: typeof Outlook$ItemProperties,
+    ItemProperty: typeof Outlook$ItemProperty,
+    Items: typeof Outlook$Items,
+    JournalItem: typeof Outlook$JournalItem,
+    JournalModule: typeof Outlook$JournalModule,
+    Link: typeof Outlook$Link,
+    Links: typeof Outlook$Links,
+    MailItem: typeof Outlook$MailItem,
+    MailModule: typeof Outlook$MailModule,
+    MarkAsTaskRuleAction: typeof Outlook$MarkAsTaskRuleAction,
+    MeetingItem: typeof Outlook$MeetingItem,
+    MobileItem: typeof Outlook$MobileItem,
+    MoveOrCopyRuleAction: typeof Outlook$MoveOrCopyRuleAction,
+    NameSpace: typeof Outlook$NameSpace,
+    NavigationFolder: typeof Outlook$NavigationFolder,
+    NavigationFolders: typeof Outlook$NavigationFolders,
+    NavigationGroup: typeof Outlook$NavigationGroup,
+    NavigationGroups: typeof Outlook$NavigationGroups,
+    NavigationModule: typeof Outlook$NavigationModule,
+    NavigationModules: typeof Outlook$NavigationModules,
+    NavigationPane: typeof Outlook$NavigationPane,
+    NewItemAlertRuleAction: typeof Outlook$NewItemAlertRuleAction,
+    NoteItem: typeof Outlook$NoteItem,
+    NotesModule: typeof Outlook$NotesModule,
+    OlkBusinessCardControl: typeof Outlook$OlkBusinessCardControl,
+    OlkCategory: typeof Outlook$OlkCategory,
+    OlkCheckBox: typeof Outlook$OlkCheckBox,
+    OlkComboBox: typeof Outlook$OlkComboBox,
+    OlkCommandButton: typeof Outlook$OlkCommandButton,
+    OlkContactPhoto: typeof Outlook$OlkContactPhoto,
+    OlkDateControl: typeof Outlook$OlkDateControl,
+    OlkFrameHeader: typeof Outlook$OlkFrameHeader,
+    OlkInfoBar: typeof Outlook$OlkInfoBar,
+    OlkLabel: typeof Outlook$OlkLabel,
+    OlkListBox: typeof Outlook$OlkListBox,
+    OlkOptionButton: typeof Outlook$OlkOptionButton,
+    OlkPageControl: typeof Outlook$OlkPageControl,
+    OlkSenderPhoto: typeof Outlook$OlkSenderPhoto,
+    OlkTextBox: typeof Outlook$OlkTextBox,
+    OlkTimeControl: typeof Outlook$OlkTimeControl,
+    OlkTimeZoneControl: typeof Outlook$OlkTimeZoneControl,
+    OrderField: typeof Outlook$OrderField,
+    OrderFields: typeof Outlook$OrderFields,
+    OutlookBarGroup: typeof Outlook$OutlookBarGroup,
+    OutlookBarGroups: typeof Outlook$OutlookBarGroups,
+    OutlookBarPane: typeof Outlook$OutlookBarPane,
+    OutlookBarShortcut: typeof Outlook$OutlookBarShortcut,
+    OutlookBarShortcuts: typeof Outlook$OutlookBarShortcuts,
+    OutlookBarStorage: typeof Outlook$OutlookBarStorage,
+    Panes: typeof Outlook$Panes,
+    PlaySoundRuleAction: typeof Outlook$PlaySoundRuleAction,
+    PostItem: typeof Outlook$PostItem,
+    PropertyAccessor: typeof Outlook$PropertyAccessor,
+    PropertyPages: typeof Outlook$PropertyPages,
+    Recipient: typeof Outlook$Recipient,
+    Recipients: typeof Outlook$Recipients,
+    RecurrencePattern: typeof Outlook$RecurrencePattern,
+    Reminder: typeof Outlook$Reminder,
+    Reminders: typeof Outlook$Reminders,
+    RemoteItem: typeof Outlook$RemoteItem,
+    ReportItem: typeof Outlook$ReportItem,
+    Results: typeof Outlook$Results,
+    Row: typeof Outlook$Row,
+    Rule: typeof Outlook$Rule,
+    RuleAction: typeof Outlook$RuleAction,
+    RuleActions: typeof Outlook$RuleActions,
+    RuleCondition: typeof Outlook$RuleCondition,
+    RuleConditions: typeof Outlook$RuleConditions,
+    Rules: typeof Outlook$Rules,
+    Search: typeof Outlook$Search,
+    Selection: typeof Outlook$Selection,
+    SelectNamesDialog: typeof Outlook$SelectNamesDialog,
+    SenderInAddressListRuleCondition: typeof Outlook$SenderInAddressListRuleCondition,
+    SendRuleAction: typeof Outlook$SendRuleAction,
+    SharingItem: typeof Outlook$SharingItem,
+    SimpleItems: typeof Outlook$SimpleItems,
+    SolutionsModule: typeof Outlook$SolutionsModule,
+    StorageItem: typeof Outlook$StorageItem,
+    Store: typeof Outlook$Store,
+    Stores: typeof Outlook$Stores,
+    SyncObject: typeof Outlook$SyncObject,
+    SyncObjects: typeof Outlook$SyncObjects,
+    Table: typeof Outlook$Table,
+    TableView: typeof Outlook$TableView,
+    TaskItem: typeof Outlook$TaskItem,
+    TaskRequestAcceptItem: typeof Outlook$TaskRequestAcceptItem,
+    TaskRequestDeclineItem: typeof Outlook$TaskRequestDeclineItem,
+    TaskRequestItem: typeof Outlook$TaskRequestItem,
+    TaskRequestUpdateItem: typeof Outlook$TaskRequestUpdateItem,
+    TasksModule: typeof Outlook$TasksModule,
+    TextRuleCondition: typeof Outlook$TextRuleCondition,
+    TimelineView: typeof Outlook$TimelineView,
+    TimeZone: typeof Outlook$TimeZone,
+    TimeZones: typeof Outlook$TimeZones,
+    ToOrFromRuleCondition: typeof Outlook$ToOrFromRuleCondition,
+    UserDefinedProperties: typeof Outlook$UserDefinedProperties,
+    UserDefinedProperty: typeof Outlook$UserDefinedProperty,
+    UserProperties: typeof Outlook$UserProperties,
+    UserProperty: typeof Outlook$UserProperty,
+    View: typeof Outlook$View,
+    ViewField: typeof Outlook$ViewField,
+    ViewFields: typeof Outlook$ViewFields,
+    ViewFont: typeof Outlook$ViewFont,
+    Views: typeof Outlook$Views
+  };
+
+  declare var Outlook$OlAccountType: {|
+    +olExchange: 0, // 0
+    +olHttp: 3, // 3
+    +olImap: 1, // 1
+    +olOtherAccount: 5, // 5
+    +olPop3: 2 // 2
+  |};
+
+  declare var Outlook$OlActionCopyLike: {|
+    +olForward: 2, // 2
+    +olReply: 0, // 0
+    +olReplyAll: 1, // 1
+    +olReplyFolder: 3, // 3
+    +olRespond: 4 // 4
+  |};
+
+  declare var Outlook$OlActionReplyStyle: {|
+    +olEmbedOriginalItem: 1, // 1
+    +olIncludeOriginalText: 2, // 2
+    +olIndentOriginalText: 3, // 3
+    +olLinkOriginalItem: 4, // 4
+    +olOmitOriginalText: 0, // 0
+    +olReplyTickOriginalText: 1000, // 1000
+    +olUserPreference: 5 // 5
+  |};
+
+  declare var Outlook$OlActionResponseStyle: {|
+    +olOpen: 0, // 0
+    +olPrompt: 2, // 2
+    +olSend: 1 // 1
+  |};
+
+  declare var Outlook$OlActionShowOn: {|
+    +olDontShow: 0, // 0
+    +olMenu: 1, // 1
+    +olMenuAndToolbar: 2 // 2
+  |};
+
+  declare var Outlook$OlAddressEntryUserType: {|
+    +olExchangeAgentAddressEntry: 3, // 3
+    +olExchangeDistributionListAddressEntry: 1, // 1
+    +olExchangeOrganizationAddressEntry: 4, // 4
+    +olExchangePublicFolderAddressEntry: 2, // 2
+    +olExchangeRemoteUserAddressEntry: 5, // 5
+    +olExchangeUserAddressEntry: 0, // 0
+    +olLdapAddressEntry: 20, // 20
+    +olOtherAddressEntry: 40, // 40
+    +olOutlookContactAddressEntry: 10, // 10
+    +olOutlookDistributionListAddressEntry: 11, // 11
+    +olSmtpAddressEntry: 30 // 30
+  |};
+
+  declare var Outlook$OlAddressListType: {|
+    +olCustomAddressList: 4, // 4
+    +olExchangeContainer: 1, // 1
+    +olExchangeGlobalAddressList: 0, // 0
+    +olOutlookAddressList: 2, // 2
+    +olOutlookLdapAddressList: 3 // 3
+  |};
+
+  declare var Outlook$OlAlign: {|
+    +olAlignCenter: 1, // 1
+    +olAlignLeft: 0, // 0
+    +olAlignRight: 2 // 2
+  |};
+
+  declare var Outlook$OlAlignment: {|
+    +olAlignmentLeft: 0, // 0
+    +olAlignmentRight: 1 // 1
+  |};
+
+  declare var Outlook$OlAlwaysDeleteConversation: {|
+    +olAlwaysDelete: 1, // 1
+    +olAlwaysDeleteUnsupported: 2, // 2
+    +olDoNotDelete: 0 // 0
+  |};
+
+  declare var Outlook$OlAppointmentCopyOptions: {|
+    +olCopyAsAccept: 2, // 2
+    +olCreateAppointment: 1, // 1
+    +olPromptUser: 0 // 0
+  |};
+
+  declare var Outlook$OlAppointmentTimeField: {|
+    +olAppointmentTimeFieldEnd: 3, // 3
+    +olAppointmentTimeFieldNone: 1, // 1
+    +olAppointmentTimeFieldStart: 2 // 2
+  |};
+
+  declare var Outlook$OlAttachmentBlockLevel: {|
+    +olAttachmentBlockLevelNone: 0, // 0
+    +olAttachmentBlockLevelOpen: 1 // 1
+  |};
+
+  declare var Outlook$OlAttachmentType: {|
+    +olByReference: 4, // 4
+    +olByValue: 1, // 1
+    +olEmbeddeditem: 5, // 5
+    +olOLE: 6 // 6
+  |};
+
+  declare var Outlook$OlAutoDiscoverConnectionMode: {|
+    +olAutoDiscoverConnectionExternal: 1, // 1
+    +olAutoDiscoverConnectionInternal: 2, // 2
+    +olAutoDiscoverConnectionInternalDomain: 3, // 3
+    +olAutoDiscoverConnectionUnknown: 0 // 0
+  |};
+
+  declare var Outlook$OlAutoPreview: {|
+    +olAutoPreviewAll: 0, // 0
+    +olAutoPreviewNone: 2, // 2
+    +olAutoPreviewUnread: 1 // 1
+  |};
+
+  declare var Outlook$OlBackStyle: {|
+    +olBackStyleOpaque: 1, // 1
+    +olBackStyleTransparent: 0 // 0
+  |};
+
+  declare var Outlook$OlBodyFormat: {|
+    +olFormatHTML: 2, // 2
+    +olFormatPlain: 1, // 1
+    +olFormatRichText: 3, // 3
+    +olFormatUnspecified: 0 // 0
+  |};
+
+  declare var Outlook$OlBorderStyle: {|
+    +olBorderStyleNone: 0, // 0
+    +olBorderStyleSingle: 1 // 1
+  |};
+
+  declare var Outlook$OlBusinessCardType: {|
+    +olBusinessCardTypeInterConnect: 1, // 1
+    +olBusinessCardTypeOutlook: 0 // 0
+  |};
+
+  declare var Outlook$OlBusyStatus: {|
+    +olBusy: 2, // 2
+    +olFree: 0, // 0
+    +olOutOfOffice: 3, // 3
+    +olTentative: 1 // 1
+  |};
+
+  declare var Outlook$OlCalendarDetail: {|
+    +olFreeBusyAndSubject: 1, // 1
+    +olFreeBusyOnly: 0, // 0
+    +olFullDetails: 2 // 2
+  |};
+
+  declare var Outlook$OlCalendarMailFormat: {|
+    +olCalendarMailFormatDailySchedule: 0, // 0
+    +olCalendarMailFormatEventList: 1 // 1
+  |};
+
+  declare var Outlook$OlCalendarViewMode: {|
+    +olCalendarView5DayWeek: 4, // 4
+    +olCalendarViewDay: 0, // 0
+    +olCalendarViewMonth: 2, // 2
+    +olCalendarViewMultiDay: 3, // 3
+    +olCalendarViewWeek: 1 // 1
+  |};
+
+  declare var Outlook$OlCategoryColor: {|
+    +olCategoryColorBlack: 15, // 15
+    +olCategoryColorBlue: 8, // 8
+    +olCategoryColorDarkBlue: 23, // 23
+    +olCategoryColorDarkGray: 14, // 14
+    +olCategoryColorDarkGreen: 20, // 20
+    +olCategoryColorDarkMaroon: 25, // 25
+    +olCategoryColorDarkOlive: 22, // 22
+    +olCategoryColorDarkOrange: 17, // 17
+    +olCategoryColorDarkPeach: 18, // 18
+    +olCategoryColorDarkPurple: 24, // 24
+    +olCategoryColorDarkRed: 16, // 16
+    +olCategoryColorDarkSteel: 12, // 12
+    +olCategoryColorDarkTeal: 21, // 21
+    +olCategoryColorDarkYellow: 19, // 19
+    +olCategoryColorGray: 13, // 13
+    +olCategoryColorGreen: 5, // 5
+    +olCategoryColorMaroon: 10, // 10
+    +olCategoryColorNone: 0, // 0
+    +olCategoryColorOlive: 7, // 7
+    +olCategoryColorOrange: 2, // 2
+    +olCategoryColorPeach: 3, // 3
+    +olCategoryColorPurple: 9, // 9
+    +olCategoryColorRed: 1, // 1
+    +olCategoryColorSteel: 11, // 11
+    +olCategoryColorTeal: 6, // 6
+    +olCategoryColorYellow: 4 // 4
+  |};
+
+  declare var Outlook$OlCategoryShortcutKey: {|
+    +olCategoryShortcutKeyCtrlF10: 9, // 9
+    +olCategoryShortcutKeyCtrlF11: 10, // 10
+    +olCategoryShortcutKeyCtrlF12: 11, // 11
+    +olCategoryShortcutKeyCtrlF2: 1, // 1
+    +olCategoryShortcutKeyCtrlF3: 2, // 2
+    +olCategoryShortcutKeyCtrlF4: 3, // 3
+    +olCategoryShortcutKeyCtrlF5: 4, // 4
+    +olCategoryShortcutKeyCtrlF6: 5, // 5
+    +olCategoryShortcutKeyCtrlF7: 6, // 6
+    +olCategoryShortcutKeyCtrlF8: 7, // 7
+    +olCategoryShortcutKeyCtrlF9: 8, // 8
+    +olCategoryShortcutKeyNone: 0 // 0
+  |};
+
+  declare var Outlook$OlColor: {|
+    +olAutoColor: 0, // 0
+    +olColorAqua: 15, // 15
+    +olColorBlack: 1, // 1
+    +olColorBlue: 13, // 13
+    +olColorFuchsia: 14, // 14
+    +olColorGray: 8, // 8
+    +olColorGreen: 3, // 3
+    +olColorLime: 11, // 11
+    +olColorMaroon: 2, // 2
+    +olColorNavy: 5, // 5
+    +olColorOlive: 4, // 4
+    +olColorPurple: 6, // 6
+    +olColorRed: 10, // 10
+    +olColorSilver: 9, // 9
+    +olColorTeal: 7, // 7
+    +olColorWhite: 16, // 16
+    +olColorYellow: 12 // 12
+  |};
+
+  declare var Outlook$OlComboBoxStyle: {|
+    +olComboBoxStyleCombo: 0, // 0
+    +olComboBoxStyleList: 2 // 2
+  |};
+
+  declare var Outlook$OlContactPhoneNumber: {|
+    +olContactPhoneAssistant: 0, // 0
+    +olContactPhoneBusiness: 1, // 1
+    +olContactPhoneBusiness2: 2, // 2
+    +olContactPhoneBusinessFax: 3, // 3
+    +olContactPhoneCallback: 4, // 4
+    +olContactPhoneCar: 5, // 5
+    +olContactPhoneCompany: 6, // 6
+    +olContactPhoneHome: 7, // 7
+    +olContactPhoneHome2: 8, // 8
+    +olContactPhoneHomeFax: 9, // 9
+    +olContactPhoneISDN: 10, // 10
+    +olContactPhoneMobile: 11, // 11
+    +olContactPhoneOther: 12, // 12
+    +olContactPhoneOtherFax: 13, // 13
+    +olContactPhonePager: 14, // 14
+    +olContactPhonePrimary: 15, // 15
+    +olContactPhoneRadio: 16, // 16
+    +olContactPhoneTelex: 17, // 17
+    +olContactPhoneTTYTTD: 18 // 18
+  |};
+
+  declare var Outlook$OlContextMenu: {|
+    +olAttachmentContextMenu: 3, // 3
+    +olFolderContextMenu: 2, // 2
+    +olItemContextMenu: 0, // 0
+    +olShortcutContextMenu: 5, // 5
+    +olStoreContextMenu: 4, // 4
+    +olViewContextMenu: 1 // 1
+  |};
+
+  declare var Outlook$OlDaysOfWeek: {|
+    +olFriday: 32, // 32
+    +olMonday: 2, // 2
+    +olSaturday: 64, // 64
+    +olSunday: 1, // 1
+    +olThursday: 16, // 16
+    +olTuesday: 4, // 4
+    +olWednesday: 8 // 8
+  |};
+
+  declare var Outlook$OlDayWeekTimeScale: {|
+    +olTimeScale10Minutes: 2, // 2
+    +olTimeScale15Minutes: 3, // 3
+    +olTimeScale30Minutes: 4, // 4
+    +olTimeScale5Minutes: 0, // 0
+    +olTimeScale60Minutes: 5, // 5
+    +olTimeScale6Minutes: 1 // 1
+  |};
+
+  declare var Outlook$OlDefaultExpandCollapseSetting: {|
+    +olAllCollapsed: 1, // 1
+    +olAllExpanded: 0, // 0
+    +olLastViewed: 2 // 2
+  |};
+
+  declare var Outlook$OlDefaultFolders: {|
+    +olFolderCalendar: 9, // 9
+    +olFolderConflicts: 19, // 19
+    +olFolderContacts: 10, // 10
+    +olFolderDeletedItems: 3, // 3
+    +olFolderDrafts: 16, // 16
+    +olFolderInbox: 6, // 6
+    +olFolderJournal: 11, // 11
+    +olFolderJunk: 23, // 23
+    +olFolderLocalFailures: 21, // 21
+    +olFolderManagedEmail: 29, // 29
+    +olFolderNotes: 12, // 12
+    +olFolderOutbox: 4, // 4
+    +olFolderRssFeeds: 25, // 25
+    +olFolderSentMail: 5, // 5
+    +olFolderServerFailures: 22, // 22
+    +olFolderSuggestedContacts: 30, // 30
+    +olFolderSyncIssues: 20, // 20
+    +olFolderTasks: 13, // 13
+    +olFolderToDo: 28, // 28
+    +olPublicFoldersAllPublicFolders: 18 // 18
+  |};
+
+  declare var Outlook$OlDefaultSelectNamesDisplayMode: {|
+    +olDefaultDelegates: 6, // 6
+    +olDefaultMail: 1, // 1
+    +olDefaultMeeting: 2, // 2
+    +olDefaultMembers: 5, // 5
+    +olDefaultPickRooms: 8, // 8
+    +olDefaultSharingRequest: 4, // 4
+    +olDefaultSingleName: 7, // 7
+    +olDefaultTask: 3 // 3
+  |};
+
+  declare var Outlook$OlDisplayType: {|
+    +olAgent: 3, // 3
+    +olDistList: 1, // 1
+    +olForum: 2, // 2
+    +olOrganization: 4, // 4
+    +olPrivateDistList: 5, // 5
+    +olRemoteUser: 6, // 6
+    +olUser: 0 // 0
+  |};
+
+  declare var Outlook$OlDownloadState: {|
+    +olFullItem: 1, // 1
+    +olHeaderOnly: 0 // 0
+  |};
+
+  declare var Outlook$OlDragBehavior: {|
+    +olDragBehaviorDisabled: 0, // 0
+    +olDragBehaviorEnabled: 1 // 1
+  |};
+
+  declare var Outlook$OlEditorType: {|
+    +olEditorHTML: 2, // 2
+    +olEditorRTF: 3, // 3
+    +olEditorText: 1, // 1
+    +olEditorWord: 4 // 4
+  |};
+
+  declare var Outlook$OlEnterFieldBehavior: {|
+    +olEnterFieldBehaviorRecallSelection: 1, // 1
+    +olEnterFieldBehaviorSelectAll: 0 // 0
+  |};
+
+  declare var Outlook$OlExchangeConnectionMode: {|
+    +olCachedConnectedDrizzle: 600, // 600
+    +olCachedConnectedFull: 700, // 700
+    +olCachedConnectedHeaders: 500, // 500
+    +olCachedDisconnected: 400, // 400
+    +olCachedOffline: 200, // 200
+    +olDisconnected: 300, // 300
+    +olNoExchange: 0, // 0
+    +olOffline: 100, // 100
+    +olOnline: 800 // 800
+  |};
+
+  declare var Outlook$OlExchangeStoreType: {|
+    +olAdditionalExchangeMailbox: 4, // 4
+    +olExchangeMailbox: 1, // 1
+    +olExchangePublicFolder: 2, // 2
+    +olNotExchange: 3, // 3
+    +olPrimaryExchangeMailbox: 0 // 0
+  |};
+
+  declare var Outlook$OlFlagIcon: {|
+    +olBlueFlagIcon: 5, // 5
+    +olGreenFlagIcon: 3, // 3
+    +olNoFlagIcon: 0, // 0
+    +olOrangeFlagIcon: 2, // 2
+    +olPurpleFlagIcon: 1, // 1
+    +olRedFlagIcon: 6, // 6
+    +olYellowFlagIcon: 4 // 4
+  |};
+
+  declare var Outlook$OlFlagStatus: {|
+    +olFlagComplete: 1, // 1
+    +olFlagMarked: 2, // 2
+    +olNoFlag: 0 // 0
+  |};
+
+  declare var Outlook$OlFolderDisplayMode: {|
+    +olFolderDisplayFolderOnly: 1, // 1
+    +olFolderDisplayNoNavigation: 2, // 2
+    +olFolderDisplayNormal: 0 // 0
+  |};
+
+  declare var Outlook$OlFormatCurrency: {|
+    +olFormatCurrencyDecimal: 1, // 1
+    +olFormatCurrencyNonDecimal: 2 // 2
+  |};
+
+  declare var Outlook$OlFormatDateTime: {|
+    +olFormatDateTimeBestFit: 17, // 17
+    +olFormatDateTimeLongDate: 6, // 6
+    +olFormatDateTimeLongDateReversed: 7, // 7
+    +OlFormatDateTimeLongDayDate: 5, // 5
+    +olFormatDateTimeLongDayDateTime: 1, // 1
+    +olFormatDateTimeLongTime: 15, // 15
+    +olFormatDateTimeShortDate: 8, // 8
+    +olFormatDateTimeShortDateNumOnly: 9, // 9
+    +olFormatDateTimeShortDateTime: 2, // 2
+    +olFormatDateTimeShortDayDate: 13, // 13
+    +olFormatDateTimeShortDayDateTime: 3, // 3
+    +olFormatDateTimeShortDayMonth: 10, // 10
+    +olFormatDateTimeShortDayMonthDateTime: 4, // 4
+    +olFormatDateTimeShortMonthYear: 11, // 11
+    +olFormatDateTimeShortMonthYearNumOnly: 12, // 12
+    +olFormatDateTimeShortTime: 16 // 16
+  |};
+
+  declare var Outlook$OlFormatDuration: {|
+    +olFormatDurationLong: 2, // 2
+    +olFormatDurationLongBusiness: 4, // 4
+    +olFormatDurationShort: 1, // 1
+    +olFormatDurationShortBusiness: 3 // 3
+  |};
+
+  declare var Outlook$OlFormatEnumeration: {|
+    +olFormatEnumBitmap: 1, // 1
+    +olFormatEnumText: 2 // 2
+  |};
+
+  declare var Outlook$OlFormatInteger: {|
+    +olFormatIntegerComputer1: 2, // 2
+    +olFormatIntegerComputer2: 3, // 3
+    +olFormatIntegerComputer3: 4, // 4
+    +olFormatIntegerPlain: 1 // 1
+  |};
+
+  declare var Outlook$OlFormatKeywords: {|
+    +olFormatKeywordsText: 1 // 1
+  |};
+
+  declare var Outlook$OlFormatNumber: {|
+    +olFormatNumber1Decimal: 3, // 3
+    +olFormatNumber2Decimal: 4, // 4
+    +olFormatNumberAllDigits: 1, // 1
+    +olFormatNumberComputer1: 6, // 6
+    +olFormatNumberComputer2: 7, // 7
+    +olFormatNumberComputer3: 8, // 8
+    +olFormatNumberRaw: 9, // 9
+    +olFormatNumberScientific: 5, // 5
+    +olFormatNumberTruncated: 2 // 2
+  |};
+
+  declare var Outlook$OlFormatPercent: {|
+    +olFormatPercent1Decimal: 2, // 2
+    +olFormatPercent2Decimal: 3, // 3
+    +olFormatPercentAllDigits: 4, // 4
+    +olFormatPercentRounded: 1 // 1
+  |};
+
+  declare var Outlook$OlFormatSmartFrom: {|
+    +olFormatSmartFromFromOnly: 2, // 2
+    +olFormatSmartFromFromTo: 1 // 1
+  |};
+
+  declare var Outlook$OlFormatText: {|
+    +olFormatTextText: 1 // 1
+  |};
+
+  declare var Outlook$OlFormatYesNo: {|
+    +olFormatYesNoIcon: 4, // 4
+    +olFormatYesNoOnOff: 2, // 2
+    +olFormatYesNoTrueFalse: 3, // 3
+    +olFormatYesNoYesNo: 1 // 1
+  |};
+
+  declare var Outlook$OlFormRegionIcon: {|
+    +olFormRegionIconDefault: 1, // 1
+    +olFormRegionIconEncrypted: 9, // 9
+    +olFormRegionIconForwarded: 5, // 5
+    +olFormRegionIconPage: 11, // 11
+    +olFormRegionIconRead: 3, // 3
+    +olFormRegionIconRecurring: 12, // 12
+    +olFormRegionIconReplied: 4, // 4
+    +olFormRegionIconSigned: 8, // 8
+    +olFormRegionIconSubmitted: 7, // 7
+    +olFormRegionIconUnread: 2, // 2
+    +olFormRegionIconUnsent: 6, // 6
+    +olFormRegionIconWindow: 10 // 10
+  |};
+
+  declare var Outlook$OlFormRegionMode: {|
+    +olFormRegionCompose: 1, // 1
+    +olFormRegionPreview: 2, // 2
+    +olFormRegionRead: 0 // 0
+  |};
+
+  declare var Outlook$OlFormRegionSize: {|
+    +olFormRegionTypeAdjoining: 1, // 1
+    +olFormRegionTypeSeparate: 0 // 0
+  |};
+
+  declare var Outlook$OlFormRegistry: {|
+    +olDefaultRegistry: 0, // 0
+    +olFolderRegistry: 3, // 3
+    +olOrganizationRegistry: 4, // 4
+    +olPersonalRegistry: 2 // 2
+  |};
+
+  declare var Outlook$OlGender: {|
+    +olFemale: 1, // 1
+    +olMale: 2, // 2
+    +olUnspecified: 0 // 0
+  |};
+
+  declare var Outlook$OlGridLineStyle: {|
+    +olGridLineDashes: 3, // 3
+    +olGridLineLargeDots: 2, // 2
+    +olGridLineNone: 0, // 0
+    +olGridLineSmallDots: 1, // 1
+    +olGridLineSolid: 4 // 4
+  |};
+
+  declare var Outlook$OlGroupType: {|
+    +olCustomFoldersGroup: 0, // 0
+    +olFavoriteFoldersGroup: 4, // 4
+    +olMyFoldersGroup: 1, // 1
+    +olOtherFoldersGroup: 3, // 3
+    +olPeopleFoldersGroup: 2, // 2
+    +olReadOnlyGroup: 6, // 6
+    +olRoomsGroup: 5 // 5
+  |};
+
+  declare var Outlook$OlHorizontalLayout: {|
+    +olHorizontalLayoutAlignCenter: 1, // 1
+    +olHorizontalLayoutAlignLeft: 0, // 0
+    +olHorizontalLayoutAlignRight: 2, // 2
+    +olHorizontalLayoutGrow: 3 // 3
+  |};
+
+  declare var Outlook$OlIconViewPlacement: {|
+    +olIconAutoArrange: 2, // 2
+    +olIconDoNotArrange: 0, // 0
+    +olIconLineUp: 1, // 1
+    +olIconSortAndAutoArrange: 3 // 3
+  |};
+
+  declare var Outlook$OlIconViewType: {|
+    +olIconViewLarge: 0, // 0
+    +olIconViewList: 2, // 2
+    +olIconViewSmall: 1 // 1
+  |};
+
+  declare var Outlook$OlImportance: {|
+    +olImportanceHigh: 2, // 2
+    +olImportanceLow: 0, // 0
+    +olImportanceNormal: 1 // 1
+  |};
+
+  declare var Outlook$OlInspectorClose: {|
+    +olDiscard: 1, // 1
+    +olPromptForSave: 2, // 2
+    +olSave: 0 // 0
+  |};
+
+  declare var Outlook$OlItemType: {|
+    +olAppointmentItem: 1, // 1
+    +olContactItem: 2, // 2
+    +olDistributionListItem: 7, // 7
+    +olJournalItem: 4, // 4
+    +olMailItem: 0, // 0
+    +olMobileItemMMS: 12, // 12
+    +olMobileItemSMS: 11, // 11
+    +olNoteItem: 5, // 5
+    +olPostItem: 6, // 6
+    +olTaskItem: 3 // 3
+  |};
+
+  declare var Outlook$OlJournalRecipientType: {|
+    +olAssociatedContact: 1 // 1
+  |};
+
+  declare var Outlook$OlMailingAddress: {|
+    +olBusiness: 2, // 2
+    +olHome: 1, // 1
+    +olNone: 0, // 0
+    +olOther: 3 // 3
+  |};
+
+  declare var Outlook$OlMailRecipientType: {|
+    +olBCC: 3, // 3
+    +olCC: 2, // 2
+    +olOriginator: 0, // 0
+    +olTo: 1 // 1
+  |};
+
+  declare var Outlook$OlMarkInterval: {|
+    +olMarkComplete: 5, // 5
+    +olMarkNextWeek: 3, // 3
+    +olMarkNoDate: 4, // 4
+    +olMarkThisWeek: 2, // 2
+    +olMarkToday: 0, // 0
+    +olMarkTomorrow: 1 // 1
+  |};
+
+  declare var Outlook$OlMatchEntry: {|
+    +olMatchEntryComplete: 1, // 1
+    +olMatchEntryFirstLetter: 0, // 0
+    +olMatchEntryNone: 2 // 2
+  |};
+
+  declare var Outlook$OlMeetingRecipientType: {|
+    +olOptional: 2, // 2
+    +olOrganizer: 0, // 0
+    +olRequired: 1, // 1
+    +olResource: 3 // 3
+  |};
+
+  declare var Outlook$OlMeetingResponse: {|
+    +olMeetingAccepted: 3, // 3
+    +olMeetingDeclined: 4, // 4
+    +olMeetingTentative: 2 // 2
+  |};
+
+  declare var Outlook$OlMeetingStatus: {|
+    +olMeeting: 1, // 1
+    +olMeetingCanceled: 5, // 5
+    +olMeetingReceived: 3, // 3
+    +olMeetingReceivedAndCanceled: 7, // 7
+    +olNonMeeting: 0 // 0
+  |};
+
+  declare var Outlook$OlMobileFormat: {|
+    +olMMS: 1, // 1
+    +olSMS: 0 // 0
+  |};
+
+  declare var Outlook$OlMouseButton: {|
+    +olMouseButtonLeft: 1, // 1
+    +olMouseButtonMiddle: 4, // 4
+    +olMouseButtonRight: 2 // 2
+  |};
+
+  declare var Outlook$OlMousePointer: {|
+    +olMousePointerAppStarting: 13, // 13
+    +olMousePointerArrow: 1, // 1
+    +olMousePointerCross: 2, // 2
+    +olMousePointerCustom: 99, // 99
+    +olMousePointerDefault: 0, // 0
+    +olMousePointerHelp: 14, // 14
+    +olMousePointerHourGlass: 11, // 11
+    +olMousePointerIBeam: 3, // 3
+    +olMousePointerNoDrop: 12, // 12
+    +olMousePointerSizeAll: 15, // 15
+    +olMousePointerSizeNESW: 6, // 6
+    +olMousePointerSizeNS: 7, // 7
+    +olMousePointerSizeNWSE: 8, // 8
+    +olMousePointerSizeWE: 9, // 9
+    +olMousePointerUpArrow: 10 // 10
+  |};
+
+  declare var Outlook$OlMultiLine: {|
+    +olAlwaysMultiLine: 2, // 2
+    +olAlwaysSingleLine: 1, // 1
+    +olWidthMultiLine: 0 // 0
+  |};
+
+  declare var Outlook$OlMultiSelect: {|
+    +olMultiSelectExtended: 2, // 2
+    +olMultiSelectMulti: 1, // 1
+    +olMultiSelectSingle: 0 // 0
+  |};
+
+  declare var Outlook$OlNavigationModuleType: {|
+    +olModuleCalendar: 1, // 1
+    +olModuleContacts: 2, // 2
+    +olModuleFolderList: 6, // 6
+    +olModuleJournal: 4, // 4
+    +olModuleMail: 0, // 0
+    +olModuleNotes: 5, // 5
+    +olModuleShortcuts: 7, // 7
+    +olModuleSolutions: 8, // 8
+    +olModuleTasks: 3 // 3
+  |};
+
+  declare var Outlook$OlNetMeetingType: {|
+    +olExchangeConferencing: 2, // 2
+    +olNetMeeting: 0, // 0
+    +olNetShow: 1 // 1
+  |};
+
+  declare var Outlook$OlNoteColor: {|
+    +olBlue: 0, // 0
+    +olGreen: 1, // 1
+    +olPink: 2, // 2
+    +olWhite: 4, // 4
+    +olYellow: 3 // 3
+  |};
+
+  declare var Outlook$OlObjectClass: {|
+    +olAccount: 105, // 105
+    +olAccountRuleCondition: 135, // 135
+    +olAccounts: 106, // 106
+    +olAction: 32, // 32
+    +olActions: 33, // 33
+    +olAddressEntries: 21, // 21
+    +olAddressEntry: 8, // 8
+    +olAddressList: 7, // 7
+    +olAddressLists: 20, // 20
+    +olAddressRuleCondition: 170, // 170
+    +olApplication: 0, // 0
+    +olAppointment: 26, // 26
+    +olAssignToCategoryRuleAction: 122, // 122
+    +olAttachment: 5, // 5
+    +olAttachments: 18, // 18
+    +olAttachmentSelection: 169, // 169
+    +olAutoFormatRule: 147, // 147
+    +olAutoFormatRules: 148, // 148
+    +olCalendarModule: 159, // 159
+    +olCalendarSharing: 151, // 151
+    +olCategories: 153, // 153
+    +olCategory: 152, // 152
+    +olCategoryRuleCondition: 130, // 130
+    +olClassBusinessCardView: 168, // 168
+    +olClassCalendarView: 139, // 139
+    +olClassCardView: 138, // 138
+    +olClassIconView: 137, // 137
+    +olClassNavigationPane: 155, // 155
+    +olClassTableView: 136, // 136
+    +olClassTimeLineView: 140, // 140
+    +olClassTimeZone: 174, // 174
+    +olClassTimeZones: 175, // 175
+    +olColumn: 154, // 154
+    +olColumnFormat: 149, // 149
+    +olColumns: 150, // 150
+    +olConflict: 102, // 102
+    +olConflicts: 103, // 103
+    +olContact: 40, // 40
+    +olContactsModule: 160, // 160
+    +olConversation: 178, // 178
+    +olConversationHeader: 182, // 182
+    +olDistributionList: 69, // 69
+    +olDocument: 41, // 41
+    +olException: 30, // 30
+    +olExceptions: 29, // 29
+    +olExchangeDistributionList: 111, // 111
+    +olExchangeUser: 110, // 110
+    +olExplorer: 34, // 34
+    +olExplorers: 60, // 60
+    +olFolder: 2, // 2
+    +olFolders: 15, // 15
+    +olFormDescription: 37, // 37
+    +olFormNameRuleCondition: 131, // 131
+    +olFormRegion: 129, // 129
+    +olFromRssFeedRuleCondition: 173, // 173
+    +olFromRuleCondition: 132, // 132
+    +olImportanceRuleCondition: 128, // 128
+    +olInspector: 35, // 35
+    +olInspectors: 61, // 61
+    +olItemProperties: 98, // 98
+    +olItemProperty: 99, // 99
+    +olItems: 16, // 16
+    +olJournal: 42, // 42
+    +olJournalModule: 162, // 162
+    +olLink: 75, // 75
+    +olLinks: 76, // 76
+    +olMail: 43, // 43
+    +olMailModule: 158, // 158
+    +olMarkAsTaskRuleAction: 124, // 124
+    +olMeetingCancellation: 54, // 54
+    +olMeetingForwardNotification: 181, // 181
+    +olMeetingRequest: 53, // 53
+    +olMeetingResponseNegative: 55, // 55
+    +olMeetingResponsePositive: 56, // 56
+    +olMeetingResponseTentative: 57, // 57
+    +olMobile: 176, // 176
+    +olMoveOrCopyRuleAction: 118, // 118
+    +olNamespace: 1, // 1
+    +olNavigationFolder: 167, // 167
+    +olNavigationFolders: 166, // 166
+    +olNavigationGroup: 165, // 165
+    +olNavigationGroups: 164, // 164
+    +olNavigationModule: 157, // 157
+    +olNavigationModules: 156, // 156
+    +olNewItemAlertRuleAction: 125, // 125
+    +olNote: 44, // 44
+    +olNotesModule: 163, // 163
+    +olOrderField: 144, // 144
+    +olOrderFields: 145, // 145
+    +olOutlookBarGroup: 66, // 66
+    +olOutlookBarGroups: 65, // 65
+    +olOutlookBarPane: 63, // 63
+    +olOutlookBarShortcut: 68, // 68
+    +olOutlookBarShortcuts: 67, // 67
+    +olOutlookBarStorage: 64, // 64
+    +olOutspace: 180, // 180
+    +olPages: 36, // 36
+    +olPanes: 62, // 62
+    +olPlaySoundRuleAction: 123, // 123
+    +olPost: 45, // 45
+    +olPropertyAccessor: 112, // 112
+    +olPropertyPages: 71, // 71
+    +olPropertyPageSite: 70, // 70
+    +olRecipient: 4, // 4
+    +olRecipients: 17, // 17
+    +olRecurrencePattern: 28, // 28
+    +olReminder: 101, // 101
+    +olReminders: 100, // 100
+    +olRemote: 47, // 47
+    +olReport: 46, // 46
+    +olResults: 78, // 78
+    +olRow: 121, // 121
+    +olRule: 115, // 115
+    +olRuleAction: 117, // 117
+    +olRuleActions: 116, // 116
+    +olRuleCondition: 127, // 127
+    +olRuleConditions: 126, // 126
+    +olRules: 114, // 114
+    +olSearch: 77, // 77
+    +olSelection: 74, // 74
+    +olSelectNamesDialog: 109, // 109
+    +olSenderInAddressListRuleCondition: 133, // 133
+    +olSendRuleAction: 119, // 119
+    +olSharing: 104, // 104
+    +olSimpleItems: 179, // 179
+    +olSolutionsModule: 177, // 177
+    +olStorageItem: 113, // 113
+    +olStore: 107, // 107
+    +olStores: 108, // 108
+    +olSyncObject: 72, // 72
+    +olSyncObjects: 73, // 73
+    +olTable: 120, // 120
+    +olTask: 48, // 48
+    +olTaskRequest: 49, // 49
+    +olTaskRequestAccept: 51, // 51
+    +olTaskRequestDecline: 52, // 52
+    +olTaskRequestUpdate: 50, // 50
+    +olTasksModule: 161, // 161
+    +olTextRuleCondition: 134, // 134
+    +olUserDefinedProperties: 172, // 172
+    +olUserDefinedProperty: 171, // 171
+    +olUserProperties: 38, // 38
+    +olUserProperty: 39, // 39
+    +olView: 80, // 80
+    +olViewField: 142, // 142
+    +olViewFields: 141, // 141
+    +olViewFont: 146, // 146
+    +olViews: 79 // 79
+  |};
+
+  declare var Outlook$OlOfficeDocItemsType: {|
+    +olExcelWorkSheetItem: 8, // 8
+    +olPowerPointShowItem: 10, // 10
+    +olWordDocumentItem: 9 // 9
+  |};
+
+  declare var Outlook$OlOutlookBarViewType: {|
+    +olLargeIcon: 0, // 0
+    +olSmallIcon: 1 // 1
+  |};
+
+  declare var Outlook$OlPageType: {|
+    +olPageTypePlanner: 0, // 0
+    +olPageTypeTracker: 1 // 1
+  |};
+
+  declare var Outlook$OlPane: {|
+    +olFolderList: 2, // 2
+    +olNavigationPane: 4, // 4
+    +olOutlookBar: 1, // 1
+    +olPreview: 3, // 3
+    +olToDoBar: 5 // 5
+  |};
+
+  declare var Outlook$OlPermission: {|
+    +olDoNotForward: 1, // 1
+    +olPermissionTemplate: 2, // 2
+    +olUnrestricted: 0 // 0
+  |};
+
+  declare var Outlook$OlPermissionService: {|
+    +olPassport: 2, // 2
+    +olUnknown: 0, // 0
+    +olWindows: 1 // 1
+  |};
+
+  declare var Outlook$OlPictureAlignment: {|
+    +olPictureAlignmentLeft: 0, // 0
+    +olPictureAlignmentTop: 1 // 1
+  |};
+
+  declare var Outlook$OlRecipientSelectors: {|
+    +olShowNone: 0, // 0
+    +olShowTo: 1, // 1
+    +olShowToCc: 2, // 2
+    +olShowToCcBcc: 3 // 3
+  |};
+
+  declare var Outlook$OlRecurrenceState: {|
+    +olApptException: 3, // 3
+    +olApptMaster: 1, // 1
+    +olApptNotRecurring: 0, // 0
+    +olApptOccurrence: 2 // 2
+  |};
+
+  declare var Outlook$OlRecurrenceType: {|
+    +olRecursDaily: 0, // 0
+    +olRecursMonthly: 2, // 2
+    +olRecursMonthNth: 3, // 3
+    +olRecursWeekly: 1, // 1
+    +olRecursYearly: 5, // 5
+    +olRecursYearNth: 6 // 6
+  |};
+
+  declare var Outlook$OlReferenceType: {|
+    +olStrong: 1, // 1
+    +olWeak: 0 // 0
+  |};
+
+  declare var Outlook$OlRemoteStatus: {|
+    +olMarkedForCopy: 3, // 3
+    +olMarkedForDelete: 4, // 4
+    +olMarkedForDownload: 2, // 2
+    +olRemoteStatusNone: 0, // 0
+    +olUnMarked: 1 // 1
+  |};
+
+  declare var Outlook$OlResponseStatus: {|
+    +olResponseAccepted: 3, // 3
+    +olResponseDeclined: 4, // 4
+    +olResponseNone: 0, // 0
+    +olResponseNotResponded: 5, // 5
+    +olResponseOrganized: 1, // 1
+    +olResponseTentative: 2 // 2
+  |};
+
+  declare var Outlook$OlRuleActionType: {|
+    +olRuleActionAssignToCategory: 2, // 2
+    +olRuleActionCcMessage: 27, // 27
+    +olRuleActionClearCategories: 30, // 30
+    +olRuleActionCopyToFolder: 5, // 5
+    +olRuleActionCustomAction: 22, // 22
+    +olRuleActionDefer: 28, // 28
+    +olRuleActionDelete: 3, // 3
+    +olRuleActionDeletePermanently: 4, // 4
+    +olRuleActionDesktopAlert: 24, // 24
+    +olRuleActionFlagClear: 13, // 13
+    +olRuleActionFlagColor: 12, // 12
+    +olRuleActionFlagForActionInDays: 11, // 11
+    +olRuleActionForward: 6, // 6
+    +olRuleActionForwardAsAttachment: 7, // 7
+    +olRuleActionImportance: 14, // 14
+    +olRuleActionMarkAsTask: 29, // 29
+    +olRuleActionMarkRead: 19, // 19
+    +olRuleActionMoveToFolder: 1, // 1
+    +olRuleActionNewItemAlert: 23, // 23
+    +olRuleActionNotifyDelivery: 26, // 26
+    +olRuleActionNotifyRead: 25, // 25
+    +olRuleActionPlaySound: 17, // 17
+    +olRuleActionPrint: 16, // 16
+    +olRuleActionRedirect: 8, // 8
+    +olRuleActionRunScript: 20, // 20
+    +olRuleActionSensitivity: 15, // 15
+    +olRuleActionServerReply: 9, // 9
+    +olRuleActionStartApplication: 18, // 18
+    +olRuleActionStop: 21, // 21
+    +olRuleActionTemplate: 10, // 10
+    +olRuleActionUnknown: 0 // 0
+  |};
+
+  declare var Outlook$OlRuleConditionType: {|
+    +olConditionAccount: 3, // 3
+    +olConditionAnyCategory: 29, // 29
+    +olConditionBody: 13, // 13
+    +olConditionBodyOrSubject: 14, // 14
+    +olConditionCategory: 18, // 18
+    +olConditionCc: 9, // 9
+    +olConditionDateRange: 22, // 22
+    +olConditionFlaggedForAction: 8, // 8
+    +olConditionFormName: 23, // 23
+    +olConditionFrom: 1, // 1
+    +olConditionFromAnyRssFeed: 31, // 31
+    +olConditionFromRssFeed: 30, // 30
+    +olConditionHasAttachment: 20, // 20
+    +olConditionImportance: 6, // 6
+    +olConditionLocalMachineOnly: 27, // 27
+    +olConditionMeetingInviteOrUpdate: 26, // 26
+    +olConditionMessageHeader: 15, // 15
+    +olConditionNotTo: 11, // 11
+    +olConditionOnlyToMe: 4, // 4
+    +olConditionOOF: 19, // 19
+    +olConditionOtherMachine: 28, // 28
+    +olConditionProperty: 24, // 24
+    +olConditionRecipientAddress: 16, // 16
+    +olConditionSenderAddress: 17, // 17
+    +olConditionSenderInAddressBook: 25, // 25
+    +olConditionSensitivity: 7, // 7
+    +olConditionSentTo: 12, // 12
+    +olConditionSizeRange: 21, // 21
+    +olConditionSubject: 2, // 2
+    +olConditionTo: 5, // 5
+    +olConditionToOrCc: 10, // 10
+    +olConditionUnknown: 0 // 0
+  |};
+
+  declare var Outlook$OlRuleExecuteOption: {|
+    +olRuleExecuteAllMessages: 0, // 0
+    +olRuleExecuteReadMessages: 1, // 1
+    +olRuleExecuteUnreadMessages: 2 // 2
+  |};
+
+  declare var Outlook$OlRuleType: {|
+    +olRuleReceive: 0, // 0
+    +olRuleSend: 1 // 1
+  |};
+
+  declare var Outlook$OlSaveAsType: {|
+    +olDoc: 4, // 4
+    +olHTML: 5, // 5
+    +olICal: 8, // 8
+    +olMHTML: 10, // 10
+    +olMSG: 3, // 3
+    +olMSGUnicode: 9, // 9
+    +olRTF: 1, // 1
+    +olTemplate: 2, // 2
+    +olTXT: 0, // 0
+    +olVCal: 7, // 7
+    +olVCard: 6 // 6
+  |};
+
+  declare var Outlook$OlScrollBars: {|
+    +olScrollBarsBoth: 3, // 3
+    +olScrollBarsHorizontal: 1, // 1
+    +olScrollBarsNone: 0, // 0
+    +olScrollBarsVertical: 2 // 2
+  |};
+
+  declare var Outlook$OlSearchScope: {|
+    +olSearchScopeAllFolders: 1, // 1
+    +olSearchScopeAllOutlookItems: 2, // 2
+    +olSearchScopeCurrentFolder: 0, // 0
+    +olSearchScopeSubfolders: 3 // 3
+  |};
+
+  declare var Outlook$OlSelectionContents: {|
+    +olConversationHeaders: 1 // 1
+  |};
+
+  declare var Outlook$OlSelectionLocation: {|
+    +olAttachmentWell: 4, // 4
+    +olDailyTaskList: 3, // 3
+    +olToDoBarAppointmentList: 2, // 2
+    +olToDoBarTaskList: 1, // 1
+    +olViewList: 0 // 0
+  |};
+
+  declare var Outlook$OlSensitivity: {|
+    +olConfidential: 3, // 3
+    +olNormal: 0, // 0
+    +olPersonal: 1, // 1
+    +olPrivate: 2 // 2
+  |};
+
+  declare var Outlook$OlSharingMsgType: {|
+    +olSharingMsgTypeInvite: 2, // 2
+    +olSharingMsgTypeInviteAndRequest: 3, // 3
+    +olSharingMsgTypeRequest: 1, // 1
+    +olSharingMsgTypeResponseAllow: 4, // 4
+    +olSharingMsgTypeResponseDeny: 5, // 5
+    +olSharingMsgTypeUnknown: 0 // 0
+  |};
+
+  declare var Outlook$OlSharingProvider: {|
+    +olProviderExchange: 1, // 1
+    +olProviderFederate: 7, // 7
+    +olProviderICal: 4, // 4
+    +olProviderPubCal: 3, // 3
+    +olProviderRSS: 6, // 6
+    +olProviderSharePoint: 5, // 5
+    +olProviderUnknown: 0, // 0
+    +olProviderWebCal: 2 // 2
+  |};
+
+  declare var Outlook$OlShiftState: {|
+    +olShiftStateAltMask: 4, // 4
+    +olShiftStateCtrlMask: 2, // 2
+    +olShiftStateShiftMask: 1 // 1
+  |};
+
+  declare var Outlook$OlShowItemCount: {|
+    +olNoItemCount: 0, // 0
+    +olShowTotalItemCount: 2, // 2
+    +olShowUnreadItemCount: 1 // 1
+  |};
+
+  declare var Outlook$OlSolutionScope: {|
+    +olHideInDefaultModules: 0, // 0
+    +olShowInDefaultModules: 1 // 1
+  |};
+
+  declare var Outlook$OlSortOrder: {|
+    +olAscending: 1, // 1
+    +olDescending: 2, // 2
+    +olSortNone: 0 // 0
+  |};
+
+  declare var Outlook$OlSpecialFolders: {|
+    +olSpecialFolderAllTasks: 0, // 0
+    +olSpecialFolderReminders: 1 // 1
+  |};
+
+  declare var Outlook$OlStorageIdentifierType: {|
+    +olIdentifyByEntryID: 1, // 1
+    +olIdentifyByMessageClass: 2, // 2
+    +olIdentifyBySubject: 0 // 0
+  |};
+
+  declare var Outlook$OlStoreType: {|
+    +olStoreANSI: 3, // 3
+    +olStoreDefault: 1, // 1
+    +olStoreUnicode: 2 // 2
+  |};
+
+  declare var Outlook$OlSyncState: {|
+    +olSyncStarted: 1, // 1
+    +olSyncStopped: 0 // 0
+  |};
+
+  declare var Outlook$OlTableContents: {|
+    +olHiddenItems: 1, // 1
+    +olUserItems: 0 // 0
+  |};
+
+  declare var Outlook$OlTaskDelegationState: {|
+    +olTaskDelegationAccepted: 2, // 2
+    +olTaskDelegationDeclined: 3, // 3
+    +olTaskDelegationUnknown: 1, // 1
+    +olTaskNotDelegated: 0 // 0
+  |};
+
+  declare var Outlook$OlTaskOwnership: {|
+    +olDelegatedTask: 1, // 1
+    +olNewTask: 0, // 0
+    +olOwnTask: 2 // 2
+  |};
+
+  declare var Outlook$OlTaskRecipientType: {|
+    +olFinalStatus: 3, // 3
+    +olUpdate: 2 // 2
+  |};
+
+  declare var Outlook$OlTaskResponse: {|
+    +olTaskAccept: 2, // 2
+    +olTaskAssign: 1, // 1
+    +olTaskDecline: 3, // 3
+    +olTaskSimple: 0 // 0
+  |};
+
+  declare var Outlook$OlTaskStatus: {|
+    +olTaskComplete: 2, // 2
+    +olTaskDeferred: 4, // 4
+    +olTaskInProgress: 1, // 1
+    +olTaskNotStarted: 0, // 0
+    +olTaskWaiting: 3 // 3
+  |};
+
+  declare var Outlook$OlTextAlign: {|
+    +olTextAlignCenter: 2, // 2
+    +olTextAlignLeft: 1, // 1
+    +olTextAlignRight: 3 // 3
+  |};
+
+  declare var Outlook$OlTimelineViewMode: {|
+    +olTimelineViewDay: 0, // 0
+    +olTimelineViewMonth: 2, // 2
+    +olTimelineViewWeek: 1 // 1
+  |};
+
+  declare var Outlook$OlTimeStyle: {|
+    +olTimeStyleShortDuration: 4, // 4
+    +olTimeStyleTimeDuration: 1, // 1
+    +olTimeStyleTimeOnly: 0 // 0
+  |};
+
+  declare var Outlook$OlTrackingStatus: {|
+    +olTrackingDelivered: 1, // 1
+    +olTrackingNone: 0, // 0
+    +olTrackingNotDelivered: 2, // 2
+    +olTrackingNotRead: 3, // 3
+    +olTrackingRead: 6, // 6
+    +olTrackingRecallFailure: 4, // 4
+    +olTrackingRecallSuccess: 5, // 5
+    +olTrackingReplied: 7 // 7
+  |};
+
+  declare var Outlook$OlUserPropertyType: {|
+    +olCombination: 19, // 19
+    +olCurrency: 14, // 14
+    +olDateTime: 5, // 5
+    +olDuration: 7, // 7
+    +olEnumeration: 21, // 21
+    +olFormula: 18, // 18
+    +olInteger: 20, // 20
+    +olKeywords: 11, // 11
+    +olNumber: 3, // 3
+    +olOutlookInternal: 0, // 0
+    +olPercent: 12, // 12
+    +olSmartFrom: 22, // 22
+    +olText: 1, // 1
+    +olYesNo: 6 // 6
+  |};
+
+  declare var Outlook$OlVerticalLayout: {|
+    +olVerticalLayoutAlignBottom: 2, // 2
+    +olVerticalLayoutAlignMiddle: 1, // 1
+    +olVerticalLayoutAlignTop: 0, // 0
+    +olVerticalLayoutGrow: 3 // 3
+  |};
+
+  declare var Outlook$OlViewSaveOption: {|
+    +olViewSaveOptionAllFoldersOfType: 2, // 2
+    +olViewSaveOptionThisFolderEveryone: 0, // 0
+    +olViewSaveOptionThisFolderOnlyMe: 1 // 1
+  |};
+
+  declare var Outlook$OlViewType: {|
+    +olBusinessCardView: 5, // 5
+    +olCalendarView: 2, // 2
+    +olCardView: 1, // 1
+    +olDailyTaskListView: 6, // 6
+    +olIconView: 3, // 3
+    +olTableView: 0, // 0
+    +olTimelineView: 4 // 4
+  |};
+
+  declare var Outlook$OlWindowState: {|
+    +olMaximized: 0, // 0
+    +olMinimized: 1, // 1
+    +olNormalWindow: 2 // 2
+  |};
 
   declare class Outlook$_DocSiteControl {
     constructor(): this;
@@ -4763,15 +1558,17 @@ declare module "activex-outlook" {
 
   declare class Outlook$Account {
     constructor(): this;
-    AccountType: Outlook$OlAccountType;
+    AccountType: $Values<typeof Outlook$OlAccountType>;
     Outlook$Application: Outlook$Application;
-    AutoDiscoverConnectionMode: Outlook$OlAutoDiscoverConnectionMode;
+    AutoDiscoverConnectionMode: $Values<
+      typeof Outlook$OlAutoDiscoverConnectionMode
+    >;
     AutoDiscoverXml: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     CurrentUser: Outlook$Recipient;
     DeliveryStore: Outlook$Store;
     DisplayName: string;
-    ExchangeConnectionMode: Outlook$OlExchangeConnectionMode;
+    ExchangeConnectionMode: $Values<typeof Outlook$OlExchangeConnectionMode>;
     ExchangeMailboxServerName: string;
     ExchangeMailboxServerVersion: string;
     GetAddressEntryFromID(ID: string): Outlook$AddressEntry;
@@ -4786,8 +1583,8 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Account: Outlook$Account;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -4796,7 +1593,7 @@ declare module "activex-outlook" {
   declare class Outlook$Accounts {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Account;
     Parent: any;
@@ -4806,7 +1603,7 @@ declare module "activex-outlook" {
   declare class Outlook$AccountSelector {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Parent: any;
     SelectedAccount: Outlook$Account;
     Session: Outlook$NameSpace;
@@ -4815,8 +1612,8 @@ declare module "activex-outlook" {
   declare class Outlook$Action {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    CopyLike: Outlook$OlActionCopyLike;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    CopyLike: $Values<typeof Outlook$OlActionCopyLike>;
     Delete(): void;
     Enabled: boolean;
     Execute(): any;
@@ -4824,17 +1621,17 @@ declare module "activex-outlook" {
     Name: string;
     Parent: any;
     Prefix: string;
-    ReplyStyle: Outlook$OlActionReplyStyle;
-    ResponseStyle: Outlook$OlActionResponseStyle;
+    ReplyStyle: $Values<typeof Outlook$OlActionReplyStyle>;
+    ResponseStyle: $Values<typeof Outlook$OlActionResponseStyle>;
     Session: Outlook$NameSpace;
-    ShowOn: Outlook$OlActionShowOn;
+    ShowOn: $Values<typeof Outlook$OlActionShowOn>;
   }
 
   declare class Outlook$Actions {
     constructor(): this;
     Add(): Outlook$Action;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Action;
     Parent: any;
@@ -4846,7 +1643,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Type: string, Name?: any, Address?: any): Outlook$AddressEntry;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     GetFirst(): Outlook$AddressEntry;
     GetLast(): Outlook$AddressEntry;
@@ -4862,12 +1659,12 @@ declare module "activex-outlook" {
   declare class Outlook$AddressEntry {
     constructor(): this;
     Address: string;
-    AddressEntryUserType: Outlook$OlAddressEntryUserType;
+    AddressEntryUserType: $Values<typeof Outlook$OlAddressEntryUserType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Delete(): void;
     Details(HWnd?: any): void;
-    DisplayType: Outlook$OlDisplayType;
+    DisplayType: $Values<typeof Outlook$OlDisplayType>;
     GetContact(): Outlook$ContactItem;
     GetExchangeDistributionList(): Outlook$ExchangeDistributionList;
     GetExchangeUser(): Outlook$ExchangeUser;
@@ -4892,9 +1689,9 @@ declare module "activex-outlook" {
   declare class Outlook$AddressList {
     constructor(): this;
     Outlook$AddressEntries: Outlook$AddressEntries;
-    AddressListType: Outlook$OlAddressListType;
+    AddressListType: $Values<typeof Outlook$OlAddressListType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     GetContactsFolder(): Outlook$Folder;
     ID: string;
     Index: number;
@@ -4910,7 +1707,7 @@ declare module "activex-outlook" {
   declare class Outlook$AddressLists {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$AddressList;
     Parent: any;
@@ -4921,8 +1718,8 @@ declare module "activex-outlook" {
     constructor(): this;
     Address: any;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -4943,26 +1740,38 @@ declare module "activex-outlook" {
     Outlook$Application: Outlook$Application;
     Assistance: Office.IAssistance;
     Assistant: Office.Assistant;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     COMAddIns: Office.COMAddIns;
     CopyFile(FilePath: string, DestFolderPath: string): any;
     CreateItem(
-      ItemType: Outlook$OlItemType.olAppointmentItem
+      ItemType: typeof Outlook$OlItemType.olAppointmentItem
     ): Outlook$AppointmentItem;
-    CreateItem(ItemType: Outlook$OlItemType.olContactItem): Outlook$ContactItem;
     CreateItem(
-      ItemType: Outlook$OlItemType.olDistributionListItem
+      ItemType: typeof Outlook$OlItemType.olContactItem
+    ): Outlook$ContactItem;
+    CreateItem(
+      ItemType: typeof Outlook$OlItemType.olDistributionListItem
     ): Outlook$DistListItem;
-    CreateItem(ItemType: Outlook$OlItemType.olJournalItem): Outlook$JournalItem;
-    CreateItem(ItemType: Outlook$OlItemType.olMailItem): Outlook$MailItem;
+    CreateItem(
+      ItemType: typeof Outlook$OlItemType.olJournalItem
+    ): Outlook$JournalItem;
+    CreateItem(
+      ItemType: typeof Outlook$OlItemType.olMailItem
+    ): Outlook$MailItem;
     CreateItem(
       ItemType:
-        | Outlook$OlItemType.olMobileItemMMS
-        | Outlook$OlItemType.olMobileItemSMS
+        | typeof Outlook$OlItemType.olMobileItemMMS
+        | typeof Outlook$OlItemType.olMobileItemSMS
     ): Outlook$MobileItem;
-    CreateItem(ItemType: Outlook$OlItemType.olNoteItem): Outlook$NoteItem;
-    CreateItem(ItemType: Outlook$OlItemType.olPostItem): Outlook$PostItem;
-    CreateItem(ItemType: Outlook$OlItemType.olTaskItem): Outlook$TaskItem;
+    CreateItem(
+      ItemType: typeof Outlook$OlItemType.olNoteItem
+    ): Outlook$NoteItem;
+    CreateItem(
+      ItemType: typeof Outlook$OlItemType.olPostItem
+    ): Outlook$PostItem;
+    CreateItem(
+      ItemType: typeof Outlook$OlItemType.olTaskItem
+    ): Outlook$TaskItem;
     CreateItemFromTemplate(TemplatePath: string, InFolder?: any): any;
     CreateObject(ObjectName: string): any;
     DefaultProfileName: string;
@@ -4970,7 +1779,10 @@ declare module "activex-outlook" {
     FeatureInstall: Office.MsoFeatureInstall;
     GetNamespace(Type: string): Outlook$NameSpace;
     GetNewNickNames(pvar: any): void;
-    GetObjectReference(Item: any, ReferenceType: Outlook$OlReferenceType): any;
+    GetObjectReference(
+      Item: any,
+      ReferenceType: $Values<typeof Outlook$OlReferenceType>
+    ): any;
     Outlook$Inspectors: Outlook$Inspectors;
     IsSearchSynchronous(LookInFolders: string): boolean;
     IsTrusted: boolean;
@@ -4996,11 +1808,11 @@ declare module "activex-outlook" {
     AutoResolvedWinner: boolean;
     BillingInformation: string;
     Body: string;
-    BusyStatus: Outlook$OlBusyStatus;
+    BusyStatus: $Values<typeof Outlook$OlBusyStatus>;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearRecurrencePattern(): void;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     ConferenceServerAllowExternal: boolean;
     ConferenceServerPassword: string;
@@ -5011,12 +1823,12 @@ declare module "activex-outlook" {
     Copy(): any;
     CopyTo(
       DestinationFolder: Outlook$Folder,
-      CopyOptions: Outlook$OlAppointmentCopyOptions
+      CopyOptions: $Values<typeof Outlook$OlAppointmentCopyOptions>
     ): Outlook$AppointmentItem;
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     Duration: number;
     End: VarDate;
     EndInEndTimeZone: VarDate;
@@ -5031,7 +1843,7 @@ declare module "activex-outlook" {
     GetOrganizer(): Outlook$AddressEntry;
     GetRecurrencePattern(): Outlook$RecurrencePattern;
     GlobalAppointmentID: string;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     InternetCodepage: number;
     IsConflict: boolean;
     IsOnlineMeeting: boolean;
@@ -5041,8 +1853,8 @@ declare module "activex-outlook" {
     Outlook$Links: Outlook$Links;
     Location: string;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
-    MeetingStatus: Outlook$OlMeetingStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
+    MeetingStatus: $Values<typeof Outlook$OlMeetingStatus>;
     MeetingWorkspaceURL: string;
     MessageClass: string;
     Mileage: string;
@@ -5051,7 +1863,7 @@ declare module "activex-outlook" {
     NetMeetingDocPathName: string;
     NetMeetingOrganizerAlias: string;
     NetMeetingServer: string;
-    NetMeetingType: Outlook$OlNetMeetingType;
+    NetMeetingType: $Values<typeof Outlook$OlNetMeetingType>;
     NetShowURL: string;
     NoAging: boolean;
     OptionalAttendees: string;
@@ -5062,7 +1874,7 @@ declare module "activex-outlook" {
     PrintOut(): void;
     Outlook$PropertyAccessor: Outlook$PropertyAccessor;
     Outlook$Recipients: Outlook$Recipients;
-    RecurrenceState: Outlook$OlRecurrenceState;
+    RecurrenceState: $Values<typeof Outlook$OlRecurrenceState>;
     ReminderMinutesBeforeStart: number;
     ReminderOverrideDefault: boolean;
     ReminderPlaySound: boolean;
@@ -5072,19 +1884,19 @@ declare module "activex-outlook" {
     RequiredAttendees: string;
     Resources: string;
     Respond(
-      Response: Outlook$OlMeetingResponse,
+      Response: $Values<typeof Outlook$OlMeetingResponse>,
       fNoUI?: any,
       fAdditionalTextDialog?: any
     ): Outlook$MeetingItem;
     ResponseRequested: boolean;
-    ResponseStatus: Outlook$OlResponseStatus;
+    ResponseStatus: $Values<typeof Outlook$OlResponseStatus>;
     RTFBody: any;
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
     Send(): void;
     SendUsingAccount: Outlook$Account;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -5099,10 +1911,10 @@ declare module "activex-outlook" {
 
   declare class Outlook$AssignToCategoryRuleAction {
     constructor(): this;
-    ActionType: Outlook$OlRuleActionType;
+    ActionType: $Values<typeof Outlook$OlRuleActionType>;
     Outlook$Application: Outlook$Application;
     Outlook$Categories: any;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -5111,8 +1923,8 @@ declare module "activex-outlook" {
   declare class Outlook$Attachment {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    BlockLevel: Outlook$OlAttachmentBlockLevel;
-    Class: Outlook$OlObjectClass;
+    BlockLevel: $Values<typeof Outlook$OlAttachmentBlockLevel>;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Delete(): void;
     DisplayName: string;
     FileName: string;
@@ -5126,7 +1938,7 @@ declare module "activex-outlook" {
     SaveAsFile(Path: string): void;
     Session: Outlook$NameSpace;
     Size: number;
-    Type: Outlook$OlAttachmentType;
+    Type: $Values<typeof Outlook$OlAttachmentType>;
   }
 
   declare class Outlook$Attachments {
@@ -5138,7 +1950,7 @@ declare module "activex-outlook" {
       DisplayName?: any
     ): Outlook$Attachment;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Attachment;
     Parent: any;
@@ -5149,13 +1961,13 @@ declare module "activex-outlook" {
   declare class Outlook$AttachmentSelection {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     GetSelection(
-      SelectionContents: Outlook$OlSelectionContents
+      SelectionContents: $Values<typeof Outlook$OlSelectionContents>
     ): Outlook$Selection;
     Item(Index: any): Outlook$Attachment;
-    Location: Outlook$OlSelectionLocation;
+    Location: $Values<typeof Outlook$OlSelectionLocation>;
     Parent: any;
     Session: Outlook$NameSpace;
   }
@@ -5163,7 +1975,7 @@ declare module "activex-outlook" {
   declare class Outlook$AutoFormatRule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     Filter: string;
     Font: Outlook$ViewFont;
@@ -5177,7 +1989,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Name: string): Outlook$AutoFormatRule;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Insert(Name: string, Index: any): Outlook$AutoFormatRule;
     Item(Index: any): Outlook$AutoFormatRule;
@@ -5193,8 +2005,11 @@ declare module "activex-outlook" {
     Outlook$Application: Outlook$Application;
     Apply(): void;
     CardSize: number;
-    Class: Outlook$OlObjectClass;
-    Copy(Name: string, SaveOption: Outlook$OlViewSaveOption): Outlook$View;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Copy(
+      Name: string,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
+    ): Outlook$View;
     Delete(): void;
     Filter: string;
     GoToDate(Date: VarDate): void;
@@ -5205,21 +2020,21 @@ declare module "activex-outlook" {
     Parent: any;
     Reset(): void;
     Save(): void;
-    SaveOption: Outlook$OlViewSaveOption;
+    SaveOption: $Values<typeof Outlook$OlViewSaveOption>;
     Session: Outlook$NameSpace;
     SortFields: Outlook$OrderFields;
     Standard: boolean;
-    ViewType: Outlook$OlViewType;
+    ViewType: $Values<typeof Outlook$OlViewType>;
     XML: string;
   }
 
   declare class Outlook$CalendarModule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Outlook$NavigationGroups: Outlook$NavigationGroups;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -5229,11 +2044,13 @@ declare module "activex-outlook" {
   declare class Outlook$CalendarSharing {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    CalendarDetail: Outlook$OlCalendarDetail;
-    Class: Outlook$OlObjectClass;
+    CalendarDetail: $Values<typeof Outlook$OlCalendarDetail>;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     EndDate: VarDate;
     Outlook$Folder: Outlook$Folder;
-    ForwardAsICal(MailFormat: Outlook$OlCalendarMailFormat): Outlook$MailItem;
+    ForwardAsICal(
+      MailFormat: $Values<typeof Outlook$OlCalendarMailFormat>
+    ): Outlook$MailItem;
     IncludeAttachments: boolean;
     IncludePrivateDetails: boolean;
     IncludeWholeCalendar: boolean;
@@ -5251,13 +2068,16 @@ declare module "activex-outlook" {
     Outlook$AutoFormatRules: Outlook$AutoFormatRules;
     BoldDatesWithItems: boolean;
     BoldSubjects: boolean;
-    CalendarViewMode: Outlook$OlCalendarViewMode;
-    Class: Outlook$OlObjectClass;
-    Copy(Name: string, SaveOption: Outlook$OlViewSaveOption): Outlook$View;
+    CalendarViewMode: $Values<typeof Outlook$OlCalendarViewMode>;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Copy(
+      Name: string,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
+    ): Outlook$View;
     DaysInMultiDayMode: number;
     DayWeekFont: Outlook$ViewFont;
     DayWeekTimeFont: Outlook$ViewFont;
-    DayWeekTimeScale: Outlook$OlDayWeekTimeScale;
+    DayWeekTimeScale: $Values<typeof Outlook$OlDayWeekTimeScale>;
     Delete(): void;
     DisplayedDates: any;
     EndField: string;
@@ -5271,13 +2091,13 @@ declare module "activex-outlook" {
     Parent: any;
     Reset(): void;
     Save(): void;
-    SaveOption: Outlook$OlViewSaveOption;
+    SaveOption: $Values<typeof Outlook$OlViewSaveOption>;
     SelectedEndTime: VarDate;
     SelectedStartTime: VarDate;
     Session: Outlook$NameSpace;
     Standard: boolean;
     StartField: string;
-    ViewType: Outlook$OlViewType;
+    ViewType: $Values<typeof Outlook$OlViewType>;
     XML: string;
   }
 
@@ -5288,8 +2108,11 @@ declare module "activex-outlook" {
     Apply(): void;
     Outlook$AutoFormatRules: Outlook$AutoFormatRules;
     BodyFont: Outlook$ViewFont;
-    Class: Outlook$OlObjectClass;
-    Copy(Name: string, SaveOption: Outlook$OlViewSaveOption): Outlook$View;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Copy(
+      Name: string,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
+    ): Outlook$View;
     Delete(): void;
     Filter: string;
     GoToDate(Date: VarDate): void;
@@ -5301,13 +2124,13 @@ declare module "activex-outlook" {
     Parent: any;
     Reset(): void;
     Save(): void;
-    SaveOption: Outlook$OlViewSaveOption;
+    SaveOption: $Values<typeof Outlook$OlViewSaveOption>;
     Session: Outlook$NameSpace;
     ShowEmptyFields: boolean;
     SortFields: Outlook$OrderFields;
     Standard: boolean;
     Outlook$ViewFields: Outlook$ViewFields;
-    ViewType: Outlook$OlViewType;
+    ViewType: $Values<typeof Outlook$OlViewType>;
     Width: number;
     XML: string;
   }
@@ -5316,7 +2139,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Name: string, Color?: any, ShortcutKey?: any): Outlook$Category;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Category;
     Parent: any;
@@ -5331,20 +2154,20 @@ declare module "activex-outlook" {
     CategoryGradientBottomColor: stdole.OLE_COLOR;
     CategoryGradientTopColor: stdole.OLE_COLOR;
     CategoryID: string;
-    Class: Outlook$OlObjectClass;
-    Color: Outlook$OlCategoryColor;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Color: $Values<typeof Outlook$OlCategoryColor>;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
-    ShortcutKey: Outlook$OlCategoryShortcutKey;
+    ShortcutKey: $Values<typeof Outlook$OlCategoryShortcutKey>;
   }
 
   declare class Outlook$CategoryRuleCondition {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Outlook$Categories: any;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -5353,7 +2176,7 @@ declare module "activex-outlook" {
   declare class Outlook$Column {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -5361,11 +2184,11 @@ declare module "activex-outlook" {
 
   declare class Outlook$ColumnFormat {
     constructor(): this;
-    Align: Outlook$OlAlign;
+    Align: $Values<typeof Outlook$OlAlign>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     FieldFormat: number;
-    FieldType: Outlook$OlUserPropertyType;
+    FieldType: $Values<typeof Outlook$OlUserPropertyType>;
     Label: string;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -5376,7 +2199,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Name: string): Outlook$Column;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Column;
     Parent: any;
@@ -5388,18 +2211,18 @@ declare module "activex-outlook" {
   declare class Outlook$Conflict {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Item: any;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
-    Type: Outlook$OlObjectClass;
+    Type: $Values<typeof Outlook$OlObjectClass>;
   }
 
   declare class Outlook$Conflicts {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     GetFirst(): Outlook$Conflict;
     GetLast(): Outlook$Conflict;
@@ -5434,7 +2257,7 @@ declare module "activex-outlook" {
     BusinessAddressState: string;
     BusinessAddressStreet: string;
     BusinessCardLayoutXml: string;
-    BusinessCardType: Outlook$OlBusinessCardType;
+    BusinessCardType: $Values<typeof Outlook$OlBusinessCardType>;
     BusinessFaxNumber: string;
     BusinessHomePage: string;
     BusinessTelephoneNumber: string;
@@ -5442,9 +2265,9 @@ declare module "activex-outlook" {
     CarTelephoneNumber: string;
     Outlook$Categories: string;
     Children: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearTaskFlag(): void;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     CompanyAndFullName: string;
     CompanyLastFirstNoSpace: string;
@@ -5462,7 +2285,7 @@ declare module "activex-outlook" {
     Delete(): void;
     Department: string;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     Email1Address: string;
     Email1AddressType: string;
     Email1DisplayName: string;
@@ -5484,7 +2307,7 @@ declare module "activex-outlook" {
     FTPSite: string;
     FullName: string;
     FullNameAndCompany: string;
-    Gender: Outlook$OlGender;
+    Gender: $Values<typeof Outlook$OlGender>;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
     GovernmentIDNumber: string;
@@ -5501,7 +2324,7 @@ declare module "activex-outlook" {
     HomeFaxNumber: string;
     HomeTelephoneNumber: string;
     IMAddress: string;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     Initials: string;
     InternetFreeBusyAddress: string;
     IsConflict: boolean;
@@ -5530,8 +2353,8 @@ declare module "activex-outlook" {
     MailingAddressStreet: string;
     ManagerName: string;
     MAPIOBJECT: any;
-    MarkAsTask(MarkInterval: Outlook$OlMarkInterval): void;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkAsTask(MarkInterval: $Values<typeof Outlook$OlMarkInterval>): void;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     MiddleName: string;
     Mileage: string;
@@ -5575,12 +2398,14 @@ declare module "activex-outlook" {
     SaveAs(Path: string, Type?: any): void;
     SaveBusinessCardImage(Path: string): void;
     Saved: boolean;
-    SelectedMailingAddress: Outlook$OlMailingAddress;
-    Sensitivity: Outlook$OlSensitivity;
+    SelectedMailingAddress: $Values<typeof Outlook$OlMailingAddress>;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowBusinessCardEditor(): void;
     ShowCategoriesDialog(): void;
-    ShowCheckPhoneDialog(PhoneNumber: Outlook$OlContactPhoneNumber): void;
+    ShowCheckPhoneDialog(
+      PhoneNumber: $Values<typeof Outlook$OlContactPhoneNumber>
+    ): void;
     Size: number;
     Spouse: string;
     Subject: string;
@@ -5609,10 +2434,10 @@ declare module "activex-outlook" {
   declare class Outlook$ContactsModule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Outlook$NavigationGroups: Outlook$NavigationGroups;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -5622,14 +2447,14 @@ declare module "activex-outlook" {
   declare class Outlook$Conversation {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ClearAlwaysAssignCategories(Outlook$Store: Outlook$Store): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ClearAlwaysAssignCategories(Store: Outlook$Store): void;
     ConversationID: string;
-    GetAlwaysAssignCategories(Outlook$Store: Outlook$Store): string;
+    GetAlwaysAssignCategories(Store: Outlook$Store): string;
     GetAlwaysDelete(
-      Outlook$Store: Outlook$Store
-    ): Outlook$OlAlwaysDeleteConversation;
-    GetAlwaysMoveToFolder(Outlook$Store: Outlook$Store): Outlook$Folder;
+      Store: Outlook$Store
+    ): $Values<typeof Outlook$OlAlwaysDeleteConversation>;
+    GetAlwaysMoveToFolder(Store: Outlook$Store): Outlook$Folder;
     GetChildren(Item: any): Outlook$SimpleItems;
     GetParent(Item: any): any;
     GetRootItems(): Outlook$SimpleItems;
@@ -5638,26 +2463,23 @@ declare module "activex-outlook" {
     MarkAsUnread(): void;
     Parent: any;
     Session: Outlook$NameSpace;
-    SetAlwaysAssignCategories(
-      Outlook$Categories: string,
-      Outlook$Store: Outlook$Store
-    ): void;
+    SetAlwaysAssignCategories(Categories: string, Store: Outlook$Store): void;
     SetAlwaysDelete(
-      AlwaysDelete: Outlook$OlAlwaysDeleteConversation,
-      Outlook$Store: Outlook$Store
+      AlwaysDelete: $Values<typeof Outlook$OlAlwaysDeleteConversation>,
+      Store: Outlook$Store
     ): void;
     SetAlwaysMoveToFolder(
       MoveToFolder: Outlook$Folder,
-      Outlook$Store: Outlook$Store
+      Store: Outlook$Store
     ): void;
-    StopAlwaysDelete(Outlook$Store: Outlook$Store): void;
-    StopAlwaysMoveToFolder(Outlook$Store: Outlook$Store): void;
+    StopAlwaysDelete(Store: Outlook$Store): void;
+    StopAlwaysMoveToFolder(Store: Outlook$Store): void;
   }
 
   declare class Outlook$ConversationHeader {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ConversationID: string;
     ConversationTopic: string;
     GetConversation(): Outlook$Conversation;
@@ -5669,8 +2491,8 @@ declare module "activex-outlook" {
   declare class Outlook$DistListItem {
     constructor(): this;
     Outlook$Actions: Outlook$Actions;
-    AddMember(Outlook$Recipient: Outlook$Recipient): void;
-    AddMembers(Outlook$Recipients: Outlook$Recipients): void;
+    AddMember(Recipient: Outlook$Recipient): void;
+    AddMembers(Recipients: Outlook$Recipients): void;
     Outlook$Application: Outlook$Application;
     Outlook$Attachments: Outlook$Attachments;
     AutoResolvedWinner: boolean;
@@ -5678,9 +2500,9 @@ declare module "activex-outlook" {
     Body: string;
     Outlook$Categories: string;
     CheckSum: number;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearTaskFlag(): void;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -5691,21 +2513,21 @@ declare module "activex-outlook" {
     Delete(): void;
     Display(Modal?: any): void;
     DLName: string;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
     GetMember(Index: number): Outlook$Recipient;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     IsMarkedAsTask: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkAsTask(MarkInterval: Outlook$OlMarkInterval): void;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkAsTask(MarkInterval: $Values<typeof Outlook$OlMarkInterval>): void;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MemberCount: number;
     Members: any;
     MessageClass: string;
@@ -5723,13 +2545,13 @@ declare module "activex-outlook" {
     ReminderSet: boolean;
     ReminderSoundFile: string;
     ReminderTime: VarDate;
-    RemoveMember(Outlook$Recipient: Outlook$Recipient): void;
-    RemoveMembers(Outlook$Recipients: Outlook$Recipients): void;
+    RemoveMember(Recipient: Outlook$Recipient): void;
+    RemoveMembers(Recipients: Outlook$Recipients): void;
     RTFBody: any;
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -5752,8 +2574,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationIndex: string;
@@ -5762,17 +2584,17 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -5785,7 +2607,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -5800,11 +2622,11 @@ declare module "activex-outlook" {
     AddToFavorites(fNoUI?: any, Name?: any): void;
     AddToPFFavorites(): void;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     CopyTo(DestinationFolder: Outlook$Folder): Outlook$Folder;
     CurrentView: Outlook$View;
     CustomViewsOnly: boolean;
-    DefaultItemType: Outlook$OlItemType;
+    DefaultItemType: $Values<typeof Outlook$OlItemType>;
     DefaultMessageClass: string;
     Delete(): void;
     Description: string;
@@ -5818,7 +2640,7 @@ declare module "activex-outlook" {
     GetExplorer(DisplayMode?: any): Outlook$Explorer;
     GetStorage(
       StorageIdentifier: string,
-      StorageIdentifierType: Outlook$OlStorageIdentifierType
+      StorageIdentifierType: $Values<typeof Outlook$OlStorageIdentifierType>
     ): Outlook$StorageItem;
     GetTable(Filter?: any, TableContents?: any): Outlook$Table;
     InAppFolderSyncObject: boolean;
@@ -5832,7 +2654,7 @@ declare module "activex-outlook" {
     Session: Outlook$NameSpace;
     SetCustomIcon(Picture: stdole.StdPicture): void;
     ShowAsOutlookAB: boolean;
-    ShowItemCount: Outlook$OlShowItemCount;
+    ShowItemCount: $Values<typeof Outlook$OlShowItemCount>;
     Outlook$Store: Outlook$Store;
     StoreID: string;
     UnReadItemCount: number;
@@ -5848,7 +2670,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Outlook$AppointmentItem: Outlook$AppointmentItem;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Deleted: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     OriginalDate: VarDate;
@@ -5859,7 +2681,7 @@ declare module "activex-outlook" {
   declare class Outlook$Exceptions {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Exception;
     Parent: any;
@@ -5869,14 +2691,14 @@ declare module "activex-outlook" {
   declare class Outlook$ExchangeDistributionList {
     constructor(): this;
     Address: string;
-    AddressEntryUserType: Outlook$OlAddressEntryUserType;
+    AddressEntryUserType: $Values<typeof Outlook$OlAddressEntryUserType>;
     Alias: string;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Comments: string;
     Delete(): void;
     Details(HWnd?: any): void;
-    DisplayType: Outlook$OlDisplayType;
+    DisplayType: $Values<typeof Outlook$OlDisplayType>;
     GetContact(): Outlook$ContactItem;
     GetExchangeDistributionList(): Outlook$ExchangeDistributionList;
     GetExchangeDistributionListMembers(): Outlook$AddressEntries;
@@ -5905,19 +2727,19 @@ declare module "activex-outlook" {
   declare class Outlook$ExchangeUser {
     constructor(): this;
     Address: string;
-    AddressEntryUserType: Outlook$OlAddressEntryUserType;
+    AddressEntryUserType: $Values<typeof Outlook$OlAddressEntryUserType>;
     Alias: string;
     Outlook$Application: Outlook$Application;
     AssistantName: string;
     BusinessTelephoneNumber: string;
     City: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Comments: string;
     CompanyName: string;
     Delete(): void;
     Department: string;
     Details(HWnd?: any): void;
-    DisplayType: Outlook$OlDisplayType;
+    DisplayType: $Values<typeof Outlook$OlDisplayType>;
     FirstName: string;
     GetContact(): Outlook$ContactItem;
     GetDirectReports(): Outlook$AddressEntries;
@@ -5965,45 +2787,48 @@ declare module "activex-outlook" {
     Outlook$Application: Outlook$Application;
     Outlook$AttachmentSelection: Outlook$AttachmentSelection;
     Caption: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearSearch(): void;
     ClearSelection(): void;
     Close(): void;
     CommandBars: Office.CommandBars;
     CurrentFolder: Outlook$Folder;
     CurrentView: any;
-    DeselectFolder(Outlook$Folder: Outlook$Folder): void;
+    DeselectFolder(Folder: Outlook$Folder): void;
     Display(): void;
     Height: number;
     HTMLDocument: any;
-    IsFolderSelected(Outlook$Folder: Outlook$Folder): boolean;
+    IsFolderSelected(Folder: Outlook$Folder): boolean;
     IsItemSelectableInView(Item: any): boolean;
-    IsPaneVisible(Pane: Outlook$OlPane): boolean;
+    IsPaneVisible(Pane: $Values<typeof Outlook$OlPane>): boolean;
     Left: number;
     Outlook$NavigationPane: Outlook$NavigationPane;
     Outlook$Panes: Outlook$Panes;
     Parent: any;
     RemoveFromSelection(Item: any): void;
-    Search(Query: string, SearchScope: Outlook$OlSearchScope): void;
+    Search(
+      Query: string,
+      SearchScope: $Values<typeof Outlook$OlSearchScope>
+    ): void;
     SelectAllItems(): void;
-    SelectFolder(Outlook$Folder: Outlook$Folder): void;
+    SelectFolder(Folder: Outlook$Folder): void;
     Outlook$Selection: Outlook$Selection;
     Session: Outlook$NameSpace;
-    ShowPane(Pane: Outlook$OlPane, Visible: boolean): void;
+    ShowPane(Pane: $Values<typeof Outlook$OlPane>, Visible: boolean): void;
     Top: number;
     Outlook$Views: any;
     Width: number;
-    WindowState: Outlook$OlWindowState;
+    WindowState: $Values<typeof Outlook$OlWindowState>;
   }
 
   declare class Outlook$Explorers {
     constructor(): this;
     Add(
-      Outlook$Folder: any,
-      DisplayMode: Outlook$OlFolderDisplayMode
+      Folder: any,
+      DisplayMode: $Values<typeof Outlook$OlFolderDisplayMode>
     ): Outlook$Explorer;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Explorer;
     Parent: any;
@@ -6016,11 +2841,11 @@ declare module "activex-outlook" {
     AddToFavorites(fNoUI?: any, Name?: any): void;
     AddToPFFavorites(): void;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     CopyTo(DestinationFolder: Outlook$Folder): Outlook$Folder;
     CurrentView: Outlook$View;
     CustomViewsOnly: boolean;
-    DefaultItemType: Outlook$OlItemType;
+    DefaultItemType: $Values<typeof Outlook$OlItemType>;
     DefaultMessageClass: string;
     Delete(): void;
     Description: string;
@@ -6034,7 +2859,7 @@ declare module "activex-outlook" {
     GetExplorer(DisplayMode?: any): Outlook$Explorer;
     GetStorage(
       StorageIdentifier: string,
-      StorageIdentifierType: Outlook$OlStorageIdentifierType
+      StorageIdentifierType: $Values<typeof Outlook$OlStorageIdentifierType>
     ): Outlook$StorageItem;
     GetTable(Filter?: any, TableContents?: any): Outlook$Table;
     InAppFolderSyncObject: boolean;
@@ -6048,7 +2873,7 @@ declare module "activex-outlook" {
     Session: Outlook$NameSpace;
     SetCustomIcon(Picture: stdole.StdPicture): void;
     ShowAsOutlookAB: boolean;
-    ShowItemCount: Outlook$OlShowItemCount;
+    ShowItemCount: $Values<typeof Outlook$OlShowItemCount>;
     Outlook$Store: Outlook$Store;
     StoreID: string;
     UnReadItemCount: number;
@@ -6064,7 +2889,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Name: string, Type?: any): Outlook$Folder;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     GetFirst(): Outlook$Folder;
     GetLast(): Outlook$Folder;
@@ -6082,7 +2907,7 @@ declare module "activex-outlook" {
     Outlook$Application: Outlook$Application;
     Outlook$Category: string;
     CategorySub: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Comment: string;
     ContactName: string;
     DisplayName: string;
@@ -6096,7 +2921,10 @@ declare module "activex-outlook" {
     OneOff: boolean;
     Parent: any;
     Password: string;
-    PublishForm(Registry: Outlook$OlFormRegistry, Outlook$Folder?: any): void;
+    PublishForm(
+      Registry: $Values<typeof Outlook$OlFormRegistry>,
+      Folder?: any
+    ): void;
     ScriptText: string;
     Session: Outlook$NameSpace;
     Template: string;
@@ -6107,8 +2935,8 @@ declare module "activex-outlook" {
   declare class Outlook$FormNameRuleCondition {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     FormName: any;
     Parent: any;
@@ -6118,12 +2946,12 @@ declare module "activex-outlook" {
   declare class Outlook$FormRegion {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Detail: string;
     DisplayName: string;
     EnableAutoLayout: boolean;
     Form: any;
-    FormRegionMode: Outlook$OlFormRegionMode;
+    FormRegionMode: $Values<typeof Outlook$OlFormRegionMode>;
     Outlook$Inspector: Outlook$Inspector;
     InternalName: string;
     IsExpanded: boolean;
@@ -6140,27 +2968,27 @@ declare module "activex-outlook" {
 
   declare class Outlook$FormRegionStartup {
     constructor(): this;
-    BeforeFormRegionShow(Outlook$FormRegion: Outlook$FormRegion): void;
+    BeforeFormRegionShow(FormRegion: Outlook$FormRegion): void;
     GetFormRegionIcon(
       FormRegionName: string,
       LCID: number,
-      Icon: Outlook$OlFormRegionIcon
+      Icon: $Values<typeof Outlook$OlFormRegionIcon>
     ): any;
     GetFormRegionManifest(FormRegionName: string, LCID: number): any;
     GetFormRegionStorage(
       FormRegionName: string,
       Item: any,
       LCID: number,
-      FormRegionMode: Outlook$OlFormRegionMode,
-      FormRegionSize: Outlook$OlFormRegionSize
+      FormRegionMode: $Values<typeof Outlook$OlFormRegionMode>,
+      FormRegionSize: $Values<typeof Outlook$OlFormRegionSize>
     ): any;
   }
 
   declare class Outlook$FromRssFeedRuleCondition {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     FromRssFeed: any;
     Parent: any;
@@ -6171,34 +2999,37 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Apply(): void;
-    Class: Outlook$OlObjectClass;
-    Copy(Name: string, SaveOption: Outlook$OlViewSaveOption): Outlook$View;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Copy(
+      Name: string,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
+    ): Outlook$View;
     Delete(): void;
     Filter: string;
     GoToDate(Date: VarDate): void;
-    IconPlacement: Outlook$OlIconViewPlacement;
-    IconViewType: Outlook$OlIconViewType;
+    IconPlacement: $Values<typeof Outlook$OlIconViewPlacement>;
+    IconViewType: $Values<typeof Outlook$OlIconViewType>;
     Language: string;
     LockUserChanges: boolean;
     Name: string;
     Parent: any;
     Reset(): void;
     Save(): void;
-    SaveOption: Outlook$OlViewSaveOption;
+    SaveOption: $Values<typeof Outlook$OlViewSaveOption>;
     Session: Outlook$NameSpace;
     SortFields: Outlook$OrderFields;
     Standard: boolean;
-    ViewType: Outlook$OlViewType;
+    ViewType: $Values<typeof Outlook$OlViewType>;
     XML: string;
   }
 
   declare class Outlook$ImportanceRuleCondition {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     Parent: any;
     Session: Outlook$NameSpace;
   }
@@ -6209,12 +3040,12 @@ declare module "activex-outlook" {
     Outlook$Application: Outlook$Application;
     Outlook$AttachmentSelection: Outlook$AttachmentSelection;
     Caption: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     CommandBars: Office.CommandBars;
     CurrentItem: any;
     Display(Modal?: any): void;
-    EditorType: Outlook$OlEditorType;
+    EditorType: $Values<typeof Outlook$OlEditorType>;
     Height: number;
     HideFormPage(PageName: string): void;
     HTMLEditor: any;
@@ -6232,7 +3063,7 @@ declare module "activex-outlook" {
     ShowFormPage(PageName: string): void;
     Top: number;
     Width: number;
-    WindowState: Outlook$OlWindowState;
+    WindowState: $Values<typeof Outlook$OlWindowState>;
     WordEditor: any;
   }
 
@@ -6240,7 +3071,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Item: any): Outlook$Inspector;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Inspector;
     Parent: any;
@@ -6251,12 +3082,12 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(
       Name: string,
-      Type: Outlook$OlUserPropertyType,
+      Type: $Values<typeof Outlook$OlUserPropertyType>,
       AddToFolderFields?: any,
       DisplayFormat?: any
     ): Outlook$ItemProperty;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$ItemProperty;
     Parent: any;
@@ -6267,14 +3098,14 @@ declare module "activex-outlook" {
   declare class Outlook$ItemProperty {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Delete(): void;
     Formula: string;
     IsUserProperty: boolean;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
-    Type: Outlook$OlUserPropertyType;
+    Type: $Values<typeof Outlook$OlUserPropertyType>;
     ValidationFormula: string;
     ValidationText: string;
     Value: any;
@@ -6284,7 +3115,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Type?: any): any;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Find(Filter: string): any;
     FindNext(): any;
@@ -6300,7 +3131,7 @@ declare module "activex-outlook" {
     ResetColumns(): void;
     Restrict(Filter: string): Outlook$Items;
     Session: Outlook$NameSpace;
-    SetColumns(Outlook$Columns: string): void;
+    SetColumns(Columns: string): void;
     Sort(Property: string, Descending?: any): void;
   }
 
@@ -6313,8 +3144,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ContactNames: string;
@@ -6329,7 +3160,7 @@ declare module "activex-outlook" {
     DocPrinted: boolean;
     DocRouted: boolean;
     DocSaved: boolean;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     Duration: number;
     End: VarDate;
     EntryID: string;
@@ -6337,13 +3168,13 @@ declare module "activex-outlook" {
     Forward(): Outlook$MailItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -6359,7 +3190,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -6375,10 +3206,10 @@ declare module "activex-outlook" {
   declare class Outlook$JournalModule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Outlook$NavigationGroups: Outlook$NavigationGroups;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -6388,19 +3219,19 @@ declare module "activex-outlook" {
   declare class Outlook$Link {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Item: any;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
-    Type: Outlook$OlObjectClass;
+    Type: $Values<typeof Outlook$OlObjectClass>;
   }
 
   declare class Outlook$Links {
     constructor(): this;
     Add(Item: any): Outlook$Link;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Link;
     Parent: any;
@@ -6420,13 +3251,13 @@ declare module "activex-outlook" {
     BCC: string;
     BillingInformation: string;
     Body: string;
-    BodyFormat: Outlook$OlBodyFormat;
+    BodyFormat: $Values<typeof Outlook$OlBodyFormat>;
     Outlook$Categories: string;
     CC: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearConversationIndex(): void;
     ClearTaskFlag(): void;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -6438,21 +3269,21 @@ declare module "activex-outlook" {
     Delete(): void;
     DeleteAfterSubmit: boolean;
     Display(Modal?: boolean): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EnableSharedAttachments: boolean;
     EntryID: string;
     ExpiryTime: VarDate;
     FlagDueBy: VarDate;
-    FlagIcon: Outlook$OlFlagIcon;
+    FlagIcon: $Values<typeof Outlook$OlFlagIcon>;
     FlagRequest: string;
-    FlagStatus: Outlook$OlFlagStatus;
+    FlagStatus: $Values<typeof Outlook$OlFlagStatus>;
     Outlook$FormDescription: Outlook$FormDescription;
     Forward(): Outlook$MailItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
     HasCoverSheet: boolean;
     HTMLBody: string;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     InternetCodepage: number;
     IsConflict: boolean;
     IsIPFax: boolean;
@@ -6461,8 +3292,8 @@ declare module "activex-outlook" {
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkAsTask(MarkInterval: Outlook$OlMarkInterval): void;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkAsTask(MarkInterval: $Values<typeof Outlook$OlMarkInterval>): void;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -6471,8 +3302,8 @@ declare module "activex-outlook" {
     OutlookInternalVersion: number;
     OutlookVersion: string;
     Parent: any;
-    Permission: Outlook$OlPermission;
-    PermissionService: Outlook$OlPermissionService;
+    Permission: $Values<typeof Outlook$OlPermission>;
+    PermissionService: $Values<typeof Outlook$OlPermissionService>;
     PermissionTemplateGuid: string;
     PrintOut(): void;
     Outlook$PropertyAccessor: Outlook$PropertyAccessor;
@@ -6489,7 +3320,7 @@ declare module "activex-outlook" {
     ReminderSet: boolean;
     ReminderSoundFile: string;
     ReminderTime: VarDate;
-    RemoteStatus: Outlook$OlRemoteStatus;
+    RemoteStatus: $Values<typeof Outlook$OlRemoteStatus>;
     Reply(): Outlook$MailItem;
     ReplyAll(): Outlook$MailItem;
     ReplyRecipientNames: string;
@@ -6507,7 +3338,7 @@ declare module "activex-outlook" {
     SenderEmailType: string;
     SenderName: string;
     SendUsingAccount: Outlook$Account;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Sent: boolean;
     SentOn: VarDate;
     SentOnBehalfOfName: string;
@@ -6531,10 +3362,10 @@ declare module "activex-outlook" {
   declare class Outlook$MailModule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Outlook$NavigationGroups: Outlook$NavigationGroups;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -6543,12 +3374,12 @@ declare module "activex-outlook" {
 
   declare class Outlook$MarkAsTaskRuleAction {
     constructor(): this;
-    ActionType: Outlook$OlRuleActionType;
+    ActionType: $Values<typeof Outlook$OlRuleActionType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     FlagTo: string;
-    MarkInterval: Outlook$OlMarkInterval;
+    MarkInterval: $Values<typeof Outlook$OlMarkInterval>;
     Parent: any;
     Session: Outlook$NameSpace;
   }
@@ -6563,8 +3394,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -6576,26 +3407,26 @@ declare module "activex-outlook" {
     Delete(): void;
     DeleteAfterSubmit: boolean;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     ExpiryTime: VarDate;
     FlagDueBy: VarDate;
-    FlagIcon: Outlook$OlFlagIcon;
+    FlagIcon: $Values<typeof Outlook$OlFlagIcon>;
     FlagRequest: string;
-    FlagStatus: Outlook$OlFlagStatus;
+    FlagStatus: $Values<typeof Outlook$OlFlagStatus>;
     Outlook$FormDescription: Outlook$FormDescription;
     Forward(): Outlook$MeetingItem;
     GetAssociatedAppointment(AddToCalendar: boolean): Outlook$AppointmentItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     IsLatestVersion: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MeetingWorkspaceURL: string;
     MessageClass: string;
     Mileage: string;
@@ -6626,7 +3457,7 @@ declare module "activex-outlook" {
     SenderEmailType: string;
     SenderName: string;
     SendUsingAccount: Outlook$Account;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Sent: boolean;
     SentOn: VarDate;
     Session: Outlook$NameSpace;
@@ -6646,8 +3477,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     ConversationIndex: string;
     ConversationTopic: string;
@@ -6661,13 +3492,13 @@ declare module "activex-outlook" {
     Forward(): Outlook$MobileItem;
     GetInspector: Outlook$Inspector;
     HTMLBody: string;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     MAPIOBJECT: any;
     MessageClass: string;
     Mileage: string;
-    MobileFormat: Outlook$OlMobileFormat;
+    MobileFormat: $Values<typeof Outlook$OlMobileFormat>;
     Move(DestFldr: Outlook$Folder): any;
     NoAging: boolean;
     OutlookInternalVersion: number;
@@ -6691,7 +3522,7 @@ declare module "activex-outlook" {
     SenderEmailType: string;
     SenderName: string;
     SendUsingAccount: Outlook$Account;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Sent: boolean;
     SentOn: VarDate;
     Session: Outlook$NameSpace;
@@ -6706,9 +3537,9 @@ declare module "activex-outlook" {
 
   declare class Outlook$MoveOrCopyRuleAction {
     constructor(): this;
-    ActionType: Outlook$OlRuleActionType;
+    ActionType: $Values<typeof Outlook$OlRuleActionType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     Outlook$Folder: Outlook$Folder;
     Parent: any;
@@ -6719,37 +3550,39 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Accounts: Outlook$Accounts;
     Outlook$AddressLists: Outlook$AddressLists;
-    AddStore(Outlook$Store: any): void;
-    AddStoreEx(Outlook$Store: any, Type: Outlook$OlStoreType): void;
+    AddStore(Store: any): void;
+    AddStoreEx(Store: any, Type: $Values<typeof Outlook$OlStoreType>): void;
     Outlook$Application: Outlook$Application;
-    AutoDiscoverConnectionMode: Outlook$OlAutoDiscoverConnectionMode;
+    AutoDiscoverConnectionMode: $Values<
+      typeof Outlook$OlAutoDiscoverConnectionMode
+    >;
     AutoDiscoverXml: string;
     Outlook$Categories: Outlook$Categories;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     CompareEntryIDs(FirstEntryID: string, SecondEntryID: string): boolean;
-    CreateContactCard(
-      Outlook$AddressEntry: Outlook$AddressEntry
-    ): Office.ContactCard;
+    CreateContactCard(AddressEntry: Outlook$AddressEntry): Office.ContactCard;
     CreateRecipient(RecipientName: string): Outlook$Recipient;
     CreateSharingItem(Context: any, Provider?: any): Outlook$SharingItem;
     CurrentProfileName: string;
     CurrentUser: Outlook$Recipient;
     DefaultStore: Outlook$Store;
-    Dial(Outlook$ContactItem?: any): void;
-    ExchangeConnectionMode: Outlook$OlExchangeConnectionMode;
+    Dial(ContactItem?: any): void;
+    ExchangeConnectionMode: $Values<typeof Outlook$OlExchangeConnectionMode>;
     ExchangeMailboxServerName: string;
     ExchangeMailboxServerVersion: string;
     Outlook$Folders: Outlook$Folders;
     GetAddressEntryFromID(ID: string): Outlook$AddressEntry;
-    GetDefaultFolder(FolderType: Outlook$OlDefaultFolders): Outlook$Folder;
+    GetDefaultFolder(
+      FolderType: $Values<typeof Outlook$OlDefaultFolders>
+    ): Outlook$Folder;
     GetFolderFromID(EntryIDFolder: string, EntryIDStore?: any): Outlook$Folder;
     GetGlobalAddressList(): Outlook$AddressList;
     GetItemFromID(EntryIDItem: string, EntryIDStore?: any): any;
     GetRecipientFromID(EntryID: string): Outlook$Recipient;
     GetSelectNamesDialog(): Outlook$SelectNamesDialog;
     GetSharedDefaultFolder(
-      Outlook$Recipient: Outlook$Recipient,
-      FolderType: Outlook$OlDefaultFolders
+      Recipient: Outlook$Recipient,
+      FolderType: $Values<typeof Outlook$OlDefaultFolders>
     ): Outlook$Folder;
     GetStoreFromID(ID: string): Outlook$Store;
     Logoff(): void;
@@ -6771,7 +3604,7 @@ declare module "activex-outlook" {
     Parent: any;
     PickFolder(): Outlook$Folder;
     RefreshRemoteHeaders(): void;
-    RemoveStore(Outlook$Folder: Outlook$Folder): void;
+    RemoveStore(Folder: Outlook$Folder): void;
     SendAndReceive(showProgressDialog: boolean): void;
     Session: Outlook$NameSpace;
     Outlook$Stores: Outlook$Stores;
@@ -6782,7 +3615,7 @@ declare module "activex-outlook" {
   declare class Outlook$NavigationFolder {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     DisplayName: string;
     Outlook$Folder: Outlook$Folder;
     IsRemovable: boolean;
@@ -6795,9 +3628,9 @@ declare module "activex-outlook" {
 
   declare class Outlook$NavigationFolders {
     constructor(): this;
-    Add(Outlook$Folder: Outlook$Folder): Outlook$NavigationFolder;
+    Add(Folder: Outlook$Folder): Outlook$NavigationFolder;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$NavigationFolder;
     Parent: any;
@@ -6808,8 +3641,8 @@ declare module "activex-outlook" {
   declare class Outlook$NavigationGroup {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    GroupType: Outlook$OlGroupType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    GroupType: $Values<typeof Outlook$OlGroupType>;
     Name: string;
     Outlook$NavigationFolders: Outlook$NavigationFolders;
     Parent: any;
@@ -6820,12 +3653,12 @@ declare module "activex-outlook" {
   declare class Outlook$NavigationGroups {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Create(GroupDisplayName: string): Outlook$NavigationGroup;
     Delete(Group: Outlook$NavigationGroup): void;
     GetDefaultNavigationGroup(
-      DefaultFolderGroup: Outlook$OlGroupType
+      DefaultFolderGroup: $Values<typeof Outlook$OlGroupType>
     ): Outlook$NavigationGroup;
     Item(Index: any): Outlook$NavigationGroup;
     Parent: any;
@@ -6835,9 +3668,9 @@ declare module "activex-outlook" {
   declare class Outlook$NavigationModule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -6847,10 +3680,10 @@ declare module "activex-outlook" {
   declare class Outlook$NavigationModules {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     GetNavigationModule(
-      ModuleType: Outlook$OlNavigationModuleType
+      ModuleType: $Values<typeof Outlook$OlNavigationModuleType>
     ): Outlook$NavigationModule;
     Item(Index: any): Outlook$NavigationModule;
     Parent: any;
@@ -6860,7 +3693,7 @@ declare module "activex-outlook" {
   declare class Outlook$NavigationPane {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     CurrentModule: Outlook$NavigationModule;
     DisplayedModuleCount: number;
     IsCollapsed: boolean;
@@ -6871,9 +3704,9 @@ declare module "activex-outlook" {
 
   declare class Outlook$NewItemAlertRuleAction {
     constructor(): this;
-    ActionType: Outlook$OlRuleActionType;
+    ActionType: $Values<typeof Outlook$OlRuleActionType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -6886,15 +3719,15 @@ declare module "activex-outlook" {
     AutoResolvedWinner: boolean;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
-    Color: Outlook$OlNoteColor;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
+    Color: $Values<typeof Outlook$OlNoteColor>;
     Outlook$Conflicts: Outlook$Conflicts;
     Copy(): any;
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     GetInspector: Outlook$Inspector;
     Height: number;
@@ -6903,7 +3736,7 @@ declare module "activex-outlook" {
     LastModificationTime: VarDate;
     Left: number;
     Outlook$Links: Outlook$Links;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Move(DestFldr: Outlook$Folder): any;
     Parent: any;
@@ -6922,10 +3755,10 @@ declare module "activex-outlook" {
   declare class Outlook$NotesModule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Outlook$NavigationGroups: Outlook$NavigationGroups;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -6935,32 +3768,32 @@ declare module "activex-outlook" {
   declare class Outlook$OlkBusinessCardControl {
     constructor(): this;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
   }
 
   declare class Outlook$OlkCategory {
     constructor(): this;
     AutoSize: boolean;
     BackColor: stdole.OLE_COLOR;
-    BackStyle: Outlook$OlBackStyle;
+    BackStyle: $Values<typeof Outlook$OlBackStyle>;
     Enabled: boolean;
     ForeColor: stdole.OLE_COLOR;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
   }
 
   declare class Outlook$OlkCheckBox {
     constructor(): this;
     Accelerator: string;
-    Alignment: Outlook$OlAlignment;
+    Alignment: $Values<typeof Outlook$OlAlignment>;
     BackColor: stdole.OLE_COLOR;
-    BackStyle: Outlook$OlBackStyle;
+    BackStyle: $Values<typeof Outlook$OlBackStyle>;
     Caption: string;
     Enabled: boolean;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     TripleState: boolean;
     Value: any;
     WordWrap: boolean;
@@ -6973,14 +3806,14 @@ declare module "activex-outlook" {
     AutoTab: boolean;
     AutoWordSelect: boolean;
     BackColor: stdole.OLE_COLOR;
-    BorderStyle: Outlook$OlBorderStyle;
+    BorderStyle: $Values<typeof Outlook$OlBorderStyle>;
     Clear(): void;
     Copy(): void;
     Cut(): void;
-    DragBehavior: Outlook$OlDragBehavior;
+    DragBehavior: $Values<typeof Outlook$OlDragBehavior>;
     DropDown(): void;
     Enabled: boolean;
-    EnterFieldBehavior: Outlook$OlEnterFieldBehavior;
+    EnterFieldBehavior: $Values<typeof Outlook$OlEnterFieldBehavior>;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
     GetItem(Index: number): string;
@@ -6990,7 +3823,7 @@ declare module "activex-outlook" {
     Locked: boolean;
     MaxLength: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     Paste(): void;
     RemoveItem(Index: number): void;
     SelectionMargin: boolean;
@@ -6998,9 +3831,9 @@ declare module "activex-outlook" {
     SelStart: number;
     SelText: string;
     SetItem(Index: number, Item: string): void;
-    Style: Outlook$OlComboBoxStyle;
+    Style: $Values<typeof Outlook$OlComboBoxStyle>;
     Text: string;
-    TextAlign: Outlook$OlTextAlign;
+    TextAlign: $Values<typeof Outlook$OlTextAlign>;
     TopIndex: number;
     Value: any;
   }
@@ -7014,10 +3847,10 @@ declare module "activex-outlook" {
     Enabled: boolean;
     Font: stdole.StdFont;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     Picture: stdole.StdPicture;
-    PictureAlignment: Outlook$OlPictureAlignment;
-    TextAlign: Outlook$OlTextAlign;
+    PictureAlignment: $Values<typeof Outlook$OlPictureAlignment>;
+    TextAlign: $Values<typeof Outlook$OlTextAlign>;
     WordWrap: boolean;
   }
 
@@ -7025,7 +3858,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Enabled: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
   }
 
   declare class Outlook$OlkDateControl {
@@ -7033,38 +3866,38 @@ declare module "activex-outlook" {
     AutoSize: boolean;
     AutoWordSelect: boolean;
     BackColor: stdole.OLE_COLOR;
-    BackStyle: Outlook$OlBackStyle;
+    BackStyle: $Values<typeof Outlook$OlBackStyle>;
     Date: VarDate;
     DropDown(): void;
     Enabled: boolean;
-    EnterFieldBehavior: Outlook$OlEnterFieldBehavior;
+    EnterFieldBehavior: $Values<typeof Outlook$OlEnterFieldBehavior>;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
     HideSelection: boolean;
     Locked: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     ShowNoneButton: boolean;
     Text: string;
-    TextAlign: Outlook$OlTextAlign;
+    TextAlign: $Values<typeof Outlook$OlTextAlign>;
     Value: any;
   }
 
   declare class Outlook$OlkFrameHeader {
     constructor(): this;
-    Alignment: Outlook$OlAlignment;
+    Alignment: $Values<typeof Outlook$OlAlignment>;
     Caption: string;
     Enabled: boolean;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
   }
 
   declare class Outlook$OlkInfoBar {
     constructor(): this;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
   }
 
   declare class Outlook$OlkLabel {
@@ -7072,15 +3905,15 @@ declare module "activex-outlook" {
     Accelerator: string;
     AutoSize: boolean;
     BackColor: stdole.OLE_COLOR;
-    BackStyle: Outlook$OlBackStyle;
-    BorderStyle: Outlook$OlBorderStyle;
+    BackStyle: $Values<typeof Outlook$OlBackStyle>;
+    BorderStyle: $Values<typeof Outlook$OlBorderStyle>;
     Caption: string;
     Enabled: boolean;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
-    TextAlign: Outlook$OlTextAlign;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
+    TextAlign: $Values<typeof Outlook$OlTextAlign>;
     UseHeaderColor: boolean;
     Value: any;
     WordWrap: boolean;
@@ -7090,7 +3923,7 @@ declare module "activex-outlook" {
     constructor(): this;
     AddItem(ItemText: string, Index?: any): void;
     BackColor: stdole.OLE_COLOR;
-    BorderStyle: Outlook$OlBorderStyle;
+    BorderStyle: $Values<typeof Outlook$OlBorderStyle>;
     Clear(): void;
     Copy(): void;
     Enabled: boolean;
@@ -7101,15 +3934,15 @@ declare module "activex-outlook" {
     ListCount: number;
     ListIndex: number;
     Locked: boolean;
-    MatchEntry: Outlook$OlMatchEntry;
+    MatchEntry: $Values<typeof Outlook$OlMatchEntry>;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
-    MultiSelect: Outlook$OlMultiSelect;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
+    MultiSelect: $Values<typeof Outlook$OlMultiSelect>;
     RemoveItem(Index: number): void;
     SetItem(Index: number, Item: string): void;
     SetSelected(Index: number, Selected: boolean): void;
     Text: string;
-    TextAlign: Outlook$OlTextAlign;
+    TextAlign: $Values<typeof Outlook$OlTextAlign>;
     TopIndex: number;
     Value: any;
   }
@@ -7117,30 +3950,30 @@ declare module "activex-outlook" {
   declare class Outlook$OlkOptionButton {
     constructor(): this;
     Accelerator: string;
-    Alignment: Outlook$OlAlignment;
+    Alignment: $Values<typeof Outlook$OlAlignment>;
     BackColor: stdole.OLE_COLOR;
-    BackStyle: Outlook$OlBackStyle;
+    BackStyle: $Values<typeof Outlook$OlBackStyle>;
     Caption: string;
     Enabled: boolean;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
     GroupName: string;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     Value: any;
     WordWrap: boolean;
   }
 
   declare class Outlook$OlkPageControl {
     constructor(): this;
-    Page: Outlook$OlPageType;
+    Page: $Values<typeof Outlook$OlPageType>;
   }
 
   declare class Outlook$OlkSenderPhoto {
     constructor(): this;
     Enabled: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     PreferredHeight: number;
     PreferredWidth: number;
   }
@@ -7154,14 +3987,14 @@ declare module "activex-outlook" {
     AutoTab: boolean;
     AutoWordSelect: boolean;
     BackColor: stdole.OLE_COLOR;
-    BorderStyle: Outlook$OlBorderStyle;
+    BorderStyle: $Values<typeof Outlook$OlBorderStyle>;
     Clear(): void;
     Copy(): void;
     Cut(): void;
-    DragBehavior: Outlook$OlDragBehavior;
+    DragBehavior: $Values<typeof Outlook$OlDragBehavior>;
     Enabled: boolean;
     EnableRichText: boolean;
-    EnterFieldBehavior: Outlook$OlEnterFieldBehavior;
+    EnterFieldBehavior: $Values<typeof Outlook$OlEnterFieldBehavior>;
     EnterKeyBehavior: boolean;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
@@ -7170,18 +4003,18 @@ declare module "activex-outlook" {
     Locked: boolean;
     MaxLength: number;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     MultiLine: boolean;
     PasswordChar: string;
     Paste(): void;
-    Scrollbars: Outlook$OlScrollBars;
+    Scrollbars: $Values<typeof Outlook$OlScrollBars>;
     SelectionMargin: boolean;
     SelLength: number;
     SelStart: number;
     SelText: string;
     TabKeyBehavior: boolean;
     Text: string;
-    TextAlign: Outlook$OlTextAlign;
+    TextAlign: $Values<typeof Outlook$OlTextAlign>;
     Value: any;
     WordWrap: boolean;
   }
@@ -7191,34 +4024,34 @@ declare module "activex-outlook" {
     AutoSize: boolean;
     AutoWordSelect: boolean;
     BackColor: stdole.OLE_COLOR;
-    BackStyle: Outlook$OlBackStyle;
+    BackStyle: $Values<typeof Outlook$OlBackStyle>;
     DropDown(): void;
     Enabled: boolean;
-    EnterFieldBehavior: Outlook$OlEnterFieldBehavior;
+    EnterFieldBehavior: $Values<typeof Outlook$OlEnterFieldBehavior>;
     Font: stdole.StdFont;
     ForeColor: stdole.OLE_COLOR;
     HideSelection: boolean;
     IntervalTime: VarDate;
     Locked: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     ReferenceTime: VarDate;
-    Style: Outlook$OlTimeStyle;
+    Style: $Values<typeof Outlook$OlTimeStyle>;
     Text: string;
-    TextAlign: Outlook$OlTextAlign;
+    TextAlign: $Values<typeof Outlook$OlTextAlign>;
     Time: VarDate;
     Value: any;
   }
 
   declare class Outlook$OlkTimeZoneControl {
     constructor(): this;
-    AppointmentTimeField: Outlook$OlAppointmentTimeField;
-    BorderStyle: Outlook$OlBorderStyle;
+    AppointmentTimeField: $Values<typeof Outlook$OlAppointmentTimeField>;
+    BorderStyle: $Values<typeof Outlook$OlBorderStyle>;
     DropDown(): void;
     Enabled: boolean;
     Locked: boolean;
     MouseIcon: stdole.StdPicture;
-    MousePointer: Outlook$OlMousePointer;
+    MousePointer: $Values<typeof Outlook$OlMousePointer>;
     SelectedTimeZoneIndex: number;
     Value: any;
   }
@@ -7226,7 +4059,7 @@ declare module "activex-outlook" {
   declare class Outlook$OrderField {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     IsDescending: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -7237,7 +4070,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(PropertyName: string, IsDescending?: any): Outlook$OrderField;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Insert(
       PropertyName: string,
@@ -7254,19 +4087,19 @@ declare module "activex-outlook" {
   declare class Outlook$OutlookBarGroup {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
     Shortcuts: Outlook$OutlookBarShortcuts;
-    ViewType: Outlook$OlOutlookBarViewType;
+    ViewType: $Values<typeof Outlook$OlOutlookBarViewType>;
   }
 
   declare class Outlook$OutlookBarGroups {
     constructor(): this;
     Add(Name: string, Index?: any): Outlook$OutlookBarGroup;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$OutlookBarGroup;
     Parent: any;
@@ -7277,7 +4110,7 @@ declare module "activex-outlook" {
   declare class Outlook$OutlookBarPane {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Contents: Outlook$OutlookBarStorage;
     CurrentGroup: Outlook$OutlookBarGroup;
     Name: string;
@@ -7289,7 +4122,7 @@ declare module "activex-outlook" {
   declare class Outlook$OutlookBarShortcut {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -7301,7 +4134,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Target: any, Name: string, Index?: any): Outlook$OutlookBarShortcut;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$OutlookBarShortcut;
     Parent: any;
@@ -7312,7 +4145,7 @@ declare module "activex-outlook" {
   declare class Outlook$OutlookBarStorage {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Groups: Outlook$OutlookBarGroups;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -7321,7 +4154,7 @@ declare module "activex-outlook" {
   declare class Outlook$Panes {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): any;
     Parent: any;
@@ -7330,9 +4163,9 @@ declare module "activex-outlook" {
 
   declare class Outlook$PlaySoundRuleAction {
     constructor(): this;
-    ActionType: Outlook$OlRuleActionType;
+    ActionType: $Values<typeof Outlook$OlRuleActionType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     FilePath: string;
     Parent: any;
@@ -7347,12 +4180,12 @@ declare module "activex-outlook" {
     AutoResolvedWinner: boolean;
     BillingInformation: string;
     Body: string;
-    BodyFormat: Outlook$OlBodyFormat;
+    BodyFormat: $Values<typeof Outlook$OlBodyFormat>;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearConversationIndex(): void;
     ClearTaskFlag(): void;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -7362,7 +4195,7 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     ExpiryTime: VarDate;
     Outlook$FormDescription: Outlook$FormDescription;
@@ -7370,7 +4203,7 @@ declare module "activex-outlook" {
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
     HTMLBody: string;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     InternetCodepage: number;
     IsConflict: boolean;
     IsMarkedAsTask: boolean;
@@ -7378,8 +4211,8 @@ declare module "activex-outlook" {
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkAsTask(MarkInterval: Outlook$OlMarkInterval): void;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkAsTask(MarkInterval: $Values<typeof Outlook$OlMarkInterval>): void;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -7404,7 +4237,7 @@ declare module "activex-outlook" {
     SenderEmailAddress: string;
     SenderEmailType: string;
     SenderName: string;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     SentOn: VarDate;
     Session: Outlook$NameSpace;
     SetACLs(): boolean;
@@ -7424,7 +4257,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     BinaryToString(Value: any): string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     DeleteProperties(SchemaNames: any): any;
     DeleteProperty(SchemaName: string): void;
     GetProperties(SchemaNames: any): any;
@@ -7442,7 +4275,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Page: any, Title: string): void;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): any;
     Parent: any;
@@ -7456,13 +4289,13 @@ declare module "activex-outlook" {
     Outlook$AddressEntry: Outlook$AddressEntry;
     Outlook$Application: Outlook$Application;
     AutoResponse: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Delete(): void;
-    DisplayType: Outlook$OlDisplayType;
+    DisplayType: $Values<typeof Outlook$OlDisplayType>;
     EntryID: string;
     FreeBusy(Start: VarDate, MinPerChar: number, CompleteFormat?: any): string;
     Index: number;
-    MeetingResponseStatus: Outlook$OlResponseStatus;
+    MeetingResponseStatus: $Values<typeof Outlook$OlResponseStatus>;
     Name: string;
     Parent: any;
     Outlook$PropertyAccessor: Outlook$PropertyAccessor;
@@ -7470,7 +4303,7 @@ declare module "activex-outlook" {
     Resolved: boolean;
     Sendable: boolean;
     Session: Outlook$NameSpace;
-    TrackingStatus: Outlook$OlTrackingStatus;
+    TrackingStatus: $Values<typeof Outlook$OlTrackingStatus>;
     TrackingStatusTime: VarDate;
     Type: number;
   }
@@ -7479,7 +4312,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(Name: string): Outlook$Recipient;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Recipient;
     Parent: any;
@@ -7491,9 +4324,9 @@ declare module "activex-outlook" {
   declare class Outlook$RecurrencePattern {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     DayOfMonth: number;
-    DayOfWeekMask: Outlook$OlDaysOfWeek;
+    DayOfWeekMask: $Values<typeof Outlook$OlDaysOfWeek>;
     Duration: number;
     EndTime: VarDate;
     Outlook$Exceptions: Outlook$Exceptions;
@@ -7506,7 +4339,7 @@ declare module "activex-outlook" {
     Parent: any;
     PatternEndDate: VarDate;
     PatternStartDate: VarDate;
-    RecurrenceType: Outlook$OlRecurrenceType;
+    RecurrenceType: $Values<typeof Outlook$OlRecurrenceType>;
     Regenerate: boolean;
     Session: Outlook$NameSpace;
     StartTime: VarDate;
@@ -7516,7 +4349,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Caption: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Dismiss(): void;
     IsVisible: boolean;
     Item: any;
@@ -7530,7 +4363,7 @@ declare module "activex-outlook" {
   declare class Outlook$Reminders {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Reminder;
     Parent: any;
@@ -7547,8 +4380,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -7558,19 +4391,19 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
     HasAttachment: boolean;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -7584,7 +4417,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -7604,8 +4437,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -7615,18 +4448,18 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -7641,7 +4474,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -7653,9 +4486,9 @@ declare module "activex-outlook" {
   declare class Outlook$Results {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
-    DefaultItemType: Outlook$OlItemType;
+    DefaultItemType: $Values<typeof Outlook$OlItemType>;
     GetFirst(): any;
     GetLast(): any;
     GetNext(): any;
@@ -7665,7 +4498,7 @@ declare module "activex-outlook" {
     RawTable: any;
     ResetColumns(): void;
     Session: Outlook$NameSpace;
-    SetColumns(Outlook$Columns: string): void;
+    SetColumns(Columns: string): void;
     Sort(Property: string, Descending?: any): void;
   }
 
@@ -7673,7 +4506,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     BinaryToString(Index: any): string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     GetValues(): any;
     Item(Index: any): any;
     LocalTimeToUTC(Index: any): VarDate;
@@ -7686,13 +4519,13 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Actions: Outlook$RuleActions;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Conditions: Outlook$RuleConditions;
     Enabled: boolean;
     Outlook$Exceptions: Outlook$RuleConditions;
     Execute(
       ShowProgress?: any,
-      Outlook$Folder?: any,
+      Folder?: any,
       IncludeSubfolders?: any,
       RuleExecuteOption?: any
     ): void;
@@ -7700,15 +4533,15 @@ declare module "activex-outlook" {
     IsLocalRule: boolean;
     Name: string;
     Parent: any;
-    RuleType: Outlook$OlRuleType;
+    RuleType: $Values<typeof Outlook$OlRuleType>;
     Session: Outlook$NameSpace;
   }
 
   declare class Outlook$RuleAction {
     constructor(): this;
-    ActionType: Outlook$OlRuleActionType;
+    ActionType: $Values<typeof Outlook$OlRuleActionType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -7719,7 +4552,7 @@ declare module "activex-outlook" {
     Outlook$Application: Outlook$Application;
     AssignToCategory: Outlook$AssignToCategoryRuleAction;
     CC: Outlook$SendRuleAction;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearCategories: Outlook$RuleAction;
     CopyToFolder: Outlook$MoveOrCopyRuleAction;
     Count: number;
@@ -7744,8 +4577,8 @@ declare module "activex-outlook" {
   declare class Outlook$RuleCondition {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -7760,7 +4593,7 @@ declare module "activex-outlook" {
     BodyOrSubject: Outlook$TextRuleCondition;
     Outlook$Category: Outlook$CategoryRuleCondition;
     CC: Outlook$RuleCondition;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     FormName: Outlook$FormNameRuleCondition;
     From: Outlook$ToOrFromRuleCondition;
@@ -7789,9 +4622,12 @@ declare module "activex-outlook" {
   declare class Outlook$Rules {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
-    Create(Name: string, RuleType: Outlook$OlRuleType): Outlook$Rule;
+    Create(
+      Name: string,
+      RuleType: $Values<typeof Outlook$OlRuleType>
+    ): Outlook$Rule;
     IsRssRulesProcessingEnabled: boolean;
     Item(Index: any): Outlook$Rule;
     Parent: any;
@@ -7803,7 +4639,7 @@ declare module "activex-outlook" {
   declare class Outlook$Search {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Filter: string;
     GetTable(): Outlook$Table;
     IsSynchronous: boolean;
@@ -7820,13 +4656,13 @@ declare module "activex-outlook" {
   declare class Outlook$Selection {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     GetSelection(
-      SelectionContents: Outlook$OlSelectionContents
+      SelectionContents: $Values<typeof Outlook$OlSelectionContents>
     ): Outlook$Selection;
     Item(Index: any): any;
-    Location: Outlook$OlSelectionLocation;
+    Location: $Values<typeof Outlook$OlSelectionLocation>;
     Parent: any;
     Session: Outlook$NameSpace;
   }
@@ -7838,16 +4674,16 @@ declare module "activex-outlook" {
     BccLabel: string;
     Caption: string;
     CcLabel: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Display(): boolean;
     ForceResolution: boolean;
     InitialAddressList: Outlook$AddressList;
-    NumberOfRecipientSelectors: Outlook$OlRecipientSelectors;
+    NumberOfRecipientSelectors: $Values<typeof Outlook$OlRecipientSelectors>;
     Parent: any;
     Outlook$Recipients: Outlook$Recipients;
     Session: Outlook$NameSpace;
     SetDefaultDisplayMode(
-      defaultMode: Outlook$OlDefaultSelectNamesDisplayMode
+      defaultMode: $Values<typeof Outlook$OlDefaultSelectNamesDisplayMode>
     ): void;
     ShowOnlyInitialAddressList: boolean;
     ToLabel: string;
@@ -7857,8 +4693,8 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$AddressList: Outlook$AddressList;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -7866,9 +4702,9 @@ declare module "activex-outlook" {
 
   declare class Outlook$SendRuleAction {
     constructor(): this;
-    ActionType: Outlook$OlRuleActionType;
+    ActionType: $Values<typeof Outlook$OlRuleActionType>;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Enabled: boolean;
     Parent: any;
     Outlook$Recipients: Outlook$Recipients;
@@ -7888,13 +4724,13 @@ declare module "activex-outlook" {
     BCC: string;
     BillingInformation: string;
     Body: string;
-    BodyFormat: Outlook$OlBodyFormat;
+    BodyFormat: $Values<typeof Outlook$OlBodyFormat>;
     Outlook$Categories: string;
     CC: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearConversationIndex(): void;
     ClearTaskFlag(): void;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -7907,28 +4743,28 @@ declare module "activex-outlook" {
     DeleteAfterSubmit: boolean;
     Deny(): Outlook$SharingItem;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EnableSharedAttachments: boolean;
     EntryID: string;
     ExpiryTime: VarDate;
     FlagDueBy: VarDate;
-    FlagIcon: Outlook$OlFlagIcon;
+    FlagIcon: $Values<typeof Outlook$OlFlagIcon>;
     FlagRequest: string;
-    FlagStatus: Outlook$OlFlagStatus;
+    FlagStatus: $Values<typeof Outlook$OlFlagStatus>;
     Outlook$FormDescription: Outlook$FormDescription;
     Forward(): Outlook$SharingItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
     HTMLBody: string;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     InternetCodepage: number;
     IsConflict: boolean;
     IsMarkedAsTask: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     MAPIOBJECT: any;
-    MarkAsTask(MarkInterval: Outlook$OlMarkInterval): void;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkAsTask(MarkInterval: $Values<typeof Outlook$OlMarkInterval>): void;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -7938,8 +4774,8 @@ declare module "activex-outlook" {
     OutlookInternalVersion: number;
     OutlookVersion: string;
     Parent: any;
-    Permission: Outlook$OlPermission;
-    PermissionService: Outlook$OlPermissionService;
+    Permission: $Values<typeof Outlook$OlPermission>;
+    PermissionService: $Values<typeof Outlook$OlPermissionService>;
     PermissionTemplateGuid: string;
     PrintOut(): void;
     Outlook$PropertyAccessor: Outlook$PropertyAccessor;
@@ -7959,12 +4795,12 @@ declare module "activex-outlook" {
     RemoteID: string;
     RemoteName: string;
     RemotePath: string;
-    RemoteStatus: Outlook$OlRemoteStatus;
+    RemoteStatus: $Values<typeof Outlook$OlRemoteStatus>;
     Reply(): Outlook$MailItem;
     ReplyAll(): Outlook$MailItem;
     ReplyRecipientNames: string;
     ReplyRecipients: Outlook$Recipients;
-    RequestedFolder: Outlook$OlDefaultFolders;
+    RequestedFolder: $Values<typeof Outlook$OlDefaultFolders>;
     RetentionExpirationDate: VarDate;
     RetentionPolicyName: string;
     RTFBody: any;
@@ -7977,12 +4813,12 @@ declare module "activex-outlook" {
     SenderEmailType: string;
     SenderName: string;
     SendUsingAccount: Outlook$Account;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Sent: boolean;
     SentOn: VarDate;
     SentOnBehalfOfName: string;
     Session: Outlook$NameSpace;
-    SharingProvider: Outlook$OlSharingProvider;
+    SharingProvider: $Values<typeof Outlook$OlSharingProvider>;
     SharingProviderGuid: string;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -7994,7 +4830,7 @@ declare module "activex-outlook" {
     TaskSubject: string;
     To: string;
     ToDoTaskOrdinal: VarDate;
-    Type: Outlook$OlSharingMsgType;
+    Type: $Values<typeof Outlook$OlSharingMsgType>;
     UnRead: boolean;
     Outlook$UserProperties: Outlook$UserProperties;
   }
@@ -8002,7 +4838,7 @@ declare module "activex-outlook" {
   declare class Outlook$SimpleItems {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): any;
     Parent: any;
@@ -8011,11 +4847,14 @@ declare module "activex-outlook" {
 
   declare class Outlook$SolutionsModule {
     constructor(): this;
-    AddSolution(Solution: Outlook$Folder, Scope: Outlook$OlSolutionScope): void;
+    AddSolution(
+      Solution: Outlook$Folder,
+      Scope: $Values<typeof Outlook$OlSolutionScope>
+    ): void;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -8027,7 +4866,7 @@ declare module "activex-outlook" {
     Outlook$Application: Outlook$Application;
     Outlook$Attachments: Outlook$Attachments;
     Body: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     CreationTime: VarDate;
     Creator: string;
     Delete(): void;
@@ -8046,15 +4885,19 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Outlook$Categories: Outlook$Categories;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     DisplayName: string;
-    ExchangeStoreType: Outlook$OlExchangeStoreType;
+    ExchangeStoreType: $Values<typeof Outlook$OlExchangeStoreType>;
     FilePath: string;
-    GetDefaultFolder(FolderType: Outlook$OlDefaultFolders): Outlook$Folder;
+    GetDefaultFolder(
+      FolderType: $Values<typeof Outlook$OlDefaultFolders>
+    ): Outlook$Folder;
     GetRootFolder(): Outlook$Folder;
     GetRules(): Outlook$Rules;
     GetSearchFolders(): Outlook$Folders;
-    GetSpecialFolder(FolderType: Outlook$OlSpecialFolders): Outlook$Folder;
+    GetSpecialFolder(
+      FolderType: $Values<typeof Outlook$OlSpecialFolders>
+    ): Outlook$Folder;
     IsCachedExchange: boolean;
     IsConversationEnabled: boolean;
     IsDataFileStore: boolean;
@@ -8071,7 +4914,7 @@ declare module "activex-outlook" {
   declare class Outlook$Stores {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$Store;
     Parent: any;
@@ -8081,7 +4924,7 @@ declare module "activex-outlook" {
   declare class Outlook$SyncObject {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -8093,7 +4936,7 @@ declare module "activex-outlook" {
     constructor(): this;
     AppFolders: Outlook$SyncObject;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$SyncObject;
     Parent: any;
@@ -8103,7 +4946,7 @@ declare module "activex-outlook" {
   declare class Outlook$Table {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Outlook$Columns: Outlook$Columns;
     EndOfTable: boolean;
     FindNextRow(): Outlook$Row;
@@ -8127,30 +4970,35 @@ declare module "activex-outlook" {
     Outlook$AutoFormatRules: Outlook$AutoFormatRules;
     AutomaticColumnSizing: boolean;
     AutomaticGrouping: boolean;
-    AutoPreview: Outlook$OlAutoPreview;
+    AutoPreview: $Values<typeof Outlook$OlAutoPreview>;
     AutoPreviewFont: Outlook$ViewFont;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ColumnFont: Outlook$ViewFont;
-    Copy(Name: string, SaveOption: Outlook$OlViewSaveOption): Outlook$View;
-    DefaultExpandCollapseSetting: Outlook$OlDefaultExpandCollapseSetting;
+    Copy(
+      Name: string,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
+    ): Outlook$View;
+    DefaultExpandCollapseSetting: $Values<
+      typeof Outlook$OlDefaultExpandCollapseSetting
+    >;
     Delete(): void;
     Filter: string;
     GetTable(): Outlook$Table;
     GoToDate(Date: VarDate): void;
-    GridLineStyle: Outlook$OlGridLineStyle;
+    GridLineStyle: $Values<typeof Outlook$OlGridLineStyle>;
     GroupByFields: Outlook$OrderFields;
     HideReadingPaneHeaderInfo: boolean;
     Language: string;
     LockUserChanges: boolean;
     MaxLinesInMultiLineView: number;
-    MultiLine: Outlook$OlMultiLine;
+    MultiLine: $Values<typeof Outlook$OlMultiLine>;
     MultiLineWidth: number;
     Name: string;
     Parent: any;
     Reset(): void;
     RowFont: Outlook$ViewFont;
     Save(): void;
-    SaveOption: Outlook$OlViewSaveOption;
+    SaveOption: $Values<typeof Outlook$OlViewSaveOption>;
     Session: Outlook$NameSpace;
     ShowConversationByDate: boolean;
     ShowConversationSendersAboveSubject: boolean;
@@ -8162,7 +5010,7 @@ declare module "activex-outlook" {
     SortFields: Outlook$OrderFields;
     Standard: boolean;
     Outlook$ViewFields: Outlook$ViewFields;
-    ViewType: Outlook$OlViewType;
+    ViewType: $Values<typeof Outlook$OlViewType>;
     XML: string;
   }
 
@@ -8179,9 +5027,9 @@ declare module "activex-outlook" {
     CancelResponseState(): void;
     CardData: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ClearRecurrencePattern(): void;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Complete: boolean;
     Outlook$Conflicts: Outlook$Conflicts;
@@ -8193,18 +5041,18 @@ declare module "activex-outlook" {
     Copy(): any;
     CreationTime: VarDate;
     DateCompleted: VarDate;
-    DelegationState: Outlook$OlTaskDelegationState;
+    DelegationState: $Values<typeof Outlook$OlTaskDelegationState>;
     Delegator: string;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     DueDate: VarDate;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
     GetRecurrencePattern(): Outlook$RecurrencePattern;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     InternetCodepage: number;
     IsConflict: boolean;
     IsRecurring: boolean;
@@ -8213,7 +5061,7 @@ declare module "activex-outlook" {
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
     MarkComplete(): void;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -8222,7 +5070,7 @@ declare module "activex-outlook" {
     OutlookInternalVersion: number;
     OutlookVersion: string;
     Owner: string;
-    Ownership: Outlook$OlTaskOwnership;
+    Ownership: $Values<typeof Outlook$OlTaskOwnership>;
     Parent: any;
     PercentComplete: number;
     PrintOut(): void;
@@ -8234,11 +5082,11 @@ declare module "activex-outlook" {
     ReminderSoundFile: string;
     ReminderTime: VarDate;
     Respond(
-      Response: Outlook$OlTaskResponse,
+      Response: $Values<typeof Outlook$OlTaskResponse>,
       fNoUI: any,
       fAdditionalTextDialog: any
     ): Outlook$TaskItem;
-    ResponseState: Outlook$OlTaskResponse;
+    ResponseState: $Values<typeof Outlook$OlTaskResponse>;
     Role: string;
     RTFBody: any;
     Save(): void;
@@ -8247,13 +5095,13 @@ declare module "activex-outlook" {
     SchedulePlusPriority: string;
     Send(): void;
     SendUsingAccount: Outlook$Account;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
     SkipRecurrence(): boolean;
     StartDate: VarDate;
-    Status: Outlook$OlTaskStatus;
+    Status: $Values<typeof Outlook$OlTaskStatus>;
     StatusOnCompletionRecipients: string;
     StatusReport(): any;
     StatusUpdateRecipients: string;
@@ -8274,8 +5122,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -8285,19 +5133,19 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetAssociatedTask(AddToTaskList: boolean): Outlook$TaskItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -8311,7 +5159,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -8329,8 +5177,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -8340,19 +5188,19 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetAssociatedTask(AddToTaskList: boolean): Outlook$TaskItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -8366,7 +5214,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -8384,8 +5232,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -8395,19 +5243,19 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetAssociatedTask(AddToTaskList: boolean): Outlook$TaskItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -8421,7 +5269,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -8439,8 +5287,8 @@ declare module "activex-outlook" {
     BillingInformation: string;
     Body: string;
     Outlook$Categories: string;
-    Class: Outlook$OlObjectClass;
-    Close(SaveMode: Outlook$OlInspectorClose): void;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Close(SaveMode: $Values<typeof Outlook$OlInspectorClose>): void;
     Companies: string;
     Outlook$Conflicts: Outlook$Conflicts;
     ConversationID: string;
@@ -8450,19 +5298,19 @@ declare module "activex-outlook" {
     CreationTime: VarDate;
     Delete(): void;
     Display(Modal?: any): void;
-    DownloadState: Outlook$OlDownloadState;
+    DownloadState: $Values<typeof Outlook$OlDownloadState>;
     EntryID: string;
     Outlook$FormDescription: Outlook$FormDescription;
     GetAssociatedTask(AddToTaskList: boolean): Outlook$TaskItem;
     GetConversation(): Outlook$Conversation;
     GetInspector: Outlook$Inspector;
-    Importance: Outlook$OlImportance;
+    Importance: $Values<typeof Outlook$OlImportance>;
     IsConflict: boolean;
     Outlook$ItemProperties: Outlook$ItemProperties;
     LastModificationTime: VarDate;
     Outlook$Links: Outlook$Links;
     MAPIOBJECT: any;
-    MarkForDownload: Outlook$OlRemoteStatus;
+    MarkForDownload: $Values<typeof Outlook$OlRemoteStatus>;
     MessageClass: string;
     Mileage: string;
     Move(DestFldr: Outlook$Folder): any;
@@ -8476,7 +5324,7 @@ declare module "activex-outlook" {
     Save(): void;
     SaveAs(Path: string, Type?: any): void;
     Saved: boolean;
-    Sensitivity: Outlook$OlSensitivity;
+    Sensitivity: $Values<typeof Outlook$OlSensitivity>;
     Session: Outlook$NameSpace;
     ShowCategoriesDialog(): void;
     Size: number;
@@ -8488,10 +5336,10 @@ declare module "activex-outlook" {
   declare class Outlook$TasksModule {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Name: string;
     Outlook$NavigationGroups: Outlook$NavigationGroups;
-    NavigationModuleType: Outlook$OlNavigationModuleType;
+    NavigationModuleType: $Values<typeof Outlook$OlNavigationModuleType>;
     Parent: any;
     Position: number;
     Session: Outlook$NameSpace;
@@ -8501,8 +5349,8 @@ declare module "activex-outlook" {
   declare class Outlook$TextRuleCondition {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -8513,9 +5361,14 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Apply(): void;
-    Class: Outlook$OlObjectClass;
-    Copy(Name: string, SaveOption: Outlook$OlViewSaveOption): Outlook$View;
-    DefaultExpandCollapseSetting: Outlook$OlDefaultExpandCollapseSetting;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Copy(
+      Name: string,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
+    ): Outlook$View;
+    DefaultExpandCollapseSetting: $Values<
+      typeof Outlook$OlDefaultExpandCollapseSetting
+    >;
     Delete(): void;
     EndField: string;
     Filter: string;
@@ -8530,15 +5383,15 @@ declare module "activex-outlook" {
     Parent: any;
     Reset(): void;
     Save(): void;
-    SaveOption: Outlook$OlViewSaveOption;
+    SaveOption: $Values<typeof Outlook$OlViewSaveOption>;
     Session: Outlook$NameSpace;
     ShowLabelWhenViewingByMonth: boolean;
     ShowWeekNumbers: boolean;
     Standard: boolean;
     StartField: string;
-    TimelineViewMode: Outlook$OlTimelineViewMode;
+    TimelineViewMode: $Values<typeof Outlook$OlTimelineViewMode>;
     UpperScaleFont: Outlook$ViewFont;
-    ViewType: Outlook$OlViewType;
+    ViewType: $Values<typeof Outlook$OlViewType>;
     XML: string;
   }
 
@@ -8546,7 +5399,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Bias: number;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     DaylightBias: number;
     DaylightDate: VarDate;
     DaylightDesignation: string;
@@ -8562,7 +5415,7 @@ declare module "activex-outlook" {
   declare class Outlook$TimeZones {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     ConvertTime(
       SourceDateTime: VarDate,
       SourceTimeZone: Outlook$TimeZone,
@@ -8578,8 +5431,8 @@ declare module "activex-outlook" {
   declare class Outlook$ToOrFromRuleCondition {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
-    ConditionType: Outlook$OlRuleConditionType;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    ConditionType: $Values<typeof Outlook$OlRuleConditionType>;
     Enabled: boolean;
     Parent: any;
     Outlook$Recipients: Outlook$Recipients;
@@ -8590,12 +5443,12 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(
       Name: string,
-      Type: Outlook$OlUserPropertyType,
+      Type: $Values<typeof Outlook$OlUserPropertyType>,
       DisplayFormat?: any,
       Formula?: any
     ): Outlook$UserDefinedProperty;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Find(Name: string): Outlook$UserDefinedProperty;
     Item(Index: any): Outlook$UserDefinedProperty;
@@ -8608,26 +5461,26 @@ declare module "activex-outlook" {
   declare class Outlook$UserDefinedProperty {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Delete(): void;
     DisplayFormat: number;
     Formula: string;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
-    Type: Outlook$OlUserPropertyType;
+    Type: $Values<typeof Outlook$OlUserPropertyType>;
   }
 
   declare class Outlook$UserProperties {
     constructor(): this;
     Add(
       Name: string,
-      Type: Outlook$OlUserPropertyType,
+      Type: $Values<typeof Outlook$OlUserPropertyType>,
       AddToFolderFields?: any,
       DisplayFormat?: any
     ): Outlook$UserProperty;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Find(Name: string, Custom?: any): Outlook$UserProperty;
     Item(Index: any): Outlook$UserProperty;
@@ -8639,14 +5492,14 @@ declare module "activex-outlook" {
   declare class Outlook$UserProperty {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Delete(): void;
     Formula: string;
     IsUserProperty: boolean;
     Name: string;
     Parent: any;
     Session: Outlook$NameSpace;
-    Type: Outlook$OlUserPropertyType;
+    Type: $Values<typeof Outlook$OlUserPropertyType>;
     ValidationFormula: string;
     ValidationText: string;
     Value: any;
@@ -8656,8 +5509,11 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Apply(): void;
-    Class: Outlook$OlObjectClass;
-    Copy(Name: string, SaveOption: Outlook$OlViewSaveOption): Outlook$View;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Copy(
+      Name: string,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
+    ): Outlook$View;
     Delete(): void;
     Filter: string;
     GoToDate(Date: VarDate): void;
@@ -8667,17 +5523,17 @@ declare module "activex-outlook" {
     Parent: any;
     Reset(): void;
     Save(): void;
-    SaveOption: Outlook$OlViewSaveOption;
+    SaveOption: $Values<typeof Outlook$OlViewSaveOption>;
     Session: Outlook$NameSpace;
     Standard: boolean;
-    ViewType: Outlook$OlViewType;
+    ViewType: $Values<typeof Outlook$OlViewType>;
     XML: string;
   }
 
   declare class Outlook$ViewField {
     constructor(): this;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Outlook$ColumnFormat: Outlook$ColumnFormat;
     Parent: any;
     Session: Outlook$NameSpace;
@@ -8688,7 +5544,7 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(PropertyName: string): Outlook$ViewField;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Insert(PropertyName: string, Index: any): Outlook$ViewField;
     Item(Index: any): Outlook$ViewField;
@@ -8701,9 +5557,9 @@ declare module "activex-outlook" {
     constructor(): this;
     Outlook$Application: Outlook$Application;
     Bold: boolean;
-    Class: Outlook$OlObjectClass;
-    Color: Outlook$OlColor;
-    ExtendedColor: Outlook$OlCategoryColor;
+    Class: $Values<typeof Outlook$OlObjectClass>;
+    Color: $Values<typeof Outlook$OlColor>;
+    ExtendedColor: $Values<typeof Outlook$OlCategoryColor>;
     Italic: boolean;
     Name: string;
     Parent: any;
@@ -8717,11 +5573,11 @@ declare module "activex-outlook" {
     constructor(): this;
     Add(
       Name: string,
-      ViewType: Outlook$OlViewType,
-      SaveOption: Outlook$OlViewSaveOption
+      ViewType: $Values<typeof Outlook$OlViewType>,
+      SaveOption: $Values<typeof Outlook$OlViewSaveOption>
     ): Outlook$View;
     Outlook$Application: Outlook$Application;
-    Class: Outlook$OlObjectClass;
+    Class: $Values<typeof Outlook$OlObjectClass>;
     Count: number;
     Item(Index: any): Outlook$View;
     Parent: any;
@@ -8730,75 +5586,75 @@ declare module "activex-outlook" {
   }
   declare interface ActiveXObject {
     on(
-      obj: Outlook$Outlook$Accounts,
+      obj: Outlook$Accounts,
       event: "AutoDiscoverComplete",
       argNames: ["Account"],
       handler: (parameter: {
-        +Outlook$Account: Outlook$Outlook$Account
+        +Account: Outlook$Account
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AccountSelector,
+      obj: Outlook$AccountSelector,
       event: "SelectedAccountChange",
       argNames: ["SelectedAccount"],
       handler: (parameter: {
-        +SelectedAccount: Outlook$Outlook$Account
+        +SelectedAccount: Outlook$Account
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "AdvancedSearchComplete" | "AdvancedSearchStopped",
       argNames: ["SearchObject"],
       handler: (parameter: {
-        +SearchObject: Outlook$Outlook$Search
+        +SearchObject: Outlook$Search
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "AttachmentContextMenuDisplay",
       argNames: ["CommandBar", "Attachments"],
       handler: (parameter: {
         +CommandBar: Office.CommandBar,
-        +Outlook$Attachments: Outlook$Outlook$AttachmentSelection
+        +Attachments: Outlook$AttachmentSelection
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "BeforeFolderSharingDialog",
       argNames: ["FolderToShare", "Cancel"],
       handler: (parameter: {
-        +FolderToShare: Outlook$Outlook$Folder,
+        +FolderToShare: Outlook$Folder,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "ContextMenuClose",
       argNames: ["ContextMenu"],
       handler: (parameter: {
-        +ContextMenu: Outlook$Outlook$OlContextMenu
+        +ContextMenu: $Values<typeof Outlook$OlContextMenu>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "FolderContextMenuDisplay",
       argNames: ["CommandBar", "Folder"],
       handler: (parameter: {
         +CommandBar: Office.CommandBar,
-        +Outlook$Folder: Outlook$Outlook$Folder
+        +Folder: Outlook$Folder
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "ItemContextMenuDisplay",
       argNames: ["CommandBar", "Selection"],
       handler: (parameter: {
         +CommandBar: Office.CommandBar,
-        +Outlook$Selection: Outlook$Outlook$Selection
+        +Selection: Outlook$Selection
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "ItemLoad" | "Reminder",
       argNames: ["Item"],
       handler: (parameter: {
@@ -8806,7 +5662,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "ItemSend",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -8815,7 +5671,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "NewMailEx",
       argNames: ["EntryIDCollection"],
       handler: (parameter: {
@@ -8823,50 +5679,50 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "OptionsPagesAdd",
       argNames: ["Pages"],
       handler: (parameter: {
-        +Pages: Outlook$Outlook$PropertyPages
+        +Pages: Outlook$PropertyPages
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "ShortcutContextMenuDisplay",
       argNames: ["CommandBar", "Shortcut"],
       handler: (parameter: {
         +CommandBar: Office.CommandBar,
-        +Shortcut: Outlook$Outlook$OutlookBarShortcut
+        +Shortcut: Outlook$OutlookBarShortcut
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "StoreContextMenuDisplay",
       argNames: ["CommandBar", "Store"],
       handler: (parameter: {
         +CommandBar: Office.CommandBar,
-        +Outlook$Store: Outlook$Outlook$Store
+        +Store: Outlook$Store
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "ViewContextMenuDisplay",
       argNames: ["CommandBar", "View"],
       handler: (parameter: {
         +CommandBar: Office.CommandBar,
-        +Outlook$View: Outlook$Outlook$View
+        +View: Outlook$View
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -8875,12 +5731,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -8894,7 +5750,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -8903,17 +5759,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -8921,7 +5777,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -8930,7 +5786,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -8939,15 +5795,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -8956,12 +5812,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -8975,7 +5831,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -8984,17 +5840,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -9002,7 +5858,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -9011,7 +5867,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -9020,15 +5876,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -9037,12 +5893,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -9056,7 +5912,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -9065,17 +5921,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -9083,7 +5939,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -9092,7 +5948,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -9101,15 +5957,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -9118,12 +5974,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -9137,7 +5993,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -9146,17 +6002,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -9164,7 +6020,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -9173,7 +6029,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -9182,7 +6038,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Explorer,
+      obj: Outlook$Explorer,
       event: "BeforeFolderSwitch",
       argNames: ["NewFolder", "Cancel"],
       handler: (parameter: {
@@ -9191,7 +6047,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Explorer,
+      obj: Outlook$Explorer,
       event:
         | "BeforeItemCopy"
         | "BeforeItemCut"
@@ -9205,17 +6061,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Explorer,
+      obj: Outlook$Explorer,
       event: "BeforeItemPaste",
       argNames: ["ClipboardContent", "Target", "Cancel"],
       handler: (parameter: {
         +ClipboardContent: any,
-        +Target: Outlook$Outlook$Folder,
+        +Target: Outlook$Folder,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Explorer,
+      obj: Outlook$Explorer,
       event: "BeforeViewSwitch",
       argNames: ["NewView", "Cancel"],
       handler: (parameter: {
@@ -9224,42 +6080,42 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Explorers,
+      obj: Outlook$Explorers,
       event: "NewExplorer",
       argNames: ["Explorer"],
       handler: (parameter: {
-        +Outlook$Explorer: Outlook$Outlook$Explorer
+        +Explorer: Outlook$Explorer
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Folder,
+      obj: Outlook$Folder,
       event: "BeforeFolderMove",
       argNames: ["MoveTo", "Cancel"],
       handler: (parameter: {
-        +MoveTo: Outlook$Outlook$Folder,
+        +MoveTo: Outlook$Folder,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Folder,
+      obj: Outlook$Folder,
       event: "BeforeItemMove",
       argNames: ["Item", "MoveTo", "Cancel"],
       handler: (parameter: {
         +Item: any,
-        +MoveTo: Outlook$Outlook$Folder,
+        +MoveTo: Outlook$Folder,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Folders,
+      obj: Outlook$Folders,
       event: "FolderAdd" | "FolderChange",
       argNames: ["Folder"],
       handler: (parameter: {
-        +Outlook$Folder: Outlook$Outlook$Folder
+        +Folder: Outlook$Folder
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$FormRegion,
+      obj: Outlook$FormRegion,
       event: "Expanded",
       argNames: ["Expand"],
       handler: (parameter: {
@@ -9267,7 +6123,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Inspector,
+      obj: Outlook$Inspector,
       event: "BeforeMaximize" | "BeforeMinimize" | "BeforeMove" | "BeforeSize",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9275,7 +6131,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Inspector,
+      obj: Outlook$Inspector,
       event: "PageChange",
       argNames: ["ActivePageName"],
       handler: (parameter: {
@@ -9283,15 +6139,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Inspectors,
+      obj: Outlook$Inspectors,
       event: "NewInspector",
       argNames: ["Inspector"],
       handler: (parameter: {
-        +Outlook$Inspector: Outlook$Outlook$Inspector
+        +Inspector: Outlook$Inspector
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Items,
+      obj: Outlook$Items,
       event: "ItemAdd" | "ItemChange",
       argNames: ["Item"],
       handler: (parameter: {
@@ -9299,15 +6155,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -9316,12 +6172,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -9335,7 +6191,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -9344,17 +6200,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -9362,7 +6218,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -9371,7 +6227,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -9380,15 +6236,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -9397,12 +6253,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -9416,7 +6272,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -9425,17 +6281,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -9443,7 +6299,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -9452,7 +6308,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -9461,15 +6317,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -9478,12 +6334,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -9497,7 +6353,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -9506,17 +6362,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -9524,7 +6380,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -9533,7 +6389,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -9542,15 +6398,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -9559,12 +6415,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -9578,7 +6434,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -9587,17 +6443,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -9605,7 +6461,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -9614,7 +6470,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -9623,43 +6479,43 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$NameSpace,
+      obj: Outlook$NameSpace,
       event: "OptionsPagesAdd",
       argNames: ["Pages", "Folder"],
       handler: (parameter: {
-        +Pages: Outlook$Outlook$PropertyPages,
-        +Outlook$Folder: Outlook$Outlook$Folder
+        +Pages: Outlook$PropertyPages,
+        +Folder: Outlook$Folder
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$NavigationGroups,
+      obj: Outlook$NavigationGroups,
       event: "NavigationFolderAdd" | "SelectedChange",
       argNames: ["NavigationFolder"],
       handler: (parameter: {
-        +Outlook$NavigationFolder: Outlook$Outlook$NavigationFolder
+        +NavigationFolder: Outlook$NavigationFolder
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$NavigationPane,
+      obj: Outlook$NavigationPane,
       event: "ModuleSwitch",
       argNames: ["CurrentModule"],
       handler: (parameter: {
-        +CurrentModule: Outlook$Outlook$NavigationModule
+        +CurrentModule: Outlook$NavigationModule
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkBusinessCardControl,
+      obj: Outlook$OlkBusinessCardControl,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCategory,
+      obj: Outlook$OlkCategory,
       event: "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9667,16 +6523,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCategory,
+      obj: Outlook$OlkCategory,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCategory,
+      obj: Outlook$OlkCategory,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9684,18 +6540,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCategory,
+      obj: Outlook$OlkCategory,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCheckBox,
+      obj: Outlook$OlkCheckBox,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9703,16 +6559,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCheckBox,
+      obj: Outlook$OlkCheckBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCheckBox,
+      obj: Outlook$OlkCheckBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9720,18 +6576,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCheckBox,
+      obj: Outlook$OlkCheckBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkComboBox,
+      obj: Outlook$OlkComboBox,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9739,16 +6595,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkComboBox,
+      obj: Outlook$OlkComboBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkComboBox,
+      obj: Outlook$OlkComboBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9756,18 +6612,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkComboBox,
+      obj: Outlook$OlkComboBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCommandButton,
+      obj: Outlook$OlkCommandButton,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9775,16 +6631,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCommandButton,
+      obj: Outlook$OlkCommandButton,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCommandButton,
+      obj: Outlook$OlkCommandButton,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9792,18 +6648,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCommandButton,
+      obj: Outlook$OlkCommandButton,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkContactPhoto,
+      obj: Outlook$OlkContactPhoto,
       event: "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9811,16 +6667,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkContactPhoto,
+      obj: Outlook$OlkContactPhoto,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkContactPhoto,
+      obj: Outlook$OlkContactPhoto,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9828,18 +6684,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkContactPhoto,
+      obj: Outlook$OlkContactPhoto,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkDateControl,
+      obj: Outlook$OlkDateControl,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9847,16 +6703,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkDateControl,
+      obj: Outlook$OlkDateControl,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkDateControl,
+      obj: Outlook$OlkDateControl,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9864,40 +6720,40 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkDateControl,
+      obj: Outlook$OlkDateControl,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkInfoBar,
+      obj: Outlook$OlkInfoBar,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkLabel,
+      obj: Outlook$OlkLabel,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkListBox,
+      obj: Outlook$OlkListBox,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9905,16 +6761,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkListBox,
+      obj: Outlook$OlkListBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkListBox,
+      obj: Outlook$OlkListBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9922,18 +6778,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkListBox,
+      obj: Outlook$OlkListBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkOptionButton,
+      obj: Outlook$OlkOptionButton,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9941,16 +6797,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkOptionButton,
+      obj: Outlook$OlkOptionButton,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkOptionButton,
+      obj: Outlook$OlkOptionButton,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -9958,29 +6814,29 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkOptionButton,
+      obj: Outlook$OlkOptionButton,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkSenderPhoto,
+      obj: Outlook$OlkSenderPhoto,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTextBox,
+      obj: Outlook$OlkTextBox,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -9988,16 +6844,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTextBox,
+      obj: Outlook$OlkTextBox,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTextBox,
+      obj: Outlook$OlkTextBox,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -10005,18 +6861,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTextBox,
+      obj: Outlook$OlkTextBox,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeControl,
+      obj: Outlook$OlkTimeControl,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -10024,16 +6880,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeControl,
+      obj: Outlook$OlkTimeControl,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeControl,
+      obj: Outlook$OlkTimeControl,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -10041,18 +6897,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeControl,
+      obj: Outlook$OlkTimeControl,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeZoneControl,
+      obj: Outlook$OlkTimeZoneControl,
       event: "BeforeUpdate" | "Exit",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -10060,16 +6916,16 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeZoneControl,
+      obj: Outlook$OlkTimeZoneControl,
       event: "KeyDown" | "KeyUp",
       argNames: ["KeyCode", "Shift"],
       handler: (parameter: {
         +KeyCode: number,
-        +Shift: Outlook$Outlook$OlShiftState
+        +Shift: $Values<typeof Outlook$OlShiftState>
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeZoneControl,
+      obj: Outlook$OlkTimeZoneControl,
       event: "KeyPress",
       argNames: ["KeyAscii"],
       handler: (parameter: {
@@ -10077,18 +6933,18 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeZoneControl,
+      obj: Outlook$OlkTimeZoneControl,
       event: "MouseDown" | "MouseMove" | "MouseUp",
       argNames: ["Button", "Shift", "X", "Y"],
       handler: (parameter: {
-        +Button: Outlook$Outlook$OlMouseButton,
-        +Shift: Outlook$Outlook$OlShiftState,
+        +Button: $Values<typeof Outlook$OlMouseButton>,
+        +Shift: $Values<typeof Outlook$OlShiftState>,
         +X: stdole.OLE_XPOS_CONTAINER,
         +Y: stdole.OLE_YPOS_CONTAINER
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarGroups,
+      obj: Outlook$OutlookBarGroups,
       event: "BeforeGroupAdd",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -10096,42 +6952,42 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarGroups,
+      obj: Outlook$OutlookBarGroups,
       event: "BeforeGroupRemove",
       argNames: ["Group", "Cancel"],
       handler: (parameter: {
-        +Group: Outlook$Outlook$OutlookBarGroup,
+        +Group: Outlook$OutlookBarGroup,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarGroups,
+      obj: Outlook$OutlookBarGroups,
       event: "GroupAdd",
       argNames: ["NewGroup"],
       handler: (parameter: {
-        +NewGroup: Outlook$Outlook$OutlookBarGroup
+        +NewGroup: Outlook$OutlookBarGroup
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarPane,
+      obj: Outlook$OutlookBarPane,
       event: "BeforeGroupSwitch",
       argNames: ["ToGroup", "Cancel"],
       handler: (parameter: {
-        +ToGroup: Outlook$Outlook$OutlookBarGroup,
+        +ToGroup: Outlook$OutlookBarGroup,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarPane,
+      obj: Outlook$OutlookBarPane,
       event: "BeforeNavigate",
       argNames: ["Shortcut", "Cancel"],
       handler: (parameter: {
-        +Shortcut: Outlook$Outlook$OutlookBarShortcut,
+        +Shortcut: Outlook$OutlookBarShortcut,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarShortcuts,
+      obj: Outlook$OutlookBarShortcuts,
       event: "BeforeShortcutAdd",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -10139,32 +6995,32 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarShortcuts,
+      obj: Outlook$OutlookBarShortcuts,
       event: "BeforeShortcutRemove",
       argNames: ["Shortcut", "Cancel"],
       handler: (parameter: {
-        +Shortcut: Outlook$Outlook$OutlookBarShortcut,
+        +Shortcut: Outlook$OutlookBarShortcut,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OutlookBarShortcuts,
+      obj: Outlook$OutlookBarShortcuts,
       event: "ShortcutAdd",
       argNames: ["NewShortcut"],
       handler: (parameter: {
-        +NewShortcut: Outlook$Outlook$OutlookBarShortcut
+        +NewShortcut: Outlook$OutlookBarShortcut
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10173,12 +7029,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10192,7 +7048,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10201,17 +7057,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10219,7 +7075,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10228,7 +7084,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10237,7 +7093,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Reminders,
+      obj: Outlook$Reminders,
       event: "BeforeReminderShow",
       argNames: ["Cancel"],
       handler: (parameter: {
@@ -10245,23 +7101,23 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Reminders,
+      obj: Outlook$Reminders,
       event: "ReminderAdd" | "ReminderChange" | "ReminderFire" | "Snooze",
       argNames: ["ReminderObject"],
       handler: (parameter: {
-        +ReminderObject: Outlook$Outlook$Reminder
+        +ReminderObject: Outlook$Reminder
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10270,12 +7126,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10289,7 +7145,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10298,17 +7154,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10316,7 +7172,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10325,7 +7181,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10334,15 +7190,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10351,12 +7207,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10370,7 +7226,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10379,17 +7235,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10397,7 +7253,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10406,7 +7262,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10415,7 +7271,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Results,
+      obj: Outlook$Results,
       event: "ItemAdd" | "ItemChange",
       argNames: ["Item"],
       handler: (parameter: {
@@ -10423,15 +7279,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10440,12 +7296,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10459,7 +7315,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10468,17 +7324,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10486,7 +7342,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10495,7 +7351,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10504,24 +7360,24 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Stores,
+      obj: Outlook$Stores,
       event: "BeforeStoreRemove",
       argNames: ["Store", "Cancel"],
       handler: (parameter: {
-        +Outlook$Store: Outlook$Outlook$Store,
+        +Store: Outlook$Store,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Stores,
+      obj: Outlook$Stores,
       event: "StoreAdd",
       argNames: ["Store"],
       handler: (parameter: {
-        +Outlook$Store: Outlook$Outlook$Store
+        +Store: Outlook$Store
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SyncObject,
+      obj: Outlook$SyncObject,
       event: "OnError",
       argNames: ["Code", "Description"],
       handler: (parameter: {
@@ -10530,26 +7386,26 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SyncObject,
+      obj: Outlook$SyncObject,
       event: "Progress",
       argNames: ["State", "Description", "Value", "Max"],
       handler: (parameter: {
-        +State: Outlook$Outlook$OlSyncState,
+        +State: $Values<typeof Outlook$OlSyncState>,
         +Description: string,
         +Value: number,
         +Max: number
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10558,12 +7414,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10577,7 +7433,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10586,17 +7442,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10604,7 +7460,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10613,7 +7469,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10622,15 +7478,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10639,12 +7495,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10658,7 +7514,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10667,17 +7523,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10685,7 +7541,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10694,7 +7550,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10703,15 +7559,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10720,12 +7576,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10739,7 +7595,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10748,17 +7604,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10766,7 +7622,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10775,7 +7631,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10784,15 +7640,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10801,12 +7657,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10820,7 +7676,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10829,17 +7685,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10847,7 +7703,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10856,7 +7712,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10865,15 +7721,15 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event: "AttachmentAdd" | "AttachmentRead" | "AttachmentRemove",
       argNames: ["Attachment"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment
+        +Attachment: Outlook$Attachment
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event:
         | "BeforeAttachmentAdd"
         | "BeforeAttachmentPreview"
@@ -10882,12 +7738,12 @@ declare module "activex-outlook" {
         | "BeforeAttachmentWriteToTempFile",
       argNames: ["Attachment", "Cancel"],
       handler: (parameter: {
-        +Outlook$Attachment: Outlook$Outlook$Attachment,
+        +Attachment: Outlook$Attachment,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event:
         | "BeforeAutoSave"
         | "BeforeCheckNames"
@@ -10901,7 +7757,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event: "BeforeDelete",
       argNames: ["Item", "Cancel"],
       handler: (parameter: {
@@ -10910,17 +7766,17 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event: "CustomAction",
       argNames: ["Action", "Response", "Cancel"],
       handler: (parameter: {
-        +Outlook$Action: any,
+        +Action: any,
         +Response: any,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event: "CustomPropertyChange" | "PropertyChange",
       argNames: ["Name"],
       handler: (parameter: {
@@ -10928,7 +7784,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event: "Forward",
       argNames: ["Forward", "Cancel"],
       handler: (parameter: {
@@ -10937,7 +7793,7 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event: "Reply" | "ReplyAll",
       argNames: ["Response", "Cancel"],
       handler: (parameter: {
@@ -10946,40 +7802,40 @@ declare module "activex-outlook" {
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Views,
+      obj: Outlook$Views,
       event: "ViewAdd" | "ViewRemove",
       argNames: ["View"],
       handler: (parameter: {
-        +Outlook$View: Outlook$Outlook$View
+        +View: Outlook$View
       }) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Application,
+      obj: Outlook$Application,
       event: "MAPILogonComplete" | "NewMail" | "Quit" | "Startup",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$AppointmentItem,
+      obj: Outlook$AppointmentItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ContactItem,
+      obj: Outlook$ContactItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DistListItem,
+      obj: Outlook$DistListItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$DocumentItem,
+      obj: Outlook$DocumentItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Explorer,
+      obj: Outlook$Explorer,
       event:
         | "Activate"
         | "AttachmentSelectionChange"
@@ -10991,72 +7847,72 @@ declare module "activex-outlook" {
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Folders,
+      obj: Outlook$Folders,
       event: "FolderRemove",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$FormRegion,
+      obj: Outlook$FormRegion,
       event: "Close",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Inspector,
+      obj: Outlook$Inspector,
       event: "Activate" | "AttachmentSelectionChange" | "Close" | "Deactivate",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Items,
+      obj: Outlook$Items,
       event: "ItemRemove",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$JournalItem,
+      obj: Outlook$JournalItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MailItem,
+      obj: Outlook$MailItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MeetingItem,
+      obj: Outlook$MeetingItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$MobileItem,
+      obj: Outlook$MobileItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$NameSpace,
+      obj: Outlook$NameSpace,
       event: "AutoDiscoverComplete",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$NavigationGroups,
+      obj: Outlook$NavigationGroups,
       event: "NavigationFolderRemove",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkBusinessCardControl,
+      obj: Outlook$OlkBusinessCardControl,
       event: "Click" | "DoubleClick",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCategory,
+      obj: Outlook$OlkCategory,
       event: "Change" | "Click" | "DoubleClick" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCheckBox,
+      obj: Outlook$OlkCheckBox,
       event: "AfterUpdate" | "Change" | "Click" | "DoubleClick" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkComboBox,
+      obj: Outlook$OlkComboBox,
       event:
         | "AfterUpdate"
         | "Change"
@@ -11067,17 +7923,17 @@ declare module "activex-outlook" {
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkCommandButton,
+      obj: Outlook$OlkCommandButton,
       event: "AfterUpdate" | "Click" | "DoubleClick" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkContactPhoto,
+      obj: Outlook$OlkContactPhoto,
       event: "Change" | "Click" | "DoubleClick" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkDateControl,
+      obj: Outlook$OlkDateControl,
       event:
         | "AfterUpdate"
         | "Change"
@@ -11088,37 +7944,37 @@ declare module "activex-outlook" {
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkInfoBar,
+      obj: Outlook$OlkInfoBar,
       event: "Click" | "DoubleClick",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkLabel,
+      obj: Outlook$OlkLabel,
       event: "Click" | "DoubleClick",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkListBox,
+      obj: Outlook$OlkListBox,
       event: "AfterUpdate" | "Change" | "Click" | "DoubleClick" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkOptionButton,
+      obj: Outlook$OlkOptionButton,
       event: "AfterUpdate" | "Change" | "Click" | "DoubleClick" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkSenderPhoto,
+      obj: Outlook$OlkSenderPhoto,
       event: "Change" | "Click" | "DoubleClick",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTextBox,
+      obj: Outlook$OlkTextBox,
       event: "AfterUpdate" | "Change" | "Click" | "DoubleClick" | "Enter",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeControl,
+      obj: Outlook$OlkTimeControl,
       event:
         | "AfterUpdate"
         | "Change"
@@ -11129,7 +7985,7 @@ declare module "activex-outlook" {
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$OlkTimeZoneControl,
+      obj: Outlook$OlkTimeZoneControl,
       event:
         | "AfterUpdate"
         | "Change"
@@ -11140,93 +7996,91 @@ declare module "activex-outlook" {
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$PostItem,
+      obj: Outlook$PostItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Reminders,
+      obj: Outlook$Reminders,
       event: "ReminderRemove",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$RemoteItem,
+      obj: Outlook$RemoteItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$ReportItem,
+      obj: Outlook$ReportItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$Results,
+      obj: Outlook$Results,
       event: "ItemRemove",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SharingItem,
+      obj: Outlook$SharingItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$SyncObject,
+      obj: Outlook$SyncObject,
       event: "SyncEnd" | "SyncStart",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskItem,
+      obj: Outlook$TaskItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestAcceptItem,
+      obj: Outlook$TaskRequestAcceptItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestDeclineItem,
+      obj: Outlook$TaskRequestDeclineItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestItem,
+      obj: Outlook$TaskRequestItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
     on(
-      obj: Outlook$Outlook$TaskRequestUpdateItem,
+      obj: Outlook$TaskRequestUpdateItem,
       event: "AfterWrite" | "BeforeRead" | "Read" | "Unload",
       handler: (parameter: {}) => void
     ): void;
   }
   declare interface ActiveXObjectNameMap {
-    "DOCSITE.DocSiteControl": Outlook$Outlook$_DocSiteControl;
-    "Outlook.Application": Outlook$Outlook$Application;
-    "Outlook.OlkBusinessCardControl": Outlook$Outlook$OlkBusinessCardControl;
-    "Outlook.OlkCategoryStrip": Outlook$Outlook$OlkCategory;
-    "Outlook.OlkCheckBox": Outlook$Outlook$OlkCheckBox;
-    "Outlook.OlkComboBox": Outlook$Outlook$OlkComboBox;
-    "Outlook.OlkCommandButton": Outlook$Outlook$OlkCommandButton;
-    "Outlook.OlkContactPhoto": Outlook$Outlook$OlkContactPhoto;
-    "Outlook.OlkDateControl": Outlook$Outlook$OlkDateControl;
-    "Outlook.OlkFrameHeader": Outlook$Outlook$OlkFrameHeader;
-    "Outlook.OlkInfoBar": Outlook$Outlook$OlkInfoBar;
-    "Outlook.OlkLabel": Outlook$Outlook$OlkLabel;
-    "Outlook.OlkListBox": Outlook$Outlook$OlkListBox;
-    "Outlook.OlkOptionButton": Outlook$Outlook$OlkOptionButton;
-    "Outlook.OlkPageControl": Outlook$Outlook$OlkPageControl;
-    "Outlook.OlkSenderPhoto": Outlook$Outlook$OlkSenderPhoto;
-    "Outlook.OlkTextBox": Outlook$Outlook$OlkTextBox;
-    "Outlook.OlkTimeControl": Outlook$Outlook$OlkTimeControl;
-    "Outlook.OlkTimeZone": Outlook$Outlook$OlkTimeZoneControl;
-    "RECIP.RecipCtl": Outlook$Outlook$_RecipientControl;
+    "DOCSITE.DocSiteControl": Outlook$_DocSiteControl;
+    "Outlook.Application": Outlook$Application;
+    "Outlook.OlkBusinessCardControl": Outlook$OlkBusinessCardControl;
+    "Outlook.OlkCategoryStrip": Outlook$OlkCategory;
+    "Outlook.OlkCheckBox": Outlook$OlkCheckBox;
+    "Outlook.OlkComboBox": Outlook$OlkComboBox;
+    "Outlook.OlkCommandButton": Outlook$OlkCommandButton;
+    "Outlook.OlkContactPhoto": Outlook$OlkContactPhoto;
+    "Outlook.OlkDateControl": Outlook$OlkDateControl;
+    "Outlook.OlkFrameHeader": Outlook$OlkFrameHeader;
+    "Outlook.OlkInfoBar": Outlook$OlkInfoBar;
+    "Outlook.OlkLabel": Outlook$OlkLabel;
+    "Outlook.OlkListBox": Outlook$OlkListBox;
+    "Outlook.OlkOptionButton": Outlook$OlkOptionButton;
+    "Outlook.OlkPageControl": Outlook$OlkPageControl;
+    "Outlook.OlkSenderPhoto": Outlook$OlkSenderPhoto;
+    "Outlook.OlkTextBox": Outlook$OlkTextBox;
+    "Outlook.OlkTimeControl": Outlook$OlkTimeControl;
+    "Outlook.OlkTimeZone": Outlook$OlkTimeZoneControl;
+    "RECIP.RecipCtl": Outlook$_RecipientControl;
   }
   declare interface EnumeratorConstructor {
-    new(
-      col: Outlook$Outlook$ItemProperties
-    ): Enumerator<Outlook$Outlook$ItemProperty>;
-    new(col: Outlook$Outlook$Reminders): Enumerator<Outlook$Outlook$Reminder>;
-    new(col: Outlook$Outlook$Views): Enumerator<Outlook$Outlook$View>;
+    new(col: Outlook$ItemProperties): Enumerator<Outlook$ItemProperty>;
+    new(col: Outlook$Reminders): Enumerator<Outlook$Reminder>;
+    new(col: Outlook$Views): Enumerator<Outlook$View>;
   }
 }
