@@ -14,7 +14,7 @@ declare module "react-daum-postcode" {
     scriptUrl?: string;
   }
   declare export default class DaumPostcode
-    mixins Component<DaumPostcode$DaumPostcode$Props, any> {
-    render(): JSX.Element;
+    mixins Component<DaumPostcode$Props, any> {
+    render(): React$Node;
   }
 }
