@@ -1,5 +1,5 @@
 declare module "xrm" {
-  declare var Xrm: Xrm$Xrm$XrmStatic;
+  declare var Xrm: Xrm$XrmStatic;
 
   /**
    * Gets the global context.
@@ -8,12 +8,17 @@ declare module "xrm" {
    * It is preferreed to use {@link Xrm.Utility.getGlobalContext Xrm.Utility.getGlobalContext()} instead.
    * @see {@link Xrm.Utility.getGlobalContext}
    */
-  declare function GetGlobalContext(): Xrm$Xrm$GlobalContext;
+  declare function GetGlobalContext(): Xrm$GlobalContext;
 
   declare interface Window {
-    Xrm: Xrm$Xrm$XrmStatic;
-    GetGlobalContext(): Xrm$Xrm$GlobalContext;
+    Xrm: Xrm$XrmStatic;
+    GetGlobalContext(): Xrm$GlobalContext;
   }
+
+  declare var npm$namespace$Xrm: {
+    Page: typeof npm$namespace$Xrm$Page,
+    Controls: typeof npm$namespace$Xrm$Controls
+  };
 
   /**
    * Static xRM object.
@@ -24,30 +29,30 @@ declare module "xrm" {
      * @deprecated Deprecated in v9.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
      */
-    Xrm$Page: Xrm$Page;
+    Page: Xrm$Page;
 
     /**
      * Provides navigation-related methods.
      */
-    Xrm$Navigation: Xrm$Navigation;
+    Navigation: Xrm$Navigation;
 
     /**
      * Provides a container for useful functions not directly related to the current page.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-utility External Link: Xrm.Utility (Client API reference)}
      */
-    Xrm$Utility: Xrm$Utility;
+    Utility: Xrm$Utility;
 
     /**
      * Provides methods to create and manage records in the mobile clients (for phones tablets).
      * @deprecated Use {@link Xrm.WebApi} instead.
      */
-    Xrm$Mobile: Xrm$Mobile;
+    Mobile: Xrm$Mobile;
 
     /**
      * Provides a method to display a web page in the side pane of the Customer Engagement form.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-panel External Link: Xrm.Panel}
      */
-    Xrm$Panel: Xrm$Panel;
+    Panel: Xrm$Panel;
 
     /**
      * Provides properties and methods to use Web API to create and manage records and execute Web API actions and functions in Customer Engagement.
@@ -55,19 +60,19 @@ declare module "xrm" {
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/use-microsoft-dynamics-365-web-api External Link: Use the Customer Engagement Web API}
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/webapi/get-started-web-api-client-side-javascript External Link: Get started with the Customer Engagement Web API (client-side JavaScript)}
      */
-    Xrm$WebApi: Xrm$WebApi;
+    WebApi: Xrm$WebApi;
 
     /**
      * Provides methods to use native device capabilities of mobile devices.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-device External Link: Xrm.Device (Client API reference)}
      */
-    Xrm$Device: Xrm$Device;
+    Device: Xrm$Device;
 
     /**
      * Provides methods to encode strings.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-encoding External Link: Xrm.Encoding (Client API reference)}
      */
-    Xrm$Encoding: Xrm$Encoding;
+    Encoding: Xrm$Encoding;
   }
 
   /**
@@ -134,7 +139,7 @@ declare module "xrm" {
     /**
      * Use this method to get information about the kind of device the user is using.
      */
-    getFormFactor(): XrmEnum$XrmEnum$ClientFormFactor;
+    getFormFactor(): $Values<typeof XrmEnum$ClientFormFactor>;
 
     /**
      * Returns information whether the server is online or offline.
@@ -336,25 +341,25 @@ declare module "xrm" {
      * Gets client's base URL for Dynamics CRM
      * @returns The client's base URL
      * @example For Dynamics CRM On-Premises:               http(s)://server/org
-     * For Dynamics CRM Online:                    https://org.crm.dynamics.com
-     * For Dynamics CRM for Outlook (Offline):     http://localhost:2525
+     * * For Dynamics CRM Online:                    https://org.crm.dynamics.com
+     * * For Dynamics CRM for Outlook (Offline):     http://localhost:2525
      */
     getClientUrl(): string;
 
     /**
      * Returns the name of the current business app in Customer Engagement.
      */
-    getCurrentAppName(): Async$Async$PromiseLike<string>;
+    getCurrentAppName(): Xrm$Async$PromiseLike<string>;
 
     /**
      * Returns the properties of the current business app in Customer Engagement.
      */
-    getCurrentAppProperties(): Async$Async$PromiseLike<Xrm$AppProperties>;
+    getCurrentAppProperties(): Xrm$Async$PromiseLike<Xrm$AppProperties>;
 
     /**
      * Returns the URL of the current business app in Customer Engagement.
      * @example Online        https://**org**.crm.dynamics.com/main.aspx?appid=**GUID**
-     * OnPrem        https://**server**\/**org**\/main.aspx?appid=**GUID**
+     * * OnPrem        https://**server**\/**org**\/main.aspx?appid=**GUID**
      * @returns A string containing the url of the current business app.
      */
     getCurrentAppUrl(): string;
@@ -465,25 +470,25 @@ declare module "xrm" {
   /**
    * Interface for save event arguments.
    */
-  declare interface Events$SaveEventArguments {
+  declare interface Xrm$Events$SaveEventArguments {
     /**
      * @summary Gets save mode, as an integer.
      * @returns The save mode.
      * @description Gets save mode, as an integer.<BR>
-     **Values returned are**:
-     * 1      Save
-     * 2      Save and Close
-     * 59     Save and New
-     * 70     AutoSave (Where enabled; can be used with an OnSave handler to conditionally disable auto-saving)
-     * 58     Save as Completed (Activities)
-     * 5      Deactivate
-     * 6      Reactivate
-     * 47     Assign (All user- or team-owned entities)
-     * 7      Send (Email)
-     * 16     Qualify (Lead)
-     * 15     Disqualify (Lead)
+     * **Values returned are**:
+     * * 1      Save
+     * * 2      Save and Close
+     * * 59     Save and New
+     * * 70     AutoSave (Where enabled; can be used with an OnSave handler to conditionally disable auto-saving)
+     * * 58     Save as Completed (Activities)
+     * * 5      Deactivate
+     * * 6      Reactivate
+     * * 47     Assign (All user- or team-owned entities)
+     * * 7      Send (Email)
+     * * 16     Qualify (Lead)
+     * * 15     Disqualify (Lead)
      */
-    getSaveMode(): XrmEnum$XrmEnum$SaveMode;
+    getSaveMode(): $Values<typeof XrmEnum$SaveMode>;
 
     /**
      * Returns a boolean value to indicate if the record's save has been prevented.
@@ -501,29 +506,29 @@ declare module "xrm" {
   /**
    * Interface for process stage change event arguments.
    */
-  declare interface Events$StageChangeEventArguments {
+  declare interface Xrm$Events$StageChangeEventArguments {
     /**
      * Gets the direction of the stage change.
      * @returns The direction: "next" or "previous"
      */
-    getDirection(): ProcessFlow$XrmEnum$StageChangeDirection;
+    getDirection(): Xrm$ProcessFlow$StageChangeDirection;
 
     /**
      * Gets the destination stage object
      * @returns The stage object. For switching between entities, returns the previous stage object
      */
-    getStage(): ProcessFlow$ProcessFlow$Stage;
+    getStage(): Xrm$ProcessFlow$Stage;
   }
 
   /**
    * Interface for process stage selected event arguments.
    */
-  declare interface Events$StageSelectedEventArguments {
+  declare interface Xrm$Events$StageSelectedEventArguments {
     /**
      * Gets the selected stage object
      * @returns The stage object
      */
-    getStage(): ProcessFlow$ProcessFlow$Stage;
+    getStage(): Xrm$ProcessFlow$Stage;
   }
 
   /**
@@ -532,7 +537,7 @@ declare module "xrm" {
    * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/clientapi-execution-context External Link: Client API execution context}
    * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/execution-context External Link: Execution context (Client API reference)}
    */
-  declare interface Events$EventContext {
+  declare interface Xrm$Events$EventContext {
     /**
      * Gets the Xrm context.
      * @returns The Xrm context.
@@ -550,8 +555,8 @@ declare module "xrm" {
      * @returns The event source.
      */
     getEventSource():
-      | Attributes$Attributes$Attribute
-      | Controls$Controls$Control
+      | Xrm$Attributes$Attribute
+      | Xrm$Controls$Control
       | Xrm$Entity;
 
     /**
@@ -561,70 +566,70 @@ declare module "xrm" {
     getFormContext(): Xrm$FormContext;
 
     /**
- * @summary Gets the shared variable with the specified key.
- * @param T Generic type parameter.
- * @param key The key.
- * @returns The shared variable.
- * @desc Gets the shared variable with the specified key.
-Used to pass values between handlers of an event.
- */
+     * @summary Gets the shared variable with the specified key.
+     * @param T Generic type parameter.
+     * @param key The key.
+     * @returns The shared variable.
+     * @desc Gets the shared variable with the specified key.
+     * Used to pass values between handlers of an event.
+     */
     getSharedVariable<T>(key: string): T;
 
     /**
- * @summary Sets a shared variable.
- * @param T Generic type parameter.
- * @param key The key.
- * @param value The value.
- * @desc Sets the shared variable with the specified key.
-Used to pass values between handlers of an event.
- */
+     * @summary Sets a shared variable.
+     * @param T Generic type parameter.
+     * @param key The key.
+     * @param value The value.
+     * @desc Sets the shared variable with the specified key.
+     * Used to pass values between handlers of an event.
+     */
     setSharedVariable<T>(key: string, value: T): void;
   }
 
   /**
    * Interface for a save event context
    */
-  declare type Events$SaveEventContext = {
+  declare type Xrm$Events$SaveEventContext = {
     /**
      * Gets save-event arguments.
      * @returns The event arguments.  Returns null for all but the "save" event.
      */
-    getEventArgs(): Events$SaveEventArguments
-  } & Events$EventContext;
+    getEventArgs(): Xrm$Events$SaveEventArguments
+  } & Xrm$Events$EventContext;
 
   /**
    * Interface for a process stage change event context
    */
-  declare type Events$StageChangeEventContext = {
+  declare type Xrm$Events$StageChangeEventContext = {
     /**
      * Gets process stage change event arguments.
      * @returns The event arguments.
      */
-    getEventArgs(): Events$StageChangeEventArguments
-  } & Events$EventContext;
+    getEventArgs(): Xrm$Events$StageChangeEventArguments
+  } & Xrm$Events$EventContext;
 
-  declare type Events$StageSelectedEventContext = {
+  declare type Xrm$Events$StageSelectedEventContext = {
     /**
      * Gets process stage selected event arguments.
      * @returns The event arguments.
      */
-    getEventArgs(): Events$StageSelectedEventArguments
-  } & Events$EventContext;
+    getEventArgs(): Xrm$Events$StageSelectedEventArguments
+  } & Xrm$Events$EventContext;
 
   /**
    * Type for a context-sensitive handler.
    * @param context The context.
    */
-  declare type Events$ContextSensitiveHandler = (
-    context: Events$EventContext
+  declare type Xrm$Events$ContextSensitiveHandler = (
+    context: Xrm$Events$EventContext
   ) => void;
 
   /**
    * Type for a process status change handler.
    * @param status The process status.
    */
-  declare type Events$ProcessStatusChangeHandler = (
-    status: ProcessFlow$XrmEnum$ProcessStatus
+  declare type Xrm$Events$ProcessStatusChangeHandler = (
+    status: Xrm$ProcessFlow$ProcessStatus
   ) => void;
 
   /**
@@ -650,20 +655,20 @@ Used to pass values between handlers of an event.
      * @param save true to save the record, after the refresh.
      * @returns Returns an asynchronous promise.
      */
-    refresh(save: boolean): Async$Async$PromiseLike<void>;
+    refresh(save: boolean): Xrm$Async$PromiseLike<void>;
 
     /**
      * Asynchronously saves the record.
      * @returns Returns an asynchronous promise.
      */
-    save(): Async$Async$PromiseLike<void>;
+    save(): Xrm$Async$PromiseLike<void>;
 
     /**
      * Asynchronously saves the record  with the option to set callback functions to be executed after the save operation is completed.
      * @param saveOptions Options to control how appointment, recurring appointment, or service activity records are processed.
      * @returns Returns an asynchronous promise.
      */
-    save(saveOptions: Xrm$SaveOptions): Async$Async$PromiseLike<void>;
+    save(saveOptions: Xrm$SaveOptions): Xrm$Async$PromiseLike<void>;
 
     /**
      * Collection of non-entity data on the form.
@@ -673,7 +678,7 @@ Used to pass values between handlers of an event.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      * @see {@link Attributes}
      */
-    attributes: Collection$Collection$ItemCollection<Attributes$Attributes$Attribute>;
+    attributes: Xrm$Collection$ItemCollection<Xrm$Attributes$Attribute>;
 
     /**
      * The record context of the form, {@link Entity formContext.data.entity}
@@ -686,7 +691,7 @@ Used to pass values between handlers of an event.
      * @remarks This member may be undefined when Process Flows are not used by the current entity.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-data-process External Link: formContext.data.process (Client API reference)}
      */
-    process: ProcessFlow$ProcessFlow$ProcessManager;
+    process: Xrm$ProcessFlow$ProcessManager;
   }
 
   /**
@@ -710,7 +715,7 @@ Used to pass values between handlers of an event.
      * Gets all attributes.
      * @returns An array of attributes.
      */
-    getAttribute(): Attributes$Attributes$Attribute[];
+    getAttribute(): Xrm$Attributes$Attribute[];
 
     /**
      * Gets an attribute matching attributeName.
@@ -718,21 +723,21 @@ Used to pass values between handlers of an event.
      * @param attributeName Name of the attribute.
      * @returns The attribute.
      */
-    getAttribute<T: Attributes$Attributes$Attribute>(attributeName: string): T;
+    getAttribute<T: Xrm$Attributes$Attribute>(attributeName: string): T;
 
     /**
      * Gets an attribute matching attributeName.
      * @param attributeName Name of the attribute.
      * @returns The attribute.
      */
-    getAttribute(attributeName: string): Attributes$Attributes$Attribute;
+    getAttribute(attributeName: string): Xrm$Attributes$Attribute;
 
     /**
      * Gets an attribute by index.
      * @param index The attribute index.
      * @returns The attribute.
      */
-    getAttribute(index: number): Attributes$Attributes$Attribute;
+    getAttribute(index: number): Xrm$Attributes$Attribute;
 
     /**
      * Gets an attribute.
@@ -741,14 +746,14 @@ Used to pass values between handlers of an event.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
     getAttribute(
-      delegateFunction: Collection$Collection$MatchingDelegate<Attributes$Attributes$Attribute>
-    ): Attributes$Attributes$Attribute[];
+      delegateFunction: Xrm$Collection$MatchingDelegate<Xrm$Attributes$Attribute>
+    ): Xrm$Attributes$Attribute[];
 
     /**
      * Gets all controls.
      * @returns An array of controls.
      */
-    getControl(): Controls$Controls$Control[];
+    getControl(): Xrm$Controls$Control[];
 
     /**
      * Gets a control matching controlName.
@@ -756,14 +761,14 @@ Used to pass values between handlers of an event.
      * @param controlName Name of the control.
      * @returns The control.
      */
-    getControl<T: Controls$Controls$Control>(controlName: string): T;
+    getControl<T: Xrm$Controls$Control>(controlName: string): T;
 
     /**
      * Gets a control matching controlName.
      * @param controlName Name of the control.
      * @returns The control.
      */
-    getControl(controlName: string): Controls$Controls$Control;
+    getControl(controlName: string): Xrm$Controls$Control;
 
     /**
      * Gets a control by index.
@@ -771,14 +776,14 @@ Used to pass values between handlers of an event.
      * @param index The control index.
      * @returns The control.
      */
-    getControl<T: Controls$Controls$Control>(index: number): T;
+    getControl<T: Xrm$Controls$Control>(index: number): T;
 
     /**
      * Gets a control by index.
      * @param index The control index.
      * @returns The control.
      */
-    getControl(index: number): Controls$Controls$Control;
+    getControl(index: number): Xrm$Controls$Control;
 
     /**
      * Gets a control.
@@ -787,8 +792,8 @@ Used to pass values between handlers of an event.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
     getControl(
-      delegateFunction: Collection$Collection$MatchingDelegate<Controls$Controls$Control>
-    ): Controls$Controls$Control[];
+      delegateFunction: Xrm$Collection$MatchingDelegate<Xrm$Controls$Control>
+    ): Xrm$Controls$Control[];
   }
 
   /**
@@ -797,16 +802,16 @@ Used to pass values between handlers of an event.
    */
   declare interface Xrm$Ui {
     /**
- * Displays a form level notification. Any number of notifications can be displayed and will remain until removed using clearFormNotification.
- * The height of the notification area is limited so each new message will be added to the top.
- * @param message The text of the notification message.
- * @param level The level of the notification which defines how the message will be displayed, such as the icon.
-ERROR: Notification will use the system error icon.
-WARNING: Notification will use the system warning icon.
-INFO: Notification will use the system info icon.
- * @param uniqueId Unique identifier for the notification which is used with clearFormNotification to remove the notification.
- * @returns true if it succeeds, otherwise false.
- */
+     * Displays a form level notification. Any number of notifications can be displayed and will remain until removed using clearFormNotification.
+     * The height of the notification area is limited so each new message will be added to the top.
+     * @param message The text of the notification message.
+     * @param level The level of the notification which defines how the message will be displayed, such as the icon.
+     * ERROR: Notification will use the system error icon.
+     * WARNING: Notification will use the system warning icon.
+     * INFO: Notification will use the system info icon.
+     * @param uniqueId Unique identifier for the notification which is used with clearFormNotification to remove the notification.
+     * @returns true if it succeeds, otherwise false.
+     */
     setFormNotification(
       message: string,
       level: Xrm$FormNotificationLevel,
@@ -829,15 +834,15 @@ INFO: Notification will use the system info icon.
      * Gets form type.
      * @returns The form type.
      * @remarks *Values returned are**:
-     * 0  Undefined
-     * 1  Create
-     * 2  Update
-     * 3  Read Only
-     * 4  Disabled
-     * 6  Bulk Edit
-     * Deprecated values are 5 (Quick Create), and 11 (Read Optimized)
+     * * 0  Undefined
+     * * 1  Create
+     * * 2  Update
+     * * 3  Read Only
+     * * 4  Disabled
+     * * 6  Bulk Edit
+     * * Deprecated values are 5 (Quick Create), and 11 (Read Optimized)
      */
-    getFormType(): XrmEnum$XrmEnum$FormType;
+    getFormType(): $Values<typeof XrmEnum$FormType>;
 
     /**
      * Gets view port height.
@@ -862,38 +867,38 @@ INFO: Notification will use the system info icon.
     /**
      * The business process flow API, used to interact with the business process flow control in a form.
      */
-    process: Controls$Controls$ProcessControl;
+    process: Xrm$Controls$ProcessControl;
 
     /**
      * A reference to the collection of controls on the form.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Controls$Control>;
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$Control>;
 
     /**
      * The form selector API.
      * @remarks This API does not exist with Microsoft Dynamics CRM for tablets.
      */
-    formSelector: Controls$Controls$FormSelector;
+    formSelector: Xrm$Controls$FormSelector;
 
     /**
      * The navigation API.
      * @remarks This API does not exist with Microsoft Dynamics CRM for tablets.
      */
-    navigation: Controls$Xrm$Navigation;
+    navigation: Xrm$Controls$Navigation;
 
     /**
      * A reference to the collection of tabs on the form.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    tabs: Collection$Collection$ItemCollection<Controls$Controls$Tab>;
+    tabs: Xrm$Collection$ItemCollection<Xrm$Controls$Tab>;
 
     /**
      * A collection of all the quick view controls on a form using the new form rendering engine (also called "turbo forms").
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-ui-quickforms ExternalLink: formContext.ui.quickForms (Client API reference)}
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-ui External Link: formContext.ui (Client API reference)}
      */
-    quickForms: Collection$Collection$ItemCollection<Controls$Controls$QuickFormControl>;
+    quickForms: Xrm$Collection$ItemCollection<Xrm$Controls$QuickFormControl>;
   }
 
   /**
@@ -950,7 +955,7 @@ INFO: Notification will use the system info icon.
     getAllowedStatusTransitions(
       entityName: string,
       stateCode: number
-    ): Async$Async$PromiseLike<any>;
+    ): Xrm$Async$PromiseLike<any>;
 
     /**
      * Returns the entity metadata for the specified entity.
@@ -960,7 +965,7 @@ INFO: Notification will use the system info icon.
     getEntityMetadata(
       entityName: string,
       attributes?: string[]
-    ): Async$Async$PromiseLike<Metadata$Metadata$EntityMetadata>;
+    ): Xrm$Async$PromiseLike<Xrm$Metadata$EntityMetadata>;
 
     /**
      * The method provides access to the global context without going through the form context.
@@ -986,8 +991,8 @@ INFO: Notification will use the system info icon.
      */
     invokeProcessAction(
       name: string,
-      parameters: Collection$Collection$Dictionary<any>
-    ): Async$Async$PromiseLike<any>;
+      parameters: Xrm$Collection$Dictionary<any>
+    ): Xrm$Async$PromiseLike<any>;
 
     /**
      * Opens a lookup control to select one or more items.
@@ -995,7 +1000,7 @@ INFO: Notification will use the system info icon.
      */
     lookupObjects(
       lookupOptions: Xrm$LookupOptions
-    ): Async$Async$PromiseLike<Xrm$LookupValue[]>;
+    ): Xrm$Async$PromiseLike<Xrm$LookupValue[]>;
 
     /**
      * Refreshes the parent grid containing the specified record.
@@ -1034,14 +1039,14 @@ INFO: Notification will use the system info icon.
     ): void;
 
     /**
- * Query if 'entityType' is an Activity entity.
- * @deprecated Deprecated in v9. Use {@link Xrm.Utility.getEntityMetadata  Xrm.Utility.getEntityMetadata(entityName, ["IsActivity"])} instead.
- * @remarks The isActivityType method is synchronous so it was suitable for ribbon rules.
-However, the replacement method, getEntityMetadata, is asynchronous, and is not suitable for ribbon rules.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
- * @param entityType Type of the entity.
- * @returns true if the entity is an Activity, false if not.
- */
+     * Query if 'entityType' is an Activity entity.
+     * @deprecated Deprecated in v9. Use {@link Xrm.Utility.getEntityMetadata  Xrm.Utility.getEntityMetadata(entityName, ["IsActivity"])} instead.
+     * @remarks The isActivityType method is synchronous so it was suitable for ribbon rules.
+     * However, the replacement method, getEntityMetadata, is asynchronous, and is not suitable for ribbon rules.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
+     * @param entityType Type of the entity.
+     * @returns true if the entity is an Activity, false if not.
+     */
     isActivityType(entityType: string): boolean;
 
     /**
@@ -1056,8 +1061,8 @@ However, the replacement method, getEntityMetadata, is asynchronous, and is not 
     openQuickCreate(
       entityLogicalName: string,
       createFromEntity?: Xrm$LookupValue,
-      parameters?: Xrm$Utility.Utility$OpenParameters
-    ): Async$Async$PromiseLike<Async$Async$OpenQuickCreateSuccessCallbackObject>;
+      parameters?: Xrm$Utility$OpenParameters
+    ): Xrm$Async$PromiseLike<Xrm$Async$OpenQuickCreateSuccessCallbackObject>;
 
     /**
      * Opens an entity form.
@@ -1071,8 +1076,8 @@ However, the replacement method, getEntityMetadata, is asynchronous, and is not 
     openEntityForm(
       name: string,
       id?: string,
-      parameters?: Xrm$Utility.Utility$FormOpenParameters,
-      windowOptions?: Xrm$Utility.Utility$WindowOptions
+      parameters?: Xrm$Utility$FormOpenParameters,
+      windowOptions?: Xrm$Utility$WindowOptions
     ): void;
 
     /**
@@ -1085,14 +1090,14 @@ However, the replacement method, getEntityMetadata, is asynchronous, and is not 
      * @param height (Optional) The height of the new window.
      * @returns A Window reference, containing the opened Web Resource.
      * @remarks This function will not work with Microsoft Dynamics CRM for tablets.<BR>
-     **Valid WebResource URL Parameters**:
-     * typename
-     * type
-     * id
-     * orgname
-     * userlcid
-     * data (identical to this method's webResourceData parameter)
-     * formid
+     * **Valid WebResource URL Parameters**:
+     * * typename
+     * * type
+     * * id
+     * * orgname
+     * * userlcid
+     * * data (identical to this method's webResourceData parameter)
+     * * formid
      */
     openWebResource(
       webResourceName: string,
@@ -1132,100 +1137,100 @@ However, the replacement method, getEntityMetadata, is asynchronous, and is not 
     isOfflineEnabled(entityType: string): boolean;
 
     /**
- * Creates an entity record in mobile clients while working in the offline mode.
- * @param entityType The logical name of the entity.
- * @param data A dictionary object containing key : value pairs for the record to create.
- * @returns Returns an asynchronous promise.
- * @remarks You cannot create intersect and activity party entities.<BR>
-Only the following attribute types are supported in offline mode:<BR>
-BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
-Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
-Status, UniqueIdentifier
- * @deprecated Use {@link Xrm.WebApi.createRecord} instead.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
- */
+     * Creates an entity record in mobile clients while working in the offline mode.
+     * @param entityType The logical name of the entity.
+     * @param data A dictionary object containing key : value pairs for the record to create.
+     * @returns Returns an asynchronous promise.
+     * @remarks You cannot create intersect and activity party entities.<BR>
+     * Only the following attribute types are supported in offline mode:<BR>
+     * BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
+     * Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
+     * Status, UniqueIdentifier
+     * @deprecated Use {@link Xrm.WebApi.createRecord} instead.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
+     */
     createRecord(
       entityType: string,
       data: {
         [attributeName: string]: any
       }
-    ): Async$Async$PromiseLike<Async$Async$OfflineOperationSuccessCallbackObject>;
+    ): Xrm$Async$PromiseLike<Xrm$Async$OfflineOperationSuccessCallbackObject>;
 
     /**
- * Retrieves an entity record in mobile clients while working in the offline mode.
- * @param entityType The logical name of the entity.
- * @param id GUID of the record to retrieve.
- * @param options (Optional) OData system query options to retrieve your data. Supports $select and $expand
- * @example <caption>Example options</caption>
-options: ?$select=name&$expand=primarycontactid($select=contactid,fullname)
- * @returns Returns an asynchronous promise.
- * @remarks Only $select option can be specified within $expand.<BR>
-Only the following attribute types are supported in offline mode:<BR>
-BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
-Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
-Status, UniqueIdentifier
- * @deprecated Use {@link Xrm.WebApi.retrieveRecord} instead.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
- */
+     * Retrieves an entity record in mobile clients while working in the offline mode.
+     * @param entityType The logical name of the entity.
+     * @param id GUID of the record to retrieve.
+     * @param options (Optional) OData system query options to retrieve your data. Supports $select and $expand
+     * @example <caption>Example options</caption>
+     * options: ?$select=name&$expand=primarycontactid($select=contactid,fullname)
+     * @returns Returns an asynchronous promise.
+     * @remarks Only $select option can be specified within $expand.<BR>
+     * Only the following attribute types are supported in offline mode:<BR>
+     * BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
+     * Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
+     * Status, UniqueIdentifier
+     * @deprecated Use {@link Xrm.WebApi.retrieveRecord} instead.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
+     */
     retrieveRecord(
       entityType: string,
       id: string,
       options?: string
-    ): Async$Async$PromiseLike<Async$Async$OfflineOperationSuccessCallbackObject>;
+    ): Xrm$Async$PromiseLike<Xrm$Async$OfflineOperationSuccessCallbackObject>;
 
     /**
- * Retrieves a collection of entity records in mobile clients while working in the offline mode.
- * @param entityType The logical name of the entity.
- * @param options (Optional) The logical name of the entity
- * @param maxPageSize (Optional) A positive number to indicates the number of entity records to be returned per page.
-* If you do not specify this parameter, the default value is passed as 5000.
-* If the number of records being retrieved is more than maxPageSize, an
- * @odata .nextLink property
-will be returned, and you can use the value of the
- * @odata .nextLink property with a new GET
-request to return next set of records.
- * @returns Returns an asynchronous promise.
- * @remarks A maximum of 5000 related records can be retrieved when using $expand.
-* Only $select option can be specified within $expand.
-* $skip query option is not supported.
-* Only the following attribute types are supported in offline mode:<BR>
-BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
-Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
-Status, UniqueIdentifier
- * @deprecated Use {@link Xrm.WebApi.retrieveMultipleRecords} instead.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
- */
+     * Retrieves a collection of entity records in mobile clients while working in the offline mode.
+     * @param entityType The logical name of the entity.
+     * @param options (Optional) The logical name of the entity
+     * @param maxPageSize (Optional) A positive number to indicates the number of entity records to be returned per page.
+     * * If you do not specify this parameter, the default value is passed as 5000.
+     * * If the number of records being retrieved is more than maxPageSize, an
+     * @odata .nextLink property
+     * will be returned, and you can use the value of the
+     * @odata .nextLink property with a new GET
+     * request to return next set of records.
+     * @returns Returns an asynchronous promise.
+     * @remarks A maximum of 5000 related records can be retrieved when using $expand.
+     * * Only $select option can be specified within $expand.
+     * * $skip query option is not supported.
+     * * Only the following attribute types are supported in offline mode:<BR>
+     * BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
+     * Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
+     * Status, UniqueIdentifier
+     * @deprecated Use {@link Xrm.WebApi.retrieveMultipleRecords} instead.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
+     */
     retrieveMultipleRecords(
       entityType: string,
       options?: string,
       maxPageSize?: number
-    ): Async$Async$PromiseLike<
+    ): Xrm$Async$PromiseLike<
       Array<{
         [key: string]: any
       }>
     >;
 
     /**
- * Updates an entity record in mobile clients while working in the offline mode.
- * @param entityType The logical name of the entity.
- * @param id GUID of the record to update.
- * @param data A dictionary object containing key : value pairs for the record to update.
- * @returns Returns an asynchronous promise.
- * @remarks You cannot update intersect and activity party entities.<BR>
-Only the following attribute types are supported in offline mode:<BR>
-BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
-Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
-Status, UniqueIdentifier
- * @deprecated Use {@link Xrm.WebApi.updateRecord} instead.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
- */
+     * Updates an entity record in mobile clients while working in the offline mode.
+     * @param entityType The logical name of the entity.
+     * @param id GUID of the record to update.
+     * @param data A dictionary object containing key : value pairs for the record to update.
+     * @returns Returns an asynchronous promise.
+     * @remarks You cannot update intersect and activity party entities.<BR>
+     * Only the following attribute types are supported in offline mode:<BR>
+     * BigInt, Boolean, Customer, DateTime, Decimal, Double, EntityName<BR>
+     * Integer, Lookup, Memo, Money, Owner, Picklist, String, State<BR>
+     * Status, UniqueIdentifier
+     * @deprecated Use {@link Xrm.WebApi.updateRecord} instead.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
+     */
     updateRecord(
       entityType: string,
       id: string,
       data: {
         [attributeName: string]: any
       }
-    ): Async$Async$PromiseLike<Async$Async$OfflineOperationSuccessCallbackObject>;
+    ): Xrm$Async$PromiseLike<Xrm$Async$OfflineOperationSuccessCallbackObject>;
 
     /**
      * Deletes an entity record in mobile clients while working in the offline mode.
@@ -1239,7 +1244,7 @@ Status, UniqueIdentifier
     deleteRecord(
       entityType: string,
       id: string
-    ): Async$Async$PromiseLike<Async$Async$OfflineOperationSuccessCallbackObject>;
+    ): Xrm$Async$PromiseLike<Xrm$Async$OfflineOperationSuccessCallbackObject>;
   }
 
   /**
@@ -1260,7 +1265,7 @@ Status, UniqueIdentifier
   /**
    * Object passed to ErrorCallbackDelegate.
    */
-  declare interface Async$ErrorCallbackObject {
+  declare interface Xrm$Async$ErrorCallbackObject {
     /**
      * The error code.
      */
@@ -1275,7 +1280,7 @@ Status, UniqueIdentifier
   /**
    * Object passed to QuickCreateSuccessCallbackDelegate.
    */
-  declare interface Async$OpenQuickCreateSuccessCallbackObject {
+  declare interface Xrm$Async$OpenQuickCreateSuccessCallbackObject {
     /**
      * A lookup value which identifies the record which has been created.
      */
@@ -1285,7 +1290,7 @@ Status, UniqueIdentifier
   /**
    * Object passed to OfflineOperationSuccessCallbackDelegate;
    */
-  declare interface Async$OfflineOperationSuccessCallbackObject {
+  declare interface Xrm$Async$OfflineOperationSuccessCallbackObject {
     /**
      * GUID of the record;
      */
@@ -1300,17 +1305,17 @@ Status, UniqueIdentifier
   /**
    * Object passed to OfflineErrorCallbackDelegate.
    */
-  declare type Async$OfflineErrorCallbackObject = {
+  declare type Xrm$Async$OfflineErrorCallbackObject = {
     /**
      * An internal error message that might contain additional details about the issue.
      */
     debugMessage: string
-  } & Async$ErrorCallbackObject;
+  } & Xrm$Async$ErrorCallbackObject;
 
   /**
    * Interface for asynchronous promises. Based on JQuery Promise
    */
-  declare interface Async$PromiseLike<T> {
+  declare interface Xrm$Async$PromiseLike<T> {
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1318,41 +1323,41 @@ Status, UniqueIdentifier
      * @returns A Promise for the completion of which ever callback is executed.
      */
     then<U>(
-      onFulfilled?: (value: T) => U | Async$PromiseLike<U>,
-      onRejected?: (error: any) => U | Async$PromiseLike<U>
-    ): Async$PromiseLike<U>;
+      onFulfilled?: (value: T) => U | Xrm$Async$PromiseLike<U>,
+      onRejected?: (error: any) => U | Xrm$Async$PromiseLike<U>
+    ): Xrm$Async$PromiseLike<U>;
     then<U>(
-      onFulfilled?: (value: T) => U | Async$PromiseLike<U>,
+      onFulfilled?: (value: T) => U | Xrm$Async$PromiseLike<U>,
       onRejected?: (error: any) => void
-    ): Async$PromiseLike<U>;
+    ): Xrm$Async$PromiseLike<U>;
 
     /**
      * UNDOCUMENTED (Web Client only) Add handlers to be called when the Deferred object is rejected.
      */
     fail<U>(
-      onRejected?: (reason: Xrm$ErrorResponse) => U | Async$PromiseLike<U>
-    ): Async$PromiseLike<U>;
+      onRejected?: (reason: Xrm$ErrorResponse) => U | Xrm$Async$PromiseLike<U>
+    ): Xrm$Async$PromiseLike<U>;
 
     /**
      * UNDOCUMENTED (Web Client only): Add handlers to be called when the Deferred object is either resolved or rejected.
      */
     always<U>(
-      alwaysCallback: () => U | Async$PromiseLike<U>
-    ): Async$PromiseLike<U>;
+      alwaysCallback: () => U | Xrm$Async$PromiseLike<U>
+    ): Xrm$Async$PromiseLike<U>;
 
     /**
      * UNDOCUMENTED (Unified Client only): Add handlers to be called when the Deferred object is rejected.
      */
     catch<U>(
-      onRejected?: (reason: Xrm$ErrorResponse) => U | Async$PromiseLike<U>
-    ): Async$PromiseLike<U>;
+      onRejected?: (reason: Xrm$ErrorResponse) => U | Xrm$Async$PromiseLike<U>
+    ): Xrm$Async$PromiseLike<U>;
 
     /**
      * UNDOCUMENTED (Unified Client only): Add handlers to be called when the Deferred object is either resolved or rejected.
      */
     finally<U>(
-      finallyCallback: () => U | Async$PromiseLike<U>
-    ): Async$PromiseLike<U>;
+      finallyCallback: () => U | Xrm$Async$PromiseLike<U>
+    ): Xrm$Async$PromiseLike<U>;
   }
 
   /**
@@ -1361,7 +1366,7 @@ Status, UniqueIdentifier
    * @param index Zero-based index of the item array.
    * @returns true if the item matches, false if it does not.
    */
-  declare type Collection$MatchingDelegate<T> = (
+  declare type Xrm$Collection$MatchingDelegate<T> = (
     item: T,
     index?: number
   ) => boolean;
@@ -1371,7 +1376,7 @@ Status, UniqueIdentifier
    * @param item The item.
    * @param index Zero-based index of the item array.
    */
-  declare type Collection$IterativeDelegate<T> = (
+  declare type Xrm$Collection$IterativeDelegate<T> = (
     item: T,
     index?: number
   ) => void;
@@ -1380,7 +1385,7 @@ Status, UniqueIdentifier
    * Defines collections that are index-able by string
    * @param Generic type parameter.
    */
-  declare interface Collection$Dictionary<T> {
+  declare interface Xrm$Collection$Dictionary<T> {
     [key: string]: T;
   }
 
@@ -1388,27 +1393,27 @@ Status, UniqueIdentifier
    * Defines item collections that are index-able by string
    * @param Generic type parameter.
    */
-  declare type Collection$StringIndexableItemCollection<
+  declare type Xrm$Collection$StringIndexableItemCollection<
     T
-  > = Collection$Dictionary<T> & Collection$ItemCollection<T>;
+  > = Xrm$Collection$Dictionary<T> & Collection$ItemCollection<T>;
 
   /**
    * Collections are structures to provide access to data that represent an array, but without the ability to modify the data in the array.
    * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
    */
-  declare interface Collection$ItemCollection<T> {
+  declare interface Xrm$Collection$ItemCollection<T> {
     /**
      * Applies an operation to all items in this collection.
      * @param delegate An iterative delegate function
      */
-    forEach(delegate: Collection$IterativeDelegate<T>): void;
+    forEach(delegate: Xrm$Collection$IterativeDelegate<T>): void;
 
     /**
      * Gets the item using a delegate matching function
      * @param delegate A matching delegate function
      * @returns A T[] whose members have been validated by delegate.
      */
-    get(delegate: Collection$MatchingDelegate<T>): T[];
+    get(delegate: Xrm$Collection$MatchingDelegate<T>): T[];
 
     /**
      * Gets the item given by the index.
@@ -1471,165 +1476,31 @@ Status, UniqueIdentifier
   /**
    * @deprecated Use {@link Xrm.Controls.AddControlNotificationOptions} instead.
    */
-  declare type Page$AddControlNotificationOptions = {
-    /**
-     * A collection of actions
-     */
-    actions?: Controls$ControlNotificationAction[],
-
-    /**
-     * The message to display in the notification.
-     * In the current release, only the first message specified in this array will be displayed.
-     */
-    messages: string[],
-
-    /**
-     * Defines the type of notification.
-     */
-    notificationLevel?: Controls$NotificationLevel,
-
-    /**
-     * The ID to use to clear this notification when using the clearNotification method.
-     */
-    uniqueId: string
-  } & Controls$Page$AddControlNotificationOptions;
+  declare type Xrm$Page$AddControlNotificationOptions = {} & Xrm$Controls$AddControlNotificationOptions;
 
   /**
    * Interface to define the actions on a control notification
    * @deprecated Use {@link Xrm.Controls.ControlNotificationAction} instead.
    */
-  declare type Page$ControlNotificationAction = {
-    /**
-     * The body message of the notification to be displayed to the user. Limit your message to 100 characters for optimal user experience.
-     */
-    message?: string,
-
-    /**
-     * Array of functions. The corresponding actions for the message.
-     */
-    actions: Array<() => void>
-  } & Controls$Page$ControlNotificationAction;
+  declare type Xrm$Page$ControlNotificationAction = {} & Xrm$Controls$ControlNotificationAction;
 
   /**
    * Interface for an entity's form selector item.
    * @deprecated Use {@link Xrm.Controls.FormItem} instead.
    */
-  declare type Page$FormItem = {
-    /**
-     * Gets the unique identifier of the form.
-     * @returns The identifier, in Guid format.
-     */
-    getId(): string,
-
-    /**
-     * Gets the label for the form.
-     * @returns The label.
-     */
-    getLabel(): string,
-
-    /**
-     * Navigates the user to this form.
-     */
-    navigate(): void
-  } & Controls$Page$FormItem;
+  declare type Xrm$Page$FormItem = {} & Xrm$Controls$FormItem;
 
   /**
    * Interface for the form selector API.
    * @deprecated Use {@link Xrm.Controls.FormSelector} instead.
    */
-  declare type Page$FormSelector = {
-    /**
-     * Gets current form.
-     * @returns The current item.
-     * @remarks When only one form is available this method will return null.
-     */
-    getCurrentItem(): Page$FormItem,
-
-    /**
-     * A reference to the collection of available forms.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    items: Collection$Collection$ItemCollection<Page$FormItem>
-  } & Controls$Page$FormSelector;
+  declare type Xrm$Page$FormSelector = {} & Xrm$Controls$FormSelector;
 
   /**
    * Interface for Xrm.Page.ui.navigation.
    * @deprecated Use {@link Xrm.Controls.Navigation} instead.
    */
-  declare type Page$Navigation = {
-    /**
-     * A reference to the collection of available navigation items.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    items: Collection$Collection$ItemCollection<Controls$NavigationItem>,
-
-    /**
-     * Displays an alert dialog containing a message and a button.
-     * @param alertStrings The strings to be used in the alert dialog.
-     * @param alertOptions The height and width options for alert dialog
-     */
-    openAlertDialog(
-      alertStrings: Page$Navigation.Navigation$AlertStrings,
-      alertOptions?: Page$Navigation.Navigation$DialogSizeOptions
-    ): Async$Async$PromiseLike<any>,
-
-    /**
-     * Displays a confirmation dialog box containing a message and two buttons.
-     * @param confirmStrings The strings to be used in the confirm dialog.
-     * @param confirmOptions The height and width options for alert dialog
-     */
-    openConfirmDialog(
-      confirmStrings: Page$Navigation.Navigation$ConfirmStrings,
-      confirmOptions?: Page$Navigation.Navigation$DialogSizeOptions
-    ): Async$Async$PromiseLike<Page$Navigation.Navigation$ConfirmResult>,
-
-    /**
-     * Displays an error dialog.
-     * @param confirmStrings The strings to be used in the confirm dialog.
-     * @param confirmOptions The height and width options for alert dialog
-     */
-    openErrorDialog(
-      errorOptions: Page$Navigation.Navigation$ErrorDialogOptions
-    ): Async$Async$PromiseLike<any>,
-
-    /**
-     * Opens a file.
-     */
-    openFile(
-      file: Page$Navigation.Navigation$FileDetails,
-      openFileOptions?: XrmEnum$XrmEnum$OpenFileOptions
-    ): void,
-
-    /**
-     * Opens an entity form or a quick create form.
-     */
-    openForm(
-      entityFormOptions: Page$Navigation.Navigation$EntityFormOptions,
-      formParameters?: Xrm$Utility.Utility$OpenParameters
-    ): Async$Async$PromiseLike<Page$Navigation.Navigation$OpenFormResult>,
-
-    /**
-     * Opens a URL, including file URLs.
-     * @param url URL to open.
-     * @param openUrlOptions Options to open the URL
-     */
-    openUrl(
-      url: string,
-      openUrlOptions?: Page$Navigation.Navigation$DialogSizeOptions
-    ): void,
-
-    /**
- * Opens an HTML web resource.
- * @param webResourceName Name of the HTML web resource.
- * @param windowOptions (Optional) Window options for opening the web resource.
-                           It is advised to use encodeURIcomponent() to encode the value.
- */
-    openWebResource(
-      webResourceName: string,
-      windowOptions?: Page$Navigation.Navigation$OpenWebresourceOptions,
-      data?: string
-    ): void
-  } & Controls$Page$Navigation;
+  declare type Xrm$Page$Navigation = {} & Xrm$Controls$Navigation;
 
   /**
    * Interface for a navigation item.
@@ -1637,1184 +1508,319 @@ Status, UniqueIdentifier
    * @see {@link UiFocusable}
    * @deprecated Use {@link Xrm.Controls.NavigationItem} instead.
    */
-  declare type Page$NavigationItem = {
-    /**
-     * Gets the name of the item.
-     * @returns The identifier.
-     */
-    getId(): string
-  } & Controls$Page$NavigationItem;
+  declare type Xrm$Page$NavigationItem = {} & Xrm$Controls$NavigationItem;
 
   /**
    * Constants to use with the addNotification method of form controls
    * @deprecated Use {@link Xrm.Controls.NotificationLevel} instead.
    */
-  declare type Page$NotificationLevel = Controls$Page$NotificationLevel;
+  declare type Xrm$Page$NotificationLevel = Xrm$Controls$NotificationLevel;
 
   /**
    * Requirement Level for Xrm.Page.Attribute.getRequiredLevel() and Xrm.Page.Attribute.setRequiredLevel().
    * @deprecated Use {@link Xrm.Attributes.RequirementLevel} instead.
    */
-  declare type Page$RequirementLevel = Attributes$Page$RequirementLevel;
+  declare type Xrm$Page$RequirementLevel = Xrm$Attributes$RequirementLevel;
 
   /**
    * Save Modes for Xrm.Page.Entity.save().
    * @deprecated Use {@link Xrm.EntitySaveMode} instead.
    */
-  declare type Page$SaveMode = Xrm$EntitySaveMode;
+  declare type Xrm$Page$SaveMode = Xrm$EntitySaveMode;
 
   /**
    * Status for Xrm.Page.Stage.getStatus().
    * @deprecated Use {@link Xrm.ProcessFlow.StageStatus} instead.
    */
-  declare type Page$StageStatus = ProcessFlow$Page$StageStatus;
+  declare type Xrm$Page$StageStatus = Xrm$ProcessFlow$StageStatus;
 
   /**
    * Status for Xrm.Page.Process.getStatus().
    * @deprecated Use {@link Xrm.ProcessFlow.ProcessStatus} instead
    */
-  declare type Page$ProcessStatus = ProcessFlow$Page$ProcessStatus;
+  declare type Xrm$Page$ProcessStatus = Xrm$ProcessFlow$ProcessStatus;
 
   /**
-   * Submit Mode for {@link Attributes.Attribute.setSubmitMode} Attributes.Attribute.setSubmitMode().
-   * @see {@link XrmEnum.SubmitMode}
+   * Submit Mode for Xrm.Page.Attribute.getSubmitMode() and Xrm.Page.Attribute.setSubmitMode().
+   * @deprecated Use {@link Xrm.SubmitMode} instead.
    */
-  declare type Page$SubmitMode = "always" | "dirty" | "never";
+  declare type Xrm$Page$SubmitMode = Xrm$SubmitMode;
 
   /**
    * Control type for Xrm.Page.ui.QuickForm.getControlType().
    * @deprecated Use {@link Xrm.Controls.ControlQuickFormType} instead.
    */
-  declare type Page$ControlQuickFormType = Controls$Page$ControlQuickFormType;
+  declare type Xrm$Page$ControlQuickFormType = Xrm$Controls$ControlQuickFormType;
 
   /**
    * Control types for Xrm.Page.Control.getControlType().
    * @deprecated Use {@link Xrm.Controls.ControlType} instead.
    */
-  declare type Page$ControlType = Controls$Page$ControlType;
+  declare type Xrm$Page$ControlType = Xrm$Controls$ControlType;
 
   /**
    * Date attribute formats for Xrm.Page.Attribute.getFormat(), used by DateAttribute.
    * @deprecated Use {@link Xrm.Attributes.DateAttributeFormat} instead.
    */
-  declare type Page$DateAttributeFormat = Attributes$Page$DateAttributeFormat;
+  declare type Xrm$Page$DateAttributeFormat = Xrm$Attributes$DateAttributeFormat;
 
   /**
    * Integer attribute formats for Xrm.Page.Attribute.getFormat(), used by NumberAttribute.
    * @deprecated Use {@link Xrm.Attributes.IntegerAttributeFormat} instead.
    */
-  declare type Page$IntegerAttributeFormat = Attributes$Page$IntegerAttributeFormat;
+  declare type Xrm$Page$IntegerAttributeFormat = Xrm$Attributes$IntegerAttributeFormat;
 
   /**
    * OptionSet attribute formats for Xrm.Page.Attribute.getFormat(), used by OptionSetAttribute.
    * @deprecated Use {@link Xrm.Attributes.OptiopnSetAttributeFormat} instead.
    */
-  declare type Page$OptionSetAttributeFormat = Attributes$Page$OptionSetAttributeFormat;
+  declare type Xrm$Page$OptionSetAttributeFormat = Xrm$Attributes$OptionSetAttributeFormat;
 
   /**
    * String attribute formats for Xrm.Page.Attribute.getFormat(), used by StringAttribute.
    * @deprecated Use {@link Xrm.Attributes.StringAttributeFormat} instead.
    */
-  declare type Page$StringAttributeFormat = Attributes$Page$StringAttributeFormat;
+  declare type Xrm$Page$StringAttributeFormat = Xrm$Attributes$StringAttributeFormat;
 
   /**
    * Attribute types for Xrm.ui.ProcessMonitor Xrm.Page.Attribute.setDisplayState().
    * @deprecated Use {@link Xrm.Attributes.AttributeType} instead.
    */
-  declare type Page$AttributeType = Attributes$Page$AttributeType;
+  declare type Xrm$Page$AttributeType = Xrm$Attributes$AttributeType;
 
   /**
    * Direction types for a process stage change event
    * @deprecated Use {@link Xrm.ProcessFlow.StageChangeDirection} instead.
    */
-  declare type Page$StageChangeDirection = ProcessFlow$Page$StageChangeDirection;
+  declare type Xrm$Page$StageChangeDirection = Xrm$ProcessFlow$StageChangeDirection;
 
   /**
    * Attribute formats for Xrm.Page.Attribute.getFormat().
    * @deprecated Use {@link Xrm.Attributes.AttributeFormat} instead.
    */
-  declare type Page$AttributeFormat = Attributes$Page$AttributeFormat;
+  declare type Xrm$Page$AttributeFormat = Xrm$Attributes$AttributeFormat;
 
   /**
    * Interface for a CRM Business Process Flow instance.
    * @deprecated Use {@link Xrm.ProcessFlow.Process} instead.
    */
-  declare type Page$Process = {
-    /**
-     * Returns the unique identifier of the process.
-     * @returns The identifier for this process, in GUID format.
-     * @example Example: "{825CB223-A651-DF11-AA8B-00155DBA3804}".
-     */
-    getId(): string,
-
-    /**
-     * Returns the name of the process.
-     * @returns The name.
-     */
-    getName(): string,
-
-    /**
-     * Returns an collection of stages in the process.
-     * @returns The stages.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    getStages(): Collection$Collection$ItemCollection<ProcessFlow$Stage>,
-
-    /**
-     * Returns a boolean value to indicate if the process is rendered.
-     * @returns true if the process is rendered, false if not.
-     */
-    isRendered(): boolean
-  } & ProcessFlow$Page$Process;
+  declare type Xrm$Page$Process = {} & Xrm$ProcessFlow$Process;
 
   /**
    * Interface for CRM Business Process Flow stages.
    * @deprecated Use {@link Xrm.ProcessFlow.Stage} instead.
    */
-  declare type Page$Stage = {
-    /**
-     * Returns an object with a getValue method which will return the integer value of the business process flow
-     * category.
-     * @returns The stage category.
-     */
-    getCategory(): {
-      getValue(): XrmEnum$XrmEnum$StageCategory
-    },
-
-    /**
-     * Returns the logical name of the entity associated with the stage.
-     * @returns The entity name.
-     */
-    getEntityName(): string,
-
-    /**
-     * Returns the unique identifier of the stage.
-     * @returns The identifier of the Stage, in GUID format.
-     * @example Example: "{825CB223-A651-DF11-AA8B-00155DBA3804}".
-     */
-    getId(): string,
-
-    /**
-     * Returns the name of the stage.
-     * @returns The name.
-     */
-    getName(): string,
-
-    /**
-     * Returns the status of the stage.
-     * @returns The status, either "active" or "inactive".
-     */
-    getStatus(): Page$StageStatus,
-
-    /**
-     * Returns a collection of steps in the stage.
-     * @returns An array of Step.
-     */
-    getSteps(): ProcessFlow$Step[]
-  } & ProcessFlow$Page$Stage;
+  declare type Xrm$Page$Stage = {} & Xrm$ProcessFlow$Stage;
 
   /**
    * Interface for CRM Business Process Flow steps.
    * @deprecated Use {@link Xrm.ProcessFlow.Step} instead.
    */
-  declare type Page$Step = {
-    /**
-     * Returns the logical name of the attribute associated to the step.
-     * @returns The attribute.
-     * @remarks Some steps don’t contain an attribute value.
-     */
-    getAttribute(): string,
-
-    /**
-     * Returns the name of the step.
-     * @returns The name.
-     */
-    getName(): string,
-
-    /**
- * Returns whether the step is required in the business process flow.
- * @returns true if required, false if not.
- * @remarks Returns true if the step is marked as required in the Business Process Flow editor; otherwise, false.
-There is no connection between this value and the values you can change in the formContext.data.entity
-attribute RequiredLevel methods.
- */
-    isRequired(): boolean
-  } & ProcessFlow$Page$Step;
+  declare type Xrm$Page$Step = {} & Xrm$ProcessFlow$Step;
 
   /**
    * Interface for the event context.
-   * In the API documentation, this is sometimes refferred to as the executionContext.
-   * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/clientapi-execution-context External Link: Client API execution context}
-   * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/execution-context External Link: Execution context (Client API reference)}
+   * @deprecated Use {@link Xrm.Events.EventContext} instead.
    */
-  declare interface Page$EventContext {
-    /**
-     * Gets the Xrm context.
-     * @returns The Xrm context.
-     */
-    getContext(): Xrm$GlobalContext;
-
-    /**
-     * Gets the handler's depth, which is the order in which the handler is executed.
-     * @returns The depth, a 0-based index.
-     */
-    getDepth(): number;
-
-    /**
-     * Gets a reference to the object for which event occurred.
-     * @returns The event source.
-     */
-    getEventSource():
-      | Attributes$Attributes$Attribute
-      | Controls$Controls$Control
-      | Xrm$Entity;
-
-    /**
-     * Gets a reference to the currnet form context
-     * @returns The {@link FormContext form context}
-     */
-    getFormContext(): Xrm$FormContext;
-
-    /**
- * @summary Gets the shared variable with the specified key.
- * @param T Generic type parameter.
- * @param key The key.
- * @returns The shared variable.
- * @desc Gets the shared variable with the specified key.
-Used to pass values between handlers of an event.
- */
-    getSharedVariable<T>(key: string): T;
-
-    /**
- * @summary Sets a shared variable.
- * @param T Generic type parameter.
- * @param key The key.
- * @param value The value.
- * @desc Sets the shared variable with the specified key.
-Used to pass values between handlers of an event.
- */
-    setSharedVariable<T>(key: string, value: T): void;
-  }
+  declare type Xrm$Page$EventContext = {} & Xrm$Events$EventContext;
 
   /**
    * Interface for a save event context
+   * @deprecated Use {@link Xrm.Events.SaveEventContext} instead.
    */
-  declare type Page$SaveEventContext = {
-    /**
-     * Gets save-event arguments.
-     * @returns The event arguments.  Returns null for all but the "save" event.
-     */
-    getEventArgs(): Events$SaveEventArguments
-  } & Page$EventContext;
+  declare type Xrm$Page$SaveEventContext = {} & Xrm$Events$SaveEventContext;
 
   /**
    * Interface for a process stage change event context
+   * @deprecated Use {@link Xrm.Events.StageChangeEventContext} instead.
    */
-  declare type Page$StageChangeEventContext = {
-    /**
-     * Gets process stage change event arguments.
-     * @returns The event arguments.
-     */
-    getEventArgs(): Events$StageChangeEventArguments
-  } & Page$EventContext;
+  declare type Xrm$Page$StageChangeEventContext = {} & Xrm$Events$StageChangeEventContext;
 
-  declare type Page$StageSelectedEventContext = {
-    /**
-     * Gets process stage selected event arguments.
-     * @returns The event arguments.
-     */
-    getEventArgs(): Events$StageSelectedEventArguments
-  } & Page$EventContext;
+  /**
+   * Interface for a process stage select event context
+   * @deprecated Use {@link Xrm.Events.StageSelectedEventContext} instead.
+   */
+  declare type Xrm$Page$StageSelectedEventContext = {} & Xrm$Events$StageSelectedEventContext;
 
   /**
    * Type for a context-sensitive handler.
    * @param context The context.
+   * @deprecated Use {@link Xrm.Events.ContextSensitiveHandler} instead.
    */
-  declare type Page$ContextSensitiveHandler = (
-    context: Page$EventContext
-  ) => void;
+  declare type Xrm$Page$ContextSensitiveHandler = Xrm$Events$ContextSensitiveHandler;
 
   /**
    * Type for a process status change handler.
    * @param status The process status.
+   * @deprecated Use {@link Xrm.Events.ProcessStatusChangeHandler} instead.
    */
-  declare type Page$ProcessStatusChangeHandler = (
-    status: ProcessFlow$Page$ProcessStatus
-  ) => void;
+  declare type Xrm$Page$ProcessStatusChangeHandler = Xrm$Events$ProcessStatusChangeHandler;
 
   /**
    * Interface for UI elements with labels.
    * @deprecated Use {@link Xrm.Controls.UiLabelElement} instead.
    */
-  declare type Page$UiLabelElement = {
-    /**
-     * Gets the label.
-     * @returns The label.
-     */
-    getLabel(): string,
-
-    /**
-     * Sets the label.
-     * @param label The label.
-     */
-    setLabel(label: string): void
-  } & Controls$Page$UiLabelElement;
+  declare type Xrm$Page$UiLabelElement = {} & Xrm$Controls$UiLabelElement;
 
   /**
    * Interface for UI elements which can have the visibility value read.
    * @deprecated Use {@link Xrm.Controls.UiCanGetVisibleElement} instead.
    */
-  declare type Page$UiCanGetVisibleElement = {
-    /**
-     * Gets the visibility state.
-     * @returns true if the tab is visible, otherwise false.
-     */
-    getVisible(): boolean
-  } & Controls$Page$UiCanGetVisibleElement;
+  declare type Xrm$Page$UiCanGetVisibleElement = {} & Xrm$Controls$UiCanGetVisibleElement;
 
   /**
    * Interface for UI elements which can have the visibility value updated.
    * @deprecated Use {@link Xrm.Controls.UiCanSetVisibleElement} instead.
    */
-  declare type Page$UiCanSetVisibleElement = {
-    /**
-     * Sets the visibility state.
-     * @param visible true to show, false to hide.
-     */
-    setVisible(visible: boolean): void
-  } & Controls$Page$UiCanSetVisibleElement;
+  declare type Xrm$Page$UiCanSetVisibleElement = {} & Xrm$Controls$UiCanSetVisibleElement;
 
   /**
    * Base interface for standard UI elements.
    * @deprecated Use {@link Xrm.Controls.UiStandardElement} instead.
    */
-  declare type Page$UiStandardElement = {
-    /**
-     * Sets the visibility state.
-     * @param visible true to show, false to hide.
-     */
-    setVisible(visible: boolean): void
-  } & Controls$Page$UiStandardElement;
+  declare type Xrm$Page$UiStandardElement = {} & Xrm$Controls$UiStandardElement;
 
   /**
    * Interface for focusable UI elements.
    * @deprecated Use {@link Xrm.Controls.UiFocusable} instead.
    */
-  declare type Page$UiFocusable = {
-    /**
-     * Sets focus on the element.
-     */
-    setFocus(): void
-  } & Controls$Page$UiFocusable;
+  declare type Xrm$Page$UiFocusable = {} & Xrm$Controls$UiFocusable;
 
   /**
    * Interface for controls which methods provide immediate feedback or take actions as user types in a control.
    * Contains methods which can be used to perform data validations in a control even before the user commits (saves) the value in a form.
    * @deprecated Use {@link Xrm.Controls.UiKeyPressable} instead.
    */
-  declare type Page$UiKeyPressable = {
-    /**
-     * Use this to add a function as an event handler for the keypress event so that the function is called when you type a character in the specific text or number field.
-     * For a sample JavaScript code that uses the addOnKeyPress method to configure the auto-completion experience, see Sample: Auto-complete in CRM controls.
-     * @deprecated Deprecated in v9.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
-     * @param handler The function reference.
-     */
-    addOnKeyPress(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
-     * Use this to manually fire an event handler that you created for a specific text or number field to be executed on the keypress event.
-     */
-    fireOnKeyPress(): void,
-
-    /**
- * Use this to remove an event handler for a text or number field that you added using addOnKeyPress.
- * @deprecated Deprecated in v9.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
-Remarks:  If an anonymous function is set using addOnKeyPress, it can’t be removed using this method.
- * @param handler The function reference.
- */
-    removeOnKeyPress(handler: Events$Page$ContextSensitiveHandler): void
-  } & Controls$Page$UiKeyPressable;
+  declare type Xrm$Page$UiKeyPressable = {} & Xrm$Controls$UiKeyPressable;
 
   /**
    * Interface for Result value of AutoCompleteResultSet
    * @deprecated Use {@link Xrm.Controls.AutoCompleteResult} instead.
    */
-  declare type Page$AutoCompleteResult = {
-    /**
-     * The Identifier
-     */
-    id: string | number,
-
-    /**
-     * Url of the icon to display
-     */
-    icon?: string,
-
-    /**
-     * Display value(s) for this auto-complete option
-     */
-    fields: string[]
-  } & Controls$Page$AutoCompleteResult;
+  declare type Xrm$Page$AutoCompleteResult = {} & Xrm$Controls$AutoCompleteResult;
 
   /**
    * Interface for command of AutoCompleteResultSet.  This is displayed at the bottom of the auto complete view
    * @deprecated Use {@link Xrm.Controls.AutoCompleteCommand} instead.
    */
-  declare type Page$AutoCompleteCommand = {
-    /**
-     * The Identifier
-     */
-    id: string,
-
-    /**
-     * Url of the icon to display
-     */
-    icon?: string,
-
-    /**
-     * Label to display at the bottom of the auto complete view
-     */
-    label: string,
-
-    /**
-     * Action to perform when user clicks on label
-     */
-    action(): void
-  } & Controls$Page$AutoCompleteCommand;
+  declare type Xrm$Page$AutoCompleteCommand = {} & Xrm$Controls$AutoCompleteCommand;
 
   /**
    * Interface for showAutoComplete argument
    * @deprecated Use {@link Xrm.Controls.AutoCompleteResultSet} instead.
    */
-  declare type Page$AutoCompleteResultSet = {
-    /**
-     * Results to show
-     */
-    results: Page$AutoCompleteResult[],
-
-    /**
-     * Command to show/execute at the bottom of the results displayed
-     */
-    commands?: Page$AutoCompleteCommand
-  } & Controls$Page$AutoCompleteResultSet;
+  declare type Xrm$Page$AutoCompleteResultSet = {} & Xrm$Controls$AutoCompleteResultSet;
 
   /**
    * Interface for a Lookup value.
    * @deprecated Use {@link Xrm.LookupValue} instead.
    */
-  declare type Page$LookupValue = {
-    /**
-     * The identifier.
-     */
-    id: string,
-
-    /**
-     * The name
-     */
-    name?: string,
-
-    /**
-     * Type of the entity.
-     */
-    entityType: string
-  } & Xrm$Page$LookupValue;
+  declare type Xrm$Page$LookupValue = {} & Xrm$LookupValue;
 
   /**
    * Interface for an OptionSet value.
    * @deprecated Use {@link Xrm.OptionSetValue} instead.
    */
-  declare type Page$OptionSetValue = {
-    /**
-     * The label text.
-     */
-    text: string,
-
-    /**
-     * The value, as a number
-     */
-    value: number
-  } & Xrm$Page$OptionSetValue;
+  declare type Xrm$Page$OptionSetValue = {} & Xrm$OptionSetValue;
 
   /**
    * Interface for a privilege.
    * @deprecated Use {@link Xrm.Privilege} instead.
    */
-  declare type Page$Privilege = {
-    /**
-     * True if the user can read.
-     */
-    canRead: boolean,
-
-    /**
-     * True if the user can update.
-     */
-    canUpdate: boolean,
-
-    /**
-     * True if the user can create.
-     */
-    canCreate: boolean
-  } & Xrm$Page$Privilege;
+  declare type Xrm$Page$Privilege = {} & Xrm$Privilege;
 
   /**
    * Interface for an Entity attribute.
    * @deprecated Use {@link Xrm.Attributes.Attribute} instead.
    */
-  declare type Page$Attribute = {
-    /**
-     * Adds a handler to be called when the attribute's value is changed.
-     * @param handler The function reference.
-     */
-    addOnChange(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
-     * Fire all "on change" event handlers.
-     */
-    fireOnChange(): void,
-
-    /**
-     * Gets attribute type.
-     * @returns The attribute's type name.<BR><BR>
-     **Values returned are**:
-     * boolean
-     * datetime
-     * decimal
-     * double
-     * integer
-     * lookup
-     * memo
-     * money
-     * optionset
-     * string
-     */
-    getAttributeType(): Page$AttributeType,
-
-    /**
-     * Gets the attribute format.
-     * @returns The format of the attribute.<BR><BR>
-     **Values returned are**:
-     * date           (datetime)
-     * datetime       (datetime)
-     * duration       (integer)
-     * email          (string)
-     * language       (optionset)
-     * none           (integer)
-     * phone          (string)
-     * text           (string)
-     * textarea       (string)
-     * tickersymbol   (string)
-     * timezone       (optionset)
-     * url            (string)
-     * @see {@link getAttributeType}
-     */
-    getFormat(): Page$AttributeFormat,
-
-    /**
-     * Gets a boolean value indicating whether this Attribute has unsaved changes.
-     * @returns true if there are unsaved changes, otherwise false.
-     */
-    getIsDirty(): boolean,
-
-    /**
-     * Gets the logical name of the attribute.
-     * @returns The logical name.
-     */
-    getName(): string,
-
-    /**
-     * Gets a reference to the record context of this attribute.
-     * @returns The parent record context.
-     */
-    getParent(): Xrm$Entity,
-
-    /**
-     * Gets the current level of requirement for the attribute.
-     * @returns The required level, as either "none", "required", or "recommended"
-     */
-    getRequiredLevel(): Page$RequirementLevel,
-
-    /**
-     * Gets current submit mode for the attribute.
-     * @returns The submit mode, as either "always", "never", or "dirty"
-     * @remarks The default value is "dirty"
-     */
-    getSubmitMode(): Page$SubmitMode,
-
-    /**
-     * Gets the current user's privileges for the attribute.
-     * @returns The user privileges.
-     */
-    getUserPrivilege(): Page$Privilege,
-
-    /**
-     * Removes the handler from the "on change" event.
-     * @param handler The handler.
-     */
-    removeOnChange(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
-     * Sets the required level.
-     * @param requirementLevel The requirement level, as either "none", "required", or "recommended"
-     * @see {@link XrmEnum.AttributeRequirementLevel}
-     */
-    setRequiredLevel(requirementLevel: Page$RequirementLevel): void,
-
-    /**
-     * Sets the submit mode.
-     * @param submitMode The submit mode, as either "always", "never", or "dirty".
-     * @default submitMode "dirty"
-     * @see {@link XrmEnum.AttributeRequirementLevel}
-     */
-    setSubmitMode(submitMode: Page$SubmitMode): void,
-
-    /**
-     * A collection of all the controls on the form that interface with this attribute.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    controls: Collection$Collection$ItemCollection<Controls$Controls$Control>,
-
-    /**
-     * Gets the value.
-     * @returns The value.
-     */
-    getValue(): any,
-
-    /**
-     * Sets the value.
-     * @param value The value.
-     */
-    setValue(value: any): void
-  } & Attributes$Page$Attribute;
+  declare type Xrm$Page$Attribute = {} & Xrm$Attributes$Attribute;
 
   /**
    * Interface for a Number attribute.
    * @see {@link Attribute}
    * @deprecated Use {@link Xrm.Attributes.NumberAttribute} instead.
    */
-  declare type Page$NumberAttribute = {
-    /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: duration, none
- */
-    getFormat(): Page$IntegerAttributeFormat,
-
-    /**
-     * Gets the maximum value allowed.
-     * @returns The maximum value allowed.
-     */
-    getMax(): number,
-
-    /**
-     * Gets the minimum value allowed.
-     * @returns The minimum value allowed.
-     */
-    getMin(): number,
-
-    /**
-     * Gets the attribute's configured precision.
-     * @returns The total number of allowed decimal places.
-     */
-    getPrecision(): number,
-
-    /**
-     * Gets the value.
-     * @returns The value.
-     */
-    getValue(): number,
-
-    /**
-     * Sets the value.
-     * @param value The value.
-     * @remarks Attributes on Quick Create Forms will not save values set with this method.
-     */
-    setValue(value: number): void,
-
-    /**
-     * A collection of all the controls on the form that interface with this attribute.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    controls: Collection$Collection$ItemCollection<Controls$Controls$NumberControl>
-  } & Attributes$Page$NumberAttribute;
+  declare type Xrm$Page$NumberAttribute = {} & Xrm$Attributes$NumberAttribute;
 
   /**
    * Interface for a String attribute.
    * @see {@link Attribute}
    * @deprecated Use {@link Xrm.Attributes.StringAttribute} instead.
    */
-  declare type Page$StringAttribute = {
-    /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: email, phone, text, textarea, tickersymbol, url
- */
-    getFormat(): Page$StringAttributeFormat,
-
-    /**
-     * Gets maximum length allowed.
-     * @returns The maximum length allowed.
-     * @remarks The email form's "Description" attribute does not have the this method.
-     */
-    getMaxLength(): number,
-
-    /**
-     * Gets the value.
-     * @returns The value.
-     */
-    getValue(): string,
-
-    /**
- * Sets the value.
- * @param value The value.
- * @remarks A String field with the {@link Attribute.getFormat|email} format enforces email
-address formatting. Attributes on Quick Create Forms will not save values set
-with this method.
- */
-    setValue(value: string): void,
-
-    /**
-     * A collection of all the controls on the form that interface with this attribute.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    controls: Collection$Collection$ItemCollection<Controls$Controls$StringControl>
-  } & Attributes$Page$StringAttribute;
+  declare type Xrm$Page$StringAttribute = {} & Xrm$Attributes$StringAttribute;
 
   /**
    * Common interface for enumeration attributes (OptionSet and Boolean).
    * @see {@link Attribute}
    * @deprecated Use {@link Xrm.Attributes.EnumAttribute} instead.
    */
-  declare type Page$EnumAttribute = {
-    /**
-     * Gets the initial value of the attribute.
-     * @returns The initial value.
-     * @remarks Valid for OptionSet and boolean attribute types
-     */
-    getInitialValue(): number | boolean
-  } & Attributes$Page$EnumAttribute;
+  declare type Xrm$Page$EnumAttribute = {} & Xrm$Attributes$EnumAttribute;
 
   /**
    * Interface for a Boolean attribute.
    * @see {@link EnumAttribute}
    * @deprecated Use {@link Xrm.Attributes.BooleanAttribute} instead.
    */
-  declare type Page$BooleanAttribute = {
-    /**
-     * Gets the initial value of the attribute.
-     * @returns The initial value.
-     * @remarks Valid for OptionSet and boolean attribute types
-     */
-    getInitialValue(): boolean,
-
-    /**
-     * Gets the value.
-     * @returns true if it succeeds, false if it fails.
-     */
-    getValue(): boolean,
-
-    /**
-     * Sets the value.
-     * @param value The value.
-     * @remarks Attributes on Quick Create Forms will not save values set with this method.
-     */
-    setValue(value: boolean): void
-  } & Attributes$Page$BooleanAttribute;
+  declare type Xrm$Page$BooleanAttribute = {} & Xrm$Attributes$BooleanAttribute;
 
   /**
    * Interface for a Date attribute.
    * @see {@link Attribute}
    * @deprecated Use {@link Xrm.Attributes.DateAttribute} instead.
    */
-  declare type Page$DateAttribute = {
-    /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: date, datetime
- */
-    getFormat(): Page$DateAttributeFormat,
-
-    /**
-     * Gets the value.
-     * @returns The value.
-     */
-    getValue(): Date,
-
-    /**
-     * Sets the value.
-     * @param value The value.
-     * @remarks Attributes on Quick Create Forms will not save values set with this method.
-     */
-    setValue(value: Date): void,
-
-    /**
-     * A collection of all the controls on the form that interface with this attribute.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    controls: Collection$Collection$ItemCollection<Controls$Controls$DateControl>
-  } & Attributes$Page$DateAttribute;
+  declare type Xrm$Page$DateAttribute = {} & Xrm$Attributes$DateAttribute;
 
   /**
    * Interface an OptionSet attribute.
    * @see {@link EnumAttribute}
    * @deprecated Use {@link Xrm.Attributes.OptionSetAttribute} instead.
    */
-  declare type Page$OptionSetAttribute = {
-    /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: language, timezone
- */
-    getFormat(): Page$OptionSetAttributeFormat,
-
-    /**
-     * Gets the initial value of the attribute.
-     * @returns The initial value.
-     * @remarks Valid for OptionSet and boolean attribute types
-     */
-    getInitialValue(): number,
-
-    /**
-     * Gets the option matching a value.
-     * @param value The enumeration value of the option desired.
-     * @returns The option.
-     */
-    getOption(value: number): Page$OptionSetValue,
-
-    /**
-     * Gets the option matching a label.
-     * @param label The label of the option desired.
-     * @returns The option.
-     */
-    getOption(label: string): Page$OptionSetValue,
-
-    /**
-     * Gets all of the options.
-     * @returns An array of options.
-     */
-    getOptions(): Page$OptionSetValue[],
-
-    /**
-     * Gets selected option.
-     * @returns The selected option.
-     */
-    getSelectedOption(): Page$OptionSetValue,
-
-    /**
-     * Gets the label of the currently selected option.
-     * @returns The current value's label.
-     */
-    getText(): string,
-
-    /**
-     * Gets the value.
-     * @returns The value.
-     */
-    getValue(): number,
-
-    /**
- * Sets the value.
- * @param value The value.
- * @remarks The getOptions() method returns option values as strings. You must use parseInt
-to convert them to numbers before you can use those values to set the value of an
-OptionSet attribute. Attributes on Quick Create Forms will not save values set
-with this method.
- */
-    setValue(value: number): void,
-
-    /**
-     * A collection of all the controls on the form that interface with this attribute.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    controls: Collection$Collection$ItemCollection<Controls$Controls$OptionSetControl>
-  } & Attributes$Page$OptionSetAttribute;
+  declare type Xrm$Page$OptionSetAttribute = {} & Xrm$Attributes$OptionSetAttribute;
 
   /**
    * Interface a Lookup attribute.
    * @see {@link Attribute}
    * @deprecated Use {@link Xrm.Attributes.LookupAttribute} instead.
    */
-  declare type Page$LookupAttribute = {
-    /**
-     * Gets a boolean value indicating whether the Lookup is a multi-value PartyList.
-     * @returns true the attribute is a PartyList, otherwise false.
-     */
-    getIsPartyList(): boolean,
-
-    /**
-     * Gets the value.
-     * @returns An array of LookupValue.
-     */
-    getValue(): Page$LookupValue[],
-
-    /**
-     * Sets the value.
-     * @param value The value.
-     * @remarks Attributes on Quick Create Forms will not save values set with this method.
-     */
-    setValue(value: Page$LookupValue[]): void,
-
-    /**
-     * A collection of all the controls on the form that interface with this attribute.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    controls: Collection$Collection$ItemCollection<Controls$Controls$LookupControl>
-  } & Attributes$Page$LookupAttribute;
+  declare type Xrm$Page$LookupAttribute = {} & Xrm$Attributes$LookupAttribute;
 
   /**
    * Interface for the form's record context, Xrm.Page.data.entity
    * @deprecated Use {@link Xrm.Entity} instead.
    */
-  declare type Page$Entity = {
-    /**
-     * Adds a handler to be called when the record is saved.
-     * @param handler The handler.
-     */
-    addOnSave(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Gets an serialized-XML string representing data that will be passed to the server upon saving the record.
- * @returns The XML in string format.
- * @remarks This function does not work with Microsoft Dynamics CRM for tablets.
- * @example "<account><name>Contoso</name><accountnumber>55555</accountnumber><telephone2>425
-555-1234</telephone2></account>".
- */
-    getDataXml(): string,
-
-    /**
-     * Gets entity's logical name.
-     * @returns The logical name.
-     */
-    getEntityName(): string,
-
-    /**
-     * Gets a lookup value that references the record.
-     * @returns A lookup value that references the record.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-data-entity/getentityreference External Link: getEntityReference API Documentation}
-     */
-    getEntityReference(): Page$LookupValue,
-
-    /**
-     * Gets the record's unique identifier.
-     * @returns The identifier, in Guid format.
-     * @example Example: "{825CB223-A651-DF11-AA8B-00155DBA3804}".
-     */
-    getId(): string,
-
-    /**
-     * Gets a boolean value indicating whether the record has unsaved changes.
-     * @returns true if there are unsaved changes, otherwise false.
-     */
-    getIsDirty(): boolean,
-
-    /**
-     * Gets the record's primary attribute value.
-     * @returns The primary attribute value.
-     * @remarks The value for this attribute is used when links to the record are displayed.
-     */
-    getPrimaryAttributeValue(): string,
-
-    /**
-     * Gets a boolean value indicating whether all of the entity data is valid.
-     * @returns true if all of the entity data is valid; false otherwise.
-     */
-    isValid(): boolean,
-
-    /**
-     * Removes the handler from the "on save" event.
-     * @param handler The handler.
-     */
-    removeOnSave(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Saves the record.
- * @remarks When using quick create forms in the web application the saveandnew option is not
-applied. It will always work as if saveandclose were used. Quick create forms in
-Microsoft Dynamics CRM for tablets will apply the saveandnew behavior.
- */
-    save(): void,
-
-    /**
-     * Saves the record with the given save mode.
-     * @param saveMode (Optional) the save mode to save, as either "saveandclose" or "saveandnew".  If no parameter is included in the method, the record will simply be saved.
-     */
-    save(saveMode?: Xrm$EntitySaveMode): void,
-
-    /**
-     * The collection of attributes for the record.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/attributes External Link: Attributes (Client API reference)}
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    attributes: Collection$Collection$ItemCollection<Attributes$Page$Attribute>
-  } & Xrm$Page$Entity;
+  declare type Xrm$Page$Entity = {} & Xrm$Entity;
 
   /**
    * Interface for save event arguments.
+   * @deprecated Use {@link Xrm.Events.SaveEventContext} instead.
    */
-  declare interface Page$SaveEventArguments {
-    /**
-     * @summary Gets save mode, as an integer.
-     * @returns The save mode.
-     * @description Gets save mode, as an integer.<BR>
-     **Values returned are**:
-     * 1      Save
-     * 2      Save and Close
-     * 59     Save and New
-     * 70     AutoSave (Where enabled; can be used with an OnSave handler to conditionally disable auto-saving)
-     * 58     Save as Completed (Activities)
-     * 5      Deactivate
-     * 6      Reactivate
-     * 47     Assign (All user- or team-owned entities)
-     * 7      Send (Email)
-     * 16     Qualify (Lead)
-     * 15     Disqualify (Lead)
-     */
-    getSaveMode(): XrmEnum$Page$SaveMode;
-
-    /**
-     * Returns a boolean value to indicate if the record's save has been prevented.
-     * @returns true if saving is prevented, otherwise false.
-     */
-    isDefaultPrevented(): boolean;
-
-    /**
-     * Prevents the save operation from being submitted to the server.
-     * All remaining "on save" handlers will continue execution.
-     */
-    preventDefault(): void;
-  }
+  declare type Xrm$Page$SaveEventArguments = {} & Xrm$Events$SaveEventContext;
 
   /**
    * Interface for process stage change event arguments.
+   * @deprecated Use {@link Xrm.Events.StageChangeEventArguments} instead.
    */
-  declare interface Page$StageChangeEventArguments {
-    /**
-     * Gets the direction of the stage change.
-     * @returns The direction: "next" or "previous"
-     */
-    getDirection(): ProcessFlow$Page$StageChangeDirection;
-
-    /**
-     * Gets the destination stage object
-     * @returns The stage object. For switching between entities, returns the previous stage object
-     */
-    getStage(): ProcessFlow$Page$Stage;
-  }
+  declare type Xrm$Page$StageChangeEventArguments = {} & Xrm$Events$StageChangeEventArguments;
 
   /**
    * Interface for process stage selected event arguments.
+   * @deprecated Use {@link Xrm.Events.StageSelectedEventArguments} instead.
    */
-  declare interface Page$StageSelectedEventArguments {
-    /**
-     * Gets the selected stage object
-     * @returns The stage object
-     */
-    getStage(): ProcessFlow$Page$Stage;
-  }
+  declare type Xrm$Page$StageSelectedEventArguments = {} & Xrm$Events$StageSelectedEventArguments;
 
   /**
    * Interface for Xrm.Page.ui controls.
    * @see {@link UiElement}
    * @deprecated Use {@link Xrm.Controls.Control} instead.
    */
-  declare type Page$Control = {
-    /**
-     * Gets the controls type.
-     * @returns The control type.<BR><BR>
-     **Values returned are**:
-     * standard
-     * iframe
-     * lookup
-     * optionset
-     * subgrid
-     * webresource
-     * notes
-     * timercontrol
-     * kbsearch (CRM Online Only, use parature.d.ts)
-     * quickform (see ui.QuickForm)
-     * customcontrol: <namespace>.<name> (A custom control for mobile phone and tablet clients).
-     * customsubgrid: <namespace>.<name> (A custom dataset control for mobile phone and tablet clients).
-     */
-    getControlType(): Page$ControlType | string,
-
-    /**
- * Gets the name of the control on the form.
- * @returns The name of the control.
- * @remarks The name assigned to a control is not determined until the form loads. Changes to
-the form may change the name assigned to a given control.
-When you use the control getName method the name of the first control will be the
-same as the name of the attribute. The second instance of a control for that
-attribute will be "<attributeName>1". The pattern <attributeName>+N
-will continue for each additional control added to the form for a specific
-attribute. When a form displays a business process flow control in the header,
-additional controls will be added for each attribute that is displayed in the
-business process flow. These controls have a unique name like the following:
-header_process_<attribute name>.
- */
-    getName(): string,
-
-    /**
-     * Gets a reference to the Section parent of the control.
-     * @returns The parent Section.
-     */
-    getParent(): Controls$Section
-  } & Controls$Page$Control;
+  declare type Xrm$Page$Control = {} & Xrm$Controls$Control;
 
   /**
    * Interface for a standard control.
    * @see {@link Control}
    * @deprecated Use {@link Xrm.Controls.StandardControl} instead.
    */
-  declare type Page$StandardControl = {
-    /**
-     * Clears the notification identified by uniqueId.
-     * @param uniqueId (Optional) Unique identifier.
-     * @returns true if it succeeds, false if it fails.
-     * @remarks If the uniqueId parameter is not used, the current notification shown will be removed.
-     */
-    clearNotification(uniqueId?: string): boolean,
-
-    /**
-     * Gets a boolean value, indicating whether the control is disabled.
-     * @returns true if it is disabled, otherwise false.
-     */
-    getDisabled(): boolean,
-
-    /**
-     * Sets the state of the control to either enabled, or disabled.
-     * @param disabled true to disable, false to enable.
-     */
-    setDisabled(disabled: boolean): void,
-
-    /**
- * Sets a control-local notification message.
- * @param message The message.
- * @param uniqueId Unique identifier.
- * @returns true if it succeeds, false if it fails.
- * @remarks When this method is used on Microsoft Dynamics CRM for tablets a red "X" icon
-appears next to the control. Tapping on the icon will display the message.
- */
-    setNotification(message: string, uniqueId: string): boolean,
-
-    /**
-     * Displays an error or recommendation notification for a control, and lets you specify actions to execute based on the notification.
-     */
-    addNotification(notification: Page$AddControlNotificationOptions): void,
-
-    /**
-     * Gets the control's bound attribute.
-     * @template An Attribute type.
-     * @returns The attribute.
-     */
-    getAttribute<T: Attributes$Page$Attribute>(): T,
-
-    /**
-     * Gets the control's bound attribute.
-     * @returns The attribute.
-     */
-    getAttribute(): Attributes$Page$Attribute
-  } & Controls$Page$StandardControl;
+  declare type Xrm$Page$StandardControl = {} & Xrm$Controls$StandardControl;
 
   /**
    * Interface for Auto Lookup Control.
@@ -2823,334 +1829,79 @@ appears next to the control. Tapping on the icon will display the message.
    * @see {@link StandardControl}
    * @deprecated Use {@link Xrm.Controls.AutoLookupControl} instead.
    */
-  declare type Page$AutoLookupControl = {
-    /**
-     * Gets the latest value in a control as the user types characters in a specific text or number field.
-     * This method helps you to build interactive experiences by validating data and alerting users as they type characters in a control.
-     * The getValue method is different from the attribute getValue method because the control method retrieves the value from the control
-     * as the user is typing in the control as opposed to the attribute getValue method that retrieves the value after the user commits (saves) the field.
-     */
-    getValue(): string,
-
-    /**
-     * Hides the auto-completion drop-down list configured for a specific text field
-     * @deprecated Deprecated in v9.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
-     */
-    hideAutoComplete(): void,
-
-    /**
-     * Shows upt to 10 matching strings in a drop-down list as users press keys to type charactrer in a specific text field.
-     * On selecting an item in the drop-down list, the value in the text field changes to the selected item, the drop-down list disappears, and the OnChange event for the text field is invoked
-     * @deprecated Deprecated in v9.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
-     * @param resultSet The results to show
-     */
-    showAutoComplete(resultSet: Page$AutoCompleteResultSet): void
-  } & Controls$Page$AutoLookupControl;
+  declare type Xrm$Page$AutoLookupControl = {} & Xrm$Controls$AutoLookupControl;
 
   /**
    * Interface for a String control.
    * @see {@link StandardControl}
    * @deprecated Use {@link Xrm.Controls.StringControl} instead.
    */
-  declare type Page$StringControl = {
-    /**
-     * Gets the control's bound attribute.
-     * @returns The attribute.
-     */
-    getAttribute(): Attributes$Page$StringAttribute
-  } & Controls$Page$StringControl;
+  declare type Xrm$Page$StringControl = {} & Xrm$Controls$StringControl;
 
   /**
    * Interface for a Number control.
    * @see {@link StandardControl}
    * @deprecated Use {@link Xrm.Controls.NumberControl} instead.
    */
-  declare type Page$NumberControl = {
-    /**
-     * Gets the control's bound attribute.
-     * @returns The attribute.
-     */
-    getAttribute(): Attributes$Page$NumberAttribute
-  } & Page$AutoLookupControl;
+  declare type Xrm$Page$NumberControl = {} & Xrm$Page$AutoLookupControl;
 
   /**
    * Interface for a Date control.
    * @see {@link StandardControl}
    * @deprecated Use {@link Xrm.Controls.DateControl} instead.
    */
-  declare type Page$DateControl = {
-    /**
-     * Gets the control's bound attribute.
-     * @returns The attribute.
-     */
-    getAttribute(): Attributes$Page$DateAttribute,
-
-    /**
-     * Gets the status of the time-of-day component of the Date control.
-     * @returns true if the time is shown, otherwise false.
-     */
-    getShowTime(): boolean,
-
-    /**
-     * Sets the visibility of the time component of the Date control.
-     * @param showTimeValue true to show, false to hide the time value.
-     */
-    setShowTime(showTimeValue: boolean): void
-  } & Page$StandardControl;
+  declare type Xrm$Page$DateControl = {} & Xrm$Page$StandardControl;
 
   /**
    * Interface for a Lookup control.
    * @see {@link StandardControl}
    * @deprecated Use {@link Xrm.Controls.LookupControl} instead.
    */
-  declare type Page$LookupControl = {
-    /**
-     * Adds a handler to the "pre search" event of the Lookup control.
-     * @param handler The handler.
-     */
-    addPreSearch(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Adds an additional custom filter to the lookup, with the "AND" filter operator.
- * Can only be used within a "pre search" event handler
- * @see {@link addPreSearch}
- * @param filter Specifies the filter, as a serialized FetchXML "filter" node.
- * @param entityLogicalName (Optional) The logical name of the entity.
- * @remarks If entityLogicalName is not specified, the filter will be applied to all entities
-valid for the Lookup control.
- * @example Example filter: <filter type="and">
-             <condition attribute="address1_city" operator="eq" value="Redmond" />
-             </filter>
- */
-    addCustomFilter(filter: string, entityLogicalName?: string): void,
-
-    /**
- * Adds a custom view for the Lookup dialog.
- * @param viewId Unique identifier for the view, in Guid format.
- * @param entityName Name of the entity.
- * @param viewDisplayName Name of the view to display.
- * @param fetchXml The FetchXML query for the view's contents, serialized as a string.
- * @param layoutXml The Layout XML, serialized as a string.
- * @param isDefault true, to treat this view as default.
- * @remarks Cannot be used on "Owner" Lookup controls.
-The viewId is never saved to CRM, but must be unique across available views.  Generating
-a new value can be accomplished with a {@link http://www.guidgen.com/ Guid generator(external link)}.
- * @example Example viewId value: "{00000000-0000-0000-0000-000000000001}"
- * @see {@link http://msdn.microsoft.com/en-us/library/gg334522.aspx External Link: Layout XML Reference}
- */
-    addCustomView(
-      viewId: string,
-      entityName: string,
-      viewDisplayName: string,
-      fetchXml: string,
-      layoutXml: string,
-      isDefault: boolean
-    ): void,
-
-    /**
-     * Gets the control's bound attribute.
-     * @returns The attribute.
-     */
-    getAttribute(): Attributes$Page$LookupAttribute,
-
-    /**
-     * Gets the unique identifier of the default view.
-     * @returns The default view, in Guid format.
-     * @example Example return: "{00000000-0000-0000-0000-000000000000}"
-     */
-    getDefaultView(): string,
-
-    /**
-     * Removes the handler from the "pre search" event of the Lookup control.
-     * @param handler The handler.
-     */
-    removePreSearch(handler: () => void): void,
-
-    /**
-     * Sets the Lookup's default view.
-     * @param viewGuid Unique identifier for the view.
-     * @example Example viewGuid value: "{00000000-0000-0000-0000-000000000000}"
-     */
-    setDefaultView(viewGuid: string): void,
-
-    /**
-     * Gets the types of entities allowed in the lookup control.
-     */
-    getEntityTypes(): string[],
-
-    /**
-     * Sets the types of entities allowed in the lookup control.
-     */
-    setEntityTypes(entityLogicalNames: string[]): void
-  } & Controls$Page$LookupControl;
+  declare type Xrm$Page$LookupControl = {} & Xrm$Controls$LookupControl;
 
   /**
    * Interface for an OptionSet control.
    * @see {@link StandardControl}
    * @deprecated Use {@link Xrm.Controls.OptionSetControl} instead.
    */
-  declare type Page$OptionSetControl = {
-    /**
- * Adds an option.
- * @param option The option.
- * @param index (Optional) zero-based index of the option.
- * @remarks This method does not check that the values within the options you add are valid.
-If index is not provided, the new option will be added to the end of the list.
- */
-    addOption(option: Page$OptionSetValue, index?: number): void,
-
-    /**
-     * Clears all options.
-     */
-    clearOptions(): void,
-
-    /**
-     * Gets the control's bound attribute.
-     * @returns The attribute.
-     */
-    getAttribute(): Attributes$Page$OptionSetAttribute,
-
-    /**
-     * Removes the option matching the value.
-     * @param value The value.
-     */
-    removeOption(value: number): void
-  } & Controls$Page$OptionSetControl;
+  declare type Xrm$Page$OptionSetControl = {} & Xrm$Controls$OptionSetControl;
 
   /**
    * Interface for a CRM grid control.
    * @see {@link Control}
    * @deprecated Use {@link Xrm.Controls.GridControl} instead.
    */
-  declare type Page$GridControl = {
-    /**
-     * Use this method to add event handlers to the GridControl's OnLoad event.
-     * @param handler The event handler.
-     */
-    addOnLoad(handler: () => void): void,
-
-    /**
-     * This method returns context information about the GridControl.
-     * @returns The context type.
-     */
-    getContextType(): XrmEnum$XrmEnum$GridControlContext,
-
-    /**
-     * Use this method to get the logical name of the entity data displayed in the grid.
-     * @returns The entity name.
-     */
-    getEntityName(): string,
-
-    /**
-     * Use this method to get access to the Grid available in the GridControl.
-     * @returns The grid.
-     */
-    getGrid(): Controls$Grid,
-
-    /**
-     * Use this method to get access to the ViewSelector available for the GridControl when it is configured to display views.
-     * @returns The view selector.
-     */
-    getViewSelector(): Controls$ViewSelector,
-
-    /**
-     * Refreshes the sub grid.
-     * @remarks Not available during the "on load" event of the form.
-     */
-    refresh(): void,
-
-    /**
-     * Use this method to remove event handlers from the GridControl's OnLoad event.
-     * @param handler The handler.
-     */
-    removeOnLoad(handler: () => void): void
-  } & Controls$Page$GridControl;
+  declare type Xrm$Page$GridControl = {} & Xrm$Controls$GridControl;
 
   /**
- * Interface for a framed control, which is either a Web Resource or an Iframe.
- * @see {@link Control}
- * @remarks An Iframe control provides additional methods, so use {@link IframeControl} where
-appropriate.  Silverlight controls should use {@link SilverlightControl}.
- * @deprecated Use {@link Xrm.Controls.FramedControl} instead.
- */
-  declare type Page$FramedControl = {
-    /**
-     * Gets the DOM element containing the control.
-     * @returns The container object.
-     * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
-     */
-    getObject(): HTMLIFrameElement,
-
-    /**
-     * Gets the URL value of the control.
-     * @returns The source URL.
-     * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
-     */
-    getSrc(): string,
-
-    /**
-     * Sets the URL value of the control.
-     * @param src The source URL.
-     * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
-     */
-    setSrc(src: string): void
-  } & Controls$Page$FramedControl;
+   * Interface for a framed control, which is either a Web Resource or an Iframe.
+   * @see {@link Control}
+   * @remarks An Iframe control provides additional methods, so use {@link IframeControl} where
+   * appropriate.  Silverlight controls should use {@link SilverlightControl}.
+   * @deprecated Use {@link Xrm.Controls.FramedControl} instead.
+   */
+  declare type Xrm$Page$FramedControl = {} & Xrm$Controls$FramedControl;
 
   /**
    * Interface for an Iframe control.
    * @see {@link FramedControl}
    * @deprecated Use {@link Xrm.Controls.IframeControl} instead.
    */
-  declare type Page$IframeControl = {
-    /**
-     * Gets initial URL defined for the Iframe.
-     * @returns The initial URL.
-     * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
-     */
-    getInitialUrl(): string
-  } & Controls$Page$IframeControl;
+  declare type Xrm$Page$IframeControl = {} & Xrm$Controls$IframeControl;
 
   /**
    * Interface for a Silverlight control.
    * @see {@link Control}
    * @deprecated Use {@link Xrm.Controls.SilverlightControl} instead.
    */
-  declare type Page$SilverlightControl = {
-    /**
-     * Gets the query string value passed to Silverlight.
-     * @returns The data.
-     * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
-     */
-    getData(): string,
-
-    /**
-     * Sets the query string value passed to Silverlight.
-     * @param data The data.
-     * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
-     */
-    setData(data: string): void,
-
-    /**
-     * Gets the DOM element containing the control.
-     * @returns The container object.
-     * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
-     */
-    getObject(): HTMLObjectElement
-  } & Controls$Page$SilverlightControl;
+  declare type Xrm$Page$SilverlightControl = {} & Xrm$Controls$SilverlightControl;
 
   /**
    * Interface for a Timeline control.
    * @see {@link Control}
    * @deprecated Use {@link Xrm.Controls.TimelineWall} instead.
    */
-  declare type Page$TimelineWall = {
-    /**
-     * Refreshes the data displayed in a timelinewall and timer control.
-     */
-    refresh(): void
-  } & Controls$Page$TimelineWall;
+  declare type Xrm$Page$TimelineWall = {} & Xrm$Controls$TimelineWall;
 
   /**
    * Interface for a form tab.
@@ -3158,539 +1909,99 @@ appropriate.  Silverlight controls should use {@link SilverlightControl}.
    * @see {@link UiFocusable}
    * @deprecated Use {@link Xrm.Controls.Tab} instead.
    */
-  declare type Page$Tab = {
-    /**
-     * Gets display state of the tab.
-     * @returns The display state, as either "expanded" or "collapsed"
-     */
-    getDisplayState(): Xrm$DisplayState,
-
-    /**
-     * Gets the name of the tab.
-     * @returns The name.
-     */
-    getName(): string,
-
-    /**
-     * Gets a reference to the {@link FormContext.ui formContext.ui} parent of the tab.
-     * @returns The parent.
-     */
-    getParent(): Xrm$Ui,
-
-    /**
-     * Sets display state of the tab.
-     * @param displayState Display state of the tab, as either "expanded" or "collapsed"
-     */
-    setDisplayState(displayState: Xrm$DisplayState): void,
-
-    /**
-     * A reference to the collection of form sections within this tab.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    sections: Collection$Collection$ItemCollection<Controls$Section>
-  } & Controls$Page$Tab;
+  declare type Xrm$Page$Tab = {} & Xrm$Controls$Tab;
 
   /**
    * Interface for a form section.
    * @see {@link UiElement}
    * @deprecated Use {@link Xrm.Controls.Section} instead.
    */
-  declare type Page$Section = {
-    /**
-     * Gets the name of the section.
-     * @returns The name.
-     */
-    getName(): string,
-
-    /**
-     * Gets a reference to the parent {@link Tab}.
-     * @returns The parent.
-     */
-    getParent(): Page$Tab,
-
-    /**
-     * A reference to the collection of controls within this tab.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    controls: Collection$Collection$ItemCollection<Page$Control>
-  } & Controls$Page$Section;
+  declare type Xrm$Page$Section = {} & Xrm$Controls$Section;
 
   /**
    * Interface for the Xrm.Page.data.process API.
    * @deprecated Use {@link Xrm.ProcessFlow.ProcessManager} instead.
    */
-  declare type data$ProcessManager = {
-    /**
-     * Returns a Process object representing the active process.
-     * @returns current active process.
-     */
-    getActiveProcess(): Page$Process,
-
-    /**
-     * Set a Process as the active process.
-     * @param processId The Id of the process to make the active process.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setActiveProcess(
-      processId: string,
-      callbackFunction?: ProcessFlow$ProcessCallbackDelegate
-    ): void,
-
-    /**
-     * Returns all process instances for the entity record that the calling user has access to.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    getProcessInstances(
-      callbackFunction?: ProcessFlow$GetProcessInstancesDelegate
-    ): void,
-
-    /**
-     * Sets a process instance as the active instance
-     * @param processInstanceId The Id of the process instance to make the active instance.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setActiveProcessInstance(
-      processInstanceId: string,
-      callbackFunction?: ProcessFlow$SetProcessInstanceDelegate
-    ): void,
-
-    /**
-     * Returns a Stage object representing the active stage.
-     * @returns current active stage.
-     */
-    getActiveStage(): Page$Stage,
-
-    /**
-     * Set a stage as the active stage.
-     * @param stageId the Id of the stage to make the active stage.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setActiveStage(
-      stageId: string,
-      callbackFunction?: ProcessFlow$ProcessCallbackDelegate
-    ): void,
-
-    /**
- * Use this method to get a collection of stages currently in the active path with methods to interact with the
- * stages displayed in the business process flow control. The active path represents stages currently rendered in
- * the process control based on the branching rules and current data in the record.
- * @returns A collection of all completed stages, the currently active stage, and the predicted set of future stages
-based on satisfied conditions in the branching rule. This may be a subset of the stages returned with
-formContext.data.process.getActiveProcess because it will only include those stages which represent a valid
-transition from the current stage based on branching that has occurred in the process.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
- */
-    getActivePath(): Collection$Collection$ItemCollection<Page$Stage>,
-
-    /**
- * Use this method to asynchronously retrieve the enabled business process flows that the user can switch to for an
- * entity.
- * @param callbackFunction The callback function must accept a parameter that contains an object with
-dictionary properties where the name of the property is the Id of the
-business process flow and the value of the property is the name of the
-business process flow.
-The enabled processes are filtered according to the user’s privileges. The
-list of enabled processes is the same ones a user can see in the UI if they
-want to change the process manually.
- */
-    getEnabledProcesses(
-      callbackFunction: (
-        enabledProcesses: ProcessFlow$ProcessDictionary
-      ) => void
-    ): void,
-
-    /**
-     * Use this method to get the currently selected stage.
-     * @returns The currently selected stage.
-     */
-    getSelectedStage(): Page$Stage,
-
-    /**
- * Use this to add a function as an event handler for the OnStageChange event so that it will be called when the
- * business process flow stage changes.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnStageChange(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Use this to add a function as an event handler for the OnProcessStatusChange event so that it will be called when the
- * business process flow status changes.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnProcessStatusChange(
-      handler: Events$Page$ProcessStatusChangeHandler
-    ): void,
-
-    /**
- * Use this to add a function as an event handler for the OnStageSelected event so that it will be called
- * when a business process flow stage is selected.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnStageSelected(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Use this to remove a function as an event handler for the OnProcessStatusChange event.
- * @param handler If an anonymous function is set using the addOnProcessStatusChange method it
-cannot be removed using this method.
- */
-    removeOnProcessStatusChange(
-      handler: Events$Page$ProcessStatusChangeHandler
-    ): void,
-
-    /**
- * Use this to remove a function as an event handler for the OnStageChange event.
- * @param handler If an anonymous function is set using the addOnStageChange method it
-cannot be removed using this method.
- */
-    removeOnStageChange(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Use this to remove a function as an event handler for the OnStageChange event.
- * @param handler If an anonymous function is set using the addOnStageChange method it
-cannot be removed using this method.
- */
-    removeOnStageSelected(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
-     * Progresses to the next stage.
-     * @param callbackFunction (Optional) A function to call when the operation is complete.
-     */
-    moveNext(callbackFunction?: ProcessFlow$ProcessCallbackDelegate): void,
-
-    /**
-     * Moves to the previous stage.
-     * @param callbackFunction (Optional) A function to call when the operation is complete.
-     */
-    movePrevious(callbackFunction?: ProcessFlow$ProcessCallbackDelegate): void,
-
-    /**
-     * Use this method to get the unique identifier of the process instance
-     * @returns The unique identifier of the process instance
-     */
-    getInstanceId(): string,
-
-    /**
-     * Use this method to get the name of the process instance
-     * @returns The name of the process instance
-     */
-    getInstanceName(): string,
-
-    /**
-     * Use this method to get the current status of the process instance
-     * @returns The current status of the process
-     */
-    getStatus(): Page$ProcessStatus,
-
-    /**
-     * Use this method to set the current status of the process instance
-     * @param status The new status for the process
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setStatus(
-      status: Page$ProcessStatus,
-      callbackFunction?: ProcessFlow$ProcessSetStatusDelegate
-    ): void
-  } & ProcessFlow$data$ProcessManager;
+  declare type Xrm$Page$data$ProcessManager = {} & Xrm$ProcessFlow$ProcessManager;
 
   /**
    * Called when method to get active processes is complete
    * @param status The result of the get active processes operation.
    * @remarks *Returns object with the following key-value pairs**:
-   * CreatedOn
-   * ProcessDefinitionID
-   * ProcessDefinitionName
-   * ProcessInstanceID
-   * ProcessInstanceName
-   * StatusCodeName
+   * * CreatedOn
+   * * ProcessDefinitionID
+   * * ProcessDefinitionName
+   * * ProcessInstanceID
+   * * ProcessInstanceName
+   * * StatusCodeName
    * @deprecated Use {@link Xrm.ProcessFlow.GetProcessInstancesDelegate} instead.
    */
-  declare type data$GetProcessInstancesDelegate = ProcessFlow$data$GetProcessInstancesDelegate;
+  declare type Xrm$Page$data$GetProcessInstancesDelegate = Xrm$ProcessFlow$GetProcessInstancesDelegate;
 
   /**
    * Called when method to set active process is complete
    * @param status The result of the set active process operation.
    * @remarks *Values returned are**:
-   * success        (The operation succeeded.)
-   * invalid        (The processInstanceId isn’t valid or the process isn’t enabled.)
+   * * success        (The operation succeeded.)
+   * * invalid        (The processInstanceId isn’t valid or the process isn’t enabled.)
    * @deprecated Use {@link Xrm.ProcessFlow.SetProcessInstanceDelegate} instead.
    */
-  declare type data$SetProcessInstanceDelegate = ProcessFlow$data$SetProcessInstanceDelegate;
+  declare type Xrm$Page$data$SetProcessInstanceDelegate = Xrm$ProcessFlow$SetProcessInstanceDelegate;
 
   /**
    * Called when process change methods have completed.
    * @param status The result of the process change operation.
    * @remarks *Values returned are**:
-   * success        (The operation succeeded.)
-   * crossEntity    (The previous stage is for a different entity.)
-   * beginning      (The active stage is the first stage of the active path.)
-   * invalid        (The operation failed because the selected stage isn’t the same as the active stage.)
-   * unreachable    (The stage exists on a different path.)
+   * * success        (The operation succeeded.)
+   * * crossEntity    (The previous stage is for a different entity.)
+   * * beginning      (The active stage is the first stage of the active path.)
+   * * invalid        (The operation failed because the selected stage isn’t the same as the active stage.)
+   * * unreachable    (The stage exists on a different path.)
    * @deprecated Use {@link Xrm.ProcessFlow.ProcessCallbackDelegate} instead.
    */
-  declare type data$ProcessCallbackDelegate = ProcessFlow$data$ProcessCallbackDelegate;
+  declare type Xrm$Page$data$ProcessCallbackDelegate = Xrm$ProcessFlow$ProcessCallbackDelegate;
 
   /**
    * Called when process set status method has completed.
    * @param status The new status of the process instance
    * @remarks *Values returned are**:
-   * active
-   * aborted
-   * finished
+   * * active
+   * * aborted
+   * * finished
    * @deprecated Use {@link Xrm.ProcessFlow.ProcessSetStatusDelegate} instead.
    */
-  declare type data$ProcessSetStatusDelegate = ProcessFlow$data$ProcessSetStatusDelegate;
+  declare type Xrm$Page$data$ProcessSetStatusDelegate = Xrm$ProcessFlow$ProcessSetStatusDelegate;
 
   /**
    * Represents a key-value pair, where the key is the Process Flow's ID, and the value is the name thereof.
    * @deprecated Use {@link Xrm.ProcessFlow.ProcessDictionary} instead.
    */
-  declare type data$ProcessDictionary = {
-    [index: string]: string
-  } & ProcessFlow$data$ProcessDictionary;
+  declare type Xrm$Page$data$ProcessDictionary = {} & Xrm$ProcessFlow$ProcessDictionary;
 
   /**
-   * Form Notification Levels for {@link Ui.setFormNotification formContext.ui.setFormNotification()}.
-   * @see {@link XrmEnum.FormNotificationLevel}
+   * Form Notification Levels for Xrm.Ui.setFormNotification().
+   * @deprecated Use {@link Xrm.FormNotificationLevel} instead.
    */
-  declare type ui$FormNotificationLevel = "ERROR" | "INFO" | "WARNING";
+  declare type Xrm$Page$ui$FormNotificationLevel = Xrm$FormNotificationLevel;
 
   /**
-   * Display States for setDisplayState() on {@link Controls.ProcessControl.setDisplayState Processes} and {@link Controls.Tab.setDisplayState Tabs}.
-   * @see {@link XrmEnum.DisplayState}
+   * Display States for Xrm.ui.ProcessMonitor.setDisplayState().
+   * @deprecated Use {@link Xrm.DisplayState} instead.
    */
-  declare type ui$DisplayState = "collapsed" | "expanded";
+  declare type Xrm$Page$ui$DisplayState = Xrm$DisplayState;
 
   /**
-   * Interface for the Xrm.Page.data.process API.
-   * @deprecated Use {@link Xrm.ProcessFlow.ProcessManager} instead.
+   * Interface for Xrm.Page.ui.process API
+   * @deprecated Use {@link Xrm.Controls.ProcessControl} instead.
    */
-  declare type ui$ProcessManager = {
-    /**
-     * Returns a Process object representing the active process.
-     * @returns current active process.
-     */
-    getActiveProcess(): Page$Process,
-
-    /**
-     * Set a Process as the active process.
-     * @param processId The Id of the process to make the active process.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setActiveProcess(
-      processId: string,
-      callbackFunction?: data$ProcessCallbackDelegate
-    ): void,
-
-    /**
-     * Returns all process instances for the entity record that the calling user has access to.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    getProcessInstances(
-      callbackFunction?: data$GetProcessInstancesDelegate
-    ): void,
-
-    /**
-     * Sets a process instance as the active instance
-     * @param processInstanceId The Id of the process instance to make the active instance.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setActiveProcessInstance(
-      processInstanceId: string,
-      callbackFunction?: data$SetProcessInstanceDelegate
-    ): void,
-
-    /**
-     * Returns a Stage object representing the active stage.
-     * @returns current active stage.
-     */
-    getActiveStage(): Page$Stage,
-
-    /**
-     * Set a stage as the active stage.
-     * @param stageId the Id of the stage to make the active stage.
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setActiveStage(
-      stageId: string,
-      callbackFunction?: data$ProcessCallbackDelegate
-    ): void,
-
-    /**
- * Use this method to get a collection of stages currently in the active path with methods to interact with the
- * stages displayed in the business process flow control. The active path represents stages currently rendered in
- * the process control based on the branching rules and current data in the record.
- * @returns A collection of all completed stages, the currently active stage, and the predicted set of future stages
-based on satisfied conditions in the branching rule. This may be a subset of the stages returned with
-formContext.data.process.getActiveProcess because it will only include those stages which represent a valid
-transition from the current stage based on branching that has occurred in the process.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
- */
-    getActivePath(): Collection$Collection$ItemCollection<Page$Stage>,
-
-    /**
- * Use this method to asynchronously retrieve the enabled business process flows that the user can switch to for an
- * entity.
- * @param callbackFunction The callback function must accept a parameter that contains an object with
-dictionary properties where the name of the property is the Id of the
-business process flow and the value of the property is the name of the
-business process flow.
-The enabled processes are filtered according to the user’s privileges. The
-list of enabled processes is the same ones a user can see in the UI if they
-want to change the process manually.
- */
-    getEnabledProcesses(
-      callbackFunction: (enabledProcesses: data$ProcessDictionary) => void
-    ): void,
-
-    /**
-     * Use this method to get the currently selected stage.
-     * @returns The currently selected stage.
-     */
-    getSelectedStage(): Page$Stage,
-
-    /**
- * Use this to add a function as an event handler for the OnStageChange event so that it will be called when the
- * business process flow stage changes.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnStageChange(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Use this to add a function as an event handler for the OnProcessStatusChange event so that it will be called when the
- * business process flow status changes.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnProcessStatusChange(
-      handler: Events$Page$ProcessStatusChangeHandler
-    ): void,
-
-    /**
- * Use this to add a function as an event handler for the OnStageSelected event so that it will be called
- * when a business process flow stage is selected.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnStageSelected(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Use this to remove a function as an event handler for the OnProcessStatusChange event.
- * @param handler If an anonymous function is set using the addOnProcessStatusChange method it
-cannot be removed using this method.
- */
-    removeOnProcessStatusChange(
-      handler: Events$Page$ProcessStatusChangeHandler
-    ): void,
-
-    /**
- * Use this to remove a function as an event handler for the OnStageChange event.
- * @param handler If an anonymous function is set using the addOnStageChange method it
-cannot be removed using this method.
- */
-    removeOnStageChange(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
- * Use this to remove a function as an event handler for the OnStageChange event.
- * @param handler If an anonymous function is set using the addOnStageChange method it
-cannot be removed using this method.
- */
-    removeOnStageSelected(handler: Events$Page$ContextSensitiveHandler): void,
-
-    /**
-     * Progresses to the next stage.
-     * @param callbackFunction (Optional) A function to call when the operation is complete.
-     */
-    moveNext(callbackFunction?: data$ProcessCallbackDelegate): void,
-
-    /**
-     * Moves to the previous stage.
-     * @param callbackFunction (Optional) A function to call when the operation is complete.
-     */
-    movePrevious(callbackFunction?: data$ProcessCallbackDelegate): void,
-
-    /**
-     * Use this method to get the unique identifier of the process instance
-     * @returns The unique identifier of the process instance
-     */
-    getInstanceId(): string,
-
-    /**
-     * Use this method to get the name of the process instance
-     * @returns The name of the process instance
-     */
-    getInstanceName(): string,
-
-    /**
-     * Use this method to get the current status of the process instance
-     * @returns The current status of the process
-     */
-    getStatus(): Page$ProcessStatus,
-
-    /**
-     * Use this method to set the current status of the process instance
-     * @param status The new status for the process
-     * @param callbackFunction (Optional) a function to call when the operation is complete.
-     */
-    setStatus(
-      status: Page$ProcessStatus,
-      callbackFunction?: data$ProcessSetStatusDelegate
-    ): void
-  } & ProcessFlow$ui$ProcessManager;
+  declare type Xrm$Page$ui$ProcessManager = {} & Xrm$Controls$ProcessControl;
 
   /**
    * Interface for a grid.  Use Grid methods to access information about data in the grid. Grid is returned by the
    * GridControl.getGrid method.
    * @deprecated Use {@link Xrm.Controls.Grid} instead.
    */
-  declare type ui$Grid = {
-    /**
-     * Returns a collection of every GridRow in the Grid.
-     * @returns The rows.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    getRows(): Collection$Collection$ItemCollection<ui$Grid.Grid$GridRow>,
-
-    /**
-     * Returns a collection of every selected GridRow in the Grid.
-     * @returns The selected rows.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    getSelectedRows(): Collection$Collection$ItemCollection<ui$Grid.Grid$GridRow>,
-
-    /**
-     * Returns the total number of records in the Grid.
-     * @returns The total record count.
-     */
-    getTotalRecordCount(): number
-  } & Controls$ui$Grid;
+  declare type Xrm$Page$ui$Grid = {} & Xrm$Controls$Grid;
 
   /**
    * Interface for a grid row.  Use the GridRow.getData method to access the GridRowData. A collection of GridRow is
@@ -3698,296 +2009,251 @@ cannot be removed using this method.
    * In V9 - this is essentailly a form context.
    * @deprecated Use {@link Xrm.Controls.Grid.GridRow} instead.
    */
-  declare type ui$GridRow = {
-    /**
-     * Provides methods to work with the row data.
-     */
-    data: Xrm$Data,
-
-    /**
-     * Returns the GridRowData for the GridRow.
-     * @deprecated Deprecated in V9 - use data field instead
-     * @returns The data.
-     */
-    getData(): Grid$GridRowData
-  } & undefined.ui$GridRow;
+  declare type Xrm$Page$ui$GridRow = {} & Xrm$Controls$Grid$GridRow;
 
   /**
    * Interface for grid row data.  Use the GridRowData.getEntity method to access the GridEntity. GridRowData is
    * returned by the GridRow.getData method.
    * @deprecated Use {@link Xrm.Controls.Grid.GridRowData} instead.
    */
-  declare type ui$GridRowData = {
-    /**
-     * Returns the GridEntity for the GridRowData.
-     * @returns The entity.
-     * @deprecated Use GridRow.data.entity instead of using GridRow.getData().getEntity().
-     */
-    getEntity(): Grid$GridEntity
-  } & undefined.ui$GridRowData;
+  declare type Xrm$Page$ui$GridRowData = {} & Xrm$Controls$Grid$GridRowData;
 
   /**
    * Interface for a grid entity.  Use the GridEntity methods to access data about the specific records in the rows.
    * GridEntity is returned by the GridRowData.getEntity method.
    * @deprecated Use {@link Xrm.Controls.Grid.GridRowData} instead.v
    */
-  declare type ui$GridEntity = {
-    /**
-     * Returns the logical name for the record in the row.
-     * @returns The entity name.
-     * @deprecated Use GridRow.data.entity.getEntityName() instead.
-     */
-    getEntityName(): string,
-
-    /**
-     * Returns a LookupValue that references this record.
-     * @returns The entity reference.
-     * @deprecated Use GridRow.data.entity.getEntityReference() instead.
-     */
-    getEntityReference(): Page$LookupValue,
-
-    /**
-     * Returns the id for the record in the row.
-     * @returns The identifier of the GridEntity, in GUID format.
-     * @example Example return: "{00000000-0000-0000-0000-000000000000}"
-     * @deprecated Use GridRow.data.entity.getId() instead.
-     */
-    getId(): string,
-
-    /**
-     * Returns the primary attribute value for the record in the row.  (Commonly the name.)
-     * @returns The primary attribute value.
-     * @deprecated Use GridRow.data.entity.getPrimaryAttributeValue() instead.
-     */
-    getPrimaryAttributeValue(): string
-  } & undefined.ui$GridEntity;
+  declare type Xrm$Page$ui$GridEntity = {} & Xrm$Controls$Grid$GridEntity;
 
   /**
    * Interface for the view selector.  Use the ViewSelector methods to get or set information about the view selector
    * of the grid control.
    * @deprecated Use {@link Xrm.Controls.ViewSelector} instead.
    */
-  declare type ui$ViewSelector = {
-    /**
-     * Use this method to get a reference to the current view.
-     * @returns The current view.
-     */
-    getCurrentView(): Controls$ViewSelectorItem,
-
-    /**
-     * Use this method to determine whether the view selector is visible.
-     * @returns true if visible, false if not.
-     */
-    isVisible(): boolean,
-
-    /**
-     * Use this method to set the current view.
-     * @param viewSelectorItem The view selector item.
-     */
-    setCurrentView(viewSelectorItem: Controls$ViewSelectorItem): void
-  } & Controls$ui$ViewSelector;
+  declare type Xrm$Page$ui$ViewSelector = {} & Xrm$Controls$ViewSelector;
 
   /**
    * Interface for a view selector item. This object contains data that identifies a view. Use this as a parameter to
    * the ViewSelector.setCurrentView method.
    * @deprecated Use {@link Xrm.Controls.ViewSelectorItem} instead.
    */
-  declare type ui$ViewSelectorItem = {
-    /**
-     * Returns a LookupValue that references this view.
-     * @returns The entity reference.
-     */
-    getEntityReference(): Page$LookupValue
-  } & Controls$ui$ViewSelectorItem;
+  declare type Xrm$Page$ui$ViewSelectorItem = {} & Xrm$Controls$ViewSelectorItem;
 
   /**
    * Interface for a quick view control instance on a form.
    * @see {@link https://msdn.microsoft.com/en-us/library/mt736908.aspx External Link: Xrm.Page.ui quickForms (client-side reference)}
    * @deprecated Use {@link Xrm.Controls.ViewSelectorItem} instead.
    */
-  declare type ui$QuickForm = {} & Controls$Controls$QuickFormControl;
+  declare type Xrm$Page$ui$QuickForm = {} & Xrm$Controls$QuickFormControl;
 
   /**
    * Interface for a Lookup value.
-   * @deprecated Use {@link Xrm.LookupValue} instead.
    */
-  declare type Xrm$LookupValue = {
+  declare interface Xrm$LookupValue {
     /**
      * The identifier.
      */
-    id: string,
+    id: string;
 
     /**
      * The name
      */
-    name?: string,
+    name?: string;
 
     /**
      * Type of the entity.
      */
-    entityType: string
-  } & Xrm$Xrm$LookupValue;
+    entityType: string;
+  }
 
   /**
    * Interface for an OptionSet value.
-   * @deprecated Use {@link Xrm.OptionSetValue} instead.
    */
-  declare type Xrm$OptionSetValue = {
+  declare interface Xrm$OptionSetValue {
     /**
      * The label text.
      */
-    text: string,
+    text: string;
 
     /**
      * The value, as a number
      */
-    value: number
-  } & Xrm$Xrm$OptionSetValue;
+    value: number;
+  }
 
   /**
-   * Requirement Level for Xrm.Page.Attribute.getRequiredLevel() and Xrm.Page.Attribute.setRequiredLevel().
-   * @deprecated Use {@link Xrm.Attributes.RequirementLevel} instead.
+   * Requirement Level for {@link Attributes.Attribute.getRequiredLevel Attributes.Attribute.getRequiredLevel()} and
+   * {@link Attributes.Attribute.setRequiredLevel Attributes.Attribute.setRequiredLevel()}.
+   * @see {@link XrmEnum.AttributeRequirementLevel}
    */
-  declare type Attributes$RequirementLevel = Attributes$Attributes$RequirementLevel;
+  declare type Xrm$Attributes$RequirementLevel =
+    | "none"
+    | "recommended"
+    | "required";
 
   /**
-   * Date attribute formats for Xrm.Page.Attribute.getFormat(), used by DateAttribute.
-   * @deprecated Use {@link Xrm.Attributes.DateAttributeFormat} instead.
+   * Date attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.DateAttribute DateAttribute}.
+   * @see {@link XrmEnum.DateAttributeFormat}
    */
-  declare type Attributes$DateAttributeFormat = Attributes$Attributes$DateAttributeFormat;
+  declare type Xrm$Attributes$DateAttributeFormat = "date" | "datetime";
 
   /**
-   * Integer attribute formats for Xrm.Page.Attribute.getFormat(), used by NumberAttribute.
-   * @deprecated Use {@link Xrm.Attributes.IntegerAttributeFormat} instead.
+   * Integer attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.NumberAttribute NumberAttribute}.
+   * @see {@link XrmEnum.IntegerAttributeFormat}
    */
-  declare type Attributes$IntegerAttributeFormat = Attributes$Attributes$IntegerAttributeFormat;
+  declare type Xrm$Attributes$IntegerAttributeFormat = "duration" | "none";
 
   /**
-   * OptionSet attribute formats for Xrm.Page.Attribute.getFormat(), used by OptionSetAttribute.
-   * @deprecated Use {@link Xrm.Attributes.OptiopnSetAttributeFormat} instead.
+   * OptionSet attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.OptionSetAttribute OptionSetAttribute}.
+   * @see {@link XrmEnum.OptionSetAttributeFormat}
    */
-  declare type Attributes$OptionSetAttributeFormat = Attributes$Attributes$OptionSetAttributeFormat;
+  declare type Xrm$Attributes$OptionSetAttributeFormat =
+    | "language"
+    | "timezone";
 
   /**
-   * String attribute formats for Xrm.Page.Attribute.getFormat(), used by StringAttribute.
-   * @deprecated Use {@link Xrm.Attributes.StringAttributeFormat} instead.
+   * String attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.StringAttribute StringAttribute}.
+   * @see {@link XrmEnum.StringAttributeFormat}
    */
-  declare type Attributes$StringAttributeFormat = Attributes$Attributes$StringAttributeFormat;
+  declare type Xrm$Attributes$StringAttributeFormat =
+    | "email"
+    | "phone"
+    | "text"
+    | "textarea"
+    | "tickersymbol"
+    | "url";
 
   /**
-   * Attribute types for Xrm.ui.ProcessMonitor Xrm.Page.Attribute.setDisplayState().
-   * @deprecated Use {@link Xrm.Attributes.AttributeType} instead.
+   * Attribute types for {@link Attributes.Attribute.setDisplayState()}.
+   * @see {@link XrmEnum.AttributeType}
    */
-  declare type Attributes$AttributeType = Attributes$Attributes$AttributeType;
+  declare type Xrm$Attributes$AttributeType =
+    | "boolean"
+    | "datetime"
+    | "decimal"
+    | "double"
+    | "integer"
+    | "lookup"
+    | "memo"
+    | "money"
+    | "multioptionset"
+    | "optionset"
+    | "string";
 
   /**
-   * Attribute formats for Xrm.Page.Attribute.getFormat().
-   * @deprecated Use {@link Xrm.Attributes.AttributeFormat} instead.
+   * Attribute formats for {@link Attributes.Attribute.getFormat Attributes.Attribute.getFormat()}.
+   * @see {@link XrmEnum.DateAttributeFormat}
+   * @see {@link XrmEnum.IntegerAttributeFormat}
+   * @see {@link XrmEnum.OptionSetAttributeFormat}
+   * @see {@link XrmEnum.StringAttributeFormat}
    */
-  declare type Attributes$AttributeFormat = Attributes$Attributes$AttributeFormat;
+  declare type Xrm$Attributes$AttributeFormat =
+    | Xrm$Attributes$DateAttributeFormat
+    | Xrm$Attributes$IntegerAttributeFormat
+    | Xrm$Attributes$OptionSetAttributeFormat
+    | Xrm$Attributes$StringAttributeFormat;
 
   /**
    * Interface for an Entity attribute.
-   * @deprecated Use {@link Xrm.Attributes.Attribute} instead.
    */
-  declare type Attributes$Attribute = {
+  declare interface Xrm$Attributes$Attribute {
     /**
      * Adds a handler to be called when the attribute's value is changed.
      * @param handler The function reference.
      */
-    addOnChange(handler: Events$Page$ContextSensitiveHandler): void,
+    addOnChange(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
      * Fire all "on change" event handlers.
      */
-    fireOnChange(): void,
+    fireOnChange(): void;
 
     /**
      * Gets attribute type.
      * @returns The attribute's type name.<BR><BR>
-     **Values returned are**:
-     * boolean
-     * datetime
-     * decimal
-     * double
-     * integer
-     * lookup
-     * memo
-     * money
-     * optionset
-     * string
+     * **Values returned are**:
+     * * boolean
+     * * datetime
+     * * decimal
+     * * double
+     * * integer
+     * * lookup
+     * * memo
+     * * money
+     * * optionset
+     * * string
      */
-    getAttributeType(): Attributes$AttributeType,
+    getAttributeType(): Xrm$Attributes$AttributeType;
 
     /**
      * Gets the attribute format.
      * @returns The format of the attribute.<BR><BR>
-     **Values returned are**:
-     * date           (datetime)
-     * datetime       (datetime)
-     * duration       (integer)
-     * email          (string)
-     * language       (optionset)
-     * none           (integer)
-     * phone          (string)
-     * text           (string)
-     * textarea       (string)
-     * tickersymbol   (string)
-     * timezone       (optionset)
-     * url            (string)
+     * **Values returned are**:
+     * * date           (datetime)
+     * * datetime       (datetime)
+     * * duration       (integer)
+     * * email          (string)
+     * * language       (optionset)
+     * * none           (integer)
+     * * phone          (string)
+     * * text           (string)
+     * * textarea       (string)
+     * * tickersymbol   (string)
+     * * timezone       (optionset)
+     * * url            (string)
      * @see {@link getAttributeType}
      */
-    getFormat(): Attributes$AttributeFormat,
+    getFormat(): Xrm$Attributes$AttributeFormat;
 
     /**
      * Gets a boolean value indicating whether this Attribute has unsaved changes.
      * @returns true if there are unsaved changes, otherwise false.
      */
-    getIsDirty(): boolean,
+    getIsDirty(): boolean;
 
     /**
      * Gets the logical name of the attribute.
      * @returns The logical name.
      */
-    getName(): string,
+    getName(): string;
 
     /**
      * Gets a reference to the record context of this attribute.
      * @returns The parent record context.
      */
-    getParent(): Page$Entity,
+    getParent(): Xrm$Page$Entity;
 
     /**
      * Gets the current level of requirement for the attribute.
      * @returns The required level, as either "none", "required", or "recommended"
      */
-    getRequiredLevel(): Attributes$RequirementLevel,
+    getRequiredLevel(): Xrm$Attributes$RequirementLevel;
 
     /**
      * Gets current submit mode for the attribute.
      * @returns The submit mode, as either "always", "never", or "dirty"
      * @remarks The default value is "dirty"
      */
-    getSubmitMode(): Page$SubmitMode,
+    getSubmitMode(): Xrm$Page$SubmitMode;
 
     /**
      * Gets the current user's privileges for the attribute.
      * @returns The user privileges.
      */
-    getUserPrivilege(): Page$Privilege,
+    getUserPrivilege(): Xrm$Page$Privilege;
 
     /**
      * Removes the handler from the "on change" event.
      * @param handler The handler.
      */
-    removeOnChange(handler: Events$Page$ContextSensitiveHandler): void,
+    removeOnChange(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
      * Sets the required level.
      * @param requirementLevel The requirement level, as either "none", "required", or "recommended"
      * @see {@link XrmEnum.AttributeRequirementLevel}
      */
-    setRequiredLevel(requirementLevel: Attributes$RequirementLevel): void,
+    setRequiredLevel(requirementLevel: Xrm$Attributes$RequirementLevel): void;
 
     /**
      * Sets the submit mode.
@@ -3995,39 +2261,38 @@ cannot be removed using this method.
      * @default submitMode "dirty"
      * @see {@link XrmEnum.AttributeRequirementLevel}
      */
-    setSubmitMode(submitMode: Page$SubmitMode): void,
+    setSubmitMode(submitMode: Xrm$Page$SubmitMode): void;
 
     /**
      * A collection of all the controls on the form that interface with this attribute.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Page$Control>,
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$Control>;
 
     /**
      * Gets the value.
      * @returns The value.
      */
-    getValue(): any,
+    getValue(): any;
 
     /**
      * Sets the value.
      * @param value The value.
      */
-    setValue(value: any): void
-  } & Attributes$Attributes$Attribute;
+    setValue(value: any): void;
+  }
 
   /**
    * Interface for a Number attribute.
    * @see {@link Attribute}
-   * @deprecated Use {@link Xrm.Attributes.NumberAttribute} instead.
    */
-  declare type Attributes$NumberAttribute = {
+  declare type Xrm$Attributes$NumberAttribute = {
     /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: duration, none
- */
-    getFormat(): Attributes$IntegerAttributeFormat,
+     * Gets the attribute format.
+     * @returns The format of the attribute.
+     * Values returned are: duration, none
+     */
+    getFormat(): Xrm$Attributes$IntegerAttributeFormat,
 
     /**
      * Gets the maximum value allowed.
@@ -4064,21 +2329,20 @@ Values returned are: duration, none
      * A collection of all the controls on the form that interface with this attribute.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Page$NumberControl>
-  } & Attributes$Attributes$NumberAttribute;
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$NumberControl>
+  } & Xrm$Attributes$Attribute;
 
   /**
    * Interface for a String attribute.
    * @see {@link Attribute}
-   * @deprecated Use {@link Xrm.Attributes.StringAttribute} instead.
    */
-  declare type Attributes$StringAttribute = {
+  declare type Xrm$Attributes$StringAttribute = {
     /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: email, phone, text, textarea, tickersymbol, url
- */
-    getFormat(): Attributes$StringAttributeFormat,
+     * Gets the attribute format.
+     * @returns The format of the attribute.
+     * Values returned are: email, phone, text, textarea, tickersymbol, url
+     */
+    getFormat(): Xrm$Attributes$StringAttributeFormat,
 
     /**
      * Gets maximum length allowed.
@@ -4094,41 +2358,39 @@ Values returned are: email, phone, text, textarea, tickersymbol, url
     getValue(): string,
 
     /**
- * Sets the value.
- * @param value The value.
- * @remarks A String field with the {@link Attribute.getFormat|email} format enforces email
-address formatting. Attributes on Quick Create Forms will not save values set
-with this method.
- */
+     * Sets the value.
+     * @param value The value.
+     * @remarks A String field with the {@link Attribute.getFormat|email} format enforces email
+     * address formatting. Attributes on Quick Create Forms will not save values set
+     * with this method.
+     */
     setValue(value: string): void,
 
     /**
      * A collection of all the controls on the form that interface with this attribute.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Page$StringControl>
-  } & Attributes$Attributes$StringAttribute;
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$StringControl>
+  } & Xrm$Attributes$Attribute;
 
   /**
    * Common interface for enumeration attributes (OptionSet and Boolean).
    * @see {@link Attribute}
-   * @deprecated Use {@link Xrm.Attributes.EnumAttribute} instead.
    */
-  declare type Attributes$EnumAttribute = {
+  declare type Xrm$Attributes$EnumAttribute = {
     /**
      * Gets the initial value of the attribute.
      * @returns The initial value.
      * @remarks Valid for OptionSet and boolean attribute types
      */
     getInitialValue(): number | boolean
-  } & Attributes$Attributes$EnumAttribute;
+  } & Xrm$Attributes$Attribute;
 
   /**
    * Interface for a Boolean attribute.
    * @see {@link EnumAttribute}
-   * @deprecated Use {@link Xrm.Attributes.BooleanAttribute} instead.
    */
-  declare type Attributes$BooleanAttribute = {
+  declare type Xrm$Attributes$BooleanAttribute = {
     /**
      * Gets the initial value of the attribute.
      * @returns The initial value.
@@ -4148,20 +2410,19 @@ with this method.
      * @remarks Attributes on Quick Create Forms will not save values set with this method.
      */
     setValue(value: boolean): void
-  } & Attributes$Attributes$BooleanAttribute;
+  } & Xrm$Attributes$EnumAttribute;
 
   /**
    * Interface for a Date attribute.
    * @see {@link Attribute}
-   * @deprecated Use {@link Xrm.Attributes.DateAttribute} instead.
    */
-  declare type Attributes$DateAttribute = {
+  declare type Xrm$Attributes$DateAttribute = {
     /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: date, datetime
- */
-    getFormat(): Attributes$DateAttributeFormat,
+     * Gets the attribute format.
+     * @returns The format of the attribute.
+     * Values returned are: date, datetime
+     */
+    getFormat(): Xrm$Attributes$DateAttributeFormat,
 
     /**
      * Gets the value.
@@ -4180,21 +2441,20 @@ Values returned are: date, datetime
      * A collection of all the controls on the form that interface with this attribute.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Page$DateControl>
-  } & Attributes$Attributes$DateAttribute;
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$DateControl>
+  } & Xrm$Attributes$Attribute;
 
   /**
    * Interface an OptionSet attribute.
    * @see {@link EnumAttribute}
-   * @deprecated Use {@link Xrm.Attributes.OptionSetAttribute} instead.
    */
-  declare type Attributes$OptionSetAttribute = {
+  declare type Xrm$Attributes$OptionSetAttribute = {
     /**
- * Gets the attribute format.
- * @returns The format of the attribute.
-Values returned are: language, timezone
- */
-    getFormat(): Attributes$OptionSetAttributeFormat,
+     * Gets the attribute format.
+     * @returns The format of the attribute.
+     * Values returned are: language, timezone
+     */
+    getFormat(): Xrm$Attributes$OptionSetAttributeFormat,
 
     /**
      * Gets the initial value of the attribute.
@@ -4242,28 +2502,27 @@ Values returned are: language, timezone
     getValue(): number,
 
     /**
- * Sets the value.
- * @param value The value.
- * @remarks The getOptions() method returns option values as strings. You must use parseInt
-to convert them to numbers before you can use those values to set the value of an
-OptionSet attribute. Attributes on Quick Create Forms will not save values set
-with this method.
- */
+     * Sets the value.
+     * @param value The value.
+     * @remarks The getOptions() method returns option values as strings. You must use parseInt
+     * to convert them to numbers before you can use those values to set the value of an
+     * OptionSet attribute. Attributes on Quick Create Forms will not save values set
+     * with this method.
+     */
     setValue(value: number): void,
 
     /**
      * A collection of all the controls on the form that interface with this attribute.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Page$OptionSetControl>
-  } & Attributes$Attributes$OptionSetAttribute;
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$OptionSetControl>
+  } & Xrm$Attributes$EnumAttribute;
 
   /**
    * Interface a Lookup attribute.
    * @see {@link Attribute}
-   * @deprecated Use {@link Xrm.Attributes.LookupAttribute} instead.
    */
-  declare type Attributes$LookupAttribute = {
+  declare type Xrm$Attributes$LookupAttribute = {
     /**
      * Gets a boolean value indicating whether the Lookup is a multi-value PartyList.
      * @returns true the attribute is a PartyList, otherwise false.
@@ -4287,92 +2546,97 @@ with this method.
      * A collection of all the controls on the form that interface with this attribute.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Page$LookupControl>
-  } & Attributes$Attributes$LookupAttribute;
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$LookupControl>
+  } & Xrm$Attributes$Attribute;
 
   /**
-   * Control type for Xrm.Page.ui.QuickForm.getControlType().
-   * @deprecated Use {@link Xrm.Controls.ControlQuickFormType} instead.
+   * Control type for formContext.ui.quickForms.getControlType().
    */
-  declare type Controls$ControlQuickFormType = Controls$Controls$ControlQuickFormType;
+  declare type Xrm$Controls$ControlQuickFormType = "quickform";
 
   /**
-   * Control types for Xrm.Page.Control.getControlType().
-   * @deprecated Use {@link Xrm.Controls.ControlType} instead.
+   * Control types for {@link Controls.Control.getControlType Controls.Control.getControlType()}.
+   * @see {@link XrmEnum.StandardControlType}
    */
-  declare type Controls$ControlType = Controls$Controls$ControlType;
+  declare type Xrm$Controls$ControlType =
+    | "standard"
+    | "iframe"
+    | "lookup"
+    | "optionset"
+    | "subgrid"
+    | "webresource"
+    | "notes"
+    | "timercontrol"
+    | "kbsearch"
+    | "timelinewall"
+    | Xrm$Controls$ControlQuickFormType;
 
   /**
    * Interface for UI elements with labels.
-   * @deprecated Use {@link Xrm.Controls.UiLabelElement} instead.
    */
-  declare type Controls$UiLabelElement = {
+  declare interface Xrm$Controls$UiLabelElement {
     /**
      * Gets the label.
      * @returns The label.
      */
-    getLabel(): string,
+    getLabel(): string;
 
     /**
      * Sets the label.
      * @param label The label.
      */
-    setLabel(label: string): void
-  } & Controls$Controls$UiLabelElement;
+    setLabel(label: string): void;
+  }
 
   /**
    * Interface for UI elements which can have the visibility value read.
-   * @deprecated Use {@link Xrm.Controls.UiCanGetVisibleElement} instead.
    */
-  declare type Controls$UiCanGetVisibleElement = {
+  declare interface Xrm$Controls$UiCanGetVisibleElement {
     /**
      * Gets the visibility state.
      * @returns true if the tab is visible, otherwise false.
      */
-    getVisible(): boolean
-  } & Controls$Controls$UiCanGetVisibleElement;
+    getVisible(): boolean;
+  }
 
   /**
    * Interface for UI elements which can have the visibility value updated.
-   * @deprecated Use {@link Xrm.Controls.UiCanSetVisibleElement} instead.
    */
-  declare type Controls$UiCanSetVisibleElement = {
+  declare interface Xrm$Controls$UiCanSetVisibleElement {
     /**
      * Sets the visibility state.
      * @param visible true to show, false to hide.
      */
-    setVisible(visible: boolean): void
-  } & Controls$Controls$UiCanSetVisibleElement;
+    setVisible(visible: boolean): void;
+  }
 
   /**
    * Base interface for standard UI elements.
-   * @deprecated Use {@link Xrm.Controls.UiStandardElement} instead.
    */
-  declare type Controls$UiStandardElement = {
+  declare type Xrm$Controls$UiStandardElement = {
     /**
      * Sets the visibility state.
      * @param visible true to show, false to hide.
      */
     setVisible(visible: boolean): void
-  } & Controls$Controls$UiStandardElement;
+  } & Xrm$Controls$UiCanGetVisibleElement &
+    Xrm$Controls$UiLabelElement;
 
   /**
    * Interface for focusable UI elements.
-   * @deprecated Use {@link Xrm.Controls.UiFocusable} instead.
    */
-  declare type Controls$UiFocusable = {
+  declare interface Xrm$Controls$UiFocusable {
     /**
      * Sets focus on the element.
      */
-    setFocus(): void
-  } & Controls$Controls$UiFocusable;
+    setFocus(): void;
+  }
 
   /**
    * Interface for controls which methods provide immediate feedback or take actions as user types in a control.
    * Contains methods which can be used to perform data validations in a control even before the user commits (saves) the value in a form.
-   * @deprecated Use {@link Xrm.Controls.UiKeyPressable} instead.
    */
-  declare type Controls$UiKeyPressable = {
+  declare interface Xrm$Controls$UiKeyPressable {
     /**
      * Use this to add a function as an event handler for the keypress event so that the function is called when you type a character in the specific text or number field.
      * For a sample JavaScript code that uses the addOnKeyPress method to configure the auto-completion experience, see Sample: Auto-complete in CRM controls.
@@ -4380,233 +2644,162 @@ with this method.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
      * @param handler The function reference.
      */
-    addOnKeyPress(handler: Events$Page$ContextSensitiveHandler): void,
+    addOnKeyPress(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
      * Use this to manually fire an event handler that you created for a specific text or number field to be executed on the keypress event.
      */
-    fireOnKeyPress(): void,
+    fireOnKeyPress(): void;
 
     /**
- * Use this to remove an event handler for a text or number field that you added using addOnKeyPress.
- * @deprecated Deprecated in v9.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
-Remarks:  If an anonymous function is set using addOnKeyPress, it can’t be removed using this method.
- * @param handler The function reference.
- */
-    removeOnKeyPress(handler: Events$Page$ContextSensitiveHandler): void
-  } & Controls$Controls$UiKeyPressable;
+     * Use this to remove an event handler for a text or number field that you added using addOnKeyPress.
+     * @deprecated Deprecated in v9.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
+     * Remarks:  If an anonymous function is set using addOnKeyPress, it can’t be removed using this method.
+     * @param handler The function reference.
+     */
+    removeOnKeyPress(handler: Xrm$Events$ContextSensitiveHandler): void;
+  }
 
   /**
    * Interface for Result value of AutoCompleteResultSet
-   * @deprecated Use {@link Xrm.Controls.AutoCompleteResult} instead.
    */
-  declare type Controls$AutoCompleteResult = {
+  declare interface Xrm$Controls$AutoCompleteResult {
     /**
      * The Identifier
      */
-    id: string | number,
+    id: string | number;
 
     /**
      * Url of the icon to display
      */
-    icon?: string,
+    icon?: string;
 
     /**
      * Display value(s) for this auto-complete option
      */
-    fields: string[]
-  } & Controls$Controls$AutoCompleteResult;
+    fields: string[];
+  }
 
   /**
    * Interface for command of AutoCompleteResultSet.  This is displayed at the bottom of the auto complete view
-   * @deprecated Use {@link Xrm.Controls.AutoCompleteCommand} instead.
    */
-  declare type Controls$AutoCompleteCommand = {
+  declare interface Xrm$Controls$AutoCompleteCommand {
     /**
      * The Identifier
      */
-    id: string,
+    id: string;
 
     /**
      * Url of the icon to display
      */
-    icon?: string,
+    icon?: string;
 
     /**
      * Label to display at the bottom of the auto complete view
      */
-    label: string,
+    label: string;
 
     /**
      * Action to perform when user clicks on label
      */
-    action(): void
-  } & Controls$Controls$AutoCompleteCommand;
+    action(): void;
+  }
 
   /**
    * Interface for showAutoComplete argument
-   * @deprecated Use {@link Xrm.Controls.AutoCompleteResultSet} instead.
    */
-  declare type Controls$AutoCompleteResultSet = {
+  declare interface Xrm$Controls$AutoCompleteResultSet {
     /**
      * Results to show
      */
-    results: Controls$AutoCompleteResult[],
+    results: Xrm$Controls$AutoCompleteResult[];
 
     /**
      * Command to show/execute at the bottom of the results displayed
      */
-    commands?: Controls$AutoCompleteCommand
-  } & Controls$Controls$AutoCompleteResultSet;
+    commands?: Xrm$Controls$AutoCompleteCommand;
+  }
 
   /**
-   * Interface for Xrm.Page.ui controls.
+   * Interface for controls.
    * @see {@link UiElement}
-   * @deprecated Use {@link Xrm.Controls.Control} instead.
    */
-  declare type Controls$Control = {
+  declare type Xrm$Controls$Control = {
     /**
      * Gets the controls type.
      * @returns The control type.<BR><BR>
-     **Values returned are**:
-     * standard
-     * iframe
-     * lookup
-     * optionset
-     * subgrid
-     * webresource
-     * notes
-     * timercontrol
-     * kbsearch (CRM Online Only, use parature.d.ts)
-     * quickform (see ui.QuickForm)
-     * customcontrol: <namespace>.<name> (A custom control for mobile phone and tablet clients).
-     * customsubgrid: <namespace>.<name> (A custom dataset control for mobile phone and tablet clients).
+     * **Values returned are**:
+     * * standard
+     * * iframe
+     * * lookup
+     * * optionset
+     * * subgrid
+     * * webresource
+     * * notes
+     * * timercontrol
+     * * kbsearch (CRM Online Only, use parature.d.ts)
+     * * quickform (see ui.QuickForm)
+     * * customcontrol: <namespace>.<name> (A custom control for mobile phone and tablet clients).
+     * * customsubgrid: <namespace>.<name> (A custom dataset control for mobile phone and tablet clients).
      */
-    getControlType(): Controls$ControlType | string,
+    getControlType(): Xrm$Controls$ControlType | string,
 
     /**
- * Gets the name of the control on the form.
- * @returns The name of the control.
- * @remarks The name assigned to a control is not determined until the form loads. Changes to
-the form may change the name assigned to a given control.
-When you use the control getName method the name of the first control will be the
-same as the name of the attribute. The second instance of a control for that
-attribute will be "<attributeName>1". The pattern <attributeName>+N
-will continue for each additional control added to the form for a specific
-attribute. When a form displays a business process flow control in the header,
-additional controls will be added for each attribute that is displayed in the
-business process flow. These controls have a unique name like the following:
-header_process_<attribute name>.
- */
+     * Gets the name of the control on the form.
+     * @returns The name of the control.
+     * @remarks The name assigned to a control is not determined until the form loads. Changes to
+     * the form may change the name assigned to a given control.
+     * When you use the control getName method the name of the first control will be the
+     * same as the name of the attribute. The second instance of a control for that
+     * attribute will be "<attributeName>1". The pattern <attributeName>+N
+     * will continue for each additional control added to the form for a specific
+     * attribute. When a form displays a business process flow control in the header,
+     * additional controls will be added for each attribute that is displayed in the
+     * business process flow. These controls have a unique name like the following:
+     * header_process_<attribute name>.
+     */
     getName(): string,
 
     /**
      * Gets a reference to the Section parent of the control.
      * @returns The parent Section.
      */
-    getParent(): Page$Section
-  } & Controls$Controls$Control;
+    getParent(): Xrm$Page$Section
+  } & Xrm$Controls$UiLabelElement &
+    Xrm$Controls$UiCanGetVisibleElement;
 
   /**
-   * Interface for Xrm.Page.ui.navigation.
-   * @deprecated Use {@link Xrm.Controls.Navigation} instead.
+   * Interface for {@link Ui.navigation formContext.ui.navigation}.
    */
-  declare type Controls$Navigation = {
+  declare interface Xrm$Controls$Navigation {
     /**
      * A reference to the collection of available navigation items.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    items: Collection$Collection$ItemCollection<Page$NavigationItem>,
-
-    /**
-     * Displays an alert dialog containing a message and a button.
-     * @param alertStrings The strings to be used in the alert dialog.
-     * @param alertOptions The height and width options for alert dialog
-     */
-    openAlertDialog(
-      alertStrings: Controls$Navigation.Navigation$AlertStrings,
-      alertOptions?: Controls$Navigation.Navigation$DialogSizeOptions
-    ): Async$Async$PromiseLike<any>,
-
-    /**
-     * Displays a confirmation dialog box containing a message and two buttons.
-     * @param confirmStrings The strings to be used in the confirm dialog.
-     * @param confirmOptions The height and width options for alert dialog
-     */
-    openConfirmDialog(
-      confirmStrings: Controls$Navigation.Navigation$ConfirmStrings,
-      confirmOptions?: Controls$Navigation.Navigation$DialogSizeOptions
-    ): Async$Async$PromiseLike<Controls$Navigation.Navigation$ConfirmResult>,
-
-    /**
-     * Displays an error dialog.
-     * @param confirmStrings The strings to be used in the confirm dialog.
-     * @param confirmOptions The height and width options for alert dialog
-     */
-    openErrorDialog(
-      errorOptions: Controls$Navigation.Navigation$ErrorDialogOptions
-    ): Async$Async$PromiseLike<any>,
-
-    /**
-     * Opens a file.
-     */
-    openFile(
-      file: Controls$Navigation.Navigation$FileDetails,
-      openFileOptions?: XrmEnum$XrmEnum$OpenFileOptions
-    ): void,
-
-    /**
-     * Opens an entity form or a quick create form.
-     */
-    openForm(
-      entityFormOptions: Controls$Navigation.Navigation$EntityFormOptions,
-      formParameters?: Xrm$Utility.Utility$OpenParameters
-    ): Async$Async$PromiseLike<Controls$Navigation.Navigation$OpenFormResult>,
-
-    /**
-     * Opens a URL, including file URLs.
-     * @param url URL to open.
-     * @param openUrlOptions Options to open the URL
-     */
-    openUrl(
-      url: string,
-      openUrlOptions?: Controls$Navigation.Navigation$DialogSizeOptions
-    ): void,
-
-    /**
- * Opens an HTML web resource.
- * @param webResourceName Name of the HTML web resource.
- * @param windowOptions (Optional) Window options for opening the web resource.
-                           It is advised to use encodeURIcomponent() to encode the value.
- */
-    openWebResource(
-      webResourceName: string,
-      windowOptions?: Controls$Navigation.Navigation$OpenWebresourceOptions,
-      data?: string
-    ): void
-  } & Controls$Controls$Navigation;
+    items: Xrm$Collection$ItemCollection<Xrm$Page$NavigationItem>;
+  }
 
   /**
    * Interface for a navigation item.
    * @see {@link UiElement}
    * @see {@link UiFocusable}
-   * @deprecated Use {@link Xrm.Controls.NavigationItem} instead.
+   * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-ui-navigation External Link: formContext.ui.navigation item (Client API reference)}
    */
-  declare type Controls$NavigationItem = {
+  declare type Xrm$Controls$NavigationItem = {
     /**
      * Gets the name of the item.
      * @returns The identifier.
      */
     getId(): string
-  } & Controls$Controls$NavigationItem;
+  } & Xrm$Controls$UiStandardElement &
+    Xrm$Controls$UiFocusable;
 
   /**
    * Interface for a standard control.
    * @see {@link Control}
-   * @deprecated Use {@link Xrm.Controls.StandardControl} instead.
    */
-  declare type Controls$StandardControl = {
+  declare type Xrm$Controls$StandardControl = {
     /**
      * Clears the notification identified by uniqueId.
      * @param uniqueId (Optional) Unique identifier.
@@ -4628,42 +2821,45 @@ header_process_<attribute name>.
     setDisabled(disabled: boolean): void,
 
     /**
- * Sets a control-local notification message.
- * @param message The message.
- * @param uniqueId Unique identifier.
- * @returns true if it succeeds, false if it fails.
- * @remarks When this method is used on Microsoft Dynamics CRM for tablets a red "X" icon
-appears next to the control. Tapping on the icon will display the message.
- */
+     * Sets a control-local notification message.
+     * @param message The message.
+     * @param uniqueId Unique identifier.
+     * @returns true if it succeeds, false if it fails.
+     * @remarks When this method is used on Microsoft Dynamics CRM for tablets a red "X" icon
+     * appears next to the control. Tapping on the icon will display the message.
+     */
     setNotification(message: string, uniqueId: string): boolean,
 
     /**
      * Displays an error or recommendation notification for a control, and lets you specify actions to execute based on the notification.
      */
-    addNotification(notification: Page$AddControlNotificationOptions): void,
+    addNotification(notification: Xrm$Page$AddControlNotificationOptions): void,
 
     /**
      * Gets the control's bound attribute.
      * @template An Attribute type.
      * @returns The attribute.
      */
-    getAttribute<T: Attributes$Attributes$Attribute>(): T,
+    getAttribute<T: Xrm$Attributes$Attribute>(): T,
 
     /**
      * Gets the control's bound attribute.
      * @returns The attribute.
      */
-    getAttribute(): Attributes$Attributes$Attribute
-  } & Controls$Controls$StandardControl;
+    getAttribute(): Xrm$Attributes$Attribute
+  } & Xrm$Controls$Control &
+    Xrm$Controls$UiStandardElement &
+    Xrm$Controls$UiFocusable;
 
   /**
    * Interface for Auto Lookup Control.
    * This is not an Entity Lookup, but a control that supports AutoComplete / KeyPress Events (Text or Number)
    * @remarks This interface is not supported for CRM mobile clients (phones or tablets) and the interactive service hub.  It is only available for Updated entities.
+   * @deprecated Deprecated in v9.
+   * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
    * @see {@link StandardControl}
-   * @deprecated Use {@link Xrm.Controls.AutoLookupControl} instead.
    */
-  declare type Controls$AutoLookupControl = {
+  declare type Xrm$Controls$AutoLookupControl = {
     /**
      * Gets the latest value in a control as the user types characters in a specific text or number field.
      * This method helps you to build interactive experiences by validating data and alerting users as they type characters in a control.
@@ -4686,46 +2882,44 @@ appears next to the control. Tapping on the icon will display the message.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/get-started/whats-new/customer-engagement/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
      * @param resultSet The results to show
      */
-    showAutoComplete(resultSet: Controls$AutoCompleteResultSet): void
-  } & Controls$Controls$AutoLookupControl;
+    showAutoComplete(resultSet: Xrm$Controls$AutoCompleteResultSet): void
+  } & Xrm$Controls$StandardControl &
+    Xrm$Controls$UiKeyPressable;
 
   /**
    * Interface for a String control.
    * @see {@link StandardControl}
-   * @deprecated Use {@link Xrm.Controls.StringControl} instead.
    */
-  declare type Controls$StringControl = {
+  declare type Xrm$Controls$StringControl = {
     /**
      * Gets the control's bound attribute.
      * @returns The attribute.
      */
-    getAttribute(): Attributes$Attributes$StringAttribute
-  } & Controls$Controls$StringControl;
+    getAttribute(): Xrm$Attributes$StringAttribute
+  } & Xrm$Controls$AutoLookupControl;
 
   /**
    * Interface for a Number control.
    * @see {@link StandardControl}
-   * @deprecated Use {@link Xrm.Controls.NumberControl} instead.
    */
-  declare type Controls$NumberControl = {
+  declare type Xrm$Controls$NumberControl = {
     /**
      * Gets the control's bound attribute.
      * @returns The attribute.
      */
-    getAttribute(): Attributes$Attributes$NumberAttribute
-  } & Controls$AutoLookupControl;
+    getAttribute(): Xrm$Attributes$NumberAttribute
+  } & Xrm$Controls$AutoLookupControl;
 
   /**
    * Interface for a Date control.
    * @see {@link StandardControl}
-   * @deprecated Use {@link Xrm.Controls.DateControl} instead.
    */
-  declare type Controls$DateControl = {
+  declare type Xrm$Controls$DateControl = {
     /**
      * Gets the control's bound attribute.
      * @returns The attribute.
      */
-    getAttribute(): Attributes$Attributes$DateAttribute,
+    getAttribute(): Xrm$Attributes$DateAttribute,
 
     /**
      * Gets the status of the time-of-day component of the Date control.
@@ -4738,48 +2932,47 @@ appears next to the control. Tapping on the icon will display the message.
      * @param showTimeValue true to show, false to hide the time value.
      */
     setShowTime(showTimeValue: boolean): void
-  } & Controls$StandardControl;
+  } & Xrm$Controls$StandardControl;
 
   /**
    * Interface for a Lookup control.
    * @see {@link StandardControl}
-   * @deprecated Use {@link Xrm.Controls.LookupControl} instead.
    */
-  declare type Controls$LookupControl = {
+  declare type Xrm$Controls$LookupControl = {
     /**
      * Adds a handler to the "pre search" event of the Lookup control.
      * @param handler The handler.
      */
-    addPreSearch(handler: Events$Page$ContextSensitiveHandler): void,
+    addPreSearch(handler: Xrm$Events$ContextSensitiveHandler): void,
 
     /**
- * Adds an additional custom filter to the lookup, with the "AND" filter operator.
- * Can only be used within a "pre search" event handler
- * @see {@link addPreSearch}
- * @param filter Specifies the filter, as a serialized FetchXML "filter" node.
- * @param entityLogicalName (Optional) The logical name of the entity.
- * @remarks If entityLogicalName is not specified, the filter will be applied to all entities
-valid for the Lookup control.
- * @example Example filter: <filter type="and">
-             <condition attribute="address1_city" operator="eq" value="Redmond" />
-             </filter>
- */
+     * Adds an additional custom filter to the lookup, with the "AND" filter operator.
+     * Can only be used within a "pre search" event handler
+     * @see {@link addPreSearch}
+     * @param filter Specifies the filter, as a serialized FetchXML "filter" node.
+     * @param entityLogicalName (Optional) The logical name of the entity.
+     * @remarks If entityLogicalName is not specified, the filter will be applied to all entities
+     * valid for the Lookup control.
+     * @example Example filter: <filter type="and">
+     *              <condition attribute="address1_city" operator="eq" value="Redmond" />
+     *              </filter>
+     */
     addCustomFilter(filter: string, entityLogicalName?: string): void,
 
     /**
- * Adds a custom view for the Lookup dialog.
- * @param viewId Unique identifier for the view, in Guid format.
- * @param entityName Name of the entity.
- * @param viewDisplayName Name of the view to display.
- * @param fetchXml The FetchXML query for the view's contents, serialized as a string.
- * @param layoutXml The Layout XML, serialized as a string.
- * @param isDefault true, to treat this view as default.
- * @remarks Cannot be used on "Owner" Lookup controls.
-The viewId is never saved to CRM, but must be unique across available views.  Generating
-a new value can be accomplished with a {@link http://www.guidgen.com/ Guid generator(external link)}.
- * @example Example viewId value: "{00000000-0000-0000-0000-000000000001}"
- * @see {@link http://msdn.microsoft.com/en-us/library/gg334522.aspx External Link: Layout XML Reference}
- */
+     * Adds a custom view for the Lookup dialog.
+     * @param viewId Unique identifier for the view, in Guid format.
+     * @param entityName Name of the entity.
+     * @param viewDisplayName Name of the view to display.
+     * @param fetchXml The FetchXML query for the view's contents, serialized as a string.
+     * @param layoutXml The Layout XML, serialized as a string.
+     * @param isDefault true, to treat this view as default.
+     * @remarks Cannot be used on "Owner" Lookup controls.
+     * The viewId is never saved to CRM, but must be unique across available views.  Generating
+     * a new value can be accomplished with a {@link http://www.guidgen.com/ Guid generator(external link)}.
+     * @example Example viewId value: "{00000000-0000-0000-0000-000000000001}"
+     * @see {@link http://msdn.microsoft.com/en-us/library/gg334522.aspx External Link: Layout XML Reference}
+     */
     addCustomView(
       viewId: string,
       entityName: string,
@@ -4793,7 +2986,7 @@ a new value can be accomplished with a {@link http://www.guidgen.com/ Guid gener
      * Gets the control's bound attribute.
      * @returns The attribute.
      */
-    getAttribute(): Attributes$Attributes$LookupAttribute,
+    getAttribute(): Xrm$Attributes$LookupAttribute,
 
     /**
      * Gets the unique identifier of the default view.
@@ -4824,21 +3017,20 @@ a new value can be accomplished with a {@link http://www.guidgen.com/ Guid gener
      * Sets the types of entities allowed in the lookup control.
      */
     setEntityTypes(entityLogicalNames: string[]): void
-  } & Controls$Controls$LookupControl;
+  } & Xrm$Controls$StandardControl;
 
   /**
    * Interface for an OptionSet control.
    * @see {@link StandardControl}
-   * @deprecated Use {@link Xrm.Controls.OptionSetControl} instead.
    */
-  declare type Controls$OptionSetControl = {
+  declare type Xrm$Controls$OptionSetControl = {
     /**
- * Adds an option.
- * @param option The option.
- * @param index (Optional) zero-based index of the option.
- * @remarks This method does not check that the values within the options you add are valid.
-If index is not provided, the new option will be added to the end of the list.
- */
+     * Adds an option.
+     * @param option The option.
+     * @param index (Optional) zero-based index of the option.
+     * @remarks This method does not check that the values within the options you add are valid.
+     * If index is not provided, the new option will be added to the end of the list.
+     */
     addOption(option: Xrm$OptionSetValue, index?: number): void,
 
     /**
@@ -4850,21 +3042,20 @@ If index is not provided, the new option will be added to the end of the list.
      * Gets the control's bound attribute.
      * @returns The attribute.
      */
-    getAttribute(): Attributes$Attributes$OptionSetAttribute,
+    getAttribute(): Xrm$Attributes$OptionSetAttribute,
 
     /**
      * Removes the option matching the value.
      * @param value The value.
      */
     removeOption(value: number): void
-  } & Controls$Controls$OptionSetControl;
+  } & Xrm$Controls$StandardControl;
 
   /**
    * Interface for a CRM grid control.
    * @see {@link Control}
-   * @deprecated Use {@link Xrm.Controls.GridControl} instead.
    */
-  declare type Controls$GridControl = {
+  declare type Xrm$Controls$GridControl = {
     /**
      * Use this method to add event handlers to the GridControl's OnLoad event.
      * @param handler The event handler.
@@ -4875,7 +3066,7 @@ If index is not provided, the new option will be added to the end of the list.
      * This method returns context information about the GridControl.
      * @returns The context type.
      */
-    getContextType(): XrmEnum$XrmEnum$GridControlContext,
+    getContextType(): $Values<typeof XrmEnum$GridControlContext>,
 
     /**
      * Use this method to get the logical name of the entity data displayed in the grid.
@@ -4887,13 +3078,13 @@ If index is not provided, the new option will be added to the end of the list.
      * Use this method to get access to the Grid available in the GridControl.
      * @returns The grid.
      */
-    getGrid(): ui$Grid,
+    getGrid(): Xrm$Page$ui$Grid,
 
     /**
      * Use this method to get access to the ViewSelector available for the GridControl when it is configured to display views.
      * @returns The view selector.
      */
-    getViewSelector(): ui$ViewSelector,
+    getViewSelector(): Xrm$Page$ui$ViewSelector,
 
     /**
      * Refreshes the sub grid.
@@ -4906,88 +3097,85 @@ If index is not provided, the new option will be added to the end of the list.
      * @param handler The handler.
      */
     removeOnLoad(handler: () => void): void
-  } & Controls$Controls$GridControl;
+  } & Xrm$Controls$Control;
 
   /**
    * Interface for a grid.  Use Grid methods to access information about data in the grid. Grid is returned by the
    * GridControl.getGrid method.
-   * @deprecated Use {@link Xrm.Controls.Grid} instead.
    */
-  declare type Controls$Grid = {
+  declare interface Xrm$Controls$Grid {
     /**
      * Returns a collection of every GridRow in the Grid.
      * @returns The rows.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    getRows(): Collection$Collection$ItemCollection<Controls$Grid.ui$GridRow>,
+    getRows(): Xrm$Collection$ItemCollection<Xrm$Controls$Grid$GridRow>;
 
     /**
      * Returns a collection of every selected GridRow in the Grid.
      * @returns The selected rows.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    getSelectedRows(): Collection$Collection$ItemCollection<Controls$Grid.ui$GridRow>,
+    getSelectedRows(): Xrm$Collection$ItemCollection<Xrm$Controls$Grid$GridRow>;
 
     /**
      * Returns the total number of records in the Grid.
      * @returns The total record count.
      */
-    getTotalRecordCount(): number
-  } & Controls$Controls$Grid;
+    getTotalRecordCount(): number;
+  }
 
   /**
    * Interface for a grid row.  Use the GridRow.getData method to access the GridRowData. A collection of GridRow is
    * returned by Grid.getRows and Grid.getSelectedRows methods.
-   * In V9 - this is essentailly a form context.
-   * @deprecated Use {@link Xrm.Controls.Grid.GridRow} instead.
+   * In V9 - this is essentailly a form context
    */
-  declare type Grid$GridRow = {
+  declare interface Xrm$Controls$Grid$GridRow {
     /**
      * Provides methods to work with the row data.
      */
-    data: Xrm$Data,
+    data: Xrm$Data;
 
     /**
      * Returns the GridRowData for the GridRow.
      * @deprecated Deprecated in V9 - use data field instead
      * @returns The data.
      */
-    getData(): ui$GridRowData
-  } & undefined.Grid$GridRow;
+    getData(): Xrm$Page$ui$GridRowData;
+  }
 
   /**
    * Interface for grid row data.  Use the GridRowData.getEntity method to access the GridEntity. GridRowData is
    * returned by the GridRow.getData method.
-   * @deprecated Use {@link Xrm.Controls.Grid.GridRowData} instead.
    */
-  declare type Grid$GridRowData = {
+  declare interface Xrm$Controls$Grid$GridRowData {
     /**
      * Returns the GridEntity for the GridRowData.
      * @returns The entity.
      * @deprecated Use GridRow.data.entity instead of using GridRow.getData().getEntity().
      */
-    getEntity(): ui$GridEntity
-  } & undefined.Grid$GridRowData;
+    getEntity(): Xrm$Page$ui$GridEntity;
+  }
 
   /**
    * Interface for a grid entity.  Use the GridEntity methods to access data about the specific records in the rows.
    * GridEntity is returned by the GridRowData.getEntity method.
-   * @deprecated Use {@link Xrm.Controls.Grid.GridRowData} instead.v
+   * @deprecated Use GridRow.data.entity instead.
    */
-  declare type Grid$GridEntity = {
+  declare interface Xrm$Controls$Grid$GridEntity {
     /**
      * Returns the logical name for the record in the row.
      * @returns The entity name.
      * @deprecated Use GridRow.data.entity.getEntityName() instead.
      */
-    getEntityName(): string,
+    getEntityName(): string;
 
     /**
      * Returns a LookupValue that references this record.
      * @returns The entity reference.
      * @deprecated Use GridRow.data.entity.getEntityReference() instead.
      */
-    getEntityReference(): Xrm$LookupValue,
+    getEntityReference(): Xrm$LookupValue;
 
     /**
      * Returns the id for the record in the row.
@@ -4995,24 +3183,23 @@ If index is not provided, the new option will be added to the end of the list.
      * @example Example return: "{00000000-0000-0000-0000-000000000000}"
      * @deprecated Use GridRow.data.entity.getId() instead.
      */
-    getId(): string,
+    getId(): string;
 
     /**
      * Returns the primary attribute value for the record in the row.  (Commonly the name.)
      * @returns The primary attribute value.
      * @deprecated Use GridRow.data.entity.getPrimaryAttributeValue() instead.
      */
-    getPrimaryAttributeValue(): string
-  } & undefined.Grid$GridEntity;
+    getPrimaryAttributeValue(): string;
+  }
 
   /**
- * Interface for a framed control, which is either a Web Resource or an Iframe.
- * @see {@link Control}
- * @remarks An Iframe control provides additional methods, so use {@link IframeControl} where
-appropriate.  Silverlight controls should use {@link SilverlightControl}.
- * @deprecated Use {@link Xrm.Controls.FramedControl} instead.
- */
-  declare type Controls$FramedControl = {
+   * Interface for a framed control, which is either a Web Resource or an Iframe.
+   * @see {@link Control}
+   * @remarks An Iframe control provides additional methods, so use {@link IframeControl} where
+   * appropriate.  Silverlight controls should use {@link SilverlightControl}.
+   */
+  declare type Xrm$Controls$FramedControl = {
     /**
      * Gets the DOM element containing the control.
      * @returns The container object.
@@ -5033,33 +3220,33 @@ appropriate.  Silverlight controls should use {@link SilverlightControl}.
      * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
      */
     setSrc(src: string): void
-  } & Controls$Controls$FramedControl;
+  } & Xrm$Controls$Control;
 
   /**
    * Interface for an Iframe control.
    * @see {@link FramedControl}
-   * @deprecated Use {@link Xrm.Controls.IframeControl} instead.
    */
-  declare type Controls$IframeControl = {
+  declare type Xrm$Controls$IframeControl = {
     /**
      * Gets initial URL defined for the Iframe.
      * @returns The initial URL.
      * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
      */
     getInitialUrl(): string
-  } & Controls$Controls$IframeControl;
+  } & Xrm$Controls$FramedControl &
+    Xrm$Controls$UiCanSetVisibleElement;
 
   /**
    * Interface for a quick view control instance on a form.
    * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-ui-quickforms External Link: formContext.ui.quickForms (Client API reference)}
    */
-  declare type Controls$QuickFormControl = {
+  declare type Xrm$Controls$QuickFormControl = {
     /**
      * Gets the constituent controls in a quick view control.
      * @returns An array of controls.
      * @remarks Constituent controls in a quick view control are read only.
      */
-    getControl(): Controls$Control[],
+    getControl(): Xrm$Controls$Control[],
 
     /**
      * Gets the constituent controls in a quick view control.
@@ -5068,7 +3255,7 @@ appropriate.  Silverlight controls should use {@link SilverlightControl}.
      * @returns The control.
      * @remarks Constituent controls in a quick view control are read only.
      */
-    getControl<T: Controls$Control>(controlName: string): T,
+    getControl<T: Xrm$Controls$Control>(controlName: string): T,
 
     /**
      * Gets the constituent controls in a quick view control.
@@ -5076,7 +3263,7 @@ appropriate.  Silverlight controls should use {@link SilverlightControl}.
      * @returns The control.
      * @remarks Constituent controls in a quick view control are read only.
      */
-    getControl(controlName: string): Controls$Control,
+    getControl(controlName: string): Xrm$Controls$Control,
 
     /**
      * Gets a control by index.
@@ -5085,7 +3272,7 @@ appropriate.  Silverlight controls should use {@link SilverlightControl}.
      * @returns The control.
      * @remarks Constituent controls in a quick view control are read only.
      */
-    getControl<T: Controls$Control>(index: number): T,
+    getControl<T: Xrm$Controls$Control>(index: number): T,
 
     /**
      * Gets a control by index.
@@ -5093,38 +3280,39 @@ appropriate.  Silverlight controls should use {@link SilverlightControl}.
      * @returns The control.
      * @remarks Constituent controls in a quick view control are read only.
      */
-    getControl(index: number): Controls$Control,
+    getControl(index: number): Xrm$Controls$Control,
 
     /**
      * Gets the controls type.
      * @returns Returns a string value ("quickform") that categorizes quick view controls.
      */
-    getControlType(): Controls$ControlQuickFormType,
+    getControlType(): Xrm$Controls$ControlQuickFormType,
 
     /**
- * Returns whether the data binding for the constituent controls in a quick view control is complete.
- * @returns True is the data binding for a constituent control is complete, otherwise false.
-because the quick view form that the control is bound to may not have loaded completely.
-As a result, using the getAttribute or any data-related methods on a constituent control might not work.
-The isLoaded method for the quick view control helps determine the data binding status for constituent controls in a quick view control.
- * @remarks The data binding for the constituent controls in a quick view control may not be complete during the main form OnLoad event
- */
+     * Returns whether the data binding for the constituent controls in a quick view control is complete.
+     * @returns True is the data binding for a constituent control is complete, otherwise false.
+     * because the quick view form that the control is bound to may not have loaded completely.
+     * As a result, using the getAttribute or any data-related methods on a constituent control might not work.
+     * The isLoaded method for the quick view control helps determine the data binding status for constituent controls in a quick view control.
+     * @remarks The data binding for the constituent controls in a quick view control may not be complete during the main form OnLoad event
+     */
     isLoaded(): boolean,
 
     /**
      * Refreshes the data displayed in a quick view control.
      */
     refresh(): void
-  } & Controls$Control &
-    Controls$UiLabelElement &
-    Controls$UiCanGetVisibleElement;
+  } & Xrm$Controls$Control &
+    Xrm$Controls$UiLabelElement &
+    Xrm$Controls$UiCanGetVisibleElement;
 
   /**
    * Interface for a Silverlight control.
    * @see {@link Control}
-   * @deprecated Use {@link Xrm.Controls.SilverlightControl} instead.
+   * @deprecated The Silverlight WebResource is deprecated on the web client, and is not supported on the new Unified Interface in v9.
+   * Instead of silverlight, use custom controls created using the HTML web resources with HTML5 to create UI components to visualize and interact with data.
    */
-  declare type Controls$SilverlightControl = {
+  declare type Xrm$Controls$SilverlightControl = {
     /**
      * Gets the query string value passed to Silverlight.
      * @returns The data.
@@ -5145,32 +3333,30 @@ The isLoaded method for the quick view control helps determine the data binding 
      * @remarks Unavailable for Microsoft Dynamics CRM for tablets.
      */
     getObject(): HTMLObjectElement
-  } & Controls$Controls$SilverlightControl;
+  } & Xrm$Controls$Control;
 
   /**
    * Interface for a Timeline control.
    * @see {@link Control}
-   * @deprecated Use {@link Xrm.Controls.TimelineWall} instead.
    */
-  declare type Controls$TimelineWall = {
+  declare type Xrm$Controls$TimelineWall = {
     /**
      * Refreshes the data displayed in a timelinewall and timer control.
      */
     refresh(): void
-  } & Controls$Controls$TimelineWall;
+  } & Xrm$Controls$Control;
 
   /**
    * Interface for a form tab.
    * @see {@link UiElement}
    * @see {@link UiFocusable}
-   * @deprecated Use {@link Xrm.Controls.Tab} instead.
    */
-  declare type Controls$Tab = {
+  declare type Xrm$Controls$Tab = {
     /**
      * Gets display state of the tab.
      * @returns The display state, as either "expanded" or "collapsed"
      */
-    getDisplayState(): ui$DisplayState,
+    getDisplayState(): Xrm$Page$ui$DisplayState,
 
     /**
      * Gets the name of the tab.
@@ -5188,21 +3374,21 @@ The isLoaded method for the quick view control helps determine the data binding 
      * Sets display state of the tab.
      * @param displayState Display state of the tab, as either "expanded" or "collapsed"
      */
-    setDisplayState(displayState: ui$DisplayState): void,
+    setDisplayState(displayState: Xrm$Page$ui$DisplayState): void,
 
     /**
      * A reference to the collection of form sections within this tab.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    sections: Collection$Collection$ItemCollection<Page$Section>
-  } & Controls$Controls$Tab;
+    sections: Xrm$Collection$ItemCollection<Xrm$Page$Section>
+  } & Xrm$Controls$UiStandardElement &
+    Xrm$Controls$UiFocusable;
 
   /**
    * Interface for a form section.
    * @see {@link UiElement}
-   * @deprecated Use {@link Xrm.Controls.Section} instead.
    */
-  declare type Controls$Section = {
+  declare type Xrm$Controls$Section = {
     /**
      * Gets the name of the section.
      * @returns The name.
@@ -5213,74 +3399,69 @@ The isLoaded method for the quick view control helps determine the data binding 
      * Gets a reference to the parent {@link Tab}.
      * @returns The parent.
      */
-    getParent(): Controls$Tab,
+    getParent(): Xrm$Controls$Tab,
 
     /**
      * A reference to the collection of controls within this tab.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    controls: Collection$Collection$ItemCollection<Controls$Control>
-  } & Controls$Controls$Section;
+    controls: Xrm$Collection$ItemCollection<Xrm$Controls$Control>
+  } & Xrm$Controls$UiStandardElement;
 
-  /**
-   * @deprecated Use {@link Xrm.Controls.AddControlNotificationOptions} instead.
-   */
-  declare type Controls$AddControlNotificationOptions = {
+  declare interface Xrm$Controls$AddControlNotificationOptions {
     /**
      * A collection of actions
      */
-    actions?: Page$ControlNotificationAction[],
+    actions?: Xrm$Page$ControlNotificationAction[];
 
     /**
      * The message to display in the notification.
      * In the current release, only the first message specified in this array will be displayed.
      */
-    messages: string[],
+    messages: string[];
 
     /**
      * Defines the type of notification.
      */
-    notificationLevel?: Page$NotificationLevel,
+    notificationLevel?: Xrm$Page$NotificationLevel;
 
     /**
      * The ID to use to clear this notification when using the clearNotification method.
      */
-    uniqueId: string
-  } & Controls$Controls$AddControlNotificationOptions;
+    uniqueId: string;
+  }
 
   /**
    * Constants to use with the addNotification method of form controls
-   * @deprecated Use {@link Xrm.Controls.NotificationLevel} instead.
    */
-  declare type Controls$NotificationLevel = Controls$Controls$NotificationLevel;
+  declare type Xrm$Controls$NotificationLevel = "ERROR" | "RECOMMENDATION";
 
   /**
-   * Interface to define the actions on a control notification
-   * @deprecated Use {@link Xrm.Controls.ControlNotificationAction} instead.
+   * interface to define the actions on a control notification
    */
-  declare type Controls$ControlNotificationAction = {
+  declare interface Xrm$Controls$ControlNotificationAction {
     /**
      * The body message of the notification to be displayed to the user. Limit your message to 100 characters for optimal user experience.
      */
-    message?: string,
+    message?: string;
 
     /**
      * Array of functions. The corresponding actions for the message.
      */
-    actions: Array<() => void>
-  } & Controls$Controls$ControlNotificationAction;
+    actions: Array<() => void>;
+  }
 
-  declare type Controls$ProcessControl = {
+  declare type Xrm$Controls$ProcessControl = {
     /**
      * Sets display state of the process flow control.
      * @param displayState Display state of the process flow control, as either "expanded" or "collapsed"
      */
-    setDisplayState(displayState: ui$DisplayState): void,
+    setDisplayState(displayState: Xrm$Page$ui$DisplayState): void,
 
     /**
      * Gets the display state of the process flow control.
      */
-    getDisplayState(): ui$DisplayState,
+    getDisplayState(): Xrm$Page$ui$DisplayState,
 
     /**
      * Reflow the UI of the process control
@@ -5289,310 +3470,303 @@ The isLoaded method for the quick view control helps determine the data binding 
      * @param nextStage ID of the next stage.
      */
     reflow(updateUI: boolean, parentStage: string, nextStage: string): void
-  } & Controls$UiCanGetVisibleElement &
-    Controls$UiCanSetVisibleElement;
+  } & Xrm$Controls$UiCanGetVisibleElement &
+    Xrm$Controls$UiCanSetVisibleElement;
 
   /**
    * Interface for an entity's form selector item.
-   * @deprecated Use {@link Xrm.Controls.FormItem} instead.
    */
-  declare type Controls$FormItem = {
+  declare interface Xrm$Controls$FormItem {
     /**
      * Gets the unique identifier of the form.
      * @returns The identifier, in Guid format.
      */
-    getId(): string,
+    getId(): string;
 
     /**
      * Gets the label for the form.
      * @returns The label.
      */
-    getLabel(): string,
+    getLabel(): string;
 
     /**
      * Navigates the user to this form.
      */
-    navigate(): void
-  } & Controls$Controls$FormItem;
+    navigate(): void;
+  }
 
   /**
    * Interface for the form selector API.
-   * @deprecated Use {@link Xrm.Controls.FormSelector} instead.
    */
-  declare type Controls$FormSelector = {
+  declare interface Xrm$Controls$FormSelector {
     /**
      * Gets current form.
      * @returns The current item.
      * @remarks When only one form is available this method will return null.
      */
-    getCurrentItem(): Controls$FormItem,
+    getCurrentItem(): Xrm$Controls$FormItem;
 
     /**
      * A reference to the collection of available forms.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    items: Collection$Collection$ItemCollection<Controls$FormItem>
-  } & Controls$Controls$FormSelector;
+    items: Xrm$Collection$ItemCollection<Xrm$Controls$FormItem>;
+  }
 
   /**
    * Interface for the view selector.  Use the ViewSelector methods to get or set information about the view selector
    * of the grid control.
-   * @deprecated Use {@link Xrm.Controls.ViewSelector} instead.
    */
-  declare type Controls$ViewSelector = {
+  declare interface Xrm$Controls$ViewSelector {
     /**
      * Use this method to get a reference to the current view.
      * @returns The current view.
      */
-    getCurrentView(): ui$ViewSelectorItem,
+    getCurrentView(): Xrm$Page$ui$ViewSelectorItem;
 
     /**
      * Use this method to determine whether the view selector is visible.
      * @returns true if visible, false if not.
      */
-    isVisible(): boolean,
+    isVisible(): boolean;
 
     /**
      * Use this method to set the current view.
      * @param viewSelectorItem The view selector item.
      */
-    setCurrentView(viewSelectorItem: ui$ViewSelectorItem): void
-  } & Controls$Controls$ViewSelector;
+    setCurrentView(viewSelectorItem: Xrm$Page$ui$ViewSelectorItem): void;
+  }
 
   /**
    * Interface for a view selector item. This object contains data that identifies a view. Use this as a parameter to
    * the ViewSelector.setCurrentView method.
-   * @deprecated Use {@link Xrm.Controls.ViewSelectorItem} instead.
    */
-  declare type Controls$ViewSelectorItem = {
+  declare interface Xrm$Controls$ViewSelectorItem {
     /**
      * Returns a LookupValue that references this view.
      * @returns The entity reference.
      */
-    getEntityReference(): Xrm$LookupValue
-  } & Controls$Controls$ViewSelectorItem;
+    getEntityReference(): Xrm$LookupValue;
+  }
 
   /**
-   * Interface for the form's record context, Xrm.Page.data.entity
-   * @deprecated Use {@link Xrm.Entity} instead.
+   * Interface for the form's record context, {@link Data.entity formContext.data.entity}
+   * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-data-entity External Link: formContext.data.entity (Client API reference)}
    */
-  declare type Xrm$Entity = {
+  declare interface Xrm$Entity {
     /**
      * Adds a handler to be called when the record is saved.
      * @param handler The handler.
      */
-    addOnSave(handler: Events$Page$ContextSensitiveHandler): void,
+    addOnSave(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
- * Gets an serialized-XML string representing data that will be passed to the server upon saving the record.
- * @returns The XML in string format.
- * @remarks This function does not work with Microsoft Dynamics CRM for tablets.
- * @example "<account><name>Contoso</name><accountnumber>55555</accountnumber><telephone2>425
-555-1234</telephone2></account>".
- */
-    getDataXml(): string,
+     * Gets an serialized-XML string representing data that will be passed to the server upon saving the record.
+     * @returns The XML in string format.
+     * @remarks This function does not work with Microsoft Dynamics CRM for tablets.
+     * @example "<account><name>Contoso</name><accountnumber>55555</accountnumber><telephone2>425
+     * 555-1234</telephone2></account>".
+     */
+    getDataXml(): string;
 
     /**
      * Gets entity's logical name.
      * @returns The logical name.
      */
-    getEntityName(): string,
+    getEntityName(): string;
 
     /**
      * Gets a lookup value that references the record.
      * @returns A lookup value that references the record.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-data-entity/getentityreference External Link: getEntityReference API Documentation}
      */
-    getEntityReference(): Xrm$LookupValue,
+    getEntityReference(): Xrm$LookupValue;
 
     /**
      * Gets the record's unique identifier.
      * @returns The identifier, in Guid format.
      * @example Example: "{825CB223-A651-DF11-AA8B-00155DBA3804}".
      */
-    getId(): string,
+    getId(): string;
 
     /**
      * Gets a boolean value indicating whether the record has unsaved changes.
      * @returns true if there are unsaved changes, otherwise false.
      */
-    getIsDirty(): boolean,
+    getIsDirty(): boolean;
 
     /**
      * Gets the record's primary attribute value.
      * @returns The primary attribute value.
      * @remarks The value for this attribute is used when links to the record are displayed.
      */
-    getPrimaryAttributeValue(): string,
+    getPrimaryAttributeValue(): string;
 
     /**
      * Gets a boolean value indicating whether all of the entity data is valid.
      * @returns true if all of the entity data is valid; false otherwise.
      */
-    isValid(): boolean,
+    isValid(): boolean;
 
     /**
      * Removes the handler from the "on save" event.
      * @param handler The handler.
      */
-    removeOnSave(handler: Events$Page$ContextSensitiveHandler): void,
+    removeOnSave(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
- * Saves the record.
- * @remarks When using quick create forms in the web application the saveandnew option is not
-applied. It will always work as if saveandclose were used. Quick create forms in
-Microsoft Dynamics CRM for tablets will apply the saveandnew behavior.
- */
-    save(): void,
+     * Saves the record.
+     * @remarks When using quick create forms in the web application the saveandnew option is not
+     * applied. It will always work as if saveandclose were used. Quick create forms in
+     * Microsoft Dynamics CRM for tablets will apply the saveandnew behavior.
+     */
+    save(): void;
 
     /**
      * Saves the record with the given save mode.
      * @param saveMode (Optional) the save mode to save, as either "saveandclose" or "saveandnew".  If no parameter is included in the method, the record will simply be saved.
      */
-    save(saveMode?: Xrm$EntitySaveMode): void,
+    save(saveMode?: Xrm$EntitySaveMode): void;
 
     /**
      * The collection of attributes for the record.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/attributes External Link: Attributes (Client API reference)}
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    attributes: Collection$Collection$ItemCollection<Attributes$Attributes$Attribute>
-  } & Xrm$Xrm$Entity;
+    attributes: Xrm$Collection$ItemCollection<Xrm$Attributes$Attribute>;
+  }
 
   /**
    * Direction types for a process stage change event
-   * @deprecated Use {@link Xrm.ProcessFlow.StageChangeDirection} instead.
+   * @see {@link XrmEnum.StageChangeDirection}
    */
-  declare type ProcessFlow$StageChangeDirection = ProcessFlow$ProcessFlow$StageChangeDirection;
+  declare type Xrm$ProcessFlow$StageChangeDirection = "Next" | "Previous";
 
   /**
-   * Status for Xrm.Page.Stage.getStatus().
-   * @deprecated Use {@link Xrm.ProcessFlow.StageStatus} instead.
+   * Status for {@link ProcessFlow.Stage.getStatus Stage.getStatus()}.
+   * @see {@link XrmEnum.StageStatus}
    */
-  declare type ProcessFlow$StageStatus = ProcessFlow$ProcessFlow$StageStatus;
+  declare type Xrm$ProcessFlow$StageStatus = "active" | "inactive";
 
   /**
-   * Status for Xrm.Page.Process.getStatus().
-   * @deprecated Use {@link Xrm.ProcessFlow.ProcessStatus} instead
+   * Status for {@link ProcessFlow.Process.getStatus Process.getStatus()}.
+   * @see {@link XrmEnum.ProcessStatus}
    */
-  declare type ProcessFlow$ProcessStatus = ProcessFlow$ProcessFlow$ProcessStatus;
+  declare type Xrm$ProcessFlow$ProcessStatus =
+    | "active"
+    | "aborted"
+    | "finished";
 
   /**
    * Interface for a CRM Business Process Flow instance.
-   * @deprecated Use {@link Xrm.ProcessFlow.Process} instead.
    */
-  declare type ProcessFlow$Process = {
+  declare interface Xrm$ProcessFlow$Process {
     /**
      * Returns the unique identifier of the process.
      * @returns The identifier for this process, in GUID format.
      * @example Example: "{825CB223-A651-DF11-AA8B-00155DBA3804}".
      */
-    getId(): string,
+    getId(): string;
 
     /**
      * Returns the name of the process.
      * @returns The name.
      */
-    getName(): string,
+    getName(): string;
 
     /**
      * Returns an collection of stages in the process.
      * @returns The stages.
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    getStages(): Collection$Collection$ItemCollection<Page$Stage>,
+    getStages(): Xrm$Collection$ItemCollection<Xrm$Page$Stage>;
 
     /**
      * Returns a boolean value to indicate if the process is rendered.
      * @returns true if the process is rendered, false if not.
      */
-    isRendered(): boolean
-  } & ProcessFlow$ProcessFlow$Process;
+    isRendered(): boolean;
+  }
 
   /**
    * Interface for CRM Business Process Flow stages.
-   * @deprecated Use {@link Xrm.ProcessFlow.Stage} instead.
    */
-  declare type ProcessFlow$Stage = {
+  declare interface Xrm$ProcessFlow$Stage {
     /**
      * Returns an object with a getValue method which will return the integer value of the business process flow
      * category.
      * @returns The stage category.
      */
     getCategory(): {
-      getValue(): XrmEnum$XrmEnum$StageCategory
-    },
+      getValue(): $Values<typeof XrmEnum$StageCategory>
+    };
 
     /**
      * Returns the logical name of the entity associated with the stage.
      * @returns The entity name.
      */
-    getEntityName(): string,
+    getEntityName(): string;
 
     /**
      * Returns the unique identifier of the stage.
      * @returns The identifier of the Stage, in GUID format.
      * @example Example: "{825CB223-A651-DF11-AA8B-00155DBA3804}".
      */
-    getId(): string,
+    getId(): string;
 
     /**
      * Returns the name of the stage.
      * @returns The name.
      */
-    getName(): string,
+    getName(): string;
 
     /**
      * Returns the status of the stage.
      * @returns The status, either "active" or "inactive".
      */
-    getStatus(): ProcessFlow$StageStatus,
+    getStatus(): Xrm$ProcessFlow$StageStatus;
 
     /**
      * Returns a collection of steps in the stage.
      * @returns An array of Step.
      */
-    getSteps(): Page$Step[]
-  } & ProcessFlow$ProcessFlow$Stage;
+    getSteps(): Xrm$Page$Step[];
+  }
 
-  /**
-   * Interface for CRM Business Process Flow steps.
-   * @deprecated Use {@link Xrm.ProcessFlow.Step} instead.
-   */
-  declare type ProcessFlow$Step = {
+  declare interface Xrm$ProcessFlow$Step {
     /**
      * Returns the logical name of the attribute associated to the step.
      * @returns The attribute.
      * @remarks Some steps don’t contain an attribute value.
      */
-    getAttribute(): string,
+    getAttribute(): string;
 
     /**
      * Returns the name of the step.
      * @returns The name.
      */
-    getName(): string,
+    getName(): string;
 
     /**
- * Returns whether the step is required in the business process flow.
- * @returns true if required, false if not.
- * @remarks Returns true if the step is marked as required in the Business Process Flow editor; otherwise, false.
-There is no connection between this value and the values you can change in the formContext.data.entity
-attribute RequiredLevel methods.
- */
-    isRequired(): boolean
-  } & ProcessFlow$ProcessFlow$Step;
+     * Returns whether the step is required in the business process flow.
+     * @returns true if required, false if not.
+     * @remarks Returns true if the step is marked as required in the Business Process Flow editor; otherwise, false.
+     * There is no connection between this value and the values you can change in the formContext.data.entity
+     * attribute RequiredLevel methods.
+     */
+    isRequired(): boolean;
+  }
 
   /**
-   * Interface for the Xrm.Page.data.process API.
-   * @deprecated Use {@link Xrm.ProcessFlow.ProcessManager} instead.
+   * Interface for the formContext.data.process API.
+   * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/formcontext-data-process External Link: formContext.data.process (Client API reference)}
    */
-  declare type ProcessFlow$ProcessManager = {
+  declare interface Xrm$ProcessFlow$ProcessManager {
     /**
      * Returns a Process object representing the active process.
      * @returns current active process.
      */
-    getActiveProcess(): ProcessFlow$Process,
+    getActiveProcess(): Xrm$ProcessFlow$Process;
 
     /**
      * Set a Process as the active process.
@@ -5601,16 +3775,16 @@ attribute RequiredLevel methods.
      */
     setActiveProcess(
       processId: string,
-      callbackFunction?: data$ProcessCallbackDelegate
-    ): void,
+      callbackFunction?: Xrm$Page$data$ProcessCallbackDelegate
+    ): void;
 
     /**
      * Returns all process instances for the entity record that the calling user has access to.
      * @param callbackFunction (Optional) a function to call when the operation is complete.
      */
     getProcessInstances(
-      callbackFunction?: data$GetProcessInstancesDelegate
-    ): void,
+      callbackFunction?: Xrm$Page$data$GetProcessInstancesDelegate
+    ): void;
 
     /**
      * Sets a process instance as the active instance
@@ -5619,14 +3793,14 @@ attribute RequiredLevel methods.
      */
     setActiveProcessInstance(
       processInstanceId: string,
-      callbackFunction?: data$SetProcessInstanceDelegate
-    ): void,
+      callbackFunction?: Xrm$Page$data$SetProcessInstanceDelegate
+    ): void;
 
     /**
      * Returns a Stage object representing the active stage.
      * @returns current active stage.
      */
-    getActiveStage(): ProcessFlow$Stage,
+    getActiveStage(): Xrm$ProcessFlow$Stage;
 
     /**
      * Set a stage as the active stage.
@@ -5635,132 +3809,136 @@ attribute RequiredLevel methods.
      */
     setActiveStage(
       stageId: string,
-      callbackFunction?: data$ProcessCallbackDelegate
-    ): void,
+      callbackFunction?: Xrm$Page$data$ProcessCallbackDelegate
+    ): void;
 
     /**
- * Use this method to get a collection of stages currently in the active path with methods to interact with the
- * stages displayed in the business process flow control. The active path represents stages currently rendered in
- * the process control based on the branching rules and current data in the record.
- * @returns A collection of all completed stages, the currently active stage, and the predicted set of future stages
-based on satisfied conditions in the branching rule. This may be a subset of the stages returned with
-formContext.data.process.getActiveProcess because it will only include those stages which represent a valid
-transition from the current stage based on branching that has occurred in the process.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
- */
-    getActivePath(): Collection$Collection$ItemCollection<ProcessFlow$Stage>,
+     * Use this method to get a collection of stages currently in the active path with methods to interact with the
+     * stages displayed in the business process flow control. The active path represents stages currently rendered in
+     * the process control based on the branching rules and current data in the record.
+     * @returns A collection of all completed stages, the currently active stage, and the predicted set of future stages
+     * based on satisfied conditions in the branching rule. This may be a subset of the stages returned with
+     * formContext.data.process.getActiveProcess because it will only include those stages which represent a valid
+     * transition from the current stage based on branching that has occurred in the process.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
+     */
+    getActivePath(): Xrm$Collection$ItemCollection<Xrm$ProcessFlow$Stage>;
 
     /**
- * Use this method to asynchronously retrieve the enabled business process flows that the user can switch to for an
- * entity.
- * @param callbackFunction The callback function must accept a parameter that contains an object with
-dictionary properties where the name of the property is the Id of the
-business process flow and the value of the property is the name of the
-business process flow.
-The enabled processes are filtered according to the user’s privileges. The
-list of enabled processes is the same ones a user can see in the UI if they
-want to change the process manually.
- */
+     * Use this method to asynchronously retrieve the enabled business process flows that the user can switch to for an
+     * entity.
+     * @param callbackFunction The callback function must accept a parameter that contains an object with
+     * dictionary properties where the name of the property is the Id of the
+     * business process flow and the value of the property is the name of the
+     * business process flow.
+     * The enabled processes are filtered according to the user’s privileges. The
+     * list of enabled processes is the same ones a user can see in the UI if they
+     * want to change the process manually.
+     */
     getEnabledProcesses(
-      callbackFunction: (enabledProcesses: data$ProcessDictionary) => void
-    ): void,
+      callbackFunction: (
+        enabledProcesses: Xrm$Page$data$ProcessDictionary
+      ) => void
+    ): void;
 
     /**
      * Use this method to get the currently selected stage.
      * @returns The currently selected stage.
      */
-    getSelectedStage(): ProcessFlow$Stage,
+    getSelectedStage(): Xrm$ProcessFlow$Stage;
 
     /**
- * Use this to add a function as an event handler for the OnStageChange event so that it will be called when the
- * business process flow stage changes.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnStageChange(handler: Events$Page$ContextSensitiveHandler): void,
+     * Use this to add a function as an event handler for the OnStageChange event so that it will be called when the
+     * business process flow stage changes.
+     * @param handler The function will be added to the bottom of the event
+     * handler pipeline. The execution context is automatically
+     * set to be the first parameter passed to the event handler.
+     * Use a reference to a named function rather than an
+     * anonymous function if you may later want to remove the
+     * event handler.
+     */
+    addOnStageChange(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
- * Use this to add a function as an event handler for the OnProcessStatusChange event so that it will be called when the
- * business process flow status changes.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
+     * Use this to add a function as an event handler for the OnProcessStatusChange event so that it will be called when the
+     * business process flow status changes.
+     * @param handler The function will be added to the bottom of the event
+     * handler pipeline. The execution context is automatically
+     * set to be the first parameter passed to the event handler.
+     * Use a reference to a named function rather than an
+     * anonymous function if you may later want to remove the
+     * event handler.
+     */
     addOnProcessStatusChange(
-      handler: Events$Page$ProcessStatusChangeHandler
-    ): void,
+      handler: Xrm$Events$ProcessStatusChangeHandler
+    ): void;
 
     /**
- * Use this to add a function as an event handler for the OnStageSelected event so that it will be called
- * when a business process flow stage is selected.
- * @param handler The function will be added to the bottom of the event
-handler pipeline. The execution context is automatically
-set to be the first parameter passed to the event handler.
-Use a reference to a named function rather than an
-anonymous function if you may later want to remove the
-event handler.
- */
-    addOnStageSelected(handler: Events$Page$ContextSensitiveHandler): void,
+     * Use this to add a function as an event handler for the OnStageSelected event so that it will be called
+     * when a business process flow stage is selected.
+     * @param handler The function will be added to the bottom of the event
+     * handler pipeline. The execution context is automatically
+     * set to be the first parameter passed to the event handler.
+     * Use a reference to a named function rather than an
+     * anonymous function if you may later want to remove the
+     * event handler.
+     */
+    addOnStageSelected(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
- * Use this to remove a function as an event handler for the OnProcessStatusChange event.
- * @param handler If an anonymous function is set using the addOnProcessStatusChange method it
-cannot be removed using this method.
- */
+     * Use this to remove a function as an event handler for the OnProcessStatusChange event.
+     * @param handler If an anonymous function is set using the addOnProcessStatusChange method it
+     * cannot be removed using this method.
+     */
     removeOnProcessStatusChange(
-      handler: Events$Page$ProcessStatusChangeHandler
-    ): void,
+      handler: Xrm$Events$ProcessStatusChangeHandler
+    ): void;
 
     /**
- * Use this to remove a function as an event handler for the OnStageChange event.
- * @param handler If an anonymous function is set using the addOnStageChange method it
-cannot be removed using this method.
- */
-    removeOnStageChange(handler: Events$Page$ContextSensitiveHandler): void,
+     * Use this to remove a function as an event handler for the OnStageChange event.
+     * @param handler If an anonymous function is set using the addOnStageChange method it
+     * cannot be removed using this method.
+     */
+    removeOnStageChange(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
- * Use this to remove a function as an event handler for the OnStageChange event.
- * @param handler If an anonymous function is set using the addOnStageChange method it
-cannot be removed using this method.
- */
-    removeOnStageSelected(handler: Events$Page$ContextSensitiveHandler): void,
+     * Use this to remove a function as an event handler for the OnStageChange event.
+     * @param handler If an anonymous function is set using the addOnStageChange method it
+     * cannot be removed using this method.
+     */
+    removeOnStageSelected(handler: Xrm$Events$ContextSensitiveHandler): void;
 
     /**
      * Progresses to the next stage.
      * @param callbackFunction (Optional) A function to call when the operation is complete.
      */
-    moveNext(callbackFunction?: data$ProcessCallbackDelegate): void,
+    moveNext(callbackFunction?: Xrm$Page$data$ProcessCallbackDelegate): void;
 
     /**
      * Moves to the previous stage.
      * @param callbackFunction (Optional) A function to call when the operation is complete.
      */
-    movePrevious(callbackFunction?: data$ProcessCallbackDelegate): void,
+    movePrevious(
+      callbackFunction?: Xrm$Page$data$ProcessCallbackDelegate
+    ): void;
 
     /**
      * Use this method to get the unique identifier of the process instance
      * @returns The unique identifier of the process instance
      */
-    getInstanceId(): string,
+    getInstanceId(): string;
 
     /**
      * Use this method to get the name of the process instance
      * @returns The name of the process instance
      */
-    getInstanceName(): string,
+    getInstanceName(): string;
 
     /**
      * Use this method to get the current status of the process instance
      * @returns The current status of the process
      */
-    getStatus(): ProcessFlow$ProcessStatus,
+    getStatus(): Xrm$ProcessFlow$ProcessStatus;
 
     /**
      * Use this method to set the current status of the process instance
@@ -5768,115 +3946,113 @@ cannot be removed using this method.
      * @param callbackFunction (Optional) a function to call when the operation is complete.
      */
     setStatus(
-      status: ProcessFlow$ProcessStatus,
-      callbackFunction?: data$ProcessSetStatusDelegate
-    ): void
-  } & ProcessFlow$ProcessFlow$ProcessManager;
+      status: Xrm$ProcessFlow$ProcessStatus,
+      callbackFunction?: Xrm$Page$data$ProcessSetStatusDelegate
+    ): void;
+  }
 
   /**
    * Called when method to get active processes is complete
    * @param status The result of the get active processes operation.
    * @remarks *Returns object with the following key-value pairs**:
-   * CreatedOn
-   * ProcessDefinitionID
-   * ProcessDefinitionName
-   * ProcessInstanceID
-   * ProcessInstanceName
-   * StatusCodeName
-   * @deprecated Use {@link Xrm.ProcessFlow.GetProcessInstancesDelegate} instead.
+   * * CreatedOn
+   * * ProcessDefinitionID
+   * * ProcessDefinitionName
+   * * ProcessInstanceID
+   * * ProcessInstanceName
+   * * StatusCodeName
    */
-  declare type ProcessFlow$GetProcessInstancesDelegate = ProcessFlow$ProcessFlow$GetProcessInstancesDelegate;
+  declare type Xrm$ProcessFlow$GetProcessInstancesDelegate = (
+    object: Xrm$Page$data$ProcessDictionary
+  ) => void;
 
   /**
    * Called when method to set active process is complete
    * @param status The result of the set active process operation.
    * @remarks *Values returned are**:
-   * success        (The operation succeeded.)
-   * invalid        (The processInstanceId isn’t valid or the process isn’t enabled.)
-   * @deprecated Use {@link Xrm.ProcessFlow.SetProcessInstanceDelegate} instead.
+   * * success        (The operation succeeded.)
+   * * invalid        (The processInstanceId isn’t valid or the process isn’t enabled.)
    */
-  declare type ProcessFlow$SetProcessInstanceDelegate = ProcessFlow$ProcessFlow$SetProcessInstanceDelegate;
+  declare type Xrm$ProcessFlow$SetProcessInstanceDelegate = (
+    status: string
+  ) => void;
 
   /**
    * Called when process change methods have completed.
    * @param status The result of the process change operation.
    * @remarks *Values returned are**:
-   * success        (The operation succeeded.)
-   * crossEntity    (The previous stage is for a different entity.)
-   * beginning      (The active stage is the first stage of the active path.)
-   * invalid        (The operation failed because the selected stage isn’t the same as the active stage.)
-   * unreachable    (The stage exists on a different path.)
-   * @deprecated Use {@link Xrm.ProcessFlow.ProcessCallbackDelegate} instead.
+   * * success        (The operation succeeded.)
+   * * crossEntity    (The previous stage is for a different entity.)
+   * * beginning      (The active stage is the first stage of the active path.)
+   * * invalid        (The operation failed because the selected stage isn’t the same as the active stage.)
+   * * unreachable    (The stage exists on a different path.)
    */
-  declare type ProcessFlow$ProcessCallbackDelegate = ProcessFlow$ProcessFlow$ProcessCallbackDelegate;
+  declare type Xrm$ProcessFlow$ProcessCallbackDelegate = (
+    status: string
+  ) => void;
 
   /**
    * Called when process set status method has completed.
-   * @param status The new status of the process instance
-   * @remarks *Values returned are**:
-   * active
-   * aborted
-   * finished
-   * @deprecated Use {@link Xrm.ProcessFlow.ProcessSetStatusDelegate} instead.
+   * @param status The new status of the process instance: active, aborted, or finished
    */
-  declare type ProcessFlow$ProcessSetStatusDelegate = ProcessFlow$ProcessFlow$ProcessSetStatusDelegate;
+  declare type Xrm$ProcessFlow$ProcessSetStatusDelegate = (
+    status: Xrm$ProcessFlow$ProcessStatus
+  ) => void;
 
   /**
    * Represents a key-value pair, where the key is the Process Flow's ID, and the value is the name thereof.
-   * @deprecated Use {@link Xrm.ProcessFlow.ProcessDictionary} instead.
    */
-  declare type ProcessFlow$ProcessDictionary = {
-    [index: string]: string
-  } & ProcessFlow$ProcessFlow$ProcessDictionary;
+  declare interface Xrm$ProcessFlow$ProcessDictionary {
+    [index: string]: string;
+  }
 
   /**
-   * Interface for a privilege.
-   * @deprecated Use {@link Xrm.Privilege} instead.
+   * Interface for a user attribute privilege.
    */
-  declare type Xrm$Privilege = {
+  declare interface Xrm$Privilege {
     /**
      * True if the user can read.
      */
-    canRead: boolean,
+    canRead: boolean;
 
     /**
      * True if the user can update.
      */
-    canUpdate: boolean,
+    canUpdate: boolean;
 
     /**
      * True if the user can create.
      */
-    canCreate: boolean
-  } & Xrm$Xrm$Privilege;
+    canCreate: boolean;
+  }
 
   /**
    * Command Bar Display options for Xrm.Url.FormOpenParameters.cmdbar, Xrm.Url.ViewOpenParameters.cmdbar, and Xrm.Utility.FormOpenParameters.cmdbar.
    * @see {@link XrmEnum.CmdBarDisplay}
    */
-  declare type Url$CmdBarDisplay = "true" | "false";
+  declare type Xrm$Url$CmdBarDisplay = "true" | "false";
 
   /**
    * Navigation Bar Display options for Xrm.Url.FormOpenParameters.navbar, Xrm.Url.ViewOpenParameters.navbar, and Xrm.Utility.FormOpenParameters.navbar.
    * @see {@link XrmEnum.NavBarDisplay}
    */
-  declare type Url$NavBarDisplay = "entity" | "off" | "on";
+  declare type Xrm$Url$NavBarDisplay = "entity" | "off" | "on";
 
   /**
    * Report Open Action options for Xrm.Url.ReportOpenParameters.actions.
    * @see {@link XrmEnum.ReportAction}
    */
-  declare type Url$ReportAction = "filter" | "run";
+  declare type Xrm$Url$ReportAction = "filter" | "run";
 
   /**
- * Interface for defining parameters on a request to open a form with main.aspx (as with
- * window.open). Useful for parsing the keys and values into a string of the format:
- * "&key=value".
- * @see {@link http://msdn.microsoft.com/en-us/library/gg328483.aspx External Link: Open forms, views, dialogs, and reports with a URL}
- * @remarks A member for "pagetype" is not provided.  The value "entityrecord" is required in
-the URL, for forms. Example:  "pagetype=entityrecord"
- */
-  declare interface Url$FormOpenParameters {
+   * Interface for defining parameters on a request to open a form with main.aspx (as with
+   * window.open). Useful for parsing the keys and values into a string of the format:
+   * "&key=value".
+   * @see {@link http://msdn.microsoft.com/en-us/library/gg328483.aspx External Link: Open forms, views, dialogs, and reports with a URL}
+   * @remarks A member for "pagetype" is not provided.  The value "entityrecord" is required in
+   * the URL, for forms. Example:  "pagetype=entityrecord"
+   */
+  declare interface Xrm$Url$FormOpenParameters {
     /**
      * The logical name of the entity.
      */
@@ -5893,52 +4069,30 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     /**
      * Controls whether the command bar is displayed.
      * @remarks *Accepted values are**:
-     * "true"    (The command bar is displayed.)
-     * "false"   (The command bar is not displayed.)
+     * * "true"    (The command bar is displayed.)
+     * * "false"   (The command bar is not displayed.)
      */
-    cmdbar?: Url$CmdBarDisplay;
+    cmdbar?: Xrm$Url$CmdBarDisplay;
 
     /**
      * Controls whether the Navigation bar is displayed on the form.
      * @remarks *Accepted values are**:
-     * "on"      (The navigation bar is displayed.)
-     * "off"     (The navigation bar is not displayed.)
-     * "entity"  (On an entity form, only the navigation options for related entities are available.)
+     * * "on"      (The navigation bar is displayed.)
+     * * "off"     (The navigation bar is not displayed.)
+     * * "entity"  (On an entity form, only the navigation options for related entities are available.)
      */
-    navbar?: Url$NavBarDisplay;
-
-    /**
-     * The identifier of the form to use, when several are available.
-     */
-    formid?: string;
-
-    /**
-     * Controls whether the Navigation bar is displayed on the form.
-     * @remarks *Accepted values are**:
-     * "on"      (The navigation bar is displayed.)
-     * "off"     (The navigation bar is not displayed.)
-     * "entity"  (On an entity form, only the navigation options for related entities are available.)
-     */
-    navbar?: Url$Url$NavBarDisplay;
-
-    /**
-     * Controls whether the command bar is displayed.
-     * @remarks *Accepted values are**:
-     * "true"    (The command bar is displayed.)
-     * "false"   (The command bar is not displayed.)
-     */
-    cmdbar?: Url$Url$CmdBarDisplay;
+    navbar?: Xrm$Url$NavBarDisplay;
   }
 
   /**
- * Interface for defining parameters on a request to open a view with main.aspx (as with
- * window.open). Useful for parsing the keys and values into a string of the format:
- * "&key=value".
- * @see {@link http://msdn.microsoft.com/en-us/library/gg328483.aspx External Link: Open forms, views, dialogs, and reports with a URL}
- * @remarks A member for "pagetype" is not provided.  The value "entitylist" is required in
-the URL, for views. Example:  "pagetype=entitylist"
- */
-  declare interface Url$ViewOpenParameters {
+   * Interface for defining parameters on a request to open a view with main.aspx (as with
+   * window.open). Useful for parsing the keys and values into a string of the format:
+   * "&key=value".
+   * @see {@link http://msdn.microsoft.com/en-us/library/gg328483.aspx External Link: Open forms, views, dialogs, and reports with a URL}
+   * @remarks A member for "pagetype" is not provided.  The value "entitylist" is required in
+   * the URL, for views. Example:  "pagetype=entitylist"
+   */
+  declare interface Xrm$Url$ViewOpenParameters {
     /**
      * The logical name of the entity.
      */
@@ -5953,27 +4107,27 @@ the URL, for views. Example:  "pagetype=entitylist"
     /**
      * The type of view identified by {@link viewid}.
      * @remarks *Accepted values are**:
-     * 1039    System View
-     * 4230    User View.
+     * * 1039    System View
+     * * 4230    User View.
      */
-    viewtype: XrmEnum$XrmEnum$ViewType;
+    viewtype: $Values<typeof XrmEnum$ViewType>;
 
     /**
      * Controls whether the command bar is displayed.
      * @remarks *Accepted values are**:
-     * "true"    (The command bar is displayed.)
-     * "false"   (The command bar is not displayed.)
+     * * "true"    (The command bar is displayed.)
+     * * "false"   (The command bar is not displayed.)
      */
-    cmdbar?: Url$CmdBarDisplay;
+    cmdbar?: Xrm$Url$CmdBarDisplay;
 
     /**
      * Controls whether the Navigation bar is displayed on the form.
      * @remarks *Accepted values are**:
-     * "on"      (The navigation bar is displayed.)
-     * "off"     (The navigation bar is not displayed.)
-     * "entity"  (On an entity form, only the navigation options for related entities are available.)
+     * * "on"      (The navigation bar is displayed.)
+     * * "off"     (The navigation bar is not displayed.)
+     * * "entity"  (On an entity form, only the navigation options for related entities are available.)
      */
-    navbar?: Url$NavBarDisplay;
+    navbar?: Xrm$Url$NavBarDisplay;
   }
 
   /**
@@ -5982,7 +4136,7 @@ the URL, for views. Example:  "pagetype=entitylist"
    * "&key=value".
    * @see {@link http://msdn.microsoft.com/en-us/library/gg328483.aspx External Link: Open forms, views, dialogs, and reports with a URL}
    */
-  declare interface Url$DialogOpenParameters {
+  declare interface Xrm$Url$DialogOpenParameters {
     /**
      * The unique identifier of the dialog, in Guid format, which is valid for the entity described
      * by: {@link EntityName}
@@ -6006,14 +4160,14 @@ the URL, for views. Example:  "pagetype=entitylist"
    * "&key=value"
    * @see {@link http://msdn.microsoft.com/en-us/library/gg328483.aspx External Link: Open forms, views, dialogs, and reports with a URL}
    */
-  declare interface Url$ReportOpenParameters {
+  declare interface Xrm$Url$ReportOpenParameters {
     /**
      * The action to perform, as either "run" or "filter".
      * @remarks *Actions**:
-     * "run"       Executes the report with default filters.
-     * "filter"    Presents the user with the filter editor, and a "Run Report" button.
+     * * "run"       Executes the report with default filters.
+     * * "filter"    Presents the user with the filter editor, and a "Run Report" button.
      */
-    action: Url$ReportAction;
+    action: Xrm$Url$ReportAction;
 
     /**
      * The file name of the report.  For out-of-box reports, this parameter enables context-sensitive
@@ -6030,7 +4184,7 @@ the URL, for views. Example:  "pagetype=entitylist"
   /**
    * Interface use to provide parameters when opening new entiy forms
    */
-  declare interface Utility$OpenParameters {
+  declare interface Xrm$Utility$OpenParameters {
     /**
      * Additional parameters can be provided to the request, by overloading
      * this object with additional key and value pairs. This can only be used
@@ -6041,78 +4195,43 @@ the URL, for views. Example:  "pagetype=entitylist"
   }
 
   /**
- * Interface for defining parameters on a request to open a form with main.aspx (as with
- * window.open). Useful for parsing the keys and values into a string of the format:
- * "&key=value".
- * @see {@link http://msdn.microsoft.com/en-us/library/gg328483.aspx External Link: Open forms, views, dialogs, and reports with a URL}
- * @remarks A member for "pagetype" is not provided.  The value "entityrecord" is required in
-the URL, for forms. Example:  "pagetype=entityrecord"
- */
-  declare interface Utility$FormOpenParameters {
-    /**
-     * The logical name of the entity.
-     */
-    etn: string;
-
-    /**
-     * Additional parameters can be provided to the request. This can only be used to provide
-     * default field values for the form, or pass data to custom parameters that have been
-     * customized for the form.  See example below for setting the selected form.
-     * @example Example:  encodeURIComponent("formid={8c9f3e6f-7839-e211-831e-00155db7d98f}");
-     */
-    extraqs?: string;
-
-    /**
-     * Controls whether the command bar is displayed.
-     * @remarks *Accepted values are**:
-     * "true"    (The command bar is displayed.)
-     * "false"   (The command bar is not displayed.)
-     */
-    cmdbar?: Url$CmdBarDisplay;
-
-    /**
-     * Controls whether the Navigation bar is displayed on the form.
-     * @remarks *Accepted values are**:
-     * "on"      (The navigation bar is displayed.)
-     * "off"     (The navigation bar is not displayed.)
-     * "entity"  (On an entity form, only the navigation options for related entities are available.)
-     */
-    navbar?: Url$NavBarDisplay;
-
+   * Interface for defining parameters on a Xrm.Utility.openEntityForm() request.
+   */
+  declare type Xrm$Utility$FormOpenParameters = {
     /**
      * The identifier of the form to use, when several are available.
      */
-    formid?: string;
+    formid?: string,
 
     /**
      * Controls whether the Navigation bar is displayed on the form.
      * @remarks *Accepted values are**:
-     * "on"      (The navigation bar is displayed.)
-     * "off"     (The navigation bar is not displayed.)
-     * "entity"  (On an entity form, only the navigation options for related entities are available.)
+     * * "on"      (The navigation bar is displayed.)
+     * * "off"     (The navigation bar is not displayed.)
+     * * "entity"  (On an entity form, only the navigation options for related entities are available.)
      */
-    navbar?: Url$Url$NavBarDisplay;
+    navbar?: Xrm$Url$NavBarDisplay,
 
     /**
      * Controls whether the command bar is displayed.
      * @remarks *Accepted values are**:
-     * "true"    (The command bar is displayed.)
-     * "false"   (The command bar is not displayed.)
+     * * "true"    (The command bar is displayed.)
+     * * "false"   (The command bar is not displayed.)
      */
-    cmdbar?: Url$Url$CmdBarDisplay;
-  }
+    cmdbar?: Xrm$Url$CmdBarDisplay
+  } & Xrm$Utility$OpenParameters;
 
   /**
    * Interface for window options.
    */
-  declare interface Utility$WindowOptions {
+  declare interface Xrm$Utility$WindowOptions {
     /**
      * Direct the form to open in a new window.
      */
     openInNewWindow: boolean;
   }
 
-  declare interface Navigation$AlertStrings {
+  declare interface Xrm$Navigation$AlertStrings {
     /**
      * (Optional) The confirm button label.If you do not specify the button label, OK is used as the button label.
      */
@@ -6124,7 +4243,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     text: string;
   }
 
-  declare interface Navigation$ConfirmStrings {
+  declare interface Xrm$Navigation$ConfirmStrings {
     /**
      * (Optional) The cancel button label. If you do not specify the cancel button label, Cancel is used as the button label.
      */
@@ -6151,7 +4270,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     text: string;
   }
 
-  declare interface Navigation$DialogSizeOptions {
+  declare interface Xrm$Navigation$DialogSizeOptions {
     /**
      * Height of the alert dialog in pixels.
      */
@@ -6163,24 +4282,24 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     width: number;
   }
 
-  declare type Navigation$OpenWebresourceOptions = {
+  declare type Xrm$Navigation$OpenWebresourceOptions = {
     /**
      * Indicates whether to open the web resource in a new window.
      */
     openInNewWindow: boolean
-  } & Navigation$DialogSizeOptions;
+  } & Xrm$Navigation$DialogSizeOptions;
 
   /**
    * An object with the confirmed (Boolean) attribute is passed that indicates whether the confirm button was clicked to close the dialog.
    */
-  declare interface Navigation$ConfirmResult {
+  declare interface Xrm$Navigation$ConfirmResult {
     /**
      * true if the confirm button was clicked to close the dialog.
      */
     confirmed: boolean;
   }
 
-  declare interface Navigation$OpenFormResult {
+  declare interface Xrm$Navigation$OpenFormResult {
     /**
      * Identifies the record displayed or created
      */
@@ -6190,7 +4309,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
   /**
    * Details to show in the Error dialog
    */
-  declare interface Navigation$ErrorDialogOptions {
+  declare interface Xrm$Navigation$ErrorDialogOptions {
     /**
      * Details about the error. When you specify this, the Download Log File button is available in the error message,
      * and clicking it will let users download a text file with the content specified in this attribute.
@@ -6210,7 +4329,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     message?: string;
   }
 
-  declare interface Navigation$FileDetails {
+  declare interface Xrm$Navigation$FileDetails {
     /**
      * Contents of the file.
      */
@@ -6235,7 +4354,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
   /**
    * Entity form options for opening the form
    */
-  declare interface Navigation$EntityFormOptions {
+  declare interface Xrm$Navigation$EntityFormOptions {
     /**
      * Indicates whether to display the command bar.If you do not specify this parameter, the command bar is displayed by default.
      */
@@ -6282,7 +4401,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
      * * off: The navigation bar is not displayed.People can navigate using other user interface elements or the back and forward buttons.
      * * entity: On an entity form, only the navigation options for related entities are available.After navigating to a related entity, a back button is displayed in the navigation bar to allow returning to the original record.
      */
-    navBar?: Url$Url$NavBarDisplay;
+    navBar?: Xrm$Url$NavBarDisplay;
 
     /**
      * Indicates whether to display form in a new window.
@@ -6294,7 +4413,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
      * * 1:center
      * * 2:side
      */
-    windowPosition?: XrmEnum$XrmEnum$WindowPositions;
+    windowPosition?: $Values<typeof XrmEnum$WindowPositions>;
 
     /**
      * ID of the business process to be displayed on the form.
@@ -6327,7 +4446,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     width?: number;
   }
 
-  declare interface Navigation$Relationship {
+  declare interface Xrm$Navigation$Relationship {
     /**
      * Name of the attribute used for relationship.
      */
@@ -6348,36 +4467,29 @@ the URL, for forms. Example:  "pagetype=entityrecord"
      * * 0:OneToMany
      * * 1:ManyToMany
      */
-    relationshipType?: XrmEnum$XrmEnum$RelationshipType;
+    relationshipType?: $Values<typeof XrmEnum$RelationshipType>;
 
     /**
      * Role type in relationship.Specify one of the following values:
      * * 1:Referencing
      * * 2:AssociationEntity
      */
-    roleType?: XrmEnum$XrmEnum$RoleType;
+    roleType?: $Values<typeof XrmEnum$RoleType>;
   }
 
   /**
-   * Interface for Xrm.Page.ui.navigation.
-   * @deprecated Use {@link Xrm.Controls.Navigation} instead.
+   * Interface for the Xrm.Navigation API
    */
-  declare type Xrm$Navigation = {
-    /**
-     * A reference to the collection of available navigation items.
-     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
-     */
-    items: Collection$Collection$ItemCollection<Controls$NavigationItem>,
-
+  declare interface Xrm$Navigation {
     /**
      * Displays an alert dialog containing a message and a button.
      * @param alertStrings The strings to be used in the alert dialog.
      * @param alertOptions The height and width options for alert dialog
      */
     openAlertDialog(
-      alertStrings: Xrm$Navigation.Navigation$AlertStrings,
-      alertOptions?: Xrm$Navigation.Navigation$DialogSizeOptions
-    ): Async$Async$PromiseLike<any>,
+      alertStrings: Xrm$Navigation$AlertStrings,
+      alertOptions?: Xrm$Navigation$DialogSizeOptions
+    ): Xrm$Async$PromiseLike<any>;
 
     /**
      * Displays a confirmation dialog box containing a message and two buttons.
@@ -6385,9 +4497,9 @@ the URL, for forms. Example:  "pagetype=entityrecord"
      * @param confirmOptions The height and width options for alert dialog
      */
     openConfirmDialog(
-      confirmStrings: Xrm$Navigation.Navigation$ConfirmStrings,
-      confirmOptions?: Xrm$Navigation.Navigation$DialogSizeOptions
-    ): Async$Async$PromiseLike<Xrm$Navigation.Navigation$ConfirmResult>,
+      confirmStrings: Xrm$Navigation$ConfirmStrings,
+      confirmOptions?: Xrm$Navigation$DialogSizeOptions
+    ): Xrm$Async$PromiseLike<Xrm$Navigation$ConfirmResult>;
 
     /**
      * Displays an error dialog.
@@ -6395,24 +4507,24 @@ the URL, for forms. Example:  "pagetype=entityrecord"
      * @param confirmOptions The height and width options for alert dialog
      */
     openErrorDialog(
-      errorOptions: Xrm$Navigation.Navigation$ErrorDialogOptions
-    ): Async$Async$PromiseLike<any>,
+      errorOptions: Xrm$Navigation$ErrorDialogOptions
+    ): Xrm$Async$PromiseLike<any>;
 
     /**
      * Opens a file.
      */
     openFile(
-      file: Xrm$Navigation.Navigation$FileDetails,
-      openFileOptions?: XrmEnum$XrmEnum$OpenFileOptions
-    ): void,
+      file: Xrm$Navigation$FileDetails,
+      openFileOptions?: $Values<typeof XrmEnum$OpenFileOptions>
+    ): void;
 
     /**
      * Opens an entity form or a quick create form.
      */
     openForm(
-      entityFormOptions: Xrm$Navigation.Navigation$EntityFormOptions,
-      formParameters?: Xrm$Utility.Utility$OpenParameters
-    ): Async$Async$PromiseLike<Xrm$Navigation.Navigation$OpenFormResult>,
+      entityFormOptions: Xrm$Navigation$EntityFormOptions,
+      formParameters?: Xrm$Utility$OpenParameters
+    ): Xrm$Async$PromiseLike<Xrm$Navigation$OpenFormResult>;
 
     /**
      * Opens a URL, including file URLs.
@@ -6421,32 +4533,32 @@ the URL, for forms. Example:  "pagetype=entityrecord"
      */
     openUrl(
       url: string,
-      openUrlOptions?: Xrm$Navigation.Navigation$DialogSizeOptions
-    ): void,
+      openUrlOptions?: Xrm$Navigation$DialogSizeOptions
+    ): void;
 
     /**
- * Opens an HTML web resource.
- * @param webResourceName Name of the HTML web resource.
- * @param windowOptions (Optional) Window options for opening the web resource.
-                           It is advised to use encodeURIcomponent() to encode the value.
- */
+     * Opens an HTML web resource.
+     * @param webResourceName Name of the HTML web resource.
+     * @param windowOptions (Optional) Window options for opening the web resource.
+     *                            It is advised to use encodeURIcomponent() to encode the value.
+     */
     openWebResource(
       webResourceName: string,
-      windowOptions?: Xrm$Navigation.Navigation$OpenWebresourceOptions,
+      windowOptions?: Xrm$Navigation$OpenWebresourceOptions,
       data?: string
-    ): void
-  } & Controls$Xrm$Navigation;
+    ): void;
+  }
 
   /**
    * Types returned by a call to getEntityMetadata
    */
-  declare interface Metadata$EntityMetadata {
+  declare interface Xrm$Metadata$EntityMetadata {
     ActivityTypeMask: number;
 
     /**
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
-    Attributes: Collection$Collection$StringIndexableItemCollection<Metadata$AttributeMetadata>;
+    Attributes: Xrm$Collection$StringIndexableItemCollection<Metadata$AttributeMetadata>;
     AutoRouteToOwnerQueue: boolean;
     CanEnableSyncToExternalSearchIndex: boolean;
     CanBeInManyToMany: boolean;
@@ -6505,7 +4617,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
   /**
    * Type to hold Labels as part of the EntityMetadata
    */
-  declare interface Metadata$Label {
+  declare interface Xrm$Metadata$Label {
     /**
      * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/collections External Link: Collections (Client API reference)}
      */
@@ -6516,15 +4628,15 @@ the URL, for forms. Example:  "pagetype=entityrecord"
   /**
    * Type to hold a Label as part of the EntityMetadata
    */
-  declare interface Metadata$LocalizedLabel {
-    Metadata$Label: string;
+  declare interface Xrm$Metadata$LocalizedLabel {
+    Label: string;
     LanguageCode: number;
   }
 
   /**
    * Type to hold the Attribute metadata as part of the EntityMetadata
    */
-  declare interface Metadata$AttributeMetadata {
+  declare interface Xrm$Metadata$AttributeMetadata {
     defaultFormValue: number;
 
     /**
@@ -6533,7 +4645,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     options: string[];
     logicalName: string;
     displayName: string;
-    attributeType: XrmEnum$XrmEnum$AttributeTypeCode;
+    attributeType: $Values<typeof XrmEnum$AttributeTypeCode>;
     entityLogicalName: string;
 
     /**
@@ -6545,7 +4657,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
   /**
    * Type to hold the optionset metadata as part of the EntityMetadata
    */
-  declare interface Metadata$OptionMetadata {
+  declare interface Xrm$Metadata$OptionMetadata {
     Value: number;
     Color: string;
     IsManaged: boolean;
@@ -6554,14 +4666,14 @@ the URL, for forms. Example:  "pagetype=entityrecord"
     HasChanged: boolean;
     State: number;
     TransitionData: any;
-    Metadata$Label: Metadata$Label;
-    Description: Metadata$Label;
+    Label: Xrm$Metadata$Label;
+    Description: Xrm$Metadata$Label;
   }
 
   /**
    * Xrm.Device.captureAudio/captureImage/captureVideo response
    */
-  declare interface Device$CaptureFileResponse {
+  declare interface Xrm$Device$CaptureFileResponse {
     /**
      * Base64 encoded contents of the file.
      */
@@ -6586,7 +4698,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
   /**
    * Options for Xrm.Device.captureImage
    */
-  declare interface Device$CaptureImageOptions {
+  declare interface Xrm$Device$CaptureImageOptions {
     /**
      * Indicates whether to edit the image before saving.
      */
@@ -6616,7 +4728,7 @@ the URL, for forms. Example:  "pagetype=entityrecord"
   /**
    * Interface for Xrm.Device.getCurrentPosition response
    */
-  declare interface Device$GetCurrentPositionResponse {
+  declare interface Xrm$Device$GetCurrentPositionResponse {
     /**
      * Contains a set of geographic coordinates along with associated accuracy as well as a set of other optional attributes such as altitude and speed.
      */
@@ -6632,16 +4744,16 @@ the URL, for forms. Example:  "pagetype=entityrecord"
    * Posible file types for Xrm.Device.pickFile options
    * @see {@link XrmEnum.DevicePickFileType}
    */
-  declare type Device$PickFileTypes = "audio" | "video" | "image";
+  declare type Xrm$Device$PickFileTypes = "audio" | "video" | "image";
 
   /**
    * Interface for Xrm.Device.pickFile options
    */
-  declare interface Device$PickFileOptions {
+  declare interface Xrm$Device$PickFileOptions {
     /**
      * Image file types to select.
      */
-    accept: Device$PickFileTypes;
+    accept: Xrm$Device$PickFileTypes;
 
     /**
      * Indicates whether to allow selecting multiple files.
@@ -6663,41 +4775,41 @@ the URL, for forms. Example:  "pagetype=entityrecord"
      * Invokes the device microphone to record audio.
      * @returns On success, returns Base64 encoded file
      */
-    captureAudio(): Async$Async$PromiseLike<Xrm$Device.Device$CaptureFileResponse>;
+    captureAudio(): Xrm$Async$PromiseLike<Xrm$Device$CaptureFileResponse>;
 
     /**
      * Invokes the device camera to capture an image.
      * @returns On success, returns Base64 encoded file
      */
     captureImage(
-      imageOptions: Xrm$Device.Device$CaptureImageOptions
-    ): Async$Async$PromiseLike<Xrm$Device.Device$CaptureFileResponse>;
+      imageOptions: Xrm$Device$CaptureImageOptions
+    ): Xrm$Async$PromiseLike<Xrm$Device$CaptureFileResponse>;
 
     /**
      * Invokes the device camera to capture video.
      * @returns On success, returns Base64 encoded file
      */
-    captureVideo(): Async$Async$PromiseLike<Xrm$Device.Device$CaptureFileResponse>;
+    captureVideo(): Xrm$Async$PromiseLike<Xrm$Device$CaptureFileResponse>;
 
     /**
      * Invokes the device camera to scan the barcode information, such as a product number.
      * @returns On success, Barcode value is returned as a String
      */
-    getBarcodeValue(): Async$Async$PromiseLike<string>;
+    getBarcodeValue(): Xrm$Async$PromiseLike<string>;
 
     /**
      * Returns the current location using the device geolocation capability.
      * @returns On success, returns current geolocation information
      */
-    getCurrentPosition(): Async$Async$PromiseLike<Xrm$Device.Device$GetCurrentPositionResponse>;
+    getCurrentPosition(): Xrm$Async$PromiseLike<Xrm$Device$GetCurrentPositionResponse>;
 
     /**
      * Opens a dialog box to select files from your computer (web client) or mobile device (mobile clients).
      * @returns On success, returns an array of files
      */
     pickFile(
-      pickFileOptions: Xrm$Device.Device$PickFileOptions
-    ): Async$Async$PromiseLike<Xrm$Device.Device$CaptureFileResponse[]>;
+      pickFileOptions: Xrm$Device$PickFileOptions
+    ): Xrm$Async$PromiseLike<Xrm$Device$CaptureFileResponse[]>;
   }
 
   /**
@@ -6750,48 +4862,48 @@ the URL, for forms. Example:  "pagetype=entityrecord"
    */
   declare type Xrm$WebApiOnline = {
     /**
- * Execute a single action, function, or CRUD operation.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/execute External Link: execute (Client API reference)}
- * @param request Object that will be passed to the Web API endpoint to execute an action, function, or CRUD request.
- * @remarks The object exposes a getMetadata method that lets you define the metadata for the action, function or CRUD request you want to execute.<BR>
-**The getMetadata method has the following parameters**:
-- boundParameter: (Optional) String. The name of the bound parameter for the action or function to execute.
-* Specify undefined if you are executing a CRUD request.
-* Specify null if the action or function to execute is not bound to any entity.
-* Specify entity logical name or entity set name in case the action or function to execute is bound to one.
-- operationName: (Optional). String. Name of the action, function, or one of the following values if you are executing a CRUD request: "Create", "Retrieve", "RetrieveMultiple", "Update", or "Delete".
-- operationType: (Optional). Number. Indicates the type of operation you are executing; specify one of the following values:
-* 0: Action
-* 1: Function
-* 2: CRUD
-- parameterTypes: Object. The metadata for parameter types. The object has the following attributes:
-- enumProperties: (Optional) Object. The metadata for enum types. The object has two string attributes: name and value
-- structuralProperty: Number. The category of the parameter type. Specify one of the following values:
-* 0: Unknown
-* 1: PrimitiveType
-* 2: ComplexType
-* 3: EnumerationType
-* 4: Collection
-* 5: EntityType
-- typeName: String. The fully qualified name of the parameter type.
- */
-    execute(request: any): Async$Async$PromiseLike<Xrm$ExecuteResponse>,
+     * Execute a single action, function, or CRUD operation.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/execute External Link: execute (Client API reference)}
+     * @param request Object that will be passed to the Web API endpoint to execute an action, function, or CRUD request.
+     * @remarks The object exposes a getMetadata method that lets you define the metadata for the action, function or CRUD request you want to execute.<BR>
+     * **The getMetadata method has the following parameters**:
+     * - boundParameter: (Optional) String. The name of the bound parameter for the action or function to execute.
+     * * Specify undefined if you are executing a CRUD request.
+     * * Specify null if the action or function to execute is not bound to any entity.
+     * * Specify entity logical name or entity set name in case the action or function to execute is bound to one.
+     * - operationName: (Optional). String. Name of the action, function, or one of the following values if you are executing a CRUD request: "Create", "Retrieve", "RetrieveMultiple", "Update", or "Delete".
+     * - operationType: (Optional). Number. Indicates the type of operation you are executing; specify one of the following values:
+     * * 0: Action
+     * * 1: Function
+     * * 2: CRUD
+     * - parameterTypes: Object. The metadata for parameter types. The object has the following attributes:
+     * - enumProperties: (Optional) Object. The metadata for enum types. The object has two string attributes: name and value
+     * - structuralProperty: Number. The category of the parameter type. Specify one of the following values:
+     * * 0: Unknown
+     * * 1: PrimitiveType
+     * * 2: ComplexType
+     * * 3: EnumerationType
+     * * 4: Collection
+     * * 5: EntityType
+     * - typeName: String. The fully qualified name of the parameter type.
+     */
+    execute(request: any): Xrm$Async$PromiseLike<Xrm$ExecuteResponse>,
 
     /**
- * Execute a collection of action, function, or CRUD operations.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/executemultiple External Link: executeMultiple (Client API reference)}
- * @param request An array of one of one of the following types:
--objects where each object is an action, function, or CRUD request that you want to execute
-* against the Web API endpoint. Each object exposes a getMetadata method that lets you define
-the metadata for the action, function or CRUD request you want to execute. This is the same
-object that you pass in the execute method. For information about the object, see execute.
--change set (an array of objects), where each object in the change set is as defined above.
-* In this case, all the request objects specified in the change set will get executed in a
-transaction.
- */
+     * Execute a collection of action, function, or CRUD operations.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/executemultiple External Link: executeMultiple (Client API reference)}
+     * @param request An array of one of one of the following types:
+     * -objects where each object is an action, function, or CRUD request that you want to execute
+     * * against the Web API endpoint. Each object exposes a getMetadata method that lets you define
+     * the metadata for the action, function or CRUD request you want to execute. This is the same
+     * object that you pass in the execute method. For information about the object, see execute.
+     * -change set (an array of objects), where each object in the change set is as defined above.
+     * * In this case, all the request objects specified in the change set will get executed in a
+     * transaction.
+     */
     executeMultiple(
       request: any[]
-    ): Async$Async$PromiseLike<Xrm$ExecuteResponse[]>
+    ): Xrm$Async$PromiseLike<Xrm$ExecuteResponse[]>
   } & Xrm$WebApiOffline;
 
   /**
@@ -6808,7 +4920,7 @@ transaction.
     createRecord(
       entityLogicalName: string,
       record: any
-    ): Async$Async$PromiseLike<string>;
+    ): Xrm$Async$PromiseLike<string>;
 
     /**
      * Deletes an entity record.
@@ -6820,54 +4932,54 @@ transaction.
     deleteRecord(
       entityLogicalName: string,
       id: string
-    ): Async$Async$PromiseLike<string>;
+    ): Xrm$Async$PromiseLike<string>;
 
     /**
- * Retrieves an entity record.
- * @param entityLogicalName The entity logical name of the record you want to retrieve. For example: "account".
- * @param id GUID of the entity record you want to retrieve.
- * @param options (Optional) OData system query options, $select and $expand, to retrieve your data.
-- Use the $select system query option to limit the properties returned by including a comma-separated
-list of property names. This is an important performance best practice. If properties aren’t
-specified using $select, all properties will be returned.
-- Use the $expand system query option to control what data from related entities is returned. If you
-just include the name of the navigation property, you’ll receive all the properties for related
-records. You can limit the properties returned for related records using the $select system query
-option in parentheses after the navigation property name. Use this for both single-valued and
-collection-valued navigation properties.
-- You can also specify multiple query options by using & to separate the query options.
- * @example <caption>options example:</caption>
-options: $select=name&$expand=primarycontactid($select=contactid,fullname)
- * @returns On success, returns a promise containing a JSON object with the retrieved attributes and their values.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/retrieverecord External Link: retrieveRecord (Client API reference)}
- */
+     * Retrieves an entity record.
+     * @param entityLogicalName The entity logical name of the record you want to retrieve. For example: "account".
+     * @param id GUID of the entity record you want to retrieve.
+     * @param options (Optional) OData system query options, $select and $expand, to retrieve your data.
+     * - Use the $select system query option to limit the properties returned by including a comma-separated
+     * list of property names. This is an important performance best practice. If properties aren’t
+     * specified using $select, all properties will be returned.
+     * - Use the $expand system query option to control what data from related entities is returned. If you
+     * just include the name of the navigation property, you’ll receive all the properties for related
+     * records. You can limit the properties returned for related records using the $select system query
+     * option in parentheses after the navigation property name. Use this for both single-valued and
+     * collection-valued navigation properties.
+     * - You can also specify multiple query options by using & to separate the query options.
+     * @example <caption>options example:</caption>
+     * options: $select=name&$expand=primarycontactid($select=contactid,fullname)
+     * @returns On success, returns a promise containing a JSON object with the retrieved attributes and their values.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/retrieverecord External Link: retrieveRecord (Client API reference)}
+     */
     retrieveRecord(
       entityLogicalName: string,
       id: string,
       options?: string
-    ): Async$Async$PromiseLike<any>;
+    ): Xrm$Async$PromiseLike<any>;
 
     /**
- * Retrieves a collection of entity records.
- * @param entityLogicalName The entity logical name of the records you want to retrieve. For example: "account".
- * @param options (Optional) OData system query options or FetchXML query to retrieve your data.
-* Following system query options are supported: $select, $top, $filter, $expand, and $orderby.
-* To specify a FetchXML query, use the fetchXml attribute to specify the query.
-* NOTE: You must always use the $select system query option to limit the properties returned for an entity
-record by including a comma-separated list of property names. This is an important performance best practice.
-* If properties aren’t specified using $select, all properties will be returned.
-* You can specify multiple system query options by using & to separate the query options.
- * @param maxPageSize (Optional) Specify a positive number that indicates the number of entity records to be returned per page.
-* If you do not specify this parameter, the default value is passed as 5000. If the number of records being retrieved is more than the specified
-maxPageSize value, nextLink attribute in the returned promise object will contain a link to retrieve the next set of entities.
- * @returns On success, returns a promise object containing the attributes specified earlier in the description of the successCallback parameter.
- * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/retrievemultiplerecords External Link: retrieveMultipleRecords (Client API reference)}
- */
+     * Retrieves a collection of entity records.
+     * @param entityLogicalName The entity logical name of the records you want to retrieve. For example: "account".
+     * @param options (Optional) OData system query options or FetchXML query to retrieve your data.
+     * * Following system query options are supported: $select, $top, $filter, $expand, and $orderby.
+     * * To specify a FetchXML query, use the fetchXml attribute to specify the query.
+     * * NOTE: You must always use the $select system query option to limit the properties returned for an entity
+     * record by including a comma-separated list of property names. This is an important performance best practice.
+     * * If properties aren’t specified using $select, all properties will be returned.
+     * * You can specify multiple system query options by using & to separate the query options.
+     * @param maxPageSize (Optional) Specify a positive number that indicates the number of entity records to be returned per page.
+     * * If you do not specify this parameter, the default value is passed as 5000. If the number of records being retrieved is more than the specified
+     * maxPageSize value, nextLink attribute in the returned promise object will contain a link to retrieve the next set of entities.
+     * @returns On success, returns a promise object containing the attributes specified earlier in the description of the successCallback parameter.
+     * @see {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference/xrm-webapi/retrievemultiplerecords External Link: retrieveMultipleRecords (Client API reference)}
+     */
     retrieveMultipleRecords(
       entityLogicalName: string,
       options?: string,
       maxPageSize?: number
-    ): Async$Async$PromiseLike<Xrm$RetrieveMultipleResult>;
+    ): Xrm$Async$PromiseLike<Xrm$RetrieveMultipleResult>;
 
     /**
      * Updates an entity record.
@@ -6881,7 +4993,7 @@ maxPageSize value, nextLink attribute in the returned promise object will contai
       entityLogicalName: string,
       id: string,
       data: any
-    ): Async$Async$PromiseLike<any>;
+    ): Xrm$Async$PromiseLike<any>;
   }
 
   /**
@@ -6949,472 +5061,225 @@ maxPageSize value, nextLink attribute in the returned promise object will contai
     url: string;
   }
 
+  declare var npm$namespace$XrmEnum: {
+    FormType: typeof XrmEnum$FormType,
+    SaveMode: typeof XrmEnum$SaveMode,
+    StageCategory: typeof XrmEnum$StageCategory,
+    GridControlContext: typeof XrmEnum$GridControlContext,
+    ViewType: typeof XrmEnum$ViewType,
+    AttributeTypeCode: typeof XrmEnum$AttributeTypeCode,
+    AttributeRequiredLevel: typeof XrmEnum$AttributeRequiredLevel,
+    OpenFileOptions: typeof XrmEnum$OpenFileOptions,
+    WindowPositions: typeof XrmEnum$WindowPositions,
+    RelationshipType: typeof XrmEnum$RelationshipType,
+    RoleType: typeof XrmEnum$RoleType,
+    ClientFormFactor: typeof XrmEnum$ClientFormFactor,
+    Client: typeof XrmEnum$Client,
+    ClientState: typeof XrmEnum$ClientState,
+    DisplayState: typeof XrmEnum$DisplayState,
+    EntitySaveMode: typeof XrmEnum$EntitySaveMode,
+    FormNotificationLevel: typeof XrmEnum$FormNotificationLevel,
+    SubmitMode: typeof XrmEnum$SubmitMode,
+    Theme: typeof XrmEnum$Theme,
+    AdvancedConfigSettingOption: typeof XrmEnum$AdvancedConfigSettingOption,
+    AttributeRequirementLevel: typeof XrmEnum$AttributeRequirementLevel,
+    DateAttributeFormat: typeof XrmEnum$DateAttributeFormat,
+    IntegerAttributeFormat: typeof XrmEnum$IntegerAttributeFormat,
+    OptionSetAttributeFormat: typeof XrmEnum$OptionSetAttributeFormat,
+    StringAttributeFormat: typeof XrmEnum$StringAttributeFormat,
+    AttributeType: typeof XrmEnum$AttributeType,
+    StandardControlType: typeof XrmEnum$StandardControlType,
+    StageChangeDirection: typeof XrmEnum$StageChangeDirection,
+    StageStatus: typeof XrmEnum$StageStatus,
+    ProcessStatus: typeof XrmEnum$ProcessStatus,
+    CmdBarDisplay: typeof XrmEnum$CmdBarDisplay,
+    NavBarDisplay: typeof XrmEnum$NavBarDisplay,
+    ReportAction: typeof XrmEnum$ReportAction,
+    DevicePickFileType: typeof XrmEnum$DevicePickFileType
+  };
+
   /**
    * Enumeration of entity form states/types.
    */
-  declare class XrmEnum$FormType {
-    constructor(...args: empty): mixed;
-    static +Undefined: Class<XrmEnum$FormType__Undefined> &
-      XrmEnum$FormType__Undefined &
-      0; // 0
-    static +Create: Class<XrmEnum$FormType__Create> &
-      XrmEnum$FormType__Create &
-      1; // 1
-    static +Update: Class<XrmEnum$FormType__Update> &
-      XrmEnum$FormType__Update &
-      2; // 2
-    static +ReadOnly: Class<XrmEnum$FormType__ReadOnly> &
-      XrmEnum$FormType__ReadOnly &
-      3; // 3
-    static +Disabled: Class<XrmEnum$FormType__Disabled> &
-      XrmEnum$FormType__Disabled &
-      4; // 4
-    static +BulkEdit: Class<XrmEnum$FormType__BulkEdit> &
-      XrmEnum$FormType__BulkEdit &
-      6; // 6
-    static +QuickCreate: Class<XrmEnum$FormType__QuickCreate> &
-      XrmEnum$FormType__QuickCreate &
-      5; // 5
-    static +ReadOptimized: Class<XrmEnum$FormType__ReadOptimized> &
-      XrmEnum$FormType__ReadOptimized &
-      11; // 11
-  }
 
-  declare class XrmEnum$FormType__Undefined mixins XrmEnum$FormType {}
-  declare class XrmEnum$FormType__Create mixins XrmEnum$FormType {}
-  declare class XrmEnum$FormType__Update mixins XrmEnum$FormType {}
-  declare class XrmEnum$FormType__ReadOnly mixins XrmEnum$FormType {}
-  declare class XrmEnum$FormType__Disabled mixins XrmEnum$FormType {}
-  declare class XrmEnum$FormType__BulkEdit mixins XrmEnum$FormType {}
-  declare class XrmEnum$FormType__QuickCreate mixins XrmEnum$FormType {}
-  declare class XrmEnum$FormType__ReadOptimized mixins XrmEnum$FormType {}
+  declare var XrmEnum$FormType: {|
+    +Undefined: 0, // 0
+    +Create: 1, // 1
+    +Update: 2, // 2
+    +ReadOnly: 3, // 3
+    +Disabled: 4, // 4
+    +BulkEdit: 6, // 6
+    +QuickCreate: 5, // 5
+    +ReadOptimized: 11 // 11
+  |};
 
   /**
    * Enumeration of entity form save modes.
    */
-  declare class XrmEnum$SaveMode {
-    constructor(...args: empty): mixed;
-    static +Save: Class<XrmEnum$SaveMode__Save> & XrmEnum$SaveMode__Save & 1; // 1
-    static +SaveAndClose: Class<XrmEnum$SaveMode__SaveAndClose> &
-      XrmEnum$SaveMode__SaveAndClose &
-      2; // 2
-    static +SaveAndNew: Class<XrmEnum$SaveMode__SaveAndNew> &
-      XrmEnum$SaveMode__SaveAndNew &
-      59; // 59
-    static +AutoSave: Class<XrmEnum$SaveMode__AutoSave> &
-      XrmEnum$SaveMode__AutoSave &
-      70; // 70
-    static +SaveAsCompleted: Class<XrmEnum$SaveMode__SaveAsCompleted> &
-      XrmEnum$SaveMode__SaveAsCompleted &
-      58; // 58
-    static +Deactivate: Class<XrmEnum$SaveMode__Deactivate> &
-      XrmEnum$SaveMode__Deactivate &
-      5; // 5
-    static +Reactivate: Class<XrmEnum$SaveMode__Reactivate> &
-      XrmEnum$SaveMode__Reactivate &
-      6; // 6
-    static +Assign: Class<XrmEnum$SaveMode__Assign> &
-      XrmEnum$SaveMode__Assign &
-      47; // 47
-    static +Send: Class<XrmEnum$SaveMode__Send> & XrmEnum$SaveMode__Send & 7; // 7
-    static +Qualify: Class<XrmEnum$SaveMode__Qualify> &
-      XrmEnum$SaveMode__Qualify &
-      16; // 16
-    static +Disqualify: Class<XrmEnum$SaveMode__Disqualify> &
-      XrmEnum$SaveMode__Disqualify &
-      15; // 15
-  }
 
-  declare class XrmEnum$SaveMode__Save mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__SaveAndClose mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__SaveAndNew mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__AutoSave mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__SaveAsCompleted mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__Deactivate mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__Reactivate mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__Assign mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__Send mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__Qualify mixins XrmEnum$SaveMode {}
-  declare class XrmEnum$SaveMode__Disqualify mixins XrmEnum$SaveMode {}
+  declare var XrmEnum$SaveMode: {|
+    +Save: 1, // 1
+    +SaveAndClose: 2, // 2
+    +SaveAndNew: 59, // 59
+    +AutoSave: 70, // 70
+    +SaveAsCompleted: 58, // 58
+    +Deactivate: 5, // 5
+    +Reactivate: 6, // 6
+    +Assign: 47, // 47
+    +Send: 7, // 7
+    +Qualify: 16, // 16
+    +Disqualify: 15 // 15
+  |};
 
   /**
    * Enumeration of stage categories.
    */
-  declare class XrmEnum$StageCategory {
-    constructor(...args: empty): mixed;
-    static +Qualify: Class<XrmEnum$StageCategory__Qualify> &
-      XrmEnum$StageCategory__Qualify &
-      0; // 0
-    static +Develop: Class<XrmEnum$StageCategory__Develop> &
-      XrmEnum$StageCategory__Develop &
-      1; // 1
-    static +Propose: Class<XrmEnum$StageCategory__Propose> &
-      XrmEnum$StageCategory__Propose &
-      2; // 2
-    static +Close: Class<XrmEnum$StageCategory__Close> &
-      XrmEnum$StageCategory__Close &
-      3; // 3
-    static +Identify: Class<XrmEnum$StageCategory__Identify> &
-      XrmEnum$StageCategory__Identify &
-      4; // 4
-    static +Research: Class<XrmEnum$StageCategory__Research> &
-      XrmEnum$StageCategory__Research &
-      5; // 5
-    static +Resolve: Class<XrmEnum$StageCategory__Resolve> &
-      XrmEnum$StageCategory__Resolve &
-      6; // 6
-  }
 
-  declare class XrmEnum$StageCategory__Qualify mixins XrmEnum$StageCategory {}
-  declare class XrmEnum$StageCategory__Develop mixins XrmEnum$StageCategory {}
-  declare class XrmEnum$StageCategory__Propose mixins XrmEnum$StageCategory {}
-  declare class XrmEnum$StageCategory__Close mixins XrmEnum$StageCategory {}
-  declare class XrmEnum$StageCategory__Identify mixins XrmEnum$StageCategory {}
-  declare class XrmEnum$StageCategory__Research mixins XrmEnum$StageCategory {}
-  declare class XrmEnum$StageCategory__Resolve mixins XrmEnum$StageCategory {}
+  declare var XrmEnum$StageCategory: {|
+    +Qualify: 0, // 0
+    +Develop: 1, // 1
+    +Propose: 2, // 2
+    +Close: 3, // 3
+    +Identify: 4, // 4
+    +Research: 5, // 5
+    +Resolve: 6 // 6
+  |};
 
   /**
    * Enumeration of grid control context resolutions.
    */
-  declare class XrmEnum$GridControlContext {
-    constructor(...args: empty): mixed;
-    static +Unknown: Class<XrmEnum$GridControlContext__Unknown> &
-      XrmEnum$GridControlContext__Unknown &
-      0; // 0
-    static +RibbonContextForm: Class<XrmEnum$GridControlContext__RibbonContextForm> &
-      XrmEnum$GridControlContext__RibbonContextForm &
-      1; // 1
-    static +RibbonContextListing: Class<XrmEnum$GridControlContext__RibbonContextListing> &
-      XrmEnum$GridControlContext__RibbonContextListing &
-      2; // 2
-    static +FormContextUnrelated: Class<XrmEnum$GridControlContext__FormContextUnrelated> &
-      XrmEnum$GridControlContext__FormContextUnrelated &
-      3; // 3
-    static +FormContextRelated: Class<XrmEnum$GridControlContext__FormContextRelated> &
-      XrmEnum$GridControlContext__FormContextRelated &
-      4; // 4
-  }
 
-  declare class XrmEnum$GridControlContext__Unknown
-    mixins XrmEnum$GridControlContext {}
-  declare class XrmEnum$GridControlContext__RibbonContextForm
-    mixins XrmEnum$GridControlContext {}
-  declare class XrmEnum$GridControlContext__RibbonContextListing
-    mixins XrmEnum$GridControlContext {}
-  declare class XrmEnum$GridControlContext__FormContextUnrelated
-    mixins XrmEnum$GridControlContext {}
-  declare class XrmEnum$GridControlContext__FormContextRelated
-    mixins XrmEnum$GridControlContext {}
+  declare var XrmEnum$GridControlContext: {|
+    +Unknown: 0, // 0
+    +RibbonContextForm: 1, // 1
+    +RibbonContextListing: 2, // 2
+    +FormContextUnrelated: 3, // 3
+    +FormContextRelated: 4 // 4
+  |};
 
   /**
    * An enumeration for view types.
    */
-  declare class XrmEnum$ViewType {
-    constructor(...args: empty): mixed;
-    static +SystemView: Class<XrmEnum$ViewType__SystemView> &
-      XrmEnum$ViewType__SystemView &
-      1039; // 1039
-    static +UserView: Class<XrmEnum$ViewType__UserView> &
-      XrmEnum$ViewType__UserView &
-      4230; // 4230
-  }
 
-  declare class XrmEnum$ViewType__SystemView mixins XrmEnum$ViewType {}
-  declare class XrmEnum$ViewType__UserView mixins XrmEnum$ViewType {}
+  declare var XrmEnum$ViewType: {|
+    +SystemView: 1039, // 1039
+    +UserView: 4230 // 4230
+  |};
 
   /**
    * An enumeration for Attribute Type metadata
    */
-  declare class XrmEnum$AttributeTypeCode {
-    constructor(...args: empty): mixed;
-    static +Boolean: Class<XrmEnum$AttributeTypeCode__Boolean> &
-      XrmEnum$AttributeTypeCode__Boolean &
-      0; // 0
-    static +Customer: Class<XrmEnum$AttributeTypeCode__Customer> &
-      XrmEnum$AttributeTypeCode__Customer &
-      1; // 1
-    static +DateTime: Class<XrmEnum$AttributeTypeCode__DateTime> &
-      XrmEnum$AttributeTypeCode__DateTime &
-      2; // 2
-    static +Decimal: Class<XrmEnum$AttributeTypeCode__Decimal> &
-      XrmEnum$AttributeTypeCode__Decimal &
-      3; // 3
-    static +Double: Class<XrmEnum$AttributeTypeCode__Double> &
-      XrmEnum$AttributeTypeCode__Double &
-      4; // 4
-    static +Integer: Class<XrmEnum$AttributeTypeCode__Integer> &
-      XrmEnum$AttributeTypeCode__Integer &
-      5; // 5
-    static +Lookup: Class<XrmEnum$AttributeTypeCode__Lookup> &
-      XrmEnum$AttributeTypeCode__Lookup &
-      6; // 6
-    static +Memo: Class<XrmEnum$AttributeTypeCode__Memo> &
-      XrmEnum$AttributeTypeCode__Memo &
-      7; // 7
-    static +Money: Class<XrmEnum$AttributeTypeCode__Money> &
-      XrmEnum$AttributeTypeCode__Money &
-      8; // 8
-    static +Owner: Class<XrmEnum$AttributeTypeCode__Owner> &
-      XrmEnum$AttributeTypeCode__Owner &
-      9; // 9
-    static +PartyList: Class<XrmEnum$AttributeTypeCode__PartyList> &
-      XrmEnum$AttributeTypeCode__PartyList &
-      10; // 10
-    static +Picklist: Class<XrmEnum$AttributeTypeCode__Picklist> &
-      XrmEnum$AttributeTypeCode__Picklist &
-      11; // 11
-    static +State: Class<XrmEnum$AttributeTypeCode__State> &
-      XrmEnum$AttributeTypeCode__State &
-      12; // 12
-    static +Status: Class<XrmEnum$AttributeTypeCode__Status> &
-      XrmEnum$AttributeTypeCode__Status &
-      13; // 13
-    static +String: Class<XrmEnum$AttributeTypeCode__String> &
-      XrmEnum$AttributeTypeCode__String &
-      14; // 14
-    static +Uniqueidentifier: Class<XrmEnum$AttributeTypeCode__Uniqueidentifier> &
-      XrmEnum$AttributeTypeCode__Uniqueidentifier &
-      15; // 15
-    static +CalendarRules: Class<XrmEnum$AttributeTypeCode__CalendarRules> &
-      XrmEnum$AttributeTypeCode__CalendarRules &
-      16; // 16
-    static +Virtual: Class<XrmEnum$AttributeTypeCode__Virtual> &
-      XrmEnum$AttributeTypeCode__Virtual &
-      17; // 17
-    static +BigInt: Class<XrmEnum$AttributeTypeCode__BigInt> &
-      XrmEnum$AttributeTypeCode__BigInt &
-      18; // 18
-    static +ManagedProperty: Class<XrmEnum$AttributeTypeCode__ManagedProperty> &
-      XrmEnum$AttributeTypeCode__ManagedProperty &
-      19; // 19
-    static +EntityName: Class<XrmEnum$AttributeTypeCode__EntityName> &
-      XrmEnum$AttributeTypeCode__EntityName &
-      20; // 20
-  }
 
-  declare class XrmEnum$AttributeTypeCode__Boolean
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Customer
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__DateTime
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Decimal
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Double
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Integer
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Lookup
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Memo
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Money
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Owner
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__PartyList
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Picklist
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__State
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Status
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__String
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Uniqueidentifier
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__CalendarRules
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__Virtual
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__BigInt
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__ManagedProperty
-    mixins XrmEnum$AttributeTypeCode {}
-  declare class XrmEnum$AttributeTypeCode__EntityName
-    mixins XrmEnum$AttributeTypeCode {}
+  declare var XrmEnum$AttributeTypeCode: {|
+    +Boolean: 0, // 0
+    +Customer: 1, // 1
+    +DateTime: 2, // 2
+    +Decimal: 3, // 3
+    +Double: 4, // 4
+    +Integer: 5, // 5
+    +Lookup: 6, // 6
+    +Memo: 7, // 7
+    +Money: 8, // 8
+    +Owner: 9, // 9
+    +PartyList: 10, // 10
+    +Picklist: 11, // 11
+    +State: 12, // 12
+    +Status: 13, // 13
+    +String: 14, // 14
+    +Uniqueidentifier: 15, // 15
+    +CalendarRules: 16, // 16
+    +Virtual: 17, // 17
+    +BigInt: 18, // 18
+    +ManagedProperty: 19, // 19
+    +EntityName: 20 // 20
+  |};
 
   /**
    * An enumeration for Attribute required level metadata
    */
-  declare class XrmEnum$AttributeRequiredLevel {
-    constructor(...args: empty): mixed;
-    static +None: Class<XrmEnum$AttributeRequiredLevel__None> &
-      XrmEnum$AttributeRequiredLevel__None &
-      0; // 0
-    static +SystemRequired: Class<XrmEnum$AttributeRequiredLevel__SystemRequired> &
-      XrmEnum$AttributeRequiredLevel__SystemRequired &
-      1; // 1
-    static +ApplicationRequired: Class<XrmEnum$AttributeRequiredLevel__ApplicationRequired> &
-      XrmEnum$AttributeRequiredLevel__ApplicationRequired &
-      2; // 2
-    static +Recommended: Class<XrmEnum$AttributeRequiredLevel__Recommended> &
-      XrmEnum$AttributeRequiredLevel__Recommended &
-      3; // 3
-  }
 
-  declare class XrmEnum$AttributeRequiredLevel__None
-    mixins XrmEnum$AttributeRequiredLevel {}
-  declare class XrmEnum$AttributeRequiredLevel__SystemRequired
-    mixins XrmEnum$AttributeRequiredLevel {}
-  declare class XrmEnum$AttributeRequiredLevel__ApplicationRequired
-    mixins XrmEnum$AttributeRequiredLevel {}
-  declare class XrmEnum$AttributeRequiredLevel__Recommended
-    mixins XrmEnum$AttributeRequiredLevel {}
+  declare var XrmEnum$AttributeRequiredLevel: {|
+    +None: 0, // 0
+    +SystemRequired: 1, // 1
+    +ApplicationRequired: 2, // 2
+    +Recommended: 3 // 3
+  |};
 
   /**
    * An enumeration for open file dialog options
    */
-  declare class XrmEnum$OpenFileOptions {
-    constructor(...args: empty): mixed;
-    static +Open: Class<XrmEnum$OpenFileOptions__Open> &
-      XrmEnum$OpenFileOptions__Open &
-      1; // 1
-    static +Save: Class<XrmEnum$OpenFileOptions__Save> &
-      XrmEnum$OpenFileOptions__Save &
-      2; // 2
-  }
 
-  declare class XrmEnum$OpenFileOptions__Open mixins XrmEnum$OpenFileOptions {}
-  declare class XrmEnum$OpenFileOptions__Save mixins XrmEnum$OpenFileOptions {}
+  declare var XrmEnum$OpenFileOptions: {|
+    +Open: 1, // 1
+    +Save: 2 // 2
+  |};
 
   /**
    * An enumeration for window positions when opening a new window
    */
-  declare class XrmEnum$WindowPositions {
-    constructor(...args: empty): mixed;
-    static +Center: Class<XrmEnum$WindowPositions__Center> &
-      XrmEnum$WindowPositions__Center &
-      1; // 1
-    static +Side: Class<XrmEnum$WindowPositions__Side> &
-      XrmEnum$WindowPositions__Side &
-      2; // 2
-  }
 
-  declare class XrmEnum$WindowPositions__Center
-    mixins XrmEnum$WindowPositions {}
-  declare class XrmEnum$WindowPositions__Side mixins XrmEnum$WindowPositions {}
+  declare var XrmEnum$WindowPositions: {|
+    +Center: 1, // 1
+    +Side: 2 // 2
+  |};
 
   /**
    * An enumeration for Relationship Type Metadata
    */
-  declare class XrmEnum$RelationshipType {
-    constructor(...args: empty): mixed;
-    static +OneToMany: Class<XrmEnum$RelationshipType__OneToMany> &
-      XrmEnum$RelationshipType__OneToMany &
-      0; // 0
-    static +ManyToMany: Class<XrmEnum$RelationshipType__ManyToMany> &
-      XrmEnum$RelationshipType__ManyToMany &
-      1; // 1
-  }
 
-  declare class XrmEnum$RelationshipType__OneToMany
-    mixins XrmEnum$RelationshipType {}
-  declare class XrmEnum$RelationshipType__ManyToMany
-    mixins XrmEnum$RelationshipType {}
+  declare var XrmEnum$RelationshipType: {|
+    +OneToMany: 0, // 0
+    +ManyToMany: 1 // 1
+  |};
 
   /**
    * An enumeration for Relationship Role Type Metadata
    */
-  declare class XrmEnum$RoleType {
-    constructor(...args: empty): mixed;
-    static +Referencing: Class<XrmEnum$RoleType__Referencing> &
-      XrmEnum$RoleType__Referencing &
-      1; // 1
-    static +AssociationEntity: Class<XrmEnum$RoleType__AssociationEntity> &
-      XrmEnum$RoleType__AssociationEntity &
-      2; // 2
-  }
 
-  declare class XrmEnum$RoleType__Referencing mixins XrmEnum$RoleType {}
-  declare class XrmEnum$RoleType__AssociationEntity mixins XrmEnum$RoleType {}
+  declare var XrmEnum$RoleType: {|
+    +Referencing: 1, // 1
+    +AssociationEntity: 2 // 2
+  |};
 
-  declare class XrmEnum$ClientFormFactor {
-    constructor(...args: empty): mixed;
-    static +Unknown: Class<XrmEnum$ClientFormFactor__Unknown> &
-      XrmEnum$ClientFormFactor__Unknown &
-      1; // 1
-    static +Desktop: Class<XrmEnum$ClientFormFactor__Desktop> &
-      XrmEnum$ClientFormFactor__Desktop &
-      2; // 2
-    static +Tablet: Class<XrmEnum$ClientFormFactor__Tablet> &
-      XrmEnum$ClientFormFactor__Tablet &
-      3; // 3
-    static +Phone: Class<XrmEnum$ClientFormFactor__Phone> &
-      XrmEnum$ClientFormFactor__Phone &
-      4; // 4
-  }
-
-  declare class XrmEnum$ClientFormFactor__Unknown
-    mixins XrmEnum$ClientFormFactor {}
-  declare class XrmEnum$ClientFormFactor__Desktop
-    mixins XrmEnum$ClientFormFactor {}
-  declare class XrmEnum$ClientFormFactor__Tablet
-    mixins XrmEnum$ClientFormFactor {}
-  declare class XrmEnum$ClientFormFactor__Phone
-    mixins XrmEnum$ClientFormFactor {}
+  declare var XrmEnum$ClientFormFactor: {|
+    +Unknown: 1, // 1
+    +Desktop: 2, // 2
+    +Tablet: 3, // 3
+    +Phone: 4 // 4
+  |};
 
   /**
    * Constant Enum: Client Types for {@link ClientContext.getClient clientContext.getClient()}.
    * @see {@link Xrm.Client}
    */
-  declare class XrmEnum$Client {
-    constructor(...args: empty): mixed;
-    static +Web: Class<XrmEnum$Client__Web> & XrmEnum$Client__Web & "Web"; // "Web"
-    static +Outlook: Class<XrmEnum$Client__Outlook> &
-      XrmEnum$Client__Outlook &
-      "Outlook"; // "Outlook"
-    static +Mobile: Class<XrmEnum$Client__Mobile> &
-      XrmEnum$Client__Mobile &
-      "Mobile"; // "Mobile"
-    static +UnifiedServiceDesk: Class<XrmEnum$Client__UnifiedServiceDesk> &
-      XrmEnum$Client__UnifiedServiceDesk &
-      "UnifiedServiceDesk"; // "UnifiedServiceDesk"
-    static +USD: Class<XrmEnum$Client__USD> &
-      XrmEnum$Client__USD &
-      "UnifiedServiceDesk"; // "UnifiedServiceDesk"
-  }
 
-  declare class XrmEnum$Client__Web mixins XrmEnum$Client {}
-  declare class XrmEnum$Client__Outlook mixins XrmEnum$Client {}
-  declare class XrmEnum$Client__Mobile mixins XrmEnum$Client {}
-  declare class XrmEnum$Client__UnifiedServiceDesk mixins XrmEnum$Client {}
-  declare class XrmEnum$Client__USD mixins XrmEnum$Client {}
+  declare var XrmEnum$Client: {|
+    +Web: "Web", // "Web"
+    +Outlook: "Outlook", // "Outlook"
+    +Mobile: "Mobile", // "Mobile"
+    +UnifiedServiceDesk: "UnifiedServiceDesk", // "UnifiedServiceDesk"
+    +USD: "UnifiedServiceDesk" // "UnifiedServiceDesk"
+  |};
 
   /**
    * Constant Enum: Client States for {@link ClientContext.getClientState clientContext.getClientState()}.
    * @see {@link Xrm.ClientState}
    */
-  declare class XrmEnum$ClientState {
-    constructor(...args: empty): mixed;
-    static +Online: Class<XrmEnum$ClientState__Online> &
-      XrmEnum$ClientState__Online &
-      "Online"; // "Online"
-    static +Offline: Class<XrmEnum$ClientState__Offline> &
-      XrmEnum$ClientState__Offline &
-      "Offline"; // "Offline"
-  }
 
-  declare class XrmEnum$ClientState__Online mixins XrmEnum$ClientState {}
-  declare class XrmEnum$ClientState__Offline mixins XrmEnum$ClientState {}
+  declare var XrmEnum$ClientState: {|
+    +Online: "Online", // "Online"
+    +Offline: "Offline" // "Offline"
+  |};
 
   /**
    * Constant Enum: Display States for setDisplayState() on {@link Controls.ProcessControl.setDisplayState Processes} and {@link Controls.Tab.setDisplayState Tabs}.
    * @see {@link Xrm.DisplayState}
    */
-  declare class XrmEnum$DisplayState {
-    constructor(...args: empty): mixed;
-    static +Expanded: Class<XrmEnum$DisplayState__Expanded> &
-      XrmEnum$DisplayState__Expanded &
-      "expanded"; // "expanded"
-    static +Collapsed: Class<XrmEnum$DisplayState__Collapsed> &
-      XrmEnum$DisplayState__Collapsed &
-      "collapsed"; // "collapsed"
-  }
 
-  declare class XrmEnum$DisplayState__Expanded mixins XrmEnum$DisplayState {}
-  declare class XrmEnum$DisplayState__Collapsed mixins XrmEnum$DisplayState {}
+  declare var XrmEnum$DisplayState: {|
+    +Expanded: "expanded", // "expanded"
+    +Collapsed: "collapsed" // "collapsed"
+  |};
 
   /**
    * Constant Enum: {@link Entity.save Entity} Save Modes
@@ -7422,482 +5287,219 @@ maxPageSize value, nextLink attribute in the returned promise object will contai
    * @see {@link Entity}
    * @see {@link Entity.save}
    */
-  declare class XrmEnum$EntitySaveMode {
-    constructor(...args: empty): mixed;
-    static +SaveAndClose: Class<XrmEnum$EntitySaveMode__SaveAndClose> &
-      XrmEnum$EntitySaveMode__SaveAndClose &
-      "saveandclose"; // "saveandclose"
-    static +SaveAndNew: Class<XrmEnum$EntitySaveMode__SaveAndNew> &
-      XrmEnum$EntitySaveMode__SaveAndNew &
-      "saveandnew"; // "saveandnew"
-  }
 
-  declare class XrmEnum$EntitySaveMode__SaveAndClose
-    mixins XrmEnum$EntitySaveMode {}
-  declare class XrmEnum$EntitySaveMode__SaveAndNew
-    mixins XrmEnum$EntitySaveMode {}
+  declare var XrmEnum$EntitySaveMode: {|
+    +SaveAndClose: "saveandclose", // "saveandclose"
+    +SaveAndNew: "saveandnew" // "saveandnew"
+  |};
 
   /**
    * Constant Enum: Form Notification Levels for {@link Ui.setFormNotification formContext.ui.setFormNotification()}.
    * @see {@link Xrm.FormNotificationLevel}
    */
-  declare class XrmEnum$FormNotificationLevel {
-    constructor(...args: empty): mixed;
-    static +Error: Class<XrmEnum$FormNotificationLevel__Error> &
-      XrmEnum$FormNotificationLevel__Error &
-      "ERROR"; // "ERROR"
-    static +Info: Class<XrmEnum$FormNotificationLevel__Info> &
-      XrmEnum$FormNotificationLevel__Info &
-      "INFO"; // "INFO"
-    static +Warning: Class<XrmEnum$FormNotificationLevel__Warning> &
-      XrmEnum$FormNotificationLevel__Warning &
-      "WARNING"; // "WARNING"
-  }
 
-  declare class XrmEnum$FormNotificationLevel__Error
-    mixins XrmEnum$FormNotificationLevel {}
-  declare class XrmEnum$FormNotificationLevel__Info
-    mixins XrmEnum$FormNotificationLevel {}
-  declare class XrmEnum$FormNotificationLevel__Warning
-    mixins XrmEnum$FormNotificationLevel {}
+  declare var XrmEnum$FormNotificationLevel: {|
+    +Error: "ERROR", // "ERROR"
+    +Info: "INFO", // "INFO"
+    +Warning: "WARNING" // "WARNING"
+  |};
 
   /**
    * Constant Enum: Submit Modes for {@link Attributes.Attribute.setSubmitMode} Attributes.Attribute.setSubmitMode().
    * @see {@link Xrm.SubmitMode}
    */
-  declare class XrmEnum$SubmitMode {
-    constructor(...args: empty): mixed;
-    static +Always: Class<XrmEnum$SubmitMode__Always> &
-      XrmEnum$SubmitMode__Always &
-      "always"; // "always"
-    static +Dirty: Class<XrmEnum$SubmitMode__Dirty> &
-      XrmEnum$SubmitMode__Dirty &
-      "dirty"; // "dirty"
-    static +Never: Class<XrmEnum$SubmitMode__Never> &
-      XrmEnum$SubmitMode__Never &
-      "never"; // "never"
-  }
 
-  declare class XrmEnum$SubmitMode__Always mixins XrmEnum$SubmitMode {}
-  declare class XrmEnum$SubmitMode__Dirty mixins XrmEnum$SubmitMode {}
-  declare class XrmEnum$SubmitMode__Never mixins XrmEnum$SubmitMode {}
+  declare var XrmEnum$SubmitMode: {|
+    +Always: "always", // "always"
+    +Dirty: "dirty", // "dirty"
+    +Never: "never" // "never"
+  |};
 
   /**
    * Constant Enum: Themes for {@link GlobalContext.getCurrentTheme globalContext.getCurrentTheme()}.
    * @remarks getCurrentTheme() does not work with Dynamics CRM for tablets or in the unified interface.
    */
-  declare class XrmEnum$Theme {
-    constructor(...args: empty): mixed;
-    static +Default: Class<XrmEnum$Theme__Default> &
-      XrmEnum$Theme__Default &
-      "default"; // "default"
-    static +Office12Blue: Class<XrmEnum$Theme__Office12Blue> &
-      XrmEnum$Theme__Office12Blue &
-      "Office12Blue"; // "Office12Blue"
-    static +Office14Silver: Class<XrmEnum$Theme__Office14Silver> &
-      XrmEnum$Theme__Office14Silver &
-      "Office14Silver"; // "Office14Silver"
-  }
 
-  declare class XrmEnum$Theme__Default mixins XrmEnum$Theme {}
-  declare class XrmEnum$Theme__Office12Blue mixins XrmEnum$Theme {}
-  declare class XrmEnum$Theme__Office14Silver mixins XrmEnum$Theme {}
+  declare var XrmEnum$Theme: {|
+    +Default: "default", // "default"
+    +Office12Blue: "Office12Blue", // "Office12Blue"
+    +Office14Silver: "Office14Silver" // "Office14Silver"
+  |};
 
   /**
    * Constant Enum: Settings for {@link GlobalContext.getAdvancedConfigSetting globalContext.getAdvancedConfigSetting(setting)}
    */
-  declare class XrmEnum$AdvancedConfigSettingOption {
-    constructor(...args: empty): mixed;
-    static +MaxChildIncidentNumber: Class<XrmEnum$AdvancedConfigSettingOption__MaxChildIncidentNumber> &
-      XrmEnum$AdvancedConfigSettingOption__MaxChildIncidentNumber &
-      "MaxChildIncidentNumber"; // "MaxChildIncidentNumber"
-    static +MaxIncidentMergeNumber: Class<XrmEnum$AdvancedConfigSettingOption__MaxIncidentMergeNumber> &
-      XrmEnum$AdvancedConfigSettingOption__MaxIncidentMergeNumber &
-      "MaxIncidentMergeNumber"; // "MaxIncidentMergeNumber"
-  }
 
-  declare class XrmEnum$AdvancedConfigSettingOption__MaxChildIncidentNumber
-    mixins XrmEnum$AdvancedConfigSettingOption {}
-  declare class XrmEnum$AdvancedConfigSettingOption__MaxIncidentMergeNumber
-    mixins XrmEnum$AdvancedConfigSettingOption {}
+  declare var XrmEnum$AdvancedConfigSettingOption: {|
+    +MaxChildIncidentNumber: "MaxChildIncidentNumber", // "MaxChildIncidentNumber"
+    +MaxIncidentMergeNumber: "MaxIncidentMergeNumber" // "MaxIncidentMergeNumber"
+  |};
 
   /**
    * Constant Enum: Requirement Level for {@link Attributes.Attribute.getRequiredLevel Attributes.Attribute.getRequiredLevel()} and
    * {@link Attributes.Attribute.setRequiredLevel Attributes.Attribute.setRequiredLevel()}.
    * @see {@link Xrm.Attributes.RequirementLevel}
    */
-  declare class XrmEnum$AttributeRequirementLevel {
-    constructor(...args: empty): mixed;
-    static +None: Class<XrmEnum$AttributeRequirementLevel__None> &
-      XrmEnum$AttributeRequirementLevel__None &
-      "none"; // "none"
-    static +Recommended: Class<XrmEnum$AttributeRequirementLevel__Recommended> &
-      XrmEnum$AttributeRequirementLevel__Recommended &
-      "recommended"; // "recommended"
-    static +Required: Class<XrmEnum$AttributeRequirementLevel__Required> &
-      XrmEnum$AttributeRequirementLevel__Required &
-      "required"; // "required"
-  }
 
-  declare class XrmEnum$AttributeRequirementLevel__None
-    mixins XrmEnum$AttributeRequirementLevel {}
-  declare class XrmEnum$AttributeRequirementLevel__Recommended
-    mixins XrmEnum$AttributeRequirementLevel {}
-  declare class XrmEnum$AttributeRequirementLevel__Required
-    mixins XrmEnum$AttributeRequirementLevel {}
+  declare var XrmEnum$AttributeRequirementLevel: {|
+    +None: "none", // "none"
+    +Recommended: "recommended", // "recommended"
+    +Required: "required" // "required"
+  |};
 
   /**
    * Constant Enum: Date attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.DateAttribute DateAttribute}.
    * @see {@link Xrm.Attributes.DateAttributeFormat}
    */
-  declare class XrmEnum$DateAttributeFormat {
-    constructor(...args: empty): mixed;
-    static +Date: Class<XrmEnum$DateAttributeFormat__Date> &
-      XrmEnum$DateAttributeFormat__Date &
-      "date"; // "date"
-    static +DateTime: Class<XrmEnum$DateAttributeFormat__DateTime> &
-      XrmEnum$DateAttributeFormat__DateTime &
-      "datetime"; // "datetime"
-  }
 
-  declare class XrmEnum$DateAttributeFormat__Date
-    mixins XrmEnum$DateAttributeFormat {}
-  declare class XrmEnum$DateAttributeFormat__DateTime
-    mixins XrmEnum$DateAttributeFormat {}
+  declare var XrmEnum$DateAttributeFormat: {|
+    +Date: "date", // "date"
+    +DateTime: "datetime" // "datetime"
+  |};
 
   /**
    * Constant Enum: Integer attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.NumberAttribute NumberAttribute}.
    * @see {@link Xrm.Attributes.IntegerAttributeFormat}
    */
-  declare class XrmEnum$IntegerAttributeFormat {
-    constructor(...args: empty): mixed;
-    static +Duration: Class<XrmEnum$IntegerAttributeFormat__Duration> &
-      XrmEnum$IntegerAttributeFormat__Duration &
-      "duration"; // "duration"
-    static +None: Class<XrmEnum$IntegerAttributeFormat__None> &
-      XrmEnum$IntegerAttributeFormat__None &
-      "none"; // "none"
-  }
 
-  declare class XrmEnum$IntegerAttributeFormat__Duration
-    mixins XrmEnum$IntegerAttributeFormat {}
-  declare class XrmEnum$IntegerAttributeFormat__None
-    mixins XrmEnum$IntegerAttributeFormat {}
+  declare var XrmEnum$IntegerAttributeFormat: {|
+    +Duration: "duration", // "duration"
+    +None: "none" // "none"
+  |};
 
   /**
    * Constant Enum: OptionSet attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.OptionSetAttribute OptionSetAttribute}.
    * @see {@link Xrm.Attributes.OptionSetAttributeFormat}
    */
-  declare class XrmEnum$OptionSetAttributeFormat {
-    constructor(...args: empty): mixed;
-    static +Language: Class<XrmEnum$OptionSetAttributeFormat__Language> &
-      XrmEnum$OptionSetAttributeFormat__Language &
-      "language"; // "language"
-    static +TimeZone: Class<XrmEnum$OptionSetAttributeFormat__TimeZone> &
-      XrmEnum$OptionSetAttributeFormat__TimeZone &
-      "timezone"; // "timezone"
-  }
 
-  declare class XrmEnum$OptionSetAttributeFormat__Language
-    mixins XrmEnum$OptionSetAttributeFormat {}
-  declare class XrmEnum$OptionSetAttributeFormat__TimeZone
-    mixins XrmEnum$OptionSetAttributeFormat {}
+  declare var XrmEnum$OptionSetAttributeFormat: {|
+    +Language: "language", // "language"
+    +TimeZone: "timezone" // "timezone"
+  |};
 
   /**
    * Constant Enum: String attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.StringAttribute StringAttribute}.
    * @see {@link Xrm.Attributes.StringAttributeFormat}
    */
-  declare class XrmEnum$StringAttributeFormat {
-    constructor(...args: empty): mixed;
-    static +Email: Class<XrmEnum$StringAttributeFormat__Email> &
-      XrmEnum$StringAttributeFormat__Email &
-      "email"; // "email"
-    static +Phone: Class<XrmEnum$StringAttributeFormat__Phone> &
-      XrmEnum$StringAttributeFormat__Phone &
-      "phone"; // "phone"
-    static +Text: Class<XrmEnum$StringAttributeFormat__Text> &
-      XrmEnum$StringAttributeFormat__Text &
-      "text"; // "text"
-    static +TextArea: Class<XrmEnum$StringAttributeFormat__TextArea> &
-      XrmEnum$StringAttributeFormat__TextArea &
-      "textarea"; // "textarea"
-    static +TickerSymbol: Class<XrmEnum$StringAttributeFormat__TickerSymbol> &
-      XrmEnum$StringAttributeFormat__TickerSymbol &
-      "tickersymbol"; // "tickersymbol"
-    static +URL: Class<XrmEnum$StringAttributeFormat__URL> &
-      XrmEnum$StringAttributeFormat__URL &
-      "url"; // "url"
-  }
 
-  declare class XrmEnum$StringAttributeFormat__Email
-    mixins XrmEnum$StringAttributeFormat {}
-  declare class XrmEnum$StringAttributeFormat__Phone
-    mixins XrmEnum$StringAttributeFormat {}
-  declare class XrmEnum$StringAttributeFormat__Text
-    mixins XrmEnum$StringAttributeFormat {}
-  declare class XrmEnum$StringAttributeFormat__TextArea
-    mixins XrmEnum$StringAttributeFormat {}
-  declare class XrmEnum$StringAttributeFormat__TickerSymbol
-    mixins XrmEnum$StringAttributeFormat {}
-  declare class XrmEnum$StringAttributeFormat__URL
-    mixins XrmEnum$StringAttributeFormat {}
+  declare var XrmEnum$StringAttributeFormat: {|
+    +Email: "email", // "email"
+    +Phone: "phone", // "phone"
+    +Text: "text", // "text"
+    +TextArea: "textarea", // "textarea"
+    +TickerSymbol: "tickersymbol", // "tickersymbol"
+    +URL: "url" // "url"
+  |};
 
   /**
    * Constant Enum: Attribute types for {@link Attributes.Attribute.setDisplayState()}.
    * @see {@link Xrm.Attributes.AttributeType}
    */
-  declare class XrmEnum$AttributeType {
-    constructor(...args: empty): mixed;
-    static +Boolean: Class<XrmEnum$AttributeType__Boolean> &
-      XrmEnum$AttributeType__Boolean &
-      "boolean"; // "boolean"
-    static +DateTime: Class<XrmEnum$AttributeType__DateTime> &
-      XrmEnum$AttributeType__DateTime &
-      "datetime"; // "datetime"
-    static +Decimal: Class<XrmEnum$AttributeType__Decimal> &
-      XrmEnum$AttributeType__Decimal &
-      "decimal"; // "decimal"
-    static +Double: Class<XrmEnum$AttributeType__Double> &
-      XrmEnum$AttributeType__Double &
-      "double"; // "double"
-    static +Integer: Class<XrmEnum$AttributeType__Integer> &
-      XrmEnum$AttributeType__Integer &
-      "integer"; // "integer"
-    static +Lookup: Class<XrmEnum$AttributeType__Lookup> &
-      XrmEnum$AttributeType__Lookup &
-      "lookup"; // "lookup"
-    static +Memo: Class<XrmEnum$AttributeType__Memo> &
-      XrmEnum$AttributeType__Memo &
-      "memo"; // "memo"
-    static +Money: Class<XrmEnum$AttributeType__Money> &
-      XrmEnum$AttributeType__Money &
-      "money"; // "money"
-    static +MultiOptionSet: Class<XrmEnum$AttributeType__MultiOptionSet> &
-      XrmEnum$AttributeType__MultiOptionSet &
-      "multioptionset"; // "multioptionset"
-    static +OptionSet: Class<XrmEnum$AttributeType__OptionSet> &
-      XrmEnum$AttributeType__OptionSet &
-      "optionset"; // "optionset"
-    static +String: Class<XrmEnum$AttributeType__String> &
-      XrmEnum$AttributeType__String &
-      "string"; // "string"
-  }
 
-  declare class XrmEnum$AttributeType__Boolean mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__DateTime mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__Decimal mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__Double mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__Integer mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__Lookup mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__Memo mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__Money mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__MultiOptionSet
-    mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__OptionSet mixins XrmEnum$AttributeType {}
-  declare class XrmEnum$AttributeType__String mixins XrmEnum$AttributeType {}
+  declare var XrmEnum$AttributeType: {|
+    +Boolean: "boolean", // "boolean"
+    +DateTime: "datetime", // "datetime"
+    +Decimal: "decimal", // "decimal"
+    +Double: "double", // "double"
+    +Integer: "integer", // "integer"
+    +Lookup: "lookup", // "lookup"
+    +Memo: "memo", // "memo"
+    +Money: "money", // "money"
+    +MultiOptionSet: "multioptionset", // "multioptionset"
+    +OptionSet: "optionset", // "optionset"
+    +String: "string" // "string"
+  |};
 
   /**
    * Constant Enum: Control types for {@link Controls.Control.getControlType Controls.Control.getControlType()}.
    * @see {@link Xrm.Controls.ControlType}
    */
-  declare class XrmEnum$StandardControlType {
-    constructor(...args: empty): mixed;
-    static +Standard: Class<XrmEnum$StandardControlType__Standard> &
-      XrmEnum$StandardControlType__Standard &
-      "standard"; // "standard"
-    static +IFrame: Class<XrmEnum$StandardControlType__IFrame> &
-      XrmEnum$StandardControlType__IFrame &
-      "iframe"; // "iframe"
-    static +Lookup: Class<XrmEnum$StandardControlType__Lookup> &
-      XrmEnum$StandardControlType__Lookup &
-      "lookup"; // "lookup"
-    static +OptionSet: Class<XrmEnum$StandardControlType__OptionSet> &
-      XrmEnum$StandardControlType__OptionSet &
-      "optionset"; // "optionset"
-    static +MultiSelectOptionSet: Class<XrmEnum$StandardControlType__MultiSelectOptionSet> &
-      XrmEnum$StandardControlType__MultiSelectOptionSet &
-      "multiselectoptionset"; // "multiselectoptionset"
-    static +SubGrid: Class<XrmEnum$StandardControlType__SubGrid> &
-      XrmEnum$StandardControlType__SubGrid &
-      "subgrid"; // "subgrid"
-    static +WebResource: Class<XrmEnum$StandardControlType__WebResource> &
-      XrmEnum$StandardControlType__WebResource &
-      "webresource"; // "webresource"
-    static +Notes: Class<XrmEnum$StandardControlType__Notes> &
-      XrmEnum$StandardControlType__Notes &
-      "notes"; // "notes"
-    static +TimerControl: Class<XrmEnum$StandardControlType__TimerControl> &
-      XrmEnum$StandardControlType__TimerControl &
-      "timercontrol"; // "timercontrol"
-    static +KBSearch: Class<XrmEnum$StandardControlType__KBSearch> &
-      XrmEnum$StandardControlType__KBSearch &
-      "kbsearch"; // "kbsearch"
-    static +TimeLineWall: Class<XrmEnum$StandardControlType__TimeLineWall> &
-      XrmEnum$StandardControlType__TimeLineWall &
-      "timelinewall"; // "timelinewall"
-    static +QuickForm: Class<XrmEnum$StandardControlType__QuickForm> &
-      XrmEnum$StandardControlType__QuickForm &
-      "quickform"; // "quickform"
-  }
 
-  declare class XrmEnum$StandardControlType__Standard
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__IFrame
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__Lookup
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__OptionSet
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__MultiSelectOptionSet
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__SubGrid
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__WebResource
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__Notes
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__TimerControl
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__KBSearch
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__TimeLineWall
-    mixins XrmEnum$StandardControlType {}
-  declare class XrmEnum$StandardControlType__QuickForm
-    mixins XrmEnum$StandardControlType {}
+  declare var XrmEnum$StandardControlType: {|
+    +Standard: "standard", // "standard"
+    +IFrame: "iframe", // "iframe"
+    +Lookup: "lookup", // "lookup"
+    +OptionSet: "optionset", // "optionset"
+    +MultiSelectOptionSet: "multiselectoptionset", // "multiselectoptionset"
+    +SubGrid: "subgrid", // "subgrid"
+    +WebResource: "webresource", // "webresource"
+    +Notes: "notes", // "notes"
+    +TimerControl: "timercontrol", // "timercontrol"
+    +KBSearch: "kbsearch", // "kbsearch"
+    +TimeLineWall: "timelinewall", // "timelinewall"
+    +QuickForm: "quickform" // "quickform"
+  |};
 
   /**
    * Constant Enum: Direction types for a process stage change event
    * @see {@link ProcessFlow.StageChangeDirection}
    */
-  declare class XrmEnum$StageChangeDirection {
-    constructor(...args: empty): mixed;
-    static +Next: Class<XrmEnum$StageChangeDirection__Next> &
-      XrmEnum$StageChangeDirection__Next &
-      "Next"; // "Next"
-    static +Previous: Class<XrmEnum$StageChangeDirection__Previous> &
-      XrmEnum$StageChangeDirection__Previous &
-      "Previous"; // "Previous"
-  }
 
-  declare class XrmEnum$StageChangeDirection__Next
-    mixins XrmEnum$StageChangeDirection {}
-  declare class XrmEnum$StageChangeDirection__Previous
-    mixins XrmEnum$StageChangeDirection {}
+  declare var XrmEnum$StageChangeDirection: {|
+    +Next: "Next", // "Next"
+    +Previous: "Previous" // "Previous"
+  |};
 
   /**
    * Constant Enum: Status for {@link ProcessFlow.Stage.getStatus Stage.getStatus()}.
    * @see {@link ProcessFlow.StageStatus}
    */
-  declare class XrmEnum$StageStatus {
-    constructor(...args: empty): mixed;
-    static +Active: Class<XrmEnum$StageStatus__Active> &
-      XrmEnum$StageStatus__Active &
-      "active"; // "active"
-    static +Inactive: Class<XrmEnum$StageStatus__Inactive> &
-      XrmEnum$StageStatus__Inactive &
-      "inactive"; // "inactive"
-  }
 
-  declare class XrmEnum$StageStatus__Active mixins XrmEnum$StageStatus {}
-  declare class XrmEnum$StageStatus__Inactive mixins XrmEnum$StageStatus {}
+  declare var XrmEnum$StageStatus: {|
+    +Active: "active", // "active"
+    +Inactive: "inactive" // "inactive"
+  |};
 
   /**
    * Constant Enum: Status for {@link ProcessFlow.Process.getStatus Process.getStatus()}.
    * @see {@link ProcessFlow.ProcessStatus}
    */
-  declare class XrmEnum$ProcessStatus {
-    constructor(...args: empty): mixed;
-    static +Active: Class<XrmEnum$ProcessStatus__Active> &
-      XrmEnum$ProcessStatus__Active &
-      "active"; // "active"
-    static +Aborted: Class<XrmEnum$ProcessStatus__Aborted> &
-      XrmEnum$ProcessStatus__Aborted &
-      "aborted"; // "aborted"
-    static +Finished: Class<XrmEnum$ProcessStatus__Finished> &
-      XrmEnum$ProcessStatus__Finished &
-      "finished"; // "finished"
-  }
 
-  declare class XrmEnum$ProcessStatus__Active mixins XrmEnum$ProcessStatus {}
-  declare class XrmEnum$ProcessStatus__Aborted mixins XrmEnum$ProcessStatus {}
-  declare class XrmEnum$ProcessStatus__Finished mixins XrmEnum$ProcessStatus {}
+  declare var XrmEnum$ProcessStatus: {|
+    +Active: "active", // "active"
+    +Aborted: "aborted", // "aborted"
+    +Finished: "finished" // "finished"
+  |};
 
   /**
    * Constant Enum: Command Bar Display options for Xrm.Url.FormOpenParameters.cmdbar, Xrm.Url.ViewOpenParameters.cmdbar, and Xrm.Utility.FormOpenParameters.cmdbar.
    * @see {@link Xrm.Url.CmdBarDisplay}
    */
-  declare class XrmEnum$CmdBarDisplay {
-    constructor(...args: empty): mixed;
-    static +True: Class<XrmEnum$CmdBarDisplay__True> &
-      XrmEnum$CmdBarDisplay__True &
-      "true"; // "true"
-    static +False: Class<XrmEnum$CmdBarDisplay__False> &
-      XrmEnum$CmdBarDisplay__False &
-      "false"; // "false"
-  }
 
-  declare class XrmEnum$CmdBarDisplay__True mixins XrmEnum$CmdBarDisplay {}
-  declare class XrmEnum$CmdBarDisplay__False mixins XrmEnum$CmdBarDisplay {}
+  declare var XrmEnum$CmdBarDisplay: {|
+    +True: "true", // "true"
+    +False: "false" // "false"
+  |};
 
   /**
    * Constant Enum: Navigation Bar Display options for Xrm.Url.FormOpenParameters.navbar, Xrm.Url.ViewOpenParameters.navbar, and Xrm.Utility.FormOpenParameters.navbar.
    * @see {@link Xrm.Url.NavBarDisplay}
    */
-  declare class XrmEnum$NavBarDisplay {
-    constructor(...args: empty): mixed;
-    static +Entity: Class<XrmEnum$NavBarDisplay__Entity> &
-      XrmEnum$NavBarDisplay__Entity &
-      "entity"; // "entity"
-    static +On: Class<XrmEnum$NavBarDisplay__On> &
-      XrmEnum$NavBarDisplay__On &
-      "on"; // "on"
-    static +Off: Class<XrmEnum$NavBarDisplay__Off> &
-      XrmEnum$NavBarDisplay__Off &
-      "off"; // "off"
-  }
 
-  declare class XrmEnum$NavBarDisplay__Entity mixins XrmEnum$NavBarDisplay {}
-  declare class XrmEnum$NavBarDisplay__On mixins XrmEnum$NavBarDisplay {}
-  declare class XrmEnum$NavBarDisplay__Off mixins XrmEnum$NavBarDisplay {}
+  declare var XrmEnum$NavBarDisplay: {|
+    +Entity: "entity", // "entity"
+    +On: "on", // "on"
+    +Off: "off" // "off"
+  |};
 
   /**
    * Constant Enum: Report Open Action options for Xrm.Url.ReportOpenParameters.actions.
    * @see {@link Xrm.Url.ReportAction}
    */
-  declare class XrmEnum$ReportAction {
-    constructor(...args: empty): mixed;
-    static +Filter: Class<XrmEnum$ReportAction__Filter> &
-      XrmEnum$ReportAction__Filter &
-      "filter"; // "filter"
-    static +Run: Class<XrmEnum$ReportAction__Run> &
-      XrmEnum$ReportAction__Run &
-      "run"; // "run"
-  }
 
-  declare class XrmEnum$ReportAction__Filter mixins XrmEnum$ReportAction {}
-  declare class XrmEnum$ReportAction__Run mixins XrmEnum$ReportAction {}
+  declare var XrmEnum$ReportAction: {|
+    +Filter: "filter", // "filter"
+    +Run: "run" // "run"
+  |};
 
   /**
    * Constant Enum: Posible file types for Xrm.Device.pickFile options
    * @see {@link Xrm.Device.PickFileTypes}
    */
-  declare class XrmEnum$DevicePickFileType {
-    constructor(...args: empty): mixed;
-    static +Audio: Class<XrmEnum$DevicePickFileType__Audio> &
-      XrmEnum$DevicePickFileType__Audio &
-      "audio"; // "audio"
-    static +Video: Class<XrmEnum$DevicePickFileType__Video> &
-      XrmEnum$DevicePickFileType__Video &
-      "vidoe"; // "vidoe"
-    static +Image: Class<XrmEnum$DevicePickFileType__Image> &
-      XrmEnum$DevicePickFileType__Image &
-      "image"; // "image"
-  }
 
-  declare class XrmEnum$DevicePickFileType__Audio
-    mixins XrmEnum$DevicePickFileType {}
-  declare class XrmEnum$DevicePickFileType__Video
-    mixins XrmEnum$DevicePickFileType {}
-  declare class XrmEnum$DevicePickFileType__Image
-    mixins XrmEnum$DevicePickFileType {}
+  declare var XrmEnum$DevicePickFileType: {|
+    +Audio: "audio", // "audio"
+    +Video: "vidoe", // "vidoe"
+    +Image: "image" // "image"
+  |};
 }
