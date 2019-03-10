@@ -31,10 +31,10 @@ declare module "proton-native" {
     strokeLinejoin?: "miter" | "round" | "bevel",
 
     /**
- * How far to extend the stroke at a sharp corner when using `strokeLinejoin='miter'`
- * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit
-for a more detailed explanation.
- */
+     * How far to extend the stroke at a sharp corner when using `strokeLinejoin='miter'`
+     * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit
+     * for a more detailed explanation.
+     */
     strokeMiterlimit?: number,
 
     /**
@@ -494,7 +494,7 @@ for a more detailed explanation.
     /**
      * Group can only have one child. To have more than one child, use boxes.
      */
-    children?: JSX.Element,
+    children?: React$Node,
 
     /**
      * Whether the Group is enabled.
@@ -967,7 +967,7 @@ for a more detailed explanation.
     /**
      * Window can only have one child. To have more than one child, use boxes.
      */
-    children?: JSX.Element;
+    children?: React$Node;
 
     /**
      * Whether the window is closed. If set to closed, then the window will be closed.
@@ -1031,17 +1031,17 @@ for a more detailed explanation.
   /**
    * Renders the input component
    */
-  declare export function render(element: JSX.Element): void;
+  declare export function render(element: React$Node): void;
 
   /**
- * A method to display an alert.
- * @param type What type the dialog is. The current types are:
-- Message - a simple message
-- Error - an error message
-- Open - open a file
-- Save - save a file
- * @param options Options for the title and descript.
- */
+   * A method to display an alert.
+   * @param type What type the dialog is. The current types are:
+   * - Message - a simple message
+   * - Error - an error message
+   * - Open - open a file
+   * - Save - save a file
+   * @param options Options for the title and descript.
+   */
   declare export function Dialog(
     type: "Message" | "Error",
     options?:
@@ -1056,10 +1056,10 @@ for a more detailed explanation.
   ): void;
 
   /**
- * A dialog to save or open a file. Returns chosen file path.
- * @param type What type the dialog is. The current types are:
-- Open - open a file
-- Save - save a file
- */
+   * A dialog to save or open a file. Returns chosen file path.
+   * @param type What type the dialog is. The current types are:
+   * - Open - open a file
+   * - Save - save a file
+   */
   declare export function Dialog(type: "Open" | "Save"): string;
 }
