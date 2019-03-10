@@ -63,7 +63,8 @@ name: string,
 parentType: DS$Model,
 isRelationship: true
 } 
-	
+	declare var DS: typeof npm$namespace$DS;
+
       declare var npm$namespace$DS: {
         errorsHashToArray: typeof DS$errorsHashToArray,
 errorsArrayToHash: typeof DS$errorsArrayToHash,
@@ -201,7 +202,7 @@ type: K,
 options?: DS$AttrOptions<$ElementType<TransformRegistry, K>>): Ember.ComputedProperty<$ElementType<TransformRegistry, K>>
 
 
-declare function DS$attr(options?: DS$AttrOptions): Ember.ComputedProperty<any>
+declare function DS$attr(options?: DS$AttrOptions<>): Ember.ComputedProperty<any>
 
 
 
@@ -1166,7 +1167,7 @@ changedAttributes(
  */
 belongsTo<L: RelationshipsFor<$ElementType<ModelRegistry, K>>>(
 keyName: L,
-options?: {}): $ElementType<$ElementType<DS$Snapshot<K>, "record">, L> | string | null | void;
+options?: {}): $ElementType<$PropertyType<DS$Snapshot<K>, "record">, L> | string | null | void;
 
 /**
  * Returns the current value of a hasMany relationship.
@@ -1175,7 +1176,7 @@ hasMany<L: RelationshipsFor<$ElementType<ModelRegistry, K>>>(
 keyName: L,
 options?: {
 ids: false
-}): Array<$ElementType<$ElementType<DS$Snapshot<K>, "record">, L>> | void;
+}): Array<$ElementType<$PropertyType<DS$Snapshot<K>, "record">, L>> | void;
 hasMany<L: RelationshipsFor<$ElementType<ModelRegistry, K>>>(
 keyName: L,
 options: {
@@ -2142,13 +2143,13 @@ declare class DS$Transform mixins Ember.Object {
  * When given a deserialized value from a record attribute this
  * method must return the serialized value.
  */
-serialize(deserialized: any, options: DS$AttrOptions): any;
+serialize(deserialized: any, options: DS$AttrOptions<>): any;
 
 /**
  * When given a serialize value from a JSON object this method must
  * return the deserialized value for the record attribute.
  */
-deserialize(serialized: any, options: DS$AttrOptions): any
+deserialize(serialized: any, options: DS$AttrOptions<>): any
 }
 
 
