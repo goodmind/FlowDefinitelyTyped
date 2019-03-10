@@ -1,6 +1,8 @@
 declare module "@ckeditor/ckeditor5-engine" {
   import typeof * as ckutils from "ckeditor__ckeditor5-utils";
 
+  declare var controller: typeof npm$namespace$controller;
+
   declare var npm$namespace$controller: {
     DataController: typeof controller$DataController,
     EditingController: typeof controller$EditingController
@@ -122,6 +124,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     set(name: string, value: any): void;
     unbind(...unbindProperties: string[]): void;
   }
+  declare var conversion: typeof npm$namespace$conversion;
 
   declare var npm$namespace$conversion: {
     clearAttributes: typeof conversion$clearAttributes,
@@ -284,25 +287,29 @@ declare module "@ckeditor/ckeditor5-engine" {
   declare interface conversion$ViewConversionApi {}
 
   declare class conversion$ViewConsumable {}
+  declare var dataprocessor: typeof npm$namespace$dataprocessor;
 
   declare var npm$namespace$dataprocessor: {
     BasicHtmlWriter: typeof dataprocessor$BasicHtmlWriter,
     HtmlDataProcessor: typeof dataprocessor$HtmlDataProcessor,
     XmlDataProcessor: typeof dataprocessor$XmlDataProcessor
   };
-  declare class dataprocessor$BasicHtmlWriter mixins HtmlWriter {
+  declare class dataprocessor$BasicHtmlWriter mixins dataprocessor$HtmlWriter {
     getHtml(fragment: model$DocumentFragment): string;
   }
 
   declare interface dataprocessor$DataProcessor {}
 
-  declare class dataprocessor$HtmlDataProcessor mixins DataProcessor {}
+  declare class dataprocessor$HtmlDataProcessor
+    mixins dataprocessor$DataProcessor {}
 
   declare interface dataprocessor$HtmlWriter {
     getHtml(fragment: model$DocumentFragment): string;
   }
 
-  declare class dataprocessor$XmlDataProcessor mixins DataProcessor {}
+  declare class dataprocessor$XmlDataProcessor
+    mixins dataprocessor$DataProcessor {}
+  declare var devUtils: typeof npm$namespace$devUtils;
 
   declare var npm$namespace$devUtils: {
     disableEngineDebug: typeof devUtils$disableEngineDebug,
@@ -420,6 +427,8 @@ declare module "@ckeditor/ckeditor5-engine" {
     }
   ): string;
 
+  declare var model: typeof npm$namespace$model;
+
   declare var npm$namespace$model: {
     getItems: typeof model$getItems,
 
@@ -505,7 +514,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     operationsA: model$operation$Operation[],
     operationsB: model$operation$Operation[],
     options: {
-      document: view$Document | null,
+      document: model$Document | null,
       useRelations: boolean,
       padWithNoOps: boolean
     }
@@ -520,7 +529,7 @@ declare module "@ckeditor/ckeditor5-engine" {
   };
   declare function model$utils$deleteContent(
     model: model$Model,
-    selection: view$Selection | view$DocumentSelection,
+    selection: model$Selection | model$DocumentSelection,
     batch: model$Batch,
     options?: {
       leaveUnmerged: boolean,
@@ -530,25 +539,25 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare function model$utils$getSelectedContent(
     model: model$Model,
-    selection: view$Selection | view$DocumentSelection
-  ): view$DocumentFragment;
+    selection: model$Selection | model$DocumentSelection
+  ): model$DocumentFragment;
 
   declare function model$utils$insertContent(
     model: model$Model,
-    content: view$DocumentFragment | view$Item,
+    content: model$DocumentFragment | model$Item,
     selectable?:
-      | view$Selection
-      | view$DocumentSelection
-      | view$Position
-      | view$Element
-      | Iterable<view$Range>
-      | view$Range
+      | model$Selection
+      | model$DocumentSelection
+      | model$Position
+      | model$Element
+      | Iterable<model$Range>
+      | model$Range
       | null
   ): void;
 
   declare function model$utils$modifySelection(
     model: model$Model,
-    selection: view$Selection | view$DocumentSelection,
+    selection: model$Selection | model$DocumentSelection,
     options?: {
       direction?: "forward" | "backward",
       unit?: "character" | "codePoint" | "word"
@@ -568,30 +577,30 @@ declare module "@ckeditor/ckeditor5-engine" {
   declare class model$DocumentFragment {
     childCount: number;
     isEmpty: boolean;
-    markers: Map<string, view$Range>;
+    markers: Map<string, model$Range>;
     maxOffset: number;
     parent: null;
     root: model$DocumentFragment;
-    constructor(children?: view$Node | Iterable<view$Node>): this;
-    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<view$Node>;
-    getChild(index: number): view$Node | null;
-    getChildIndex(node: view$Node): number | null;
-    getChildStartOffset(node: view$Node): number | null;
-    getChildren(): Iterable<view$Node>;
-    getNodeByPath(relativePath: number[]): view$Node | model$DocumentFragment;
+    constructor(children?: model$Node | Iterable<model$Node>): this;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$Node>;
+    getChild(index: number): model$Node | null;
+    getChildIndex(node: model$Node): number | null;
+    getChildStartOffset(node: model$Node): number | null;
+    getChildren(): Iterable<model$Node>;
+    getNodeByPath(relativePath: number[]): model$Node | model$DocumentFragment;
     getPath(): number[];
     is(type: string): boolean;
     offsetToIndex(offset: number): number;
     toJSON(): Object;
-    _appendChild(items: view$Item | Iterable<view$Item>): void;
-    _insertChild(index: number, items: view$Item | Iterable<view$Item>): void;
-    _removeChildren(index: number, howMany?: number): view$Node[];
+    _appendChild(items: model$Item | Iterable<model$Item>): void;
+    _insertChild(index: number, items: model$Item | Iterable<model$Item>): void;
+    _removeChildren(index: number, howMany?: number): model$Node[];
     static fromJSON(json: { [key: string]: any }): model$DocumentFragment;
   }
 
   declare class model$DocumentSelection {}
 
-  declare class model$Element mixins Node {
+  declare class model$Element mixins model$Node {
     childCount: number;
     isEmpty: boolean;
     maxOffset: number;
@@ -599,26 +608,26 @@ declare module "@ckeditor/ckeditor5-engine" {
     constructor(
       name: string,
       attrs?: Map<string, any> | $ReadOnlyArray<[string, any]>,
-      children?: view$Node | Iterable<view$Node>
+      children?: model$Node | Iterable<model$Node>
     ): this;
-    getChild(index: number): view$Node;
-    getChildIndex(node: view$Node): number;
-    getChildStartOffset(node: view$Node): number;
-    getChildren(): Iterable<view$Node>;
-    getNodeByPath(relativePath: number[]): view$Node;
+    getChild(index: number): model$Node;
+    getChildIndex(node: model$Node): number;
+    getChildStartOffset(node: model$Node): number;
+    getChildren(): Iterable<model$Node>;
+    getNodeByPath(relativePath: number[]): model$Node;
     is(type: string, name?: string): boolean;
     offsetToIndex(offset: number): number;
     toJSON(): { [key: string]: any };
-    _appendChild(nodes: view$Item | Iterable<view$Item>): void;
+    _appendChild(nodes: model$Item | Iterable<model$Item>): void;
     _clone(deep?: boolean): model$Element;
-    _insertChild(index: number, items: view$Item | Iterable<view$Item>): void;
-    _removeChildren(index: number, howMany?: number): view$Node[];
+    _insertChild(index: number, items: model$Item | Iterable<model$Item>): void;
+    _removeChildren(index: number, howMany?: number): model$Node[];
     static fromJSON(json: { [key: string]: any }): model$Element;
   }
 
   declare class model$History {}
 
-  declare type model$Item = view$Node | view$TextProxy;
+  declare type model$Item = model$Node | model$TextProxy;
 
   declare class model$LivePosition {}
 
@@ -632,10 +641,10 @@ declare module "@ckeditor/ckeditor5-engine" {
     document: model$Document;
     markers: model$MarkerCollection;
     schema: model$Schema;
-    applyOperation(operation: operation$Operation): void;
+    applyOperation(operation: model$operation$Operation): void;
     change(callback: Function): any;
     deleteContent(
-      selection: view$Selection | model$DocumentSelection,
+      selection: model$Selection | model$DocumentSelection,
       batch: model$Batch,
       options: {
         leaveUnmerged?: boolean,
@@ -648,22 +657,22 @@ declare module "@ckeditor/ckeditor5-engine" {
       callback: Function
     ): void;
     getSelectedContent(
-      selection: view$Selection | model$DocumentSelection
+      selection: model$Selection | model$DocumentSelection
     ): model$DocumentFragment;
-    hasContent(rangeOrElement: view$Range | model$Element): boolean;
+    hasContent(rangeOrElement: model$Range | model$Element): boolean;
     insertContent(
       content: model$DocumentFragment | model$Item,
       selectable?:
-        | view$Selection
+        | model$Selection
         | model$DocumentSelection
-        | view$Position
+        | model$Position
         | model$Element
-        | Iterable<view$Range>
-        | view$Range
+        | Iterable<model$Range>
+        | model$Range
         | null
     ): void;
     modifySelection(
-      selection: view$Selection | model$DocumentSelection,
+      selection: model$Selection | model$DocumentSelection,
       options?: {
         direction?: "forward" | "backward",
         unit?: "character" | "codePoint" | "word"
@@ -749,7 +758,7 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare type model$NodeSet =
     | model$Node
-    | view$TextProxy
+    | model$TextProxy
     | string
     | model$NodeList
     | model$DocumentFragment
@@ -778,25 +787,27 @@ declare module "@ckeditor/ckeditor5-engine" {
     path: number[];
     root: model$Element | model$DocumentFragment;
     stickiness: model$PositionStickiness;
-    textNode: view$Text | null;
+    textNode: model$Text | null;
     constructor(
       root: model$Element | model$DocumentFragment,
       path: number[],
       stickiness?: model$PositionStickiness
     ): this;
-    compareWith(otherPosition: model$Position): view$PositionRelation;
+    compareWith(otherPosition: model$Position): model$PositionRelation;
     getAncestors(): model$Item[];
     getCommonAncestor(
       position: model$Position
     ): model$Element | model$DocumentFragment | null;
     getCommonPath(position: model$Position): number[];
     getLastMatchingPosition(
-      skip: (t: view$TreeWalkerValue) => boolean,
+      skip: (t: model$TreeWalkerValue) => boolean,
       options: { [key: string]: any }
     ): model$Position;
     getParentPath(): number[];
     getShiftedBy(shift: number): model$Position;
-    getTransformedByOperation(operation: operation$Operation): model$Position;
+    getTransformedByOperation(
+      operation: model$operation$Operation
+    ): model$Position;
     hasSameParentAs(position: model$Position): boolean;
     isAfter(otherPosition: model$Position): boolean;
     isBefore(otherPosition: model$Position): boolean;
@@ -840,9 +851,11 @@ declare module "@ckeditor/ckeditor5-engine" {
     getIntersection(otherRange: model$Range): model$Range | null;
     getMinimalFlatRanges(): model$Range[];
     getPositions(options: { [key: string]: any }): Iterable<model$Position>;
-    getTransformedByOperation(operation: operation$Operation): model$Range[];
+    getTransformedByOperation(
+      operation: model$operation$Operation
+    ): model$Range[];
     getTransformedByOperations(
-      operations: Iterable<operation$Operation>
+      operations: Iterable<model$operation$Operation>
     ): model$Range[];
     getWalker(options: {
       startPosition: model$Position,
@@ -859,7 +872,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     [key: string]: any
   }): Iterable<model$Item>;
 
-  declare class model$RootElement mixins Element {
+  declare class model$RootElement mixins model$Element {
     document: model$Document | null;
     rootName: string;
     constructor(doc: model$Document, name: string, rootName: string): this;
@@ -941,7 +954,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     ): void;
   }
 
-  declare class model$Text mixins Node {
+  declare class model$Text mixins model$Node {
     data: string;
     _data: string;
     constructor(
@@ -982,7 +995,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     is(type: string): boolean;
   }
 
-  declare class model$TreeWalker mixins Iterable<view$TreeWalkerValue> {
+  declare class model$TreeWalker mixins Iterable<model$TreeWalkerValue> {
     boundaries: model$Range;
     direction: "backward" | "forward";
     ignoreElementEnd: boolean;
@@ -997,9 +1010,9 @@ declare module "@ckeditor/ckeditor5-engine" {
       shallow?: boolean,
       ignoreElementEnd?: boolean
     }): this;
-    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<view$TreeWalkerValue>;
-    next(): view$TreeWalkerValue;
-    skip(skip: (t: view$TreeWalkerValue) => boolean): void;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$TreeWalkerValue>;
+    next(): model$TreeWalkerValue;
+    skip(skip: (t: model$TreeWalkerValue) => boolean): void;
   }
 
   declare interface model$TreeWalkerValue {
@@ -1007,12 +1020,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     length: number;
     nextPosition: model$Position;
     previousPosition: model$Position;
-    type: view$TreeWalkerValueType;
-    item: model$Item;
-    length: number;
-    nextPosition: model$Position;
-    previousPosition: model$Position;
-    type: view$TreeWalkerValueType;
+    type: model$TreeWalkerValueType;
   }
 
   declare type model$TreeWalkerValueType =
@@ -1022,6 +1030,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     | "text";
 
   declare class model$Writer {}
+  declare var utils: typeof npm$namespace$utils;
 
   declare var npm$namespace$utils: {
     bindTwoStepCaretToAttribute: typeof utils$bindTwoStepCaretToAttribute
@@ -1032,6 +1041,8 @@ declare module "@ckeditor/ckeditor5-engine" {
     emitter: ckutils.Emitter,
     attribute: string
   ): void;
+
+  declare var view: typeof npm$namespace$view;
 
   declare var npm$namespace$view: {
     BR_FILLER: typeof view$BR_FILLER,
@@ -1086,29 +1097,33 @@ declare module "@ckeditor/ckeditor5-engine" {
     Observer: typeof view$observer$Observer,
     SelectionObserver: typeof view$observer$SelectionObserver
   };
-  declare class view$observer$ClickObserver mixins DomEventObserver {}
+  declare class view$observer$ClickObserver
+    mixins view$observer$DomEventObserver {}
 
-  declare class view$observer$CompositionObserver mixins DomEventObserver {}
+  declare class view$observer$CompositionObserver
+    mixins view$observer$DomEventObserver {}
 
   declare class view$observer$DomEventData {}
 
-  declare class view$observer$DomEventObserver mixins Observer {
+  declare class view$observer$DomEventObserver mixins view$observer$Observer {
     domEventType: string | string[];
     useCapture: boolean;
     fire(eventType: string, domEvent: Event, additionalData?: Object): void;
     onDomEvent(): void;
   }
 
-  declare class view$observer$FakeSelectionObserver mixins Observer {
+  declare class view$observer$FakeSelectionObserver
+    mixins view$observer$Observer {
     constructor(view: view$View): this;
     destroy(): void;
     observe(): void;
   }
 
-  declare class view$observer$FocusObserver mixins DomEventObserver {}
+  declare class view$observer$FocusObserver
+    mixins view$observer$DomEventObserver {}
 
   declare class view$observer$KeyEventData
-    mixins DomEventData, ckutils.KeystrokeInfo {
+    mixins view$observer$DomEventData, ckutils.KeystrokeInfo {
     altKey: boolean;
     ctrlKey: boolean;
     keyCode: number;
@@ -1116,31 +1131,33 @@ declare module "@ckeditor/ckeditor5-engine" {
     shiftKey: boolean;
   }
 
-  declare class view$observer$KeyObserver mixins DomEventObserver {}
+  declare class view$observer$KeyObserver
+    mixins view$observer$DomEventObserver {}
 
-  declare class view$observer$MouseObserver mixins DomEventObserver {}
+  declare class view$observer$MouseObserver
+    mixins view$observer$DomEventObserver {}
 
-  declare class view$observer$MutationObserver mixins Observer {
+  declare class view$observer$MutationObserver mixins view$observer$Observer {
     domConverter: view$DomConverter;
     renderer: view$Renderer;
   }
 
   declare interface view$observer$MutatedChildren {
-    newChildren: model$Node[];
-    node: model$Element;
-    oldChildren: model$Node[];
+    newChildren: view$Node[];
+    node: view$Element;
+    oldChildren: view$Node[];
     type: string;
   }
 
   declare interface view$observer$MutatedText {
     newText: string;
-    node: model$Text;
+    node: view$Text;
     oldText: string;
     type: string;
   }
 
   declare class view$observer$Observer {
-    document: model$Document;
+    document: view$Document;
     isEnabled: boolean;
     view: view$View;
     constructor(view: view$View): this;
@@ -1150,13 +1167,13 @@ declare module "@ckeditor/ckeditor5-engine" {
     observe(domElement: HTMLElement, name: string): void;
   }
 
-  declare class view$observer$SelectionObserver mixins Observer {
+  declare class view$observer$SelectionObserver mixins view$observer$Observer {
     domConverter: view$DomConverter;
     mutationObserver: view$observer$MutationObserver;
-    selection: model$DocumentSelection;
+    selection: view$DocumentSelection;
   }
 
-  declare class view$AttributeElement mixins Element {
+  declare class view$AttributeElement mixins view$Element {
     id: string | number;
     priority: number;
     _clonesGroup: Set<view$AttributeElement> | null;
@@ -1169,22 +1186,22 @@ declare module "@ckeditor/ckeditor5-engine" {
         | { [key: string]: any }
         | Iterable<[string, string]>
         | Map<string, string>,
-      children?: model$Node | Iterable<model$Node>
+      children?: view$Node | Iterable<view$Node>
     ): this;
     getElementsWithSameId(): Set<view$AttributeElement>;
     getFillerOffset(): number | null;
-    isSimilar(otherElement: model$Element): boolean;
+    isSimilar(otherElement: view$Element): boolean;
     _clone(deep: boolean): view$AttributeElement;
   }
 
-  declare class view$ContainerElement mixins Element {
+  declare class view$ContainerElement mixins view$Element {
     constructor(
       name: string,
       attrs?:
         | { [key: string]: any }
         | Iterable<[string, string]>
         | Map<string, string>,
-      children?: model$Node | Iterable<model$Node>
+      children?: view$Node | Iterable<view$Node>
     ): this;
     getFillerOffset(): number | null;
   }
@@ -1194,7 +1211,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     isFocused: boolean;
     isReadOnly: boolean;
     roots: ckutils.Collection<view$RootEditableElement>;
-    selection: model$DocumentSelection;
+    selection: view$DocumentSelection;
     constructor(): this;
     getRoot(name?: string): view$RootEditableElement | null;
     registerPostFixer(
@@ -1249,18 +1266,15 @@ declare module "@ckeditor/ckeditor5-engine" {
     isEmpty: boolean;
     parent: null;
     root: view$DocumentFragment;
-    _children: model$Element[];
-    constructor(children?: model$Node | Iterable<model$Node>): this;
-    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$Node>;
-    _appendChild(items: model$Item | Iterable<model$Item>): number;
-    _insertChild(
-      index: number,
-      items: model$Item | Iterable<model$Item>
-    ): number;
-    _removeChildren(index: number, howMany?: number): model$Node[];
-    getChild(index: number): model$Node;
-    getChildIndex(node: model$Node): number;
-    getChildren(): Iterable<model$Node>;
+    _children: view$Element[];
+    constructor(children?: view$Node | Iterable<view$Node>): this;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<view$Node>;
+    _appendChild(items: view$Item | Iterable<view$Item>): number;
+    _insertChild(index: number, items: view$Item | Iterable<view$Item>): number;
+    _removeChildren(index: number, howMany?: number): view$Node[];
+    getChild(index: number): view$Node;
+    getChildIndex(node: view$Node): number;
+    getChildren(): Iterable<view$Node>;
     is(type: string): boolean;
   }
 
@@ -1270,14 +1284,14 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare class view$DowncastWriter {}
 
-  declare class view$EditableElement mixins ContainerElement {}
+  declare class view$EditableElement mixins view$ContainerElement {}
 
-  declare class view$Element mixins Node {
+  declare class view$Element mixins view$Node {
     childCount: number;
     isEmpty: boolean;
     name: string;
     _attrs: Map<string, string>;
-    _children: model$Node[];
+    _children: view$Node[];
     _classes: Set<string>;
     _customProperties: Map<string, any>;
     _styles: Map<string, string>;
@@ -1287,9 +1301,9 @@ declare module "@ckeditor/ckeditor5-engine" {
         | { [key: string]: any }
         | Iterable<[string, string]>
         | Map<string, string>,
-      children?: model$Node | Iterable<model$Node>
+      children?: view$Node | Iterable<view$Node>
     ): this;
-    _removeChildren(index: number, howMany?: number): model$Node[];
+    _removeChildren(index: number, howMany?: number): view$Node[];
     _removeClass(className: string[] | string): void;
     findAncestor(
       patterns: Object | string | RegExp | Function
@@ -1297,9 +1311,9 @@ declare module "@ckeditor/ckeditor5-engine" {
     getAttribute(key: string): string | void;
     getAttributeKeys(): Iterable<string>;
     getAttributes(): Iterable<any>;
-    getChild(index: number): model$Node;
-    getChildIndex(node: model$Node): number;
-    getChildren(): Iterable<model$Node>;
+    getChild(index: number): view$Node;
+    getChildIndex(node: view$Node): number;
+    getChildren(): Iterable<view$Node>;
     getClassNames(): Iterable<string>;
     getCustomProperties(): Iterable<any>;
     getCustomProperty(key: string | Symbol): any;
@@ -1313,12 +1327,9 @@ declare module "@ckeditor/ckeditor5-engine" {
     is(type: string, name?: string): boolean;
     isSimilar(otherElement: view$Element): boolean;
     _addClass(className: string[] | string): void;
-    _appendChild(items: model$Item | Iterable<model$Item>): number;
+    _appendChild(items: view$Item | Iterable<view$Item>): number;
     _clone(deep?: boolean): view$Element;
-    _insertChild(
-      index: number,
-      items: model$Item | Iterable<model$Item>
-    ): number;
+    _insertChild(index: number, items: view$Item | Iterable<view$Item>): number;
     _removeAttribute(key: string): boolean;
     _removeCustomProperty(key: string | Symbol): boolean;
     _removeStyle(property: string[] | string): void;
@@ -1348,14 +1359,14 @@ declare module "@ckeditor/ckeditor5-engine" {
         }
       };
 
-  declare class view$EmptyElement mixins Element {
+  declare class view$EmptyElement mixins view$Element {
     constructor(
       name: string,
       attrs?:
         | { [key: string]: any }
         | Iterable<[string, string]>
         | Map<string, string>,
-      children?: model$Node | Iterable<model$Node>
+      children?: view$Node | Iterable<view$Node>
     ): this;
     getFillerOffset(): null;
   }
@@ -1368,20 +1379,20 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare function view$NBSP_FILLER(): void;
 
-  declare function view$getDataWithoutFiller(domText: model$Text): string;
+  declare function view$getDataWithoutFiller(domText: view$Text): string;
 
   declare function view$injectQuirksHandling(view: view$View): void;
 
   declare function view$isBlockFiller(
-    domNode: model$Node,
+    domNode: view$Node,
     blockFiller: Function
   ): boolean;
 
-  declare function view$isInlineFiller(domText: model$Text): boolean;
+  declare function view$isInlineFiller(domText: view$Text): boolean;
 
-  declare function view$startsWithFiller(domNode: model$Text): boolean;
+  declare function view$startsWithFiller(domNode: view$Text): boolean;
 
-  declare type view$Item = model$Node | model$TextProxy;
+  declare type view$Item = view$Node | view$TextProxy;
 
   declare class view$Matcher {}
 
@@ -1456,17 +1467,21 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare class view$Position {}
 
-  declare type view$PositionRelation = "before" | "after" | "same";
+  declare type view$PositionRelation =
+    | "before"
+    | "after"
+    | "same"
+    | "different";
 
   declare class view$Range {}
 
   declare class view$Renderer {}
 
-  declare class view$RootEditableElement mixins EditableElement {}
+  declare class view$RootEditableElement mixins view$EditableElement {}
 
   declare class view$Selection {}
 
-  declare class view$Text mixins Node {
+  declare class view$Text mixins view$Node {
     data: string;
     _data: string;
     _textData: string;
@@ -1512,9 +1527,9 @@ declare module "@ckeditor/ckeditor5-engine" {
       shallow?: boolean,
       ignoreElementEnd?: boolean
     }): this;
-    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$TreeWalkerValue>;
-    next(): model$TreeWalkerValue;
-    skip(skip: (treeWalkerValue: model$TreeWalkerValue) => boolean): void;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<view$TreeWalkerValue>;
+    next(): view$TreeWalkerValue;
+    skip(skip: (treeWalkerValue: view$TreeWalkerValue) => boolean): void;
   }
 
   declare type view$TreeWalkerDirection = "forward" | "backward";
@@ -1524,21 +1539,15 @@ declare module "@ckeditor/ckeditor5-engine" {
     length: number;
     nextPosition: view$Position;
     previousPosition: view$Position;
-    type: model$TreeWalkerValueType;
-    item: view$Item;
-    length: number;
-    nextPosition: view$Position;
-    previousPosition: view$Position;
-    type: model$TreeWalkerValueType;
+    type: view$TreeWalkerValueType;
   }
 
   declare type view$TreeWalkerValueType =
     | "elementStart"
     | "elementEnd"
-    | "character"
     | "text";
 
-  declare class view$UIElement mixins Element {
+  declare class view$UIElement mixins view$Element {
     constructor(
       name: string,
       attrs?:
