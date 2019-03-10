@@ -422,7 +422,7 @@ declare module "react-adal" {
    * @param authContext Authentication context
    * @param app Render app callback
    * @param doNotLogin Don`t need to login?
-   *
+   *  *
    */
   declare export function runWithAdal(
     authContext: AuthenticationContext,
@@ -439,8 +439,8 @@ declare module "react-adal" {
     authContext: AuthenticationContext,
     resource: string
   ): (
-    wrappedComponent: React.ComponentClass | React.StatelessComponent,
-    renderLoading: () => JSX.Element | null,
-    renderError: (error: any) => JSX.Element | null
-  ) => React.ComponentClass;
+    wrappedComponent: React.ComponentClass<> | React.StatelessComponent<>,
+    renderLoading: () => React$Node | null,
+    renderError: (error: any) => React$Node | null
+  ) => React.ComponentClass<>;
 }
