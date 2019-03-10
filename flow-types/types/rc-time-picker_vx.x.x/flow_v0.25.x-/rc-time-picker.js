@@ -26,7 +26,7 @@ declare module "rc-time-picker" {
     use12Hours: boolean;
     hideDisabledOptions: boolean;
     onChange: (value: moment.Moment) => void;
-    addon: (timepicker: TimePicker) => JSX.Element;
+    addon: (timepicker: TimePicker) => React$Node;
     placement: string;
     transitionName: string;
     onOpen: (state: {
@@ -40,8 +40,8 @@ declare module "rc-time-picker" {
     secondStep: number;
     focusOnOpen: boolean;
     inputReadOnly: boolean;
-    inputIcon: React.ReactNode;
-    clearIcon: React.ReactNode;
+    inputIcon: React.Node;
+    clearIcon: React.Node;
   }
   declare class TimePicker mixins React.Component<$Shape<TimePickerProps>> {
     constructor(props: $ReadOnly<$Shape<TimePickerProps>>): this;
