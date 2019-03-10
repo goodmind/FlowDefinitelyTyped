@@ -836,7 +836,8 @@ reset(): any;
  */
 currentView: Backbone.View<Backbone.Model>
 }
-	
+	declare var Renderer: typeof npm$namespace$Renderer;
+
       declare var npm$namespace$Renderer: {
         render: typeof Renderer$render,
         
@@ -1809,7 +1810,8 @@ view: View<any>;
  */
 $(selector: any): JQuery
 }
-	
+	declare var Behaviors: typeof npm$namespace$Behaviors;
+
       declare var npm$namespace$Behaviors: {
         behaviorsLookup: typeof Behaviors$behaviorsLookup,
 getBehaviorClass: typeof Behaviors$getBehaviorClass,
