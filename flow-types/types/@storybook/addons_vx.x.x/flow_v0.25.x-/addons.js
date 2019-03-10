@@ -1,4 +1,6 @@
 declare module "@storybook/addons" {
+  import typeof * as Channel from "@storybook/channels";
+
   import type { RenderFunction, StoryDecorator } from "@storybook/react";
 
   declare export var mockChannel: Channel;
@@ -8,7 +10,7 @@ declare module "@storybook/addons" {
   }
   declare export type GetStoryFunc = (
     context: Context
-  ) => ReturnType<StoryDecorator>;
+  ) => $Call<StoryDecorator>;
   declare export interface Wrapper<Options, Parameters> {
     (
       getStory: GetStoryFunc,
@@ -17,7 +19,7 @@ declare module "@storybook/addons" {
         options: Options,
         parameters: Parameters
       }
-    ): ReturnType<StoryDecorator>;
+    ): $Call<StoryDecorator>;
   }
   declare export interface MakeDecoratorOptions<
     ParameterName: string,
@@ -38,12 +40,10 @@ declare module "@storybook/addons" {
     (
       story: RenderFunction,
       context: DecoratorContext<ParameterName, T>
-    ): ReturnType<StoryDecorator>;
+    ): $Call<StoryDecorator>;
     (
       story: RenderFunction
-    ): (
-      context: DecoratorContext<ParameterName, T>
-    ) => ReturnType<StoryDecorator>;
+    ): (context: DecoratorContext<ParameterName, T>) => $Call<StoryDecorator>;
   }
   declare export interface Decorator<
     ParameterName: string,
@@ -53,7 +53,7 @@ declare module "@storybook/addons" {
     (
       story: RenderFunction,
       context: DecoratorContext<ParameterName, Parameters>
-    ): ReturnType<StoryDecorator>;
+    ): $Call<StoryDecorator>;
     (options: Options): DecoratorWithOptions<ParameterName, Parameters>;
     (...options: Options[]): DecoratorWithOptions<ParameterName, Parameters>;
   }
