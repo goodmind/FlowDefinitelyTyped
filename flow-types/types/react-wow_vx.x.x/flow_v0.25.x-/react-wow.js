@@ -98,7 +98,7 @@ declare module "react-wow" {
     /**
      * Content you want to apply the animation to.
      */
-    children: JSX.Element;
+    children: React$Node;
 
     /**
      * Animation delay.
