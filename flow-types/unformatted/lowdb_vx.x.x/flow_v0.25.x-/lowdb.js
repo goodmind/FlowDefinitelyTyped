@@ -154,13 +154,13 @@ write<R1: PathT>(f1: (a1: PathT) => R1): Promise<R1>
 
 
 declare interface Lowdb$lowdb {
-<AdapterT: Lowdb$AdapterAsync>(adapter: AdapterT): Promise<Lowdb$LowdbAsync<$ElementType<AdapterT, ReferenceProperty>>>,
-<AdapterT: Lowdb$AdapterSync>(adapter: AdapterT): Lowdb$LowdbSync<$ElementType<AdapterT, ReferenceProperty>>
+<AdapterT: Lowdb$AdapterAsync<>>(adapter: AdapterT): Promise<Lowdb$LowdbAsync<$ElementType<AdapterT, ReferenceProperty>>>,
+<AdapterT: Lowdb$AdapterSync<>>(adapter: AdapterT): Lowdb$LowdbSync<$ElementType<AdapterT, ReferenceProperty>>
 } 
 
 declare interface Lowdb$lowdbFp {
-<AdapterT: Lowdb$AdapterAsync>(adapter: AdapterT): Promise<Lowdb$LowdbFpAsync<$ElementType<AdapterT, ReferenceProperty>>>,
-<AdapterT: Lowdb$AdapterSync>(adapter: AdapterT): Lowdb$LowdbFpSync<$ElementType<AdapterT, ReferenceProperty>>
+<AdapterT: Lowdb$AdapterAsync<>>(adapter: AdapterT): Promise<Lowdb$LowdbFpAsync<$ElementType<AdapterT, ReferenceProperty>>>,
+<AdapterT: Lowdb$AdapterSync<>>(adapter: AdapterT): Lowdb$LowdbFpSync<$ElementType<AdapterT, ReferenceProperty>>
 } 
 
 declare type Lowdb$LoDashExplicitSyncWrapper<TValue> = {
