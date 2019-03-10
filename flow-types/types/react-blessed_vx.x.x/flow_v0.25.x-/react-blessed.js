@@ -5,12 +5,12 @@ declare module "react-blessed" {
 
   declare export type Callback = () => void | null | void;
   declare export type renderer = (
-    c: JSX.Element,
+    c: global$JSX$Element,
     s: Widgets.Screen,
     callback?: Callback
   ) => React.Component<any, any> | null;
   declare export function render(
-    c: JSX.Element,
+    c: global$JSX$Element,
     s: Widgets.Screen,
     callback?: Callback
   ): React.Component<any, any> | null;
