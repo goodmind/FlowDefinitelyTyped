@@ -93,13 +93,13 @@ declare module "markerclustererplus" {
     index: number;
     title: string;
   }
-  declare class ClusterIcon mixins undefined.OverlayView {
+  declare class ClusterIcon mixins google.maps.OverlayView {
     /**
- * A cluster icon.
- * @param cluster The cluster with which the icon is to be associated.
- * @param styles An array of {@link ClusterIconStyle} defining the cluster icons
-to use for various cluster sizes.
- */
+     * A cluster icon.
+     * @param cluster The cluster with which the icon is to be associated.
+     * @param styles An array of {@link ClusterIconStyle} defining the cluster icons
+     * to use for various cluster sizes.
+     */
     constructor(cluster: Cluster, styles: ClusterIconStyle[]): this;
 
     /**
@@ -155,11 +155,11 @@ to use for various cluster sizes.
   }
   declare class Cluster {
     /**
- * Creates a single cluster that manages a group of proximate markers.
- * Used internally, do not call this constructor directly.
- * @param mc The <code>MarkerClusterer</code> object with which this
-cluster is associated.
- */
+     * Creates a single cluster that manages a group of proximate markers.
+     * Used internally, do not call this constructor directly.
+     * @param mc The <code>MarkerClusterer</code> object with which this
+     * cluster is associated.
+     */
     constructor(mc: MarkerClusterer): this;
 
     /**
@@ -388,7 +388,7 @@ cluster is associated.
      */
     imageSizes?: number[];
   }
-  declare class MarkerClusterer mixins undefined.OverlayView {
+  declare class MarkerClusterer mixins google.maps.OverlayView {
     /**
      * Creates a MarkerClusterer object with the options specified in {@link MarkerClustererOptions}.
      * @param map The Google map to attach to.
@@ -582,10 +582,10 @@ cluster is associated.
     getCalculator(): Calculator;
 
     /**
- * Sets the value of the <code>calculator</code> property.
- * @param calculator The value
-of the calculator property.
- */
+     * Sets the value of the <code>calculator</code> property.
+     * @param calculator The value
+     * of the calculator property.
+     */
     setCalculator(calculator: Calculator): void;
 
     /**
@@ -736,11 +736,11 @@ of the calculator property.
     redraw_(): void;
 
     /**
- * Removes all clusters from the map. The markers are also removed from the map
- * if <code>hide</code> is set to <code>true</code>.
- * @param hide Set to <code>true</code> to also remove the markers
-from the map.
- */
+     * Removes all clusters from the map. The markers are also removed from the map
+     * if <code>hide</code> is set to <code>true</code>.
+     * @param hide Set to <code>true</code> to also remove the markers
+     * from the map.
+     */
     resetViewport_(hide?: boolean): void;
 
     /**
@@ -773,11 +773,11 @@ from the map.
     addToClosestCluster_(marker: google.maps.Marker): void;
 
     /**
- * Creates the clusters. This is done in batches to avoid timeout errors
- * in some browsers when there is a huge number of markers.
- * @param iFirst The index of the first marker in the batch of
-markers to be added to clusters.
- */
+     * Creates the clusters. This is done in batches to avoid timeout errors
+     * in some browsers when there is a huge number of markers.
+     * @param iFirst The index of the first marker in the batch of
+     * markers to be added to clusters.
+     */
     createClusters_(iFirst: number): void;
 
     /**
