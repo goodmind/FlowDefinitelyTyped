@@ -1,18 +1,20 @@
-declare interface Express$Request {
-  authInfo?: any;
-  user?: any;
-  login(user: any, done: (err: any) => void): void;
-  login(user: any, options: any, done: (err: any) => void): void;
-  logIn(user: any, done: (err: any) => void): void;
-  logIn(user: any, options: any, done: (err: any) => void): void;
-  logout(): void;
-  logOut(): void;
-  isAuthenticated(): boolean;
-  isUnauthenticated(): boolean;
-}
 declare module "global" {
+  declare interface Express$Request {
+    authInfo?: any;
+    user?: any;
+    login(user: any, done: (err: any) => void): void;
+    login(user: any, options: any, done: (err: any) => void): void;
+    logIn(user: any, done: (err: any) => void): void;
+    logIn(user: any, options: any, done: (err: any) => void): void;
+    logout(): void;
+    logOut(): void;
+    isAuthenticated(): boolean;
+    isUnauthenticated(): boolean;
+  }
 }
 declare module "passport" {
+  import typeof * as express from "express";
+
   declare interface passport$AuthenticateOptions {
     authInfo?: boolean;
     assignProperty?: string;
@@ -81,18 +83,18 @@ declare module "passport" {
   }
 
   declare type passport$PassportStatic = {
-    passport$Authenticator: {
-      new(): passport$Authenticator
+    Authenticator: {
+      new(): passport$Authenticator<>
     },
-    Passport: $ElementType<passport$PassportStatic, "Authenticator">,
-    passport$Strategy: {
+    Passport: $PropertyType<passport$PassportStatic, "Authenticator">,
+    Strategy: {
       new(): passport$Strategy & passport$StrategyCreatedStatic
     }
   } & passport$Authenticator;
 
   declare interface passport$Strategy {
     name?: string;
-    authenticate(req: express.Express$Request, options?: any): any;
+    authenticate(req: express.Request, options?: any): any;
   }
 
   declare interface passport$StrategyCreatedStatic {
@@ -201,6 +203,6 @@ declare module "passport" {
       callback?: (...args: any[]) => any
     ) => (...args: any[]) => AuthorizeRet;
   }
-  declare var passport: passport$passport$PassportStatic;
-  declare module.exports: typeof passport;
+  declare var passport: passport$PassportStatic;
+  declare export default typeof passport;
 }
