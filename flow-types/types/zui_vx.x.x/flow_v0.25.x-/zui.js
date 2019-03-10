@@ -209,40 +209,17 @@ declare module "zui" {
   /**
    * messager
    */
-  declare class MessagerTypeEnum {
-    constructor(...args: empty): mixed;
-    static +default: Class<MessagerTypeEnum__default> &
-      MessagerTypeEnum__default &
-      0; // 0
-    static +primary: Class<MessagerTypeEnum__primary> &
-      MessagerTypeEnum__primary &
-      1; // 1
-    static +success: Class<MessagerTypeEnum__success> &
-      MessagerTypeEnum__success &
-      2; // 2
-    static +info: Class<MessagerTypeEnum__info> & MessagerTypeEnum__info & 3; // 3
-    static +warning: Class<MessagerTypeEnum__warning> &
-      MessagerTypeEnum__warning &
-      4; // 4
-    static +danger: Class<MessagerTypeEnum__danger> &
-      MessagerTypeEnum__danger &
-      5; // 5
-    static +important: Class<MessagerTypeEnum__important> &
-      MessagerTypeEnum__important &
-      6; // 6
-    static +special: Class<MessagerTypeEnum__special> &
-      MessagerTypeEnum__special &
-      7; // 7
-  }
 
-  declare class MessagerTypeEnum__default mixins MessagerTypeEnum {}
-  declare class MessagerTypeEnum__primary mixins MessagerTypeEnum {}
-  declare class MessagerTypeEnum__success mixins MessagerTypeEnum {}
-  declare class MessagerTypeEnum__info mixins MessagerTypeEnum {}
-  declare class MessagerTypeEnum__warning mixins MessagerTypeEnum {}
-  declare class MessagerTypeEnum__danger mixins MessagerTypeEnum {}
-  declare class MessagerTypeEnum__important mixins MessagerTypeEnum {}
-  declare class MessagerTypeEnum__special mixins MessagerTypeEnum {}
+  declare var MessagerTypeEnum: {|
+    +default: 0, // 0
+    +primary: 1, // 1
+    +success: 2, // 2
+    +info: 3, // 3
+    +warning: 4, // 4
+    +danger: 5, // 5
+    +important: 6, // 6
+    +special: 7 // 7
+  |};
 
   declare interface Action {
     name?: string;
@@ -258,7 +235,7 @@ declare module "zui" {
     messager: Messager
   ) => any;
   declare interface MessagerOption {
-    type?: MessagerTypeEnum | string;
+    type?: $Values<typeof MessagerTypeEnum> | string;
     placement?: string;
     time?: number;
     message?: string;
@@ -628,7 +605,11 @@ declare module "zui" {
     };
     fileList?: string;
     fileTemplate?: string;
-    fileFormater?: ($file: JQuery, file: FileObj, status: STATUS) => void;
+    fileFormater?: (
+      $file: JQuery,
+      file: FileObj,
+      status: $Values<typeof STATUS>
+    ) => void;
     fileIconCreator?: (
       fileType: string,
       file: FileObj,
@@ -657,7 +638,7 @@ declare module "zui" {
     removeUploaded?: boolean;
     statusCreator?: (
       total: UploadProgress,
-      state: STATUS,
+      state: $Values<typeof STATUS>,
       uploader: Uploader
     ) => void;
     previewImageSize?: {
@@ -695,10 +676,10 @@ declare module "zui" {
     onChunkUploaded?: (file: FileObj, responseObject: ResponseObject) => void;
     onUploadFile?: (file: FileObj) => void;
     onBeforeUpload?: (file: FileObj) => void;
-    onStateChanged?: (status: STATUS) => void;
+    onStateChanged?: (status: $Values<typeof STATUS>) => void;
     onQueueChanged?: () => void;
     onError?: (error: {
-      error: ERRORS,
+      error: $Values<typeof ERRORS>,
       message: string,
       file: FileObj
     }) => void;
@@ -710,22 +691,15 @@ declare module "zui" {
     offset?: number;
     total?: number;
   }
-  declare class STATUS {
-    constructor(...args: empty): mixed;
-    static +STOPPED: Class<STATUS__STOPPED> & STATUS__STOPPED & 1; // 1
-    static +STARTED: Class<STATUS__STARTED> & STATUS__STARTED & 2; // 2
-    static +QUEUED: Class<STATUS__QUEUED> & STATUS__QUEUED & 1; // 1
-    static +UPLOADING: Class<STATUS__UPLOADING> & STATUS__UPLOADING & 2; // 2
-    static +FAILED: Class<STATUS__FAILED> & STATUS__FAILED & 3; // 3
-    static +DONE: Class<STATUS__DONE> & STATUS__DONE & 4; // 4
-  }
 
-  declare class STATUS__STOPPED mixins STATUS {}
-  declare class STATUS__STARTED mixins STATUS {}
-  declare class STATUS__QUEUED mixins STATUS {}
-  declare class STATUS__UPLOADING mixins STATUS {}
-  declare class STATUS__FAILED mixins STATUS {}
-  declare class STATUS__DONE mixins STATUS {}
+  declare var STATUS: {|
+    +STOPPED: 1, // 1
+    +STARTED: 2, // 2
+    +QUEUED: 1, // 1
+    +UPLOADING: 2, // 2
+    +FAILED: 3, // 3
+    +DONE: 4 // 4
+  |};
 
   declare interface FileObj {
     id?: string;
@@ -738,7 +712,7 @@ declare module "zui" {
     origSize?: number;
     loaded?: number;
     percent?: number;
-    status?: STATUS;
+    status?: $Values<typeof STATUS>;
     lastModifiedDate?: Date;
     getNative(): File;
     destroy(): void;
@@ -752,55 +726,27 @@ declare module "zui" {
     percent?: number;
     bytesPerSec?: number;
   }
-  declare class ERRORS {
-    constructor(...args: empty): mixed;
-    static +GENERIC_ERROR: Class<ERRORS__GENERIC_ERROR> &
-      ERRORS__GENERIC_ERROR &
-      -100; // -100
-    static +HTTP_ERROR: Class<ERRORS__HTTP_ERROR> & ERRORS__HTTP_ERROR & -200; // -200
-    static +IO_ERROR: Class<ERRORS__IO_ERROR> & ERRORS__IO_ERROR & -300; // -300
-    static +SECURITY_ERROR: Class<ERRORS__SECURITY_ERROR> &
-      ERRORS__SECURITY_ERROR &
-      -400; // -400
-    static +INIT_ERROR: Class<ERRORS__INIT_ERROR> & ERRORS__INIT_ERROR & -500; // -500
-    static +FILE_SIZE_ERROR: Class<ERRORS__FILE_SIZE_ERROR> &
-      ERRORS__FILE_SIZE_ERROR &
-      -600; // -600
-    static +FILE_EXTENSION_ERROR: Class<ERRORS__FILE_EXTENSION_ERROR> &
-      ERRORS__FILE_EXTENSION_ERROR &
-      -601; // -601
-    static +FILE_DUPLICATE_ERROR: Class<ERRORS__FILE_DUPLICATE_ERROR> &
-      ERRORS__FILE_DUPLICATE_ERROR &
-      -602; // -602
-    static +IMAGE_FORMAT_ERROR: Class<ERRORS__IMAGE_FORMAT_ERROR> &
-      ERRORS__IMAGE_FORMAT_ERROR &
-      -700; // -700
-    static +IMAGE_MEMORY_ERROR: Class<ERRORS__IMAGE_MEMORY_ERROR> &
-      ERRORS__IMAGE_MEMORY_ERROR &
-      -701; // -701
-    static +IMAGE_DIMENSIONS_ERROR: Class<ERRORS__IMAGE_DIMENSIONS_ERROR> &
-      ERRORS__IMAGE_DIMENSIONS_ERROR &
-      -702; // -702
-  }
 
-  declare class ERRORS__GENERIC_ERROR mixins ERRORS {}
-  declare class ERRORS__HTTP_ERROR mixins ERRORS {}
-  declare class ERRORS__IO_ERROR mixins ERRORS {}
-  declare class ERRORS__SECURITY_ERROR mixins ERRORS {}
-  declare class ERRORS__INIT_ERROR mixins ERRORS {}
-  declare class ERRORS__FILE_SIZE_ERROR mixins ERRORS {}
-  declare class ERRORS__FILE_EXTENSION_ERROR mixins ERRORS {}
-  declare class ERRORS__FILE_DUPLICATE_ERROR mixins ERRORS {}
-  declare class ERRORS__IMAGE_FORMAT_ERROR mixins ERRORS {}
-  declare class ERRORS__IMAGE_MEMORY_ERROR mixins ERRORS {}
-  declare class ERRORS__IMAGE_DIMENSIONS_ERROR mixins ERRORS {}
+  declare var ERRORS: {|
+    +GENERIC_ERROR: -100, // -100
+    +HTTP_ERROR: -200, // -200
+    +IO_ERROR: -300, // -300
+    +SECURITY_ERROR: -400, // -400
+    +INIT_ERROR: -500, // -500
+    +FILE_SIZE_ERROR: -600, // -600
+    +FILE_EXTENSION_ERROR: -601, // -601
+    +FILE_DUPLICATE_ERROR: -602, // -602
+    +IMAGE_FORMAT_ERROR: -700, // -700
+    +IMAGE_MEMORY_ERROR: -701, // -701
+    +IMAGE_DIMENSIONS_ERROR: -702 // -702
+  |};
 
   declare interface Uploader {
     showMessage(message: string, type: string, time?: number): void;
     hideMessage(): void;
     start(): void;
     stop(): void;
-    getState(): STATUS;
+    getState(): $Values<typeof STATUS>;
     isStarted(): boolean;
     isStopped(): boolean;
     getFiles(): FileObj[];
