@@ -1,4 +1,6 @@
 declare module "tedious" {
+  import typeof * as events from "events";
+
   declare export interface ColumnType {
     /**
      * The column's type, such as VarChar, Int or Binary.
@@ -52,34 +54,15 @@ declare module "tedious" {
      */
     token?: boolean;
   }
-  declare export class ISOLATION_LEVEL {
-    constructor(...args: empty): mixed;
-    static +NO_CHANGE: Class<ISOLATION_LEVEL__NO_CHANGE> &
-      ISOLATION_LEVEL__NO_CHANGE &
-      0; // 0
-    static +READ_UNCOMMITTED: Class<ISOLATION_LEVEL__READ_UNCOMMITTED> &
-      ISOLATION_LEVEL__READ_UNCOMMITTED &
-      1; // 1
-    static +READ_COMMITTED: Class<ISOLATION_LEVEL__READ_COMMITTED> &
-      ISOLATION_LEVEL__READ_COMMITTED &
-      2; // 2
-    static +REPEATABLE_READ: Class<ISOLATION_LEVEL__REPEATABLE_READ> &
-      ISOLATION_LEVEL__REPEATABLE_READ &
-      3; // 3
-    static +SERIALIZABLE: Class<ISOLATION_LEVEL__SERIALIZABLE> &
-      ISOLATION_LEVEL__SERIALIZABLE &
-      4; // 4
-    static +SNAPSHOT: Class<ISOLATION_LEVEL__SNAPSHOT> &
-      ISOLATION_LEVEL__SNAPSHOT &
-      5; // 5
-  }
 
-  declare class ISOLATION_LEVEL__NO_CHANGE mixins ISOLATION_LEVEL {}
-  declare class ISOLATION_LEVEL__READ_UNCOMMITTED mixins ISOLATION_LEVEL {}
-  declare class ISOLATION_LEVEL__READ_COMMITTED mixins ISOLATION_LEVEL {}
-  declare class ISOLATION_LEVEL__REPEATABLE_READ mixins ISOLATION_LEVEL {}
-  declare class ISOLATION_LEVEL__SERIALIZABLE mixins ISOLATION_LEVEL {}
-  declare class ISOLATION_LEVEL__SNAPSHOT mixins ISOLATION_LEVEL {}
+  declare export var ISOLATION_LEVEL: {|
+    +NO_CHANGE: 0, // 0
+    +READ_UNCOMMITTED: 1, // 1
+    +READ_COMMITTED: 2, // 2
+    +REPEATABLE_READ: 3, // 3
+    +SERIALIZABLE: 4, // 4
+    +SNAPSHOT: 5 // 5
+  |};
 
   /**
    * Unfortunately these aren't valid JavaScript identifiers
@@ -223,12 +206,12 @@ declare module "tedious" {
     /**
      * The default isolation level that transactions will be run with. (default: READ_COMMITTED).
      */
-    isolationLevel?: ISOLATION_LEVEL;
+    isolationLevel?: $Values<typeof ISOLATION_LEVEL>;
 
     /**
      * The default isolation level for new connections. All out-of-transaction queries are executed with this setting. (default: READ_COMMITED)
      */
-    connectionIsolationLevel?: ISOLATION_LEVEL;
+    connectionIsolationLevel?: $Values<typeof ISOLATION_LEVEL>;
 
     /**
      * A boolean, determining whether the connection will request read only access from a SQL Server Availability Group. For more information, see here. (default: false).
@@ -407,13 +390,13 @@ declare module "tedious" {
    */
   declare export class Request mixins events.EventEmitter {
     /**
- * Constructor
- * @param sql The SQL statement to be executed (or a procedure name, if the request is to be used with connection.callProcedure).
- * @param callback The callback is called when the request has completed, either successfully or with an error. If an error occurs during execution of the statement(s), then err will describe the error.
-As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
-rowCount: The number of rows emitted as result of executing the SQL statement.
-rows: Rows as a result of executing the SQL statement. Will only be avaiable if Connection's config.options.rowCollectionOnRequestCompletion is true.
- */
+     * Constructor
+     * @param sql The SQL statement to be executed (or a procedure name, if the request is to be used with connection.callProcedure).
+     * @param callback The callback is called when the request has completed, either successfully or with an error. If an error occurs during execution of the statement(s), then err will describe the error.
+     * As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
+     * rowCount: The number of rows emitted as result of executing the SQL statement.
+     * rows: Rows as a result of executing the SQL statement. Will only be avaiable if Connection's config.options.rowCollectionOnRequestCompletion is true.
+     */
     constructor(
       sql: string,
       callback: (error: Error, rowCount: number, rows: any[]) => void
@@ -561,42 +544,42 @@ rows: Rows as a result of executing the SQL statement. Will only be avaiable if 
     beginTransaction(
       callback: (error?: Error) => void,
       name?: string,
-      isolationLevel?: ISOLATION_LEVEL
+      isolationLevel?: $Values<typeof ISOLATION_LEVEL>
     ): void;
 
     /**
- * Commit a transaction.
- * There should be an active transaction. That is, beginTransaction should have been previously called.
- * @param callback The callback is called when the request to commit the transaction has completed, either successfully or with an error. If an error occured then err will describe the error.
-As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
- */
+     * Commit a transaction.
+     * There should be an active transaction. That is, beginTransaction should have been previously called.
+     * @param callback The callback is called when the request to commit the transaction has completed, either successfully or with an error. If an error occured then err will describe the error.
+     * As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
+     */
     commitTransaction(callback: (error: Error) => void): void;
 
     /**
- * Rollback a transaction. There should be an active transaction. That is, beginTransaction should have been previously called.
- * @param callback The callback is called when the request to rollback the transaction has completed, either successfully or with an error. If an error occured then err will describe the error.
-As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
- */
+     * Rollback a transaction. There should be an active transaction. That is, beginTransaction should have been previously called.
+     * @param callback The callback is called when the request to rollback the transaction has completed, either successfully or with an error. If an error occured then err will describe the error.
+     * As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
+     */
     rollbackTransaction(callback: (error: Error) => void): void;
 
     /**
- * Set a savepoint within a transaction. There should be an active transaction. That is, beginTransaction should have been previously called.
- * @param callback The callback is called when the request to set a savepoint within the transaction has completed, either successfully or with an error. If an error occured then err will describe the error.
-As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
- */
+     * Set a savepoint within a transaction. There should be an active transaction. That is, beginTransaction should have been previously called.
+     * @param callback The callback is called when the request to set a savepoint within the transaction has completed, either successfully or with an error. If an error occured then err will describe the error.
+     * As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
+     */
     saveTransaction(callback: (error: Error) => void): void;
 
     /**
- * Run the given callback after starting a transaction, and commit or rollback the transaction afterwards.
- * This is a helper that employs beginTransaction, commitTransaction, rollbackTransaction and saveTransaction to greatly simplify the use of database transactions and automatically handle transaction nesting.
- * @param callback The callback is called when the request to start a transaction (or create a savepoint, in the case of a nested transaction) has completed, either successfully or with an error.
-  If an error occured, then err will describe the error. If no error occured, the callback should perform its work and eventually call done with an error or null
-  (to trigger a transaction rollback or a transaction commit) and an additional completion callback that will be called when the request to rollback or commit the current transaction
-  has completed, either successfully or with an error. Additional arguments given to done will be passed through to this callback.
-As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
- * @param name A string representing a name to associate with the transaction. Optional, and defaults to an empty string. In case of a nested transaction, naming the transaction name has no effect.
- * @param isolationLevel The isolation level that the transaction is to be run with.
- */
+     * Run the given callback after starting a transaction, and commit or rollback the transaction afterwards.
+     * This is a helper that employs beginTransaction, commitTransaction, rollbackTransaction and saveTransaction to greatly simplify the use of database transactions and automatically handle transaction nesting.
+     * @param callback The callback is called when the request to start a transaction (or create a savepoint, in the case of a nested transaction) has completed, either successfully or with an error.
+     *   If an error occured, then err will describe the error. If no error occured, the callback should perform its work and eventually call done with an error or null
+     *   (to trigger a transaction rollback or a transaction commit) and an additional completion callback that will be called when the request to rollback or commit the current transaction
+     *   has completed, either successfully or with an error. Additional arguments given to done will be passed through to this callback.
+     * As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
+     * @param name A string representing a name to associate with the transaction. Optional, and defaults to an empty string. In case of a nested transaction, naming the transaction name has no effect.
+     * @param isolationLevel The isolation level that the transaction is to be run with.
+     */
     transaction(
       callback: (
         error: Error,
@@ -607,7 +590,7 @@ As only one request at a time may be executed on a connection, another request s
         ) => void
       ) => void,
       name?: string,
-      isolationLevel?: ISOLATION_LEVEL
+      isolationLevel?: $Values<typeof ISOLATION_LEVEL>
     ): void;
 
     /**
@@ -662,10 +645,10 @@ As only one request at a time may be executed on a connection, another request s
     execBulkLoad(bulkLoad: BulkLoad): void;
 
     /**
- * Reset the connection to its initial state. Can be useful for connection pool implementations.
- * @param callback The callback is called when the connection reset has completed, either successfully or with an error. If an error occured then err will describe the error.
-As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
- */
+     * Reset the connection to its initial state. Can be useful for connection pool implementations.
+     * @param callback The callback is called when the connection reset has completed, either successfully or with an error. If an error occured then err will describe the error.
+     * As only one request at a time may be executed on a connection, another request should not be initiated until this callback is called.
+     */
     reset(callback: (error: Error) => void): void;
 
     /**
