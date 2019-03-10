@@ -70,8 +70,8 @@ declare module "react-onsenui" {
         },
         any
       > {}
-  declare export class SplitterContent mixins Component {}
-  declare export class Splitter mixins Component {}
+  declare export class SplitterContent mixins Component<> {}
+  declare export class Splitter mixins Component<> {}
 
   /**
    * * toolbar **
@@ -168,7 +168,7 @@ declare module "react-onsenui" {
   declare export class Navigator
     mixins Component<
         {
-          renderPage(route: any, navigator?: Navigator): JSX.Element,
+          renderPage(route: any, navigator?: Navigator): React$Node,
           initialRouteStack?: string[],
           initialRoute?: any,
           onPrePush?: () => void,
@@ -505,11 +505,11 @@ declare module "react-onsenui" {
         label?: string,
         icon?: string
       }> {}
-  declare export class TabActive mixins Component {}
-  declare export class TabInactive mixins Component {}
+  declare export class TabActive mixins Component<> {}
+  declare export class TabInactive mixins Component<> {}
   declare export interface TabbarRenderTab {
-    content: JSX.Element;
-    tab: JSX.Element;
+    content: React$Node;
+    tab: React$Node;
   }
   declare export class Tabbar
     mixins Component<
@@ -548,9 +548,9 @@ declare module "react-onsenui" {
         {
           modifier?: string,
           dataSource?: any[],
-          renderRow?: (row: any, index?: number) => JSX.Element | void,
-          renderFooter?: () => JSX.Element | void,
-          renderHeader?: () => JSX.Element | void
+          renderRow?: (row: any, index?: number) => React$Node | void,
+          renderFooter?: () => React$Node | void,
+          renderHeader?: () => React$Node | void
         },
         any
       > {}
