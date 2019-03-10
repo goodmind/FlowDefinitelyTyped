@@ -35,7 +35,7 @@ declare module "@loadable/server" {
     /**
      * Wrap your application in a `ChunkExtractorManager`
      */
-    collectChunks(element: JSX.Element): JSX.Element;
+    collectChunks(element: React$Node): React$Node;
 
     /**
      * Require the entrypoint of your application as a commonjs module.
