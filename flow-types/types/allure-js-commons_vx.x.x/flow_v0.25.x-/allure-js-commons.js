@@ -1,21 +1,29 @@
 declare module "allure-js-commons" {
   declare class Allure {
     constructor(): this;
-    setOptions(options: Allure$Allure$Options): void;
-    getCurrentSuite(): Allure$Allure$Suite;
-    getCurrentTest(): Allure$Allure$Test;
+    setOptions(options: Allure$Options): void;
+    getCurrentSuite(): Allure$Suite;
+    getCurrentTest(): Allure$Test;
     startSuite(suiteName: string, timestamp?: number): void;
     endSuite(timestamp?: number): void;
     startCase(testName: string, timestamp?: number): void;
-    endCase(status: Allure$Allure$Status, err?: {}, timestamp?: number): void;
+    endCase(status: Allure$Status, err?: {}, timestamp?: number): void;
     startStep(stepName: string, timestamp?: number): void;
-    endStep(status: Allure$Allure$Status, timestamp?: number): void;
+    endStep(status: Allure$Status, timestamp?: number): void;
     setDescription(description: string, timestamp?: number): void;
     addAttachment(attachmentName: string, buffer: any, type: string): void;
     pendingCase(testName: string, timestamp?: number): void;
   }
-  declare module.exports: typeof Allure;
+  declare export default typeof Allure;
 
+  declare var npm$namespace$Allure: {
+    TYPE: typeof Allure$TYPE,
+    Suite: typeof Allure$Suite,
+    Test: typeof Allure$Test,
+    Description: typeof Allure$Description,
+    Step: typeof Allure$Step,
+    Attachment: typeof Allure$Attachment
+  };
   declare interface Allure$Options {
     targetDir: string;
   }
@@ -27,18 +35,11 @@ declare module "allure-js-commons" {
     | "failed"
     | "broken";
 
-  declare class Allure$TYPE {
-    constructor(...args: empty): mixed;
-    static +TEXT: Class<Allure$TYPE__TEXT> & Allure$TYPE__TEXT & "text"; // "text"
-    static +HTML: Class<Allure$TYPE__HTML> & Allure$TYPE__HTML & "html"; // "html"
-    static +MARKDOWN: Class<Allure$TYPE__MARKDOWN> &
-      Allure$TYPE__MARKDOWN &
-      "markdown"; // "markdown"
-  }
-
-  declare class Allure$TYPE__TEXT mixins Allure$TYPE {}
-  declare class Allure$TYPE__HTML mixins Allure$TYPE {}
-  declare class Allure$TYPE__MARKDOWN mixins Allure$TYPE {}
+  declare var Allure$TYPE: {|
+    +TEXT: "text", // "text"
+    +HTML: "html", // "html"
+    +MARKDOWN: "markdown" // "markdown"
+  |};
 
   declare class Allure$Suite {
     constructor(name: string, timestamp?: number): this;
@@ -51,7 +52,10 @@ declare module "allure-js-commons" {
 
   declare class Allure$Test {
     constructor(name: string, timestamp?: number): this;
-    setDescription(description: string, type: Allure$TYPE): void;
+    setDescription(
+      description: string,
+      type: $Values<typeof Allure$TYPE>
+    ): void;
     addLabel(name: string, value: string): void;
     addParameter(kind: any, name: string, value: string): void;
     addStep(step: Allure$Step): void;
@@ -61,7 +65,7 @@ declare module "allure-js-commons" {
   }
 
   declare class Allure$Description {
-    constructor(value: string, type: Allure$TYPE): this;
+    constructor(value: string, type: $Values<typeof Allure$TYPE>): this;
     toXML(): string;
   }
 
