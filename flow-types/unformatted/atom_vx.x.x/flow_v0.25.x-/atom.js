@@ -1,3 +1,9 @@
+declare module 'global' {
+        declare var atom: AtomEnvironment;
+	declare interface HTMLElementTagNameMap {
+"atom-text-editor": TextEditorElement
+} 
+    }
 declare module 'atom' {
         import type {
           ReadStream,WriteStream
@@ -7,19 +13,6 @@ declare module 'atom' {
           ChildProcess
         } from 'child_process';
 
-	
-      declare var npm$namespace$global: {
-        
-        atom: typeof global$atom,
-        
-        
-        
-      }
-declare var global$atom: AtomEnvironment;
-
-declare interface global$HTMLElementTagNameMap {
-"atom-text-editor": TextEditorElement
-} 
 	
 /**
  * Invoke a callback with each filesystem event that occurs beneath a specified path.
@@ -393,7 +386,7 @@ toRGBAString(): string
 } 
 	declare export type CommandRegistryTargetMap = {
 [key: string]: EventTarget
-} & global$HTMLElementTagNameMap
+} & HTMLElementTagNameMap
 
 	declare export type CommandRegistryListener<TargetType: EventTarget> = {
 didDispatch(event: CommandEvent<TargetType>): void | Promise<void>,
@@ -465,12 +458,12 @@ dispatch(target: Node, commandName: string): Promise<void> | null,
 /**
  * Invoke the given callback before dispatching a command event.
  */
-onWillDispatch(callback: (event: CommandEvent) => void): Disposable,
+onWillDispatch(callback: (event: CommandEvent<>) => void): Disposable,
 
 /**
  * Invoke the given callback after dispatching a command event.
  */
-onDidDispatch(callback: (event: CommandEvent) => void): Disposable
+onDidDispatch(callback: (event: CommandEvent<>) => void): Disposable
 } 
 	
 /**
@@ -3501,7 +3494,7 @@ declare export interface TooltipManager {
  * Add a tooltip to the given element.
  */
 add(
-target: HTMLElement | JQueryCompatible,
+target: HTMLElement | JQueryCompatible<>,
 options: {
 item?: {[key: string]: any}
 } | {
@@ -3825,7 +3818,7 @@ getPaneContainers(): [WorkspaceCenter, Dock, Dock, Dock],
 /**
  * Get an Array of all the panel items at the bottom of the editor window.
  */
-getBottomPanels(): Panel[],
+getBottomPanels(): Panel<>[],
 
 /**
  * Adds a panel item to the bottom of the editor window.
@@ -3839,7 +3832,7 @@ priority?: number
 /**
  * Get an Array of all the panel items to the left of the editor window.
  */
-getLeftPanels(): Panel[],
+getLeftPanels(): Panel<>[],
 
 /**
  * Adds a panel item to the left of the editor window.
@@ -3853,7 +3846,7 @@ priority?: number
 /**
  * Get an Array of all the panel items to the right of the editor window.
  */
-getRightPanels(): Panel[],
+getRightPanels(): Panel<>[],
 
 /**
  * Adds a panel item to the right of the editor window.
@@ -3867,7 +3860,7 @@ priority?: number
 /**
  * Get an Array of all the panel items at the top of the editor window.
  */
-getTopPanels(): Panel[],
+getTopPanels(): Panel<>[],
 
 /**
  * Adds a panel item to the top of the editor window above the tabs.
@@ -3881,7 +3874,7 @@ priority?: number
 /**
  * Get an Array of all the panel items in the header.
  */
-getHeaderPanels(): Panel[],
+getHeaderPanels(): Panel<>[],
 
 /**
  * Adds a panel item to the header.
@@ -3895,7 +3888,7 @@ priority?: number
 /**
  * Get an Array of all the panel items in the footer.
  */
-getFooterPanels(): Panel[],
+getFooterPanels(): Panel<>[],
 
 /**
  * Adds a panel item to the footer.
@@ -3909,7 +3902,7 @@ priority?: number
 /**
  * Get an Array of all the modal panel items.
  */
-getModalPanels(): Panel[],
+getModalPanels(): Panel<>[],
 
 /**
  * Adds a panel item as a modal dialog.
@@ -7712,7 +7705,7 @@ path: string
 oldPath: string
 } & FilesystemChangeBasic<"renamed">
 
-	declare export type FilesystemChange = FilesystemChangeBasic | FilesystemChangeRename;
+	declare export type FilesystemChange = FilesystemChangeBasic<> | FilesystemChangeRename;
 	declare export type FilesystemChangeEvent = FilesystemChange[];
 	declare export interface FullKeybindingMatchEvent {
 
