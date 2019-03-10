@@ -1,15 +1,15 @@
 declare module "react-gravatar" {
   import typeof * as React from "react";
 
-  declare module.exports: typeof Gravatar;
+  declare export default typeof Gravatar;
 
   /**
    * React component for rendering a gravatar profile image. Adjusts automatically to HiDPI displays.
    */
-  declare class Gravatar mixins React.Component<Gravatar$Gravatar$Props> {
+  declare class Gravatar mixins React.Component<Gravatar$Props> {
     static displayName: string;
-    static defaultProps: Gravatar$Gravatar$Props;
-    render(): JSX.Element | null;
+    static defaultProps: Gravatar$Props;
+    render(): React$Node | null;
   }
   declare type Gravatar$DefaultImage =
     | "404"
@@ -69,5 +69,5 @@ declare module "react-gravatar" {
     protocol?: string,
     className?: string,
     style?: React.CSSProperties
-  } & $Shape<$ElementType<JSX.IntrinsicElements, "img">>;
+  } & $Shape<$PropertyType<JSX.IntrinsicElements, "img">>;
 }
