@@ -8,15 +8,15 @@ declare module "@loadable/component" {
     | React.ComponentType<P>
     | DefaultImportedComponent<P>;
   declare export interface Options {
-    fallback?: JSX.Element;
+    fallback?: React$Node;
   }
   declare export type LoadableComponent<T> = React.ComponentType<
     T & {
-      fallback?: JSX.Element
+      fallback?: React$Node
     }
   >;
   declare export type LoadableLibrary<TModule> = React.ComponentType<{
-    fallback?: JSX.Element,
+    fallback?: React$Node,
     children?: (module: TModule) => React.Node,
     ref?: React.Ref<TModule>
   }> &
