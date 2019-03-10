@@ -24,4 +24,4 @@ typecheck:
       - flow-types/typecheck
   script:
     - yarn
-    - ls node_modules/.bin/flow-toolbox
+    - ./node_modules/.bin/flow-toolbox --help
