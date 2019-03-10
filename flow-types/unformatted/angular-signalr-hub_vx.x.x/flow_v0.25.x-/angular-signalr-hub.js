@@ -3,6 +3,7 @@ declare module 'angular-signalr-hub' {
 	declare export default typeof _
 
     }
+declare var ngSignalr: typeof npm$namespace$ngSignalr;
 
       declare var npm$namespace$ngSignalr: {
         
