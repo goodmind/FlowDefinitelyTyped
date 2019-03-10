@@ -16,6 +16,7 @@ declare module "@ckeditor/ckeditor5-core" {
   declare export interface TypingConfig {}
   declare export interface ComponentFactory {}
   declare export interface EditorUIView {}
+  declare var editor: typeof npm$namespace$editor;
 
   declare var npm$namespace$editor: {
     Editor: typeof editor$Editor,
@@ -29,17 +30,17 @@ declare module "@ckeditor/ckeditor5-core" {
     ElementApiMixin: typeof editor$utils$ElementApiMixin
   };
   declare function editor$utils$attachToForm(
-    editor: editor$Editor & utils$ElementApi
+    editor: editor$Editor & editor$utils$ElementApi
   ): void;
 
-  declare var editor$utils$DataApiMixin: utils$DataApi;
+  declare var editor$utils$DataApiMixin: editor$utils$DataApi;
 
   declare interface editor$utils$DataApi {
     getData(): string;
     setData(data: string): void;
   }
 
-  declare var editor$utils$ElementApiMixin: utils$ElementApi;
+  declare var editor$utils$ElementApiMixin: editor$utils$ElementApi;
 
   declare interface editor$utils$ElementApi {
     +sourceElement: HTMLElement;
@@ -257,7 +258,7 @@ declare module "@ckeditor/ckeditor5-core" {
       }
     ): void;
   }
-  declare export class PendingActions mixins Plugin {
+  declare export class PendingActions mixins Plugin<> {
     static pluginName: "PendingActions";
     first:
       | null
