@@ -35,8 +35,8 @@ declare module "next-server" {
   }
 
   declare interface next$ServerRouter {
-    routes: next$ServerRoute[];
-    add(route: next$ServerRoute): void;
+    routes: next$ServerRoute<>[];
+    add(route: next$ServerRoute<>): void;
     match(
       req: http.IncomingMessage,
       res: http.ServerResponse,
@@ -70,7 +70,7 @@ declare module "next-server" {
     prepare(): Promise<void>;
     close(): Promise<void>;
     setImmutableAssetCacheControl(res: http.ServerResponse): void;
-    generateRoutes(): next$ServerRoute[];
+    generateRoutes(): next$ServerRoute<>[];
     run(
       req: http.IncomingMessage,
       res: http.ServerResponse,
@@ -116,7 +116,7 @@ declare module "next-server" {
     isServeableUrl(path: string): boolean;
     readBuildId(): string;
   }
-  declare function next(options?: next$next$ServerOptions): next$next$Server;
+  declare function next(options?: next$ServerOptions): next$Server;
 
-  declare module.exports: typeof next;
+  declare export default typeof next;
 }
