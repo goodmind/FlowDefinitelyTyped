@@ -24,10 +24,10 @@ declare module "react-app" {
   }
   declare export function createApp(
     createAppObject: CreateAppObject
-  ): JSX.Element;
+  ): React$Node;
 
   declare export class Link mixins React.Component<LinkProps> {}
   declare export class Layout mixins React.Component<LayoutProps> {}
-  declare export class Header mixins React.Component {}
-  declare export class Navigation mixins React.Component {}
+  declare export class Header mixins React.Component<> {}
+  declare export class Navigation mixins React.Component<> {}
 }
