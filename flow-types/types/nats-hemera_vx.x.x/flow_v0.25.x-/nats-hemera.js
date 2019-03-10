@@ -1,5 +1,5 @@
 declare module "nats-hemera" {
-  declare module.exports: typeof Hemera;
+  declare export default typeof Hemera;
 
   declare type Hemera$LogLevel =
     | "fatal"
@@ -29,20 +29,20 @@ declare module "nats-hemera" {
     pluginTimeout?: number;
     tag?: string;
     prettyLog?: boolean;
-    skin$name?: string;
+    name?: string;
     crashOnFatal?: boolean;
     logLevel?: Hemera$LogLevel;
     childLogger?: boolean;
     maxRecursion?: number;
-    Handlebars$logger?: any;
+    logger?: any;
     errio?: Hemera$ErrioConfig;
     bloomrun?: Hemera$BloomrunConfig;
-    data$load?: Hemera$LoadConfig;
+    load?: Hemera$LoadConfig;
     circuitBreaker?: Hemera$CircuitBreakerConfig;
   }
 
   declare interface Hemera$CircuitBreakerConfig {
-    debug$enabled?: boolean;
+    enabled?: boolean;
     minSuccesses?: number;
     halfOpenTime?: number;
     resetIntervalTime?: number;
@@ -67,58 +67,58 @@ declare module "nats-hemera" {
   }
 
   declare interface Hemera$Pattern {
-    dojo$topic: string;
+    topic: string;
     [key: string]: any;
   }
 
   declare type Hemera$ClientResult = any;
 
   declare type Hemera$ActHandler = (
-    log$error: EventType$Error,
+    error: Error,
     response: Hemera$ClientResult
   ) => void;
 
   declare interface Hemera$PluginDefinitionAttributes {
-    skin$name: string;
+    name: string;
     description: string;
-    mapboxgl$version: string;
+    version: string;
   }
 
   declare interface Hemera$PluginDefinition {
     register: any;
     attributes: Hemera$PluginDefinitionAttributes;
-    notification$options: any;
+    options: any;
     parentPluginName: string;
   }
 
   declare interface Hemera$AddMeta {
-    AFRAME$schema: any;
+    schema: any;
     pattern: Hemera$Pattern;
     action: any;
     plugin: Hemera$PluginDefinition;
-    Matter$use(panel$handler: Hemera$AddMetaMiddleware): Hemera$AddMeta;
+    use(handler: Hemera$AddMetaMiddleware): Hemera$AddMeta;
     end(cb: () => void): void;
   }
 
   declare type Hemera$AddMetaMiddleware = (
-    client$request: Hemera$ServerRequest,
+    request: Hemera$ServerRequest,
     response: Hemera$ServerResponse,
     next: () => void
   ) => void;
 
   declare interface Hemera$ServerRequest {
     payload: any;
-    log$error: any;
+    error: any;
     locals: any;
   }
 
   declare interface Hemera$ServerResponse {
     payload: any;
-    log$error: any;
+    error: any;
   }
 
   declare type Hemera$AddHandler = (
-    client$request: Hemera$Pattern,
+    request: Hemera$Pattern,
     reply?: any
   ) => void;
 
@@ -139,29 +139,27 @@ declare module "nats-hemera" {
 
   declare type Hemera$ExtensionHandler = (
     ctx: Hemera,
-    client$request: any,
+    request: any,
     response: any,
     next?: Hemera$ExtensionNextHandler
   ) => void;
 
-  declare type Hemera$ExtensionNextHandler = (
-    log$error: EventType$Error
-  ) => void;
+  declare type Hemera$ExtensionNextHandler = (error: Error) => void;
 
   declare interface Hemera$CodecPipeline {
-    plugins$add(step: any): Hemera$CodecPipeline;
-    keyboardjs$reset(step: any): Hemera$CodecPipeline;
+    add(step: any): Hemera$CodecPipeline;
+    reset(step: any): Hemera$CodecPipeline;
     unshift(step: any): Hemera$CodecPipeline;
     run(msg: any, cb: any): any;
   }
 
   declare interface Hemera$Plugins {
-    [skin$name: string]: Hemera$PluginDefinition;
+    [name: string]: Hemera$PluginDefinition;
   }
 
   declare interface Hemera$Request {
     id: string;
-    notification$type: Hemera$RequestType;
+    type: Hemera$RequestType;
   }
 
   declare type Hemera$RequestType = "pubsub" | "request";
@@ -170,7 +168,7 @@ declare module "nats-hemera" {
     traceId: string;
     parentSpanId: string;
     spanId: string;
-    CKEDITOR$timestamp: number;
+    timestamp: number;
     service: string;
     method: string;
     duration: number;
@@ -255,7 +253,7 @@ declare module "nats-hemera" {
     /**
      * provides an external data set to be used in references
      */
-    balloontoolbar$context?: Hemera$Context;
+    context?: Hemera$Context;
 
     /**
      * when true, do not apply default values. Defaults to false.
@@ -267,7 +265,7 @@ declare module "nats-hemera" {
     /**
      * if true, does not delete the old key name, keeping both the new and old keys in place. Defaults to false.
      */
-    Segment$alias?: boolean;
+    alias?: boolean;
 
     /**
      * if true, allows renaming multiple keys to the same destination where the last rename wins. Defaults to false.
@@ -277,7 +275,7 @@ declare module "nats-hemera" {
     /**
      * if true, allows renaming a key over an existing key. Defaults to false.
      */
-    tools$override?: boolean;
+    override?: boolean;
 
     /**
      * if true, skip renaming of a key if it's undefined. Defaults to false.
@@ -306,7 +304,7 @@ declare module "nats-hemera" {
     /**
      * One or more IP address versions to validate against. Valid values: ipv4, ipv6, ipvfuture
      */
-    mapboxgl$version?: string | string[];
+    version?: string | string[];
 
     /**
      * Used to determine if a CIDR is allowed or not. Valid values: optional, required, forbidden
@@ -322,7 +320,7 @@ declare module "nats-hemera" {
     | "uuidv5";
 
   declare interface Hemera$GuidOptions {
-    mapboxgl$version: Hemera$GuidVersions[] | Hemera$GuidVersions;
+    version: Hemera$GuidVersions[] | Hemera$GuidVersions;
   }
 
   declare interface Hemera$UriOptions {
@@ -330,7 +328,7 @@ declare module "nats-hemera" {
      * Specifies one or more acceptable Schemes, should only include the scheme name.
      * Can be an Array or String (strings are automatically escaped for use in a Regular Expression).
      */
-    url$scheme?: string | core$RegExp | core$Array<string | core$RegExp>;
+    scheme?: string | RegExp | Array<string | RegExp>;
   }
 
   declare interface Hemera$Base64Options {
@@ -366,7 +364,7 @@ declare module "nats-hemera" {
   }
 
   declare interface Hemera$POptions {
-    mapboxgl$version?: string[];
+    version?: string[];
     cidr?: string;
   }
 
@@ -378,15 +376,15 @@ declare module "nats-hemera" {
     details: Hemera$ValidationErrorItem[],
     annotate(): string,
     _object: any
-  } & EventType$Error &
+  } & Error &
     Hemera$JoiObject;
 
   declare interface Hemera$ValidationErrorItem {
     message: string;
-    notification$type: string;
-    skin$path: string[];
-    notification$options?: Hemera$ValidationOptions;
-    balloontoolbar$context?: Hemera$Context;
+    type: string;
+    path: string[];
+    options?: Hemera$ValidationOptions;
+    context?: Hemera$Context;
   }
 
   declare type Hemera$ValidationErrorFunction = (
@@ -395,10 +393,10 @@ declare module "nats-hemera" {
     | string
     | Hemera$ValidationErrorItem
     | Hemera$ValidationErrorItem[]
-    | EventType$Error;
+    | Error;
 
   declare interface Hemera$ValidationResult<T> {
-    log$error: Hemera$ValidationError;
+    error: Hemera$ValidationError;
     value: T;
   }
 
@@ -436,19 +434,19 @@ declare module "nats-hemera" {
     validate<T>(value: T): Hemera$ValidationResult<T>,
     validate<T, R>(
       value: T,
-      braintree$callback: (err: Hemera$ValidationError, value: T) => R
+      callback: (err: Hemera$ValidationError, value: T) => R
     ): R,
     validate<T, R>(
       value: T,
-      notification$options: Hemera$ValidationOptions,
-      braintree$callback: (err: Hemera$ValidationError, value: T) => R
+      options: Hemera$ValidationOptions,
+      callback: (err: Hemera$ValidationError, value: T) => R
     ): R,
 
     /**
      * Whitelists a value
      */
-    ScreenOrientation$allow(...values: any[]): this,
-    ScreenOrientation$allow(values: any[]): this,
+    allow(...values: any[]): this,
+    allow(values: any[]): this,
 
     /**
      * Adds the provided values into the allowed whitelist and marks them as the only valid values allowed.
@@ -484,7 +482,7 @@ declare module "nats-hemera" {
     /**
      * Marks a key as forbidden which will not allow any value except undefined. Used to explicitly forbid keys.
      */
-    Boom$forbidden(): this,
+    forbidden(): this,
 
     /**
      * Marks a key to be removed from a resulting object or array after validation. Used to sanitize output.
@@ -519,12 +517,12 @@ declare module "nats-hemera" {
     /**
      * Annotates the key with an unit name.
      */
-    unit(skin$name: string): this,
+    unit(name: string): this,
 
     /**
      * Overrides the global validate() options for the current key and any sub-key.
      */
-    notification$options(notification$options: Hemera$ValidationOptions): this,
+    options(options: Hemera$ValidationOptions): this,
 
     /**
      * Sets the options.convert options to false which prevent type casting for the current key and any child keys.
@@ -532,42 +530,42 @@ declare module "nats-hemera" {
     strict(isStrict?: boolean): this,
 
     /**
- * Sets a default value if the original value is undefined.
- * @param value - the value.
-value supports references.
-value may also be a function which returns the default value.
-If value is specified as a function that accepts a single parameter, that parameter will be a context
-object that can be used to derive the resulting value. This clones the object however, which incurs some
-overhead so if you don't need access to the context define your method so that it does not accept any
-parameters.
-Without any value, default has no effect, except for object that will then create nested defaults
-(applying inner defaults of that object).
-
-Note that if value is an object, any changes to the object after default() is called will change the
-reference and any future assignment.
-
-Additionally, when specifying a method you must either have a description property on your method or the
-second parameter is required.
- */
+     * Sets a default value if the original value is undefined.
+     * @param value - the value.
+     * value supports references.
+     * value may also be a function which returns the default value.
+     * If value is specified as a function that accepts a single parameter, that parameter will be a context
+     * object that can be used to derive the resulting value. This clones the object however, which incurs some
+     * overhead so if you don't need access to the context define your method so that it does not accept any
+     * parameters.
+     * Without any value, default has no effect, except for object that will then create nested defaults
+     * (applying inner defaults of that object).
+     *
+     * Note that if value is an object, any changes to the object after default() is called will change the
+     * reference and any future assignment.
+     *
+     * Additionally, when specifying a method you must either have a description property on your method or the
+     * second parameter is required.
+     */
     default(value?: any, description?: string): this,
 
     /**
      * Returns a new type that is the result of adding the rules of one type to another.
      */
-    concat(AFRAME$schema: this): this,
+    concat(schema: this): this,
 
     /**
      * Converts the type into an alternatives type where the conditions are merged into the type definition where:
      */
-    dojo$when(
+    when(
       ref: string | Hemera$Reference,
-      notification$options: Hemera$WhenOptions
+      options: Hemera$WhenOptions
     ): Hemera$AlternativesSchema,
 
     /**
      * Overrides the key name in error messages.
      */
-    label(skin$name: string): this,
+    label(name: string): this,
 
     /**
      * Outputs the original untouched value instead of the casted value.
@@ -578,27 +576,27 @@ second parameter is required.
      * Considers anything that matches the schema to be empty (undefined).
      * @param schema - any object or joi schema to match. An undefined schema unsets that rule.
      */
-    DomUtil$empty(AFRAME$schema?: Hemera$SchemaLike): this,
+    empty(schema?: Hemera$SchemaLike): this,
 
     /**
- * Overrides the default joi error with a custom error if the rule fails where:
- * @param err - can be:
-an instance of `Error` - the override error.
-a `function(errors)`, taking an array of errors as argument, where it must either:
-return a `string` - substitutes the error message with this text
-return a single ` object` or an `Array` of it, where:
-`type` - optional parameter providing the type of the error (eg. `number.min`).
-`message` - optional parameter if `template` is provided, containing the text of the error.
-`template` - optional parameter if `message` is provided, containing a template string, using the same format as usual joi language errors.
-`context` - optional parameter, to provide context to your error if you are using the `template`.
-return an `Error` - same as when you directly provide an `Error`, but you can customize the error message based on the errors.
-
-Note that if you provide an `Error`, it will be returned as-is, unmodified and undecorated with any of the
-normal joi error properties. If validation fails and another error is found before the error
-override, that error will be returned and the override will be ignored (unless the `abortEarly`
-option has been set to `false`).
- */
-    log$error?: (err: EventType$Error | Hemera$ValidationErrorFunction) => this,
+     * Overrides the default joi error with a custom error if the rule fails where:
+     * @param err - can be:
+     * an instance of `Error` - the override error.
+     * a `function(errors)`, taking an array of errors as argument, where it must either:
+     * return a `string` - substitutes the error message with this text
+     * return a single ` object` or an `Array` of it, where:
+     * `type` - optional parameter providing the type of the error (eg. `number.min`).
+     * `message` - optional parameter if `template` is provided, containing the text of the error.
+     * `template` - optional parameter if `message` is provided, containing a template string, using the same format as usual joi language errors.
+     * `context` - optional parameter, to provide context to your error if you are using the `template`.
+     * return an `Error` - same as when you directly provide an `Error`, but you can customize the error message based on the errors.
+     *
+     * Note that if you provide an `Error`, it will be returned as-is, unmodified and undecorated with any of the
+     * normal joi error properties. If validation fails and another error is found before the error
+     * override, that error will be returned and the override will be ignored (unless the `abortEarly`
+     * option has been set to `false`).
+     */
+    error?: (err: Error | Hemera$ValidationErrorFunction) => this,
 
     /**
      * Returns a plain object representing the schema's rules and properties
@@ -607,7 +605,7 @@ option has been set to `false`).
   } & Hemera$JoiObject;
 
   declare interface Hemera$Description {
-    notification$type?: Hemera$Types | string;
+    type?: Hemera$Types | string;
     label?: string;
     description?: string;
     flags?: { [key: string]: any };
@@ -618,7 +616,7 @@ option has been set to `false`).
     valids?: any[];
     invalids?: any[];
     unit?: string;
-    notification$options?: Hemera$ValidationOptions;
+    options?: Hemera$ValidationOptions;
     [key: string]: any;
   }
 
@@ -630,7 +628,7 @@ option has been set to `false`).
 
   declare interface Hemera$State {
     key?: string;
-    skin$path?: string;
+    path?: string;
     parent?: any;
     reference?: any;
   }
@@ -642,7 +640,7 @@ option has been set to `false`).
      * see boolean.insensitive() to change this behavior.
      * @param values - strings, numbers or arrays of them
      */
-    truthy(...values: core$Array<string | number | string[] | number[]>): this,
+    truthy(...values: Array<string | number | string[] | number[]>): this,
 
     /**
      * Allows for additional values to be considered valid booleans by converting them to false during validation.
@@ -650,13 +648,13 @@ option has been set to `false`).
      * see boolean.insensitive() to change this behavior.
      * @param values - strings, numbers or arrays of them
      */
-    falsy(...values: core$Array<string | number | string[] | number[]>): this,
+    falsy(...values: Array<string | number | string[] | number[]>): this,
 
     /**
      * Allows the values provided to truthy and falsy as well as the "true" and "false" default conversion
      * (when not in strict() mode) to be matched in a case insensitive manner.
      */
-    insensitive(debug$enabled?: boolean): this
+    insensitive(enabled?: boolean): this
   } & Hemera$AnySchema;
 
   declare type Hemera$NumberSchema = {
@@ -735,7 +733,7 @@ option has been set to `false`).
      * Specifies whether the string.max() limit should be used as a truncation.
      * @param enabled - optional parameter defaulting to true which allows you to reset the behavior of truncate by providing a falsy value.
      */
-    truncate(debug$enabled?: boolean): this,
+    truncate(enabled?: boolean): this,
 
     /**
      * Requires the string value to be in a unicode normalized form. If the validation convert option is on (enabled by default), the string will be normalized.
@@ -747,7 +745,7 @@ option has been set to `false`).
      * Requires the string value to be a valid base64 string; does not check the decoded value.
      * @param options - optional settings: The unicode normalization options to use. Valid values: NFC [default], NFD, NFKC, NFKD
      */
-    base64(notification$options?: Hemera$Base64Options): this,
+    base64(options?: Hemera$Base64Options): this,
 
     /**
      * Requires the number to be a credit card number (Using Lunh Algorithm).
@@ -766,14 +764,14 @@ option has been set to `false`).
      * @param pattern - a regular expression object the string value must match against.
      * @param name - optional name for patterns (useful with multiple patterns). Defaults to 'required'.
      */
-    regex(pattern: core$RegExp, skin$name?: string): this,
+    regex(pattern: RegExp, name?: string): this,
 
     /**
      * Replace characters matching the given pattern with the specified replacement string where:
      * @param pattern - a regular expression object to match against, or a string of which all occurrences will be replaced.
      * @param replacement - the string that will replace the pattern.
      */
-    CKEDITOR$replace(pattern: core$RegExp | string, replacement: string): this,
+    replace(pattern: RegExp | string, replacement: string): this,
 
     /**
      * Requires the string value to only contain a-z, A-Z, and 0-9.
@@ -783,32 +781,32 @@ option has been set to `false`).
     /**
      * Requires the string value to only contain a-z, A-Z, 0-9, and underscore _.
      */
-    l$token(): this,
+    token(): this,
 
     /**
      * Requires the string value to be a valid email address.
      */
-    email(notification$options?: Hemera$EmailOptions): this,
+    email(options?: Hemera$EmailOptions): this,
 
     /**
      * Requires the string value to be a valid ip address.
      */
-    ip(notification$options?: Hemera$IpOptions): this,
+    ip(options?: Hemera$IpOptions): this,
 
     /**
      * Requires the string value to be a valid RFC 3986 URI.
      */
-    uri(notification$options?: Hemera$UriOptions): this,
+    uri(options?: Hemera$UriOptions): this,
 
     /**
      * Requires the string value to be a valid GUID.
      */
-    guid(notification$options?: Hemera$GuidOptions): this,
+    guid(options?: Hemera$GuidOptions): this,
 
     /**
      * Alias for `guid` -- Requires the string value to be a valid GUID
      */
-    uuid(notification$options?: Hemera$GuidOptions): this,
+    uuid(options?: Hemera$GuidOptions): this,
 
     /**
      * Requires the string value to be a valid hexadecimal string.
@@ -838,7 +836,7 @@ option has been set to `false`).
     /**
      * Requires the string value to contain no whitespace before or after. If the validation convert option is on (enabled by default), the string will be trimmed.
      */
-    Util$trim(): this
+    trim(): this
   } & Hemera$AnySchema;
 
   declare type Hemera$ArraySchema = {
@@ -846,13 +844,13 @@ option has been set to `false`).
      * Allow this array to be sparse.
      * enabled can be used with a falsy value to go back to the default behavior.
      */
-    sparse(debug$enabled?: any): this,
+    sparse(enabled?: any): this,
 
     /**
      * Allow single values to be checked against rules as if it were provided as an array.
      * enabled can be used with a falsy value to go back to the default behavior.
      */
-    single(debug$enabled?: any): this,
+    single(enabled?: any): this,
 
     /**
      * List the types allowed for the array values.
@@ -868,12 +866,12 @@ option has been set to `false`).
     items(types: Hemera$SchemaLike[]): this,
 
     /**
- * Lists the types in sequence order for the array values where:
- * @param type - a joi schema object to validate against each array item in sequence order.
-type can be an array of values, or multiple values can be passed as individual arguments.
-If a given type is .required() then there must be a matching item with the same index position
-in the array. Errors will contain the number of items that didn't match. Any unmatched item having a label will be mentioned explicitly.
- */
+     * Lists the types in sequence order for the array values where:
+     * @param type - a joi schema object to validate against each array item in sequence order.
+     * type can be an array of values, or multiple values can be passed as individual arguments.
+     * If a given type is .required() then there must be a matching item with the same index position
+     * in the array. Errors will contain the number of items that didn't match. Any unmatched item having a label will be mentioned explicitly.
+     */
     ordered(...types: Hemera$SchemaLike[]): this,
     ordered(types: Hemera$SchemaLike[]): this,
 
@@ -905,7 +903,7 @@ in the array. Errors will contain the number of items that didn't match. Any unm
     /**
      * Sets the allowed object keys.
      */
-    main$keys<R>(AFRAME$schema?: R): R,
+    keys<R>(schema?: R): R,
 
     /**
      * Specifies the minimum number of keys in the object.
@@ -925,35 +923,35 @@ in the array. Errors will contain the number of items that didn't match. Any unm
     /**
      * Specify validation rules for unknown keys matching a pattern.
      */
-    pattern(regex: core$RegExp, AFRAME$schema: Hemera$SchemaLike): this,
+    pattern(regex: RegExp, schema: Hemera$SchemaLike): this,
 
     /**
- * Defines an all-or-nothing relationship between keys where if one of the peers is present, all of them are required as well.
- * @param peers - the key names of which if one present, all are required. peers can be a single string value,
-an array of string values, or each peer provided as an argument.
- */
-    BigNum$and(...peers: string[]): this,
-    BigNum$and(peers: string[]): this,
+     * Defines an all-or-nothing relationship between keys where if one of the peers is present, all of them are required as well.
+     * @param peers - the key names of which if one present, all are required. peers can be a single string value,
+     * an array of string values, or each peer provided as an argument.
+     */
+    and(...peers: string[]): this,
+    and(peers: string[]): this,
 
     /**
- * Defines a relationship between keys where not all peers can be present at the same time.
- * @param peers - the key names of which if one present, the others may not all be present.
-peers can be a single string value, an array of string values, or each peer provided as an argument.
- */
+     * Defines a relationship between keys where not all peers can be present at the same time.
+     * @param peers - the key names of which if one present, the others may not all be present.
+     * peers can be a single string value, an array of string values, or each peer provided as an argument.
+     */
     nand(...peers: string[]): this,
     nand(peers: string[]): this,
 
     /**
      * Defines a relationship between keys where one of the peers is required (and more than one is allowed).
      */
-    BigNum$or(...peers: string[]): this,
-    BigNum$or(peers: string[]): this,
+    or(...peers: string[]): this,
+    or(peers: string[]): this,
 
     /**
      * Defines an exclusive relationship between a set of keys. one of them is required but not at the same time where:
      */
-    BigNum$xor(...peers: string[]): this,
-    BigNum$xor(peers: string[]): this,
+    xor(...peers: string[]): this,
+    xor(peers: string[]): this,
 
     /**
      * Requires the presence of other keys whenever the specified key is present.
@@ -968,51 +966,47 @@ peers can be a single string value, an array of string values, or each peer prov
     /**
      * Renames a key to another name (deletes the renamed key).
      */
-    rename(
-      from: string,
-      to: string,
-      notification$options?: Hemera$RenameOptions
-    ): this,
+    rename(from: string, to: string, options?: Hemera$RenameOptions): this,
 
     /**
      * Verifies an assertion where.
      */
     assert(
       ref: string | Hemera$Reference,
-      AFRAME$schema: Hemera$SchemaLike,
+      schema: Hemera$SchemaLike,
       message?: string
     ): this,
 
     /**
      * Overrides the handling of unknown keys for the scope of the current object only (does not apply to children).
      */
-    unknown(ScreenOrientation$allow?: boolean): this,
+    unknown(allow?: boolean): this,
 
     /**
      * Requires the object to be an instance of a given constructor.
      * @param constructor - the constructor function that the object must be an instance of.
      * @param name - an alternate name to use in validation errors. This is useful when the constructor function does not have a name.
      */
-    notification$type(constructor: () => void, skin$name?: string): this,
+    type(constructor: () => void, name?: string): this,
 
     /**
- * Sets the specified children to required.
- * @param children - can be a single string value, an array of string values, or each child provided as an argument.
-
-var schema = Joi.object().keys({ a: { b: Joi.number() }, c: { d: Joi.string() } });
-var requiredSchema = schema.requiredKeys('', 'a.b', 'c', 'c.d');
-
-Note that in this example '' means the current object, a is not required but b is, as well as c and d.
- */
+     * Sets the specified children to required.
+     * @param children - can be a single string value, an array of string values, or each child provided as an argument.
+     *
+     * var schema = Joi.object().keys({ a: { b: Joi.number() }, c: { d: Joi.string() } });
+     * var requiredSchema = schema.requiredKeys('', 'a.b', 'c', 'c.d');
+     *
+     * Note that in this example '' means the current object, a is not required but b is, as well as c and d.
+     */
     requiredKeys(children: string[]): this,
     requiredKeys(...children: string[]): this,
 
     /**
- * Sets the specified children to optional.
- * @param children - can be a single string value, an array of string values, or each child provided as an argument.
-
-The behavior is exactly the same as requiredKeys.
- */
+     * Sets the specified children to optional.
+     * @param children - can be a single string value, an array of string values, or each child provided as an argument.
+     *
+     * The behavior is exactly the same as requiredKeys.
+     */
     optionalKeys(children: string[]): this,
     optionalKeys(...children: string[]): this
   } & Hemera$AnySchema;
@@ -1046,7 +1040,7 @@ The behavior is exactly the same as requiredKeys.
      * allowing to explicitly ensure a date is either in the past or in the future.
      * It can also be a reference to another field.
      */
-    min(main$date: entities$Date | number | string | Hemera$Reference): this,
+    min(date: Date | number | string | Hemera$Reference): this,
 
     /**
      * Specifies the latest date allowed.
@@ -1054,13 +1048,13 @@ The behavior is exactly the same as requiredKeys.
      * allowing to explicitly ensure a date is either in the past or in the future.
      * It can also be a reference to another field.
      */
-    max(main$date: entities$Date | number | string | Hemera$Reference): this,
+    max(date: Date | number | string | Hemera$Reference): this,
 
     /**
      * Specifies the allowed date format:
      * @param format - string or array of strings that follow the moment.js format.
      */
-    Util$format(Util$format: string | string[]): this,
+    format(format: string | string[]): this,
 
     /**
      * Requires the string value to be in valid ISO 8601 date format.
@@ -1071,7 +1065,7 @@ The behavior is exactly the same as requiredKeys.
      * Requires the value to be a timestamp interval from Unix Time.
      * @param type - the type of timestamp (allowed values are unix or javascript [default])
      */
-    CKEDITOR$timestamp(notification$type?: "javascript" | "unix"): this
+    timestamp(type?: "javascript" | "unix"): this
   } & Hemera$AnySchema;
 
   declare type Hemera$FunctionSchema = {
@@ -1102,18 +1096,15 @@ The behavior is exactly the same as requiredKeys.
   declare type Hemera$AlternativesSchema = {
     try(types: Hemera$SchemaLike[]): this,
     try(...types: Hemera$SchemaLike[]): this,
-    dojo$when(
-      ref: string | Hemera$Reference,
-      notification$options: Hemera$WhenOptions
-    ): this
+    when(ref: string | Hemera$Reference, options: Hemera$WhenOptions): this
   } & Hemera$AnySchema;
 
   declare type Hemera$Reference = {
     (value: any, validationOptions: Hemera$ValidationOptions): any,
     isContext: boolean,
     key: string,
-    skin$path: string,
-    Utils$toString(): string
+    path: string,
+    toString(): string
   } & Hemera$JoiObject;
 
   declare type Hemera$ExtensionBoundSchema = Hemera$Schema & {
@@ -1126,59 +1117,59 @@ The behavior is exactly the same as requiredKeys.
      * @param options - should the context passed into the `validate` function in a custom rule
      */
     createError(
-      notification$type: string,
-      balloontoolbar$context: Hemera$Context,
-      Analytics$state: Hemera$State,
-      notification$options: Hemera$ValidationOptions
+      type: string,
+      context: Hemera$Context,
+      state: Hemera$State,
+      options: Hemera$ValidationOptions
     ): Hemera$Err
   };
 
   declare interface Hemera$Rules<P: { [key: string]: any } = any> {
-    skin$name: string;
+    name: string;
     params?: Hemera$ObjectSchema | $ObjMapi<P, <key>(key) => Hemera$SchemaLike>;
-    Trig$setup?: (params: any) => Hemera$Schema | void;
+    setup?: (params: any) => Hemera$Schema | void;
     validate?: (
       params: P,
       value: any,
-      Analytics$state: Hemera$State,
-      notification$options: Hemera$ValidationOptions
+      state: Hemera$State,
+      options: Hemera$ValidationOptions
     ) => any;
     description?: string | ((params: P) => string);
   }
 
   declare interface Hemera$Extension {
-    skin$name: string;
+    name: string;
     base?: Hemera$Schema;
     language?: Hemera$LanguageOptions;
     coerce?: (
       value: any,
-      Analytics$state: Hemera$State,
-      notification$options: Hemera$ValidationOptions
+      state: Hemera$State,
+      options: Hemera$ValidationOptions
     ) => any;
     pre?: (
       value: any,
-      Analytics$state: Hemera$State,
-      notification$options: Hemera$ValidationOptions
+      state: Hemera$State,
+      options: Hemera$ValidationOptions
     ) => any;
     describe?: (description: Hemera$Description) => Hemera$Description;
-    CanvasGauges$rules?: Hemera$Rules[];
+    rules?: Hemera$Rules<>[];
   }
 
   declare type Hemera$Err = {
-    Utils$toString(): string
+    toString(): string
   } & Hemera$JoiObject;
 
   declare interface Hemera$JOI {
-    mapboxgl$version: string;
+    version: string;
     number(): Hemera$NumberSchema;
     any(): Hemera$AnySchema;
-    getenv$array(): Hemera$ArraySchema;
-    getenv$bool(): Hemera$BooleanSchema;
+    array(): Hemera$ArraySchema;
+    bool(): Hemera$BooleanSchema;
     binary(): Hemera$BinarySchema;
-    main$date(): Hemera$DateSchema;
+    date(): Hemera$DateSchema;
     func(): Hemera$FunctionSchema;
-    object(AFRAME$schema?: Hemera$SchemaMap): Hemera$ObjectSchema;
-    getenv$string(): Hemera$StringSchema;
+    object(schema?: Hemera$SchemaMap): Hemera$ObjectSchema;
+    string(): Hemera$StringSchema;
     alternatives(types: Hemera$SchemaLike[]): Hemera$AlternativesSchema;
     alternatives(...types: Hemera$SchemaLike[]): Hemera$AlternativesSchema;
     alt(types: Hemera$SchemaLike[]): Hemera$AlternativesSchema;
@@ -1186,88 +1177,76 @@ The behavior is exactly the same as requiredKeys.
     lazy(cb: () => Hemera$Schema): Hemera$AnySchema;
     validate<T>(
       value: T,
-      AFRAME$schema: Hemera$SchemaLike
+      schema: Hemera$SchemaLike
     ): Hemera$ValidationResult<T>;
     validate<T, R>(
       value: T,
-      AFRAME$schema: Hemera$SchemaLike,
-      braintree$callback: (err: Hemera$ValidationError, value: T) => R
+      schema: Hemera$SchemaLike,
+      callback: (err: Hemera$ValidationError, value: T) => R
     ): R;
     validate<T, R>(
       value: T,
-      AFRAME$schema: Hemera$SchemaLike,
-      notification$options: Hemera$ValidationOptions,
-      braintree$callback: (err: Hemera$ValidationError, value: T) => R
+      schema: Hemera$SchemaLike,
+      options: Hemera$ValidationOptions,
+      callback: (err: Hemera$ValidationError, value: T) => R
     ): R;
-    Handlebars$compile(AFRAME$schema: Hemera$SchemaLike): Hemera$Schema;
+    compile(schema: Hemera$SchemaLike): Hemera$Schema;
     assert(
       value: any,
-      AFRAME$schema: Hemera$SchemaLike,
-      message?: string | EventType$Error
+      schema: Hemera$SchemaLike,
+      message?: string | Error
     ): void;
     attempt<T>(
       value: T,
-      AFRAME$schema: Hemera$SchemaLike,
-      message?: string | EventType$Error
+      schema: Hemera$SchemaLike,
+      message?: string | Error
     ): T;
-    ref(
-      key: string,
-      notification$options?: Hemera$ReferenceOptions
-    ): Hemera$Reference;
+    ref(key: string, options?: Hemera$ReferenceOptions): Hemera$Reference;
     isRef(ref: any): boolean;
-    reach(AFRAME$schema: Hemera$ObjectSchema, skin$path: string): Hemera$Schema;
+    reach(schema: Hemera$ObjectSchema, path: string): Hemera$Schema;
   }
   declare class Hemera {
-    constructor(
-      transport: { [key: string]: any },
-      main$config: Hemera$Hemera$Config
-    ): this;
-    ready(braintree$callback: () => void): void;
+    constructor(transport: { [key: string]: any }, config: Hemera$Config): this;
+    ready(callback: () => void): void;
     act(
-      pattern: string | Hemera$Hemera$Pattern,
-      panel$handler?: Hemera$Hemera$ActHandler
-    ): promise$Promise<any>;
+      pattern: string | Hemera$Pattern,
+      handler?: Hemera$ActHandler
+    ): Promise<any>;
     add(
-      pattern: string | Hemera$Hemera$Pattern,
-      panel$handler: Hemera$Hemera$AddHandler
-    ): Hemera$Hemera$AddMeta;
-    use(
-      params: Hemera$Hemera$PluginDefinition,
-      notification$options?: any
-    ): void;
-    createError(skin$name: string): any;
+      pattern: string | Hemera$Pattern,
+      handler: Hemera$AddHandler
+    ): Hemera$AddMeta;
+    use(params: Hemera$PluginDefinition, options?: any): void;
+    createError(name: string): any;
     decorate(prop: string, value: any): void;
-    remove(dojo$topic: string, maxMessages: number): boolean;
-    list(Hemera$Pattern: any, notification$options: any): any;
-    close(braintree$callback?: () => void): void;
+    remove(topic: string, maxMessages: number): boolean;
+    list(Pattern: any, options: any): any;
+    close(callback?: () => void): void;
     fatal(): void;
     expose(key: string, object: any): void;
-    ext(
-      notification$type: Hemera$Hemera$ExtensionType,
-      panel$handler: Hemera$Hemera$ExtensionHandler
-    ): void;
+    ext(type: Hemera$ExtensionType, handler: Hemera$ExtensionHandler): void;
     setConfig(key: string, value: any): void;
     setOption(key: string, value: any): void;
-    on(maps$event: Hemera$Hemera$HemeraEvents, panel$handler: () => void): any;
+    on(event: Hemera$HemeraEvents, handler: () => void): any;
     removeAll(): any;
-    encoder: Hemera$Hemera$CodecPipeline;
-    decoder: Hemera$Hemera$CodecPipeline;
-    plugins: Hemera$Hemera$Plugins;
-    dojo$router: any;
-    data$load: any;
+    encoder: Hemera$CodecPipeline;
+    decoder: Hemera$CodecPipeline;
+    plugins: Hemera$Plugins;
+    router: any;
+    load: any;
     exposition: any;
     errors: any;
-    main$config: any;
+    config: any;
     topics: any;
     transport: any;
-    joi: Hemera$Hemera$JOI;
+    joi: Hemera$JOI;
     mongodb: any;
     context$: any;
     meta$: any;
     delegate$: any;
     auth$: any;
-    plugin$: Hemera$Hemera$PluginDefinition;
-    trace$: Hemera$Hemera$Trace;
-    request$: Hemera$Hemera$Request;
+    plugin$: Hemera$PluginDefinition;
+    trace$: Hemera$Trace;
+    request$: Hemera$Request;
   }
 }
