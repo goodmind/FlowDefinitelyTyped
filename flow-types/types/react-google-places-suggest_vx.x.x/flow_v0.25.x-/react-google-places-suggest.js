@@ -1,5 +1,5 @@
 declare module "react-google-places-suggest" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   declare export default typeof ReactGooglePlacesSuggest;
 
@@ -11,13 +11,13 @@ declare module "react-google-places-suggest" {
 
   declare interface ReactGooglePlacesSuggest$Props {
     autocompletionRequest: google.maps.places.AutocompletionRequest;
-    children?: ReactNode;
+    children?: Node;
     customRender?: (
       prediction?: ReactGooglePlacesSuggest$Prediction
-    ) => JSX.Element | string;
+    ) => React$Node | string;
     customContainerRender?: (
       predictions: $ReadOnlyArray<ReactGooglePlacesSuggest$Prediction>
-    ) => JSX.Element | string;
+    ) => React$Node | string;
     googleMaps: typeof google.maps;
     onSelectSuggest?: (
       geocodedPrediction: ReactGooglePlacesSuggest$GeocodedPrediction,
