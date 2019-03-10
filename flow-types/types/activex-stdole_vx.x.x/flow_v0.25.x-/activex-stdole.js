@@ -1,4 +1,6 @@
 declare module "activex-stdole" {
+  declare var stdole: typeof npm$namespace$stdole;
+
   declare var npm$namespace$stdole: {
     LoadPictureConstants: typeof stdole$LoadPictureConstants,
     OLE_TRISTATE: typeof stdole$OLE_TRISTATE,
