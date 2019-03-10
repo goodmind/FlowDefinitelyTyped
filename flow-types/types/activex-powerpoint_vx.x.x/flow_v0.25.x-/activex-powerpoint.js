@@ -1,7572 +1,2081 @@
 declare module "activex-powerpoint" {
-  declare class PowerPoint$MsoAnimAccumulate {
-    constructor(...args: empty): mixed;
-    static +msoAnimAccumulateAlways: Class<PowerPoint$MsoAnimAccumulate__msoAnimAccumulateAlways> &
-      PowerPoint$MsoAnimAccumulate__msoAnimAccumulateAlways &
-      2; // 2
-    static +msoAnimAccumulateNone: Class<PowerPoint$MsoAnimAccumulate__msoAnimAccumulateNone> &
-      PowerPoint$MsoAnimAccumulate__msoAnimAccumulateNone &
-      1; // 1
-  }
-
-  declare class PowerPoint$MsoAnimAccumulate__msoAnimAccumulateAlways
-    mixins PowerPoint$MsoAnimAccumulate {}
-  declare class PowerPoint$MsoAnimAccumulate__msoAnimAccumulateNone
-    mixins PowerPoint$MsoAnimAccumulate {}
-
-  declare class PowerPoint$MsoAnimAdditive {
-    constructor(...args: empty): mixed;
-    static +msoAnimAdditiveAddBase: Class<PowerPoint$MsoAnimAdditive__msoAnimAdditiveAddBase> &
-      PowerPoint$MsoAnimAdditive__msoAnimAdditiveAddBase &
-      1; // 1
-    static +msoAnimAdditiveAddSum: Class<PowerPoint$MsoAnimAdditive__msoAnimAdditiveAddSum> &
-      PowerPoint$MsoAnimAdditive__msoAnimAdditiveAddSum &
-      2; // 2
-  }
-
-  declare class PowerPoint$MsoAnimAdditive__msoAnimAdditiveAddBase
-    mixins PowerPoint$MsoAnimAdditive {}
-  declare class PowerPoint$MsoAnimAdditive__msoAnimAdditiveAddSum
-    mixins PowerPoint$MsoAnimAdditive {}
-
-  declare class PowerPoint$MsoAnimAfterEffect {
-    constructor(...args: empty): mixed;
-    static +msoAnimAfterEffectDim: Class<PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectDim> &
-      PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectDim &
-      1; // 1
-    static +msoAnimAfterEffectHide: Class<PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectHide> &
-      PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectHide &
-      2; // 2
-    static +msoAnimAfterEffectHideOnNextClick: Class<PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectHideOnNextClick> &
-      PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectHideOnNextClick &
-      3; // 3
-    static +msoAnimAfterEffectMixed: Class<PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectMixed> &
-      PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectMixed &
-      -1; // -1
-    static +msoAnimAfterEffectNone: Class<PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectNone> &
-      PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectNone &
-      0; // 0
-  }
-
-  declare class PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectDim
-    mixins PowerPoint$MsoAnimAfterEffect {}
-  declare class PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectHide
-    mixins PowerPoint$MsoAnimAfterEffect {}
-  declare class PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectHideOnNextClick
-    mixins PowerPoint$MsoAnimAfterEffect {}
-  declare class PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectMixed
-    mixins PowerPoint$MsoAnimAfterEffect {}
-  declare class PowerPoint$MsoAnimAfterEffect__msoAnimAfterEffectNone
-    mixins PowerPoint$MsoAnimAfterEffect {}
-
-  declare class PowerPoint$MsoAnimateByLevel {
-    constructor(...args: empty): mixed;
-    static +msoAnimateChartAllAtOnce: Class<PowerPoint$MsoAnimateByLevel__msoAnimateChartAllAtOnce> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateChartAllAtOnce &
-      7; // 7
-    static +msoAnimateChartByCategory: Class<PowerPoint$MsoAnimateByLevel__msoAnimateChartByCategory> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateChartByCategory &
-      8; // 8
-    static +msoAnimateChartByCategoryElements: Class<PowerPoint$MsoAnimateByLevel__msoAnimateChartByCategoryElements> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateChartByCategoryElements &
-      9; // 9
-    static +msoAnimateChartBySeries: Class<PowerPoint$MsoAnimateByLevel__msoAnimateChartBySeries> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateChartBySeries &
-      10; // 10
-    static +msoAnimateChartBySeriesElements: Class<PowerPoint$MsoAnimateByLevel__msoAnimateChartBySeriesElements> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateChartBySeriesElements &
-      11; // 11
-    static +msoAnimateDiagramAllAtOnce: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramAllAtOnce> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramAllAtOnce &
-      12; // 12
-    static +msoAnimateDiagramBreadthByLevel: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramBreadthByLevel> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramBreadthByLevel &
-      16; // 16
-    static +msoAnimateDiagramBreadthByNode: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramBreadthByNode> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramBreadthByNode &
-      15; // 15
-    static +msoAnimateDiagramClockwise: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwise> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwise &
-      17; // 17
-    static +msoAnimateDiagramClockwiseIn: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwiseIn> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwiseIn &
-      18; // 18
-    static +msoAnimateDiagramClockwiseOut: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwiseOut> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwiseOut &
-      19; // 19
-    static +msoAnimateDiagramCounterClockwise: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwise> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwise &
-      20; // 20
-    static +msoAnimateDiagramCounterClockwiseIn: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwiseIn> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwiseIn &
-      21; // 21
-    static +msoAnimateDiagramCounterClockwiseOut: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwiseOut> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwiseOut &
-      22; // 22
-    static +msoAnimateDiagramDepthByBranch: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDepthByBranch> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDepthByBranch &
-      14; // 14
-    static +msoAnimateDiagramDepthByNode: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDepthByNode> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDepthByNode &
-      13; // 13
-    static +msoAnimateDiagramDown: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDown> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDown &
-      26; // 26
-    static +msoAnimateDiagramInByRing: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramInByRing> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramInByRing &
-      23; // 23
-    static +msoAnimateDiagramOutByRing: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramOutByRing> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramOutByRing &
-      24; // 24
-    static +msoAnimateDiagramUp: Class<PowerPoint$MsoAnimateByLevel__msoAnimateDiagramUp> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateDiagramUp &
-      25; // 25
-    static +msoAnimateLevelMixed: Class<PowerPoint$MsoAnimateByLevel__msoAnimateLevelMixed> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateLevelMixed &
-      -1; // -1
-    static +msoAnimateLevelNone: Class<PowerPoint$MsoAnimateByLevel__msoAnimateLevelNone> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateLevelNone &
-      0; // 0
-    static +msoAnimateTextByAllLevels: Class<PowerPoint$MsoAnimateByLevel__msoAnimateTextByAllLevels> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateTextByAllLevels &
-      1; // 1
-    static +msoAnimateTextByFifthLevel: Class<PowerPoint$MsoAnimateByLevel__msoAnimateTextByFifthLevel> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateTextByFifthLevel &
-      6; // 6
-    static +msoAnimateTextByFirstLevel: Class<PowerPoint$MsoAnimateByLevel__msoAnimateTextByFirstLevel> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateTextByFirstLevel &
-      2; // 2
-    static +msoAnimateTextByFourthLevel: Class<PowerPoint$MsoAnimateByLevel__msoAnimateTextByFourthLevel> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateTextByFourthLevel &
-      5; // 5
-    static +msoAnimateTextBySecondLevel: Class<PowerPoint$MsoAnimateByLevel__msoAnimateTextBySecondLevel> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateTextBySecondLevel &
-      3; // 3
-    static +msoAnimateTextByThirdLevel: Class<PowerPoint$MsoAnimateByLevel__msoAnimateTextByThirdLevel> &
-      PowerPoint$MsoAnimateByLevel__msoAnimateTextByThirdLevel &
-      4; // 4
-  }
-
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateChartAllAtOnce
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateChartByCategory
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateChartByCategoryElements
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateChartBySeries
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateChartBySeriesElements
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramAllAtOnce
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramBreadthByLevel
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramBreadthByNode
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwise
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwiseIn
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramClockwiseOut
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwise
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwiseIn
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramCounterClockwiseOut
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDepthByBranch
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDepthByNode
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramDown
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramInByRing
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramOutByRing
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateDiagramUp
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateLevelMixed
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateLevelNone
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateTextByAllLevels
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateTextByFifthLevel
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateTextByFirstLevel
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateTextByFourthLevel
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateTextBySecondLevel
-    mixins PowerPoint$MsoAnimateByLevel {}
-  declare class PowerPoint$MsoAnimateByLevel__msoAnimateTextByThirdLevel
-    mixins PowerPoint$MsoAnimateByLevel {}
-
-  declare class PowerPoint$MsoAnimCommandType {
-    constructor(...args: empty): mixed;
-    static +msoAnimCommandTypeCall: Class<PowerPoint$MsoAnimCommandType__msoAnimCommandTypeCall> &
-      PowerPoint$MsoAnimCommandType__msoAnimCommandTypeCall &
-      1; // 1
-    static +msoAnimCommandTypeEvent: Class<PowerPoint$MsoAnimCommandType__msoAnimCommandTypeEvent> &
-      PowerPoint$MsoAnimCommandType__msoAnimCommandTypeEvent &
-      0; // 0
-    static +msoAnimCommandTypeVerb: Class<PowerPoint$MsoAnimCommandType__msoAnimCommandTypeVerb> &
-      PowerPoint$MsoAnimCommandType__msoAnimCommandTypeVerb &
-      2; // 2
-  }
-
-  declare class PowerPoint$MsoAnimCommandType__msoAnimCommandTypeCall
-    mixins PowerPoint$MsoAnimCommandType {}
-  declare class PowerPoint$MsoAnimCommandType__msoAnimCommandTypeEvent
-    mixins PowerPoint$MsoAnimCommandType {}
-  declare class PowerPoint$MsoAnimCommandType__msoAnimCommandTypeVerb
-    mixins PowerPoint$MsoAnimCommandType {}
-
-  declare class PowerPoint$MsoAnimDirection {
-    constructor(...args: empty): mixed;
-    static +msoAnimDirectionAcross: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionAcross> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionAcross &
-      18; // 18
-    static +msoAnimDirectionBottom: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionBottom> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionBottom &
-      11; // 11
-    static +msoAnimDirectionBottomLeft: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionBottomLeft> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionBottomLeft &
-      15; // 15
-    static +msoAnimDirectionBottomRight: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionBottomRight> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionBottomRight &
-      14; // 14
-    static +msoAnimDirectionCenter: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionCenter> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionCenter &
-      28; // 28
-    static +msoAnimDirectionClockwise: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionClockwise> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionClockwise &
-      21; // 21
-    static +msoAnimDirectionCounterclockwise: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionCounterclockwise> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionCounterclockwise &
-      22; // 22
-    static +msoAnimDirectionCycleClockwise: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionCycleClockwise> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionCycleClockwise &
-      43; // 43
-    static +msoAnimDirectionCycleCounterclockwise: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionCycleCounterclockwise> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionCycleCounterclockwise &
-      44; // 44
-    static +msoAnimDirectionDown: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionDown> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionDown &
-      3; // 3
-    static +msoAnimDirectionDownLeft: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionDownLeft> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionDownLeft &
-      9; // 9
-    static +msoAnimDirectionDownRight: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionDownRight> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionDownRight &
-      8; // 8
-    static +msoAnimDirectionFontAllCaps: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionFontAllCaps> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionFontAllCaps &
-      40; // 40
-    static +msoAnimDirectionFontBold: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionFontBold> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionFontBold &
-      35; // 35
-    static +msoAnimDirectionFontItalic: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionFontItalic> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionFontItalic &
-      36; // 36
-    static +msoAnimDirectionFontShadow: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionFontShadow> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionFontShadow &
-      39; // 39
-    static +msoAnimDirectionFontStrikethrough: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionFontStrikethrough> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionFontStrikethrough &
-      38; // 38
-    static +msoAnimDirectionFontUnderline: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionFontUnderline> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionFontUnderline &
-      37; // 37
-    static +msoAnimDirectionGradual: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionGradual> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionGradual &
-      42; // 42
-    static +msoAnimDirectionHorizontal: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontal> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontal &
-      16; // 16
-    static +msoAnimDirectionHorizontalIn: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontalIn> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontalIn &
-      23; // 23
-    static +msoAnimDirectionHorizontalOut: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontalOut> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontalOut &
-      24; // 24
-    static +msoAnimDirectionIn: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionIn> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionIn &
-      19; // 19
-    static +msoAnimDirectionInBottom: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionInBottom> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionInBottom &
-      31; // 31
-    static +msoAnimDirectionInCenter: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionInCenter> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionInCenter &
-      30; // 30
-    static +msoAnimDirectionInSlightly: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionInSlightly> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionInSlightly &
-      29; // 29
-    static +msoAnimDirectionInstant: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionInstant> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionInstant &
-      41; // 41
-    static +msoAnimDirectionLeft: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionLeft> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionLeft &
-      4; // 4
-    static +msoAnimDirectionNone: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionNone> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionNone &
-      0; // 0
-    static +msoAnimDirectionOrdinalMask: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionOrdinalMask> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionOrdinalMask &
-      5; // 5
-    static +msoAnimDirectionOut: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionOut> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionOut &
-      20; // 20
-    static +msoAnimDirectionOutBottom: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionOutBottom> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionOutBottom &
-      34; // 34
-    static +msoAnimDirectionOutCenter: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionOutCenter> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionOutCenter &
-      33; // 33
-    static +msoAnimDirectionOutSlightly: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionOutSlightly> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionOutSlightly &
-      32; // 32
-    static +msoAnimDirectionRight: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionRight> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionRight &
-      2; // 2
-    static +msoAnimDirectionSlightly: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionSlightly> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionSlightly &
-      27; // 27
-    static +msoAnimDirectionTop: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionTop> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionTop &
-      10; // 10
-    static +msoAnimDirectionTopLeft: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionTopLeft> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionTopLeft &
-      12; // 12
-    static +msoAnimDirectionTopRight: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionTopRight> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionTopRight &
-      13; // 13
-    static +msoAnimDirectionUp: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionUp> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionUp &
-      1; // 1
-    static +msoAnimDirectionUpLeft: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionUpLeft> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionUpLeft &
-      6; // 6
-    static +msoAnimDirectionUpRight: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionUpRight> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionUpRight &
-      7; // 7
-    static +msoAnimDirectionVertical: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionVertical> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionVertical &
-      17; // 17
-    static +msoAnimDirectionVerticalIn: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionVerticalIn> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionVerticalIn &
-      25; // 25
-    static +msoAnimDirectionVerticalOut: Class<PowerPoint$MsoAnimDirection__msoAnimDirectionVerticalOut> &
-      PowerPoint$MsoAnimDirection__msoAnimDirectionVerticalOut &
-      26; // 26
-  }
-
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionAcross
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionBottom
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionBottomLeft
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionBottomRight
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionCenter
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionClockwise
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionCounterclockwise
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionCycleClockwise
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionCycleCounterclockwise
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionDown
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionDownLeft
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionDownRight
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionFontAllCaps
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionFontBold
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionFontItalic
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionFontShadow
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionFontStrikethrough
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionFontUnderline
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionGradual
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontal
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontalIn
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionHorizontalOut
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionIn
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionInBottom
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionInCenter
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionInSlightly
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionInstant
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionLeft
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionNone
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionOrdinalMask
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionOut
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionOutBottom
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionOutCenter
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionOutSlightly
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionRight
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionSlightly
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionTop
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionTopLeft
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionTopRight
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionUp
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionUpLeft
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionUpRight
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionVertical
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionVerticalIn
-    mixins PowerPoint$MsoAnimDirection {}
-  declare class PowerPoint$MsoAnimDirection__msoAnimDirectionVerticalOut
-    mixins PowerPoint$MsoAnimDirection {}
-
-  declare class PowerPoint$MsoAnimEffect {
-    constructor(...args: empty): mixed;
-    static +msoAnimEffectAppear: Class<PowerPoint$MsoAnimEffect__msoAnimEffectAppear> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectAppear &
-      1; // 1
-    static +msoAnimEffectArcUp: Class<PowerPoint$MsoAnimEffect__msoAnimEffectArcUp> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectArcUp &
-      47; // 47
-    static +msoAnimEffectAscend: Class<PowerPoint$MsoAnimEffect__msoAnimEffectAscend> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectAscend &
-      39; // 39
-    static +msoAnimEffectBlast: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBlast> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBlast &
-      64; // 64
-    static +msoAnimEffectBlinds: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBlinds> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBlinds &
-      3; // 3
-    static +msoAnimEffectBoldFlash: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBoldFlash> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBoldFlash &
-      63; // 63
-    static +msoAnimEffectBoldReveal: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBoldReveal> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBoldReveal &
-      65; // 65
-    static +msoAnimEffectBoomerang: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBoomerang> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBoomerang &
-      25; // 25
-    static +msoAnimEffectBounce: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBounce> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBounce &
-      26; // 26
-    static +msoAnimEffectBox: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBox> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBox &
-      4; // 4
-    static +msoAnimEffectBrushOnColor: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBrushOnColor> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBrushOnColor &
-      66; // 66
-    static +msoAnimEffectBrushOnUnderline: Class<PowerPoint$MsoAnimEffect__msoAnimEffectBrushOnUnderline> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectBrushOnUnderline &
-      67; // 67
-    static +msoAnimEffectCenterRevolve: Class<PowerPoint$MsoAnimEffect__msoAnimEffectCenterRevolve> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectCenterRevolve &
-      40; // 40
-    static +msoAnimEffectChangeFillColor: Class<PowerPoint$MsoAnimEffect__msoAnimEffectChangeFillColor> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectChangeFillColor &
-      54; // 54
-    static +msoAnimEffectChangeFont: Class<PowerPoint$MsoAnimEffect__msoAnimEffectChangeFont> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectChangeFont &
-      55; // 55
-    static +msoAnimEffectChangeFontColor: Class<PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontColor> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontColor &
-      56; // 56
-    static +msoAnimEffectChangeFontSize: Class<PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontSize> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontSize &
-      57; // 57
-    static +msoAnimEffectChangeFontStyle: Class<PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontStyle> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontStyle &
-      58; // 58
-    static +msoAnimEffectChangeLineColor: Class<PowerPoint$MsoAnimEffect__msoAnimEffectChangeLineColor> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectChangeLineColor &
-      60; // 60
-    static +msoAnimEffectCheckerboard: Class<PowerPoint$MsoAnimEffect__msoAnimEffectCheckerboard> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectCheckerboard &
-      5; // 5
-    static +msoAnimEffectCircle: Class<PowerPoint$MsoAnimEffect__msoAnimEffectCircle> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectCircle &
-      6; // 6
-    static +msoAnimEffectColorBlend: Class<PowerPoint$MsoAnimEffect__msoAnimEffectColorBlend> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectColorBlend &
-      68; // 68
-    static +msoAnimEffectColorReveal: Class<PowerPoint$MsoAnimEffect__msoAnimEffectColorReveal> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectColorReveal &
-      27; // 27
-    static +msoAnimEffectColorWave: Class<PowerPoint$MsoAnimEffect__msoAnimEffectColorWave> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectColorWave &
-      69; // 69
-    static +msoAnimEffectComplementaryColor: Class<PowerPoint$MsoAnimEffect__msoAnimEffectComplementaryColor> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectComplementaryColor &
-      70; // 70
-    static +msoAnimEffectComplementaryColor2: Class<PowerPoint$MsoAnimEffect__msoAnimEffectComplementaryColor2> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectComplementaryColor2 &
-      71; // 71
-    static +msoAnimEffectContrastingColor: Class<PowerPoint$MsoAnimEffect__msoAnimEffectContrastingColor> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectContrastingColor &
-      72; // 72
-    static +msoAnimEffectCrawl: Class<PowerPoint$MsoAnimEffect__msoAnimEffectCrawl> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectCrawl &
-      7; // 7
-    static +msoAnimEffectCredits: Class<PowerPoint$MsoAnimEffect__msoAnimEffectCredits> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectCredits &
-      28; // 28
-    static +msoAnimEffectCustom: Class<PowerPoint$MsoAnimEffect__msoAnimEffectCustom> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectCustom &
-      0; // 0
-    static +msoAnimEffectDarken: Class<PowerPoint$MsoAnimEffect__msoAnimEffectDarken> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectDarken &
-      73; // 73
-    static +msoAnimEffectDesaturate: Class<PowerPoint$MsoAnimEffect__msoAnimEffectDesaturate> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectDesaturate &
-      74; // 74
-    static +msoAnimEffectDescend: Class<PowerPoint$MsoAnimEffect__msoAnimEffectDescend> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectDescend &
-      42; // 42
-    static +msoAnimEffectDiamond: Class<PowerPoint$MsoAnimEffect__msoAnimEffectDiamond> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectDiamond &
-      8; // 8
-    static +msoAnimEffectDissolve: Class<PowerPoint$MsoAnimEffect__msoAnimEffectDissolve> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectDissolve &
-      9; // 9
-    static +msoAnimEffectEaseIn: Class<PowerPoint$MsoAnimEffect__msoAnimEffectEaseIn> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectEaseIn &
-      29; // 29
-    static +msoAnimEffectExpand: Class<PowerPoint$MsoAnimEffect__msoAnimEffectExpand> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectExpand &
-      50; // 50
-    static +msoAnimEffectFade: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFade> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFade &
-      10; // 10
-    static +msoAnimEffectFadedSwivel: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFadedSwivel> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFadedSwivel &
-      41; // 41
-    static +msoAnimEffectFadedZoom: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFadedZoom> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFadedZoom &
-      48; // 48
-    static +msoAnimEffectFlashBulb: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFlashBulb> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFlashBulb &
-      75; // 75
-    static +msoAnimEffectFlashOnce: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFlashOnce> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFlashOnce &
-      11; // 11
-    static +msoAnimEffectFlicker: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFlicker> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFlicker &
-      76; // 76
-    static +msoAnimEffectFlip: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFlip> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFlip &
-      51; // 51
-    static +msoAnimEffectFloat: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFloat> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFloat &
-      30; // 30
-    static +msoAnimEffectFly: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFly> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFly &
-      2; // 2
-    static +msoAnimEffectFold: Class<PowerPoint$MsoAnimEffect__msoAnimEffectFold> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectFold &
-      53; // 53
-    static +msoAnimEffectGlide: Class<PowerPoint$MsoAnimEffect__msoAnimEffectGlide> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectGlide &
-      49; // 49
-    static +msoAnimEffectGrowAndTurn: Class<PowerPoint$MsoAnimEffect__msoAnimEffectGrowAndTurn> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectGrowAndTurn &
-      31; // 31
-    static +msoAnimEffectGrowShrink: Class<PowerPoint$MsoAnimEffect__msoAnimEffectGrowShrink> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectGrowShrink &
-      59; // 59
-    static +msoAnimEffectGrowWithColor: Class<PowerPoint$MsoAnimEffect__msoAnimEffectGrowWithColor> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectGrowWithColor &
-      77; // 77
-    static +msoAnimEffectLighten: Class<PowerPoint$MsoAnimEffect__msoAnimEffectLighten> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectLighten &
-      78; // 78
-    static +msoAnimEffectLightSpeed: Class<PowerPoint$MsoAnimEffect__msoAnimEffectLightSpeed> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectLightSpeed &
-      32; // 32
-    static +msoAnimEffectMediaPause: Class<PowerPoint$MsoAnimEffect__msoAnimEffectMediaPause> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectMediaPause &
-      84; // 84
-    static +msoAnimEffectMediaPlay: Class<PowerPoint$MsoAnimEffect__msoAnimEffectMediaPlay> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectMediaPlay &
-      83; // 83
-    static +msoAnimEffectMediaPlayFromBookmark: Class<PowerPoint$MsoAnimEffect__msoAnimEffectMediaPlayFromBookmark> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectMediaPlayFromBookmark &
-      150; // 150
-    static +msoAnimEffectMediaStop: Class<PowerPoint$MsoAnimEffect__msoAnimEffectMediaStop> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectMediaStop &
-      85; // 85
-    static +msoAnimEffectPath4PointStar: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPath4PointStar> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPath4PointStar &
-      101; // 101
-    static +msoAnimEffectPath5PointStar: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPath5PointStar> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPath5PointStar &
-      90; // 90
-    static +msoAnimEffectPath6PointStar: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPath6PointStar> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPath6PointStar &
-      96; // 96
-    static +msoAnimEffectPath8PointStar: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPath8PointStar> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPath8PointStar &
-      102; // 102
-    static +msoAnimEffectPathArcDown: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathArcDown> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathArcDown &
-      122; // 122
-    static +msoAnimEffectPathArcLeft: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathArcLeft> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathArcLeft &
-      136; // 136
-    static +msoAnimEffectPathArcRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathArcRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathArcRight &
-      143; // 143
-    static +msoAnimEffectPathArcUp: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathArcUp> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathArcUp &
-      129; // 129
-    static +msoAnimEffectPathBean: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathBean> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathBean &
-      116; // 116
-    static +msoAnimEffectPathBounceLeft: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathBounceLeft> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathBounceLeft &
-      126; // 126
-    static +msoAnimEffectPathBounceRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathBounceRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathBounceRight &
-      139; // 139
-    static +msoAnimEffectPathBuzzsaw: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathBuzzsaw> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathBuzzsaw &
-      110; // 110
-    static +msoAnimEffectPathCircle: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathCircle> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathCircle &
-      86; // 86
-    static +msoAnimEffectPathCrescentMoon: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathCrescentMoon> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathCrescentMoon &
-      91; // 91
-    static +msoAnimEffectPathCurvedSquare: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvedSquare> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvedSquare &
-      105; // 105
-    static +msoAnimEffectPathCurvedX: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvedX> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvedX &
-      106; // 106
-    static +msoAnimEffectPathCurvyLeft: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyLeft> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyLeft &
-      133; // 133
-    static +msoAnimEffectPathCurvyRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyRight &
-      146; // 146
-    static +msoAnimEffectPathCurvyStar: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyStar> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyStar &
-      108; // 108
-    static +msoAnimEffectPathDecayingWave: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathDecayingWave> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathDecayingWave &
-      145; // 145
-    static +msoAnimEffectPathDiagonalDownRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathDiagonalDownRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathDiagonalDownRight &
-      134; // 134
-    static +msoAnimEffectPathDiagonalUpRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathDiagonalUpRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathDiagonalUpRight &
-      141; // 141
-    static +msoAnimEffectPathDiamond: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathDiamond> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathDiamond &
-      88; // 88
-    static +msoAnimEffectPathDown: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathDown> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathDown &
-      127; // 127
-    static +msoAnimEffectPathEqualTriangle: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathEqualTriangle> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathEqualTriangle &
-      98; // 98
-    static +msoAnimEffectPathFigure8Four: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathFigure8Four> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathFigure8Four &
-      113; // 113
-    static +msoAnimEffectPathFootball: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathFootball> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathFootball &
-      97; // 97
-    static +msoAnimEffectPathFunnel: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathFunnel> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathFunnel &
-      137; // 137
-    static +msoAnimEffectPathHeart: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathHeart> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathHeart &
-      94; // 94
-    static +msoAnimEffectPathHeartbeat: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathHeartbeat> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathHeartbeat &
-      130; // 130
-    static +msoAnimEffectPathHexagon: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathHexagon> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathHexagon &
-      89; // 89
-    static +msoAnimEffectPathHorizontalFigure8: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathHorizontalFigure8> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathHorizontalFigure8 &
-      111; // 111
-    static +msoAnimEffectPathInvertedSquare: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathInvertedSquare> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathInvertedSquare &
-      119; // 119
-    static +msoAnimEffectPathInvertedTriangle: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathInvertedTriangle> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathInvertedTriangle &
-      118; // 118
-    static +msoAnimEffectPathLeft: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathLeft> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathLeft &
-      120; // 120
-    static +msoAnimEffectPathLoopdeLoop: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathLoopdeLoop> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathLoopdeLoop &
-      109; // 109
-    static +msoAnimEffectPathNeutron: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathNeutron> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathNeutron &
-      114; // 114
-    static +msoAnimEffectPathOctagon: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathOctagon> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathOctagon &
-      95; // 95
-    static +msoAnimEffectPathParallelogram: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathParallelogram> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathParallelogram &
-      99; // 99
-    static +msoAnimEffectPathPeanut: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathPeanut> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathPeanut &
-      112; // 112
-    static +msoAnimEffectPathPentagon: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathPentagon> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathPentagon &
-      100; // 100
-    static +msoAnimEffectPathPlus: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathPlus> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathPlus &
-      117; // 117
-    static +msoAnimEffectPathPointyStar: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathPointyStar> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathPointyStar &
-      104; // 104
-    static +msoAnimEffectPathRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathRight &
-      149; // 149
-    static +msoAnimEffectPathRightTriangle: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathRightTriangle> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathRightTriangle &
-      87; // 87
-    static +msoAnimEffectPathSCurve1: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSCurve1> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSCurve1 &
-      144; // 144
-    static +msoAnimEffectPathSCurve2: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSCurve2> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSCurve2 &
-      124; // 124
-    static +msoAnimEffectPathSineWave: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSineWave> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSineWave &
-      125; // 125
-    static +msoAnimEffectPathSpiralLeft: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSpiralLeft> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSpiralLeft &
-      140; // 140
-    static +msoAnimEffectPathSpiralRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSpiralRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSpiralRight &
-      131; // 131
-    static +msoAnimEffectPathSpring: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSpring> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSpring &
-      138; // 138
-    static +msoAnimEffectPathSquare: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSquare> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSquare &
-      92; // 92
-    static +msoAnimEffectPathStairsDown: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathStairsDown> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathStairsDown &
-      147; // 147
-    static +msoAnimEffectPathSwoosh: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathSwoosh> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathSwoosh &
-      115; // 115
-    static +msoAnimEffectPathTeardrop: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathTeardrop> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathTeardrop &
-      103; // 103
-    static +msoAnimEffectPathTrapezoid: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathTrapezoid> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathTrapezoid &
-      93; // 93
-    static +msoAnimEffectPathTurnDown: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnDown> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnDown &
-      135; // 135
-    static +msoAnimEffectPathTurnRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnRight &
-      121; // 121
-    static +msoAnimEffectPathTurnUp: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnUp> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnUp &
-      128; // 128
-    static +msoAnimEffectPathTurnUpRight: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnUpRight> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnUpRight &
-      142; // 142
-    static +msoAnimEffectPathUp: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathUp> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathUp &
-      148; // 148
-    static +msoAnimEffectPathVerticalFigure8: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathVerticalFigure8> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathVerticalFigure8 &
-      107; // 107
-    static +msoAnimEffectPathWave: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathWave> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathWave &
-      132; // 132
-    static +msoAnimEffectPathZigzag: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPathZigzag> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPathZigzag &
-      123; // 123
-    static +msoAnimEffectPeek: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPeek> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPeek &
-      12; // 12
-    static +msoAnimEffectPinwheel: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPinwheel> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPinwheel &
-      33; // 33
-    static +msoAnimEffectPlus: Class<PowerPoint$MsoAnimEffect__msoAnimEffectPlus> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectPlus &
-      13; // 13
-    static +msoAnimEffectRandomBars: Class<PowerPoint$MsoAnimEffect__msoAnimEffectRandomBars> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectRandomBars &
-      14; // 14
-    static +msoAnimEffectRandomEffects: Class<PowerPoint$MsoAnimEffect__msoAnimEffectRandomEffects> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectRandomEffects &
-      24; // 24
-    static +msoAnimEffectRiseUp: Class<PowerPoint$MsoAnimEffect__msoAnimEffectRiseUp> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectRiseUp &
-      34; // 34
-    static +msoAnimEffectShimmer: Class<PowerPoint$MsoAnimEffect__msoAnimEffectShimmer> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectShimmer &
-      52; // 52
-    static +msoAnimEffectSling: Class<PowerPoint$MsoAnimEffect__msoAnimEffectSling> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectSling &
-      43; // 43
-    static +msoAnimEffectSpin: Class<PowerPoint$MsoAnimEffect__msoAnimEffectSpin> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectSpin &
-      61; // 61
-    static +msoAnimEffectSpinner: Class<PowerPoint$MsoAnimEffect__msoAnimEffectSpinner> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectSpinner &
-      44; // 44
-    static +msoAnimEffectSpiral: Class<PowerPoint$MsoAnimEffect__msoAnimEffectSpiral> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectSpiral &
-      15; // 15
-    static +msoAnimEffectSplit: Class<PowerPoint$MsoAnimEffect__msoAnimEffectSplit> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectSplit &
-      16; // 16
-    static +msoAnimEffectStretch: Class<PowerPoint$MsoAnimEffect__msoAnimEffectStretch> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectStretch &
-      17; // 17
-    static +msoAnimEffectStretchy: Class<PowerPoint$MsoAnimEffect__msoAnimEffectStretchy> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectStretchy &
-      45; // 45
-    static +msoAnimEffectStrips: Class<PowerPoint$MsoAnimEffect__msoAnimEffectStrips> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectStrips &
-      18; // 18
-    static +msoAnimEffectStyleEmphasis: Class<PowerPoint$MsoAnimEffect__msoAnimEffectStyleEmphasis> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectStyleEmphasis &
-      79; // 79
-    static +msoAnimEffectSwish: Class<PowerPoint$MsoAnimEffect__msoAnimEffectSwish> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectSwish &
-      35; // 35
-    static +msoAnimEffectSwivel: Class<PowerPoint$MsoAnimEffect__msoAnimEffectSwivel> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectSwivel &
-      19; // 19
-    static +msoAnimEffectTeeter: Class<PowerPoint$MsoAnimEffect__msoAnimEffectTeeter> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectTeeter &
-      80; // 80
-    static +msoAnimEffectThinLine: Class<PowerPoint$MsoAnimEffect__msoAnimEffectThinLine> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectThinLine &
-      36; // 36
-    static +msoAnimEffectTransparency: Class<PowerPoint$MsoAnimEffect__msoAnimEffectTransparency> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectTransparency &
-      62; // 62
-    static +msoAnimEffectUnfold: Class<PowerPoint$MsoAnimEffect__msoAnimEffectUnfold> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectUnfold &
-      37; // 37
-    static +msoAnimEffectVerticalGrow: Class<PowerPoint$MsoAnimEffect__msoAnimEffectVerticalGrow> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectVerticalGrow &
-      81; // 81
-    static +msoAnimEffectWave: Class<PowerPoint$MsoAnimEffect__msoAnimEffectWave> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectWave &
-      82; // 82
-    static +msoAnimEffectWedge: Class<PowerPoint$MsoAnimEffect__msoAnimEffectWedge> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectWedge &
-      20; // 20
-    static +msoAnimEffectWheel: Class<PowerPoint$MsoAnimEffect__msoAnimEffectWheel> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectWheel &
-      21; // 21
-    static +msoAnimEffectWhip: Class<PowerPoint$MsoAnimEffect__msoAnimEffectWhip> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectWhip &
-      38; // 38
-    static +msoAnimEffectWipe: Class<PowerPoint$MsoAnimEffect__msoAnimEffectWipe> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectWipe &
-      22; // 22
-    static +msoAnimEffectZip: Class<PowerPoint$MsoAnimEffect__msoAnimEffectZip> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectZip &
-      46; // 46
-    static +msoAnimEffectZoom: Class<PowerPoint$MsoAnimEffect__msoAnimEffectZoom> &
-      PowerPoint$MsoAnimEffect__msoAnimEffectZoom &
-      23; // 23
-  }
-
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectAppear
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectArcUp
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectAscend
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBlast
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBlinds
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBoldFlash
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBoldReveal
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBoomerang
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBounce
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBox
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBrushOnColor
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectBrushOnUnderline
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectCenterRevolve
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectChangeFillColor
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectChangeFont
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontColor
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontSize
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectChangeFontStyle
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectChangeLineColor
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectCheckerboard
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectCircle
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectColorBlend
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectColorReveal
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectColorWave
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectComplementaryColor
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectComplementaryColor2
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectContrastingColor
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectCrawl
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectCredits
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectCustom
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectDarken
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectDesaturate
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectDescend
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectDiamond
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectDissolve
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectEaseIn
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectExpand
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFade
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFadedSwivel
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFadedZoom
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFlashBulb
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFlashOnce
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFlicker
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFlip
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFloat
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFly
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectFold
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectGlide
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectGrowAndTurn
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectGrowShrink
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectGrowWithColor
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectLighten
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectLightSpeed
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectMediaPause
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectMediaPlay
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectMediaPlayFromBookmark
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectMediaStop
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPath4PointStar
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPath5PointStar
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPath6PointStar
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPath8PointStar
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathArcDown
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathArcLeft
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathArcRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathArcUp
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathBean
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathBounceLeft
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathBounceRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathBuzzsaw
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathCircle
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathCrescentMoon
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvedSquare
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvedX
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyLeft
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathCurvyStar
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathDecayingWave
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathDiagonalDownRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathDiagonalUpRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathDiamond
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathDown
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathEqualTriangle
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathFigure8Four
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathFootball
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathFunnel
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathHeart
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathHeartbeat
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathHexagon
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathHorizontalFigure8
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathInvertedSquare
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathInvertedTriangle
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathLeft
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathLoopdeLoop
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathNeutron
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathOctagon
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathParallelogram
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathPeanut
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathPentagon
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathPlus
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathPointyStar
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathRightTriangle
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSCurve1
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSCurve2
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSineWave
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSpiralLeft
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSpiralRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSpring
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSquare
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathStairsDown
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathSwoosh
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathTeardrop
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathTrapezoid
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnDown
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnUp
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathTurnUpRight
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathUp
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathVerticalFigure8
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathWave
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPathZigzag
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPeek
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPinwheel
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectPlus
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectRandomBars
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectRandomEffects
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectRiseUp
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectShimmer
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectSling
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectSpin
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectSpinner
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectSpiral
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectSplit
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectStretch
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectStretchy
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectStrips
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectStyleEmphasis
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectSwish
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectSwivel
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectTeeter
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectThinLine
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectTransparency
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectUnfold
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectVerticalGrow
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectWave
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectWedge
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectWheel
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectWhip
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectWipe
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectZip
-    mixins PowerPoint$MsoAnimEffect {}
-  declare class PowerPoint$MsoAnimEffect__msoAnimEffectZoom
-    mixins PowerPoint$MsoAnimEffect {}
-
-  declare class PowerPoint$MsoAnimEffectAfter {
-    constructor(...args: empty): mixed;
-    static +msoAnimEffectAfterFreeze: Class<PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterFreeze> &
-      PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterFreeze &
-      1; // 1
-    static +msoAnimEffectAfterHold: Class<PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterHold> &
-      PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterHold &
-      3; // 3
-    static +msoAnimEffectAfterRemove: Class<PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterRemove> &
-      PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterRemove &
-      2; // 2
-    static +msoAnimEffectAfterTransition: Class<PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterTransition> &
-      PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterTransition &
-      4; // 4
-  }
-
-  declare class PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterFreeze
-    mixins PowerPoint$MsoAnimEffectAfter {}
-  declare class PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterHold
-    mixins PowerPoint$MsoAnimEffectAfter {}
-  declare class PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterRemove
-    mixins PowerPoint$MsoAnimEffectAfter {}
-  declare class PowerPoint$MsoAnimEffectAfter__msoAnimEffectAfterTransition
-    mixins PowerPoint$MsoAnimEffectAfter {}
-
-  declare class PowerPoint$MsoAnimEffectRestart {
-    constructor(...args: empty): mixed;
-    static +msoAnimEffectRestartAlways: Class<PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartAlways> &
-      PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartAlways &
-      1; // 1
-    static +msoAnimEffectRestartNever: Class<PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartNever> &
-      PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartNever &
-      3; // 3
-    static +msoAnimEffectRestartWhenOff: Class<PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartWhenOff> &
-      PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartWhenOff &
-      2; // 2
-  }
-
-  declare class PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartAlways
-    mixins PowerPoint$MsoAnimEffectRestart {}
-  declare class PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartNever
-    mixins PowerPoint$MsoAnimEffectRestart {}
-  declare class PowerPoint$MsoAnimEffectRestart__msoAnimEffectRestartWhenOff
-    mixins PowerPoint$MsoAnimEffectRestart {}
-
-  declare class PowerPoint$MsoAnimFilterEffectSubtype {
-    constructor(...args: empty): mixed;
-    static +msoAnimFilterEffectSubtypeAcross: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeAcross> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeAcross &
-      9; // 9
-    static +msoAnimFilterEffectSubtypeDown: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDown> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDown &
-      25; // 25
-    static +msoAnimFilterEffectSubtypeDownLeft: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDownLeft> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDownLeft &
-      14; // 14
-    static +msoAnimFilterEffectSubtypeDownRight: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDownRight> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDownRight &
-      16; // 16
-    static +msoAnimFilterEffectSubtypeFromBottom: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromBottom> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromBottom &
-      13; // 13
-    static +msoAnimFilterEffectSubtypeFromLeft: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromLeft> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromLeft &
-      10; // 10
-    static +msoAnimFilterEffectSubtypeFromRight: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromRight> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromRight &
-      11; // 11
-    static +msoAnimFilterEffectSubtypeFromTop: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromTop> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromTop &
-      12; // 12
-    static +msoAnimFilterEffectSubtypeHorizontal: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeHorizontal> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeHorizontal &
-      5; // 5
-    static +msoAnimFilterEffectSubtypeIn: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeIn> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeIn &
-      7; // 7
-    static +msoAnimFilterEffectSubtypeInHorizontal: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeInHorizontal> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeInHorizontal &
-      3; // 3
-    static +msoAnimFilterEffectSubtypeInVertical: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeInVertical> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeInVertical &
-      1; // 1
-    static +msoAnimFilterEffectSubtypeLeft: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeLeft> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeLeft &
-      23; // 23
-    static +msoAnimFilterEffectSubtypeNone: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeNone> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeNone &
-      0; // 0
-    static +msoAnimFilterEffectSubtypeOut: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOut> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOut &
-      8; // 8
-    static +msoAnimFilterEffectSubtypeOutHorizontal: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOutHorizontal> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOutHorizontal &
-      4; // 4
-    static +msoAnimFilterEffectSubtypeOutVertical: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOutVertical> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOutVertical &
-      2; // 2
-    static +msoAnimFilterEffectSubtypeRight: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeRight> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeRight &
-      24; // 24
-    static +msoAnimFilterEffectSubtypeSpokes1: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes1> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes1 &
-      18; // 18
-    static +msoAnimFilterEffectSubtypeSpokes2: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes2> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes2 &
-      19; // 19
-    static +msoAnimFilterEffectSubtypeSpokes3: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes3> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes3 &
-      20; // 20
-    static +msoAnimFilterEffectSubtypeSpokes4: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes4> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes4 &
-      21; // 21
-    static +msoAnimFilterEffectSubtypeSpokes8: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes8> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes8 &
-      22; // 22
-    static +msoAnimFilterEffectSubtypeUp: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUp> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUp &
-      26; // 26
-    static +msoAnimFilterEffectSubtypeUpLeft: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUpLeft> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUpLeft &
-      15; // 15
-    static +msoAnimFilterEffectSubtypeUpRight: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUpRight> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUpRight &
-      17; // 17
-    static +msoAnimFilterEffectSubtypeVertical: Class<PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeVertical> &
-      PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeVertical &
-      6; // 6
-  }
-
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeAcross
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDown
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDownLeft
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeDownRight
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromBottom
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromLeft
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromRight
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeFromTop
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeHorizontal
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeIn
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeInHorizontal
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeInVertical
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeLeft
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeNone
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOut
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOutHorizontal
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeOutVertical
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeRight
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes1
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes2
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes3
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes4
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeSpokes8
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUp
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUpLeft
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeUpRight
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-  declare class PowerPoint$MsoAnimFilterEffectSubtype__msoAnimFilterEffectSubtypeVertical
-    mixins PowerPoint$MsoAnimFilterEffectSubtype {}
-
-  declare class PowerPoint$MsoAnimFilterEffectType {
-    constructor(...args: empty): mixed;
-    static +msoAnimFilterEffectTypeBarn: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBarn> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBarn &
-      1; // 1
-    static +msoAnimFilterEffectTypeBlinds: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBlinds> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBlinds &
-      2; // 2
-    static +msoAnimFilterEffectTypeBox: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBox> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBox &
-      3; // 3
-    static +msoAnimFilterEffectTypeCheckerboard: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeCheckerboard> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeCheckerboard &
-      4; // 4
-    static +msoAnimFilterEffectTypeCircle: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeCircle> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeCircle &
-      5; // 5
-    static +msoAnimFilterEffectTypeDiamond: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeDiamond> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeDiamond &
-      6; // 6
-    static +msoAnimFilterEffectTypeDissolve: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeDissolve> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeDissolve &
-      7; // 7
-    static +msoAnimFilterEffectTypeFade: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeFade> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeFade &
-      8; // 8
-    static +msoAnimFilterEffectTypeImage: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeImage> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeImage &
-      9; // 9
-    static +msoAnimFilterEffectTypeNone: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeNone> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeNone &
-      0; // 0
-    static +msoAnimFilterEffectTypePixelate: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypePixelate> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypePixelate &
-      10; // 10
-    static +msoAnimFilterEffectTypePlus: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypePlus> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypePlus &
-      11; // 11
-    static +msoAnimFilterEffectTypeRandomBar: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeRandomBar> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeRandomBar &
-      12; // 12
-    static +msoAnimFilterEffectTypeSlide: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeSlide> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeSlide &
-      13; // 13
-    static +msoAnimFilterEffectTypeStretch: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeStretch> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeStretch &
-      14; // 14
-    static +msoAnimFilterEffectTypeStrips: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeStrips> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeStrips &
-      15; // 15
-    static +msoAnimFilterEffectTypeWedge: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWedge> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWedge &
-      16; // 16
-    static +msoAnimFilterEffectTypeWheel: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWheel> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWheel &
-      17; // 17
-    static +msoAnimFilterEffectTypeWipe: Class<PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWipe> &
-      PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWipe &
-      18; // 18
-  }
-
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBarn
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBlinds
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeBox
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeCheckerboard
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeCircle
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeDiamond
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeDissolve
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeFade
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeImage
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeNone
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypePixelate
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypePlus
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeRandomBar
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeSlide
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeStretch
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeStrips
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWedge
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWheel
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-  declare class PowerPoint$MsoAnimFilterEffectType__msoAnimFilterEffectTypeWipe
-    mixins PowerPoint$MsoAnimFilterEffectType {}
-
-  declare class PowerPoint$MsoAnimProperty {
-    constructor(...args: empty): mixed;
-    static +msoAnimColor: Class<PowerPoint$MsoAnimProperty__msoAnimColor> &
-      PowerPoint$MsoAnimProperty__msoAnimColor &
-      7; // 7
-    static +msoAnimHeight: Class<PowerPoint$MsoAnimProperty__msoAnimHeight> &
-      PowerPoint$MsoAnimProperty__msoAnimHeight &
-      4; // 4
-    static +msoAnimNone: Class<PowerPoint$MsoAnimProperty__msoAnimNone> &
-      PowerPoint$MsoAnimProperty__msoAnimNone &
-      0; // 0
-    static +msoAnimOpacity: Class<PowerPoint$MsoAnimProperty__msoAnimOpacity> &
-      PowerPoint$MsoAnimProperty__msoAnimOpacity &
-      5; // 5
-    static +msoAnimRotation: Class<PowerPoint$MsoAnimProperty__msoAnimRotation> &
-      PowerPoint$MsoAnimProperty__msoAnimRotation &
-      6; // 6
-    static +msoAnimShapeFillBackColor: Class<PowerPoint$MsoAnimProperty__msoAnimShapeFillBackColor> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeFillBackColor &
-      1007; // 1007
-    static +msoAnimShapeFillColor: Class<PowerPoint$MsoAnimProperty__msoAnimShapeFillColor> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeFillColor &
-      1005; // 1005
-    static +msoAnimShapeFillOn: Class<PowerPoint$MsoAnimProperty__msoAnimShapeFillOn> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeFillOn &
-      1004; // 1004
-    static +msoAnimShapeFillOpacity: Class<PowerPoint$MsoAnimProperty__msoAnimShapeFillOpacity> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeFillOpacity &
-      1006; // 1006
-    static +msoAnimShapeLineColor: Class<PowerPoint$MsoAnimProperty__msoAnimShapeLineColor> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeLineColor &
-      1009; // 1009
-    static +msoAnimShapeLineOn: Class<PowerPoint$MsoAnimProperty__msoAnimShapeLineOn> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeLineOn &
-      1008; // 1008
-    static +msoAnimShapePictureBrightness: Class<PowerPoint$MsoAnimProperty__msoAnimShapePictureBrightness> &
-      PowerPoint$MsoAnimProperty__msoAnimShapePictureBrightness &
-      1001; // 1001
-    static +msoAnimShapePictureContrast: Class<PowerPoint$MsoAnimProperty__msoAnimShapePictureContrast> &
-      PowerPoint$MsoAnimProperty__msoAnimShapePictureContrast &
-      1000; // 1000
-    static +msoAnimShapePictureGamma: Class<PowerPoint$MsoAnimProperty__msoAnimShapePictureGamma> &
-      PowerPoint$MsoAnimProperty__msoAnimShapePictureGamma &
-      1002; // 1002
-    static +msoAnimShapePictureGrayscale: Class<PowerPoint$MsoAnimProperty__msoAnimShapePictureGrayscale> &
-      PowerPoint$MsoAnimProperty__msoAnimShapePictureGrayscale &
-      1003; // 1003
-    static +msoAnimShapeShadowColor: Class<PowerPoint$MsoAnimProperty__msoAnimShapeShadowColor> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeShadowColor &
-      1012; // 1012
-    static +msoAnimShapeShadowOffsetX: Class<PowerPoint$MsoAnimProperty__msoAnimShapeShadowOffsetX> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeShadowOffsetX &
-      1014; // 1014
-    static +msoAnimShapeShadowOffsetY: Class<PowerPoint$MsoAnimProperty__msoAnimShapeShadowOffsetY> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeShadowOffsetY &
-      1015; // 1015
-    static +msoAnimShapeShadowOn: Class<PowerPoint$MsoAnimProperty__msoAnimShapeShadowOn> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeShadowOn &
-      1010; // 1010
-    static +msoAnimShapeShadowOpacity: Class<PowerPoint$MsoAnimProperty__msoAnimShapeShadowOpacity> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeShadowOpacity &
-      1013; // 1013
-    static +msoAnimShapeShadowType: Class<PowerPoint$MsoAnimProperty__msoAnimShapeShadowType> &
-      PowerPoint$MsoAnimProperty__msoAnimShapeShadowType &
-      1011; // 1011
-    static +msoAnimTextBulletCharacter: Class<PowerPoint$MsoAnimProperty__msoAnimTextBulletCharacter> &
-      PowerPoint$MsoAnimProperty__msoAnimTextBulletCharacter &
-      111; // 111
-    static +msoAnimTextBulletColor: Class<PowerPoint$MsoAnimProperty__msoAnimTextBulletColor> &
-      PowerPoint$MsoAnimProperty__msoAnimTextBulletColor &
-      114; // 114
-    static +msoAnimTextBulletFontName: Class<PowerPoint$MsoAnimProperty__msoAnimTextBulletFontName> &
-      PowerPoint$MsoAnimProperty__msoAnimTextBulletFontName &
-      112; // 112
-    static +msoAnimTextBulletNumber: Class<PowerPoint$MsoAnimProperty__msoAnimTextBulletNumber> &
-      PowerPoint$MsoAnimProperty__msoAnimTextBulletNumber &
-      113; // 113
-    static +msoAnimTextBulletRelativeSize: Class<PowerPoint$MsoAnimProperty__msoAnimTextBulletRelativeSize> &
-      PowerPoint$MsoAnimProperty__msoAnimTextBulletRelativeSize &
-      115; // 115
-    static +msoAnimTextBulletStyle: Class<PowerPoint$MsoAnimProperty__msoAnimTextBulletStyle> &
-      PowerPoint$MsoAnimProperty__msoAnimTextBulletStyle &
-      116; // 116
-    static +msoAnimTextBulletType: Class<PowerPoint$MsoAnimProperty__msoAnimTextBulletType> &
-      PowerPoint$MsoAnimProperty__msoAnimTextBulletType &
-      117; // 117
-    static +msoAnimTextFontBold: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontBold> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontBold &
-      100; // 100
-    static +msoAnimTextFontColor: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontColor> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontColor &
-      101; // 101
-    static +msoAnimTextFontEmboss: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontEmboss> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontEmboss &
-      102; // 102
-    static +msoAnimTextFontItalic: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontItalic> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontItalic &
-      103; // 103
-    static +msoAnimTextFontName: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontName> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontName &
-      104; // 104
-    static +msoAnimTextFontShadow: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontShadow> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontShadow &
-      105; // 105
-    static +msoAnimTextFontSize: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontSize> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontSize &
-      106; // 106
-    static +msoAnimTextFontStrikeThrough: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontStrikeThrough> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontStrikeThrough &
-      110; // 110
-    static +msoAnimTextFontSubscript: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontSubscript> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontSubscript &
-      107; // 107
-    static +msoAnimTextFontSuperscript: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontSuperscript> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontSuperscript &
-      108; // 108
-    static +msoAnimTextFontUnderline: Class<PowerPoint$MsoAnimProperty__msoAnimTextFontUnderline> &
-      PowerPoint$MsoAnimProperty__msoAnimTextFontUnderline &
-      109; // 109
-    static +msoAnimVisibility: Class<PowerPoint$MsoAnimProperty__msoAnimVisibility> &
-      PowerPoint$MsoAnimProperty__msoAnimVisibility &
-      8; // 8
-    static +msoAnimWidth: Class<PowerPoint$MsoAnimProperty__msoAnimWidth> &
-      PowerPoint$MsoAnimProperty__msoAnimWidth &
-      3; // 3
-    static +msoAnimX: Class<PowerPoint$MsoAnimProperty__msoAnimX> &
-      PowerPoint$MsoAnimProperty__msoAnimX &
-      1; // 1
-    static +msoAnimY: Class<PowerPoint$MsoAnimProperty__msoAnimY> &
-      PowerPoint$MsoAnimProperty__msoAnimY &
-      2; // 2
-  }
-
-  declare class PowerPoint$MsoAnimProperty__msoAnimColor
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimHeight
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimNone
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimOpacity
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimRotation
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeFillBackColor
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeFillColor
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeFillOn
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeFillOpacity
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeLineColor
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeLineOn
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapePictureBrightness
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapePictureContrast
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapePictureGamma
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapePictureGrayscale
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeShadowColor
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeShadowOffsetX
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeShadowOffsetY
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeShadowOn
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeShadowOpacity
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimShapeShadowType
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextBulletCharacter
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextBulletColor
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextBulletFontName
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextBulletNumber
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextBulletRelativeSize
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextBulletStyle
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextBulletType
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontBold
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontColor
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontEmboss
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontItalic
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontName
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontShadow
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontSize
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontStrikeThrough
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontSubscript
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontSuperscript
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimTextFontUnderline
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimVisibility
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimWidth
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimX
-    mixins PowerPoint$MsoAnimProperty {}
-  declare class PowerPoint$MsoAnimProperty__msoAnimY
-    mixins PowerPoint$MsoAnimProperty {}
-
-  declare class PowerPoint$MsoAnimTextUnitEffect {
-    constructor(...args: empty): mixed;
-    static +msoAnimTextUnitEffectByCharacter: Class<PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByCharacter> &
-      PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByCharacter &
-      1; // 1
-    static +msoAnimTextUnitEffectByParagraph: Class<PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByParagraph> &
-      PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByParagraph &
-      0; // 0
-    static +msoAnimTextUnitEffectByWord: Class<PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByWord> &
-      PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByWord &
-      2; // 2
-    static +msoAnimTextUnitEffectMixed: Class<PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectMixed> &
-      PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectMixed &
-      -1; // -1
-  }
-
-  declare class PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByCharacter
-    mixins PowerPoint$MsoAnimTextUnitEffect {}
-  declare class PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByParagraph
-    mixins PowerPoint$MsoAnimTextUnitEffect {}
-  declare class PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectByWord
-    mixins PowerPoint$MsoAnimTextUnitEffect {}
-  declare class PowerPoint$MsoAnimTextUnitEffect__msoAnimTextUnitEffectMixed
-    mixins PowerPoint$MsoAnimTextUnitEffect {}
-
-  declare class PowerPoint$MsoAnimTriggerType {
-    constructor(...args: empty): mixed;
-    static +msoAnimTriggerAfterPrevious: Class<PowerPoint$MsoAnimTriggerType__msoAnimTriggerAfterPrevious> &
-      PowerPoint$MsoAnimTriggerType__msoAnimTriggerAfterPrevious &
-      3; // 3
-    static +msoAnimTriggerMixed: Class<PowerPoint$MsoAnimTriggerType__msoAnimTriggerMixed> &
-      PowerPoint$MsoAnimTriggerType__msoAnimTriggerMixed &
-      -1; // -1
-    static +msoAnimTriggerNone: Class<PowerPoint$MsoAnimTriggerType__msoAnimTriggerNone> &
-      PowerPoint$MsoAnimTriggerType__msoAnimTriggerNone &
-      0; // 0
-    static +msoAnimTriggerOnMediaBookmark: Class<PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnMediaBookmark> &
-      PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnMediaBookmark &
-      5; // 5
-    static +msoAnimTriggerOnPageClick: Class<PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnPageClick> &
-      PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnPageClick &
-      1; // 1
-    static +msoAnimTriggerOnShapeClick: Class<PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnShapeClick> &
-      PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnShapeClick &
-      4; // 4
-    static +msoAnimTriggerWithPrevious: Class<PowerPoint$MsoAnimTriggerType__msoAnimTriggerWithPrevious> &
-      PowerPoint$MsoAnimTriggerType__msoAnimTriggerWithPrevious &
-      2; // 2
-  }
-
-  declare class PowerPoint$MsoAnimTriggerType__msoAnimTriggerAfterPrevious
-    mixins PowerPoint$MsoAnimTriggerType {}
-  declare class PowerPoint$MsoAnimTriggerType__msoAnimTriggerMixed
-    mixins PowerPoint$MsoAnimTriggerType {}
-  declare class PowerPoint$MsoAnimTriggerType__msoAnimTriggerNone
-    mixins PowerPoint$MsoAnimTriggerType {}
-  declare class PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnMediaBookmark
-    mixins PowerPoint$MsoAnimTriggerType {}
-  declare class PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnPageClick
-    mixins PowerPoint$MsoAnimTriggerType {}
-  declare class PowerPoint$MsoAnimTriggerType__msoAnimTriggerOnShapeClick
-    mixins PowerPoint$MsoAnimTriggerType {}
-  declare class PowerPoint$MsoAnimTriggerType__msoAnimTriggerWithPrevious
-    mixins PowerPoint$MsoAnimTriggerType {}
-
-  declare class PowerPoint$MsoAnimType {
-    constructor(...args: empty): mixed;
-    static +msoAnimTypeColor: Class<PowerPoint$MsoAnimType__msoAnimTypeColor> &
-      PowerPoint$MsoAnimType__msoAnimTypeColor &
-      2; // 2
-    static +msoAnimTypeCommand: Class<PowerPoint$MsoAnimType__msoAnimTypeCommand> &
-      PowerPoint$MsoAnimType__msoAnimTypeCommand &
-      6; // 6
-    static +msoAnimTypeFilter: Class<PowerPoint$MsoAnimType__msoAnimTypeFilter> &
-      PowerPoint$MsoAnimType__msoAnimTypeFilter &
-      7; // 7
-    static +msoAnimTypeMixed: Class<PowerPoint$MsoAnimType__msoAnimTypeMixed> &
-      PowerPoint$MsoAnimType__msoAnimTypeMixed &
-      -2; // -2
-    static +msoAnimTypeMotion: Class<PowerPoint$MsoAnimType__msoAnimTypeMotion> &
-      PowerPoint$MsoAnimType__msoAnimTypeMotion &
-      1; // 1
-    static +msoAnimTypeNone: Class<PowerPoint$MsoAnimType__msoAnimTypeNone> &
-      PowerPoint$MsoAnimType__msoAnimTypeNone &
-      0; // 0
-    static +msoAnimTypeProperty: Class<PowerPoint$MsoAnimType__msoAnimTypeProperty> &
-      PowerPoint$MsoAnimType__msoAnimTypeProperty &
-      5; // 5
-    static +msoAnimTypeRotation: Class<PowerPoint$MsoAnimType__msoAnimTypeRotation> &
-      PowerPoint$MsoAnimType__msoAnimTypeRotation &
-      4; // 4
-    static +msoAnimTypeScale: Class<PowerPoint$MsoAnimType__msoAnimTypeScale> &
-      PowerPoint$MsoAnimType__msoAnimTypeScale &
-      3; // 3
-    static +msoAnimTypeSet: Class<PowerPoint$MsoAnimType__msoAnimTypeSet> &
-      PowerPoint$MsoAnimType__msoAnimTypeSet &
-      8; // 8
-  }
-
-  declare class PowerPoint$MsoAnimType__msoAnimTypeColor
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeCommand
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeFilter
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeMixed
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeMotion
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeNone
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeProperty
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeRotation
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeScale
-    mixins PowerPoint$MsoAnimType {}
-  declare class PowerPoint$MsoAnimType__msoAnimTypeSet
-    mixins PowerPoint$MsoAnimType {}
-
-  declare class PowerPoint$MsoClickState {
-    constructor(...args: empty): mixed;
-    static +msoClickStateAfterAllAnimations: Class<PowerPoint$MsoClickState__msoClickStateAfterAllAnimations> &
-      PowerPoint$MsoClickState__msoClickStateAfterAllAnimations &
-      -2; // -2
-    static +msoClickStateBeforeAutomaticAnimations: Class<PowerPoint$MsoClickState__msoClickStateBeforeAutomaticAnimations> &
-      PowerPoint$MsoClickState__msoClickStateBeforeAutomaticAnimations &
-      -1; // -1
-  }
-
-  declare class PowerPoint$MsoClickState__msoClickStateAfterAllAnimations
-    mixins PowerPoint$MsoClickState {}
-  declare class PowerPoint$MsoClickState__msoClickStateBeforeAutomaticAnimations
-    mixins PowerPoint$MsoClickState {}
-
-  declare class PowerPoint$PpActionType {
-    constructor(...args: empty): mixed;
-    static +ppActionEndShow: Class<PowerPoint$PpActionType__ppActionEndShow> &
-      PowerPoint$PpActionType__ppActionEndShow &
-      6; // 6
-    static +ppActionFirstSlide: Class<PowerPoint$PpActionType__ppActionFirstSlide> &
-      PowerPoint$PpActionType__ppActionFirstSlide &
-      3; // 3
-    static +ppActionHyperlink: Class<PowerPoint$PpActionType__ppActionHyperlink> &
-      PowerPoint$PpActionType__ppActionHyperlink &
-      7; // 7
-    static +ppActionLastSlide: Class<PowerPoint$PpActionType__ppActionLastSlide> &
-      PowerPoint$PpActionType__ppActionLastSlide &
-      4; // 4
-    static +ppActionLastSlideViewed: Class<PowerPoint$PpActionType__ppActionLastSlideViewed> &
-      PowerPoint$PpActionType__ppActionLastSlideViewed &
-      5; // 5
-    static +ppActionMixed: Class<PowerPoint$PpActionType__ppActionMixed> &
-      PowerPoint$PpActionType__ppActionMixed &
-      -2; // -2
-    static +ppActionNamedSlideShow: Class<PowerPoint$PpActionType__ppActionNamedSlideShow> &
-      PowerPoint$PpActionType__ppActionNamedSlideShow &
-      10; // 10
-    static +ppActionNextSlide: Class<PowerPoint$PpActionType__ppActionNextSlide> &
-      PowerPoint$PpActionType__ppActionNextSlide &
-      1; // 1
-    static +ppActionNone: Class<PowerPoint$PpActionType__ppActionNone> &
-      PowerPoint$PpActionType__ppActionNone &
-      0; // 0
-    static +ppActionOLEVerb: Class<PowerPoint$PpActionType__ppActionOLEVerb> &
-      PowerPoint$PpActionType__ppActionOLEVerb &
-      11; // 11
-    static +ppActionPlay: Class<PowerPoint$PpActionType__ppActionPlay> &
-      PowerPoint$PpActionType__ppActionPlay &
-      12; // 12
-    static +ppActionPreviousSlide: Class<PowerPoint$PpActionType__ppActionPreviousSlide> &
-      PowerPoint$PpActionType__ppActionPreviousSlide &
-      2; // 2
-    static +ppActionRunMacro: Class<PowerPoint$PpActionType__ppActionRunMacro> &
-      PowerPoint$PpActionType__ppActionRunMacro &
-      8; // 8
-    static +ppActionRunProgram: Class<PowerPoint$PpActionType__ppActionRunProgram> &
-      PowerPoint$PpActionType__ppActionRunProgram &
-      9; // 9
-  }
-
-  declare class PowerPoint$PpActionType__ppActionEndShow
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionFirstSlide
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionHyperlink
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionLastSlide
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionLastSlideViewed
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionMixed
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionNamedSlideShow
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionNextSlide
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionNone
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionOLEVerb
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionPlay
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionPreviousSlide
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionRunMacro
-    mixins PowerPoint$PpActionType {}
-  declare class PowerPoint$PpActionType__ppActionRunProgram
-    mixins PowerPoint$PpActionType {}
-
-  declare class PowerPoint$PpAdvanceMode {
-    constructor(...args: empty): mixed;
-    static +ppAdvanceModeMixed: Class<PowerPoint$PpAdvanceMode__ppAdvanceModeMixed> &
-      PowerPoint$PpAdvanceMode__ppAdvanceModeMixed &
-      -2; // -2
-    static +ppAdvanceOnClick: Class<PowerPoint$PpAdvanceMode__ppAdvanceOnClick> &
-      PowerPoint$PpAdvanceMode__ppAdvanceOnClick &
-      1; // 1
-    static +ppAdvanceOnTime: Class<PowerPoint$PpAdvanceMode__ppAdvanceOnTime> &
-      PowerPoint$PpAdvanceMode__ppAdvanceOnTime &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpAdvanceMode__ppAdvanceModeMixed
-    mixins PowerPoint$PpAdvanceMode {}
-  declare class PowerPoint$PpAdvanceMode__ppAdvanceOnClick
-    mixins PowerPoint$PpAdvanceMode {}
-  declare class PowerPoint$PpAdvanceMode__ppAdvanceOnTime
-    mixins PowerPoint$PpAdvanceMode {}
-
-  declare class PowerPoint$PpAfterEffect {
-    constructor(...args: empty): mixed;
-    static +ppAfterEffectDim: Class<PowerPoint$PpAfterEffect__ppAfterEffectDim> &
-      PowerPoint$PpAfterEffect__ppAfterEffectDim &
-      2; // 2
-    static +ppAfterEffectHide: Class<PowerPoint$PpAfterEffect__ppAfterEffectHide> &
-      PowerPoint$PpAfterEffect__ppAfterEffectHide &
-      1; // 1
-    static +ppAfterEffectHideOnClick: Class<PowerPoint$PpAfterEffect__ppAfterEffectHideOnClick> &
-      PowerPoint$PpAfterEffect__ppAfterEffectHideOnClick &
-      3; // 3
-    static +ppAfterEffectMixed: Class<PowerPoint$PpAfterEffect__ppAfterEffectMixed> &
-      PowerPoint$PpAfterEffect__ppAfterEffectMixed &
-      -2; // -2
-    static +ppAfterEffectNothing: Class<PowerPoint$PpAfterEffect__ppAfterEffectNothing> &
-      PowerPoint$PpAfterEffect__ppAfterEffectNothing &
-      0; // 0
-  }
-
-  declare class PowerPoint$PpAfterEffect__ppAfterEffectDim
-    mixins PowerPoint$PpAfterEffect {}
-  declare class PowerPoint$PpAfterEffect__ppAfterEffectHide
-    mixins PowerPoint$PpAfterEffect {}
-  declare class PowerPoint$PpAfterEffect__ppAfterEffectHideOnClick
-    mixins PowerPoint$PpAfterEffect {}
-  declare class PowerPoint$PpAfterEffect__ppAfterEffectMixed
-    mixins PowerPoint$PpAfterEffect {}
-  declare class PowerPoint$PpAfterEffect__ppAfterEffectNothing
-    mixins PowerPoint$PpAfterEffect {}
-
-  declare class PowerPoint$PpAlertLevel {
-    constructor(...args: empty): mixed;
-    static +ppAlertsAll: Class<PowerPoint$PpAlertLevel__ppAlertsAll> &
-      PowerPoint$PpAlertLevel__ppAlertsAll &
-      2; // 2
-    static +ppAlertsNone: Class<PowerPoint$PpAlertLevel__ppAlertsNone> &
-      PowerPoint$PpAlertLevel__ppAlertsNone &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpAlertLevel__ppAlertsAll
-    mixins PowerPoint$PpAlertLevel {}
-  declare class PowerPoint$PpAlertLevel__ppAlertsNone
-    mixins PowerPoint$PpAlertLevel {}
-
-  declare class PowerPoint$PpArrangeStyle {
-    constructor(...args: empty): mixed;
-    static +ppArrangeCascade: Class<PowerPoint$PpArrangeStyle__ppArrangeCascade> &
-      PowerPoint$PpArrangeStyle__ppArrangeCascade &
-      2; // 2
-    static +ppArrangeTiled: Class<PowerPoint$PpArrangeStyle__ppArrangeTiled> &
-      PowerPoint$PpArrangeStyle__ppArrangeTiled &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpArrangeStyle__ppArrangeCascade
-    mixins PowerPoint$PpArrangeStyle {}
-  declare class PowerPoint$PpArrangeStyle__ppArrangeTiled
-    mixins PowerPoint$PpArrangeStyle {}
-
-  declare class PowerPoint$PpAutoSize {
-    constructor(...args: empty): mixed;
-    static +ppAutoSizeMixed: Class<PowerPoint$PpAutoSize__ppAutoSizeMixed> &
-      PowerPoint$PpAutoSize__ppAutoSizeMixed &
-      -2; // -2
-    static +ppAutoSizeNone: Class<PowerPoint$PpAutoSize__ppAutoSizeNone> &
-      PowerPoint$PpAutoSize__ppAutoSizeNone &
-      0; // 0
-    static +ppAutoSizeShapeToFitText: Class<PowerPoint$PpAutoSize__ppAutoSizeShapeToFitText> &
-      PowerPoint$PpAutoSize__ppAutoSizeShapeToFitText &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpAutoSize__ppAutoSizeMixed
-    mixins PowerPoint$PpAutoSize {}
-  declare class PowerPoint$PpAutoSize__ppAutoSizeNone
-    mixins PowerPoint$PpAutoSize {}
-  declare class PowerPoint$PpAutoSize__ppAutoSizeShapeToFitText
-    mixins PowerPoint$PpAutoSize {}
-
-  declare class PowerPoint$PpBaselineAlignment {
-    constructor(...args: empty): mixed;
-    static +ppBaselineAlignAuto: Class<PowerPoint$PpBaselineAlignment__ppBaselineAlignAuto> &
-      PowerPoint$PpBaselineAlignment__ppBaselineAlignAuto &
-      5; // 5
-    static +ppBaselineAlignBaseline: Class<PowerPoint$PpBaselineAlignment__ppBaselineAlignBaseline> &
-      PowerPoint$PpBaselineAlignment__ppBaselineAlignBaseline &
-      1; // 1
-    static +ppBaselineAlignCenter: Class<PowerPoint$PpBaselineAlignment__ppBaselineAlignCenter> &
-      PowerPoint$PpBaselineAlignment__ppBaselineAlignCenter &
-      3; // 3
-    static +ppBaselineAlignFarEast50: Class<PowerPoint$PpBaselineAlignment__ppBaselineAlignFarEast50> &
-      PowerPoint$PpBaselineAlignment__ppBaselineAlignFarEast50 &
-      4; // 4
-    static +ppBaselineAlignMixed: Class<PowerPoint$PpBaselineAlignment__ppBaselineAlignMixed> &
-      PowerPoint$PpBaselineAlignment__ppBaselineAlignMixed &
-      -2; // -2
-    static +ppBaselineAlignTop: Class<PowerPoint$PpBaselineAlignment__ppBaselineAlignTop> &
-      PowerPoint$PpBaselineAlignment__ppBaselineAlignTop &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpBaselineAlignment__ppBaselineAlignAuto
-    mixins PowerPoint$PpBaselineAlignment {}
-  declare class PowerPoint$PpBaselineAlignment__ppBaselineAlignBaseline
-    mixins PowerPoint$PpBaselineAlignment {}
-  declare class PowerPoint$PpBaselineAlignment__ppBaselineAlignCenter
-    mixins PowerPoint$PpBaselineAlignment {}
-  declare class PowerPoint$PpBaselineAlignment__ppBaselineAlignFarEast50
-    mixins PowerPoint$PpBaselineAlignment {}
-  declare class PowerPoint$PpBaselineAlignment__ppBaselineAlignMixed
-    mixins PowerPoint$PpBaselineAlignment {}
-  declare class PowerPoint$PpBaselineAlignment__ppBaselineAlignTop
-    mixins PowerPoint$PpBaselineAlignment {}
-
-  declare class PowerPoint$PpBorderType {
-    constructor(...args: empty): mixed;
-    static +ppBorderBottom: Class<PowerPoint$PpBorderType__ppBorderBottom> &
-      PowerPoint$PpBorderType__ppBorderBottom &
-      3; // 3
-    static +ppBorderDiagonalDown: Class<PowerPoint$PpBorderType__ppBorderDiagonalDown> &
-      PowerPoint$PpBorderType__ppBorderDiagonalDown &
-      5; // 5
-    static +ppBorderDiagonalUp: Class<PowerPoint$PpBorderType__ppBorderDiagonalUp> &
-      PowerPoint$PpBorderType__ppBorderDiagonalUp &
-      6; // 6
-    static +ppBorderLeft: Class<PowerPoint$PpBorderType__ppBorderLeft> &
-      PowerPoint$PpBorderType__ppBorderLeft &
-      2; // 2
-    static +ppBorderRight: Class<PowerPoint$PpBorderType__ppBorderRight> &
-      PowerPoint$PpBorderType__ppBorderRight &
-      4; // 4
-    static +ppBorderTop: Class<PowerPoint$PpBorderType__ppBorderTop> &
-      PowerPoint$PpBorderType__ppBorderTop &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpBorderType__ppBorderBottom
-    mixins PowerPoint$PpBorderType {}
-  declare class PowerPoint$PpBorderType__ppBorderDiagonalDown
-    mixins PowerPoint$PpBorderType {}
-  declare class PowerPoint$PpBorderType__ppBorderDiagonalUp
-    mixins PowerPoint$PpBorderType {}
-  declare class PowerPoint$PpBorderType__ppBorderLeft
-    mixins PowerPoint$PpBorderType {}
-  declare class PowerPoint$PpBorderType__ppBorderRight
-    mixins PowerPoint$PpBorderType {}
-  declare class PowerPoint$PpBorderType__ppBorderTop
-    mixins PowerPoint$PpBorderType {}
-
-  declare class PowerPoint$PpBulletType {
-    constructor(...args: empty): mixed;
-    static +ppBulletMixed: Class<PowerPoint$PpBulletType__ppBulletMixed> &
-      PowerPoint$PpBulletType__ppBulletMixed &
-      -2; // -2
-    static +ppBulletNone: Class<PowerPoint$PpBulletType__ppBulletNone> &
-      PowerPoint$PpBulletType__ppBulletNone &
-      0; // 0
-    static +ppBulletNumbered: Class<PowerPoint$PpBulletType__ppBulletNumbered> &
-      PowerPoint$PpBulletType__ppBulletNumbered &
-      2; // 2
-    static +ppBulletPicture: Class<PowerPoint$PpBulletType__ppBulletPicture> &
-      PowerPoint$PpBulletType__ppBulletPicture &
-      3; // 3
-    static +ppBulletUnnumbered: Class<PowerPoint$PpBulletType__ppBulletUnnumbered> &
-      PowerPoint$PpBulletType__ppBulletUnnumbered &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpBulletType__ppBulletMixed
-    mixins PowerPoint$PpBulletType {}
-  declare class PowerPoint$PpBulletType__ppBulletNone
-    mixins PowerPoint$PpBulletType {}
-  declare class PowerPoint$PpBulletType__ppBulletNumbered
-    mixins PowerPoint$PpBulletType {}
-  declare class PowerPoint$PpBulletType__ppBulletPicture
-    mixins PowerPoint$PpBulletType {}
-  declare class PowerPoint$PpBulletType__ppBulletUnnumbered
-    mixins PowerPoint$PpBulletType {}
-
-  declare class PowerPoint$PpChangeCase {
-    constructor(...args: empty): mixed;
-    static +ppCaseLower: Class<PowerPoint$PpChangeCase__ppCaseLower> &
-      PowerPoint$PpChangeCase__ppCaseLower &
-      2; // 2
-    static +ppCaseSentence: Class<PowerPoint$PpChangeCase__ppCaseSentence> &
-      PowerPoint$PpChangeCase__ppCaseSentence &
-      1; // 1
-    static +ppCaseTitle: Class<PowerPoint$PpChangeCase__ppCaseTitle> &
-      PowerPoint$PpChangeCase__ppCaseTitle &
-      4; // 4
-    static +ppCaseToggle: Class<PowerPoint$PpChangeCase__ppCaseToggle> &
-      PowerPoint$PpChangeCase__ppCaseToggle &
-      5; // 5
-    static +ppCaseUpper: Class<PowerPoint$PpChangeCase__ppCaseUpper> &
-      PowerPoint$PpChangeCase__ppCaseUpper &
-      3; // 3
-  }
-
-  declare class PowerPoint$PpChangeCase__ppCaseLower
-    mixins PowerPoint$PpChangeCase {}
-  declare class PowerPoint$PpChangeCase__ppCaseSentence
-    mixins PowerPoint$PpChangeCase {}
-  declare class PowerPoint$PpChangeCase__ppCaseTitle
-    mixins PowerPoint$PpChangeCase {}
-  declare class PowerPoint$PpChangeCase__ppCaseToggle
-    mixins PowerPoint$PpChangeCase {}
-  declare class PowerPoint$PpChangeCase__ppCaseUpper
-    mixins PowerPoint$PpChangeCase {}
-
-  declare class PowerPoint$PpChartUnitEffect {
-    constructor(...args: empty): mixed;
-    static +ppAnimateByCategory: Class<PowerPoint$PpChartUnitEffect__ppAnimateByCategory> &
-      PowerPoint$PpChartUnitEffect__ppAnimateByCategory &
-      2; // 2
-    static +ppAnimateByCategoryElements: Class<PowerPoint$PpChartUnitEffect__ppAnimateByCategoryElements> &
-      PowerPoint$PpChartUnitEffect__ppAnimateByCategoryElements &
-      4; // 4
-    static +ppAnimateBySeries: Class<PowerPoint$PpChartUnitEffect__ppAnimateBySeries> &
-      PowerPoint$PpChartUnitEffect__ppAnimateBySeries &
-      1; // 1
-    static +ppAnimateBySeriesElements: Class<PowerPoint$PpChartUnitEffect__ppAnimateBySeriesElements> &
-      PowerPoint$PpChartUnitEffect__ppAnimateBySeriesElements &
-      3; // 3
-    static +ppAnimateChartAllAtOnce: Class<PowerPoint$PpChartUnitEffect__ppAnimateChartAllAtOnce> &
-      PowerPoint$PpChartUnitEffect__ppAnimateChartAllAtOnce &
-      5; // 5
-    static +ppAnimateChartMixed: Class<PowerPoint$PpChartUnitEffect__ppAnimateChartMixed> &
-      PowerPoint$PpChartUnitEffect__ppAnimateChartMixed &
-      -2; // -2
-  }
-
-  declare class PowerPoint$PpChartUnitEffect__ppAnimateByCategory
-    mixins PowerPoint$PpChartUnitEffect {}
-  declare class PowerPoint$PpChartUnitEffect__ppAnimateByCategoryElements
-    mixins PowerPoint$PpChartUnitEffect {}
-  declare class PowerPoint$PpChartUnitEffect__ppAnimateBySeries
-    mixins PowerPoint$PpChartUnitEffect {}
-  declare class PowerPoint$PpChartUnitEffect__ppAnimateBySeriesElements
-    mixins PowerPoint$PpChartUnitEffect {}
-  declare class PowerPoint$PpChartUnitEffect__ppAnimateChartAllAtOnce
-    mixins PowerPoint$PpChartUnitEffect {}
-  declare class PowerPoint$PpChartUnitEffect__ppAnimateChartMixed
-    mixins PowerPoint$PpChartUnitEffect {}
-
-  declare class PowerPoint$PpCheckInVersionType {
-    constructor(...args: empty): mixed;
-    static +ppCheckInMajorVersion: Class<PowerPoint$PpCheckInVersionType__ppCheckInMajorVersion> &
-      PowerPoint$PpCheckInVersionType__ppCheckInMajorVersion &
-      1; // 1
-    static +ppCheckInMinorVersion: Class<PowerPoint$PpCheckInVersionType__ppCheckInMinorVersion> &
-      PowerPoint$PpCheckInVersionType__ppCheckInMinorVersion &
-      0; // 0
-    static +ppCheckInOverwriteVersion: Class<PowerPoint$PpCheckInVersionType__ppCheckInOverwriteVersion> &
-      PowerPoint$PpCheckInVersionType__ppCheckInOverwriteVersion &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpCheckInVersionType__ppCheckInMajorVersion
-    mixins PowerPoint$PpCheckInVersionType {}
-  declare class PowerPoint$PpCheckInVersionType__ppCheckInMinorVersion
-    mixins PowerPoint$PpCheckInVersionType {}
-  declare class PowerPoint$PpCheckInVersionType__ppCheckInOverwriteVersion
-    mixins PowerPoint$PpCheckInVersionType {}
-
-  declare class PowerPoint$PpColorSchemeIndex {
-    constructor(...args: empty): mixed;
-    static +ppAccent1: Class<PowerPoint$PpColorSchemeIndex__ppAccent1> &
-      PowerPoint$PpColorSchemeIndex__ppAccent1 &
-      6; // 6
-    static +ppAccent2: Class<PowerPoint$PpColorSchemeIndex__ppAccent2> &
-      PowerPoint$PpColorSchemeIndex__ppAccent2 &
-      7; // 7
-    static +ppAccent3: Class<PowerPoint$PpColorSchemeIndex__ppAccent3> &
-      PowerPoint$PpColorSchemeIndex__ppAccent3 &
-      8; // 8
-    static +ppBackground: Class<PowerPoint$PpColorSchemeIndex__ppBackground> &
-      PowerPoint$PpColorSchemeIndex__ppBackground &
-      1; // 1
-    static +ppFill: Class<PowerPoint$PpColorSchemeIndex__ppFill> &
-      PowerPoint$PpColorSchemeIndex__ppFill &
-      5; // 5
-    static +ppForeground: Class<PowerPoint$PpColorSchemeIndex__ppForeground> &
-      PowerPoint$PpColorSchemeIndex__ppForeground &
-      2; // 2
-    static +ppNotSchemeColor: Class<PowerPoint$PpColorSchemeIndex__ppNotSchemeColor> &
-      PowerPoint$PpColorSchemeIndex__ppNotSchemeColor &
-      0; // 0
-    static +ppSchemeColorMixed: Class<PowerPoint$PpColorSchemeIndex__ppSchemeColorMixed> &
-      PowerPoint$PpColorSchemeIndex__ppSchemeColorMixed &
-      -2; // -2
-    static +ppShadow: Class<PowerPoint$PpColorSchemeIndex__ppShadow> &
-      PowerPoint$PpColorSchemeIndex__ppShadow &
-      3; // 3
-    static +ppTitle: Class<PowerPoint$PpColorSchemeIndex__ppTitle> &
-      PowerPoint$PpColorSchemeIndex__ppTitle &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpColorSchemeIndex__ppAccent1
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppAccent2
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppAccent3
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppBackground
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppFill
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppForeground
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppNotSchemeColor
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppSchemeColorMixed
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppShadow
-    mixins PowerPoint$PpColorSchemeIndex {}
-  declare class PowerPoint$PpColorSchemeIndex__ppTitle
-    mixins PowerPoint$PpColorSchemeIndex {}
-
-  declare class PowerPoint$PpDateTimeFormat {
-    constructor(...args: empty): mixed;
-    static +ppDateTimeddddMMMMddyyyy: Class<PowerPoint$PpDateTimeFormat__ppDateTimeddddMMMMddyyyy> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeddddMMMMddyyyy &
-      2; // 2
-    static +ppDateTimedMMMMyyyy: Class<PowerPoint$PpDateTimeFormat__ppDateTimedMMMMyyyy> &
-      PowerPoint$PpDateTimeFormat__ppDateTimedMMMMyyyy &
-      3; // 3
-    static +ppDateTimedMMMyy: Class<PowerPoint$PpDateTimeFormat__ppDateTimedMMMyy> &
-      PowerPoint$PpDateTimeFormat__ppDateTimedMMMyy &
-      5; // 5
-    static +ppDateTimeFigureOut: Class<PowerPoint$PpDateTimeFormat__ppDateTimeFigureOut> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeFigureOut &
-      14; // 14
-    static +ppDateTimeFormatMixed: Class<PowerPoint$PpDateTimeFormat__ppDateTimeFormatMixed> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeFormatMixed &
-      -2; // -2
-    static +ppDateTimeHmm: Class<PowerPoint$PpDateTimeFormat__ppDateTimeHmm> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeHmm &
-      10; // 10
-    static +ppDateTimehmmAMPM: Class<PowerPoint$PpDateTimeFormat__ppDateTimehmmAMPM> &
-      PowerPoint$PpDateTimeFormat__ppDateTimehmmAMPM &
-      12; // 12
-    static +ppDateTimeHmmss: Class<PowerPoint$PpDateTimeFormat__ppDateTimeHmmss> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeHmmss &
-      11; // 11
-    static +ppDateTimehmmssAMPM: Class<PowerPoint$PpDateTimeFormat__ppDateTimehmmssAMPM> &
-      PowerPoint$PpDateTimeFormat__ppDateTimehmmssAMPM &
-      13; // 13
-    static +ppDateTimeMdyy: Class<PowerPoint$PpDateTimeFormat__ppDateTimeMdyy> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeMdyy &
-      1; // 1
-    static +ppDateTimeMMddyyHmm: Class<PowerPoint$PpDateTimeFormat__ppDateTimeMMddyyHmm> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeMMddyyHmm &
-      8; // 8
-    static +ppDateTimeMMddyyhmmAMPM: Class<PowerPoint$PpDateTimeFormat__ppDateTimeMMddyyhmmAMPM> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeMMddyyhmmAMPM &
-      9; // 9
-    static +ppDateTimeMMMMdyyyy: Class<PowerPoint$PpDateTimeFormat__ppDateTimeMMMMdyyyy> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeMMMMdyyyy &
-      4; // 4
-    static +ppDateTimeMMMMyy: Class<PowerPoint$PpDateTimeFormat__ppDateTimeMMMMyy> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeMMMMyy &
-      6; // 6
-    static +ppDateTimeMMyy: Class<PowerPoint$PpDateTimeFormat__ppDateTimeMMyy> &
-      PowerPoint$PpDateTimeFormat__ppDateTimeMMyy &
-      7; // 7
-  }
-
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeddddMMMMddyyyy
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimedMMMMyyyy
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimedMMMyy
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeFigureOut
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeFormatMixed
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeHmm
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimehmmAMPM
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeHmmss
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimehmmssAMPM
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeMdyy
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeMMddyyHmm
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeMMddyyhmmAMPM
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeMMMMdyyyy
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeMMMMyy
-    mixins PowerPoint$PpDateTimeFormat {}
-  declare class PowerPoint$PpDateTimeFormat__ppDateTimeMMyy
-    mixins PowerPoint$PpDateTimeFormat {}
-
-  declare class PowerPoint$PpDirection {
-    constructor(...args: empty): mixed;
-    static +ppDirectionLeftToRight: Class<PowerPoint$PpDirection__ppDirectionLeftToRight> &
-      PowerPoint$PpDirection__ppDirectionLeftToRight &
-      1; // 1
-    static +ppDirectionMixed: Class<PowerPoint$PpDirection__ppDirectionMixed> &
-      PowerPoint$PpDirection__ppDirectionMixed &
-      -2; // -2
-    static +ppDirectionRightToLeft: Class<PowerPoint$PpDirection__ppDirectionRightToLeft> &
-      PowerPoint$PpDirection__ppDirectionRightToLeft &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpDirection__ppDirectionLeftToRight
-    mixins PowerPoint$PpDirection {}
-  declare class PowerPoint$PpDirection__ppDirectionMixed
-    mixins PowerPoint$PpDirection {}
-  declare class PowerPoint$PpDirection__ppDirectionRightToLeft
-    mixins PowerPoint$PpDirection {}
-
-  declare class PowerPoint$PpEntryEffect {
-    constructor(...args: empty): mixed;
-    static +ppEffectAppear: Class<PowerPoint$PpEntryEffect__ppEffectAppear> &
-      PowerPoint$PpEntryEffect__ppEffectAppear &
-      3844; // 3844
-    static +ppEffectBlindsHorizontal: Class<PowerPoint$PpEntryEffect__ppEffectBlindsHorizontal> &
-      PowerPoint$PpEntryEffect__ppEffectBlindsHorizontal &
-      769; // 769
-    static +ppEffectBlindsVertical: Class<PowerPoint$PpEntryEffect__ppEffectBlindsVertical> &
-      PowerPoint$PpEntryEffect__ppEffectBlindsVertical &
-      770; // 770
-    static +ppEffectBoxDown: Class<PowerPoint$PpEntryEffect__ppEffectBoxDown> &
-      PowerPoint$PpEntryEffect__ppEffectBoxDown &
-      3925; // 3925
-    static +ppEffectBoxIn: Class<PowerPoint$PpEntryEffect__ppEffectBoxIn> &
-      PowerPoint$PpEntryEffect__ppEffectBoxIn &
-      3074; // 3074
-    static +ppEffectBoxLeft: Class<PowerPoint$PpEntryEffect__ppEffectBoxLeft> &
-      PowerPoint$PpEntryEffect__ppEffectBoxLeft &
-      3922; // 3922
-    static +ppEffectBoxOut: Class<PowerPoint$PpEntryEffect__ppEffectBoxOut> &
-      PowerPoint$PpEntryEffect__ppEffectBoxOut &
-      3073; // 3073
-    static +ppEffectBoxRight: Class<PowerPoint$PpEntryEffect__ppEffectBoxRight> &
-      PowerPoint$PpEntryEffect__ppEffectBoxRight &
-      3924; // 3924
-    static +ppEffectBoxUp: Class<PowerPoint$PpEntryEffect__ppEffectBoxUp> &
-      PowerPoint$PpEntryEffect__ppEffectBoxUp &
-      3923; // 3923
-    static +ppEffectCheckerboardAcross: Class<PowerPoint$PpEntryEffect__ppEffectCheckerboardAcross> &
-      PowerPoint$PpEntryEffect__ppEffectCheckerboardAcross &
-      1025; // 1025
-    static +ppEffectCheckerboardDown: Class<PowerPoint$PpEntryEffect__ppEffectCheckerboardDown> &
-      PowerPoint$PpEntryEffect__ppEffectCheckerboardDown &
-      1026; // 1026
-    static +ppEffectCircleOut: Class<PowerPoint$PpEntryEffect__ppEffectCircleOut> &
-      PowerPoint$PpEntryEffect__ppEffectCircleOut &
-      3845; // 3845
-    static +ppEffectCombHorizontal: Class<PowerPoint$PpEntryEffect__ppEffectCombHorizontal> &
-      PowerPoint$PpEntryEffect__ppEffectCombHorizontal &
-      3847; // 3847
-    static +ppEffectCombVertical: Class<PowerPoint$PpEntryEffect__ppEffectCombVertical> &
-      PowerPoint$PpEntryEffect__ppEffectCombVertical &
-      3848; // 3848
-    static +ppEffectConveyorLeft: Class<PowerPoint$PpEntryEffect__ppEffectConveyorLeft> &
-      PowerPoint$PpEntryEffect__ppEffectConveyorLeft &
-      3882; // 3882
-    static +ppEffectConveyorRight: Class<PowerPoint$PpEntryEffect__ppEffectConveyorRight> &
-      PowerPoint$PpEntryEffect__ppEffectConveyorRight &
-      3883; // 3883
-    static +ppEffectCoverDown: Class<PowerPoint$PpEntryEffect__ppEffectCoverDown> &
-      PowerPoint$PpEntryEffect__ppEffectCoverDown &
-      1284; // 1284
-    static +ppEffectCoverLeft: Class<PowerPoint$PpEntryEffect__ppEffectCoverLeft> &
-      PowerPoint$PpEntryEffect__ppEffectCoverLeft &
-      1281; // 1281
-    static +ppEffectCoverLeftDown: Class<PowerPoint$PpEntryEffect__ppEffectCoverLeftDown> &
-      PowerPoint$PpEntryEffect__ppEffectCoverLeftDown &
-      1287; // 1287
-    static +ppEffectCoverLeftUp: Class<PowerPoint$PpEntryEffect__ppEffectCoverLeftUp> &
-      PowerPoint$PpEntryEffect__ppEffectCoverLeftUp &
-      1285; // 1285
-    static +ppEffectCoverRight: Class<PowerPoint$PpEntryEffect__ppEffectCoverRight> &
-      PowerPoint$PpEntryEffect__ppEffectCoverRight &
-      1283; // 1283
-    static +ppEffectCoverRightDown: Class<PowerPoint$PpEntryEffect__ppEffectCoverRightDown> &
-      PowerPoint$PpEntryEffect__ppEffectCoverRightDown &
-      1288; // 1288
-    static +ppEffectCoverRightUp: Class<PowerPoint$PpEntryEffect__ppEffectCoverRightUp> &
-      PowerPoint$PpEntryEffect__ppEffectCoverRightUp &
-      1286; // 1286
-    static +ppEffectCoverUp: Class<PowerPoint$PpEntryEffect__ppEffectCoverUp> &
-      PowerPoint$PpEntryEffect__ppEffectCoverUp &
-      1282; // 1282
-    static +ppEffectCrawlFromDown: Class<PowerPoint$PpEntryEffect__ppEffectCrawlFromDown> &
-      PowerPoint$PpEntryEffect__ppEffectCrawlFromDown &
-      3344; // 3344
-    static +ppEffectCrawlFromLeft: Class<PowerPoint$PpEntryEffect__ppEffectCrawlFromLeft> &
-      PowerPoint$PpEntryEffect__ppEffectCrawlFromLeft &
-      3341; // 3341
-    static +ppEffectCrawlFromRight: Class<PowerPoint$PpEntryEffect__ppEffectCrawlFromRight> &
-      PowerPoint$PpEntryEffect__ppEffectCrawlFromRight &
-      3343; // 3343
-    static +ppEffectCrawlFromUp: Class<PowerPoint$PpEntryEffect__ppEffectCrawlFromUp> &
-      PowerPoint$PpEntryEffect__ppEffectCrawlFromUp &
-      3342; // 3342
-    static +ppEffectCubeDown: Class<PowerPoint$PpEntryEffect__ppEffectCubeDown> &
-      PowerPoint$PpEntryEffect__ppEffectCubeDown &
-      3917; // 3917
-    static +ppEffectCubeLeft: Class<PowerPoint$PpEntryEffect__ppEffectCubeLeft> &
-      PowerPoint$PpEntryEffect__ppEffectCubeLeft &
-      3914; // 3914
-    static +ppEffectCubeRight: Class<PowerPoint$PpEntryEffect__ppEffectCubeRight> &
-      PowerPoint$PpEntryEffect__ppEffectCubeRight &
-      3916; // 3916
-    static +ppEffectCubeUp: Class<PowerPoint$PpEntryEffect__ppEffectCubeUp> &
-      PowerPoint$PpEntryEffect__ppEffectCubeUp &
-      3915; // 3915
-    static +ppEffectCut: Class<PowerPoint$PpEntryEffect__ppEffectCut> &
-      PowerPoint$PpEntryEffect__ppEffectCut &
-      257; // 257
-    static +ppEffectCutThroughBlack: Class<PowerPoint$PpEntryEffect__ppEffectCutThroughBlack> &
-      PowerPoint$PpEntryEffect__ppEffectCutThroughBlack &
-      258; // 258
-    static +ppEffectDiamondOut: Class<PowerPoint$PpEntryEffect__ppEffectDiamondOut> &
-      PowerPoint$PpEntryEffect__ppEffectDiamondOut &
-      3846; // 3846
-    static +ppEffectDissolve: Class<PowerPoint$PpEntryEffect__ppEffectDissolve> &
-      PowerPoint$PpEntryEffect__ppEffectDissolve &
-      1537; // 1537
-    static +ppEffectDoorsHorizontal: Class<PowerPoint$PpEntryEffect__ppEffectDoorsHorizontal> &
-      PowerPoint$PpEntryEffect__ppEffectDoorsHorizontal &
-      3885; // 3885
-    static +ppEffectDoorsVertical: Class<PowerPoint$PpEntryEffect__ppEffectDoorsVertical> &
-      PowerPoint$PpEntryEffect__ppEffectDoorsVertical &
-      3884; // 3884
-    static +ppEffectFade: Class<PowerPoint$PpEntryEffect__ppEffectFade> &
-      PowerPoint$PpEntryEffect__ppEffectFade &
-      1793; // 1793
-    static +ppEffectFadeSmoothly: Class<PowerPoint$PpEntryEffect__ppEffectFadeSmoothly> &
-      PowerPoint$PpEntryEffect__ppEffectFadeSmoothly &
-      3849; // 3849
-    static +ppEffectFerrisWheelLeft: Class<PowerPoint$PpEntryEffect__ppEffectFerrisWheelLeft> &
-      PowerPoint$PpEntryEffect__ppEffectFerrisWheelLeft &
-      3899; // 3899
-    static +ppEffectFerrisWheelRight: Class<PowerPoint$PpEntryEffect__ppEffectFerrisWheelRight> &
-      PowerPoint$PpEntryEffect__ppEffectFerrisWheelRight &
-      3900; // 3900
-    static +ppEffectFlashbulb: Class<PowerPoint$PpEntryEffect__ppEffectFlashbulb> &
-      PowerPoint$PpEntryEffect__ppEffectFlashbulb &
-      3909; // 3909
-    static +ppEffectFlashOnceFast: Class<PowerPoint$PpEntryEffect__ppEffectFlashOnceFast> &
-      PowerPoint$PpEntryEffect__ppEffectFlashOnceFast &
-      3841; // 3841
-    static +ppEffectFlashOnceMedium: Class<PowerPoint$PpEntryEffect__ppEffectFlashOnceMedium> &
-      PowerPoint$PpEntryEffect__ppEffectFlashOnceMedium &
-      3842; // 3842
-    static +ppEffectFlashOnceSlow: Class<PowerPoint$PpEntryEffect__ppEffectFlashOnceSlow> &
-      PowerPoint$PpEntryEffect__ppEffectFlashOnceSlow &
-      3843; // 3843
-    static +ppEffectFlipDown: Class<PowerPoint$PpEntryEffect__ppEffectFlipDown> &
-      PowerPoint$PpEntryEffect__ppEffectFlipDown &
-      3908; // 3908
-    static +ppEffectFlipLeft: Class<PowerPoint$PpEntryEffect__ppEffectFlipLeft> &
-      PowerPoint$PpEntryEffect__ppEffectFlipLeft &
-      3905; // 3905
-    static +ppEffectFlipRight: Class<PowerPoint$PpEntryEffect__ppEffectFlipRight> &
-      PowerPoint$PpEntryEffect__ppEffectFlipRight &
-      3907; // 3907
-    static +ppEffectFlipUp: Class<PowerPoint$PpEntryEffect__ppEffectFlipUp> &
-      PowerPoint$PpEntryEffect__ppEffectFlipUp &
-      3906; // 3906
-    static +ppEffectFlyFromBottom: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromBottom> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromBottom &
-      3332; // 3332
-    static +ppEffectFlyFromBottomLeft: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromBottomLeft> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromBottomLeft &
-      3335; // 3335
-    static +ppEffectFlyFromBottomRight: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromBottomRight> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromBottomRight &
-      3336; // 3336
-    static +ppEffectFlyFromLeft: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromLeft> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromLeft &
-      3329; // 3329
-    static +ppEffectFlyFromRight: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromRight> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromRight &
-      3331; // 3331
-    static +ppEffectFlyFromTop: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromTop> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromTop &
-      3330; // 3330
-    static +ppEffectFlyFromTopLeft: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromTopLeft> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromTopLeft &
-      3333; // 3333
-    static +ppEffectFlyFromTopRight: Class<PowerPoint$PpEntryEffect__ppEffectFlyFromTopRight> &
-      PowerPoint$PpEntryEffect__ppEffectFlyFromTopRight &
-      3334; // 3334
-    static +ppEffectFlyThroughIn: Class<PowerPoint$PpEntryEffect__ppEffectFlyThroughIn> &
-      PowerPoint$PpEntryEffect__ppEffectFlyThroughIn &
-      3890; // 3890
-    static +ppEffectFlyThroughInBounce: Class<PowerPoint$PpEntryEffect__ppEffectFlyThroughInBounce> &
-      PowerPoint$PpEntryEffect__ppEffectFlyThroughInBounce &
-      3892; // 3892
-    static +ppEffectFlyThroughOut: Class<PowerPoint$PpEntryEffect__ppEffectFlyThroughOut> &
-      PowerPoint$PpEntryEffect__ppEffectFlyThroughOut &
-      3891; // 3891
-    static +ppEffectFlyThroughOutBounce: Class<PowerPoint$PpEntryEffect__ppEffectFlyThroughOutBounce> &
-      PowerPoint$PpEntryEffect__ppEffectFlyThroughOutBounce &
-      3893; // 3893
-    static +ppEffectGalleryLeft: Class<PowerPoint$PpEntryEffect__ppEffectGalleryLeft> &
-      PowerPoint$PpEntryEffect__ppEffectGalleryLeft &
-      3880; // 3880
-    static +ppEffectGalleryRight: Class<PowerPoint$PpEntryEffect__ppEffectGalleryRight> &
-      PowerPoint$PpEntryEffect__ppEffectGalleryRight &
-      3881; // 3881
-    static +ppEffectGlitterDiamondDown: Class<PowerPoint$PpEntryEffect__ppEffectGlitterDiamondDown> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterDiamondDown &
-      3875; // 3875
-    static +ppEffectGlitterDiamondLeft: Class<PowerPoint$PpEntryEffect__ppEffectGlitterDiamondLeft> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterDiamondLeft &
-      3872; // 3872
-    static +ppEffectGlitterDiamondRight: Class<PowerPoint$PpEntryEffect__ppEffectGlitterDiamondRight> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterDiamondRight &
-      3874; // 3874
-    static +ppEffectGlitterDiamondUp: Class<PowerPoint$PpEntryEffect__ppEffectGlitterDiamondUp> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterDiamondUp &
-      3873; // 3873
-    static +ppEffectGlitterHexagonDown: Class<PowerPoint$PpEntryEffect__ppEffectGlitterHexagonDown> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterHexagonDown &
-      3879; // 3879
-    static +ppEffectGlitterHexagonLeft: Class<PowerPoint$PpEntryEffect__ppEffectGlitterHexagonLeft> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterHexagonLeft &
-      3876; // 3876
-    static +ppEffectGlitterHexagonRight: Class<PowerPoint$PpEntryEffect__ppEffectGlitterHexagonRight> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterHexagonRight &
-      3878; // 3878
-    static +ppEffectGlitterHexagonUp: Class<PowerPoint$PpEntryEffect__ppEffectGlitterHexagonUp> &
-      PowerPoint$PpEntryEffect__ppEffectGlitterHexagonUp &
-      3877; // 3877
-    static +ppEffectHoneycomb: Class<PowerPoint$PpEntryEffect__ppEffectHoneycomb> &
-      PowerPoint$PpEntryEffect__ppEffectHoneycomb &
-      3898; // 3898
-    static +ppEffectMixed: Class<PowerPoint$PpEntryEffect__ppEffectMixed> &
-      PowerPoint$PpEntryEffect__ppEffectMixed &
-      -2; // -2
-    static +ppEffectNewsflash: Class<PowerPoint$PpEntryEffect__ppEffectNewsflash> &
-      PowerPoint$PpEntryEffect__ppEffectNewsflash &
-      3850; // 3850
-    static +ppEffectNone: Class<PowerPoint$PpEntryEffect__ppEffectNone> &
-      PowerPoint$PpEntryEffect__ppEffectNone &
-      0; // 0
-    static +ppEffectOrbitDown: Class<PowerPoint$PpEntryEffect__ppEffectOrbitDown> &
-      PowerPoint$PpEntryEffect__ppEffectOrbitDown &
-      3929; // 3929
-    static +ppEffectOrbitLeft: Class<PowerPoint$PpEntryEffect__ppEffectOrbitLeft> &
-      PowerPoint$PpEntryEffect__ppEffectOrbitLeft &
-      3926; // 3926
-    static +ppEffectOrbitRight: Class<PowerPoint$PpEntryEffect__ppEffectOrbitRight> &
-      PowerPoint$PpEntryEffect__ppEffectOrbitRight &
-      3928; // 3928
-    static +ppEffectOrbitUp: Class<PowerPoint$PpEntryEffect__ppEffectOrbitUp> &
-      PowerPoint$PpEntryEffect__ppEffectOrbitUp &
-      3927; // 3927
-    static +ppEffectPanDown: Class<PowerPoint$PpEntryEffect__ppEffectPanDown> &
-      PowerPoint$PpEntryEffect__ppEffectPanDown &
-      3933; // 3933
-    static +ppEffectPanLeft: Class<PowerPoint$PpEntryEffect__ppEffectPanLeft> &
-      PowerPoint$PpEntryEffect__ppEffectPanLeft &
-      3930; // 3930
-    static +ppEffectPanRight: Class<PowerPoint$PpEntryEffect__ppEffectPanRight> &
-      PowerPoint$PpEntryEffect__ppEffectPanRight &
-      3932; // 3932
-    static +ppEffectPanUp: Class<PowerPoint$PpEntryEffect__ppEffectPanUp> &
-      PowerPoint$PpEntryEffect__ppEffectPanUp &
-      3931; // 3931
-    static +ppEffectPeekFromDown: Class<PowerPoint$PpEntryEffect__ppEffectPeekFromDown> &
-      PowerPoint$PpEntryEffect__ppEffectPeekFromDown &
-      3338; // 3338
-    static +ppEffectPeekFromLeft: Class<PowerPoint$PpEntryEffect__ppEffectPeekFromLeft> &
-      PowerPoint$PpEntryEffect__ppEffectPeekFromLeft &
-      3337; // 3337
-    static +ppEffectPeekFromRight: Class<PowerPoint$PpEntryEffect__ppEffectPeekFromRight> &
-      PowerPoint$PpEntryEffect__ppEffectPeekFromRight &
-      3339; // 3339
-    static +ppEffectPeekFromUp: Class<PowerPoint$PpEntryEffect__ppEffectPeekFromUp> &
-      PowerPoint$PpEntryEffect__ppEffectPeekFromUp &
-      3340; // 3340
-    static +ppEffectPlusOut: Class<PowerPoint$PpEntryEffect__ppEffectPlusOut> &
-      PowerPoint$PpEntryEffect__ppEffectPlusOut &
-      3851; // 3851
-    static +ppEffectPushDown: Class<PowerPoint$PpEntryEffect__ppEffectPushDown> &
-      PowerPoint$PpEntryEffect__ppEffectPushDown &
-      3852; // 3852
-    static +ppEffectPushLeft: Class<PowerPoint$PpEntryEffect__ppEffectPushLeft> &
-      PowerPoint$PpEntryEffect__ppEffectPushLeft &
-      3853; // 3853
-    static +ppEffectPushRight: Class<PowerPoint$PpEntryEffect__ppEffectPushRight> &
-      PowerPoint$PpEntryEffect__ppEffectPushRight &
-      3854; // 3854
-    static +ppEffectPushUp: Class<PowerPoint$PpEntryEffect__ppEffectPushUp> &
-      PowerPoint$PpEntryEffect__ppEffectPushUp &
-      3855; // 3855
-    static +ppEffectRandom: Class<PowerPoint$PpEntryEffect__ppEffectRandom> &
-      PowerPoint$PpEntryEffect__ppEffectRandom &
-      513; // 513
-    static +ppEffectRandomBarsHorizontal: Class<PowerPoint$PpEntryEffect__ppEffectRandomBarsHorizontal> &
-      PowerPoint$PpEntryEffect__ppEffectRandomBarsHorizontal &
-      2305; // 2305
-    static +ppEffectRandomBarsVertical: Class<PowerPoint$PpEntryEffect__ppEffectRandomBarsVertical> &
-      PowerPoint$PpEntryEffect__ppEffectRandomBarsVertical &
-      2306; // 2306
-    static +ppEffectRevealBlackLeft: Class<PowerPoint$PpEntryEffect__ppEffectRevealBlackLeft> &
-      PowerPoint$PpEntryEffect__ppEffectRevealBlackLeft &
-      3896; // 3896
-    static +ppEffectRevealBlackRight: Class<PowerPoint$PpEntryEffect__ppEffectRevealBlackRight> &
-      PowerPoint$PpEntryEffect__ppEffectRevealBlackRight &
-      3897; // 3897
-    static +ppEffectRevealSmoothLeft: Class<PowerPoint$PpEntryEffect__ppEffectRevealSmoothLeft> &
-      PowerPoint$PpEntryEffect__ppEffectRevealSmoothLeft &
-      3894; // 3894
-    static +ppEffectRevealSmoothRight: Class<PowerPoint$PpEntryEffect__ppEffectRevealSmoothRight> &
-      PowerPoint$PpEntryEffect__ppEffectRevealSmoothRight &
-      3895; // 3895
-    static +ppEffectRippleCenter: Class<PowerPoint$PpEntryEffect__ppEffectRippleCenter> &
-      PowerPoint$PpEntryEffect__ppEffectRippleCenter &
-      3867; // 3867
-    static +ppEffectRippleLeftDown: Class<PowerPoint$PpEntryEffect__ppEffectRippleLeftDown> &
-      PowerPoint$PpEntryEffect__ppEffectRippleLeftDown &
-      3870; // 3870
-    static +ppEffectRippleLeftUp: Class<PowerPoint$PpEntryEffect__ppEffectRippleLeftUp> &
-      PowerPoint$PpEntryEffect__ppEffectRippleLeftUp &
-      3869; // 3869
-    static +ppEffectRippleRightDown: Class<PowerPoint$PpEntryEffect__ppEffectRippleRightDown> &
-      PowerPoint$PpEntryEffect__ppEffectRippleRightDown &
-      3871; // 3871
-    static +ppEffectRippleRightUp: Class<PowerPoint$PpEntryEffect__ppEffectRippleRightUp> &
-      PowerPoint$PpEntryEffect__ppEffectRippleRightUp &
-      3868; // 3868
-    static +ppEffectRotateDown: Class<PowerPoint$PpEntryEffect__ppEffectRotateDown> &
-      PowerPoint$PpEntryEffect__ppEffectRotateDown &
-      3921; // 3921
-    static +ppEffectRotateLeft: Class<PowerPoint$PpEntryEffect__ppEffectRotateLeft> &
-      PowerPoint$PpEntryEffect__ppEffectRotateLeft &
-      3918; // 3918
-    static +ppEffectRotateRight: Class<PowerPoint$PpEntryEffect__ppEffectRotateRight> &
-      PowerPoint$PpEntryEffect__ppEffectRotateRight &
-      3920; // 3920
-    static +ppEffectRotateUp: Class<PowerPoint$PpEntryEffect__ppEffectRotateUp> &
-      PowerPoint$PpEntryEffect__ppEffectRotateUp &
-      3919; // 3919
-    static +ppEffectShredRectangleIn: Class<PowerPoint$PpEntryEffect__ppEffectShredRectangleIn> &
-      PowerPoint$PpEntryEffect__ppEffectShredRectangleIn &
-      3912; // 3912
-    static +ppEffectShredRectangleOut: Class<PowerPoint$PpEntryEffect__ppEffectShredRectangleOut> &
-      PowerPoint$PpEntryEffect__ppEffectShredRectangleOut &
-      3913; // 3913
-    static +ppEffectShredStripsIn: Class<PowerPoint$PpEntryEffect__ppEffectShredStripsIn> &
-      PowerPoint$PpEntryEffect__ppEffectShredStripsIn &
-      3910; // 3910
-    static +ppEffectShredStripsOut: Class<PowerPoint$PpEntryEffect__ppEffectShredStripsOut> &
-      PowerPoint$PpEntryEffect__ppEffectShredStripsOut &
-      3911; // 3911
-    static +ppEffectSpiral: Class<PowerPoint$PpEntryEffect__ppEffectSpiral> &
-      PowerPoint$PpEntryEffect__ppEffectSpiral &
-      3357; // 3357
-    static +ppEffectSplitHorizontalIn: Class<PowerPoint$PpEntryEffect__ppEffectSplitHorizontalIn> &
-      PowerPoint$PpEntryEffect__ppEffectSplitHorizontalIn &
-      3586; // 3586
-    static +ppEffectSplitHorizontalOut: Class<PowerPoint$PpEntryEffect__ppEffectSplitHorizontalOut> &
-      PowerPoint$PpEntryEffect__ppEffectSplitHorizontalOut &
-      3585; // 3585
-    static +ppEffectSplitVerticalIn: Class<PowerPoint$PpEntryEffect__ppEffectSplitVerticalIn> &
-      PowerPoint$PpEntryEffect__ppEffectSplitVerticalIn &
-      3588; // 3588
-    static +ppEffectSplitVerticalOut: Class<PowerPoint$PpEntryEffect__ppEffectSplitVerticalOut> &
-      PowerPoint$PpEntryEffect__ppEffectSplitVerticalOut &
-      3587; // 3587
-    static +ppEffectStretchAcross: Class<PowerPoint$PpEntryEffect__ppEffectStretchAcross> &
-      PowerPoint$PpEntryEffect__ppEffectStretchAcross &
-      3351; // 3351
-    static +ppEffectStretchDown: Class<PowerPoint$PpEntryEffect__ppEffectStretchDown> &
-      PowerPoint$PpEntryEffect__ppEffectStretchDown &
-      3355; // 3355
-    static +ppEffectStretchLeft: Class<PowerPoint$PpEntryEffect__ppEffectStretchLeft> &
-      PowerPoint$PpEntryEffect__ppEffectStretchLeft &
-      3352; // 3352
-    static +ppEffectStretchRight: Class<PowerPoint$PpEntryEffect__ppEffectStretchRight> &
-      PowerPoint$PpEntryEffect__ppEffectStretchRight &
-      3354; // 3354
-    static +ppEffectStretchUp: Class<PowerPoint$PpEntryEffect__ppEffectStretchUp> &
-      PowerPoint$PpEntryEffect__ppEffectStretchUp &
-      3353; // 3353
-    static +ppEffectStripsDownLeft: Class<PowerPoint$PpEntryEffect__ppEffectStripsDownLeft> &
-      PowerPoint$PpEntryEffect__ppEffectStripsDownLeft &
-      2563; // 2563
-    static +ppEffectStripsDownRight: Class<PowerPoint$PpEntryEffect__ppEffectStripsDownRight> &
-      PowerPoint$PpEntryEffect__ppEffectStripsDownRight &
-      2564; // 2564
-    static +ppEffectStripsLeftDown: Class<PowerPoint$PpEntryEffect__ppEffectStripsLeftDown> &
-      PowerPoint$PpEntryEffect__ppEffectStripsLeftDown &
-      2567; // 2567
-    static +ppEffectStripsLeftUp: Class<PowerPoint$PpEntryEffect__ppEffectStripsLeftUp> &
-      PowerPoint$PpEntryEffect__ppEffectStripsLeftUp &
-      2565; // 2565
-    static +ppEffectStripsRightDown: Class<PowerPoint$PpEntryEffect__ppEffectStripsRightDown> &
-      PowerPoint$PpEntryEffect__ppEffectStripsRightDown &
-      2568; // 2568
-    static +ppEffectStripsRightUp: Class<PowerPoint$PpEntryEffect__ppEffectStripsRightUp> &
-      PowerPoint$PpEntryEffect__ppEffectStripsRightUp &
-      2566; // 2566
-    static +ppEffectStripsUpLeft: Class<PowerPoint$PpEntryEffect__ppEffectStripsUpLeft> &
-      PowerPoint$PpEntryEffect__ppEffectStripsUpLeft &
-      2561; // 2561
-    static +ppEffectStripsUpRight: Class<PowerPoint$PpEntryEffect__ppEffectStripsUpRight> &
-      PowerPoint$PpEntryEffect__ppEffectStripsUpRight &
-      2562; // 2562
-    static +ppEffectSwitchDown: Class<PowerPoint$PpEntryEffect__ppEffectSwitchDown> &
-      PowerPoint$PpEntryEffect__ppEffectSwitchDown &
-      3904; // 3904
-    static +ppEffectSwitchLeft: Class<PowerPoint$PpEntryEffect__ppEffectSwitchLeft> &
-      PowerPoint$PpEntryEffect__ppEffectSwitchLeft &
-      3901; // 3901
-    static +ppEffectSwitchRight: Class<PowerPoint$PpEntryEffect__ppEffectSwitchRight> &
-      PowerPoint$PpEntryEffect__ppEffectSwitchRight &
-      3903; // 3903
-    static +ppEffectSwitchUp: Class<PowerPoint$PpEntryEffect__ppEffectSwitchUp> &
-      PowerPoint$PpEntryEffect__ppEffectSwitchUp &
-      3902; // 3902
-    static +ppEffectSwivel: Class<PowerPoint$PpEntryEffect__ppEffectSwivel> &
-      PowerPoint$PpEntryEffect__ppEffectSwivel &
-      3356; // 3356
-    static +ppEffectUncoverDown: Class<PowerPoint$PpEntryEffect__ppEffectUncoverDown> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverDown &
-      2052; // 2052
-    static +ppEffectUncoverLeft: Class<PowerPoint$PpEntryEffect__ppEffectUncoverLeft> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverLeft &
-      2049; // 2049
-    static +ppEffectUncoverLeftDown: Class<PowerPoint$PpEntryEffect__ppEffectUncoverLeftDown> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverLeftDown &
-      2055; // 2055
-    static +ppEffectUncoverLeftUp: Class<PowerPoint$PpEntryEffect__ppEffectUncoverLeftUp> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverLeftUp &
-      2053; // 2053
-    static +ppEffectUncoverRight: Class<PowerPoint$PpEntryEffect__ppEffectUncoverRight> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverRight &
-      2051; // 2051
-    static +ppEffectUncoverRightDown: Class<PowerPoint$PpEntryEffect__ppEffectUncoverRightDown> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverRightDown &
-      2056; // 2056
-    static +ppEffectUncoverRightUp: Class<PowerPoint$PpEntryEffect__ppEffectUncoverRightUp> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverRightUp &
-      2054; // 2054
-    static +ppEffectUncoverUp: Class<PowerPoint$PpEntryEffect__ppEffectUncoverUp> &
-      PowerPoint$PpEntryEffect__ppEffectUncoverUp &
-      2050; // 2050
-    static +ppEffectVortexDown: Class<PowerPoint$PpEntryEffect__ppEffectVortexDown> &
-      PowerPoint$PpEntryEffect__ppEffectVortexDown &
-      3866; // 3866
-    static +ppEffectVortexLeft: Class<PowerPoint$PpEntryEffect__ppEffectVortexLeft> &
-      PowerPoint$PpEntryEffect__ppEffectVortexLeft &
-      3863; // 3863
-    static +ppEffectVortexRight: Class<PowerPoint$PpEntryEffect__ppEffectVortexRight> &
-      PowerPoint$PpEntryEffect__ppEffectVortexRight &
-      3865; // 3865
-    static +ppEffectVortexUp: Class<PowerPoint$PpEntryEffect__ppEffectVortexUp> &
-      PowerPoint$PpEntryEffect__ppEffectVortexUp &
-      3864; // 3864
-    static +ppEffectWarpIn: Class<PowerPoint$PpEntryEffect__ppEffectWarpIn> &
-      PowerPoint$PpEntryEffect__ppEffectWarpIn &
-      3888; // 3888
-    static +ppEffectWarpOut: Class<PowerPoint$PpEntryEffect__ppEffectWarpOut> &
-      PowerPoint$PpEntryEffect__ppEffectWarpOut &
-      3889; // 3889
-    static +ppEffectWedge: Class<PowerPoint$PpEntryEffect__ppEffectWedge> &
-      PowerPoint$PpEntryEffect__ppEffectWedge &
-      3856; // 3856
-    static +ppEffectWheel1Spoke: Class<PowerPoint$PpEntryEffect__ppEffectWheel1Spoke> &
-      PowerPoint$PpEntryEffect__ppEffectWheel1Spoke &
-      3857; // 3857
-    static +ppEffectWheel2Spokes: Class<PowerPoint$PpEntryEffect__ppEffectWheel2Spokes> &
-      PowerPoint$PpEntryEffect__ppEffectWheel2Spokes &
-      3858; // 3858
-    static +ppEffectWheel3Spokes: Class<PowerPoint$PpEntryEffect__ppEffectWheel3Spokes> &
-      PowerPoint$PpEntryEffect__ppEffectWheel3Spokes &
-      3859; // 3859
-    static +ppEffectWheel4Spokes: Class<PowerPoint$PpEntryEffect__ppEffectWheel4Spokes> &
-      PowerPoint$PpEntryEffect__ppEffectWheel4Spokes &
-      3860; // 3860
-    static +ppEffectWheel8Spokes: Class<PowerPoint$PpEntryEffect__ppEffectWheel8Spokes> &
-      PowerPoint$PpEntryEffect__ppEffectWheel8Spokes &
-      3861; // 3861
-    static +ppEffectWheelReverse1Spoke: Class<PowerPoint$PpEntryEffect__ppEffectWheelReverse1Spoke> &
-      PowerPoint$PpEntryEffect__ppEffectWheelReverse1Spoke &
-      3862; // 3862
-    static +ppEffectWindowHorizontal: Class<PowerPoint$PpEntryEffect__ppEffectWindowHorizontal> &
-      PowerPoint$PpEntryEffect__ppEffectWindowHorizontal &
-      3887; // 3887
-    static +ppEffectWindowVertical: Class<PowerPoint$PpEntryEffect__ppEffectWindowVertical> &
-      PowerPoint$PpEntryEffect__ppEffectWindowVertical &
-      3886; // 3886
-    static +ppEffectWipeDown: Class<PowerPoint$PpEntryEffect__ppEffectWipeDown> &
-      PowerPoint$PpEntryEffect__ppEffectWipeDown &
-      2820; // 2820
-    static +ppEffectWipeLeft: Class<PowerPoint$PpEntryEffect__ppEffectWipeLeft> &
-      PowerPoint$PpEntryEffect__ppEffectWipeLeft &
-      2817; // 2817
-    static +ppEffectWipeRight: Class<PowerPoint$PpEntryEffect__ppEffectWipeRight> &
-      PowerPoint$PpEntryEffect__ppEffectWipeRight &
-      2819; // 2819
-    static +ppEffectWipeUp: Class<PowerPoint$PpEntryEffect__ppEffectWipeUp> &
-      PowerPoint$PpEntryEffect__ppEffectWipeUp &
-      2818; // 2818
-    static +ppEffectZoomBottom: Class<PowerPoint$PpEntryEffect__ppEffectZoomBottom> &
-      PowerPoint$PpEntryEffect__ppEffectZoomBottom &
-      3350; // 3350
-    static +ppEffectZoomCenter: Class<PowerPoint$PpEntryEffect__ppEffectZoomCenter> &
-      PowerPoint$PpEntryEffect__ppEffectZoomCenter &
-      3349; // 3349
-    static +ppEffectZoomIn: Class<PowerPoint$PpEntryEffect__ppEffectZoomIn> &
-      PowerPoint$PpEntryEffect__ppEffectZoomIn &
-      3345; // 3345
-    static +ppEffectZoomInSlightly: Class<PowerPoint$PpEntryEffect__ppEffectZoomInSlightly> &
-      PowerPoint$PpEntryEffect__ppEffectZoomInSlightly &
-      3346; // 3346
-    static +ppEffectZoomOut: Class<PowerPoint$PpEntryEffect__ppEffectZoomOut> &
-      PowerPoint$PpEntryEffect__ppEffectZoomOut &
-      3347; // 3347
-    static +ppEffectZoomOutSlightly: Class<PowerPoint$PpEntryEffect__ppEffectZoomOutSlightly> &
-      PowerPoint$PpEntryEffect__ppEffectZoomOutSlightly &
-      3348; // 3348
-  }
-
-  declare class PowerPoint$PpEntryEffect__ppEffectAppear
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBlindsHorizontal
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBlindsVertical
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBoxDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBoxIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBoxLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBoxOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBoxRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectBoxUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCheckerboardAcross
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCheckerboardDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCircleOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCombHorizontal
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCombVertical
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectConveyorLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectConveyorRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverLeftDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverLeftUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverRightDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverRightUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCoverUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCrawlFromDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCrawlFromLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCrawlFromRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCrawlFromUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCubeDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCubeLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCubeRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCubeUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectCutThroughBlack
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectDiamondOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectDissolve
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectDoorsHorizontal
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectDoorsVertical
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFade
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFadeSmoothly
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFerrisWheelLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFerrisWheelRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlashbulb
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlashOnceFast
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlashOnceMedium
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlashOnceSlow
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlipDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlipLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlipRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlipUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromBottom
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromBottomLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromBottomRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromTop
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromTopLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyFromTopRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyThroughIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyThroughInBounce
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyThroughOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectFlyThroughOutBounce
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGalleryLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGalleryRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterDiamondDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterDiamondLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterDiamondRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterDiamondUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterHexagonDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterHexagonLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterHexagonRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectGlitterHexagonUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectHoneycomb
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectMixed
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectNewsflash
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectNone
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectOrbitDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectOrbitLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectOrbitRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectOrbitUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPanDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPanLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPanRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPanUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPeekFromDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPeekFromLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPeekFromRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPeekFromUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPlusOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPushDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPushLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPushRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectPushUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRandom
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRandomBarsHorizontal
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRandomBarsVertical
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRevealBlackLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRevealBlackRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRevealSmoothLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRevealSmoothRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRippleCenter
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRippleLeftDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRippleLeftUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRippleRightDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRippleRightUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRotateDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRotateLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRotateRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectRotateUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectShredRectangleIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectShredRectangleOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectShredStripsIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectShredStripsOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSpiral
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSplitHorizontalIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSplitHorizontalOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSplitVerticalIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSplitVerticalOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStretchAcross
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStretchDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStretchLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStretchRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStretchUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsDownLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsDownRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsLeftDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsLeftUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsRightDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsRightUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsUpLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectStripsUpRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSwitchDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSwitchLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSwitchRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSwitchUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectSwivel
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverLeftDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverLeftUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverRightDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverRightUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectUncoverUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectVortexDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectVortexLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectVortexRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectVortexUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWarpIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWarpOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWedge
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWheel1Spoke
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWheel2Spokes
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWheel3Spokes
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWheel4Spokes
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWheel8Spokes
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWheelReverse1Spoke
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWindowHorizontal
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWindowVertical
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWipeDown
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWipeLeft
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWipeRight
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectWipeUp
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectZoomBottom
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectZoomCenter
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectZoomIn
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectZoomInSlightly
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectZoomOut
-    mixins PowerPoint$PpEntryEffect {}
-  declare class PowerPoint$PpEntryEffect__ppEffectZoomOutSlightly
-    mixins PowerPoint$PpEntryEffect {}
-
-  declare class PowerPoint$PpExportMode {
-    constructor(...args: empty): mixed;
-    static +ppClipRelativeToSlide: Class<PowerPoint$PpExportMode__ppClipRelativeToSlide> &
-      PowerPoint$PpExportMode__ppClipRelativeToSlide &
-      2; // 2
-    static +ppRelativeToSlide: Class<PowerPoint$PpExportMode__ppRelativeToSlide> &
-      PowerPoint$PpExportMode__ppRelativeToSlide &
-      1; // 1
-    static +ppScaleToFit: Class<PowerPoint$PpExportMode__ppScaleToFit> &
-      PowerPoint$PpExportMode__ppScaleToFit &
-      3; // 3
-    static +ppScaleXY: Class<PowerPoint$PpExportMode__ppScaleXY> &
-      PowerPoint$PpExportMode__ppScaleXY &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpExportMode__ppClipRelativeToSlide
-    mixins PowerPoint$PpExportMode {}
-  declare class PowerPoint$PpExportMode__ppRelativeToSlide
-    mixins PowerPoint$PpExportMode {}
-  declare class PowerPoint$PpExportMode__ppScaleToFit
-    mixins PowerPoint$PpExportMode {}
-  declare class PowerPoint$PpExportMode__ppScaleXY
-    mixins PowerPoint$PpExportMode {}
-
-  declare class PowerPoint$PpFarEastLineBreakLevel {
-    constructor(...args: empty): mixed;
-    static +ppFarEastLineBreakLevelCustom: Class<PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelCustom> &
-      PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelCustom &
-      3; // 3
-    static +ppFarEastLineBreakLevelNormal: Class<PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelNormal> &
-      PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelNormal &
-      1; // 1
-    static +ppFarEastLineBreakLevelStrict: Class<PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelStrict> &
-      PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelStrict &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelCustom
-    mixins PowerPoint$PpFarEastLineBreakLevel {}
-  declare class PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelNormal
-    mixins PowerPoint$PpFarEastLineBreakLevel {}
-  declare class PowerPoint$PpFarEastLineBreakLevel__ppFarEastLineBreakLevelStrict
-    mixins PowerPoint$PpFarEastLineBreakLevel {}
-
-  declare class PowerPoint$PpFileDialogType {
-    constructor(...args: empty): mixed;
-    static +ppFileDialogOpen: Class<PowerPoint$PpFileDialogType__ppFileDialogOpen> &
-      PowerPoint$PpFileDialogType__ppFileDialogOpen &
-      1; // 1
-    static +ppFileDialogSave: Class<PowerPoint$PpFileDialogType__ppFileDialogSave> &
-      PowerPoint$PpFileDialogType__ppFileDialogSave &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpFileDialogType__ppFileDialogOpen
-    mixins PowerPoint$PpFileDialogType {}
-  declare class PowerPoint$PpFileDialogType__ppFileDialogSave
-    mixins PowerPoint$PpFileDialogType {}
-
-  declare class PowerPoint$PpFixedFormatIntent {
-    constructor(...args: empty): mixed;
-    static +ppFixedFormatIntentPrint: Class<PowerPoint$PpFixedFormatIntent__ppFixedFormatIntentPrint> &
-      PowerPoint$PpFixedFormatIntent__ppFixedFormatIntentPrint &
-      2; // 2
-    static +ppFixedFormatIntentScreen: Class<PowerPoint$PpFixedFormatIntent__ppFixedFormatIntentScreen> &
-      PowerPoint$PpFixedFormatIntent__ppFixedFormatIntentScreen &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpFixedFormatIntent__ppFixedFormatIntentPrint
-    mixins PowerPoint$PpFixedFormatIntent {}
-  declare class PowerPoint$PpFixedFormatIntent__ppFixedFormatIntentScreen
-    mixins PowerPoint$PpFixedFormatIntent {}
-
-  declare class PowerPoint$PpFixedFormatType {
-    constructor(...args: empty): mixed;
-    static +ppFixedFormatTypePDF: Class<PowerPoint$PpFixedFormatType__ppFixedFormatTypePDF> &
-      PowerPoint$PpFixedFormatType__ppFixedFormatTypePDF &
-      2; // 2
-    static +ppFixedFormatTypeXPS: Class<PowerPoint$PpFixedFormatType__ppFixedFormatTypeXPS> &
-      PowerPoint$PpFixedFormatType__ppFixedFormatTypeXPS &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpFixedFormatType__ppFixedFormatTypePDF
-    mixins PowerPoint$PpFixedFormatType {}
-  declare class PowerPoint$PpFixedFormatType__ppFixedFormatTypeXPS
-    mixins PowerPoint$PpFixedFormatType {}
-
-  declare class PowerPoint$PpFollowColors {
-    constructor(...args: empty): mixed;
-    static +ppFollowColorsMixed: Class<PowerPoint$PpFollowColors__ppFollowColorsMixed> &
-      PowerPoint$PpFollowColors__ppFollowColorsMixed &
-      -2; // -2
-    static +ppFollowColorsNone: Class<PowerPoint$PpFollowColors__ppFollowColorsNone> &
-      PowerPoint$PpFollowColors__ppFollowColorsNone &
-      0; // 0
-    static +ppFollowColorsScheme: Class<PowerPoint$PpFollowColors__ppFollowColorsScheme> &
-      PowerPoint$PpFollowColors__ppFollowColorsScheme &
-      1; // 1
-    static +ppFollowColorsTextAndBackground: Class<PowerPoint$PpFollowColors__ppFollowColorsTextAndBackground> &
-      PowerPoint$PpFollowColors__ppFollowColorsTextAndBackground &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpFollowColors__ppFollowColorsMixed
-    mixins PowerPoint$PpFollowColors {}
-  declare class PowerPoint$PpFollowColors__ppFollowColorsNone
-    mixins PowerPoint$PpFollowColors {}
-  declare class PowerPoint$PpFollowColors__ppFollowColorsScheme
-    mixins PowerPoint$PpFollowColors {}
-  declare class PowerPoint$PpFollowColors__ppFollowColorsTextAndBackground
-    mixins PowerPoint$PpFollowColors {}
-
-  declare class PowerPoint$PpFrameColors {
-    constructor(...args: empty): mixed;
-    static +ppFrameColorsBlackTextOnWhite: Class<PowerPoint$PpFrameColors__ppFrameColorsBlackTextOnWhite> &
-      PowerPoint$PpFrameColors__ppFrameColorsBlackTextOnWhite &
-      5; // 5
-    static +ppFrameColorsBrowserColors: Class<PowerPoint$PpFrameColors__ppFrameColorsBrowserColors> &
-      PowerPoint$PpFrameColors__ppFrameColorsBrowserColors &
-      1; // 1
-    static +ppFrameColorsPresentationSchemeAccentColor: Class<PowerPoint$PpFrameColors__ppFrameColorsPresentationSchemeAccentColor> &
-      PowerPoint$PpFrameColors__ppFrameColorsPresentationSchemeAccentColor &
-      3; // 3
-    static +ppFrameColorsPresentationSchemeTextColor: Class<PowerPoint$PpFrameColors__ppFrameColorsPresentationSchemeTextColor> &
-      PowerPoint$PpFrameColors__ppFrameColorsPresentationSchemeTextColor &
-      2; // 2
-    static +ppFrameColorsWhiteTextOnBlack: Class<PowerPoint$PpFrameColors__ppFrameColorsWhiteTextOnBlack> &
-      PowerPoint$PpFrameColors__ppFrameColorsWhiteTextOnBlack &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpFrameColors__ppFrameColorsBlackTextOnWhite
-    mixins PowerPoint$PpFrameColors {}
-  declare class PowerPoint$PpFrameColors__ppFrameColorsBrowserColors
-    mixins PowerPoint$PpFrameColors {}
-  declare class PowerPoint$PpFrameColors__ppFrameColorsPresentationSchemeAccentColor
-    mixins PowerPoint$PpFrameColors {}
-  declare class PowerPoint$PpFrameColors__ppFrameColorsPresentationSchemeTextColor
-    mixins PowerPoint$PpFrameColors {}
-  declare class PowerPoint$PpFrameColors__ppFrameColorsWhiteTextOnBlack
-    mixins PowerPoint$PpFrameColors {}
-
-  declare class PowerPoint$PpHTMLVersion {
-    constructor(...args: empty): mixed;
-    static +ppHTMLAutodetect: Class<PowerPoint$PpHTMLVersion__ppHTMLAutodetect> &
-      PowerPoint$PpHTMLVersion__ppHTMLAutodetect &
-      4; // 4
-    static +ppHTMLDual: Class<PowerPoint$PpHTMLVersion__ppHTMLDual> &
-      PowerPoint$PpHTMLVersion__ppHTMLDual &
-      3; // 3
-    static +ppHTMLv3: Class<PowerPoint$PpHTMLVersion__ppHTMLv3> &
-      PowerPoint$PpHTMLVersion__ppHTMLv3 &
-      1; // 1
-    static +ppHTMLv4: Class<PowerPoint$PpHTMLVersion__ppHTMLv4> &
-      PowerPoint$PpHTMLVersion__ppHTMLv4 &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpHTMLVersion__ppHTMLAutodetect
-    mixins PowerPoint$PpHTMLVersion {}
-  declare class PowerPoint$PpHTMLVersion__ppHTMLDual
-    mixins PowerPoint$PpHTMLVersion {}
-  declare class PowerPoint$PpHTMLVersion__ppHTMLv3
-    mixins PowerPoint$PpHTMLVersion {}
-  declare class PowerPoint$PpHTMLVersion__ppHTMLv4
-    mixins PowerPoint$PpHTMLVersion {}
-
-  declare class PowerPoint$PpIndentControl {
-    constructor(...args: empty): mixed;
-    static +ppIndentControlMixed: Class<PowerPoint$PpIndentControl__ppIndentControlMixed> &
-      PowerPoint$PpIndentControl__ppIndentControlMixed &
-      -2; // -2
-    static +ppIndentKeepAttr: Class<PowerPoint$PpIndentControl__ppIndentKeepAttr> &
-      PowerPoint$PpIndentControl__ppIndentKeepAttr &
-      2; // 2
-    static +ppIndentReplaceAttr: Class<PowerPoint$PpIndentControl__ppIndentReplaceAttr> &
-      PowerPoint$PpIndentControl__ppIndentReplaceAttr &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpIndentControl__ppIndentControlMixed
-    mixins PowerPoint$PpIndentControl {}
-  declare class PowerPoint$PpIndentControl__ppIndentKeepAttr
-    mixins PowerPoint$PpIndentControl {}
-  declare class PowerPoint$PpIndentControl__ppIndentReplaceAttr
-    mixins PowerPoint$PpIndentControl {}
-
-  declare class PowerPoint$PpMediaTaskStatus {
-    constructor(...args: empty): mixed;
-    static +ppMediaTaskStatusDone: Class<PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusDone> &
-      PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusDone &
-      3; // 3
-    static +ppMediaTaskStatusFailed: Class<PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusFailed> &
-      PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusFailed &
-      4; // 4
-    static +ppMediaTaskStatusInProgress: Class<PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusInProgress> &
-      PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusInProgress &
-      1; // 1
-    static +ppMediaTaskStatusNone: Class<PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusNone> &
-      PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusNone &
-      0; // 0
-    static +ppMediaTaskStatusQueued: Class<PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusQueued> &
-      PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusQueued &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusDone
-    mixins PowerPoint$PpMediaTaskStatus {}
-  declare class PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusFailed
-    mixins PowerPoint$PpMediaTaskStatus {}
-  declare class PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusInProgress
-    mixins PowerPoint$PpMediaTaskStatus {}
-  declare class PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusNone
-    mixins PowerPoint$PpMediaTaskStatus {}
-  declare class PowerPoint$PpMediaTaskStatus__ppMediaTaskStatusQueued
-    mixins PowerPoint$PpMediaTaskStatus {}
-
-  declare class PowerPoint$PpMediaType {
-    constructor(...args: empty): mixed;
-    static +ppMediaTypeMixed: Class<PowerPoint$PpMediaType__ppMediaTypeMixed> &
-      PowerPoint$PpMediaType__ppMediaTypeMixed &
-      -2; // -2
-    static +ppMediaTypeMovie: Class<PowerPoint$PpMediaType__ppMediaTypeMovie> &
-      PowerPoint$PpMediaType__ppMediaTypeMovie &
-      3; // 3
-    static +ppMediaTypeOther: Class<PowerPoint$PpMediaType__ppMediaTypeOther> &
-      PowerPoint$PpMediaType__ppMediaTypeOther &
-      1; // 1
-    static +ppMediaTypeSound: Class<PowerPoint$PpMediaType__ppMediaTypeSound> &
-      PowerPoint$PpMediaType__ppMediaTypeSound &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpMediaType__ppMediaTypeMixed
-    mixins PowerPoint$PpMediaType {}
-  declare class PowerPoint$PpMediaType__ppMediaTypeMovie
-    mixins PowerPoint$PpMediaType {}
-  declare class PowerPoint$PpMediaType__ppMediaTypeOther
-    mixins PowerPoint$PpMediaType {}
-  declare class PowerPoint$PpMediaType__ppMediaTypeSound
-    mixins PowerPoint$PpMediaType {}
-
-  declare class PowerPoint$PpMouseActivation {
-    constructor(...args: empty): mixed;
-    static +ppMouseClick: Class<PowerPoint$PpMouseActivation__ppMouseClick> &
-      PowerPoint$PpMouseActivation__ppMouseClick &
-      1; // 1
-    static +ppMouseOver: Class<PowerPoint$PpMouseActivation__ppMouseOver> &
-      PowerPoint$PpMouseActivation__ppMouseOver &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpMouseActivation__ppMouseClick
-    mixins PowerPoint$PpMouseActivation {}
-  declare class PowerPoint$PpMouseActivation__ppMouseOver
-    mixins PowerPoint$PpMouseActivation {}
-
-  declare class PowerPoint$PpNumberedBulletStyle {
-    constructor(...args: empty): mixed;
-    static +ppBulletAlphaLCParenBoth: Class<PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCParenBoth> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCParenBoth &
-      8; // 8
-    static +ppBulletAlphaLCParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCParenRight &
-      9; // 9
-    static +ppBulletAlphaLCPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCPeriod &
-      0; // 0
-    static +ppBulletAlphaUCParenBoth: Class<PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCParenBoth> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCParenBoth &
-      10; // 10
-    static +ppBulletAlphaUCParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCParenRight &
-      11; // 11
-    static +ppBulletAlphaUCPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCPeriod &
-      1; // 1
-    static +ppBulletArabicAbjadDash: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicAbjadDash> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicAbjadDash &
-      24; // 24
-    static +ppBulletArabicAlphaDash: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicAlphaDash> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicAlphaDash &
-      23; // 23
-    static +ppBulletArabicDBPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicDBPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicDBPeriod &
-      29; // 29
-    static +ppBulletArabicDBPlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicDBPlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicDBPlain &
-      28; // 28
-    static +ppBulletArabicParenBoth: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicParenBoth> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicParenBoth &
-      12; // 12
-    static +ppBulletArabicParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicParenRight &
-      2; // 2
-    static +ppBulletArabicPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicPeriod &
-      3; // 3
-    static +ppBulletArabicPlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletArabicPlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletArabicPlain &
-      13; // 13
-    static +ppBulletCircleNumDBPlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumDBPlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumDBPlain &
-      18; // 18
-    static +ppBulletCircleNumWDBlackPlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumWDBlackPlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumWDBlackPlain &
-      20; // 20
-    static +ppBulletCircleNumWDWhitePlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumWDWhitePlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumWDWhitePlain &
-      19; // 19
-    static +ppBulletHebrewAlphaDash: Class<PowerPoint$PpNumberedBulletStyle__ppBulletHebrewAlphaDash> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletHebrewAlphaDash &
-      25; // 25
-    static +ppBulletHindiAlpha1Period: Class<PowerPoint$PpNumberedBulletStyle__ppBulletHindiAlpha1Period> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletHindiAlpha1Period &
-      40; // 40
-    static +ppBulletHindiAlphaPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletHindiAlphaPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletHindiAlphaPeriod &
-      36; // 36
-    static +ppBulletHindiNumParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletHindiNumParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletHindiNumParenRight &
-      39; // 39
-    static +ppBulletHindiNumPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletHindiNumPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletHindiNumPeriod &
-      37; // 37
-    static +ppBulletKanjiKoreanPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletKanjiKoreanPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletKanjiKoreanPeriod &
-      27; // 27
-    static +ppBulletKanjiKoreanPlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletKanjiKoreanPlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletKanjiKoreanPlain &
-      26; // 26
-    static +ppBulletKanjiSimpChinDBPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletKanjiSimpChinDBPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletKanjiSimpChinDBPeriod &
-      38; // 38
-    static +ppBulletRomanLCParenBoth: Class<PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCParenBoth> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCParenBoth &
-      4; // 4
-    static +ppBulletRomanLCParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCParenRight &
-      5; // 5
-    static +ppBulletRomanLCPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCPeriod &
-      6; // 6
-    static +ppBulletRomanUCParenBoth: Class<PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCParenBoth> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCParenBoth &
-      14; // 14
-    static +ppBulletRomanUCParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCParenRight &
-      15; // 15
-    static +ppBulletRomanUCPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCPeriod &
-      7; // 7
-    static +ppBulletSimpChinPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletSimpChinPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletSimpChinPeriod &
-      17; // 17
-    static +ppBulletSimpChinPlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletSimpChinPlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletSimpChinPlain &
-      16; // 16
-    static +ppBulletStyleMixed: Class<PowerPoint$PpNumberedBulletStyle__ppBulletStyleMixed> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletStyleMixed &
-      -2; // -2
-    static +ppBulletThaiAlphaParenBoth: Class<PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaParenBoth> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaParenBoth &
-      32; // 32
-    static +ppBulletThaiAlphaParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaParenRight &
-      31; // 31
-    static +ppBulletThaiAlphaPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaPeriod &
-      30; // 30
-    static +ppBulletThaiNumParenBoth: Class<PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumParenBoth> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumParenBoth &
-      35; // 35
-    static +ppBulletThaiNumParenRight: Class<PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumParenRight> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumParenRight &
-      34; // 34
-    static +ppBulletThaiNumPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumPeriod &
-      33; // 33
-    static +ppBulletTradChinPeriod: Class<PowerPoint$PpNumberedBulletStyle__ppBulletTradChinPeriod> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletTradChinPeriod &
-      22; // 22
-    static +ppBulletTradChinPlain: Class<PowerPoint$PpNumberedBulletStyle__ppBulletTradChinPlain> &
-      PowerPoint$PpNumberedBulletStyle__ppBulletTradChinPlain &
-      21; // 21
-  }
-
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCParenBoth
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletAlphaLCPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCParenBoth
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletAlphaUCPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicAbjadDash
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicAlphaDash
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicDBPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicDBPlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicParenBoth
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletArabicPlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumDBPlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumWDBlackPlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletCircleNumWDWhitePlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletHebrewAlphaDash
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletHindiAlpha1Period
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletHindiAlphaPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletHindiNumParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletHindiNumPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletKanjiKoreanPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletKanjiKoreanPlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletKanjiSimpChinDBPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCParenBoth
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletRomanLCPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCParenBoth
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletRomanUCPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletSimpChinPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletSimpChinPlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletStyleMixed
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaParenBoth
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletThaiAlphaPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumParenBoth
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumParenRight
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletThaiNumPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletTradChinPeriod
-    mixins PowerPoint$PpNumberedBulletStyle {}
-  declare class PowerPoint$PpNumberedBulletStyle__ppBulletTradChinPlain
-    mixins PowerPoint$PpNumberedBulletStyle {}
-
-  declare class PowerPoint$PpParagraphAlignment {
-    constructor(...args: empty): mixed;
-    static +ppAlignCenter: Class<PowerPoint$PpParagraphAlignment__ppAlignCenter> &
-      PowerPoint$PpParagraphAlignment__ppAlignCenter &
-      2; // 2
-    static +ppAlignDistribute: Class<PowerPoint$PpParagraphAlignment__ppAlignDistribute> &
-      PowerPoint$PpParagraphAlignment__ppAlignDistribute &
-      5; // 5
-    static +ppAlignJustify: Class<PowerPoint$PpParagraphAlignment__ppAlignJustify> &
-      PowerPoint$PpParagraphAlignment__ppAlignJustify &
-      4; // 4
-    static +ppAlignJustifyLow: Class<PowerPoint$PpParagraphAlignment__ppAlignJustifyLow> &
-      PowerPoint$PpParagraphAlignment__ppAlignJustifyLow &
-      7; // 7
-    static +ppAlignLeft: Class<PowerPoint$PpParagraphAlignment__ppAlignLeft> &
-      PowerPoint$PpParagraphAlignment__ppAlignLeft &
-      1; // 1
-    static +ppAlignmentMixed: Class<PowerPoint$PpParagraphAlignment__ppAlignmentMixed> &
-      PowerPoint$PpParagraphAlignment__ppAlignmentMixed &
-      -2; // -2
-    static +ppAlignRight: Class<PowerPoint$PpParagraphAlignment__ppAlignRight> &
-      PowerPoint$PpParagraphAlignment__ppAlignRight &
-      3; // 3
-    static +ppAlignThaiDistribute: Class<PowerPoint$PpParagraphAlignment__ppAlignThaiDistribute> &
-      PowerPoint$PpParagraphAlignment__ppAlignThaiDistribute &
-      6; // 6
-  }
-
-  declare class PowerPoint$PpParagraphAlignment__ppAlignCenter
-    mixins PowerPoint$PpParagraphAlignment {}
-  declare class PowerPoint$PpParagraphAlignment__ppAlignDistribute
-    mixins PowerPoint$PpParagraphAlignment {}
-  declare class PowerPoint$PpParagraphAlignment__ppAlignJustify
-    mixins PowerPoint$PpParagraphAlignment {}
-  declare class PowerPoint$PpParagraphAlignment__ppAlignJustifyLow
-    mixins PowerPoint$PpParagraphAlignment {}
-  declare class PowerPoint$PpParagraphAlignment__ppAlignLeft
-    mixins PowerPoint$PpParagraphAlignment {}
-  declare class PowerPoint$PpParagraphAlignment__ppAlignmentMixed
-    mixins PowerPoint$PpParagraphAlignment {}
-  declare class PowerPoint$PpParagraphAlignment__ppAlignRight
-    mixins PowerPoint$PpParagraphAlignment {}
-  declare class PowerPoint$PpParagraphAlignment__ppAlignThaiDistribute
-    mixins PowerPoint$PpParagraphAlignment {}
-
-  declare class PowerPoint$PpPasteDataType {
-    constructor(...args: empty): mixed;
-    static +ppPasteBitmap: Class<PowerPoint$PpPasteDataType__ppPasteBitmap> &
-      PowerPoint$PpPasteDataType__ppPasteBitmap &
-      1; // 1
-    static +ppPasteDefault: Class<PowerPoint$PpPasteDataType__ppPasteDefault> &
-      PowerPoint$PpPasteDataType__ppPasteDefault &
-      0; // 0
-    static +ppPasteEnhancedMetafile: Class<PowerPoint$PpPasteDataType__ppPasteEnhancedMetafile> &
-      PowerPoint$PpPasteDataType__ppPasteEnhancedMetafile &
-      2; // 2
-    static +ppPasteGIF: Class<PowerPoint$PpPasteDataType__ppPasteGIF> &
-      PowerPoint$PpPasteDataType__ppPasteGIF &
-      4; // 4
-    static +ppPasteHTML: Class<PowerPoint$PpPasteDataType__ppPasteHTML> &
-      PowerPoint$PpPasteDataType__ppPasteHTML &
-      8; // 8
-    static +ppPasteJPG: Class<PowerPoint$PpPasteDataType__ppPasteJPG> &
-      PowerPoint$PpPasteDataType__ppPasteJPG &
-      5; // 5
-    static +ppPasteMetafilePicture: Class<PowerPoint$PpPasteDataType__ppPasteMetafilePicture> &
-      PowerPoint$PpPasteDataType__ppPasteMetafilePicture &
-      3; // 3
-    static +ppPasteOLEObject: Class<PowerPoint$PpPasteDataType__ppPasteOLEObject> &
-      PowerPoint$PpPasteDataType__ppPasteOLEObject &
-      10; // 10
-    static +ppPastePNG: Class<PowerPoint$PpPasteDataType__ppPastePNG> &
-      PowerPoint$PpPasteDataType__ppPastePNG &
-      6; // 6
-    static +ppPasteRTF: Class<PowerPoint$PpPasteDataType__ppPasteRTF> &
-      PowerPoint$PpPasteDataType__ppPasteRTF &
-      9; // 9
-    static +ppPasteShape: Class<PowerPoint$PpPasteDataType__ppPasteShape> &
-      PowerPoint$PpPasteDataType__ppPasteShape &
-      11; // 11
-    static +ppPasteText: Class<PowerPoint$PpPasteDataType__ppPasteText> &
-      PowerPoint$PpPasteDataType__ppPasteText &
-      7; // 7
-  }
-
-  declare class PowerPoint$PpPasteDataType__ppPasteBitmap
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteDefault
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteEnhancedMetafile
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteGIF
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteHTML
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteJPG
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteMetafilePicture
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteOLEObject
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPastePNG
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteRTF
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteShape
-    mixins PowerPoint$PpPasteDataType {}
-  declare class PowerPoint$PpPasteDataType__ppPasteText
-    mixins PowerPoint$PpPasteDataType {}
-
-  declare class PowerPoint$PpPlaceholderType {
-    constructor(...args: empty): mixed;
-    static +ppPlaceholderBitmap: Class<PowerPoint$PpPlaceholderType__ppPlaceholderBitmap> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderBitmap &
-      9; // 9
-    static +ppPlaceholderBody: Class<PowerPoint$PpPlaceholderType__ppPlaceholderBody> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderBody &
-      2; // 2
-    static +ppPlaceholderCenterTitle: Class<PowerPoint$PpPlaceholderType__ppPlaceholderCenterTitle> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderCenterTitle &
-      3; // 3
-    static +ppPlaceholderChart: Class<PowerPoint$PpPlaceholderType__ppPlaceholderChart> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderChart &
-      8; // 8
-    static +ppPlaceholderDate: Class<PowerPoint$PpPlaceholderType__ppPlaceholderDate> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderDate &
-      16; // 16
-    static +ppPlaceholderFooter: Class<PowerPoint$PpPlaceholderType__ppPlaceholderFooter> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderFooter &
-      15; // 15
-    static +ppPlaceholderHeader: Class<PowerPoint$PpPlaceholderType__ppPlaceholderHeader> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderHeader &
-      14; // 14
-    static +ppPlaceholderMediaClip: Class<PowerPoint$PpPlaceholderType__ppPlaceholderMediaClip> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderMediaClip &
-      10; // 10
-    static +ppPlaceholderMixed: Class<PowerPoint$PpPlaceholderType__ppPlaceholderMixed> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderMixed &
-      -2; // -2
-    static +ppPlaceholderObject: Class<PowerPoint$PpPlaceholderType__ppPlaceholderObject> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderObject &
-      7; // 7
-    static +ppPlaceholderOrgChart: Class<PowerPoint$PpPlaceholderType__ppPlaceholderOrgChart> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderOrgChart &
-      11; // 11
-    static +ppPlaceholderPicture: Class<PowerPoint$PpPlaceholderType__ppPlaceholderPicture> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderPicture &
-      18; // 18
-    static +ppPlaceholderSlideNumber: Class<PowerPoint$PpPlaceholderType__ppPlaceholderSlideNumber> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderSlideNumber &
-      13; // 13
-    static +ppPlaceholderSubtitle: Class<PowerPoint$PpPlaceholderType__ppPlaceholderSubtitle> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderSubtitle &
-      4; // 4
-    static +ppPlaceholderTable: Class<PowerPoint$PpPlaceholderType__ppPlaceholderTable> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderTable &
-      12; // 12
-    static +ppPlaceholderTitle: Class<PowerPoint$PpPlaceholderType__ppPlaceholderTitle> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderTitle &
-      1; // 1
-    static +ppPlaceholderVerticalBody: Class<PowerPoint$PpPlaceholderType__ppPlaceholderVerticalBody> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderVerticalBody &
-      6; // 6
-    static +ppPlaceholderVerticalObject: Class<PowerPoint$PpPlaceholderType__ppPlaceholderVerticalObject> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderVerticalObject &
-      17; // 17
-    static +ppPlaceholderVerticalTitle: Class<PowerPoint$PpPlaceholderType__ppPlaceholderVerticalTitle> &
-      PowerPoint$PpPlaceholderType__ppPlaceholderVerticalTitle &
-      5; // 5
-  }
-
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderBitmap
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderBody
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderCenterTitle
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderChart
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderDate
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderFooter
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderHeader
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderMediaClip
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderMixed
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderObject
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderOrgChart
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderPicture
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderSlideNumber
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderSubtitle
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderTable
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderTitle
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderVerticalBody
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderVerticalObject
-    mixins PowerPoint$PpPlaceholderType {}
-  declare class PowerPoint$PpPlaceholderType__ppPlaceholderVerticalTitle
-    mixins PowerPoint$PpPlaceholderType {}
-
-  declare class PowerPoint$PpPlayerState {
-    constructor(...args: empty): mixed;
-    static +ppNotReady: Class<PowerPoint$PpPlayerState__ppNotReady> &
-      PowerPoint$PpPlayerState__ppNotReady &
-      3; // 3
-    static +ppPaused: Class<PowerPoint$PpPlayerState__ppPaused> &
-      PowerPoint$PpPlayerState__ppPaused &
-      1; // 1
-    static +ppPlaying: Class<PowerPoint$PpPlayerState__ppPlaying> &
-      PowerPoint$PpPlayerState__ppPlaying &
-      0; // 0
-    static +ppStopped: Class<PowerPoint$PpPlayerState__ppStopped> &
-      PowerPoint$PpPlayerState__ppStopped &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpPlayerState__ppNotReady
-    mixins PowerPoint$PpPlayerState {}
-  declare class PowerPoint$PpPlayerState__ppPaused
-    mixins PowerPoint$PpPlayerState {}
-  declare class PowerPoint$PpPlayerState__ppPlaying
-    mixins PowerPoint$PpPlayerState {}
-  declare class PowerPoint$PpPlayerState__ppStopped
-    mixins PowerPoint$PpPlayerState {}
-
-  declare class PowerPoint$PpPrintColorType {
-    constructor(...args: empty): mixed;
-    static +ppPrintBlackAndWhite: Class<PowerPoint$PpPrintColorType__ppPrintBlackAndWhite> &
-      PowerPoint$PpPrintColorType__ppPrintBlackAndWhite &
-      2; // 2
-    static +ppPrintColor: Class<PowerPoint$PpPrintColorType__ppPrintColor> &
-      PowerPoint$PpPrintColorType__ppPrintColor &
-      1; // 1
-    static +ppPrintPureBlackAndWhite: Class<PowerPoint$PpPrintColorType__ppPrintPureBlackAndWhite> &
-      PowerPoint$PpPrintColorType__ppPrintPureBlackAndWhite &
-      3; // 3
-  }
-
-  declare class PowerPoint$PpPrintColorType__ppPrintBlackAndWhite
-    mixins PowerPoint$PpPrintColorType {}
-  declare class PowerPoint$PpPrintColorType__ppPrintColor
-    mixins PowerPoint$PpPrintColorType {}
-  declare class PowerPoint$PpPrintColorType__ppPrintPureBlackAndWhite
-    mixins PowerPoint$PpPrintColorType {}
-
-  declare class PowerPoint$PpPrintHandoutOrder {
-    constructor(...args: empty): mixed;
-    static +ppPrintHandoutHorizontalFirst: Class<PowerPoint$PpPrintHandoutOrder__ppPrintHandoutHorizontalFirst> &
-      PowerPoint$PpPrintHandoutOrder__ppPrintHandoutHorizontalFirst &
-      2; // 2
-    static +ppPrintHandoutVerticalFirst: Class<PowerPoint$PpPrintHandoutOrder__ppPrintHandoutVerticalFirst> &
-      PowerPoint$PpPrintHandoutOrder__ppPrintHandoutVerticalFirst &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpPrintHandoutOrder__ppPrintHandoutHorizontalFirst
-    mixins PowerPoint$PpPrintHandoutOrder {}
-  declare class PowerPoint$PpPrintHandoutOrder__ppPrintHandoutVerticalFirst
-    mixins PowerPoint$PpPrintHandoutOrder {}
-
-  declare class PowerPoint$PpPrintOutputType {
-    constructor(...args: empty): mixed;
-    static +ppPrintOutputBuildSlides: Class<PowerPoint$PpPrintOutputType__ppPrintOutputBuildSlides> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputBuildSlides &
-      7; // 7
-    static +ppPrintOutputFourSlideHandouts: Class<PowerPoint$PpPrintOutputType__ppPrintOutputFourSlideHandouts> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputFourSlideHandouts &
-      8; // 8
-    static +ppPrintOutputNineSlideHandouts: Class<PowerPoint$PpPrintOutputType__ppPrintOutputNineSlideHandouts> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputNineSlideHandouts &
-      9; // 9
-    static +ppPrintOutputNotesPages: Class<PowerPoint$PpPrintOutputType__ppPrintOutputNotesPages> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputNotesPages &
-      5; // 5
-    static +ppPrintOutputOneSlideHandouts: Class<PowerPoint$PpPrintOutputType__ppPrintOutputOneSlideHandouts> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputOneSlideHandouts &
-      10; // 10
-    static +ppPrintOutputOutline: Class<PowerPoint$PpPrintOutputType__ppPrintOutputOutline> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputOutline &
-      6; // 6
-    static +ppPrintOutputSixSlideHandouts: Class<PowerPoint$PpPrintOutputType__ppPrintOutputSixSlideHandouts> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputSixSlideHandouts &
-      4; // 4
-    static +ppPrintOutputSlides: Class<PowerPoint$PpPrintOutputType__ppPrintOutputSlides> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputSlides &
-      1; // 1
-    static +ppPrintOutputThreeSlideHandouts: Class<PowerPoint$PpPrintOutputType__ppPrintOutputThreeSlideHandouts> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputThreeSlideHandouts &
-      3; // 3
-    static +ppPrintOutputTwoSlideHandouts: Class<PowerPoint$PpPrintOutputType__ppPrintOutputTwoSlideHandouts> &
-      PowerPoint$PpPrintOutputType__ppPrintOutputTwoSlideHandouts &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputBuildSlides
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputFourSlideHandouts
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputNineSlideHandouts
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputNotesPages
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputOneSlideHandouts
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputOutline
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputSixSlideHandouts
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputSlides
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputThreeSlideHandouts
-    mixins PowerPoint$PpPrintOutputType {}
-  declare class PowerPoint$PpPrintOutputType__ppPrintOutputTwoSlideHandouts
-    mixins PowerPoint$PpPrintOutputType {}
-
-  declare class PowerPoint$PpPrintRangeType {
-    constructor(...args: empty): mixed;
-    static +ppPrintAll: Class<PowerPoint$PpPrintRangeType__ppPrintAll> &
-      PowerPoint$PpPrintRangeType__ppPrintAll &
-      1; // 1
-    static +ppPrintCurrent: Class<PowerPoint$PpPrintRangeType__ppPrintCurrent> &
-      PowerPoint$PpPrintRangeType__ppPrintCurrent &
-      3; // 3
-    static +ppPrintNamedSlideShow: Class<PowerPoint$PpPrintRangeType__ppPrintNamedSlideShow> &
-      PowerPoint$PpPrintRangeType__ppPrintNamedSlideShow &
-      5; // 5
-    static +ppPrintSection: Class<PowerPoint$PpPrintRangeType__ppPrintSection> &
-      PowerPoint$PpPrintRangeType__ppPrintSection &
-      6; // 6
-    static +ppPrintSelection: Class<PowerPoint$PpPrintRangeType__ppPrintSelection> &
-      PowerPoint$PpPrintRangeType__ppPrintSelection &
-      2; // 2
-    static +ppPrintSlideRange: Class<PowerPoint$PpPrintRangeType__ppPrintSlideRange> &
-      PowerPoint$PpPrintRangeType__ppPrintSlideRange &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpPrintRangeType__ppPrintAll
-    mixins PowerPoint$PpPrintRangeType {}
-  declare class PowerPoint$PpPrintRangeType__ppPrintCurrent
-    mixins PowerPoint$PpPrintRangeType {}
-  declare class PowerPoint$PpPrintRangeType__ppPrintNamedSlideShow
-    mixins PowerPoint$PpPrintRangeType {}
-  declare class PowerPoint$PpPrintRangeType__ppPrintSection
-    mixins PowerPoint$PpPrintRangeType {}
-  declare class PowerPoint$PpPrintRangeType__ppPrintSelection
-    mixins PowerPoint$PpPrintRangeType {}
-  declare class PowerPoint$PpPrintRangeType__ppPrintSlideRange
-    mixins PowerPoint$PpPrintRangeType {}
-
-  declare class PowerPoint$PpProtectedViewCloseReason {
-    constructor(...args: empty): mixed;
-    static +ppProtectedViewCloseEdit: Class<PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseEdit> &
-      PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseEdit &
-      1; // 1
-    static +ppProtectedViewCloseForced: Class<PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseForced> &
-      PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseForced &
-      2; // 2
-    static +ppProtectedViewCloseNormal: Class<PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseNormal> &
-      PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseNormal &
-      0; // 0
-  }
-
-  declare class PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseEdit
-    mixins PowerPoint$PpProtectedViewCloseReason {}
-  declare class PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseForced
-    mixins PowerPoint$PpProtectedViewCloseReason {}
-  declare class PowerPoint$PpProtectedViewCloseReason__ppProtectedViewCloseNormal
-    mixins PowerPoint$PpProtectedViewCloseReason {}
-
-  declare class PowerPoint$PpPublishSourceType {
-    constructor(...args: empty): mixed;
-    static +ppPublishAll: Class<PowerPoint$PpPublishSourceType__ppPublishAll> &
-      PowerPoint$PpPublishSourceType__ppPublishAll &
-      1; // 1
-    static +ppPublishNamedSlideShow: Class<PowerPoint$PpPublishSourceType__ppPublishNamedSlideShow> &
-      PowerPoint$PpPublishSourceType__ppPublishNamedSlideShow &
-      3; // 3
-    static +ppPublishSlideRange: Class<PowerPoint$PpPublishSourceType__ppPublishSlideRange> &
-      PowerPoint$PpPublishSourceType__ppPublishSlideRange &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpPublishSourceType__ppPublishAll
-    mixins PowerPoint$PpPublishSourceType {}
-  declare class PowerPoint$PpPublishSourceType__ppPublishNamedSlideShow
-    mixins PowerPoint$PpPublishSourceType {}
-  declare class PowerPoint$PpPublishSourceType__ppPublishSlideRange
-    mixins PowerPoint$PpPublishSourceType {}
-
-  declare class PowerPoint$PpRemoveDocInfoType {
-    constructor(...args: empty): mixed;
-    static +ppRDIAll: Class<PowerPoint$PpRemoveDocInfoType__ppRDIAll> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIAll &
-      99; // 99
-    static +ppRDIComments: Class<PowerPoint$PpRemoveDocInfoType__ppRDIComments> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIComments &
-      1; // 1
-    static +ppRDIContentType: Class<PowerPoint$PpRemoveDocInfoType__ppRDIContentType> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIContentType &
-      16; // 16
-    static +ppRDIDocumentManagementPolicy: Class<PowerPoint$PpRemoveDocInfoType__ppRDIDocumentManagementPolicy> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIDocumentManagementPolicy &
-      15; // 15
-    static +ppRDIDocumentProperties: Class<PowerPoint$PpRemoveDocInfoType__ppRDIDocumentProperties> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIDocumentProperties &
-      8; // 8
-    static +ppRDIDocumentServerProperties: Class<PowerPoint$PpRemoveDocInfoType__ppRDIDocumentServerProperties> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIDocumentServerProperties &
-      14; // 14
-    static +ppRDIDocumentWorkspace: Class<PowerPoint$PpRemoveDocInfoType__ppRDIDocumentWorkspace> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIDocumentWorkspace &
-      10; // 10
-    static +ppRDIInkAnnotations: Class<PowerPoint$PpRemoveDocInfoType__ppRDIInkAnnotations> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIInkAnnotations &
-      11; // 11
-    static +ppRDIPublishPath: Class<PowerPoint$PpRemoveDocInfoType__ppRDIPublishPath> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIPublishPath &
-      13; // 13
-    static +ppRDIRemovePersonalInformation: Class<PowerPoint$PpRemoveDocInfoType__ppRDIRemovePersonalInformation> &
-      PowerPoint$PpRemoveDocInfoType__ppRDIRemovePersonalInformation &
-      4; // 4
-    static +ppRDISlideUpdateInformation: Class<PowerPoint$PpRemoveDocInfoType__ppRDISlideUpdateInformation> &
-      PowerPoint$PpRemoveDocInfoType__ppRDISlideUpdateInformation &
-      17; // 17
-  }
-
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIAll
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIComments
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIContentType
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIDocumentManagementPolicy
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIDocumentProperties
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIDocumentServerProperties
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIDocumentWorkspace
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIInkAnnotations
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIPublishPath
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDIRemovePersonalInformation
-    mixins PowerPoint$PpRemoveDocInfoType {}
-  declare class PowerPoint$PpRemoveDocInfoType__ppRDISlideUpdateInformation
-    mixins PowerPoint$PpRemoveDocInfoType {}
-
-  declare class PowerPoint$PpResampleMediaProfile {
-    constructor(...args: empty): mixed;
-    static +ppResampleMediaProfileCustom: Class<PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileCustom> &
-      PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileCustom &
-      1; // 1
-    static +ppResampleMediaProfileSmall: Class<PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmall> &
-      PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmall &
-      2; // 2
-    static +ppResampleMediaProfileSmaller: Class<PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmaller> &
-      PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmaller &
-      3; // 3
-    static +ppResampleMediaProfileSmallest: Class<PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmallest> &
-      PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmallest &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileCustom
-    mixins PowerPoint$PpResampleMediaProfile {}
-  declare class PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmall
-    mixins PowerPoint$PpResampleMediaProfile {}
-  declare class PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmaller
-    mixins PowerPoint$PpResampleMediaProfile {}
-  declare class PowerPoint$PpResampleMediaProfile__ppResampleMediaProfileSmallest
-    mixins PowerPoint$PpResampleMediaProfile {}
-
-  declare class PowerPoint$PpRevisionInfo {
-    constructor(...args: empty): mixed;
-    static +ppRevisionInfoBaseline: Class<PowerPoint$PpRevisionInfo__ppRevisionInfoBaseline> &
-      PowerPoint$PpRevisionInfo__ppRevisionInfoBaseline &
-      1; // 1
-    static +ppRevisionInfoMerged: Class<PowerPoint$PpRevisionInfo__ppRevisionInfoMerged> &
-      PowerPoint$PpRevisionInfo__ppRevisionInfoMerged &
-      2; // 2
-    static +ppRevisionInfoNone: Class<PowerPoint$PpRevisionInfo__ppRevisionInfoNone> &
-      PowerPoint$PpRevisionInfo__ppRevisionInfoNone &
-      0; // 0
-  }
-
-  declare class PowerPoint$PpRevisionInfo__ppRevisionInfoBaseline
-    mixins PowerPoint$PpRevisionInfo {}
-  declare class PowerPoint$PpRevisionInfo__ppRevisionInfoMerged
-    mixins PowerPoint$PpRevisionInfo {}
-  declare class PowerPoint$PpRevisionInfo__ppRevisionInfoNone
-    mixins PowerPoint$PpRevisionInfo {}
-
-  declare class PowerPoint$PpSaveAsFileType {
-    constructor(...args: empty): mixed;
-    static +ppSaveAsAddIn: Class<PowerPoint$PpSaveAsFileType__ppSaveAsAddIn> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsAddIn &
-      8; // 8
-    static +ppSaveAsBMP: Class<PowerPoint$PpSaveAsFileType__ppSaveAsBMP> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsBMP &
-      19; // 19
-    static +ppSaveAsDefault: Class<PowerPoint$PpSaveAsFileType__ppSaveAsDefault> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsDefault &
-      11; // 11
-    static +ppSaveAsEMF: Class<PowerPoint$PpSaveAsFileType__ppSaveAsEMF> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsEMF &
-      23; // 23
-    static +ppSaveAsExternalConverter: Class<PowerPoint$PpSaveAsFileType__ppSaveAsExternalConverter> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsExternalConverter &
-      64000; // 64000
-    static +ppSaveAsGIF: Class<PowerPoint$PpSaveAsFileType__ppSaveAsGIF> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsGIF &
-      16; // 16
-    static +ppSaveAsHTML: Class<PowerPoint$PpSaveAsFileType__ppSaveAsHTML> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsHTML &
-      12; // 12
-    static +ppSaveAsHTMLDual: Class<PowerPoint$PpSaveAsFileType__ppSaveAsHTMLDual> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsHTMLDual &
-      14; // 14
-    static +ppSaveAsHTMLv3: Class<PowerPoint$PpSaveAsFileType__ppSaveAsHTMLv3> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsHTMLv3 &
-      13; // 13
-    static +ppSaveAsJPG: Class<PowerPoint$PpSaveAsFileType__ppSaveAsJPG> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsJPG &
-      17; // 17
-    static +ppSaveAsMetaFile: Class<PowerPoint$PpSaveAsFileType__ppSaveAsMetaFile> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsMetaFile &
-      15; // 15
-    static +ppSaveAsOpenDocumentPresentation: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenDocumentPresentation> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenDocumentPresentation &
-      35; // 35
-    static +ppSaveAsOpenXMLAddin: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLAddin> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLAddin &
-      30; // 30
-    static +ppSaveAsOpenXMLPicturePresentation: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPicturePresentation> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPicturePresentation &
-      36; // 36
-    static +ppSaveAsOpenXMLPresentation: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPresentation> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPresentation &
-      24; // 24
-    static +ppSaveAsOpenXMLPresentationMacroEnabled: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPresentationMacroEnabled> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPresentationMacroEnabled &
-      25; // 25
-    static +ppSaveAsOpenXMLShow: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLShow> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLShow &
-      28; // 28
-    static +ppSaveAsOpenXMLShowMacroEnabled: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLShowMacroEnabled> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLShowMacroEnabled &
-      29; // 29
-    static +ppSaveAsOpenXMLTemplate: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTemplate> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTemplate &
-      26; // 26
-    static +ppSaveAsOpenXMLTemplateMacroEnabled: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTemplateMacroEnabled> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTemplateMacroEnabled &
-      27; // 27
-    static +ppSaveAsOpenXMLTheme: Class<PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTheme> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTheme &
-      31; // 31
-    static +ppSaveAsPDF: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPDF> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPDF &
-      32; // 32
-    static +ppSaveAsPNG: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPNG> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPNG &
-      18; // 18
-    static +ppSaveAsPowerPoint3: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint3> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint3 &
-      4; // 4
-    static +ppSaveAsPowerPoint4: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint4> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint4 &
-      3; // 3
-    static +ppSaveAsPowerPoint4FarEast: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint4FarEast> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint4FarEast &
-      10; // 10
-    static +ppSaveAsPowerPoint7: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint7> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint7 &
-      2; // 2
-    static +ppSaveAsPresentation: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPresentation> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPresentation &
-      1; // 1
-    static +ppSaveAsPresForReview: Class<PowerPoint$PpSaveAsFileType__ppSaveAsPresForReview> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsPresForReview &
-      22; // 22
-    static +ppSaveAsRTF: Class<PowerPoint$PpSaveAsFileType__ppSaveAsRTF> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsRTF &
-      6; // 6
-    static +ppSaveAsShow: Class<PowerPoint$PpSaveAsFileType__ppSaveAsShow> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsShow &
-      7; // 7
-    static +ppSaveAsTemplate: Class<PowerPoint$PpSaveAsFileType__ppSaveAsTemplate> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsTemplate &
-      5; // 5
-    static +ppSaveAsTIF: Class<PowerPoint$PpSaveAsFileType__ppSaveAsTIF> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsTIF &
-      21; // 21
-    static +ppSaveAsWebArchive: Class<PowerPoint$PpSaveAsFileType__ppSaveAsWebArchive> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsWebArchive &
-      20; // 20
-    static +ppSaveAsWMV: Class<PowerPoint$PpSaveAsFileType__ppSaveAsWMV> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsWMV &
-      37; // 37
-    static +ppSaveAsXMLPresentation: Class<PowerPoint$PpSaveAsFileType__ppSaveAsXMLPresentation> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsXMLPresentation &
-      34; // 34
-    static +ppSaveAsXPS: Class<PowerPoint$PpSaveAsFileType__ppSaveAsXPS> &
-      PowerPoint$PpSaveAsFileType__ppSaveAsXPS &
-      33; // 33
-  }
-
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsAddIn
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsBMP
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsDefault
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsEMF
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsExternalConverter
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsGIF
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsHTML
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsHTMLDual
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsHTMLv3
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsJPG
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsMetaFile
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenDocumentPresentation
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLAddin
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPicturePresentation
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPresentation
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLPresentationMacroEnabled
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLShow
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLShowMacroEnabled
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTemplate
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTemplateMacroEnabled
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsOpenXMLTheme
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPDF
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPNG
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint3
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint4
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint4FarEast
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPowerPoint7
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPresentation
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsPresForReview
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsRTF
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsShow
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsTemplate
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsTIF
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsWebArchive
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsWMV
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsXMLPresentation
-    mixins PowerPoint$PpSaveAsFileType {}
-  declare class PowerPoint$PpSaveAsFileType__ppSaveAsXPS
-    mixins PowerPoint$PpSaveAsFileType {}
-
-  declare class PowerPoint$PpSelectionType {
-    constructor(...args: empty): mixed;
-    static +ppSelectionNone: Class<PowerPoint$PpSelectionType__ppSelectionNone> &
-      PowerPoint$PpSelectionType__ppSelectionNone &
-      0; // 0
-    static +ppSelectionShapes: Class<PowerPoint$PpSelectionType__ppSelectionShapes> &
-      PowerPoint$PpSelectionType__ppSelectionShapes &
-      2; // 2
-    static +ppSelectionSlides: Class<PowerPoint$PpSelectionType__ppSelectionSlides> &
-      PowerPoint$PpSelectionType__ppSelectionSlides &
-      1; // 1
-    static +ppSelectionText: Class<PowerPoint$PpSelectionType__ppSelectionText> &
-      PowerPoint$PpSelectionType__ppSelectionText &
-      3; // 3
-  }
-
-  declare class PowerPoint$PpSelectionType__ppSelectionNone
-    mixins PowerPoint$PpSelectionType {}
-  declare class PowerPoint$PpSelectionType__ppSelectionShapes
-    mixins PowerPoint$PpSelectionType {}
-  declare class PowerPoint$PpSelectionType__ppSelectionSlides
-    mixins PowerPoint$PpSelectionType {}
-  declare class PowerPoint$PpSelectionType__ppSelectionText
-    mixins PowerPoint$PpSelectionType {}
-
-  declare class PowerPoint$PpShapeFormat {
-    constructor(...args: empty): mixed;
-    static +ppShapeFormatBMP: Class<PowerPoint$PpShapeFormat__ppShapeFormatBMP> &
-      PowerPoint$PpShapeFormat__ppShapeFormatBMP &
-      3; // 3
-    static +ppShapeFormatEMF: Class<PowerPoint$PpShapeFormat__ppShapeFormatEMF> &
-      PowerPoint$PpShapeFormat__ppShapeFormatEMF &
-      5; // 5
-    static +ppShapeFormatGIF: Class<PowerPoint$PpShapeFormat__ppShapeFormatGIF> &
-      PowerPoint$PpShapeFormat__ppShapeFormatGIF &
-      0; // 0
-    static +ppShapeFormatJPG: Class<PowerPoint$PpShapeFormat__ppShapeFormatJPG> &
-      PowerPoint$PpShapeFormat__ppShapeFormatJPG &
-      1; // 1
-    static +ppShapeFormatPNG: Class<PowerPoint$PpShapeFormat__ppShapeFormatPNG> &
-      PowerPoint$PpShapeFormat__ppShapeFormatPNG &
-      2; // 2
-    static +ppShapeFormatWMF: Class<PowerPoint$PpShapeFormat__ppShapeFormatWMF> &
-      PowerPoint$PpShapeFormat__ppShapeFormatWMF &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpShapeFormat__ppShapeFormatBMP
-    mixins PowerPoint$PpShapeFormat {}
-  declare class PowerPoint$PpShapeFormat__ppShapeFormatEMF
-    mixins PowerPoint$PpShapeFormat {}
-  declare class PowerPoint$PpShapeFormat__ppShapeFormatGIF
-    mixins PowerPoint$PpShapeFormat {}
-  declare class PowerPoint$PpShapeFormat__ppShapeFormatJPG
-    mixins PowerPoint$PpShapeFormat {}
-  declare class PowerPoint$PpShapeFormat__ppShapeFormatPNG
-    mixins PowerPoint$PpShapeFormat {}
-  declare class PowerPoint$PpShapeFormat__ppShapeFormatWMF
-    mixins PowerPoint$PpShapeFormat {}
-
-  declare class PowerPoint$PpSlideLayout {
-    constructor(...args: empty): mixed;
-    static +ppLayoutBlank: Class<PowerPoint$PpSlideLayout__ppLayoutBlank> &
-      PowerPoint$PpSlideLayout__ppLayoutBlank &
-      12; // 12
-    static +ppLayoutChart: Class<PowerPoint$PpSlideLayout__ppLayoutChart> &
-      PowerPoint$PpSlideLayout__ppLayoutChart &
-      8; // 8
-    static +ppLayoutChartAndText: Class<PowerPoint$PpSlideLayout__ppLayoutChartAndText> &
-      PowerPoint$PpSlideLayout__ppLayoutChartAndText &
-      6; // 6
-    static +ppLayoutClipartAndText: Class<PowerPoint$PpSlideLayout__ppLayoutClipartAndText> &
-      PowerPoint$PpSlideLayout__ppLayoutClipartAndText &
-      10; // 10
-    static +ppLayoutClipArtAndVerticalText: Class<PowerPoint$PpSlideLayout__ppLayoutClipArtAndVerticalText> &
-      PowerPoint$PpSlideLayout__ppLayoutClipArtAndVerticalText &
-      26; // 26
-    static +ppLayoutComparison: Class<PowerPoint$PpSlideLayout__ppLayoutComparison> &
-      PowerPoint$PpSlideLayout__ppLayoutComparison &
-      34; // 34
-    static +ppLayoutContentWithCaption: Class<PowerPoint$PpSlideLayout__ppLayoutContentWithCaption> &
-      PowerPoint$PpSlideLayout__ppLayoutContentWithCaption &
-      35; // 35
-    static +ppLayoutCustom: Class<PowerPoint$PpSlideLayout__ppLayoutCustom> &
-      PowerPoint$PpSlideLayout__ppLayoutCustom &
-      32; // 32
-    static +ppLayoutFourObjects: Class<PowerPoint$PpSlideLayout__ppLayoutFourObjects> &
-      PowerPoint$PpSlideLayout__ppLayoutFourObjects &
-      24; // 24
-    static +ppLayoutLargeObject: Class<PowerPoint$PpSlideLayout__ppLayoutLargeObject> &
-      PowerPoint$PpSlideLayout__ppLayoutLargeObject &
-      15; // 15
-    static +ppLayoutMediaClipAndText: Class<PowerPoint$PpSlideLayout__ppLayoutMediaClipAndText> &
-      PowerPoint$PpSlideLayout__ppLayoutMediaClipAndText &
-      18; // 18
-    static +ppLayoutMixed: Class<PowerPoint$PpSlideLayout__ppLayoutMixed> &
-      PowerPoint$PpSlideLayout__ppLayoutMixed &
-      -2; // -2
-    static +ppLayoutObject: Class<PowerPoint$PpSlideLayout__ppLayoutObject> &
-      PowerPoint$PpSlideLayout__ppLayoutObject &
-      16; // 16
-    static +ppLayoutObjectAndText: Class<PowerPoint$PpSlideLayout__ppLayoutObjectAndText> &
-      PowerPoint$PpSlideLayout__ppLayoutObjectAndText &
-      14; // 14
-    static +ppLayoutObjectAndTwoObjects: Class<PowerPoint$PpSlideLayout__ppLayoutObjectAndTwoObjects> &
-      PowerPoint$PpSlideLayout__ppLayoutObjectAndTwoObjects &
-      30; // 30
-    static +ppLayoutObjectOverText: Class<PowerPoint$PpSlideLayout__ppLayoutObjectOverText> &
-      PowerPoint$PpSlideLayout__ppLayoutObjectOverText &
-      19; // 19
-    static +ppLayoutOrgchart: Class<PowerPoint$PpSlideLayout__ppLayoutOrgchart> &
-      PowerPoint$PpSlideLayout__ppLayoutOrgchart &
-      7; // 7
-    static +ppLayoutPictureWithCaption: Class<PowerPoint$PpSlideLayout__ppLayoutPictureWithCaption> &
-      PowerPoint$PpSlideLayout__ppLayoutPictureWithCaption &
-      36; // 36
-    static +ppLayoutSectionHeader: Class<PowerPoint$PpSlideLayout__ppLayoutSectionHeader> &
-      PowerPoint$PpSlideLayout__ppLayoutSectionHeader &
-      33; // 33
-    static +ppLayoutTable: Class<PowerPoint$PpSlideLayout__ppLayoutTable> &
-      PowerPoint$PpSlideLayout__ppLayoutTable &
-      4; // 4
-    static +ppLayoutText: Class<PowerPoint$PpSlideLayout__ppLayoutText> &
-      PowerPoint$PpSlideLayout__ppLayoutText &
-      2; // 2
-    static +ppLayoutTextAndChart: Class<PowerPoint$PpSlideLayout__ppLayoutTextAndChart> &
-      PowerPoint$PpSlideLayout__ppLayoutTextAndChart &
-      5; // 5
-    static +ppLayoutTextAndClipart: Class<PowerPoint$PpSlideLayout__ppLayoutTextAndClipart> &
-      PowerPoint$PpSlideLayout__ppLayoutTextAndClipart &
-      9; // 9
-    static +ppLayoutTextAndMediaClip: Class<PowerPoint$PpSlideLayout__ppLayoutTextAndMediaClip> &
-      PowerPoint$PpSlideLayout__ppLayoutTextAndMediaClip &
-      17; // 17
-    static +ppLayoutTextAndObject: Class<PowerPoint$PpSlideLayout__ppLayoutTextAndObject> &
-      PowerPoint$PpSlideLayout__ppLayoutTextAndObject &
-      13; // 13
-    static +ppLayoutTextAndTwoObjects: Class<PowerPoint$PpSlideLayout__ppLayoutTextAndTwoObjects> &
-      PowerPoint$PpSlideLayout__ppLayoutTextAndTwoObjects &
-      21; // 21
-    static +ppLayoutTextOverObject: Class<PowerPoint$PpSlideLayout__ppLayoutTextOverObject> &
-      PowerPoint$PpSlideLayout__ppLayoutTextOverObject &
-      20; // 20
-    static +ppLayoutTitle: Class<PowerPoint$PpSlideLayout__ppLayoutTitle> &
-      PowerPoint$PpSlideLayout__ppLayoutTitle &
-      1; // 1
-    static +ppLayoutTitleOnly: Class<PowerPoint$PpSlideLayout__ppLayoutTitleOnly> &
-      PowerPoint$PpSlideLayout__ppLayoutTitleOnly &
-      11; // 11
-    static +ppLayoutTwoColumnText: Class<PowerPoint$PpSlideLayout__ppLayoutTwoColumnText> &
-      PowerPoint$PpSlideLayout__ppLayoutTwoColumnText &
-      3; // 3
-    static +ppLayoutTwoObjects: Class<PowerPoint$PpSlideLayout__ppLayoutTwoObjects> &
-      PowerPoint$PpSlideLayout__ppLayoutTwoObjects &
-      29; // 29
-    static +ppLayoutTwoObjectsAndObject: Class<PowerPoint$PpSlideLayout__ppLayoutTwoObjectsAndObject> &
-      PowerPoint$PpSlideLayout__ppLayoutTwoObjectsAndObject &
-      31; // 31
-    static +ppLayoutTwoObjectsAndText: Class<PowerPoint$PpSlideLayout__ppLayoutTwoObjectsAndText> &
-      PowerPoint$PpSlideLayout__ppLayoutTwoObjectsAndText &
-      22; // 22
-    static +ppLayoutTwoObjectsOverText: Class<PowerPoint$PpSlideLayout__ppLayoutTwoObjectsOverText> &
-      PowerPoint$PpSlideLayout__ppLayoutTwoObjectsOverText &
-      23; // 23
-    static +ppLayoutVerticalText: Class<PowerPoint$PpSlideLayout__ppLayoutVerticalText> &
-      PowerPoint$PpSlideLayout__ppLayoutVerticalText &
-      25; // 25
-    static +ppLayoutVerticalTitleAndText: Class<PowerPoint$PpSlideLayout__ppLayoutVerticalTitleAndText> &
-      PowerPoint$PpSlideLayout__ppLayoutVerticalTitleAndText &
-      27; // 27
-    static +ppLayoutVerticalTitleAndTextOverChart: Class<PowerPoint$PpSlideLayout__ppLayoutVerticalTitleAndTextOverChart> &
-      PowerPoint$PpSlideLayout__ppLayoutVerticalTitleAndTextOverChart &
-      28; // 28
-  }
-
-  declare class PowerPoint$PpSlideLayout__ppLayoutBlank
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutChart
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutChartAndText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutClipartAndText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutClipArtAndVerticalText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutComparison
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutContentWithCaption
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutCustom
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutFourObjects
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutLargeObject
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutMediaClipAndText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutMixed
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutObject
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutObjectAndText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutObjectAndTwoObjects
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutObjectOverText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutOrgchart
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutPictureWithCaption
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutSectionHeader
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTable
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTextAndChart
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTextAndClipart
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTextAndMediaClip
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTextAndObject
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTextAndTwoObjects
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTextOverObject
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTitle
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTitleOnly
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTwoColumnText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTwoObjects
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTwoObjectsAndObject
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTwoObjectsAndText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutTwoObjectsOverText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutVerticalText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutVerticalTitleAndText
-    mixins PowerPoint$PpSlideLayout {}
-  declare class PowerPoint$PpSlideLayout__ppLayoutVerticalTitleAndTextOverChart
-    mixins PowerPoint$PpSlideLayout {}
-
-  declare class PowerPoint$PpSlideShowAdvanceMode {
-    constructor(...args: empty): mixed;
-    static +ppSlideShowManualAdvance: Class<PowerPoint$PpSlideShowAdvanceMode__ppSlideShowManualAdvance> &
-      PowerPoint$PpSlideShowAdvanceMode__ppSlideShowManualAdvance &
-      1; // 1
-    static +ppSlideShowRehearseNewTimings: Class<PowerPoint$PpSlideShowAdvanceMode__ppSlideShowRehearseNewTimings> &
-      PowerPoint$PpSlideShowAdvanceMode__ppSlideShowRehearseNewTimings &
-      3; // 3
-    static +ppSlideShowUseSlideTimings: Class<PowerPoint$PpSlideShowAdvanceMode__ppSlideShowUseSlideTimings> &
-      PowerPoint$PpSlideShowAdvanceMode__ppSlideShowUseSlideTimings &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpSlideShowAdvanceMode__ppSlideShowManualAdvance
-    mixins PowerPoint$PpSlideShowAdvanceMode {}
-  declare class PowerPoint$PpSlideShowAdvanceMode__ppSlideShowRehearseNewTimings
-    mixins PowerPoint$PpSlideShowAdvanceMode {}
-  declare class PowerPoint$PpSlideShowAdvanceMode__ppSlideShowUseSlideTimings
-    mixins PowerPoint$PpSlideShowAdvanceMode {}
-
-  declare class PowerPoint$PpSlideShowPointerType {
-    constructor(...args: empty): mixed;
-    static +ppSlideShowPointerAlwaysHidden: Class<PowerPoint$PpSlideShowPointerType__ppSlideShowPointerAlwaysHidden> &
-      PowerPoint$PpSlideShowPointerType__ppSlideShowPointerAlwaysHidden &
-      3; // 3
-    static +ppSlideShowPointerArrow: Class<PowerPoint$PpSlideShowPointerType__ppSlideShowPointerArrow> &
-      PowerPoint$PpSlideShowPointerType__ppSlideShowPointerArrow &
-      1; // 1
-    static +ppSlideShowPointerAutoArrow: Class<PowerPoint$PpSlideShowPointerType__ppSlideShowPointerAutoArrow> &
-      PowerPoint$PpSlideShowPointerType__ppSlideShowPointerAutoArrow &
-      4; // 4
-    static +ppSlideShowPointerEraser: Class<PowerPoint$PpSlideShowPointerType__ppSlideShowPointerEraser> &
-      PowerPoint$PpSlideShowPointerType__ppSlideShowPointerEraser &
-      5; // 5
-    static +ppSlideShowPointerNone: Class<PowerPoint$PpSlideShowPointerType__ppSlideShowPointerNone> &
-      PowerPoint$PpSlideShowPointerType__ppSlideShowPointerNone &
-      0; // 0
-    static +ppSlideShowPointerPen: Class<PowerPoint$PpSlideShowPointerType__ppSlideShowPointerPen> &
-      PowerPoint$PpSlideShowPointerType__ppSlideShowPointerPen &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpSlideShowPointerType__ppSlideShowPointerAlwaysHidden
-    mixins PowerPoint$PpSlideShowPointerType {}
-  declare class PowerPoint$PpSlideShowPointerType__ppSlideShowPointerArrow
-    mixins PowerPoint$PpSlideShowPointerType {}
-  declare class PowerPoint$PpSlideShowPointerType__ppSlideShowPointerAutoArrow
-    mixins PowerPoint$PpSlideShowPointerType {}
-  declare class PowerPoint$PpSlideShowPointerType__ppSlideShowPointerEraser
-    mixins PowerPoint$PpSlideShowPointerType {}
-  declare class PowerPoint$PpSlideShowPointerType__ppSlideShowPointerNone
-    mixins PowerPoint$PpSlideShowPointerType {}
-  declare class PowerPoint$PpSlideShowPointerType__ppSlideShowPointerPen
-    mixins PowerPoint$PpSlideShowPointerType {}
-
-  declare class PowerPoint$PpSlideShowRangeType {
-    constructor(...args: empty): mixed;
-    static +ppShowAll: Class<PowerPoint$PpSlideShowRangeType__ppShowAll> &
-      PowerPoint$PpSlideShowRangeType__ppShowAll &
-      1; // 1
-    static +ppShowNamedSlideShow: Class<PowerPoint$PpSlideShowRangeType__ppShowNamedSlideShow> &
-      PowerPoint$PpSlideShowRangeType__ppShowNamedSlideShow &
-      3; // 3
-    static +ppShowSlideRange: Class<PowerPoint$PpSlideShowRangeType__ppShowSlideRange> &
-      PowerPoint$PpSlideShowRangeType__ppShowSlideRange &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpSlideShowRangeType__ppShowAll
-    mixins PowerPoint$PpSlideShowRangeType {}
-  declare class PowerPoint$PpSlideShowRangeType__ppShowNamedSlideShow
-    mixins PowerPoint$PpSlideShowRangeType {}
-  declare class PowerPoint$PpSlideShowRangeType__ppShowSlideRange
-    mixins PowerPoint$PpSlideShowRangeType {}
-
-  declare class PowerPoint$PpSlideShowState {
-    constructor(...args: empty): mixed;
-    static +ppSlideShowBlackScreen: Class<PowerPoint$PpSlideShowState__ppSlideShowBlackScreen> &
-      PowerPoint$PpSlideShowState__ppSlideShowBlackScreen &
-      3; // 3
-    static +ppSlideShowDone: Class<PowerPoint$PpSlideShowState__ppSlideShowDone> &
-      PowerPoint$PpSlideShowState__ppSlideShowDone &
-      5; // 5
-    static +ppSlideShowPaused: Class<PowerPoint$PpSlideShowState__ppSlideShowPaused> &
-      PowerPoint$PpSlideShowState__ppSlideShowPaused &
-      2; // 2
-    static +ppSlideShowRunning: Class<PowerPoint$PpSlideShowState__ppSlideShowRunning> &
-      PowerPoint$PpSlideShowState__ppSlideShowRunning &
-      1; // 1
-    static +ppSlideShowWhiteScreen: Class<PowerPoint$PpSlideShowState__ppSlideShowWhiteScreen> &
-      PowerPoint$PpSlideShowState__ppSlideShowWhiteScreen &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpSlideShowState__ppSlideShowBlackScreen
-    mixins PowerPoint$PpSlideShowState {}
-  declare class PowerPoint$PpSlideShowState__ppSlideShowDone
-    mixins PowerPoint$PpSlideShowState {}
-  declare class PowerPoint$PpSlideShowState__ppSlideShowPaused
-    mixins PowerPoint$PpSlideShowState {}
-  declare class PowerPoint$PpSlideShowState__ppSlideShowRunning
-    mixins PowerPoint$PpSlideShowState {}
-  declare class PowerPoint$PpSlideShowState__ppSlideShowWhiteScreen
-    mixins PowerPoint$PpSlideShowState {}
-
-  declare class PowerPoint$PpSlideShowType {
-    constructor(...args: empty): mixed;
-    static +ppShowTypeKiosk: Class<PowerPoint$PpSlideShowType__ppShowTypeKiosk> &
-      PowerPoint$PpSlideShowType__ppShowTypeKiosk &
-      3; // 3
-    static +ppShowTypeSpeaker: Class<PowerPoint$PpSlideShowType__ppShowTypeSpeaker> &
-      PowerPoint$PpSlideShowType__ppShowTypeSpeaker &
-      1; // 1
-    static +ppShowTypeWindow: Class<PowerPoint$PpSlideShowType__ppShowTypeWindow> &
-      PowerPoint$PpSlideShowType__ppShowTypeWindow &
-      2; // 2
-    static +ppShowTypeWindow2: Class<PowerPoint$PpSlideShowType__ppShowTypeWindow2> &
-      PowerPoint$PpSlideShowType__ppShowTypeWindow2 &
-      4; // 4
-  }
-
-  declare class PowerPoint$PpSlideShowType__ppShowTypeKiosk
-    mixins PowerPoint$PpSlideShowType {}
-  declare class PowerPoint$PpSlideShowType__ppShowTypeSpeaker
-    mixins PowerPoint$PpSlideShowType {}
-  declare class PowerPoint$PpSlideShowType__ppShowTypeWindow
-    mixins PowerPoint$PpSlideShowType {}
-  declare class PowerPoint$PpSlideShowType__ppShowTypeWindow2
-    mixins PowerPoint$PpSlideShowType {}
-
-  declare class PowerPoint$PpSlideSizeType {
-    constructor(...args: empty): mixed;
-    static +ppSlideSize35MM: Class<PowerPoint$PpSlideSizeType__ppSlideSize35MM> &
-      PowerPoint$PpSlideSizeType__ppSlideSize35MM &
-      4; // 4
-    static +ppSlideSizeA3Paper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeA3Paper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeA3Paper &
-      9; // 9
-    static +ppSlideSizeA4Paper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeA4Paper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeA4Paper &
-      3; // 3
-    static +ppSlideSizeB4ISOPaper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeB4ISOPaper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeB4ISOPaper &
-      10; // 10
-    static +ppSlideSizeB4JISPaper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeB4JISPaper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeB4JISPaper &
-      12; // 12
-    static +ppSlideSizeB5ISOPaper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeB5ISOPaper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeB5ISOPaper &
-      11; // 11
-    static +ppSlideSizeB5JISPaper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeB5JISPaper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeB5JISPaper &
-      13; // 13
-    static +ppSlideSizeBanner: Class<PowerPoint$PpSlideSizeType__ppSlideSizeBanner> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeBanner &
-      6; // 6
-    static +ppSlideSizeCustom: Class<PowerPoint$PpSlideSizeType__ppSlideSizeCustom> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeCustom &
-      7; // 7
-    static +ppSlideSizeHagakiCard: Class<PowerPoint$PpSlideSizeType__ppSlideSizeHagakiCard> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeHagakiCard &
-      14; // 14
-    static +ppSlideSizeLedgerPaper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeLedgerPaper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeLedgerPaper &
-      8; // 8
-    static +ppSlideSizeLetterPaper: Class<PowerPoint$PpSlideSizeType__ppSlideSizeLetterPaper> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeLetterPaper &
-      2; // 2
-    static +ppSlideSizeOnScreen: Class<PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen &
-      1; // 1
-    static +ppSlideSizeOnScreen16x10: Class<PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen16x10> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen16x10 &
-      16; // 16
-    static +ppSlideSizeOnScreen16x9: Class<PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen16x9> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen16x9 &
-      15; // 15
-    static +ppSlideSizeOverhead: Class<PowerPoint$PpSlideSizeType__ppSlideSizeOverhead> &
-      PowerPoint$PpSlideSizeType__ppSlideSizeOverhead &
-      5; // 5
-  }
-
-  declare class PowerPoint$PpSlideSizeType__ppSlideSize35MM
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeA3Paper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeA4Paper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeB4ISOPaper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeB4JISPaper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeB5ISOPaper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeB5JISPaper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeBanner
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeCustom
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeHagakiCard
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeLedgerPaper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeLetterPaper
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen16x10
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeOnScreen16x9
-    mixins PowerPoint$PpSlideSizeType {}
-  declare class PowerPoint$PpSlideSizeType__ppSlideSizeOverhead
-    mixins PowerPoint$PpSlideSizeType {}
-
-  declare class PowerPoint$PpSoundEffectType {
-    constructor(...args: empty): mixed;
-    static +ppSoundEffectsMixed: Class<PowerPoint$PpSoundEffectType__ppSoundEffectsMixed> &
-      PowerPoint$PpSoundEffectType__ppSoundEffectsMixed &
-      -2; // -2
-    static +ppSoundFile: Class<PowerPoint$PpSoundEffectType__ppSoundFile> &
-      PowerPoint$PpSoundEffectType__ppSoundFile &
-      2; // 2
-    static +ppSoundNone: Class<PowerPoint$PpSoundEffectType__ppSoundNone> &
-      PowerPoint$PpSoundEffectType__ppSoundNone &
-      0; // 0
-    static +ppSoundStopPrevious: Class<PowerPoint$PpSoundEffectType__ppSoundStopPrevious> &
-      PowerPoint$PpSoundEffectType__ppSoundStopPrevious &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpSoundEffectType__ppSoundEffectsMixed
-    mixins PowerPoint$PpSoundEffectType {}
-  declare class PowerPoint$PpSoundEffectType__ppSoundFile
-    mixins PowerPoint$PpSoundEffectType {}
-  declare class PowerPoint$PpSoundEffectType__ppSoundNone
-    mixins PowerPoint$PpSoundEffectType {}
-  declare class PowerPoint$PpSoundEffectType__ppSoundStopPrevious
-    mixins PowerPoint$PpSoundEffectType {}
-
-  declare class PowerPoint$PpSoundFormatType {
-    constructor(...args: empty): mixed;
-    static +ppSoundFormatCDAudio: Class<PowerPoint$PpSoundFormatType__ppSoundFormatCDAudio> &
-      PowerPoint$PpSoundFormatType__ppSoundFormatCDAudio &
-      3; // 3
-    static +ppSoundFormatMIDI: Class<PowerPoint$PpSoundFormatType__ppSoundFormatMIDI> &
-      PowerPoint$PpSoundFormatType__ppSoundFormatMIDI &
-      2; // 2
-    static +ppSoundFormatMixed: Class<PowerPoint$PpSoundFormatType__ppSoundFormatMixed> &
-      PowerPoint$PpSoundFormatType__ppSoundFormatMixed &
-      -2; // -2
-    static +ppSoundFormatNone: Class<PowerPoint$PpSoundFormatType__ppSoundFormatNone> &
-      PowerPoint$PpSoundFormatType__ppSoundFormatNone &
-      0; // 0
-    static +ppSoundFormatWAV: Class<PowerPoint$PpSoundFormatType__ppSoundFormatWAV> &
-      PowerPoint$PpSoundFormatType__ppSoundFormatWAV &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpSoundFormatType__ppSoundFormatCDAudio
-    mixins PowerPoint$PpSoundFormatType {}
-  declare class PowerPoint$PpSoundFormatType__ppSoundFormatMIDI
-    mixins PowerPoint$PpSoundFormatType {}
-  declare class PowerPoint$PpSoundFormatType__ppSoundFormatMixed
-    mixins PowerPoint$PpSoundFormatType {}
-  declare class PowerPoint$PpSoundFormatType__ppSoundFormatNone
-    mixins PowerPoint$PpSoundFormatType {}
-  declare class PowerPoint$PpSoundFormatType__ppSoundFormatWAV
-    mixins PowerPoint$PpSoundFormatType {}
-
-  declare class PowerPoint$PpTabStopType {
-    constructor(...args: empty): mixed;
-    static +ppTabStopCenter: Class<PowerPoint$PpTabStopType__ppTabStopCenter> &
-      PowerPoint$PpTabStopType__ppTabStopCenter &
-      2; // 2
-    static +ppTabStopDecimal: Class<PowerPoint$PpTabStopType__ppTabStopDecimal> &
-      PowerPoint$PpTabStopType__ppTabStopDecimal &
-      4; // 4
-    static +ppTabStopLeft: Class<PowerPoint$PpTabStopType__ppTabStopLeft> &
-      PowerPoint$PpTabStopType__ppTabStopLeft &
-      1; // 1
-    static +ppTabStopMixed: Class<PowerPoint$PpTabStopType__ppTabStopMixed> &
-      PowerPoint$PpTabStopType__ppTabStopMixed &
-      -2; // -2
-    static +ppTabStopRight: Class<PowerPoint$PpTabStopType__ppTabStopRight> &
-      PowerPoint$PpTabStopType__ppTabStopRight &
-      3; // 3
-  }
-
-  declare class PowerPoint$PpTabStopType__ppTabStopCenter
-    mixins PowerPoint$PpTabStopType {}
-  declare class PowerPoint$PpTabStopType__ppTabStopDecimal
-    mixins PowerPoint$PpTabStopType {}
-  declare class PowerPoint$PpTabStopType__ppTabStopLeft
-    mixins PowerPoint$PpTabStopType {}
-  declare class PowerPoint$PpTabStopType__ppTabStopMixed
-    mixins PowerPoint$PpTabStopType {}
-  declare class PowerPoint$PpTabStopType__ppTabStopRight
-    mixins PowerPoint$PpTabStopType {}
-
-  declare class PowerPoint$PpTextLevelEffect {
-    constructor(...args: empty): mixed;
-    static +ppAnimateByAllLevels: Class<PowerPoint$PpTextLevelEffect__ppAnimateByAllLevels> &
-      PowerPoint$PpTextLevelEffect__ppAnimateByAllLevels &
-      16; // 16
-    static +ppAnimateByFifthLevel: Class<PowerPoint$PpTextLevelEffect__ppAnimateByFifthLevel> &
-      PowerPoint$PpTextLevelEffect__ppAnimateByFifthLevel &
-      5; // 5
-    static +ppAnimateByFirstLevel: Class<PowerPoint$PpTextLevelEffect__ppAnimateByFirstLevel> &
-      PowerPoint$PpTextLevelEffect__ppAnimateByFirstLevel &
-      1; // 1
-    static +ppAnimateByFourthLevel: Class<PowerPoint$PpTextLevelEffect__ppAnimateByFourthLevel> &
-      PowerPoint$PpTextLevelEffect__ppAnimateByFourthLevel &
-      4; // 4
-    static +ppAnimateBySecondLevel: Class<PowerPoint$PpTextLevelEffect__ppAnimateBySecondLevel> &
-      PowerPoint$PpTextLevelEffect__ppAnimateBySecondLevel &
-      2; // 2
-    static +ppAnimateByThirdLevel: Class<PowerPoint$PpTextLevelEffect__ppAnimateByThirdLevel> &
-      PowerPoint$PpTextLevelEffect__ppAnimateByThirdLevel &
-      3; // 3
-    static +ppAnimateLevelMixed: Class<PowerPoint$PpTextLevelEffect__ppAnimateLevelMixed> &
-      PowerPoint$PpTextLevelEffect__ppAnimateLevelMixed &
-      -2; // -2
-    static +ppAnimateLevelNone: Class<PowerPoint$PpTextLevelEffect__ppAnimateLevelNone> &
-      PowerPoint$PpTextLevelEffect__ppAnimateLevelNone &
-      0; // 0
-  }
-
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateByAllLevels
-    mixins PowerPoint$PpTextLevelEffect {}
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateByFifthLevel
-    mixins PowerPoint$PpTextLevelEffect {}
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateByFirstLevel
-    mixins PowerPoint$PpTextLevelEffect {}
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateByFourthLevel
-    mixins PowerPoint$PpTextLevelEffect {}
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateBySecondLevel
-    mixins PowerPoint$PpTextLevelEffect {}
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateByThirdLevel
-    mixins PowerPoint$PpTextLevelEffect {}
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateLevelMixed
-    mixins PowerPoint$PpTextLevelEffect {}
-  declare class PowerPoint$PpTextLevelEffect__ppAnimateLevelNone
-    mixins PowerPoint$PpTextLevelEffect {}
-
-  declare class PowerPoint$PpTextStyleType {
-    constructor(...args: empty): mixed;
-    static +ppBodyStyle: Class<PowerPoint$PpTextStyleType__ppBodyStyle> &
-      PowerPoint$PpTextStyleType__ppBodyStyle &
-      3; // 3
-    static +ppDefaultStyle: Class<PowerPoint$PpTextStyleType__ppDefaultStyle> &
-      PowerPoint$PpTextStyleType__ppDefaultStyle &
-      1; // 1
-    static +ppTitleStyle: Class<PowerPoint$PpTextStyleType__ppTitleStyle> &
-      PowerPoint$PpTextStyleType__ppTitleStyle &
-      2; // 2
-  }
-
-  declare class PowerPoint$PpTextStyleType__ppBodyStyle
-    mixins PowerPoint$PpTextStyleType {}
-  declare class PowerPoint$PpTextStyleType__ppDefaultStyle
-    mixins PowerPoint$PpTextStyleType {}
-  declare class PowerPoint$PpTextStyleType__ppTitleStyle
-    mixins PowerPoint$PpTextStyleType {}
-
-  declare class PowerPoint$PpTextUnitEffect {
-    constructor(...args: empty): mixed;
-    static +ppAnimateByCharacter: Class<PowerPoint$PpTextUnitEffect__ppAnimateByCharacter> &
-      PowerPoint$PpTextUnitEffect__ppAnimateByCharacter &
-      2; // 2
-    static +ppAnimateByParagraph: Class<PowerPoint$PpTextUnitEffect__ppAnimateByParagraph> &
-      PowerPoint$PpTextUnitEffect__ppAnimateByParagraph &
-      0; // 0
-    static +ppAnimateByWord: Class<PowerPoint$PpTextUnitEffect__ppAnimateByWord> &
-      PowerPoint$PpTextUnitEffect__ppAnimateByWord &
-      1; // 1
-    static +ppAnimateUnitMixed: Class<PowerPoint$PpTextUnitEffect__ppAnimateUnitMixed> &
-      PowerPoint$PpTextUnitEffect__ppAnimateUnitMixed &
-      -2; // -2
-  }
-
-  declare class PowerPoint$PpTextUnitEffect__ppAnimateByCharacter
-    mixins PowerPoint$PpTextUnitEffect {}
-  declare class PowerPoint$PpTextUnitEffect__ppAnimateByParagraph
-    mixins PowerPoint$PpTextUnitEffect {}
-  declare class PowerPoint$PpTextUnitEffect__ppAnimateByWord
-    mixins PowerPoint$PpTextUnitEffect {}
-  declare class PowerPoint$PpTextUnitEffect__ppAnimateUnitMixed
-    mixins PowerPoint$PpTextUnitEffect {}
-
-  declare class PowerPoint$PpTransitionSpeed {
-    constructor(...args: empty): mixed;
-    static +ppTransitionSpeedFast: Class<PowerPoint$PpTransitionSpeed__ppTransitionSpeedFast> &
-      PowerPoint$PpTransitionSpeed__ppTransitionSpeedFast &
-      3; // 3
-    static +ppTransitionSpeedMedium: Class<PowerPoint$PpTransitionSpeed__ppTransitionSpeedMedium> &
-      PowerPoint$PpTransitionSpeed__ppTransitionSpeedMedium &
-      2; // 2
-    static +ppTransitionSpeedMixed: Class<PowerPoint$PpTransitionSpeed__ppTransitionSpeedMixed> &
-      PowerPoint$PpTransitionSpeed__ppTransitionSpeedMixed &
-      -2; // -2
-    static +ppTransitionSpeedSlow: Class<PowerPoint$PpTransitionSpeed__ppTransitionSpeedSlow> &
-      PowerPoint$PpTransitionSpeed__ppTransitionSpeedSlow &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpTransitionSpeed__ppTransitionSpeedFast
-    mixins PowerPoint$PpTransitionSpeed {}
-  declare class PowerPoint$PpTransitionSpeed__ppTransitionSpeedMedium
-    mixins PowerPoint$PpTransitionSpeed {}
-  declare class PowerPoint$PpTransitionSpeed__ppTransitionSpeedMixed
-    mixins PowerPoint$PpTransitionSpeed {}
-  declare class PowerPoint$PpTransitionSpeed__ppTransitionSpeedSlow
-    mixins PowerPoint$PpTransitionSpeed {}
-
-  declare class PowerPoint$PpUpdateOption {
-    constructor(...args: empty): mixed;
-    static +ppUpdateOptionAutomatic: Class<PowerPoint$PpUpdateOption__ppUpdateOptionAutomatic> &
-      PowerPoint$PpUpdateOption__ppUpdateOptionAutomatic &
-      2; // 2
-    static +ppUpdateOptionManual: Class<PowerPoint$PpUpdateOption__ppUpdateOptionManual> &
-      PowerPoint$PpUpdateOption__ppUpdateOptionManual &
-      1; // 1
-    static +ppUpdateOptionMixed: Class<PowerPoint$PpUpdateOption__ppUpdateOptionMixed> &
-      PowerPoint$PpUpdateOption__ppUpdateOptionMixed &
-      -2; // -2
-  }
-
-  declare class PowerPoint$PpUpdateOption__ppUpdateOptionAutomatic
-    mixins PowerPoint$PpUpdateOption {}
-  declare class PowerPoint$PpUpdateOption__ppUpdateOptionManual
-    mixins PowerPoint$PpUpdateOption {}
-  declare class PowerPoint$PpUpdateOption__ppUpdateOptionMixed
-    mixins PowerPoint$PpUpdateOption {}
-
-  declare class PowerPoint$PpViewType {
-    constructor(...args: empty): mixed;
-    static +ppViewHandoutMaster: Class<PowerPoint$PpViewType__ppViewHandoutMaster> &
-      PowerPoint$PpViewType__ppViewHandoutMaster &
-      4; // 4
-    static +ppViewMasterThumbnails: Class<PowerPoint$PpViewType__ppViewMasterThumbnails> &
-      PowerPoint$PpViewType__ppViewMasterThumbnails &
-      12; // 12
-    static +ppViewNormal: Class<PowerPoint$PpViewType__ppViewNormal> &
-      PowerPoint$PpViewType__ppViewNormal &
-      9; // 9
-    static +ppViewNotesMaster: Class<PowerPoint$PpViewType__ppViewNotesMaster> &
-      PowerPoint$PpViewType__ppViewNotesMaster &
-      5; // 5
-    static +ppViewNotesPage: Class<PowerPoint$PpViewType__ppViewNotesPage> &
-      PowerPoint$PpViewType__ppViewNotesPage &
-      3; // 3
-    static +ppViewOutline: Class<PowerPoint$PpViewType__ppViewOutline> &
-      PowerPoint$PpViewType__ppViewOutline &
-      6; // 6
-    static +ppViewPrintPreview: Class<PowerPoint$PpViewType__ppViewPrintPreview> &
-      PowerPoint$PpViewType__ppViewPrintPreview &
-      10; // 10
-    static +ppViewSlide: Class<PowerPoint$PpViewType__ppViewSlide> &
-      PowerPoint$PpViewType__ppViewSlide &
-      1; // 1
-    static +ppViewSlideMaster: Class<PowerPoint$PpViewType__ppViewSlideMaster> &
-      PowerPoint$PpViewType__ppViewSlideMaster &
-      2; // 2
-    static +ppViewSlideSorter: Class<PowerPoint$PpViewType__ppViewSlideSorter> &
-      PowerPoint$PpViewType__ppViewSlideSorter &
-      7; // 7
-    static +ppViewThumbnails: Class<PowerPoint$PpViewType__ppViewThumbnails> &
-      PowerPoint$PpViewType__ppViewThumbnails &
-      11; // 11
-    static +ppViewTitleMaster: Class<PowerPoint$PpViewType__ppViewTitleMaster> &
-      PowerPoint$PpViewType__ppViewTitleMaster &
-      8; // 8
-  }
-
-  declare class PowerPoint$PpViewType__ppViewHandoutMaster
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewMasterThumbnails
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewNormal
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewNotesMaster
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewNotesPage
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewOutline
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewPrintPreview
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewSlide
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewSlideMaster
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewSlideSorter
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewThumbnails
-    mixins PowerPoint$PpViewType {}
-  declare class PowerPoint$PpViewType__ppViewTitleMaster
-    mixins PowerPoint$PpViewType {}
-
-  declare class PowerPoint$PpWindowState {
-    constructor(...args: empty): mixed;
-    static +ppWindowMaximized: Class<PowerPoint$PpWindowState__ppWindowMaximized> &
-      PowerPoint$PpWindowState__ppWindowMaximized &
-      3; // 3
-    static +ppWindowMinimized: Class<PowerPoint$PpWindowState__ppWindowMinimized> &
-      PowerPoint$PpWindowState__ppWindowMinimized &
-      2; // 2
-    static +ppWindowNormal: Class<PowerPoint$PpWindowState__ppWindowNormal> &
-      PowerPoint$PpWindowState__ppWindowNormal &
-      1; // 1
-  }
-
-  declare class PowerPoint$PpWindowState__ppWindowMaximized
-    mixins PowerPoint$PpWindowState {}
-  declare class PowerPoint$PpWindowState__ppWindowMinimized
-    mixins PowerPoint$PpWindowState {}
-  declare class PowerPoint$PpWindowState__ppWindowNormal
-    mixins PowerPoint$PpWindowState {}
-
-  declare class PowerPoint$XlAxisCrosses {
-    constructor(...args: empty): mixed;
-    static +xlAxisCrossesAutomatic: Class<PowerPoint$XlAxisCrosses__xlAxisCrossesAutomatic> &
-      PowerPoint$XlAxisCrosses__xlAxisCrossesAutomatic &
-      -4105; // -4105
-    static +xlAxisCrossesCustom: Class<PowerPoint$XlAxisCrosses__xlAxisCrossesCustom> &
-      PowerPoint$XlAxisCrosses__xlAxisCrossesCustom &
-      -4114; // -4114
-    static +xlAxisCrossesMaximum: Class<PowerPoint$XlAxisCrosses__xlAxisCrossesMaximum> &
-      PowerPoint$XlAxisCrosses__xlAxisCrossesMaximum &
-      2; // 2
-    static +xlAxisCrossesMinimum: Class<PowerPoint$XlAxisCrosses__xlAxisCrossesMinimum> &
-      PowerPoint$XlAxisCrosses__xlAxisCrossesMinimum &
-      4; // 4
-  }
-
-  declare class PowerPoint$XlAxisCrosses__xlAxisCrossesAutomatic
-    mixins PowerPoint$XlAxisCrosses {}
-  declare class PowerPoint$XlAxisCrosses__xlAxisCrossesCustom
-    mixins PowerPoint$XlAxisCrosses {}
-  declare class PowerPoint$XlAxisCrosses__xlAxisCrossesMaximum
-    mixins PowerPoint$XlAxisCrosses {}
-  declare class PowerPoint$XlAxisCrosses__xlAxisCrossesMinimum
-    mixins PowerPoint$XlAxisCrosses {}
-
-  declare class PowerPoint$XlAxisGroup {
-    constructor(...args: empty): mixed;
-    static +xlPrimary: Class<PowerPoint$XlAxisGroup__xlPrimary> &
-      PowerPoint$XlAxisGroup__xlPrimary &
-      1; // 1
-    static +xlSecondary: Class<PowerPoint$XlAxisGroup__xlSecondary> &
-      PowerPoint$XlAxisGroup__xlSecondary &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlAxisGroup__xlPrimary
-    mixins PowerPoint$XlAxisGroup {}
-  declare class PowerPoint$XlAxisGroup__xlSecondary
-    mixins PowerPoint$XlAxisGroup {}
-
-  declare class PowerPoint$XlAxisType {
-    constructor(...args: empty): mixed;
-    static +xlCategory: Class<PowerPoint$XlAxisType__xlCategory> &
-      PowerPoint$XlAxisType__xlCategory &
-      1; // 1
-    static +xlSeriesAxis: Class<PowerPoint$XlAxisType__xlSeriesAxis> &
-      PowerPoint$XlAxisType__xlSeriesAxis &
-      3; // 3
-    static +xlValue: Class<PowerPoint$XlAxisType__xlValue> &
-      PowerPoint$XlAxisType__xlValue &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlAxisType__xlCategory
-    mixins PowerPoint$XlAxisType {}
-  declare class PowerPoint$XlAxisType__xlSeriesAxis
-    mixins PowerPoint$XlAxisType {}
-  declare class PowerPoint$XlAxisType__xlValue mixins PowerPoint$XlAxisType {}
-
-  declare class PowerPoint$XlBackground {
-    constructor(...args: empty): mixed;
-    static +xlBackgroundAutomatic: Class<PowerPoint$XlBackground__xlBackgroundAutomatic> &
-      PowerPoint$XlBackground__xlBackgroundAutomatic &
-      -4105; // -4105
-    static +xlBackgroundOpaque: Class<PowerPoint$XlBackground__xlBackgroundOpaque> &
-      PowerPoint$XlBackground__xlBackgroundOpaque &
-      3; // 3
-    static +xlBackgroundTransparent: Class<PowerPoint$XlBackground__xlBackgroundTransparent> &
-      PowerPoint$XlBackground__xlBackgroundTransparent &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlBackground__xlBackgroundAutomatic
-    mixins PowerPoint$XlBackground {}
-  declare class PowerPoint$XlBackground__xlBackgroundOpaque
-    mixins PowerPoint$XlBackground {}
-  declare class PowerPoint$XlBackground__xlBackgroundTransparent
-    mixins PowerPoint$XlBackground {}
-
-  declare class PowerPoint$XlBarShape {
-    constructor(...args: empty): mixed;
-    static +xlBox: Class<PowerPoint$XlBarShape__xlBox> &
-      PowerPoint$XlBarShape__xlBox &
-      0; // 0
-    static +xlConeToMax: Class<PowerPoint$XlBarShape__xlConeToMax> &
-      PowerPoint$XlBarShape__xlConeToMax &
-      5; // 5
-    static +xlConeToPoint: Class<PowerPoint$XlBarShape__xlConeToPoint> &
-      PowerPoint$XlBarShape__xlConeToPoint &
-      4; // 4
-    static +xlCylinder: Class<PowerPoint$XlBarShape__xlCylinder> &
-      PowerPoint$XlBarShape__xlCylinder &
-      3; // 3
-    static +xlPyramidToMax: Class<PowerPoint$XlBarShape__xlPyramidToMax> &
-      PowerPoint$XlBarShape__xlPyramidToMax &
-      2; // 2
-    static +xlPyramidToPoint: Class<PowerPoint$XlBarShape__xlPyramidToPoint> &
-      PowerPoint$XlBarShape__xlPyramidToPoint &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlBarShape__xlBox mixins PowerPoint$XlBarShape {}
-  declare class PowerPoint$XlBarShape__xlConeToMax
-    mixins PowerPoint$XlBarShape {}
-  declare class PowerPoint$XlBarShape__xlConeToPoint
-    mixins PowerPoint$XlBarShape {}
-  declare class PowerPoint$XlBarShape__xlCylinder
-    mixins PowerPoint$XlBarShape {}
-  declare class PowerPoint$XlBarShape__xlPyramidToMax
-    mixins PowerPoint$XlBarShape {}
-  declare class PowerPoint$XlBarShape__xlPyramidToPoint
-    mixins PowerPoint$XlBarShape {}
-
-  declare class PowerPoint$XlBorderWeight {
-    constructor(...args: empty): mixed;
-    static +xlHairline: Class<PowerPoint$XlBorderWeight__xlHairline> &
-      PowerPoint$XlBorderWeight__xlHairline &
-      1; // 1
-    static +xlMedium: Class<PowerPoint$XlBorderWeight__xlMedium> &
-      PowerPoint$XlBorderWeight__xlMedium &
-      -4138; // -4138
-    static +xlThick: Class<PowerPoint$XlBorderWeight__xlThick> &
-      PowerPoint$XlBorderWeight__xlThick &
-      4; // 4
-    static +xlThin: Class<PowerPoint$XlBorderWeight__xlThin> &
-      PowerPoint$XlBorderWeight__xlThin &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlBorderWeight__xlHairline
-    mixins PowerPoint$XlBorderWeight {}
-  declare class PowerPoint$XlBorderWeight__xlMedium
-    mixins PowerPoint$XlBorderWeight {}
-  declare class PowerPoint$XlBorderWeight__xlThick
-    mixins PowerPoint$XlBorderWeight {}
-  declare class PowerPoint$XlBorderWeight__xlThin
-    mixins PowerPoint$XlBorderWeight {}
-
-  declare class PowerPoint$XlCategoryType {
-    constructor(...args: empty): mixed;
-    static +xlAutomaticScale: Class<PowerPoint$XlCategoryType__xlAutomaticScale> &
-      PowerPoint$XlCategoryType__xlAutomaticScale &
-      -4105; // -4105
-    static +xlCategoryScale: Class<PowerPoint$XlCategoryType__xlCategoryScale> &
-      PowerPoint$XlCategoryType__xlCategoryScale &
-      2; // 2
-    static +xlTimeScale: Class<PowerPoint$XlCategoryType__xlTimeScale> &
-      PowerPoint$XlCategoryType__xlTimeScale &
-      3; // 3
-  }
-
-  declare class PowerPoint$XlCategoryType__xlAutomaticScale
-    mixins PowerPoint$XlCategoryType {}
-  declare class PowerPoint$XlCategoryType__xlCategoryScale
-    mixins PowerPoint$XlCategoryType {}
-  declare class PowerPoint$XlCategoryType__xlTimeScale
-    mixins PowerPoint$XlCategoryType {}
-
-  declare class PowerPoint$XlChartElementPosition {
-    constructor(...args: empty): mixed;
-    static +xlChartElementPositionAutomatic: Class<PowerPoint$XlChartElementPosition__xlChartElementPositionAutomatic> &
-      PowerPoint$XlChartElementPosition__xlChartElementPositionAutomatic &
-      -4105; // -4105
-    static +xlChartElementPositionCustom: Class<PowerPoint$XlChartElementPosition__xlChartElementPositionCustom> &
-      PowerPoint$XlChartElementPosition__xlChartElementPositionCustom &
-      -4114; // -4114
-  }
-
-  declare class PowerPoint$XlChartElementPosition__xlChartElementPositionAutomatic
-    mixins PowerPoint$XlChartElementPosition {}
-  declare class PowerPoint$XlChartElementPosition__xlChartElementPositionCustom
-    mixins PowerPoint$XlChartElementPosition {}
-
-  declare class PowerPoint$XlChartGallery {
-    constructor(...args: empty): mixed;
-    static +xlAnyGallery: Class<PowerPoint$XlChartGallery__xlAnyGallery> &
-      PowerPoint$XlChartGallery__xlAnyGallery &
-      23; // 23
-    static +xlBuiltIn: Class<PowerPoint$XlChartGallery__xlBuiltIn> &
-      PowerPoint$XlChartGallery__xlBuiltIn &
-      21; // 21
-    static +xlUserDefined: Class<PowerPoint$XlChartGallery__xlUserDefined> &
-      PowerPoint$XlChartGallery__xlUserDefined &
-      22; // 22
-  }
-
-  declare class PowerPoint$XlChartGallery__xlAnyGallery
-    mixins PowerPoint$XlChartGallery {}
-  declare class PowerPoint$XlChartGallery__xlBuiltIn
-    mixins PowerPoint$XlChartGallery {}
-  declare class PowerPoint$XlChartGallery__xlUserDefined
-    mixins PowerPoint$XlChartGallery {}
-
-  declare class PowerPoint$XlChartItem {
-    constructor(...args: empty): mixed;
-    static +xlAxis: Class<PowerPoint$XlChartItem__xlAxis> &
-      PowerPoint$XlChartItem__xlAxis &
-      21; // 21
-    static +xlAxisTitle: Class<PowerPoint$XlChartItem__xlAxisTitle> &
-      PowerPoint$XlChartItem__xlAxisTitle &
-      17; // 17
-    static +xlChartArea: Class<PowerPoint$XlChartItem__xlChartArea> &
-      PowerPoint$XlChartItem__xlChartArea &
-      2; // 2
-    static +xlChartTitle: Class<PowerPoint$XlChartItem__xlChartTitle> &
-      PowerPoint$XlChartItem__xlChartTitle &
-      4; // 4
-    static +xlCorners: Class<PowerPoint$XlChartItem__xlCorners> &
-      PowerPoint$XlChartItem__xlCorners &
-      6; // 6
-    static +xlDataLabel: Class<PowerPoint$XlChartItem__xlDataLabel> &
-      PowerPoint$XlChartItem__xlDataLabel &
-      0; // 0
-    static +xlDataTable: Class<PowerPoint$XlChartItem__xlDataTable> &
-      PowerPoint$XlChartItem__xlDataTable &
-      7; // 7
-    static +xlDisplayUnitLabel: Class<PowerPoint$XlChartItem__xlDisplayUnitLabel> &
-      PowerPoint$XlChartItem__xlDisplayUnitLabel &
-      30; // 30
-    static +xlDownBars: Class<PowerPoint$XlChartItem__xlDownBars> &
-      PowerPoint$XlChartItem__xlDownBars &
-      20; // 20
-    static +xlDropLines: Class<PowerPoint$XlChartItem__xlDropLines> &
-      PowerPoint$XlChartItem__xlDropLines &
-      26; // 26
-    static +xlErrorBars: Class<PowerPoint$XlChartItem__xlErrorBars> &
-      PowerPoint$XlChartItem__xlErrorBars &
-      9; // 9
-    static +xlFloor: Class<PowerPoint$XlChartItem__xlFloor> &
-      PowerPoint$XlChartItem__xlFloor &
-      23; // 23
-    static +xlHiLoLines: Class<PowerPoint$XlChartItem__xlHiLoLines> &
-      PowerPoint$XlChartItem__xlHiLoLines &
-      25; // 25
-    static +xlLeaderLines: Class<PowerPoint$XlChartItem__xlLeaderLines> &
-      PowerPoint$XlChartItem__xlLeaderLines &
-      29; // 29
-    static +xlLegend: Class<PowerPoint$XlChartItem__xlLegend> &
-      PowerPoint$XlChartItem__xlLegend &
-      24; // 24
-    static +xlLegendEntry: Class<PowerPoint$XlChartItem__xlLegendEntry> &
-      PowerPoint$XlChartItem__xlLegendEntry &
-      12; // 12
-    static +xlLegendKey: Class<PowerPoint$XlChartItem__xlLegendKey> &
-      PowerPoint$XlChartItem__xlLegendKey &
-      13; // 13
-    static +xlMajorGridlines: Class<PowerPoint$XlChartItem__xlMajorGridlines> &
-      PowerPoint$XlChartItem__xlMajorGridlines &
-      15; // 15
-    static +xlMinorGridlines: Class<PowerPoint$XlChartItem__xlMinorGridlines> &
-      PowerPoint$XlChartItem__xlMinorGridlines &
-      16; // 16
-    static +xlNothing: Class<PowerPoint$XlChartItem__xlNothing> &
-      PowerPoint$XlChartItem__xlNothing &
-      28; // 28
-    static +xlPivotChartDropZone: Class<PowerPoint$XlChartItem__xlPivotChartDropZone> &
-      PowerPoint$XlChartItem__xlPivotChartDropZone &
-      32; // 32
-    static +xlPivotChartFieldButton: Class<PowerPoint$XlChartItem__xlPivotChartFieldButton> &
-      PowerPoint$XlChartItem__xlPivotChartFieldButton &
-      31; // 31
-    static +xlPlotArea: Class<PowerPoint$XlChartItem__xlPlotArea> &
-      PowerPoint$XlChartItem__xlPlotArea &
-      19; // 19
-    static +xlRadarAxisLabels: Class<PowerPoint$XlChartItem__xlRadarAxisLabels> &
-      PowerPoint$XlChartItem__xlRadarAxisLabels &
-      27; // 27
-    static +xlSeries: Class<PowerPoint$XlChartItem__xlSeries> &
-      PowerPoint$XlChartItem__xlSeries &
-      3; // 3
-    static +xlSeriesLines: Class<PowerPoint$XlChartItem__xlSeriesLines> &
-      PowerPoint$XlChartItem__xlSeriesLines &
-      22; // 22
-    static +xlShape: Class<PowerPoint$XlChartItem__xlShape> &
-      PowerPoint$XlChartItem__xlShape &
-      14; // 14
-    static +xlTrendline: Class<PowerPoint$XlChartItem__xlTrendline> &
-      PowerPoint$XlChartItem__xlTrendline &
-      8; // 8
-    static +xlUpBars: Class<PowerPoint$XlChartItem__xlUpBars> &
-      PowerPoint$XlChartItem__xlUpBars &
-      18; // 18
-    static +xlWalls: Class<PowerPoint$XlChartItem__xlWalls> &
-      PowerPoint$XlChartItem__xlWalls &
-      5; // 5
-    static +xlXErrorBars: Class<PowerPoint$XlChartItem__xlXErrorBars> &
-      PowerPoint$XlChartItem__xlXErrorBars &
-      10; // 10
-    static +xlYErrorBars: Class<PowerPoint$XlChartItem__xlYErrorBars> &
-      PowerPoint$XlChartItem__xlYErrorBars &
-      11; // 11
-  }
-
-  declare class PowerPoint$XlChartItem__xlAxis mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlAxisTitle
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlChartArea
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlChartTitle
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlCorners
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlDataLabel
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlDataTable
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlDisplayUnitLabel
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlDownBars
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlDropLines
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlErrorBars
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlFloor mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlHiLoLines
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlLeaderLines
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlLegend
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlLegendEntry
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlLegendKey
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlMajorGridlines
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlMinorGridlines
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlNothing
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlPivotChartDropZone
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlPivotChartFieldButton
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlPlotArea
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlRadarAxisLabels
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlSeries
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlSeriesLines
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlShape mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlTrendline
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlUpBars
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlWalls mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlXErrorBars
-    mixins PowerPoint$XlChartItem {}
-  declare class PowerPoint$XlChartItem__xlYErrorBars
-    mixins PowerPoint$XlChartItem {}
-
-  declare class PowerPoint$XlChartPicturePlacement {
-    constructor(...args: empty): mixed;
-    static +xlAllFaces: Class<PowerPoint$XlChartPicturePlacement__xlAllFaces> &
-      PowerPoint$XlChartPicturePlacement__xlAllFaces &
-      7; // 7
-    static +xlEnd: Class<PowerPoint$XlChartPicturePlacement__xlEnd> &
-      PowerPoint$XlChartPicturePlacement__xlEnd &
-      2; // 2
-    static +xlEndSides: Class<PowerPoint$XlChartPicturePlacement__xlEndSides> &
-      PowerPoint$XlChartPicturePlacement__xlEndSides &
-      3; // 3
-    static +xlFront: Class<PowerPoint$XlChartPicturePlacement__xlFront> &
-      PowerPoint$XlChartPicturePlacement__xlFront &
-      4; // 4
-    static +xlFrontEnd: Class<PowerPoint$XlChartPicturePlacement__xlFrontEnd> &
-      PowerPoint$XlChartPicturePlacement__xlFrontEnd &
-      6; // 6
-    static +xlFrontSides: Class<PowerPoint$XlChartPicturePlacement__xlFrontSides> &
-      PowerPoint$XlChartPicturePlacement__xlFrontSides &
-      5; // 5
-    static +xlSides: Class<PowerPoint$XlChartPicturePlacement__xlSides> &
-      PowerPoint$XlChartPicturePlacement__xlSides &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlChartPicturePlacement__xlAllFaces
-    mixins PowerPoint$XlChartPicturePlacement {}
-  declare class PowerPoint$XlChartPicturePlacement__xlEnd
-    mixins PowerPoint$XlChartPicturePlacement {}
-  declare class PowerPoint$XlChartPicturePlacement__xlEndSides
-    mixins PowerPoint$XlChartPicturePlacement {}
-  declare class PowerPoint$XlChartPicturePlacement__xlFront
-    mixins PowerPoint$XlChartPicturePlacement {}
-  declare class PowerPoint$XlChartPicturePlacement__xlFrontEnd
-    mixins PowerPoint$XlChartPicturePlacement {}
-  declare class PowerPoint$XlChartPicturePlacement__xlFrontSides
-    mixins PowerPoint$XlChartPicturePlacement {}
-  declare class PowerPoint$XlChartPicturePlacement__xlSides
-    mixins PowerPoint$XlChartPicturePlacement {}
-
-  declare class PowerPoint$XlChartPictureType {
-    constructor(...args: empty): mixed;
-    static +xlStack: Class<PowerPoint$XlChartPictureType__xlStack> &
-      PowerPoint$XlChartPictureType__xlStack &
-      2; // 2
-    static +xlStackScale: Class<PowerPoint$XlChartPictureType__xlStackScale> &
-      PowerPoint$XlChartPictureType__xlStackScale &
-      3; // 3
-    static +xlStretch: Class<PowerPoint$XlChartPictureType__xlStretch> &
-      PowerPoint$XlChartPictureType__xlStretch &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlChartPictureType__xlStack
-    mixins PowerPoint$XlChartPictureType {}
-  declare class PowerPoint$XlChartPictureType__xlStackScale
-    mixins PowerPoint$XlChartPictureType {}
-  declare class PowerPoint$XlChartPictureType__xlStretch
-    mixins PowerPoint$XlChartPictureType {}
-
-  declare class PowerPoint$XlChartSplitType {
-    constructor(...args: empty): mixed;
-    static +xlSplitByCustomSplit: Class<PowerPoint$XlChartSplitType__xlSplitByCustomSplit> &
-      PowerPoint$XlChartSplitType__xlSplitByCustomSplit &
-      4; // 4
-    static +xlSplitByPercentValue: Class<PowerPoint$XlChartSplitType__xlSplitByPercentValue> &
-      PowerPoint$XlChartSplitType__xlSplitByPercentValue &
-      3; // 3
-    static +xlSplitByPosition: Class<PowerPoint$XlChartSplitType__xlSplitByPosition> &
-      PowerPoint$XlChartSplitType__xlSplitByPosition &
-      1; // 1
-    static +xlSplitByValue: Class<PowerPoint$XlChartSplitType__xlSplitByValue> &
-      PowerPoint$XlChartSplitType__xlSplitByValue &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlChartSplitType__xlSplitByCustomSplit
-    mixins PowerPoint$XlChartSplitType {}
-  declare class PowerPoint$XlChartSplitType__xlSplitByPercentValue
-    mixins PowerPoint$XlChartSplitType {}
-  declare class PowerPoint$XlChartSplitType__xlSplitByPosition
-    mixins PowerPoint$XlChartSplitType {}
-  declare class PowerPoint$XlChartSplitType__xlSplitByValue
-    mixins PowerPoint$XlChartSplitType {}
-
-  declare class PowerPoint$XlColorIndex {
-    constructor(...args: empty): mixed;
-    static +xlColorIndexAutomatic: Class<PowerPoint$XlColorIndex__xlColorIndexAutomatic> &
-      PowerPoint$XlColorIndex__xlColorIndexAutomatic &
-      -4105; // -4105
-    static +xlColorIndexNone: Class<PowerPoint$XlColorIndex__xlColorIndexNone> &
-      PowerPoint$XlColorIndex__xlColorIndexNone &
-      -4142; // -4142
-  }
-
-  declare class PowerPoint$XlColorIndex__xlColorIndexAutomatic
-    mixins PowerPoint$XlColorIndex {}
-  declare class PowerPoint$XlColorIndex__xlColorIndexNone
-    mixins PowerPoint$XlColorIndex {}
-
-  declare class PowerPoint$XlConstants {
-    constructor(...args: empty): mixed;
-    static +xl3DBar: Class<PowerPoint$XlConstants__xl3DBar> &
-      PowerPoint$XlConstants__xl3DBar &
-      -4099; // -4099
-    static +xl3DSurface: Class<PowerPoint$XlConstants__xl3DSurface> &
-      PowerPoint$XlConstants__xl3DSurface &
-      -4103; // -4103
-    static +xlAbove: Class<PowerPoint$XlConstants__xlAbove> &
-      PowerPoint$XlConstants__xlAbove &
-      0; // 0
-    static +xlAutomatic: Class<PowerPoint$XlConstants__xlAutomatic> &
-      PowerPoint$XlConstants__xlAutomatic &
-      -4105; // -4105
-    static +xlBar: Class<PowerPoint$XlConstants__xlBar> &
-      PowerPoint$XlConstants__xlBar &
-      2; // 2
-    static +xlBelow: Class<PowerPoint$XlConstants__xlBelow> &
-      PowerPoint$XlConstants__xlBelow &
-      1; // 1
-    static +xlBoth: Class<PowerPoint$XlConstants__xlBoth> &
-      PowerPoint$XlConstants__xlBoth &
-      1; // 1
-    static +xlBottom: Class<PowerPoint$XlConstants__xlBottom> &
-      PowerPoint$XlConstants__xlBottom &
-      -4107; // -4107
-    static +xlCenter: Class<PowerPoint$XlConstants__xlCenter> &
-      PowerPoint$XlConstants__xlCenter &
-      -4108; // -4108
-    static +xlChecker: Class<PowerPoint$XlConstants__xlChecker> &
-      PowerPoint$XlConstants__xlChecker &
-      9; // 9
-    static +xlCircle: Class<PowerPoint$XlConstants__xlCircle> &
-      PowerPoint$XlConstants__xlCircle &
-      8; // 8
-    static +xlColumn: Class<PowerPoint$XlConstants__xlColumn> &
-      PowerPoint$XlConstants__xlColumn &
-      3; // 3
-    static +xlCombination: Class<PowerPoint$XlConstants__xlCombination> &
-      PowerPoint$XlConstants__xlCombination &
-      -4111; // -4111
-    static +xlCorner: Class<PowerPoint$XlConstants__xlCorner> &
-      PowerPoint$XlConstants__xlCorner &
-      2; // 2
-    static +xlCrissCross: Class<PowerPoint$XlConstants__xlCrissCross> &
-      PowerPoint$XlConstants__xlCrissCross &
-      16; // 16
-    static +xlCross: Class<PowerPoint$XlConstants__xlCross> &
-      PowerPoint$XlConstants__xlCross &
-      4; // 4
-    static +xlCustom: Class<PowerPoint$XlConstants__xlCustom> &
-      PowerPoint$XlConstants__xlCustom &
-      -4114; // -4114
-    static +xlDefaultAutoFormat: Class<PowerPoint$XlConstants__xlDefaultAutoFormat> &
-      PowerPoint$XlConstants__xlDefaultAutoFormat &
-      -1; // -1
-    static +xlDiamond: Class<PowerPoint$XlConstants__xlDiamond> &
-      PowerPoint$XlConstants__xlDiamond &
-      2; // 2
-    static +xlDistributed: Class<PowerPoint$XlConstants__xlDistributed> &
-      PowerPoint$XlConstants__xlDistributed &
-      -4117; // -4117
-    static +xlFill: Class<PowerPoint$XlConstants__xlFill> &
-      PowerPoint$XlConstants__xlFill &
-      5; // 5
-    static +xlFixedValue: Class<PowerPoint$XlConstants__xlFixedValue> &
-      PowerPoint$XlConstants__xlFixedValue &
-      1; // 1
-    static +xlGeneral: Class<PowerPoint$XlConstants__xlGeneral> &
-      PowerPoint$XlConstants__xlGeneral &
-      1; // 1
-    static +xlGray16: Class<PowerPoint$XlConstants__xlGray16> &
-      PowerPoint$XlConstants__xlGray16 &
-      17; // 17
-    static +xlGray25: Class<PowerPoint$XlConstants__xlGray25> &
-      PowerPoint$XlConstants__xlGray25 &
-      -4124; // -4124
-    static +xlGray50: Class<PowerPoint$XlConstants__xlGray50> &
-      PowerPoint$XlConstants__xlGray50 &
-      -4125; // -4125
-    static +xlGray75: Class<PowerPoint$XlConstants__xlGray75> &
-      PowerPoint$XlConstants__xlGray75 &
-      -4126; // -4126
-    static +xlGray8: Class<PowerPoint$XlConstants__xlGray8> &
-      PowerPoint$XlConstants__xlGray8 &
-      18; // 18
-    static +xlGrid: Class<PowerPoint$XlConstants__xlGrid> &
-      PowerPoint$XlConstants__xlGrid &
-      15; // 15
-    static +xlHigh: Class<PowerPoint$XlConstants__xlHigh> &
-      PowerPoint$XlConstants__xlHigh &
-      -4127; // -4127
-    static +xlInside: Class<PowerPoint$XlConstants__xlInside> &
-      PowerPoint$XlConstants__xlInside &
-      2; // 2
-    static +xlJustify: Class<PowerPoint$XlConstants__xlJustify> &
-      PowerPoint$XlConstants__xlJustify &
-      -4130; // -4130
-    static +xlLeft: Class<PowerPoint$XlConstants__xlLeft> &
-      PowerPoint$XlConstants__xlLeft &
-      -4131; // -4131
-    static +xlLightDown: Class<PowerPoint$XlConstants__xlLightDown> &
-      PowerPoint$XlConstants__xlLightDown &
-      13; // 13
-    static +xlLightHorizontal: Class<PowerPoint$XlConstants__xlLightHorizontal> &
-      PowerPoint$XlConstants__xlLightHorizontal &
-      11; // 11
-    static +xlLightUp: Class<PowerPoint$XlConstants__xlLightUp> &
-      PowerPoint$XlConstants__xlLightUp &
-      14; // 14
-    static +xlLightVertical: Class<PowerPoint$XlConstants__xlLightVertical> &
-      PowerPoint$XlConstants__xlLightVertical &
-      12; // 12
-    static +xlLow: Class<PowerPoint$XlConstants__xlLow> &
-      PowerPoint$XlConstants__xlLow &
-      -4134; // -4134
-    static +xlMaximum: Class<PowerPoint$XlConstants__xlMaximum> &
-      PowerPoint$XlConstants__xlMaximum &
-      2; // 2
-    static +xlMinimum: Class<PowerPoint$XlConstants__xlMinimum> &
-      PowerPoint$XlConstants__xlMinimum &
-      4; // 4
-    static +xlMinusValues: Class<PowerPoint$XlConstants__xlMinusValues> &
-      PowerPoint$XlConstants__xlMinusValues &
-      3; // 3
-    static +xlNextToAxis: Class<PowerPoint$XlConstants__xlNextToAxis> &
-      PowerPoint$XlConstants__xlNextToAxis &
-      4; // 4
-    static +xlNone: Class<PowerPoint$XlConstants__xlNone> &
-      PowerPoint$XlConstants__xlNone &
-      -4142; // -4142
-    static +xlOpaque: Class<PowerPoint$XlConstants__xlOpaque> &
-      PowerPoint$XlConstants__xlOpaque &
-      3; // 3
-    static +xlOutside: Class<PowerPoint$XlConstants__xlOutside> &
-      PowerPoint$XlConstants__xlOutside &
-      3; // 3
-    static +xlPercent: Class<PowerPoint$XlConstants__xlPercent> &
-      PowerPoint$XlConstants__xlPercent &
-      2; // 2
-    static +xlPlus: Class<PowerPoint$XlConstants__xlPlus> &
-      PowerPoint$XlConstants__xlPlus &
-      9; // 9
-    static +xlPlusValues: Class<PowerPoint$XlConstants__xlPlusValues> &
-      PowerPoint$XlConstants__xlPlusValues &
-      2; // 2
-    static +xlRight: Class<PowerPoint$XlConstants__xlRight> &
-      PowerPoint$XlConstants__xlRight &
-      -4152; // -4152
-    static +xlScale: Class<PowerPoint$XlConstants__xlScale> &
-      PowerPoint$XlConstants__xlScale &
-      3; // 3
-    static +xlSemiGray75: Class<PowerPoint$XlConstants__xlSemiGray75> &
-      PowerPoint$XlConstants__xlSemiGray75 &
-      10; // 10
-    static +xlShowLabel: Class<PowerPoint$XlConstants__xlShowLabel> &
-      PowerPoint$XlConstants__xlShowLabel &
-      4; // 4
-    static +xlShowLabelAndPercent: Class<PowerPoint$XlConstants__xlShowLabelAndPercent> &
-      PowerPoint$XlConstants__xlShowLabelAndPercent &
-      5; // 5
-    static +xlShowPercent: Class<PowerPoint$XlConstants__xlShowPercent> &
-      PowerPoint$XlConstants__xlShowPercent &
-      3; // 3
-    static +xlShowValue: Class<PowerPoint$XlConstants__xlShowValue> &
-      PowerPoint$XlConstants__xlShowValue &
-      2; // 2
-    static +xlSingle: Class<PowerPoint$XlConstants__xlSingle> &
-      PowerPoint$XlConstants__xlSingle &
-      2; // 2
-    static +xlSolid: Class<PowerPoint$XlConstants__xlSolid> &
-      PowerPoint$XlConstants__xlSolid &
-      1; // 1
-    static +xlSquare: Class<PowerPoint$XlConstants__xlSquare> &
-      PowerPoint$XlConstants__xlSquare &
-      1; // 1
-    static +xlStar: Class<PowerPoint$XlConstants__xlStar> &
-      PowerPoint$XlConstants__xlStar &
-      5; // 5
-    static +xlStError: Class<PowerPoint$XlConstants__xlStError> &
-      PowerPoint$XlConstants__xlStError &
-      4; // 4
-    static +xlTop: Class<PowerPoint$XlConstants__xlTop> &
-      PowerPoint$XlConstants__xlTop &
-      -4160; // -4160
-    static +xlTransparent: Class<PowerPoint$XlConstants__xlTransparent> &
-      PowerPoint$XlConstants__xlTransparent &
-      2; // 2
-    static +xlTriangle: Class<PowerPoint$XlConstants__xlTriangle> &
-      PowerPoint$XlConstants__xlTriangle &
-      3; // 3
-  }
-
-  declare class PowerPoint$XlConstants__xl3DBar mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xl3DSurface
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlAbove mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlAutomatic
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlBar mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlBelow mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlBoth mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlBottom
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlCenter
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlChecker
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlCircle
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlColumn
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlCombination
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlCorner
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlCrissCross
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlCross mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlCustom
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlDefaultAutoFormat
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlDiamond
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlDistributed
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlFill mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlFixedValue
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlGeneral
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlGray16
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlGray25
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlGray50
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlGray75
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlGray8 mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlGrid mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlHigh mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlInside
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlJustify
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlLeft mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlLightDown
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlLightHorizontal
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlLightUp
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlLightVertical
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlLow mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlMaximum
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlMinimum
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlMinusValues
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlNextToAxis
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlNone mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlOpaque
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlOutside
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlPercent
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlPlus mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlPlusValues
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlRight mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlScale mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlSemiGray75
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlShowLabel
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlShowLabelAndPercent
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlShowPercent
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlShowValue
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlSingle
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlSolid mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlSquare
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlStar mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlStError
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlTop mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlTransparent
-    mixins PowerPoint$XlConstants {}
-  declare class PowerPoint$XlConstants__xlTriangle
-    mixins PowerPoint$XlConstants {}
-
-  declare class PowerPoint$XlCopyPictureFormat {
-    constructor(...args: empty): mixed;
-    static +xlBitmap: Class<PowerPoint$XlCopyPictureFormat__xlBitmap> &
-      PowerPoint$XlCopyPictureFormat__xlBitmap &
-      2; // 2
-    static +xlPicture: Class<PowerPoint$XlCopyPictureFormat__xlPicture> &
-      PowerPoint$XlCopyPictureFormat__xlPicture &
-      -4147; // -4147
-  }
-
-  declare class PowerPoint$XlCopyPictureFormat__xlBitmap
-    mixins PowerPoint$XlCopyPictureFormat {}
-  declare class PowerPoint$XlCopyPictureFormat__xlPicture
-    mixins PowerPoint$XlCopyPictureFormat {}
-
-  declare class PowerPoint$XlDataLabelPosition {
-    constructor(...args: empty): mixed;
-    static +xlLabelPositionAbove: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionAbove> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionAbove &
-      0; // 0
-    static +xlLabelPositionBelow: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionBelow> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionBelow &
-      1; // 1
-    static +xlLabelPositionBestFit: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionBestFit> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionBestFit &
-      5; // 5
-    static +xlLabelPositionCenter: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionCenter> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionCenter &
-      -4108; // -4108
-    static +xlLabelPositionCustom: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionCustom> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionCustom &
-      7; // 7
-    static +xlLabelPositionInsideBase: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionInsideBase> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionInsideBase &
-      4; // 4
-    static +xlLabelPositionInsideEnd: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionInsideEnd> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionInsideEnd &
-      3; // 3
-    static +xlLabelPositionLeft: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionLeft> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionLeft &
-      -4131; // -4131
-    static +xlLabelPositionMixed: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionMixed> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionMixed &
-      6; // 6
-    static +xlLabelPositionOutsideEnd: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionOutsideEnd> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionOutsideEnd &
-      2; // 2
-    static +xlLabelPositionRight: Class<PowerPoint$XlDataLabelPosition__xlLabelPositionRight> &
-      PowerPoint$XlDataLabelPosition__xlLabelPositionRight &
-      -4152; // -4152
-  }
-
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionAbove
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionBelow
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionBestFit
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionCenter
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionCustom
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionInsideBase
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionInsideEnd
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionLeft
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionMixed
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionOutsideEnd
-    mixins PowerPoint$XlDataLabelPosition {}
-  declare class PowerPoint$XlDataLabelPosition__xlLabelPositionRight
-    mixins PowerPoint$XlDataLabelPosition {}
-
-  declare class PowerPoint$XlDataLabelSeparator {
-    constructor(...args: empty): mixed;
-    static +xlDataLabelSeparatorDefault: Class<PowerPoint$XlDataLabelSeparator__xlDataLabelSeparatorDefault> &
-      PowerPoint$XlDataLabelSeparator__xlDataLabelSeparatorDefault &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlDataLabelSeparator__xlDataLabelSeparatorDefault
-    mixins PowerPoint$XlDataLabelSeparator {}
-
-  declare class PowerPoint$XlDataLabelsType {
-    constructor(...args: empty): mixed;
-    static +xlDataLabelsShowBubbleSizes: Class<PowerPoint$XlDataLabelsType__xlDataLabelsShowBubbleSizes> &
-      PowerPoint$XlDataLabelsType__xlDataLabelsShowBubbleSizes &
-      6; // 6
-    static +xlDataLabelsShowLabel: Class<PowerPoint$XlDataLabelsType__xlDataLabelsShowLabel> &
-      PowerPoint$XlDataLabelsType__xlDataLabelsShowLabel &
-      4; // 4
-    static +xlDataLabelsShowLabelAndPercent: Class<PowerPoint$XlDataLabelsType__xlDataLabelsShowLabelAndPercent> &
-      PowerPoint$XlDataLabelsType__xlDataLabelsShowLabelAndPercent &
-      5; // 5
-    static +xlDataLabelsShowNone: Class<PowerPoint$XlDataLabelsType__xlDataLabelsShowNone> &
-      PowerPoint$XlDataLabelsType__xlDataLabelsShowNone &
-      -4142; // -4142
-    static +xlDataLabelsShowPercent: Class<PowerPoint$XlDataLabelsType__xlDataLabelsShowPercent> &
-      PowerPoint$XlDataLabelsType__xlDataLabelsShowPercent &
-      3; // 3
-    static +xlDataLabelsShowValue: Class<PowerPoint$XlDataLabelsType__xlDataLabelsShowValue> &
-      PowerPoint$XlDataLabelsType__xlDataLabelsShowValue &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlDataLabelsType__xlDataLabelsShowBubbleSizes
-    mixins PowerPoint$XlDataLabelsType {}
-  declare class PowerPoint$XlDataLabelsType__xlDataLabelsShowLabel
-    mixins PowerPoint$XlDataLabelsType {}
-  declare class PowerPoint$XlDataLabelsType__xlDataLabelsShowLabelAndPercent
-    mixins PowerPoint$XlDataLabelsType {}
-  declare class PowerPoint$XlDataLabelsType__xlDataLabelsShowNone
-    mixins PowerPoint$XlDataLabelsType {}
-  declare class PowerPoint$XlDataLabelsType__xlDataLabelsShowPercent
-    mixins PowerPoint$XlDataLabelsType {}
-  declare class PowerPoint$XlDataLabelsType__xlDataLabelsShowValue
-    mixins PowerPoint$XlDataLabelsType {}
-
-  declare class PowerPoint$XlDisplayBlanksAs {
-    constructor(...args: empty): mixed;
-    static +xlInterpolated: Class<PowerPoint$XlDisplayBlanksAs__xlInterpolated> &
-      PowerPoint$XlDisplayBlanksAs__xlInterpolated &
-      3; // 3
-    static +xlNotPlotted: Class<PowerPoint$XlDisplayBlanksAs__xlNotPlotted> &
-      PowerPoint$XlDisplayBlanksAs__xlNotPlotted &
-      1; // 1
-    static +xlZero: Class<PowerPoint$XlDisplayBlanksAs__xlZero> &
-      PowerPoint$XlDisplayBlanksAs__xlZero &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlDisplayBlanksAs__xlInterpolated
-    mixins PowerPoint$XlDisplayBlanksAs {}
-  declare class PowerPoint$XlDisplayBlanksAs__xlNotPlotted
-    mixins PowerPoint$XlDisplayBlanksAs {}
-  declare class PowerPoint$XlDisplayBlanksAs__xlZero
-    mixins PowerPoint$XlDisplayBlanksAs {}
-
-  declare class PowerPoint$XlDisplayUnit {
-    constructor(...args: empty): mixed;
-    static +xlHundredMillions: Class<PowerPoint$XlDisplayUnit__xlHundredMillions> &
-      PowerPoint$XlDisplayUnit__xlHundredMillions &
-      -8; // -8
-    static +xlHundreds: Class<PowerPoint$XlDisplayUnit__xlHundreds> &
-      PowerPoint$XlDisplayUnit__xlHundreds &
-      -2; // -2
-    static +xlHundredThousands: Class<PowerPoint$XlDisplayUnit__xlHundredThousands> &
-      PowerPoint$XlDisplayUnit__xlHundredThousands &
-      -5; // -5
-    static +xlMillionMillions: Class<PowerPoint$XlDisplayUnit__xlMillionMillions> &
-      PowerPoint$XlDisplayUnit__xlMillionMillions &
-      -10; // -10
-    static +xlMillions: Class<PowerPoint$XlDisplayUnit__xlMillions> &
-      PowerPoint$XlDisplayUnit__xlMillions &
-      -6; // -6
-    static +xlTenMillions: Class<PowerPoint$XlDisplayUnit__xlTenMillions> &
-      PowerPoint$XlDisplayUnit__xlTenMillions &
-      -7; // -7
-    static +xlTenThousands: Class<PowerPoint$XlDisplayUnit__xlTenThousands> &
-      PowerPoint$XlDisplayUnit__xlTenThousands &
-      -4; // -4
-    static +xlThousandMillions: Class<PowerPoint$XlDisplayUnit__xlThousandMillions> &
-      PowerPoint$XlDisplayUnit__xlThousandMillions &
-      -9; // -9
-    static +xlThousands: Class<PowerPoint$XlDisplayUnit__xlThousands> &
-      PowerPoint$XlDisplayUnit__xlThousands &
-      -3; // -3
-  }
-
-  declare class PowerPoint$XlDisplayUnit__xlHundredMillions
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlHundreds
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlHundredThousands
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlMillionMillions
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlMillions
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlTenMillions
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlTenThousands
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlThousandMillions
-    mixins PowerPoint$XlDisplayUnit {}
-  declare class PowerPoint$XlDisplayUnit__xlThousands
-    mixins PowerPoint$XlDisplayUnit {}
-
-  declare class PowerPoint$XlEndStyleCap {
-    constructor(...args: empty): mixed;
-    static +xlCap: Class<PowerPoint$XlEndStyleCap__xlCap> &
-      PowerPoint$XlEndStyleCap__xlCap &
-      1; // 1
-    static +xlNoCap: Class<PowerPoint$XlEndStyleCap__xlNoCap> &
-      PowerPoint$XlEndStyleCap__xlNoCap &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlEndStyleCap__xlCap
-    mixins PowerPoint$XlEndStyleCap {}
-  declare class PowerPoint$XlEndStyleCap__xlNoCap
-    mixins PowerPoint$XlEndStyleCap {}
-
-  declare class PowerPoint$XlErrorBarDirection {
-    constructor(...args: empty): mixed;
-    static +xlChartX: Class<PowerPoint$XlErrorBarDirection__xlChartX> &
-      PowerPoint$XlErrorBarDirection__xlChartX &
-      -4168; // -4168
-    static +xlChartY: Class<PowerPoint$XlErrorBarDirection__xlChartY> &
-      PowerPoint$XlErrorBarDirection__xlChartY &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlErrorBarDirection__xlChartX
-    mixins PowerPoint$XlErrorBarDirection {}
-  declare class PowerPoint$XlErrorBarDirection__xlChartY
-    mixins PowerPoint$XlErrorBarDirection {}
-
-  declare class PowerPoint$XlErrorBarInclude {
-    constructor(...args: empty): mixed;
-    static +xlErrorBarIncludeBoth: Class<PowerPoint$XlErrorBarInclude__xlErrorBarIncludeBoth> &
-      PowerPoint$XlErrorBarInclude__xlErrorBarIncludeBoth &
-      1; // 1
-    static +xlErrorBarIncludeMinusValues: Class<PowerPoint$XlErrorBarInclude__xlErrorBarIncludeMinusValues> &
-      PowerPoint$XlErrorBarInclude__xlErrorBarIncludeMinusValues &
-      3; // 3
-    static +xlErrorBarIncludeNone: Class<PowerPoint$XlErrorBarInclude__xlErrorBarIncludeNone> &
-      PowerPoint$XlErrorBarInclude__xlErrorBarIncludeNone &
-      -4142; // -4142
-    static +xlErrorBarIncludePlusValues: Class<PowerPoint$XlErrorBarInclude__xlErrorBarIncludePlusValues> &
-      PowerPoint$XlErrorBarInclude__xlErrorBarIncludePlusValues &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlErrorBarInclude__xlErrorBarIncludeBoth
-    mixins PowerPoint$XlErrorBarInclude {}
-  declare class PowerPoint$XlErrorBarInclude__xlErrorBarIncludeMinusValues
-    mixins PowerPoint$XlErrorBarInclude {}
-  declare class PowerPoint$XlErrorBarInclude__xlErrorBarIncludeNone
-    mixins PowerPoint$XlErrorBarInclude {}
-  declare class PowerPoint$XlErrorBarInclude__xlErrorBarIncludePlusValues
-    mixins PowerPoint$XlErrorBarInclude {}
-
-  declare class PowerPoint$XlErrorBarType {
-    constructor(...args: empty): mixed;
-    static +xlErrorBarTypeCustom: Class<PowerPoint$XlErrorBarType__xlErrorBarTypeCustom> &
-      PowerPoint$XlErrorBarType__xlErrorBarTypeCustom &
-      -4114; // -4114
-    static +xlErrorBarTypeFixedValue: Class<PowerPoint$XlErrorBarType__xlErrorBarTypeFixedValue> &
-      PowerPoint$XlErrorBarType__xlErrorBarTypeFixedValue &
-      1; // 1
-    static +xlErrorBarTypePercent: Class<PowerPoint$XlErrorBarType__xlErrorBarTypePercent> &
-      PowerPoint$XlErrorBarType__xlErrorBarTypePercent &
-      2; // 2
-    static +xlErrorBarTypeStDev: Class<PowerPoint$XlErrorBarType__xlErrorBarTypeStDev> &
-      PowerPoint$XlErrorBarType__xlErrorBarTypeStDev &
-      -4155; // -4155
-    static +xlErrorBarTypeStError: Class<PowerPoint$XlErrorBarType__xlErrorBarTypeStError> &
-      PowerPoint$XlErrorBarType__xlErrorBarTypeStError &
-      4; // 4
-  }
-
-  declare class PowerPoint$XlErrorBarType__xlErrorBarTypeCustom
-    mixins PowerPoint$XlErrorBarType {}
-  declare class PowerPoint$XlErrorBarType__xlErrorBarTypeFixedValue
-    mixins PowerPoint$XlErrorBarType {}
-  declare class PowerPoint$XlErrorBarType__xlErrorBarTypePercent
-    mixins PowerPoint$XlErrorBarType {}
-  declare class PowerPoint$XlErrorBarType__xlErrorBarTypeStDev
-    mixins PowerPoint$XlErrorBarType {}
-  declare class PowerPoint$XlErrorBarType__xlErrorBarTypeStError
-    mixins PowerPoint$XlErrorBarType {}
-
-  declare class PowerPoint$XlHAlign {
-    constructor(...args: empty): mixed;
-    static +xlHAlignCenter: Class<PowerPoint$XlHAlign__xlHAlignCenter> &
-      PowerPoint$XlHAlign__xlHAlignCenter &
-      -4108; // -4108
-    static +xlHAlignCenterAcrossSelection: Class<PowerPoint$XlHAlign__xlHAlignCenterAcrossSelection> &
-      PowerPoint$XlHAlign__xlHAlignCenterAcrossSelection &
-      7; // 7
-    static +xlHAlignDistributed: Class<PowerPoint$XlHAlign__xlHAlignDistributed> &
-      PowerPoint$XlHAlign__xlHAlignDistributed &
-      -4117; // -4117
-    static +xlHAlignFill: Class<PowerPoint$XlHAlign__xlHAlignFill> &
-      PowerPoint$XlHAlign__xlHAlignFill &
-      5; // 5
-    static +xlHAlignGeneral: Class<PowerPoint$XlHAlign__xlHAlignGeneral> &
-      PowerPoint$XlHAlign__xlHAlignGeneral &
-      1; // 1
-    static +xlHAlignJustify: Class<PowerPoint$XlHAlign__xlHAlignJustify> &
-      PowerPoint$XlHAlign__xlHAlignJustify &
-      -4130; // -4130
-    static +xlHAlignLeft: Class<PowerPoint$XlHAlign__xlHAlignLeft> &
-      PowerPoint$XlHAlign__xlHAlignLeft &
-      -4131; // -4131
-    static +xlHAlignRight: Class<PowerPoint$XlHAlign__xlHAlignRight> &
-      PowerPoint$XlHAlign__xlHAlignRight &
-      -4152; // -4152
-  }
-
-  declare class PowerPoint$XlHAlign__xlHAlignCenter
-    mixins PowerPoint$XlHAlign {}
-  declare class PowerPoint$XlHAlign__xlHAlignCenterAcrossSelection
-    mixins PowerPoint$XlHAlign {}
-  declare class PowerPoint$XlHAlign__xlHAlignDistributed
-    mixins PowerPoint$XlHAlign {}
-  declare class PowerPoint$XlHAlign__xlHAlignFill mixins PowerPoint$XlHAlign {}
-  declare class PowerPoint$XlHAlign__xlHAlignGeneral
-    mixins PowerPoint$XlHAlign {}
-  declare class PowerPoint$XlHAlign__xlHAlignJustify
-    mixins PowerPoint$XlHAlign {}
-  declare class PowerPoint$XlHAlign__xlHAlignLeft mixins PowerPoint$XlHAlign {}
-  declare class PowerPoint$XlHAlign__xlHAlignRight mixins PowerPoint$XlHAlign {}
-
-  declare class PowerPoint$XlLegendPosition {
-    constructor(...args: empty): mixed;
-    static +xlLegendPositionBottom: Class<PowerPoint$XlLegendPosition__xlLegendPositionBottom> &
-      PowerPoint$XlLegendPosition__xlLegendPositionBottom &
-      -4107; // -4107
-    static +xlLegendPositionCorner: Class<PowerPoint$XlLegendPosition__xlLegendPositionCorner> &
-      PowerPoint$XlLegendPosition__xlLegendPositionCorner &
-      2; // 2
-    static +xlLegendPositionCustom: Class<PowerPoint$XlLegendPosition__xlLegendPositionCustom> &
-      PowerPoint$XlLegendPosition__xlLegendPositionCustom &
-      -4161; // -4161
-    static +xlLegendPositionLeft: Class<PowerPoint$XlLegendPosition__xlLegendPositionLeft> &
-      PowerPoint$XlLegendPosition__xlLegendPositionLeft &
-      -4131; // -4131
-    static +xlLegendPositionRight: Class<PowerPoint$XlLegendPosition__xlLegendPositionRight> &
-      PowerPoint$XlLegendPosition__xlLegendPositionRight &
-      -4152; // -4152
-    static +xlLegendPositionTop: Class<PowerPoint$XlLegendPosition__xlLegendPositionTop> &
-      PowerPoint$XlLegendPosition__xlLegendPositionTop &
-      -4160; // -4160
-  }
-
-  declare class PowerPoint$XlLegendPosition__xlLegendPositionBottom
-    mixins PowerPoint$XlLegendPosition {}
-  declare class PowerPoint$XlLegendPosition__xlLegendPositionCorner
-    mixins PowerPoint$XlLegendPosition {}
-  declare class PowerPoint$XlLegendPosition__xlLegendPositionCustom
-    mixins PowerPoint$XlLegendPosition {}
-  declare class PowerPoint$XlLegendPosition__xlLegendPositionLeft
-    mixins PowerPoint$XlLegendPosition {}
-  declare class PowerPoint$XlLegendPosition__xlLegendPositionRight
-    mixins PowerPoint$XlLegendPosition {}
-  declare class PowerPoint$XlLegendPosition__xlLegendPositionTop
-    mixins PowerPoint$XlLegendPosition {}
-
-  declare class PowerPoint$XlLineStyle {
-    constructor(...args: empty): mixed;
-    static +xlContinuous: Class<PowerPoint$XlLineStyle__xlContinuous> &
-      PowerPoint$XlLineStyle__xlContinuous &
-      1; // 1
-    static +xlDash: Class<PowerPoint$XlLineStyle__xlDash> &
-      PowerPoint$XlLineStyle__xlDash &
-      -4115; // -4115
-    static +xlDashDot: Class<PowerPoint$XlLineStyle__xlDashDot> &
-      PowerPoint$XlLineStyle__xlDashDot &
-      4; // 4
-    static +xlDashDotDot: Class<PowerPoint$XlLineStyle__xlDashDotDot> &
-      PowerPoint$XlLineStyle__xlDashDotDot &
-      5; // 5
-    static +xlDot: Class<PowerPoint$XlLineStyle__xlDot> &
-      PowerPoint$XlLineStyle__xlDot &
-      -4118; // -4118
-    static +xlDouble: Class<PowerPoint$XlLineStyle__xlDouble> &
-      PowerPoint$XlLineStyle__xlDouble &
-      -4119; // -4119
-    static +xlLineStyleNone: Class<PowerPoint$XlLineStyle__xlLineStyleNone> &
-      PowerPoint$XlLineStyle__xlLineStyleNone &
-      -4142; // -4142
-    static +xlSlantDashDot: Class<PowerPoint$XlLineStyle__xlSlantDashDot> &
-      PowerPoint$XlLineStyle__xlSlantDashDot &
-      13; // 13
-  }
-
-  declare class PowerPoint$XlLineStyle__xlContinuous
-    mixins PowerPoint$XlLineStyle {}
-  declare class PowerPoint$XlLineStyle__xlDash mixins PowerPoint$XlLineStyle {}
-  declare class PowerPoint$XlLineStyle__xlDashDot
-    mixins PowerPoint$XlLineStyle {}
-  declare class PowerPoint$XlLineStyle__xlDashDotDot
-    mixins PowerPoint$XlLineStyle {}
-  declare class PowerPoint$XlLineStyle__xlDot mixins PowerPoint$XlLineStyle {}
-  declare class PowerPoint$XlLineStyle__xlDouble
-    mixins PowerPoint$XlLineStyle {}
-  declare class PowerPoint$XlLineStyle__xlLineStyleNone
-    mixins PowerPoint$XlLineStyle {}
-  declare class PowerPoint$XlLineStyle__xlSlantDashDot
-    mixins PowerPoint$XlLineStyle {}
-
-  declare class PowerPoint$XlMarkerStyle {
-    constructor(...args: empty): mixed;
-    static +xlMarkerStyleAutomatic: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleAutomatic> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleAutomatic &
-      -4105; // -4105
-    static +xlMarkerStyleCircle: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleCircle> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleCircle &
-      8; // 8
-    static +xlMarkerStyleDash: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleDash> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleDash &
-      -4115; // -4115
-    static +xlMarkerStyleDiamond: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleDiamond> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleDiamond &
-      2; // 2
-    static +xlMarkerStyleDot: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleDot> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleDot &
-      -4118; // -4118
-    static +xlMarkerStyleNone: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleNone> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleNone &
-      -4142; // -4142
-    static +xlMarkerStylePicture: Class<PowerPoint$XlMarkerStyle__xlMarkerStylePicture> &
-      PowerPoint$XlMarkerStyle__xlMarkerStylePicture &
-      -4147; // -4147
-    static +xlMarkerStylePlus: Class<PowerPoint$XlMarkerStyle__xlMarkerStylePlus> &
-      PowerPoint$XlMarkerStyle__xlMarkerStylePlus &
-      9; // 9
-    static +xlMarkerStyleSquare: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleSquare> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleSquare &
-      1; // 1
-    static +xlMarkerStyleStar: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleStar> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleStar &
-      5; // 5
-    static +xlMarkerStyleTriangle: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleTriangle> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleTriangle &
-      3; // 3
-    static +xlMarkerStyleX: Class<PowerPoint$XlMarkerStyle__xlMarkerStyleX> &
-      PowerPoint$XlMarkerStyle__xlMarkerStyleX &
-      -4168; // -4168
-  }
-
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleAutomatic
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleCircle
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleDash
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleDiamond
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleDot
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleNone
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStylePicture
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStylePlus
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleSquare
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleStar
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleTriangle
-    mixins PowerPoint$XlMarkerStyle {}
-  declare class PowerPoint$XlMarkerStyle__xlMarkerStyleX
-    mixins PowerPoint$XlMarkerStyle {}
-
-  declare class PowerPoint$XlOrientation {
-    constructor(...args: empty): mixed;
-    static +xlDownward: Class<PowerPoint$XlOrientation__xlDownward> &
-      PowerPoint$XlOrientation__xlDownward &
-      -4170; // -4170
-    static +xlHorizontal: Class<PowerPoint$XlOrientation__xlHorizontal> &
-      PowerPoint$XlOrientation__xlHorizontal &
-      -4128; // -4128
-    static +xlUpward: Class<PowerPoint$XlOrientation__xlUpward> &
-      PowerPoint$XlOrientation__xlUpward &
-      -4171; // -4171
-    static +xlVertical: Class<PowerPoint$XlOrientation__xlVertical> &
-      PowerPoint$XlOrientation__xlVertical &
-      -4166; // -4166
-  }
-
-  declare class PowerPoint$XlOrientation__xlDownward
-    mixins PowerPoint$XlOrientation {}
-  declare class PowerPoint$XlOrientation__xlHorizontal
-    mixins PowerPoint$XlOrientation {}
-  declare class PowerPoint$XlOrientation__xlUpward
-    mixins PowerPoint$XlOrientation {}
-  declare class PowerPoint$XlOrientation__xlVertical
-    mixins PowerPoint$XlOrientation {}
-
-  declare class PowerPoint$XlPattern {
-    constructor(...args: empty): mixed;
-    static +xlPatternAutomatic: Class<PowerPoint$XlPattern__xlPatternAutomatic> &
-      PowerPoint$XlPattern__xlPatternAutomatic &
-      -4105; // -4105
-    static +xlPatternChecker: Class<PowerPoint$XlPattern__xlPatternChecker> &
-      PowerPoint$XlPattern__xlPatternChecker &
-      9; // 9
-    static +xlPatternCrissCross: Class<PowerPoint$XlPattern__xlPatternCrissCross> &
-      PowerPoint$XlPattern__xlPatternCrissCross &
-      16; // 16
-    static +xlPatternDown: Class<PowerPoint$XlPattern__xlPatternDown> &
-      PowerPoint$XlPattern__xlPatternDown &
-      -4121; // -4121
-    static +xlPatternGray16: Class<PowerPoint$XlPattern__xlPatternGray16> &
-      PowerPoint$XlPattern__xlPatternGray16 &
-      17; // 17
-    static +xlPatternGray25: Class<PowerPoint$XlPattern__xlPatternGray25> &
-      PowerPoint$XlPattern__xlPatternGray25 &
-      -4124; // -4124
-    static +xlPatternGray50: Class<PowerPoint$XlPattern__xlPatternGray50> &
-      PowerPoint$XlPattern__xlPatternGray50 &
-      -4125; // -4125
-    static +xlPatternGray75: Class<PowerPoint$XlPattern__xlPatternGray75> &
-      PowerPoint$XlPattern__xlPatternGray75 &
-      -4126; // -4126
-    static +xlPatternGray8: Class<PowerPoint$XlPattern__xlPatternGray8> &
-      PowerPoint$XlPattern__xlPatternGray8 &
-      18; // 18
-    static +xlPatternGrid: Class<PowerPoint$XlPattern__xlPatternGrid> &
-      PowerPoint$XlPattern__xlPatternGrid &
-      15; // 15
-    static +xlPatternHorizontal: Class<PowerPoint$XlPattern__xlPatternHorizontal> &
-      PowerPoint$XlPattern__xlPatternHorizontal &
-      -4128; // -4128
-    static +xlPatternLightDown: Class<PowerPoint$XlPattern__xlPatternLightDown> &
-      PowerPoint$XlPattern__xlPatternLightDown &
-      13; // 13
-    static +xlPatternLightHorizontal: Class<PowerPoint$XlPattern__xlPatternLightHorizontal> &
-      PowerPoint$XlPattern__xlPatternLightHorizontal &
-      11; // 11
-    static +xlPatternLightUp: Class<PowerPoint$XlPattern__xlPatternLightUp> &
-      PowerPoint$XlPattern__xlPatternLightUp &
-      14; // 14
-    static +xlPatternLightVertical: Class<PowerPoint$XlPattern__xlPatternLightVertical> &
-      PowerPoint$XlPattern__xlPatternLightVertical &
-      12; // 12
-    static +xlPatternLinearGradient: Class<PowerPoint$XlPattern__xlPatternLinearGradient> &
-      PowerPoint$XlPattern__xlPatternLinearGradient &
-      4000; // 4000
-    static +xlPatternNone: Class<PowerPoint$XlPattern__xlPatternNone> &
-      PowerPoint$XlPattern__xlPatternNone &
-      -4142; // -4142
-    static +xlPatternRectangularGradient: Class<PowerPoint$XlPattern__xlPatternRectangularGradient> &
-      PowerPoint$XlPattern__xlPatternRectangularGradient &
-      4001; // 4001
-    static +xlPatternSemiGray75: Class<PowerPoint$XlPattern__xlPatternSemiGray75> &
-      PowerPoint$XlPattern__xlPatternSemiGray75 &
-      10; // 10
-    static +xlPatternSolid: Class<PowerPoint$XlPattern__xlPatternSolid> &
-      PowerPoint$XlPattern__xlPatternSolid &
-      1; // 1
-    static +xlPatternUp: Class<PowerPoint$XlPattern__xlPatternUp> &
-      PowerPoint$XlPattern__xlPatternUp &
-      -4162; // -4162
-    static +xlPatternVertical: Class<PowerPoint$XlPattern__xlPatternVertical> &
-      PowerPoint$XlPattern__xlPatternVertical &
-      -4166; // -4166
-  }
-
-  declare class PowerPoint$XlPattern__xlPatternAutomatic
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternChecker
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternCrissCross
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternDown
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternGray16
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternGray25
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternGray50
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternGray75
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternGray8
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternGrid
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternHorizontal
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternLightDown
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternLightHorizontal
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternLightUp
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternLightVertical
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternLinearGradient
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternNone
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternRectangularGradient
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternSemiGray75
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternSolid
-    mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternUp mixins PowerPoint$XlPattern {}
-  declare class PowerPoint$XlPattern__xlPatternVertical
-    mixins PowerPoint$XlPattern {}
-
-  declare class PowerPoint$XlPictureAppearance {
-    constructor(...args: empty): mixed;
-    static +xlPrinter: Class<PowerPoint$XlPictureAppearance__xlPrinter> &
-      PowerPoint$XlPictureAppearance__xlPrinter &
-      2; // 2
-    static +xlScreen: Class<PowerPoint$XlPictureAppearance__xlScreen> &
-      PowerPoint$XlPictureAppearance__xlScreen &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlPictureAppearance__xlPrinter
-    mixins PowerPoint$XlPictureAppearance {}
-  declare class PowerPoint$XlPictureAppearance__xlScreen
-    mixins PowerPoint$XlPictureAppearance {}
-
-  declare class PowerPoint$XlPieSliceIndex {
-    constructor(...args: empty): mixed;
-    static +xlCenterPoint: Class<PowerPoint$XlPieSliceIndex__xlCenterPoint> &
-      PowerPoint$XlPieSliceIndex__xlCenterPoint &
-      5; // 5
-    static +xlInnerCenterPoint: Class<PowerPoint$XlPieSliceIndex__xlInnerCenterPoint> &
-      PowerPoint$XlPieSliceIndex__xlInnerCenterPoint &
-      8; // 8
-    static +xlInnerClockwisePoint: Class<PowerPoint$XlPieSliceIndex__xlInnerClockwisePoint> &
-      PowerPoint$XlPieSliceIndex__xlInnerClockwisePoint &
-      7; // 7
-    static +xlInnerCounterClockwisePoint: Class<PowerPoint$XlPieSliceIndex__xlInnerCounterClockwisePoint> &
-      PowerPoint$XlPieSliceIndex__xlInnerCounterClockwisePoint &
-      9; // 9
-    static +xlMidClockwiseRadiusPoint: Class<PowerPoint$XlPieSliceIndex__xlMidClockwiseRadiusPoint> &
-      PowerPoint$XlPieSliceIndex__xlMidClockwiseRadiusPoint &
-      4; // 4
-    static +xlMidCounterClockwiseRadiusPoint: Class<PowerPoint$XlPieSliceIndex__xlMidCounterClockwiseRadiusPoint> &
-      PowerPoint$XlPieSliceIndex__xlMidCounterClockwiseRadiusPoint &
-      6; // 6
-    static +xlOuterCenterPoint: Class<PowerPoint$XlPieSliceIndex__xlOuterCenterPoint> &
-      PowerPoint$XlPieSliceIndex__xlOuterCenterPoint &
-      2; // 2
-    static +xlOuterClockwisePoint: Class<PowerPoint$XlPieSliceIndex__xlOuterClockwisePoint> &
-      PowerPoint$XlPieSliceIndex__xlOuterClockwisePoint &
-      3; // 3
-    static +xlOuterCounterClockwisePoint: Class<PowerPoint$XlPieSliceIndex__xlOuterCounterClockwisePoint> &
-      PowerPoint$XlPieSliceIndex__xlOuterCounterClockwisePoint &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlPieSliceIndex__xlCenterPoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlInnerCenterPoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlInnerClockwisePoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlInnerCounterClockwisePoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlMidClockwiseRadiusPoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlMidCounterClockwiseRadiusPoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlOuterCenterPoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlOuterClockwisePoint
-    mixins PowerPoint$XlPieSliceIndex {}
-  declare class PowerPoint$XlPieSliceIndex__xlOuterCounterClockwisePoint
-    mixins PowerPoint$XlPieSliceIndex {}
-
-  declare class PowerPoint$XlPieSliceLocation {
-    constructor(...args: empty): mixed;
-    static +xlHorizontalCoordinate: Class<PowerPoint$XlPieSliceLocation__xlHorizontalCoordinate> &
-      PowerPoint$XlPieSliceLocation__xlHorizontalCoordinate &
-      1; // 1
-    static +xlVerticalCoordinate: Class<PowerPoint$XlPieSliceLocation__xlVerticalCoordinate> &
-      PowerPoint$XlPieSliceLocation__xlVerticalCoordinate &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlPieSliceLocation__xlHorizontalCoordinate
-    mixins PowerPoint$XlPieSliceLocation {}
-  declare class PowerPoint$XlPieSliceLocation__xlVerticalCoordinate
-    mixins PowerPoint$XlPieSliceLocation {}
-
-  declare class PowerPoint$XlPivotFieldOrientation {
-    constructor(...args: empty): mixed;
-    static +xlColumnField: Class<PowerPoint$XlPivotFieldOrientation__xlColumnField> &
-      PowerPoint$XlPivotFieldOrientation__xlColumnField &
-      2; // 2
-    static +xlDataField: Class<PowerPoint$XlPivotFieldOrientation__xlDataField> &
-      PowerPoint$XlPivotFieldOrientation__xlDataField &
-      4; // 4
-    static +xlHidden: Class<PowerPoint$XlPivotFieldOrientation__xlHidden> &
-      PowerPoint$XlPivotFieldOrientation__xlHidden &
-      0; // 0
-    static +xlPageField: Class<PowerPoint$XlPivotFieldOrientation__xlPageField> &
-      PowerPoint$XlPivotFieldOrientation__xlPageField &
-      3; // 3
-    static +xlRowField: Class<PowerPoint$XlPivotFieldOrientation__xlRowField> &
-      PowerPoint$XlPivotFieldOrientation__xlRowField &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlPivotFieldOrientation__xlColumnField
-    mixins PowerPoint$XlPivotFieldOrientation {}
-  declare class PowerPoint$XlPivotFieldOrientation__xlDataField
-    mixins PowerPoint$XlPivotFieldOrientation {}
-  declare class PowerPoint$XlPivotFieldOrientation__xlHidden
-    mixins PowerPoint$XlPivotFieldOrientation {}
-  declare class PowerPoint$XlPivotFieldOrientation__xlPageField
-    mixins PowerPoint$XlPivotFieldOrientation {}
-  declare class PowerPoint$XlPivotFieldOrientation__xlRowField
-    mixins PowerPoint$XlPivotFieldOrientation {}
-
-  declare class PowerPoint$XlReadingOrder {
-    constructor(...args: empty): mixed;
-    static +xlContext: Class<PowerPoint$XlReadingOrder__xlContext> &
-      PowerPoint$XlReadingOrder__xlContext &
-      -5002; // -5002
-    static +xlLTR: Class<PowerPoint$XlReadingOrder__xlLTR> &
-      PowerPoint$XlReadingOrder__xlLTR &
-      -5003; // -5003
-    static +xlRTL: Class<PowerPoint$XlReadingOrder__xlRTL> &
-      PowerPoint$XlReadingOrder__xlRTL &
-      -5004; // -5004
-  }
-
-  declare class PowerPoint$XlReadingOrder__xlContext
-    mixins PowerPoint$XlReadingOrder {}
-  declare class PowerPoint$XlReadingOrder__xlLTR
-    mixins PowerPoint$XlReadingOrder {}
-  declare class PowerPoint$XlReadingOrder__xlRTL
-    mixins PowerPoint$XlReadingOrder {}
-
-  declare class PowerPoint$XlRgbColor {
-    constructor(...args: empty): mixed;
-    static +rgbAliceBlue: Class<PowerPoint$XlRgbColor__rgbAliceBlue> &
-      PowerPoint$XlRgbColor__rgbAliceBlue &
-      16775408; // 16775408
-    static +rgbAntiqueWhite: Class<PowerPoint$XlRgbColor__rgbAntiqueWhite> &
-      PowerPoint$XlRgbColor__rgbAntiqueWhite &
-      14150650; // 14150650
-    static +rgbAqua: Class<PowerPoint$XlRgbColor__rgbAqua> &
-      PowerPoint$XlRgbColor__rgbAqua &
-      16776960; // 16776960
-    static +rgbAquamarine: Class<PowerPoint$XlRgbColor__rgbAquamarine> &
-      PowerPoint$XlRgbColor__rgbAquamarine &
-      13959039; // 13959039
-    static +rgbAzure: Class<PowerPoint$XlRgbColor__rgbAzure> &
-      PowerPoint$XlRgbColor__rgbAzure &
-      16777200; // 16777200
-    static +rgbBeige: Class<PowerPoint$XlRgbColor__rgbBeige> &
-      PowerPoint$XlRgbColor__rgbBeige &
-      14480885; // 14480885
-    static +rgbBisque: Class<PowerPoint$XlRgbColor__rgbBisque> &
-      PowerPoint$XlRgbColor__rgbBisque &
-      12903679; // 12903679
-    static +rgbBlack: Class<PowerPoint$XlRgbColor__rgbBlack> &
-      PowerPoint$XlRgbColor__rgbBlack &
-      0; // 0
-    static +rgbBlanchedAlmond: Class<PowerPoint$XlRgbColor__rgbBlanchedAlmond> &
-      PowerPoint$XlRgbColor__rgbBlanchedAlmond &
-      13495295; // 13495295
-    static +rgbBlue: Class<PowerPoint$XlRgbColor__rgbBlue> &
-      PowerPoint$XlRgbColor__rgbBlue &
-      16711680; // 16711680
-    static +rgbBlueViolet: Class<PowerPoint$XlRgbColor__rgbBlueViolet> &
-      PowerPoint$XlRgbColor__rgbBlueViolet &
-      14822282; // 14822282
-    static +rgbBrown: Class<PowerPoint$XlRgbColor__rgbBrown> &
-      PowerPoint$XlRgbColor__rgbBrown &
-      2763429; // 2763429
-    static +rgbBurlyWood: Class<PowerPoint$XlRgbColor__rgbBurlyWood> &
-      PowerPoint$XlRgbColor__rgbBurlyWood &
-      8894686; // 8894686
-    static +rgbCadetBlue: Class<PowerPoint$XlRgbColor__rgbCadetBlue> &
-      PowerPoint$XlRgbColor__rgbCadetBlue &
-      10526303; // 10526303
-    static +rgbChartreuse: Class<PowerPoint$XlRgbColor__rgbChartreuse> &
-      PowerPoint$XlRgbColor__rgbChartreuse &
-      65407; // 65407
-    static +rgbCoral: Class<PowerPoint$XlRgbColor__rgbCoral> &
-      PowerPoint$XlRgbColor__rgbCoral &
-      5275647; // 5275647
-    static +rgbCornflowerBlue: Class<PowerPoint$XlRgbColor__rgbCornflowerBlue> &
-      PowerPoint$XlRgbColor__rgbCornflowerBlue &
-      15570276; // 15570276
-    static +rgbCornsilk: Class<PowerPoint$XlRgbColor__rgbCornsilk> &
-      PowerPoint$XlRgbColor__rgbCornsilk &
-      14481663; // 14481663
-    static +rgbCrimson: Class<PowerPoint$XlRgbColor__rgbCrimson> &
-      PowerPoint$XlRgbColor__rgbCrimson &
-      3937500; // 3937500
-    static +rgbDarkBlue: Class<PowerPoint$XlRgbColor__rgbDarkBlue> &
-      PowerPoint$XlRgbColor__rgbDarkBlue &
-      9109504; // 9109504
-    static +rgbDarkCyan: Class<PowerPoint$XlRgbColor__rgbDarkCyan> &
-      PowerPoint$XlRgbColor__rgbDarkCyan &
-      9145088; // 9145088
-    static +rgbDarkGoldenrod: Class<PowerPoint$XlRgbColor__rgbDarkGoldenrod> &
-      PowerPoint$XlRgbColor__rgbDarkGoldenrod &
-      755384; // 755384
-    static +rgbDarkGray: Class<PowerPoint$XlRgbColor__rgbDarkGray> &
-      PowerPoint$XlRgbColor__rgbDarkGray &
-      11119017; // 11119017
-    static +rgbDarkGreen: Class<PowerPoint$XlRgbColor__rgbDarkGreen> &
-      PowerPoint$XlRgbColor__rgbDarkGreen &
-      25600; // 25600
-    static +rgbDarkGrey: Class<PowerPoint$XlRgbColor__rgbDarkGrey> &
-      PowerPoint$XlRgbColor__rgbDarkGrey &
-      11119017; // 11119017
-    static +rgbDarkKhaki: Class<PowerPoint$XlRgbColor__rgbDarkKhaki> &
-      PowerPoint$XlRgbColor__rgbDarkKhaki &
-      7059389; // 7059389
-    static +rgbDarkMagenta: Class<PowerPoint$XlRgbColor__rgbDarkMagenta> &
-      PowerPoint$XlRgbColor__rgbDarkMagenta &
-      9109643; // 9109643
-    static +rgbDarkOliveGreen: Class<PowerPoint$XlRgbColor__rgbDarkOliveGreen> &
-      PowerPoint$XlRgbColor__rgbDarkOliveGreen &
-      3107669; // 3107669
-    static +rgbDarkOrange: Class<PowerPoint$XlRgbColor__rgbDarkOrange> &
-      PowerPoint$XlRgbColor__rgbDarkOrange &
-      36095; // 36095
-    static +rgbDarkOrchid: Class<PowerPoint$XlRgbColor__rgbDarkOrchid> &
-      PowerPoint$XlRgbColor__rgbDarkOrchid &
-      13382297; // 13382297
-    static +rgbDarkRed: Class<PowerPoint$XlRgbColor__rgbDarkRed> &
-      PowerPoint$XlRgbColor__rgbDarkRed &
-      139; // 139
-    static +rgbDarkSalmon: Class<PowerPoint$XlRgbColor__rgbDarkSalmon> &
-      PowerPoint$XlRgbColor__rgbDarkSalmon &
-      8034025; // 8034025
-    static +rgbDarkSeaGreen: Class<PowerPoint$XlRgbColor__rgbDarkSeaGreen> &
-      PowerPoint$XlRgbColor__rgbDarkSeaGreen &
-      9419919; // 9419919
-    static +rgbDarkSlateBlue: Class<PowerPoint$XlRgbColor__rgbDarkSlateBlue> &
-      PowerPoint$XlRgbColor__rgbDarkSlateBlue &
-      9125192; // 9125192
-    static +rgbDarkSlateGray: Class<PowerPoint$XlRgbColor__rgbDarkSlateGray> &
-      PowerPoint$XlRgbColor__rgbDarkSlateGray &
-      5197615; // 5197615
-    static +rgbDarkSlateGrey: Class<PowerPoint$XlRgbColor__rgbDarkSlateGrey> &
-      PowerPoint$XlRgbColor__rgbDarkSlateGrey &
-      5197615; // 5197615
-    static +rgbDarkTurquoise: Class<PowerPoint$XlRgbColor__rgbDarkTurquoise> &
-      PowerPoint$XlRgbColor__rgbDarkTurquoise &
-      13749760; // 13749760
-    static +rgbDarkViolet: Class<PowerPoint$XlRgbColor__rgbDarkViolet> &
-      PowerPoint$XlRgbColor__rgbDarkViolet &
-      13828244; // 13828244
-    static +rgbDeepPink: Class<PowerPoint$XlRgbColor__rgbDeepPink> &
-      PowerPoint$XlRgbColor__rgbDeepPink &
-      9639167; // 9639167
-    static +rgbDeepSkyBlue: Class<PowerPoint$XlRgbColor__rgbDeepSkyBlue> &
-      PowerPoint$XlRgbColor__rgbDeepSkyBlue &
-      16760576; // 16760576
-    static +rgbDimGray: Class<PowerPoint$XlRgbColor__rgbDimGray> &
-      PowerPoint$XlRgbColor__rgbDimGray &
-      6908265; // 6908265
-    static +rgbDimGrey: Class<PowerPoint$XlRgbColor__rgbDimGrey> &
-      PowerPoint$XlRgbColor__rgbDimGrey &
-      6908265; // 6908265
-    static +rgbDodgerBlue: Class<PowerPoint$XlRgbColor__rgbDodgerBlue> &
-      PowerPoint$XlRgbColor__rgbDodgerBlue &
-      16748574; // 16748574
-    static +rgbFireBrick: Class<PowerPoint$XlRgbColor__rgbFireBrick> &
-      PowerPoint$XlRgbColor__rgbFireBrick &
-      2237106; // 2237106
-    static +rgbFloralWhite: Class<PowerPoint$XlRgbColor__rgbFloralWhite> &
-      PowerPoint$XlRgbColor__rgbFloralWhite &
-      15792895; // 15792895
-    static +rgbForestGreen: Class<PowerPoint$XlRgbColor__rgbForestGreen> &
-      PowerPoint$XlRgbColor__rgbForestGreen &
-      2263842; // 2263842
-    static +rgbFuchsia: Class<PowerPoint$XlRgbColor__rgbFuchsia> &
-      PowerPoint$XlRgbColor__rgbFuchsia &
-      16711935; // 16711935
-    static +rgbGainsboro: Class<PowerPoint$XlRgbColor__rgbGainsboro> &
-      PowerPoint$XlRgbColor__rgbGainsboro &
-      14474460; // 14474460
-    static +rgbGhostWhite: Class<PowerPoint$XlRgbColor__rgbGhostWhite> &
-      PowerPoint$XlRgbColor__rgbGhostWhite &
-      16775416; // 16775416
-    static +rgbGold: Class<PowerPoint$XlRgbColor__rgbGold> &
-      PowerPoint$XlRgbColor__rgbGold &
-      55295; // 55295
-    static +rgbGoldenrod: Class<PowerPoint$XlRgbColor__rgbGoldenrod> &
-      PowerPoint$XlRgbColor__rgbGoldenrod &
-      2139610; // 2139610
-    static +rgbGray: Class<PowerPoint$XlRgbColor__rgbGray> &
-      PowerPoint$XlRgbColor__rgbGray &
-      8421504; // 8421504
-    static +rgbGreen: Class<PowerPoint$XlRgbColor__rgbGreen> &
-      PowerPoint$XlRgbColor__rgbGreen &
-      32768; // 32768
-    static +rgbGreenYellow: Class<PowerPoint$XlRgbColor__rgbGreenYellow> &
-      PowerPoint$XlRgbColor__rgbGreenYellow &
-      3145645; // 3145645
-    static +rgbGrey: Class<PowerPoint$XlRgbColor__rgbGrey> &
-      PowerPoint$XlRgbColor__rgbGrey &
-      8421504; // 8421504
-    static +rgbHoneydew: Class<PowerPoint$XlRgbColor__rgbHoneydew> &
-      PowerPoint$XlRgbColor__rgbHoneydew &
-      15794160; // 15794160
-    static +rgbHotPink: Class<PowerPoint$XlRgbColor__rgbHotPink> &
-      PowerPoint$XlRgbColor__rgbHotPink &
-      11823615; // 11823615
-    static +rgbIndianRed: Class<PowerPoint$XlRgbColor__rgbIndianRed> &
-      PowerPoint$XlRgbColor__rgbIndianRed &
-      6053069; // 6053069
-    static +rgbIndigo: Class<PowerPoint$XlRgbColor__rgbIndigo> &
-      PowerPoint$XlRgbColor__rgbIndigo &
-      8519755; // 8519755
-    static +rgbIvory: Class<PowerPoint$XlRgbColor__rgbIvory> &
-      PowerPoint$XlRgbColor__rgbIvory &
-      15794175; // 15794175
-    static +rgbKhaki: Class<PowerPoint$XlRgbColor__rgbKhaki> &
-      PowerPoint$XlRgbColor__rgbKhaki &
-      9234160; // 9234160
-    static +rgbLavender: Class<PowerPoint$XlRgbColor__rgbLavender> &
-      PowerPoint$XlRgbColor__rgbLavender &
-      16443110; // 16443110
-    static +rgbLavenderBlush: Class<PowerPoint$XlRgbColor__rgbLavenderBlush> &
-      PowerPoint$XlRgbColor__rgbLavenderBlush &
-      16118015; // 16118015
-    static +rgbLawnGreen: Class<PowerPoint$XlRgbColor__rgbLawnGreen> &
-      PowerPoint$XlRgbColor__rgbLawnGreen &
-      64636; // 64636
-    static +rgbLemonChiffon: Class<PowerPoint$XlRgbColor__rgbLemonChiffon> &
-      PowerPoint$XlRgbColor__rgbLemonChiffon &
-      13499135; // 13499135
-    static +rgbLightBlue: Class<PowerPoint$XlRgbColor__rgbLightBlue> &
-      PowerPoint$XlRgbColor__rgbLightBlue &
-      15128749; // 15128749
-    static +rgbLightCoral: Class<PowerPoint$XlRgbColor__rgbLightCoral> &
-      PowerPoint$XlRgbColor__rgbLightCoral &
-      8421616; // 8421616
-    static +rgbLightCyan: Class<PowerPoint$XlRgbColor__rgbLightCyan> &
-      PowerPoint$XlRgbColor__rgbLightCyan &
-      9145088; // 9145088
-    static +rgbLightGoldenrodYellow: Class<PowerPoint$XlRgbColor__rgbLightGoldenrodYellow> &
-      PowerPoint$XlRgbColor__rgbLightGoldenrodYellow &
-      13826810; // 13826810
-    static +rgbLightGray: Class<PowerPoint$XlRgbColor__rgbLightGray> &
-      PowerPoint$XlRgbColor__rgbLightGray &
-      13882323; // 13882323
-    static +rgbLightGreen: Class<PowerPoint$XlRgbColor__rgbLightGreen> &
-      PowerPoint$XlRgbColor__rgbLightGreen &
-      9498256; // 9498256
-    static +rgbLightGrey: Class<PowerPoint$XlRgbColor__rgbLightGrey> &
-      PowerPoint$XlRgbColor__rgbLightGrey &
-      13882323; // 13882323
-    static +rgbLightPink: Class<PowerPoint$XlRgbColor__rgbLightPink> &
-      PowerPoint$XlRgbColor__rgbLightPink &
-      12695295; // 12695295
-    static +rgbLightSalmon: Class<PowerPoint$XlRgbColor__rgbLightSalmon> &
-      PowerPoint$XlRgbColor__rgbLightSalmon &
-      8036607; // 8036607
-    static +rgbLightSeaGreen: Class<PowerPoint$XlRgbColor__rgbLightSeaGreen> &
-      PowerPoint$XlRgbColor__rgbLightSeaGreen &
-      11186720; // 11186720
-    static +rgbLightSkyBlue: Class<PowerPoint$XlRgbColor__rgbLightSkyBlue> &
-      PowerPoint$XlRgbColor__rgbLightSkyBlue &
-      16436871; // 16436871
-    static +rgbLightSlateGray: Class<PowerPoint$XlRgbColor__rgbLightSlateGray> &
-      PowerPoint$XlRgbColor__rgbLightSlateGray &
-      10061943; // 10061943
-    static +rgbLightSlateGrey: Class<PowerPoint$XlRgbColor__rgbLightSlateGrey> &
-      PowerPoint$XlRgbColor__rgbLightSlateGrey &
-      10061943; // 10061943
-    static +rgbLightSteelBlue: Class<PowerPoint$XlRgbColor__rgbLightSteelBlue> &
-      PowerPoint$XlRgbColor__rgbLightSteelBlue &
-      14599344; // 14599344
-    static +rgbLightYellow: Class<PowerPoint$XlRgbColor__rgbLightYellow> &
-      PowerPoint$XlRgbColor__rgbLightYellow &
-      14745599; // 14745599
-    static +rgbLime: Class<PowerPoint$XlRgbColor__rgbLime> &
-      PowerPoint$XlRgbColor__rgbLime &
-      65280; // 65280
-    static +rgbLimeGreen: Class<PowerPoint$XlRgbColor__rgbLimeGreen> &
-      PowerPoint$XlRgbColor__rgbLimeGreen &
-      3329330; // 3329330
-    static +rgbLinen: Class<PowerPoint$XlRgbColor__rgbLinen> &
-      PowerPoint$XlRgbColor__rgbLinen &
-      15134970; // 15134970
-    static +rgbMaroon: Class<PowerPoint$XlRgbColor__rgbMaroon> &
-      PowerPoint$XlRgbColor__rgbMaroon &
-      128; // 128
-    static +rgbMediumAquamarine: Class<PowerPoint$XlRgbColor__rgbMediumAquamarine> &
-      PowerPoint$XlRgbColor__rgbMediumAquamarine &
-      11206502; // 11206502
-    static +rgbMediumBlue: Class<PowerPoint$XlRgbColor__rgbMediumBlue> &
-      PowerPoint$XlRgbColor__rgbMediumBlue &
-      13434880; // 13434880
-    static +rgbMediumOrchid: Class<PowerPoint$XlRgbColor__rgbMediumOrchid> &
-      PowerPoint$XlRgbColor__rgbMediumOrchid &
-      13850042; // 13850042
-    static +rgbMediumPurple: Class<PowerPoint$XlRgbColor__rgbMediumPurple> &
-      PowerPoint$XlRgbColor__rgbMediumPurple &
-      14381203; // 14381203
-    static +rgbMediumSeaGreen: Class<PowerPoint$XlRgbColor__rgbMediumSeaGreen> &
-      PowerPoint$XlRgbColor__rgbMediumSeaGreen &
-      7451452; // 7451452
-    static +rgbMediumSlateBlue: Class<PowerPoint$XlRgbColor__rgbMediumSlateBlue> &
-      PowerPoint$XlRgbColor__rgbMediumSlateBlue &
-      15624315; // 15624315
-    static +rgbMediumSpringGreen: Class<PowerPoint$XlRgbColor__rgbMediumSpringGreen> &
-      PowerPoint$XlRgbColor__rgbMediumSpringGreen &
-      10156544; // 10156544
-    static +rgbMediumTurquoise: Class<PowerPoint$XlRgbColor__rgbMediumTurquoise> &
-      PowerPoint$XlRgbColor__rgbMediumTurquoise &
-      13422920; // 13422920
-    static +rgbMediumVioletRed: Class<PowerPoint$XlRgbColor__rgbMediumVioletRed> &
-      PowerPoint$XlRgbColor__rgbMediumVioletRed &
-      8721863; // 8721863
-    static +rgbMidnightBlue: Class<PowerPoint$XlRgbColor__rgbMidnightBlue> &
-      PowerPoint$XlRgbColor__rgbMidnightBlue &
-      7346457; // 7346457
-    static +rgbMintCream: Class<PowerPoint$XlRgbColor__rgbMintCream> &
-      PowerPoint$XlRgbColor__rgbMintCream &
-      16449525; // 16449525
-    static +rgbMistyRose: Class<PowerPoint$XlRgbColor__rgbMistyRose> &
-      PowerPoint$XlRgbColor__rgbMistyRose &
-      14804223; // 14804223
-    static +rgbMoccasin: Class<PowerPoint$XlRgbColor__rgbMoccasin> &
-      PowerPoint$XlRgbColor__rgbMoccasin &
-      11920639; // 11920639
-    static +rgbNavajoWhite: Class<PowerPoint$XlRgbColor__rgbNavajoWhite> &
-      PowerPoint$XlRgbColor__rgbNavajoWhite &
-      11394815; // 11394815
-    static +rgbNavy: Class<PowerPoint$XlRgbColor__rgbNavy> &
-      PowerPoint$XlRgbColor__rgbNavy &
-      8388608; // 8388608
-    static +rgbNavyBlue: Class<PowerPoint$XlRgbColor__rgbNavyBlue> &
-      PowerPoint$XlRgbColor__rgbNavyBlue &
-      8388608; // 8388608
-    static +rgbOldLace: Class<PowerPoint$XlRgbColor__rgbOldLace> &
-      PowerPoint$XlRgbColor__rgbOldLace &
-      15136253; // 15136253
-    static +rgbOlive: Class<PowerPoint$XlRgbColor__rgbOlive> &
-      PowerPoint$XlRgbColor__rgbOlive &
-      32896; // 32896
-    static +rgbOliveDrab: Class<PowerPoint$XlRgbColor__rgbOliveDrab> &
-      PowerPoint$XlRgbColor__rgbOliveDrab &
-      2330219; // 2330219
-    static +rgbOrange: Class<PowerPoint$XlRgbColor__rgbOrange> &
-      PowerPoint$XlRgbColor__rgbOrange &
-      42495; // 42495
-    static +rgbOrangeRed: Class<PowerPoint$XlRgbColor__rgbOrangeRed> &
-      PowerPoint$XlRgbColor__rgbOrangeRed &
-      17919; // 17919
-    static +rgbOrchid: Class<PowerPoint$XlRgbColor__rgbOrchid> &
-      PowerPoint$XlRgbColor__rgbOrchid &
-      14053594; // 14053594
-    static +rgbPaleGoldenrod: Class<PowerPoint$XlRgbColor__rgbPaleGoldenrod> &
-      PowerPoint$XlRgbColor__rgbPaleGoldenrod &
-      7071982; // 7071982
-    static +rgbPaleGreen: Class<PowerPoint$XlRgbColor__rgbPaleGreen> &
-      PowerPoint$XlRgbColor__rgbPaleGreen &
-      10025880; // 10025880
-    static +rgbPaleTurquoise: Class<PowerPoint$XlRgbColor__rgbPaleTurquoise> &
-      PowerPoint$XlRgbColor__rgbPaleTurquoise &
-      15658671; // 15658671
-    static +rgbPaleVioletRed: Class<PowerPoint$XlRgbColor__rgbPaleVioletRed> &
-      PowerPoint$XlRgbColor__rgbPaleVioletRed &
-      9662683; // 9662683
-    static +rgbPapayaWhip: Class<PowerPoint$XlRgbColor__rgbPapayaWhip> &
-      PowerPoint$XlRgbColor__rgbPapayaWhip &
-      14020607; // 14020607
-    static +rgbPeachPuff: Class<PowerPoint$XlRgbColor__rgbPeachPuff> &
-      PowerPoint$XlRgbColor__rgbPeachPuff &
-      12180223; // 12180223
-    static +rgbPeru: Class<PowerPoint$XlRgbColor__rgbPeru> &
-      PowerPoint$XlRgbColor__rgbPeru &
-      4163021; // 4163021
-    static +rgbPink: Class<PowerPoint$XlRgbColor__rgbPink> &
-      PowerPoint$XlRgbColor__rgbPink &
-      13353215; // 13353215
-    static +rgbPlum: Class<PowerPoint$XlRgbColor__rgbPlum> &
-      PowerPoint$XlRgbColor__rgbPlum &
-      14524637; // 14524637
-    static +rgbPowderBlue: Class<PowerPoint$XlRgbColor__rgbPowderBlue> &
-      PowerPoint$XlRgbColor__rgbPowderBlue &
-      15130800; // 15130800
-    static +rgbPurple: Class<PowerPoint$XlRgbColor__rgbPurple> &
-      PowerPoint$XlRgbColor__rgbPurple &
-      8388736; // 8388736
-    static +rgbRed: Class<PowerPoint$XlRgbColor__rgbRed> &
-      PowerPoint$XlRgbColor__rgbRed &
-      255; // 255
-    static +rgbRosyBrown: Class<PowerPoint$XlRgbColor__rgbRosyBrown> &
-      PowerPoint$XlRgbColor__rgbRosyBrown &
-      9408444; // 9408444
-    static +rgbRoyalBlue: Class<PowerPoint$XlRgbColor__rgbRoyalBlue> &
-      PowerPoint$XlRgbColor__rgbRoyalBlue &
-      14772545; // 14772545
-    static +rgbSalmon: Class<PowerPoint$XlRgbColor__rgbSalmon> &
-      PowerPoint$XlRgbColor__rgbSalmon &
-      7504122; // 7504122
-    static +rgbSandyBrown: Class<PowerPoint$XlRgbColor__rgbSandyBrown> &
-      PowerPoint$XlRgbColor__rgbSandyBrown &
-      6333684; // 6333684
-    static +rgbSeaGreen: Class<PowerPoint$XlRgbColor__rgbSeaGreen> &
-      PowerPoint$XlRgbColor__rgbSeaGreen &
-      5737262; // 5737262
-    static +rgbSeashell: Class<PowerPoint$XlRgbColor__rgbSeashell> &
-      PowerPoint$XlRgbColor__rgbSeashell &
-      15660543; // 15660543
-    static +rgbSienna: Class<PowerPoint$XlRgbColor__rgbSienna> &
-      PowerPoint$XlRgbColor__rgbSienna &
-      2970272; // 2970272
-    static +rgbSilver: Class<PowerPoint$XlRgbColor__rgbSilver> &
-      PowerPoint$XlRgbColor__rgbSilver &
-      12632256; // 12632256
-    static +rgbSkyBlue: Class<PowerPoint$XlRgbColor__rgbSkyBlue> &
-      PowerPoint$XlRgbColor__rgbSkyBlue &
-      15453831; // 15453831
-    static +rgbSlateBlue: Class<PowerPoint$XlRgbColor__rgbSlateBlue> &
-      PowerPoint$XlRgbColor__rgbSlateBlue &
-      13458026; // 13458026
-    static +rgbSlateGray: Class<PowerPoint$XlRgbColor__rgbSlateGray> &
-      PowerPoint$XlRgbColor__rgbSlateGray &
-      9470064; // 9470064
-    static +rgbSlateGrey: Class<PowerPoint$XlRgbColor__rgbSlateGrey> &
-      PowerPoint$XlRgbColor__rgbSlateGrey &
-      9470064; // 9470064
-    static +rgbSnow: Class<PowerPoint$XlRgbColor__rgbSnow> &
-      PowerPoint$XlRgbColor__rgbSnow &
-      16448255; // 16448255
-    static +rgbSpringGreen: Class<PowerPoint$XlRgbColor__rgbSpringGreen> &
-      PowerPoint$XlRgbColor__rgbSpringGreen &
-      8388352; // 8388352
-    static +rgbSteelBlue: Class<PowerPoint$XlRgbColor__rgbSteelBlue> &
-      PowerPoint$XlRgbColor__rgbSteelBlue &
-      11829830; // 11829830
-    static +rgbTan: Class<PowerPoint$XlRgbColor__rgbTan> &
-      PowerPoint$XlRgbColor__rgbTan &
-      9221330; // 9221330
-    static +rgbTeal: Class<PowerPoint$XlRgbColor__rgbTeal> &
-      PowerPoint$XlRgbColor__rgbTeal &
-      8421376; // 8421376
-    static +rgbThistle: Class<PowerPoint$XlRgbColor__rgbThistle> &
-      PowerPoint$XlRgbColor__rgbThistle &
-      14204888; // 14204888
-    static +rgbTomato: Class<PowerPoint$XlRgbColor__rgbTomato> &
-      PowerPoint$XlRgbColor__rgbTomato &
-      4678655; // 4678655
-    static +rgbTurquoise: Class<PowerPoint$XlRgbColor__rgbTurquoise> &
-      PowerPoint$XlRgbColor__rgbTurquoise &
-      13688896; // 13688896
-    static +rgbViolet: Class<PowerPoint$XlRgbColor__rgbViolet> &
-      PowerPoint$XlRgbColor__rgbViolet &
-      15631086; // 15631086
-    static +rgbWheat: Class<PowerPoint$XlRgbColor__rgbWheat> &
-      PowerPoint$XlRgbColor__rgbWheat &
-      11788021; // 11788021
-    static +rgbWhite: Class<PowerPoint$XlRgbColor__rgbWhite> &
-      PowerPoint$XlRgbColor__rgbWhite &
-      16777215; // 16777215
-    static +rgbWhiteSmoke: Class<PowerPoint$XlRgbColor__rgbWhiteSmoke> &
-      PowerPoint$XlRgbColor__rgbWhiteSmoke &
-      16119285; // 16119285
-    static +rgbYellow: Class<PowerPoint$XlRgbColor__rgbYellow> &
-      PowerPoint$XlRgbColor__rgbYellow &
-      65535; // 65535
-    static +rgbYellowGreen: Class<PowerPoint$XlRgbColor__rgbYellowGreen> &
-      PowerPoint$XlRgbColor__rgbYellowGreen &
-      3329434; // 3329434
-  }
-
-  declare class PowerPoint$XlRgbColor__rgbAliceBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbAntiqueWhite
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbAqua mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbAquamarine
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbAzure mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBeige mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBisque mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBlack mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBlanchedAlmond
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBlue mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBlueViolet
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBrown mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbBurlyWood
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbCadetBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbChartreuse
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbCoral mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbCornflowerBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbCornsilk
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbCrimson
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkCyan
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkGoldenrod
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkGray
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkGrey
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkKhaki
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkMagenta
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkOliveGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkOrange
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkOrchid
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkRed
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkSalmon
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkSeaGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkSlateBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkSlateGray
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkSlateGrey
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkTurquoise
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDarkViolet
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDeepPink
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDeepSkyBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDimGray
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDimGrey
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbDodgerBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbFireBrick
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbFloralWhite
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbForestGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbFuchsia
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGainsboro
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGhostWhite
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGold mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGoldenrod
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGray mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGreen mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGreenYellow
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbGrey mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbHoneydew
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbHotPink
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbIndianRed
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbIndigo mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbIvory mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbKhaki mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLavender
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLavenderBlush
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLawnGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLemonChiffon
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightCoral
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightCyan
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightGoldenrodYellow
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightGray
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightGrey
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightPink
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightSalmon
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightSeaGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightSkyBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightSlateGray
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightSlateGrey
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightSteelBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLightYellow
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLime mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLimeGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbLinen mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMaroon mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumAquamarine
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumOrchid
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumPurple
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumSeaGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumSlateBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumSpringGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumTurquoise
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMediumVioletRed
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMidnightBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMintCream
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMistyRose
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbMoccasin
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbNavajoWhite
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbNavy mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbNavyBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbOldLace
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbOlive mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbOliveDrab
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbOrange mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbOrangeRed
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbOrchid mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPaleGoldenrod
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPaleGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPaleTurquoise
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPaleVioletRed
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPapayaWhip
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPeachPuff
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPeru mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPink mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPlum mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPowderBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbPurple mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbRed mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbRosyBrown
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbRoyalBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSalmon mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSandyBrown
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSeaGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSeashell
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSienna mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSilver mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSkyBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSlateBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSlateGray
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSlateGrey
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSnow mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSpringGreen
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbSteelBlue
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbTan mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbTeal mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbThistle
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbTomato mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbTurquoise
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbViolet mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbWheat mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbWhite mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbWhiteSmoke
-    mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbYellow mixins PowerPoint$XlRgbColor {}
-  declare class PowerPoint$XlRgbColor__rgbYellowGreen
-    mixins PowerPoint$XlRgbColor {}
-
-  declare class PowerPoint$XlRowCol {
-    constructor(...args: empty): mixed;
-    static +xlColumns: Class<PowerPoint$XlRowCol__xlColumns> &
-      PowerPoint$XlRowCol__xlColumns &
-      2; // 2
-    static +xlRows: Class<PowerPoint$XlRowCol__xlRows> &
-      PowerPoint$XlRowCol__xlRows &
-      1; // 1
-  }
-
-  declare class PowerPoint$XlRowCol__xlColumns mixins PowerPoint$XlRowCol {}
-  declare class PowerPoint$XlRowCol__xlRows mixins PowerPoint$XlRowCol {}
-
-  declare class PowerPoint$XlScaleType {
-    constructor(...args: empty): mixed;
-    static +xlScaleLinear: Class<PowerPoint$XlScaleType__xlScaleLinear> &
-      PowerPoint$XlScaleType__xlScaleLinear &
-      -4132; // -4132
-    static +xlScaleLogarithmic: Class<PowerPoint$XlScaleType__xlScaleLogarithmic> &
-      PowerPoint$XlScaleType__xlScaleLogarithmic &
-      -4133; // -4133
-  }
-
-  declare class PowerPoint$XlScaleType__xlScaleLinear
-    mixins PowerPoint$XlScaleType {}
-  declare class PowerPoint$XlScaleType__xlScaleLogarithmic
-    mixins PowerPoint$XlScaleType {}
-
-  declare class PowerPoint$XlSizeRepresents {
-    constructor(...args: empty): mixed;
-    static +xlSizeIsArea: Class<PowerPoint$XlSizeRepresents__xlSizeIsArea> &
-      PowerPoint$XlSizeRepresents__xlSizeIsArea &
-      1; // 1
-    static +xlSizeIsWidth: Class<PowerPoint$XlSizeRepresents__xlSizeIsWidth> &
-      PowerPoint$XlSizeRepresents__xlSizeIsWidth &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlSizeRepresents__xlSizeIsArea
-    mixins PowerPoint$XlSizeRepresents {}
-  declare class PowerPoint$XlSizeRepresents__xlSizeIsWidth
-    mixins PowerPoint$XlSizeRepresents {}
-
-  declare class PowerPoint$XlTickLabelOrientation {
-    constructor(...args: empty): mixed;
-    static +xlTickLabelOrientationAutomatic: Class<PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationAutomatic> &
-      PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationAutomatic &
-      -4105; // -4105
-    static +xlTickLabelOrientationDownward: Class<PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationDownward> &
-      PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationDownward &
-      -4170; // -4170
-    static +xlTickLabelOrientationHorizontal: Class<PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationHorizontal> &
-      PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationHorizontal &
-      -4128; // -4128
-    static +xlTickLabelOrientationUpward: Class<PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationUpward> &
-      PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationUpward &
-      -4171; // -4171
-    static +xlTickLabelOrientationVertical: Class<PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationVertical> &
-      PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationVertical &
-      -4166; // -4166
-  }
-
-  declare class PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationAutomatic
-    mixins PowerPoint$XlTickLabelOrientation {}
-  declare class PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationDownward
-    mixins PowerPoint$XlTickLabelOrientation {}
-  declare class PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationHorizontal
-    mixins PowerPoint$XlTickLabelOrientation {}
-  declare class PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationUpward
-    mixins PowerPoint$XlTickLabelOrientation {}
-  declare class PowerPoint$XlTickLabelOrientation__xlTickLabelOrientationVertical
-    mixins PowerPoint$XlTickLabelOrientation {}
-
-  declare class PowerPoint$XlTickLabelPosition {
-    constructor(...args: empty): mixed;
-    static +xlTickLabelPositionHigh: Class<PowerPoint$XlTickLabelPosition__xlTickLabelPositionHigh> &
-      PowerPoint$XlTickLabelPosition__xlTickLabelPositionHigh &
-      -4127; // -4127
-    static +xlTickLabelPositionLow: Class<PowerPoint$XlTickLabelPosition__xlTickLabelPositionLow> &
-      PowerPoint$XlTickLabelPosition__xlTickLabelPositionLow &
-      -4134; // -4134
-    static +xlTickLabelPositionNextToAxis: Class<PowerPoint$XlTickLabelPosition__xlTickLabelPositionNextToAxis> &
-      PowerPoint$XlTickLabelPosition__xlTickLabelPositionNextToAxis &
-      4; // 4
-    static +xlTickLabelPositionNone: Class<PowerPoint$XlTickLabelPosition__xlTickLabelPositionNone> &
-      PowerPoint$XlTickLabelPosition__xlTickLabelPositionNone &
-      -4142; // -4142
-  }
-
-  declare class PowerPoint$XlTickLabelPosition__xlTickLabelPositionHigh
-    mixins PowerPoint$XlTickLabelPosition {}
-  declare class PowerPoint$XlTickLabelPosition__xlTickLabelPositionLow
-    mixins PowerPoint$XlTickLabelPosition {}
-  declare class PowerPoint$XlTickLabelPosition__xlTickLabelPositionNextToAxis
-    mixins PowerPoint$XlTickLabelPosition {}
-  declare class PowerPoint$XlTickLabelPosition__xlTickLabelPositionNone
-    mixins PowerPoint$XlTickLabelPosition {}
-
-  declare class PowerPoint$XlTickMark {
-    constructor(...args: empty): mixed;
-    static +xlTickMarkCross: Class<PowerPoint$XlTickMark__xlTickMarkCross> &
-      PowerPoint$XlTickMark__xlTickMarkCross &
-      4; // 4
-    static +xlTickMarkInside: Class<PowerPoint$XlTickMark__xlTickMarkInside> &
-      PowerPoint$XlTickMark__xlTickMarkInside &
-      2; // 2
-    static +xlTickMarkNone: Class<PowerPoint$XlTickMark__xlTickMarkNone> &
-      PowerPoint$XlTickMark__xlTickMarkNone &
-      -4142; // -4142
-    static +xlTickMarkOutside: Class<PowerPoint$XlTickMark__xlTickMarkOutside> &
-      PowerPoint$XlTickMark__xlTickMarkOutside &
-      3; // 3
-  }
-
-  declare class PowerPoint$XlTickMark__xlTickMarkCross
-    mixins PowerPoint$XlTickMark {}
-  declare class PowerPoint$XlTickMark__xlTickMarkInside
-    mixins PowerPoint$XlTickMark {}
-  declare class PowerPoint$XlTickMark__xlTickMarkNone
-    mixins PowerPoint$XlTickMark {}
-  declare class PowerPoint$XlTickMark__xlTickMarkOutside
-    mixins PowerPoint$XlTickMark {}
-
-  declare class PowerPoint$XlTimeUnit {
-    constructor(...args: empty): mixed;
-    static +xlDays: Class<PowerPoint$XlTimeUnit__xlDays> &
-      PowerPoint$XlTimeUnit__xlDays &
-      0; // 0
-    static +xlMonths: Class<PowerPoint$XlTimeUnit__xlMonths> &
-      PowerPoint$XlTimeUnit__xlMonths &
-      1; // 1
-    static +xlYears: Class<PowerPoint$XlTimeUnit__xlYears> &
-      PowerPoint$XlTimeUnit__xlYears &
-      2; // 2
-  }
-
-  declare class PowerPoint$XlTimeUnit__xlDays mixins PowerPoint$XlTimeUnit {}
-  declare class PowerPoint$XlTimeUnit__xlMonths mixins PowerPoint$XlTimeUnit {}
-  declare class PowerPoint$XlTimeUnit__xlYears mixins PowerPoint$XlTimeUnit {}
-
-  declare class PowerPoint$XlTrendlineType {
-    constructor(...args: empty): mixed;
-    static +xlExponential: Class<PowerPoint$XlTrendlineType__xlExponential> &
-      PowerPoint$XlTrendlineType__xlExponential &
-      5; // 5
-    static +xlLinear: Class<PowerPoint$XlTrendlineType__xlLinear> &
-      PowerPoint$XlTrendlineType__xlLinear &
-      -4132; // -4132
-    static +xlLogarithmic: Class<PowerPoint$XlTrendlineType__xlLogarithmic> &
-      PowerPoint$XlTrendlineType__xlLogarithmic &
-      -4133; // -4133
-    static +xlMovingAvg: Class<PowerPoint$XlTrendlineType__xlMovingAvg> &
-      PowerPoint$XlTrendlineType__xlMovingAvg &
-      6; // 6
-    static +xlPolynomial: Class<PowerPoint$XlTrendlineType__xlPolynomial> &
-      PowerPoint$XlTrendlineType__xlPolynomial &
-      3; // 3
-    static +xlPower: Class<PowerPoint$XlTrendlineType__xlPower> &
-      PowerPoint$XlTrendlineType__xlPower &
-      4; // 4
-  }
-
-  declare class PowerPoint$XlTrendlineType__xlExponential
-    mixins PowerPoint$XlTrendlineType {}
-  declare class PowerPoint$XlTrendlineType__xlLinear
-    mixins PowerPoint$XlTrendlineType {}
-  declare class PowerPoint$XlTrendlineType__xlLogarithmic
-    mixins PowerPoint$XlTrendlineType {}
-  declare class PowerPoint$XlTrendlineType__xlMovingAvg
-    mixins PowerPoint$XlTrendlineType {}
-  declare class PowerPoint$XlTrendlineType__xlPolynomial
-    mixins PowerPoint$XlTrendlineType {}
-  declare class PowerPoint$XlTrendlineType__xlPower
-    mixins PowerPoint$XlTrendlineType {}
-
-  declare class PowerPoint$XlUnderlineStyle {
-    constructor(...args: empty): mixed;
-    static +xlUnderlineStyleDouble: Class<PowerPoint$XlUnderlineStyle__xlUnderlineStyleDouble> &
-      PowerPoint$XlUnderlineStyle__xlUnderlineStyleDouble &
-      -4119; // -4119
-    static +xlUnderlineStyleDoubleAccounting: Class<PowerPoint$XlUnderlineStyle__xlUnderlineStyleDoubleAccounting> &
-      PowerPoint$XlUnderlineStyle__xlUnderlineStyleDoubleAccounting &
-      5; // 5
-    static +xlUnderlineStyleNone: Class<PowerPoint$XlUnderlineStyle__xlUnderlineStyleNone> &
-      PowerPoint$XlUnderlineStyle__xlUnderlineStyleNone &
-      -4142; // -4142
-    static +xlUnderlineStyleSingle: Class<PowerPoint$XlUnderlineStyle__xlUnderlineStyleSingle> &
-      PowerPoint$XlUnderlineStyle__xlUnderlineStyleSingle &
-      2; // 2
-    static +xlUnderlineStyleSingleAccounting: Class<PowerPoint$XlUnderlineStyle__xlUnderlineStyleSingleAccounting> &
-      PowerPoint$XlUnderlineStyle__xlUnderlineStyleSingleAccounting &
-      4; // 4
-  }
-
-  declare class PowerPoint$XlUnderlineStyle__xlUnderlineStyleDouble
-    mixins PowerPoint$XlUnderlineStyle {}
-  declare class PowerPoint$XlUnderlineStyle__xlUnderlineStyleDoubleAccounting
-    mixins PowerPoint$XlUnderlineStyle {}
-  declare class PowerPoint$XlUnderlineStyle__xlUnderlineStyleNone
-    mixins PowerPoint$XlUnderlineStyle {}
-  declare class PowerPoint$XlUnderlineStyle__xlUnderlineStyleSingle
-    mixins PowerPoint$XlUnderlineStyle {}
-  declare class PowerPoint$XlUnderlineStyle__xlUnderlineStyleSingleAccounting
-    mixins PowerPoint$XlUnderlineStyle {}
-
-  declare class PowerPoint$XlVAlign {
-    constructor(...args: empty): mixed;
-    static +xlVAlignBottom: Class<PowerPoint$XlVAlign__xlVAlignBottom> &
-      PowerPoint$XlVAlign__xlVAlignBottom &
-      -4107; // -4107
-    static +xlVAlignCenter: Class<PowerPoint$XlVAlign__xlVAlignCenter> &
-      PowerPoint$XlVAlign__xlVAlignCenter &
-      -4108; // -4108
-    static +xlVAlignDistributed: Class<PowerPoint$XlVAlign__xlVAlignDistributed> &
-      PowerPoint$XlVAlign__xlVAlignDistributed &
-      -4117; // -4117
-    static +xlVAlignJustify: Class<PowerPoint$XlVAlign__xlVAlignJustify> &
-      PowerPoint$XlVAlign__xlVAlignJustify &
-      -4130; // -4130
-    static +xlVAlignTop: Class<PowerPoint$XlVAlign__xlVAlignTop> &
-      PowerPoint$XlVAlign__xlVAlignTop &
-      -4160; // -4160
-  }
-
-  declare class PowerPoint$XlVAlign__xlVAlignBottom
-    mixins PowerPoint$XlVAlign {}
-  declare class PowerPoint$XlVAlign__xlVAlignCenter
-    mixins PowerPoint$XlVAlign {}
-  declare class PowerPoint$XlVAlign__xlVAlignDistributed
-    mixins PowerPoint$XlVAlign {}
-  declare class PowerPoint$XlVAlign__xlVAlignJustify
-    mixins PowerPoint$XlVAlign {}
-  declare class PowerPoint$XlVAlign__xlVAlignTop mixins PowerPoint$XlVAlign {}
+  declare var npm$namespace$PowerPoint: {
+    MsoAnimAccumulate: typeof PowerPoint$MsoAnimAccumulate,
+    MsoAnimAdditive: typeof PowerPoint$MsoAnimAdditive,
+    MsoAnimAfterEffect: typeof PowerPoint$MsoAnimAfterEffect,
+    MsoAnimateByLevel: typeof PowerPoint$MsoAnimateByLevel,
+    MsoAnimCommandType: typeof PowerPoint$MsoAnimCommandType,
+    MsoAnimDirection: typeof PowerPoint$MsoAnimDirection,
+    MsoAnimEffect: typeof PowerPoint$MsoAnimEffect,
+    MsoAnimEffectAfter: typeof PowerPoint$MsoAnimEffectAfter,
+    MsoAnimEffectRestart: typeof PowerPoint$MsoAnimEffectRestart,
+    MsoAnimFilterEffectSubtype: typeof PowerPoint$MsoAnimFilterEffectSubtype,
+    MsoAnimFilterEffectType: typeof PowerPoint$MsoAnimFilterEffectType,
+    MsoAnimProperty: typeof PowerPoint$MsoAnimProperty,
+    MsoAnimTextUnitEffect: typeof PowerPoint$MsoAnimTextUnitEffect,
+    MsoAnimTriggerType: typeof PowerPoint$MsoAnimTriggerType,
+    MsoAnimType: typeof PowerPoint$MsoAnimType,
+    MsoClickState: typeof PowerPoint$MsoClickState,
+    PpActionType: typeof PowerPoint$PpActionType,
+    PpAdvanceMode: typeof PowerPoint$PpAdvanceMode,
+    PpAfterEffect: typeof PowerPoint$PpAfterEffect,
+    PpAlertLevel: typeof PowerPoint$PpAlertLevel,
+    PpArrangeStyle: typeof PowerPoint$PpArrangeStyle,
+    PpAutoSize: typeof PowerPoint$PpAutoSize,
+    PpBaselineAlignment: typeof PowerPoint$PpBaselineAlignment,
+    PpBorderType: typeof PowerPoint$PpBorderType,
+    PpBulletType: typeof PowerPoint$PpBulletType,
+    PpChangeCase: typeof PowerPoint$PpChangeCase,
+    PpChartUnitEffect: typeof PowerPoint$PpChartUnitEffect,
+    PpCheckInVersionType: typeof PowerPoint$PpCheckInVersionType,
+    PpColorSchemeIndex: typeof PowerPoint$PpColorSchemeIndex,
+    PpDateTimeFormat: typeof PowerPoint$PpDateTimeFormat,
+    PpDirection: typeof PowerPoint$PpDirection,
+    PpEntryEffect: typeof PowerPoint$PpEntryEffect,
+    PpExportMode: typeof PowerPoint$PpExportMode,
+    PpFarEastLineBreakLevel: typeof PowerPoint$PpFarEastLineBreakLevel,
+    PpFileDialogType: typeof PowerPoint$PpFileDialogType,
+    PpFixedFormatIntent: typeof PowerPoint$PpFixedFormatIntent,
+    PpFixedFormatType: typeof PowerPoint$PpFixedFormatType,
+    PpFollowColors: typeof PowerPoint$PpFollowColors,
+    PpFrameColors: typeof PowerPoint$PpFrameColors,
+    PpHTMLVersion: typeof PowerPoint$PpHTMLVersion,
+    PpIndentControl: typeof PowerPoint$PpIndentControl,
+    PpMediaTaskStatus: typeof PowerPoint$PpMediaTaskStatus,
+    PpMediaType: typeof PowerPoint$PpMediaType,
+    PpMouseActivation: typeof PowerPoint$PpMouseActivation,
+    PpNumberedBulletStyle: typeof PowerPoint$PpNumberedBulletStyle,
+    PpParagraphAlignment: typeof PowerPoint$PpParagraphAlignment,
+    PpPasteDataType: typeof PowerPoint$PpPasteDataType,
+    PpPlaceholderType: typeof PowerPoint$PpPlaceholderType,
+    PpPlayerState: typeof PowerPoint$PpPlayerState,
+    PpPrintColorType: typeof PowerPoint$PpPrintColorType,
+    PpPrintHandoutOrder: typeof PowerPoint$PpPrintHandoutOrder,
+    PpPrintOutputType: typeof PowerPoint$PpPrintOutputType,
+    PpPrintRangeType: typeof PowerPoint$PpPrintRangeType,
+    PpProtectedViewCloseReason: typeof PowerPoint$PpProtectedViewCloseReason,
+    PpPublishSourceType: typeof PowerPoint$PpPublishSourceType,
+    PpRemoveDocInfoType: typeof PowerPoint$PpRemoveDocInfoType,
+    PpResampleMediaProfile: typeof PowerPoint$PpResampleMediaProfile,
+    PpRevisionInfo: typeof PowerPoint$PpRevisionInfo,
+    PpSaveAsFileType: typeof PowerPoint$PpSaveAsFileType,
+    PpSelectionType: typeof PowerPoint$PpSelectionType,
+    PpShapeFormat: typeof PowerPoint$PpShapeFormat,
+    PpSlideLayout: typeof PowerPoint$PpSlideLayout,
+    PpSlideShowAdvanceMode: typeof PowerPoint$PpSlideShowAdvanceMode,
+    PpSlideShowPointerType: typeof PowerPoint$PpSlideShowPointerType,
+    PpSlideShowRangeType: typeof PowerPoint$PpSlideShowRangeType,
+    PpSlideShowState: typeof PowerPoint$PpSlideShowState,
+    PpSlideShowType: typeof PowerPoint$PpSlideShowType,
+    PpSlideSizeType: typeof PowerPoint$PpSlideSizeType,
+    PpSoundEffectType: typeof PowerPoint$PpSoundEffectType,
+    PpSoundFormatType: typeof PowerPoint$PpSoundFormatType,
+    PpTabStopType: typeof PowerPoint$PpTabStopType,
+    PpTextLevelEffect: typeof PowerPoint$PpTextLevelEffect,
+    PpTextStyleType: typeof PowerPoint$PpTextStyleType,
+    PpTextUnitEffect: typeof PowerPoint$PpTextUnitEffect,
+    PpTransitionSpeed: typeof PowerPoint$PpTransitionSpeed,
+    PpUpdateOption: typeof PowerPoint$PpUpdateOption,
+    PpViewType: typeof PowerPoint$PpViewType,
+    PpWindowState: typeof PowerPoint$PpWindowState,
+    XlAxisCrosses: typeof PowerPoint$XlAxisCrosses,
+    XlAxisGroup: typeof PowerPoint$XlAxisGroup,
+    XlAxisType: typeof PowerPoint$XlAxisType,
+    XlBackground: typeof PowerPoint$XlBackground,
+    XlBarShape: typeof PowerPoint$XlBarShape,
+    XlBorderWeight: typeof PowerPoint$XlBorderWeight,
+    XlCategoryType: typeof PowerPoint$XlCategoryType,
+    XlChartElementPosition: typeof PowerPoint$XlChartElementPosition,
+    XlChartGallery: typeof PowerPoint$XlChartGallery,
+    XlChartItem: typeof PowerPoint$XlChartItem,
+    XlChartPicturePlacement: typeof PowerPoint$XlChartPicturePlacement,
+    XlChartPictureType: typeof PowerPoint$XlChartPictureType,
+    XlChartSplitType: typeof PowerPoint$XlChartSplitType,
+    XlColorIndex: typeof PowerPoint$XlColorIndex,
+    XlConstants: typeof PowerPoint$XlConstants,
+    XlCopyPictureFormat: typeof PowerPoint$XlCopyPictureFormat,
+    XlDataLabelPosition: typeof PowerPoint$XlDataLabelPosition,
+    XlDataLabelSeparator: typeof PowerPoint$XlDataLabelSeparator,
+    XlDataLabelsType: typeof PowerPoint$XlDataLabelsType,
+    XlDisplayBlanksAs: typeof PowerPoint$XlDisplayBlanksAs,
+    XlDisplayUnit: typeof PowerPoint$XlDisplayUnit,
+    XlEndStyleCap: typeof PowerPoint$XlEndStyleCap,
+    XlErrorBarDirection: typeof PowerPoint$XlErrorBarDirection,
+    XlErrorBarInclude: typeof PowerPoint$XlErrorBarInclude,
+    XlErrorBarType: typeof PowerPoint$XlErrorBarType,
+    XlHAlign: typeof PowerPoint$XlHAlign,
+    XlLegendPosition: typeof PowerPoint$XlLegendPosition,
+    XlLineStyle: typeof PowerPoint$XlLineStyle,
+    XlMarkerStyle: typeof PowerPoint$XlMarkerStyle,
+    XlOrientation: typeof PowerPoint$XlOrientation,
+    XlPattern: typeof PowerPoint$XlPattern,
+    XlPictureAppearance: typeof PowerPoint$XlPictureAppearance,
+    XlPieSliceIndex: typeof PowerPoint$XlPieSliceIndex,
+    XlPieSliceLocation: typeof PowerPoint$XlPieSliceLocation,
+    XlPivotFieldOrientation: typeof PowerPoint$XlPivotFieldOrientation,
+    XlReadingOrder: typeof PowerPoint$XlReadingOrder,
+    XlRgbColor: typeof PowerPoint$XlRgbColor,
+    XlRowCol: typeof PowerPoint$XlRowCol,
+    XlScaleType: typeof PowerPoint$XlScaleType,
+    XlSizeRepresents: typeof PowerPoint$XlSizeRepresents,
+    XlTickLabelOrientation: typeof PowerPoint$XlTickLabelOrientation,
+    XlTickLabelPosition: typeof PowerPoint$XlTickLabelPosition,
+    XlTickMark: typeof PowerPoint$XlTickMark,
+    XlTimeUnit: typeof PowerPoint$XlTimeUnit,
+    XlTrendlineType: typeof PowerPoint$XlTrendlineType,
+    XlUnderlineStyle: typeof PowerPoint$XlUnderlineStyle,
+    XlVAlign: typeof PowerPoint$XlVAlign,
+    ActionSetting: typeof PowerPoint$ActionSetting,
+    ActionSettings: typeof PowerPoint$ActionSettings,
+    AddIn: typeof PowerPoint$AddIn,
+    AddIns: typeof PowerPoint$AddIns,
+    Adjustments: typeof PowerPoint$Adjustments,
+    AnimationBehavior: typeof PowerPoint$AnimationBehavior,
+    AnimationBehaviors: typeof PowerPoint$AnimationBehaviors,
+    AnimationPoint: typeof PowerPoint$AnimationPoint,
+    AnimationPoints: typeof PowerPoint$AnimationPoints,
+    AnimationSettings: typeof PowerPoint$AnimationSettings,
+    Application: typeof PowerPoint$Application,
+    AutoCorrect: typeof PowerPoint$AutoCorrect,
+    Borders: typeof PowerPoint$Borders,
+    Broadcast: typeof PowerPoint$Broadcast,
+    BulletFormat: typeof PowerPoint$BulletFormat,
+    CalloutFormat: typeof PowerPoint$CalloutFormat,
+    CanvasShapes: typeof PowerPoint$CanvasShapes,
+    Cell: typeof PowerPoint$Cell,
+    CellRange: typeof PowerPoint$CellRange,
+    Chart: typeof PowerPoint$Chart,
+    ChartArea: typeof PowerPoint$ChartArea,
+    ChartBorder: typeof PowerPoint$ChartBorder,
+    ChartCharacters: typeof PowerPoint$ChartCharacters,
+    ChartColorFormat: typeof PowerPoint$ChartColorFormat,
+    ChartData: typeof PowerPoint$ChartData,
+    ChartFillFormat: typeof PowerPoint$ChartFillFormat,
+    ChartFont: typeof PowerPoint$ChartFont,
+    ChartFormat: typeof PowerPoint$ChartFormat,
+    ChartGroup: typeof PowerPoint$ChartGroup,
+    ChartTitle: typeof PowerPoint$ChartTitle,
+    Coauthoring: typeof PowerPoint$Coauthoring,
+    ColorEffect: typeof PowerPoint$ColorEffect,
+    ColorFormat: typeof PowerPoint$ColorFormat,
+    ColorScheme: typeof PowerPoint$ColorScheme,
+    ColorSchemes: typeof PowerPoint$ColorSchemes,
+    Column: typeof PowerPoint$Column,
+    Columns: typeof PowerPoint$Columns,
+    CommandEffect: typeof PowerPoint$CommandEffect,
+    Comment: typeof PowerPoint$Comment,
+    Comments: typeof PowerPoint$Comments,
+    ConnectorFormat: typeof PowerPoint$ConnectorFormat,
+    Corners: typeof PowerPoint$Corners,
+    CustomerData: typeof PowerPoint$CustomerData,
+    CustomLayout: typeof PowerPoint$CustomLayout,
+    CustomLayouts: typeof PowerPoint$CustomLayouts,
+    DataTable: typeof PowerPoint$DataTable,
+    DefaultWebOptions: typeof PowerPoint$DefaultWebOptions,
+    Design: typeof PowerPoint$Design,
+    Designs: typeof PowerPoint$Designs,
+    Diagram: typeof PowerPoint$Diagram,
+    DiagramNode: typeof PowerPoint$DiagramNode,
+    DiagramNodeChildren: typeof PowerPoint$DiagramNodeChildren,
+    DiagramNodes: typeof PowerPoint$DiagramNodes,
+    DocumentWindow: typeof PowerPoint$DocumentWindow,
+    DocumentWindows: typeof PowerPoint$DocumentWindows,
+    DownBars: typeof PowerPoint$DownBars,
+    DropLines: typeof PowerPoint$DropLines,
+    Effect: typeof PowerPoint$Effect,
+    EffectInformation: typeof PowerPoint$EffectInformation,
+    EffectParameters: typeof PowerPoint$EffectParameters,
+    ExtraColors: typeof PowerPoint$ExtraColors,
+    FileConverter: typeof PowerPoint$FileConverter,
+    FileConverters: typeof PowerPoint$FileConverters,
+    FillFormat: typeof PowerPoint$FillFormat,
+    FilterEffect: typeof PowerPoint$FilterEffect,
+    Floor: typeof PowerPoint$Floor,
+    Font: typeof PowerPoint$Font,
+    Fonts: typeof PowerPoint$Fonts,
+    FreeformBuilder: typeof PowerPoint$FreeformBuilder,
+    Global: typeof PowerPoint$Global,
+    GroupShapes: typeof PowerPoint$GroupShapes,
+    HeaderFooter: typeof PowerPoint$HeaderFooter,
+    HeadersFooters: typeof PowerPoint$HeadersFooters,
+    HiLoLines: typeof PowerPoint$HiLoLines,
+    Hyperlink: typeof PowerPoint$Hyperlink,
+    Hyperlinks: typeof PowerPoint$Hyperlinks,
+    Interior: typeof PowerPoint$Interior,
+    Legend: typeof PowerPoint$Legend,
+    LineFormat: typeof PowerPoint$LineFormat,
+    LinkFormat: typeof PowerPoint$LinkFormat,
+    Master: typeof PowerPoint$Master,
+    MediaBookmark: typeof PowerPoint$MediaBookmark,
+    MediaBookmarks: typeof PowerPoint$MediaBookmarks,
+    MediaFormat: typeof PowerPoint$MediaFormat,
+    MotionEffect: typeof PowerPoint$MotionEffect,
+    MouseTracker: typeof PowerPoint$MouseTracker,
+    NamedSlideShow: typeof PowerPoint$NamedSlideShow,
+    NamedSlideShows: typeof PowerPoint$NamedSlideShows,
+    ObjectVerbs: typeof PowerPoint$ObjectVerbs,
+    OLEControl: typeof PowerPoint$OLEControl,
+    OLEFormat: typeof PowerPoint$OLEFormat,
+    Options: typeof PowerPoint$Options,
+    PageSetup: typeof PowerPoint$PageSetup,
+    Pane: typeof PowerPoint$Pane,
+    Panes: typeof PowerPoint$Panes,
+    ParagraphFormat: typeof PowerPoint$ParagraphFormat,
+    PictureFormat: typeof PowerPoint$PictureFormat,
+    PlaceholderFormat: typeof PowerPoint$PlaceholderFormat,
+    Placeholders: typeof PowerPoint$Placeholders,
+    Player: typeof PowerPoint$Player,
+    PlaySettings: typeof PowerPoint$PlaySettings,
+    PlotArea: typeof PowerPoint$PlotArea,
+    PowerRex: typeof PowerPoint$PowerRex,
+    Presentation: typeof PowerPoint$Presentation,
+    Presentations: typeof PowerPoint$Presentations,
+    PrintOptions: typeof PowerPoint$PrintOptions,
+    PrintRange: typeof PowerPoint$PrintRange,
+    PrintRanges: typeof PowerPoint$PrintRanges,
+    PropertyEffect: typeof PowerPoint$PropertyEffect,
+    ProtectedViewWindow: typeof PowerPoint$ProtectedViewWindow,
+    ProtectedViewWindows: typeof PowerPoint$ProtectedViewWindows,
+    PublishObject: typeof PowerPoint$PublishObject,
+    PublishObjects: typeof PowerPoint$PublishObjects,
+    ResampleMediaTask: typeof PowerPoint$ResampleMediaTask,
+    ResampleMediaTasks: typeof PowerPoint$ResampleMediaTasks,
+    Research: typeof PowerPoint$Research,
+    RGBColor: typeof PowerPoint$RGBColor,
+    RotationEffect: typeof PowerPoint$RotationEffect,
+    Row: typeof PowerPoint$Row,
+    Rows: typeof PowerPoint$Rows,
+    Ruler: typeof PowerPoint$Ruler,
+    RulerLevel: typeof PowerPoint$RulerLevel,
+    RulerLevels: typeof PowerPoint$RulerLevels,
+    ScaleEffect: typeof PowerPoint$ScaleEffect,
+    SectionProperties: typeof PowerPoint$SectionProperties,
+    Selection: typeof PowerPoint$Selection,
+    Sequence: typeof PowerPoint$Sequence,
+    Sequences: typeof PowerPoint$Sequences,
+    SeriesLines: typeof PowerPoint$SeriesLines,
+    SetEffect: typeof PowerPoint$SetEffect,
+    ShadowFormat: typeof PowerPoint$ShadowFormat,
+    Shape: typeof PowerPoint$Shape,
+    ShapeNode: typeof PowerPoint$ShapeNode,
+    ShapeNodes: typeof PowerPoint$ShapeNodes,
+    ShapeRange: typeof PowerPoint$ShapeRange,
+    Shapes: typeof PowerPoint$Shapes,
+    Slide: typeof PowerPoint$Slide,
+    SlideRange: typeof PowerPoint$SlideRange,
+    Slides: typeof PowerPoint$Slides,
+    SlideShowSettings: typeof PowerPoint$SlideShowSettings,
+    SlideShowTransition: typeof PowerPoint$SlideShowTransition,
+    SlideShowView: typeof PowerPoint$SlideShowView,
+    SlideShowWindow: typeof PowerPoint$SlideShowWindow,
+    SlideShowWindows: typeof PowerPoint$SlideShowWindows,
+    SoundEffect: typeof PowerPoint$SoundEffect,
+    SoundFormat: typeof PowerPoint$SoundFormat,
+    Table: typeof PowerPoint$Table,
+    TableBackground: typeof PowerPoint$TableBackground,
+    TableStyle: typeof PowerPoint$TableStyle,
+    TabStop: typeof PowerPoint$TabStop,
+    TabStops: typeof PowerPoint$TabStops,
+    Tags: typeof PowerPoint$Tags,
+    TextEffectFormat: typeof PowerPoint$TextEffectFormat,
+    TextFrame: typeof PowerPoint$TextFrame,
+    TextFrame2: typeof PowerPoint$TextFrame2,
+    TextRange: typeof PowerPoint$TextRange,
+    TextStyle: typeof PowerPoint$TextStyle,
+    TextStyleLevel: typeof PowerPoint$TextStyleLevel,
+    TextStyleLevels: typeof PowerPoint$TextStyleLevels,
+    TextStyles: typeof PowerPoint$TextStyles,
+    ThreeDFormat: typeof PowerPoint$ThreeDFormat,
+    TickLabels: typeof PowerPoint$TickLabels,
+    TimeLine: typeof PowerPoint$TimeLine,
+    Timing: typeof PowerPoint$Timing,
+    UpBars: typeof PowerPoint$UpBars,
+    View: typeof PowerPoint$View,
+    Walls: typeof PowerPoint$Walls,
+    WebOptions: typeof PowerPoint$WebOptions
+  };
+
+  declare var PowerPoint$MsoAnimAccumulate: {|
+    +msoAnimAccumulateAlways: 2, // 2
+    +msoAnimAccumulateNone: 1 // 1
+  |};
+
+  declare var PowerPoint$MsoAnimAdditive: {|
+    +msoAnimAdditiveAddBase: 1, // 1
+    +msoAnimAdditiveAddSum: 2 // 2
+  |};
+
+  declare var PowerPoint$MsoAnimAfterEffect: {|
+    +msoAnimAfterEffectDim: 1, // 1
+    +msoAnimAfterEffectHide: 2, // 2
+    +msoAnimAfterEffectHideOnNextClick: 3, // 3
+    +msoAnimAfterEffectMixed: -1, // -1
+    +msoAnimAfterEffectNone: 0 // 0
+  |};
+
+  declare var PowerPoint$MsoAnimateByLevel: {|
+    +msoAnimateChartAllAtOnce: 7, // 7
+    +msoAnimateChartByCategory: 8, // 8
+    +msoAnimateChartByCategoryElements: 9, // 9
+    +msoAnimateChartBySeries: 10, // 10
+    +msoAnimateChartBySeriesElements: 11, // 11
+    +msoAnimateDiagramAllAtOnce: 12, // 12
+    +msoAnimateDiagramBreadthByLevel: 16, // 16
+    +msoAnimateDiagramBreadthByNode: 15, // 15
+    +msoAnimateDiagramClockwise: 17, // 17
+    +msoAnimateDiagramClockwiseIn: 18, // 18
+    +msoAnimateDiagramClockwiseOut: 19, // 19
+    +msoAnimateDiagramCounterClockwise: 20, // 20
+    +msoAnimateDiagramCounterClockwiseIn: 21, // 21
+    +msoAnimateDiagramCounterClockwiseOut: 22, // 22
+    +msoAnimateDiagramDepthByBranch: 14, // 14
+    +msoAnimateDiagramDepthByNode: 13, // 13
+    +msoAnimateDiagramDown: 26, // 26
+    +msoAnimateDiagramInByRing: 23, // 23
+    +msoAnimateDiagramOutByRing: 24, // 24
+    +msoAnimateDiagramUp: 25, // 25
+    +msoAnimateLevelMixed: -1, // -1
+    +msoAnimateLevelNone: 0, // 0
+    +msoAnimateTextByAllLevels: 1, // 1
+    +msoAnimateTextByFifthLevel: 6, // 6
+    +msoAnimateTextByFirstLevel: 2, // 2
+    +msoAnimateTextByFourthLevel: 5, // 5
+    +msoAnimateTextBySecondLevel: 3, // 3
+    +msoAnimateTextByThirdLevel: 4 // 4
+  |};
+
+  declare var PowerPoint$MsoAnimCommandType: {|
+    +msoAnimCommandTypeCall: 1, // 1
+    +msoAnimCommandTypeEvent: 0, // 0
+    +msoAnimCommandTypeVerb: 2 // 2
+  |};
+
+  declare var PowerPoint$MsoAnimDirection: {|
+    +msoAnimDirectionAcross: 18, // 18
+    +msoAnimDirectionBottom: 11, // 11
+    +msoAnimDirectionBottomLeft: 15, // 15
+    +msoAnimDirectionBottomRight: 14, // 14
+    +msoAnimDirectionCenter: 28, // 28
+    +msoAnimDirectionClockwise: 21, // 21
+    +msoAnimDirectionCounterclockwise: 22, // 22
+    +msoAnimDirectionCycleClockwise: 43, // 43
+    +msoAnimDirectionCycleCounterclockwise: 44, // 44
+    +msoAnimDirectionDown: 3, // 3
+    +msoAnimDirectionDownLeft: 9, // 9
+    +msoAnimDirectionDownRight: 8, // 8
+    +msoAnimDirectionFontAllCaps: 40, // 40
+    +msoAnimDirectionFontBold: 35, // 35
+    +msoAnimDirectionFontItalic: 36, // 36
+    +msoAnimDirectionFontShadow: 39, // 39
+    +msoAnimDirectionFontStrikethrough: 38, // 38
+    +msoAnimDirectionFontUnderline: 37, // 37
+    +msoAnimDirectionGradual: 42, // 42
+    +msoAnimDirectionHorizontal: 16, // 16
+    +msoAnimDirectionHorizontalIn: 23, // 23
+    +msoAnimDirectionHorizontalOut: 24, // 24
+    +msoAnimDirectionIn: 19, // 19
+    +msoAnimDirectionInBottom: 31, // 31
+    +msoAnimDirectionInCenter: 30, // 30
+    +msoAnimDirectionInSlightly: 29, // 29
+    +msoAnimDirectionInstant: 41, // 41
+    +msoAnimDirectionLeft: 4, // 4
+    +msoAnimDirectionNone: 0, // 0
+    +msoAnimDirectionOrdinalMask: 5, // 5
+    +msoAnimDirectionOut: 20, // 20
+    +msoAnimDirectionOutBottom: 34, // 34
+    +msoAnimDirectionOutCenter: 33, // 33
+    +msoAnimDirectionOutSlightly: 32, // 32
+    +msoAnimDirectionRight: 2, // 2
+    +msoAnimDirectionSlightly: 27, // 27
+    +msoAnimDirectionTop: 10, // 10
+    +msoAnimDirectionTopLeft: 12, // 12
+    +msoAnimDirectionTopRight: 13, // 13
+    +msoAnimDirectionUp: 1, // 1
+    +msoAnimDirectionUpLeft: 6, // 6
+    +msoAnimDirectionUpRight: 7, // 7
+    +msoAnimDirectionVertical: 17, // 17
+    +msoAnimDirectionVerticalIn: 25, // 25
+    +msoAnimDirectionVerticalOut: 26 // 26
+  |};
+
+  declare var PowerPoint$MsoAnimEffect: {|
+    +msoAnimEffectAppear: 1, // 1
+    +msoAnimEffectArcUp: 47, // 47
+    +msoAnimEffectAscend: 39, // 39
+    +msoAnimEffectBlast: 64, // 64
+    +msoAnimEffectBlinds: 3, // 3
+    +msoAnimEffectBoldFlash: 63, // 63
+    +msoAnimEffectBoldReveal: 65, // 65
+    +msoAnimEffectBoomerang: 25, // 25
+    +msoAnimEffectBounce: 26, // 26
+    +msoAnimEffectBox: 4, // 4
+    +msoAnimEffectBrushOnColor: 66, // 66
+    +msoAnimEffectBrushOnUnderline: 67, // 67
+    +msoAnimEffectCenterRevolve: 40, // 40
+    +msoAnimEffectChangeFillColor: 54, // 54
+    +msoAnimEffectChangeFont: 55, // 55
+    +msoAnimEffectChangeFontColor: 56, // 56
+    +msoAnimEffectChangeFontSize: 57, // 57
+    +msoAnimEffectChangeFontStyle: 58, // 58
+    +msoAnimEffectChangeLineColor: 60, // 60
+    +msoAnimEffectCheckerboard: 5, // 5
+    +msoAnimEffectCircle: 6, // 6
+    +msoAnimEffectColorBlend: 68, // 68
+    +msoAnimEffectColorReveal: 27, // 27
+    +msoAnimEffectColorWave: 69, // 69
+    +msoAnimEffectComplementaryColor: 70, // 70
+    +msoAnimEffectComplementaryColor2: 71, // 71
+    +msoAnimEffectContrastingColor: 72, // 72
+    +msoAnimEffectCrawl: 7, // 7
+    +msoAnimEffectCredits: 28, // 28
+    +msoAnimEffectCustom: 0, // 0
+    +msoAnimEffectDarken: 73, // 73
+    +msoAnimEffectDesaturate: 74, // 74
+    +msoAnimEffectDescend: 42, // 42
+    +msoAnimEffectDiamond: 8, // 8
+    +msoAnimEffectDissolve: 9, // 9
+    +msoAnimEffectEaseIn: 29, // 29
+    +msoAnimEffectExpand: 50, // 50
+    +msoAnimEffectFade: 10, // 10
+    +msoAnimEffectFadedSwivel: 41, // 41
+    +msoAnimEffectFadedZoom: 48, // 48
+    +msoAnimEffectFlashBulb: 75, // 75
+    +msoAnimEffectFlashOnce: 11, // 11
+    +msoAnimEffectFlicker: 76, // 76
+    +msoAnimEffectFlip: 51, // 51
+    +msoAnimEffectFloat: 30, // 30
+    +msoAnimEffectFly: 2, // 2
+    +msoAnimEffectFold: 53, // 53
+    +msoAnimEffectGlide: 49, // 49
+    +msoAnimEffectGrowAndTurn: 31, // 31
+    +msoAnimEffectGrowShrink: 59, // 59
+    +msoAnimEffectGrowWithColor: 77, // 77
+    +msoAnimEffectLighten: 78, // 78
+    +msoAnimEffectLightSpeed: 32, // 32
+    +msoAnimEffectMediaPause: 84, // 84
+    +msoAnimEffectMediaPlay: 83, // 83
+    +msoAnimEffectMediaPlayFromBookmark: 150, // 150
+    +msoAnimEffectMediaStop: 85, // 85
+    +msoAnimEffectPath4PointStar: 101, // 101
+    +msoAnimEffectPath5PointStar: 90, // 90
+    +msoAnimEffectPath6PointStar: 96, // 96
+    +msoAnimEffectPath8PointStar: 102, // 102
+    +msoAnimEffectPathArcDown: 122, // 122
+    +msoAnimEffectPathArcLeft: 136, // 136
+    +msoAnimEffectPathArcRight: 143, // 143
+    +msoAnimEffectPathArcUp: 129, // 129
+    +msoAnimEffectPathBean: 116, // 116
+    +msoAnimEffectPathBounceLeft: 126, // 126
+    +msoAnimEffectPathBounceRight: 139, // 139
+    +msoAnimEffectPathBuzzsaw: 110, // 110
+    +msoAnimEffectPathCircle: 86, // 86
+    +msoAnimEffectPathCrescentMoon: 91, // 91
+    +msoAnimEffectPathCurvedSquare: 105, // 105
+    +msoAnimEffectPathCurvedX: 106, // 106
+    +msoAnimEffectPathCurvyLeft: 133, // 133
+    +msoAnimEffectPathCurvyRight: 146, // 146
+    +msoAnimEffectPathCurvyStar: 108, // 108
+    +msoAnimEffectPathDecayingWave: 145, // 145
+    +msoAnimEffectPathDiagonalDownRight: 134, // 134
+    +msoAnimEffectPathDiagonalUpRight: 141, // 141
+    +msoAnimEffectPathDiamond: 88, // 88
+    +msoAnimEffectPathDown: 127, // 127
+    +msoAnimEffectPathEqualTriangle: 98, // 98
+    +msoAnimEffectPathFigure8Four: 113, // 113
+    +msoAnimEffectPathFootball: 97, // 97
+    +msoAnimEffectPathFunnel: 137, // 137
+    +msoAnimEffectPathHeart: 94, // 94
+    +msoAnimEffectPathHeartbeat: 130, // 130
+    +msoAnimEffectPathHexagon: 89, // 89
+    +msoAnimEffectPathHorizontalFigure8: 111, // 111
+    +msoAnimEffectPathInvertedSquare: 119, // 119
+    +msoAnimEffectPathInvertedTriangle: 118, // 118
+    +msoAnimEffectPathLeft: 120, // 120
+    +msoAnimEffectPathLoopdeLoop: 109, // 109
+    +msoAnimEffectPathNeutron: 114, // 114
+    +msoAnimEffectPathOctagon: 95, // 95
+    +msoAnimEffectPathParallelogram: 99, // 99
+    +msoAnimEffectPathPeanut: 112, // 112
+    +msoAnimEffectPathPentagon: 100, // 100
+    +msoAnimEffectPathPlus: 117, // 117
+    +msoAnimEffectPathPointyStar: 104, // 104
+    +msoAnimEffectPathRight: 149, // 149
+    +msoAnimEffectPathRightTriangle: 87, // 87
+    +msoAnimEffectPathSCurve1: 144, // 144
+    +msoAnimEffectPathSCurve2: 124, // 124
+    +msoAnimEffectPathSineWave: 125, // 125
+    +msoAnimEffectPathSpiralLeft: 140, // 140
+    +msoAnimEffectPathSpiralRight: 131, // 131
+    +msoAnimEffectPathSpring: 138, // 138
+    +msoAnimEffectPathSquare: 92, // 92
+    +msoAnimEffectPathStairsDown: 147, // 147
+    +msoAnimEffectPathSwoosh: 115, // 115
+    +msoAnimEffectPathTeardrop: 103, // 103
+    +msoAnimEffectPathTrapezoid: 93, // 93
+    +msoAnimEffectPathTurnDown: 135, // 135
+    +msoAnimEffectPathTurnRight: 121, // 121
+    +msoAnimEffectPathTurnUp: 128, // 128
+    +msoAnimEffectPathTurnUpRight: 142, // 142
+    +msoAnimEffectPathUp: 148, // 148
+    +msoAnimEffectPathVerticalFigure8: 107, // 107
+    +msoAnimEffectPathWave: 132, // 132
+    +msoAnimEffectPathZigzag: 123, // 123
+    +msoAnimEffectPeek: 12, // 12
+    +msoAnimEffectPinwheel: 33, // 33
+    +msoAnimEffectPlus: 13, // 13
+    +msoAnimEffectRandomBars: 14, // 14
+    +msoAnimEffectRandomEffects: 24, // 24
+    +msoAnimEffectRiseUp: 34, // 34
+    +msoAnimEffectShimmer: 52, // 52
+    +msoAnimEffectSling: 43, // 43
+    +msoAnimEffectSpin: 61, // 61
+    +msoAnimEffectSpinner: 44, // 44
+    +msoAnimEffectSpiral: 15, // 15
+    +msoAnimEffectSplit: 16, // 16
+    +msoAnimEffectStretch: 17, // 17
+    +msoAnimEffectStretchy: 45, // 45
+    +msoAnimEffectStrips: 18, // 18
+    +msoAnimEffectStyleEmphasis: 79, // 79
+    +msoAnimEffectSwish: 35, // 35
+    +msoAnimEffectSwivel: 19, // 19
+    +msoAnimEffectTeeter: 80, // 80
+    +msoAnimEffectThinLine: 36, // 36
+    +msoAnimEffectTransparency: 62, // 62
+    +msoAnimEffectUnfold: 37, // 37
+    +msoAnimEffectVerticalGrow: 81, // 81
+    +msoAnimEffectWave: 82, // 82
+    +msoAnimEffectWedge: 20, // 20
+    +msoAnimEffectWheel: 21, // 21
+    +msoAnimEffectWhip: 38, // 38
+    +msoAnimEffectWipe: 22, // 22
+    +msoAnimEffectZip: 46, // 46
+    +msoAnimEffectZoom: 23 // 23
+  |};
+
+  declare var PowerPoint$MsoAnimEffectAfter: {|
+    +msoAnimEffectAfterFreeze: 1, // 1
+    +msoAnimEffectAfterHold: 3, // 3
+    +msoAnimEffectAfterRemove: 2, // 2
+    +msoAnimEffectAfterTransition: 4 // 4
+  |};
+
+  declare var PowerPoint$MsoAnimEffectRestart: {|
+    +msoAnimEffectRestartAlways: 1, // 1
+    +msoAnimEffectRestartNever: 3, // 3
+    +msoAnimEffectRestartWhenOff: 2 // 2
+  |};
+
+  declare var PowerPoint$MsoAnimFilterEffectSubtype: {|
+    +msoAnimFilterEffectSubtypeAcross: 9, // 9
+    +msoAnimFilterEffectSubtypeDown: 25, // 25
+    +msoAnimFilterEffectSubtypeDownLeft: 14, // 14
+    +msoAnimFilterEffectSubtypeDownRight: 16, // 16
+    +msoAnimFilterEffectSubtypeFromBottom: 13, // 13
+    +msoAnimFilterEffectSubtypeFromLeft: 10, // 10
+    +msoAnimFilterEffectSubtypeFromRight: 11, // 11
+    +msoAnimFilterEffectSubtypeFromTop: 12, // 12
+    +msoAnimFilterEffectSubtypeHorizontal: 5, // 5
+    +msoAnimFilterEffectSubtypeIn: 7, // 7
+    +msoAnimFilterEffectSubtypeInHorizontal: 3, // 3
+    +msoAnimFilterEffectSubtypeInVertical: 1, // 1
+    +msoAnimFilterEffectSubtypeLeft: 23, // 23
+    +msoAnimFilterEffectSubtypeNone: 0, // 0
+    +msoAnimFilterEffectSubtypeOut: 8, // 8
+    +msoAnimFilterEffectSubtypeOutHorizontal: 4, // 4
+    +msoAnimFilterEffectSubtypeOutVertical: 2, // 2
+    +msoAnimFilterEffectSubtypeRight: 24, // 24
+    +msoAnimFilterEffectSubtypeSpokes1: 18, // 18
+    +msoAnimFilterEffectSubtypeSpokes2: 19, // 19
+    +msoAnimFilterEffectSubtypeSpokes3: 20, // 20
+    +msoAnimFilterEffectSubtypeSpokes4: 21, // 21
+    +msoAnimFilterEffectSubtypeSpokes8: 22, // 22
+    +msoAnimFilterEffectSubtypeUp: 26, // 26
+    +msoAnimFilterEffectSubtypeUpLeft: 15, // 15
+    +msoAnimFilterEffectSubtypeUpRight: 17, // 17
+    +msoAnimFilterEffectSubtypeVertical: 6 // 6
+  |};
+
+  declare var PowerPoint$MsoAnimFilterEffectType: {|
+    +msoAnimFilterEffectTypeBarn: 1, // 1
+    +msoAnimFilterEffectTypeBlinds: 2, // 2
+    +msoAnimFilterEffectTypeBox: 3, // 3
+    +msoAnimFilterEffectTypeCheckerboard: 4, // 4
+    +msoAnimFilterEffectTypeCircle: 5, // 5
+    +msoAnimFilterEffectTypeDiamond: 6, // 6
+    +msoAnimFilterEffectTypeDissolve: 7, // 7
+    +msoAnimFilterEffectTypeFade: 8, // 8
+    +msoAnimFilterEffectTypeImage: 9, // 9
+    +msoAnimFilterEffectTypeNone: 0, // 0
+    +msoAnimFilterEffectTypePixelate: 10, // 10
+    +msoAnimFilterEffectTypePlus: 11, // 11
+    +msoAnimFilterEffectTypeRandomBar: 12, // 12
+    +msoAnimFilterEffectTypeSlide: 13, // 13
+    +msoAnimFilterEffectTypeStretch: 14, // 14
+    +msoAnimFilterEffectTypeStrips: 15, // 15
+    +msoAnimFilterEffectTypeWedge: 16, // 16
+    +msoAnimFilterEffectTypeWheel: 17, // 17
+    +msoAnimFilterEffectTypeWipe: 18 // 18
+  |};
+
+  declare var PowerPoint$MsoAnimProperty: {|
+    +msoAnimColor: 7, // 7
+    +msoAnimHeight: 4, // 4
+    +msoAnimNone: 0, // 0
+    +msoAnimOpacity: 5, // 5
+    +msoAnimRotation: 6, // 6
+    +msoAnimShapeFillBackColor: 1007, // 1007
+    +msoAnimShapeFillColor: 1005, // 1005
+    +msoAnimShapeFillOn: 1004, // 1004
+    +msoAnimShapeFillOpacity: 1006, // 1006
+    +msoAnimShapeLineColor: 1009, // 1009
+    +msoAnimShapeLineOn: 1008, // 1008
+    +msoAnimShapePictureBrightness: 1001, // 1001
+    +msoAnimShapePictureContrast: 1000, // 1000
+    +msoAnimShapePictureGamma: 1002, // 1002
+    +msoAnimShapePictureGrayscale: 1003, // 1003
+    +msoAnimShapeShadowColor: 1012, // 1012
+    +msoAnimShapeShadowOffsetX: 1014, // 1014
+    +msoAnimShapeShadowOffsetY: 1015, // 1015
+    +msoAnimShapeShadowOn: 1010, // 1010
+    +msoAnimShapeShadowOpacity: 1013, // 1013
+    +msoAnimShapeShadowType: 1011, // 1011
+    +msoAnimTextBulletCharacter: 111, // 111
+    +msoAnimTextBulletColor: 114, // 114
+    +msoAnimTextBulletFontName: 112, // 112
+    +msoAnimTextBulletNumber: 113, // 113
+    +msoAnimTextBulletRelativeSize: 115, // 115
+    +msoAnimTextBulletStyle: 116, // 116
+    +msoAnimTextBulletType: 117, // 117
+    +msoAnimTextFontBold: 100, // 100
+    +msoAnimTextFontColor: 101, // 101
+    +msoAnimTextFontEmboss: 102, // 102
+    +msoAnimTextFontItalic: 103, // 103
+    +msoAnimTextFontName: 104, // 104
+    +msoAnimTextFontShadow: 105, // 105
+    +msoAnimTextFontSize: 106, // 106
+    +msoAnimTextFontStrikeThrough: 110, // 110
+    +msoAnimTextFontSubscript: 107, // 107
+    +msoAnimTextFontSuperscript: 108, // 108
+    +msoAnimTextFontUnderline: 109, // 109
+    +msoAnimVisibility: 8, // 8
+    +msoAnimWidth: 3, // 3
+    +msoAnimX: 1, // 1
+    +msoAnimY: 2 // 2
+  |};
+
+  declare var PowerPoint$MsoAnimTextUnitEffect: {|
+    +msoAnimTextUnitEffectByCharacter: 1, // 1
+    +msoAnimTextUnitEffectByParagraph: 0, // 0
+    +msoAnimTextUnitEffectByWord: 2, // 2
+    +msoAnimTextUnitEffectMixed: -1 // -1
+  |};
+
+  declare var PowerPoint$MsoAnimTriggerType: {|
+    +msoAnimTriggerAfterPrevious: 3, // 3
+    +msoAnimTriggerMixed: -1, // -1
+    +msoAnimTriggerNone: 0, // 0
+    +msoAnimTriggerOnMediaBookmark: 5, // 5
+    +msoAnimTriggerOnPageClick: 1, // 1
+    +msoAnimTriggerOnShapeClick: 4, // 4
+    +msoAnimTriggerWithPrevious: 2 // 2
+  |};
+
+  declare var PowerPoint$MsoAnimType: {|
+    +msoAnimTypeColor: 2, // 2
+    +msoAnimTypeCommand: 6, // 6
+    +msoAnimTypeFilter: 7, // 7
+    +msoAnimTypeMixed: -2, // -2
+    +msoAnimTypeMotion: 1, // 1
+    +msoAnimTypeNone: 0, // 0
+    +msoAnimTypeProperty: 5, // 5
+    +msoAnimTypeRotation: 4, // 4
+    +msoAnimTypeScale: 3, // 3
+    +msoAnimTypeSet: 8 // 8
+  |};
+
+  declare var PowerPoint$MsoClickState: {|
+    +msoClickStateAfterAllAnimations: -2, // -2
+    +msoClickStateBeforeAutomaticAnimations: -1 // -1
+  |};
+
+  declare var PowerPoint$PpActionType: {|
+    +ppActionEndShow: 6, // 6
+    +ppActionFirstSlide: 3, // 3
+    +ppActionHyperlink: 7, // 7
+    +ppActionLastSlide: 4, // 4
+    +ppActionLastSlideViewed: 5, // 5
+    +ppActionMixed: -2, // -2
+    +ppActionNamedSlideShow: 10, // 10
+    +ppActionNextSlide: 1, // 1
+    +ppActionNone: 0, // 0
+    +ppActionOLEVerb: 11, // 11
+    +ppActionPlay: 12, // 12
+    +ppActionPreviousSlide: 2, // 2
+    +ppActionRunMacro: 8, // 8
+    +ppActionRunProgram: 9 // 9
+  |};
+
+  declare var PowerPoint$PpAdvanceMode: {|
+    +ppAdvanceModeMixed: -2, // -2
+    +ppAdvanceOnClick: 1, // 1
+    +ppAdvanceOnTime: 2 // 2
+  |};
+
+  declare var PowerPoint$PpAfterEffect: {|
+    +ppAfterEffectDim: 2, // 2
+    +ppAfterEffectHide: 1, // 1
+    +ppAfterEffectHideOnClick: 3, // 3
+    +ppAfterEffectMixed: -2, // -2
+    +ppAfterEffectNothing: 0 // 0
+  |};
+
+  declare var PowerPoint$PpAlertLevel: {|
+    +ppAlertsAll: 2, // 2
+    +ppAlertsNone: 1 // 1
+  |};
+
+  declare var PowerPoint$PpArrangeStyle: {|
+    +ppArrangeCascade: 2, // 2
+    +ppArrangeTiled: 1 // 1
+  |};
+
+  declare var PowerPoint$PpAutoSize: {|
+    +ppAutoSizeMixed: -2, // -2
+    +ppAutoSizeNone: 0, // 0
+    +ppAutoSizeShapeToFitText: 1 // 1
+  |};
+
+  declare var PowerPoint$PpBaselineAlignment: {|
+    +ppBaselineAlignAuto: 5, // 5
+    +ppBaselineAlignBaseline: 1, // 1
+    +ppBaselineAlignCenter: 3, // 3
+    +ppBaselineAlignFarEast50: 4, // 4
+    +ppBaselineAlignMixed: -2, // -2
+    +ppBaselineAlignTop: 2 // 2
+  |};
+
+  declare var PowerPoint$PpBorderType: {|
+    +ppBorderBottom: 3, // 3
+    +ppBorderDiagonalDown: 5, // 5
+    +ppBorderDiagonalUp: 6, // 6
+    +ppBorderLeft: 2, // 2
+    +ppBorderRight: 4, // 4
+    +ppBorderTop: 1 // 1
+  |};
+
+  declare var PowerPoint$PpBulletType: {|
+    +ppBulletMixed: -2, // -2
+    +ppBulletNone: 0, // 0
+    +ppBulletNumbered: 2, // 2
+    +ppBulletPicture: 3, // 3
+    +ppBulletUnnumbered: 1 // 1
+  |};
+
+  declare var PowerPoint$PpChangeCase: {|
+    +ppCaseLower: 2, // 2
+    +ppCaseSentence: 1, // 1
+    +ppCaseTitle: 4, // 4
+    +ppCaseToggle: 5, // 5
+    +ppCaseUpper: 3 // 3
+  |};
+
+  declare var PowerPoint$PpChartUnitEffect: {|
+    +ppAnimateByCategory: 2, // 2
+    +ppAnimateByCategoryElements: 4, // 4
+    +ppAnimateBySeries: 1, // 1
+    +ppAnimateBySeriesElements: 3, // 3
+    +ppAnimateChartAllAtOnce: 5, // 5
+    +ppAnimateChartMixed: -2 // -2
+  |};
+
+  declare var PowerPoint$PpCheckInVersionType: {|
+    +ppCheckInMajorVersion: 1, // 1
+    +ppCheckInMinorVersion: 0, // 0
+    +ppCheckInOverwriteVersion: 2 // 2
+  |};
+
+  declare var PowerPoint$PpColorSchemeIndex: {|
+    +ppAccent1: 6, // 6
+    +ppAccent2: 7, // 7
+    +ppAccent3: 8, // 8
+    +ppBackground: 1, // 1
+    +ppFill: 5, // 5
+    +ppForeground: 2, // 2
+    +ppNotSchemeColor: 0, // 0
+    +ppSchemeColorMixed: -2, // -2
+    +ppShadow: 3, // 3
+    +ppTitle: 4 // 4
+  |};
+
+  declare var PowerPoint$PpDateTimeFormat: {|
+    +ppDateTimeddddMMMMddyyyy: 2, // 2
+    +ppDateTimedMMMMyyyy: 3, // 3
+    +ppDateTimedMMMyy: 5, // 5
+    +ppDateTimeFigureOut: 14, // 14
+    +ppDateTimeFormatMixed: -2, // -2
+    +ppDateTimeHmm: 10, // 10
+    +ppDateTimehmmAMPM: 12, // 12
+    +ppDateTimeHmmss: 11, // 11
+    +ppDateTimehmmssAMPM: 13, // 13
+    +ppDateTimeMdyy: 1, // 1
+    +ppDateTimeMMddyyHmm: 8, // 8
+    +ppDateTimeMMddyyhmmAMPM: 9, // 9
+    +ppDateTimeMMMMdyyyy: 4, // 4
+    +ppDateTimeMMMMyy: 6, // 6
+    +ppDateTimeMMyy: 7 // 7
+  |};
+
+  declare var PowerPoint$PpDirection: {|
+    +ppDirectionLeftToRight: 1, // 1
+    +ppDirectionMixed: -2, // -2
+    +ppDirectionRightToLeft: 2 // 2
+  |};
+
+  declare var PowerPoint$PpEntryEffect: {|
+    +ppEffectAppear: 3844, // 3844
+    +ppEffectBlindsHorizontal: 769, // 769
+    +ppEffectBlindsVertical: 770, // 770
+    +ppEffectBoxDown: 3925, // 3925
+    +ppEffectBoxIn: 3074, // 3074
+    +ppEffectBoxLeft: 3922, // 3922
+    +ppEffectBoxOut: 3073, // 3073
+    +ppEffectBoxRight: 3924, // 3924
+    +ppEffectBoxUp: 3923, // 3923
+    +ppEffectCheckerboardAcross: 1025, // 1025
+    +ppEffectCheckerboardDown: 1026, // 1026
+    +ppEffectCircleOut: 3845, // 3845
+    +ppEffectCombHorizontal: 3847, // 3847
+    +ppEffectCombVertical: 3848, // 3848
+    +ppEffectConveyorLeft: 3882, // 3882
+    +ppEffectConveyorRight: 3883, // 3883
+    +ppEffectCoverDown: 1284, // 1284
+    +ppEffectCoverLeft: 1281, // 1281
+    +ppEffectCoverLeftDown: 1287, // 1287
+    +ppEffectCoverLeftUp: 1285, // 1285
+    +ppEffectCoverRight: 1283, // 1283
+    +ppEffectCoverRightDown: 1288, // 1288
+    +ppEffectCoverRightUp: 1286, // 1286
+    +ppEffectCoverUp: 1282, // 1282
+    +ppEffectCrawlFromDown: 3344, // 3344
+    +ppEffectCrawlFromLeft: 3341, // 3341
+    +ppEffectCrawlFromRight: 3343, // 3343
+    +ppEffectCrawlFromUp: 3342, // 3342
+    +ppEffectCubeDown: 3917, // 3917
+    +ppEffectCubeLeft: 3914, // 3914
+    +ppEffectCubeRight: 3916, // 3916
+    +ppEffectCubeUp: 3915, // 3915
+    +ppEffectCut: 257, // 257
+    +ppEffectCutThroughBlack: 258, // 258
+    +ppEffectDiamondOut: 3846, // 3846
+    +ppEffectDissolve: 1537, // 1537
+    +ppEffectDoorsHorizontal: 3885, // 3885
+    +ppEffectDoorsVertical: 3884, // 3884
+    +ppEffectFade: 1793, // 1793
+    +ppEffectFadeSmoothly: 3849, // 3849
+    +ppEffectFerrisWheelLeft: 3899, // 3899
+    +ppEffectFerrisWheelRight: 3900, // 3900
+    +ppEffectFlashbulb: 3909, // 3909
+    +ppEffectFlashOnceFast: 3841, // 3841
+    +ppEffectFlashOnceMedium: 3842, // 3842
+    +ppEffectFlashOnceSlow: 3843, // 3843
+    +ppEffectFlipDown: 3908, // 3908
+    +ppEffectFlipLeft: 3905, // 3905
+    +ppEffectFlipRight: 3907, // 3907
+    +ppEffectFlipUp: 3906, // 3906
+    +ppEffectFlyFromBottom: 3332, // 3332
+    +ppEffectFlyFromBottomLeft: 3335, // 3335
+    +ppEffectFlyFromBottomRight: 3336, // 3336
+    +ppEffectFlyFromLeft: 3329, // 3329
+    +ppEffectFlyFromRight: 3331, // 3331
+    +ppEffectFlyFromTop: 3330, // 3330
+    +ppEffectFlyFromTopLeft: 3333, // 3333
+    +ppEffectFlyFromTopRight: 3334, // 3334
+    +ppEffectFlyThroughIn: 3890, // 3890
+    +ppEffectFlyThroughInBounce: 3892, // 3892
+    +ppEffectFlyThroughOut: 3891, // 3891
+    +ppEffectFlyThroughOutBounce: 3893, // 3893
+    +ppEffectGalleryLeft: 3880, // 3880
+    +ppEffectGalleryRight: 3881, // 3881
+    +ppEffectGlitterDiamondDown: 3875, // 3875
+    +ppEffectGlitterDiamondLeft: 3872, // 3872
+    +ppEffectGlitterDiamondRight: 3874, // 3874
+    +ppEffectGlitterDiamondUp: 3873, // 3873
+    +ppEffectGlitterHexagonDown: 3879, // 3879
+    +ppEffectGlitterHexagonLeft: 3876, // 3876
+    +ppEffectGlitterHexagonRight: 3878, // 3878
+    +ppEffectGlitterHexagonUp: 3877, // 3877
+    +ppEffectHoneycomb: 3898, // 3898
+    +ppEffectMixed: -2, // -2
+    +ppEffectNewsflash: 3850, // 3850
+    +ppEffectNone: 0, // 0
+    +ppEffectOrbitDown: 3929, // 3929
+    +ppEffectOrbitLeft: 3926, // 3926
+    +ppEffectOrbitRight: 3928, // 3928
+    +ppEffectOrbitUp: 3927, // 3927
+    +ppEffectPanDown: 3933, // 3933
+    +ppEffectPanLeft: 3930, // 3930
+    +ppEffectPanRight: 3932, // 3932
+    +ppEffectPanUp: 3931, // 3931
+    +ppEffectPeekFromDown: 3338, // 3338
+    +ppEffectPeekFromLeft: 3337, // 3337
+    +ppEffectPeekFromRight: 3339, // 3339
+    +ppEffectPeekFromUp: 3340, // 3340
+    +ppEffectPlusOut: 3851, // 3851
+    +ppEffectPushDown: 3852, // 3852
+    +ppEffectPushLeft: 3853, // 3853
+    +ppEffectPushRight: 3854, // 3854
+    +ppEffectPushUp: 3855, // 3855
+    +ppEffectRandom: 513, // 513
+    +ppEffectRandomBarsHorizontal: 2305, // 2305
+    +ppEffectRandomBarsVertical: 2306, // 2306
+    +ppEffectRevealBlackLeft: 3896, // 3896
+    +ppEffectRevealBlackRight: 3897, // 3897
+    +ppEffectRevealSmoothLeft: 3894, // 3894
+    +ppEffectRevealSmoothRight: 3895, // 3895
+    +ppEffectRippleCenter: 3867, // 3867
+    +ppEffectRippleLeftDown: 3870, // 3870
+    +ppEffectRippleLeftUp: 3869, // 3869
+    +ppEffectRippleRightDown: 3871, // 3871
+    +ppEffectRippleRightUp: 3868, // 3868
+    +ppEffectRotateDown: 3921, // 3921
+    +ppEffectRotateLeft: 3918, // 3918
+    +ppEffectRotateRight: 3920, // 3920
+    +ppEffectRotateUp: 3919, // 3919
+    +ppEffectShredRectangleIn: 3912, // 3912
+    +ppEffectShredRectangleOut: 3913, // 3913
+    +ppEffectShredStripsIn: 3910, // 3910
+    +ppEffectShredStripsOut: 3911, // 3911
+    +ppEffectSpiral: 3357, // 3357
+    +ppEffectSplitHorizontalIn: 3586, // 3586
+    +ppEffectSplitHorizontalOut: 3585, // 3585
+    +ppEffectSplitVerticalIn: 3588, // 3588
+    +ppEffectSplitVerticalOut: 3587, // 3587
+    +ppEffectStretchAcross: 3351, // 3351
+    +ppEffectStretchDown: 3355, // 3355
+    +ppEffectStretchLeft: 3352, // 3352
+    +ppEffectStretchRight: 3354, // 3354
+    +ppEffectStretchUp: 3353, // 3353
+    +ppEffectStripsDownLeft: 2563, // 2563
+    +ppEffectStripsDownRight: 2564, // 2564
+    +ppEffectStripsLeftDown: 2567, // 2567
+    +ppEffectStripsLeftUp: 2565, // 2565
+    +ppEffectStripsRightDown: 2568, // 2568
+    +ppEffectStripsRightUp: 2566, // 2566
+    +ppEffectStripsUpLeft: 2561, // 2561
+    +ppEffectStripsUpRight: 2562, // 2562
+    +ppEffectSwitchDown: 3904, // 3904
+    +ppEffectSwitchLeft: 3901, // 3901
+    +ppEffectSwitchRight: 3903, // 3903
+    +ppEffectSwitchUp: 3902, // 3902
+    +ppEffectSwivel: 3356, // 3356
+    +ppEffectUncoverDown: 2052, // 2052
+    +ppEffectUncoverLeft: 2049, // 2049
+    +ppEffectUncoverLeftDown: 2055, // 2055
+    +ppEffectUncoverLeftUp: 2053, // 2053
+    +ppEffectUncoverRight: 2051, // 2051
+    +ppEffectUncoverRightDown: 2056, // 2056
+    +ppEffectUncoverRightUp: 2054, // 2054
+    +ppEffectUncoverUp: 2050, // 2050
+    +ppEffectVortexDown: 3866, // 3866
+    +ppEffectVortexLeft: 3863, // 3863
+    +ppEffectVortexRight: 3865, // 3865
+    +ppEffectVortexUp: 3864, // 3864
+    +ppEffectWarpIn: 3888, // 3888
+    +ppEffectWarpOut: 3889, // 3889
+    +ppEffectWedge: 3856, // 3856
+    +ppEffectWheel1Spoke: 3857, // 3857
+    +ppEffectWheel2Spokes: 3858, // 3858
+    +ppEffectWheel3Spokes: 3859, // 3859
+    +ppEffectWheel4Spokes: 3860, // 3860
+    +ppEffectWheel8Spokes: 3861, // 3861
+    +ppEffectWheelReverse1Spoke: 3862, // 3862
+    +ppEffectWindowHorizontal: 3887, // 3887
+    +ppEffectWindowVertical: 3886, // 3886
+    +ppEffectWipeDown: 2820, // 2820
+    +ppEffectWipeLeft: 2817, // 2817
+    +ppEffectWipeRight: 2819, // 2819
+    +ppEffectWipeUp: 2818, // 2818
+    +ppEffectZoomBottom: 3350, // 3350
+    +ppEffectZoomCenter: 3349, // 3349
+    +ppEffectZoomIn: 3345, // 3345
+    +ppEffectZoomInSlightly: 3346, // 3346
+    +ppEffectZoomOut: 3347, // 3347
+    +ppEffectZoomOutSlightly: 3348 // 3348
+  |};
+
+  declare var PowerPoint$PpExportMode: {|
+    +ppClipRelativeToSlide: 2, // 2
+    +ppRelativeToSlide: 1, // 1
+    +ppScaleToFit: 3, // 3
+    +ppScaleXY: 4 // 4
+  |};
+
+  declare var PowerPoint$PpFarEastLineBreakLevel: {|
+    +ppFarEastLineBreakLevelCustom: 3, // 3
+    +ppFarEastLineBreakLevelNormal: 1, // 1
+    +ppFarEastLineBreakLevelStrict: 2 // 2
+  |};
+
+  declare var PowerPoint$PpFileDialogType: {|
+    +ppFileDialogOpen: 1, // 1
+    +ppFileDialogSave: 2 // 2
+  |};
+
+  declare var PowerPoint$PpFixedFormatIntent: {|
+    +ppFixedFormatIntentPrint: 2, // 2
+    +ppFixedFormatIntentScreen: 1 // 1
+  |};
+
+  declare var PowerPoint$PpFixedFormatType: {|
+    +ppFixedFormatTypePDF: 2, // 2
+    +ppFixedFormatTypeXPS: 1 // 1
+  |};
+
+  declare var PowerPoint$PpFollowColors: {|
+    +ppFollowColorsMixed: -2, // -2
+    +ppFollowColorsNone: 0, // 0
+    +ppFollowColorsScheme: 1, // 1
+    +ppFollowColorsTextAndBackground: 2 // 2
+  |};
+
+  declare var PowerPoint$PpFrameColors: {|
+    +ppFrameColorsBlackTextOnWhite: 5, // 5
+    +ppFrameColorsBrowserColors: 1, // 1
+    +ppFrameColorsPresentationSchemeAccentColor: 3, // 3
+    +ppFrameColorsPresentationSchemeTextColor: 2, // 2
+    +ppFrameColorsWhiteTextOnBlack: 4 // 4
+  |};
+
+  declare var PowerPoint$PpHTMLVersion: {|
+    +ppHTMLAutodetect: 4, // 4
+    +ppHTMLDual: 3, // 3
+    +ppHTMLv3: 1, // 1
+    +ppHTMLv4: 2 // 2
+  |};
+
+  declare var PowerPoint$PpIndentControl: {|
+    +ppIndentControlMixed: -2, // -2
+    +ppIndentKeepAttr: 2, // 2
+    +ppIndentReplaceAttr: 1 // 1
+  |};
+
+  declare var PowerPoint$PpMediaTaskStatus: {|
+    +ppMediaTaskStatusDone: 3, // 3
+    +ppMediaTaskStatusFailed: 4, // 4
+    +ppMediaTaskStatusInProgress: 1, // 1
+    +ppMediaTaskStatusNone: 0, // 0
+    +ppMediaTaskStatusQueued: 2 // 2
+  |};
+
+  declare var PowerPoint$PpMediaType: {|
+    +ppMediaTypeMixed: -2, // -2
+    +ppMediaTypeMovie: 3, // 3
+    +ppMediaTypeOther: 1, // 1
+    +ppMediaTypeSound: 2 // 2
+  |};
+
+  declare var PowerPoint$PpMouseActivation: {|
+    +ppMouseClick: 1, // 1
+    +ppMouseOver: 2 // 2
+  |};
+
+  declare var PowerPoint$PpNumberedBulletStyle: {|
+    +ppBulletAlphaLCParenBoth: 8, // 8
+    +ppBulletAlphaLCParenRight: 9, // 9
+    +ppBulletAlphaLCPeriod: 0, // 0
+    +ppBulletAlphaUCParenBoth: 10, // 10
+    +ppBulletAlphaUCParenRight: 11, // 11
+    +ppBulletAlphaUCPeriod: 1, // 1
+    +ppBulletArabicAbjadDash: 24, // 24
+    +ppBulletArabicAlphaDash: 23, // 23
+    +ppBulletArabicDBPeriod: 29, // 29
+    +ppBulletArabicDBPlain: 28, // 28
+    +ppBulletArabicParenBoth: 12, // 12
+    +ppBulletArabicParenRight: 2, // 2
+    +ppBulletArabicPeriod: 3, // 3
+    +ppBulletArabicPlain: 13, // 13
+    +ppBulletCircleNumDBPlain: 18, // 18
+    +ppBulletCircleNumWDBlackPlain: 20, // 20
+    +ppBulletCircleNumWDWhitePlain: 19, // 19
+    +ppBulletHebrewAlphaDash: 25, // 25
+    +ppBulletHindiAlpha1Period: 40, // 40
+    +ppBulletHindiAlphaPeriod: 36, // 36
+    +ppBulletHindiNumParenRight: 39, // 39
+    +ppBulletHindiNumPeriod: 37, // 37
+    +ppBulletKanjiKoreanPeriod: 27, // 27
+    +ppBulletKanjiKoreanPlain: 26, // 26
+    +ppBulletKanjiSimpChinDBPeriod: 38, // 38
+    +ppBulletRomanLCParenBoth: 4, // 4
+    +ppBulletRomanLCParenRight: 5, // 5
+    +ppBulletRomanLCPeriod: 6, // 6
+    +ppBulletRomanUCParenBoth: 14, // 14
+    +ppBulletRomanUCParenRight: 15, // 15
+    +ppBulletRomanUCPeriod: 7, // 7
+    +ppBulletSimpChinPeriod: 17, // 17
+    +ppBulletSimpChinPlain: 16, // 16
+    +ppBulletStyleMixed: -2, // -2
+    +ppBulletThaiAlphaParenBoth: 32, // 32
+    +ppBulletThaiAlphaParenRight: 31, // 31
+    +ppBulletThaiAlphaPeriod: 30, // 30
+    +ppBulletThaiNumParenBoth: 35, // 35
+    +ppBulletThaiNumParenRight: 34, // 34
+    +ppBulletThaiNumPeriod: 33, // 33
+    +ppBulletTradChinPeriod: 22, // 22
+    +ppBulletTradChinPlain: 21 // 21
+  |};
+
+  declare var PowerPoint$PpParagraphAlignment: {|
+    +ppAlignCenter: 2, // 2
+    +ppAlignDistribute: 5, // 5
+    +ppAlignJustify: 4, // 4
+    +ppAlignJustifyLow: 7, // 7
+    +ppAlignLeft: 1, // 1
+    +ppAlignmentMixed: -2, // -2
+    +ppAlignRight: 3, // 3
+    +ppAlignThaiDistribute: 6 // 6
+  |};
+
+  declare var PowerPoint$PpPasteDataType: {|
+    +ppPasteBitmap: 1, // 1
+    +ppPasteDefault: 0, // 0
+    +ppPasteEnhancedMetafile: 2, // 2
+    +ppPasteGIF: 4, // 4
+    +ppPasteHTML: 8, // 8
+    +ppPasteJPG: 5, // 5
+    +ppPasteMetafilePicture: 3, // 3
+    +ppPasteOLEObject: 10, // 10
+    +ppPastePNG: 6, // 6
+    +ppPasteRTF: 9, // 9
+    +ppPasteShape: 11, // 11
+    +ppPasteText: 7 // 7
+  |};
+
+  declare var PowerPoint$PpPlaceholderType: {|
+    +ppPlaceholderBitmap: 9, // 9
+    +ppPlaceholderBody: 2, // 2
+    +ppPlaceholderCenterTitle: 3, // 3
+    +ppPlaceholderChart: 8, // 8
+    +ppPlaceholderDate: 16, // 16
+    +ppPlaceholderFooter: 15, // 15
+    +ppPlaceholderHeader: 14, // 14
+    +ppPlaceholderMediaClip: 10, // 10
+    +ppPlaceholderMixed: -2, // -2
+    +ppPlaceholderObject: 7, // 7
+    +ppPlaceholderOrgChart: 11, // 11
+    +ppPlaceholderPicture: 18, // 18
+    +ppPlaceholderSlideNumber: 13, // 13
+    +ppPlaceholderSubtitle: 4, // 4
+    +ppPlaceholderTable: 12, // 12
+    +ppPlaceholderTitle: 1, // 1
+    +ppPlaceholderVerticalBody: 6, // 6
+    +ppPlaceholderVerticalObject: 17, // 17
+    +ppPlaceholderVerticalTitle: 5 // 5
+  |};
+
+  declare var PowerPoint$PpPlayerState: {|
+    +ppNotReady: 3, // 3
+    +ppPaused: 1, // 1
+    +ppPlaying: 0, // 0
+    +ppStopped: 2 // 2
+  |};
+
+  declare var PowerPoint$PpPrintColorType: {|
+    +ppPrintBlackAndWhite: 2, // 2
+    +ppPrintColor: 1, // 1
+    +ppPrintPureBlackAndWhite: 3 // 3
+  |};
+
+  declare var PowerPoint$PpPrintHandoutOrder: {|
+    +ppPrintHandoutHorizontalFirst: 2, // 2
+    +ppPrintHandoutVerticalFirst: 1 // 1
+  |};
+
+  declare var PowerPoint$PpPrintOutputType: {|
+    +ppPrintOutputBuildSlides: 7, // 7
+    +ppPrintOutputFourSlideHandouts: 8, // 8
+    +ppPrintOutputNineSlideHandouts: 9, // 9
+    +ppPrintOutputNotesPages: 5, // 5
+    +ppPrintOutputOneSlideHandouts: 10, // 10
+    +ppPrintOutputOutline: 6, // 6
+    +ppPrintOutputSixSlideHandouts: 4, // 4
+    +ppPrintOutputSlides: 1, // 1
+    +ppPrintOutputThreeSlideHandouts: 3, // 3
+    +ppPrintOutputTwoSlideHandouts: 2 // 2
+  |};
+
+  declare var PowerPoint$PpPrintRangeType: {|
+    +ppPrintAll: 1, // 1
+    +ppPrintCurrent: 3, // 3
+    +ppPrintNamedSlideShow: 5, // 5
+    +ppPrintSection: 6, // 6
+    +ppPrintSelection: 2, // 2
+    +ppPrintSlideRange: 4 // 4
+  |};
+
+  declare var PowerPoint$PpProtectedViewCloseReason: {|
+    +ppProtectedViewCloseEdit: 1, // 1
+    +ppProtectedViewCloseForced: 2, // 2
+    +ppProtectedViewCloseNormal: 0 // 0
+  |};
+
+  declare var PowerPoint$PpPublishSourceType: {|
+    +ppPublishAll: 1, // 1
+    +ppPublishNamedSlideShow: 3, // 3
+    +ppPublishSlideRange: 2 // 2
+  |};
+
+  declare var PowerPoint$PpRemoveDocInfoType: {|
+    +ppRDIAll: 99, // 99
+    +ppRDIComments: 1, // 1
+    +ppRDIContentType: 16, // 16
+    +ppRDIDocumentManagementPolicy: 15, // 15
+    +ppRDIDocumentProperties: 8, // 8
+    +ppRDIDocumentServerProperties: 14, // 14
+    +ppRDIDocumentWorkspace: 10, // 10
+    +ppRDIInkAnnotations: 11, // 11
+    +ppRDIPublishPath: 13, // 13
+    +ppRDIRemovePersonalInformation: 4, // 4
+    +ppRDISlideUpdateInformation: 17 // 17
+  |};
+
+  declare var PowerPoint$PpResampleMediaProfile: {|
+    +ppResampleMediaProfileCustom: 1, // 1
+    +ppResampleMediaProfileSmall: 2, // 2
+    +ppResampleMediaProfileSmaller: 3, // 3
+    +ppResampleMediaProfileSmallest: 4 // 4
+  |};
+
+  declare var PowerPoint$PpRevisionInfo: {|
+    +ppRevisionInfoBaseline: 1, // 1
+    +ppRevisionInfoMerged: 2, // 2
+    +ppRevisionInfoNone: 0 // 0
+  |};
+
+  declare var PowerPoint$PpSaveAsFileType: {|
+    +ppSaveAsAddIn: 8, // 8
+    +ppSaveAsBMP: 19, // 19
+    +ppSaveAsDefault: 11, // 11
+    +ppSaveAsEMF: 23, // 23
+    +ppSaveAsExternalConverter: 64000, // 64000
+    +ppSaveAsGIF: 16, // 16
+    +ppSaveAsHTML: 12, // 12
+    +ppSaveAsHTMLDual: 14, // 14
+    +ppSaveAsHTMLv3: 13, // 13
+    +ppSaveAsJPG: 17, // 17
+    +ppSaveAsMetaFile: 15, // 15
+    +ppSaveAsOpenDocumentPresentation: 35, // 35
+    +ppSaveAsOpenXMLAddin: 30, // 30
+    +ppSaveAsOpenXMLPicturePresentation: 36, // 36
+    +ppSaveAsOpenXMLPresentation: 24, // 24
+    +ppSaveAsOpenXMLPresentationMacroEnabled: 25, // 25
+    +ppSaveAsOpenXMLShow: 28, // 28
+    +ppSaveAsOpenXMLShowMacroEnabled: 29, // 29
+    +ppSaveAsOpenXMLTemplate: 26, // 26
+    +ppSaveAsOpenXMLTemplateMacroEnabled: 27, // 27
+    +ppSaveAsOpenXMLTheme: 31, // 31
+    +ppSaveAsPDF: 32, // 32
+    +ppSaveAsPNG: 18, // 18
+    +ppSaveAsPowerPoint3: 4, // 4
+    +ppSaveAsPowerPoint4: 3, // 3
+    +ppSaveAsPowerPoint4FarEast: 10, // 10
+    +ppSaveAsPowerPoint7: 2, // 2
+    +ppSaveAsPresentation: 1, // 1
+    +ppSaveAsPresForReview: 22, // 22
+    +ppSaveAsRTF: 6, // 6
+    +ppSaveAsShow: 7, // 7
+    +ppSaveAsTemplate: 5, // 5
+    +ppSaveAsTIF: 21, // 21
+    +ppSaveAsWebArchive: 20, // 20
+    +ppSaveAsWMV: 37, // 37
+    +ppSaveAsXMLPresentation: 34, // 34
+    +ppSaveAsXPS: 33 // 33
+  |};
+
+  declare var PowerPoint$PpSelectionType: {|
+    +ppSelectionNone: 0, // 0
+    +ppSelectionShapes: 2, // 2
+    +ppSelectionSlides: 1, // 1
+    +ppSelectionText: 3 // 3
+  |};
+
+  declare var PowerPoint$PpShapeFormat: {|
+    +ppShapeFormatBMP: 3, // 3
+    +ppShapeFormatEMF: 5, // 5
+    +ppShapeFormatGIF: 0, // 0
+    +ppShapeFormatJPG: 1, // 1
+    +ppShapeFormatPNG: 2, // 2
+    +ppShapeFormatWMF: 4 // 4
+  |};
+
+  declare var PowerPoint$PpSlideLayout: {|
+    +ppLayoutBlank: 12, // 12
+    +ppLayoutChart: 8, // 8
+    +ppLayoutChartAndText: 6, // 6
+    +ppLayoutClipartAndText: 10, // 10
+    +ppLayoutClipArtAndVerticalText: 26, // 26
+    +ppLayoutComparison: 34, // 34
+    +ppLayoutContentWithCaption: 35, // 35
+    +ppLayoutCustom: 32, // 32
+    +ppLayoutFourObjects: 24, // 24
+    +ppLayoutLargeObject: 15, // 15
+    +ppLayoutMediaClipAndText: 18, // 18
+    +ppLayoutMixed: -2, // -2
+    +ppLayoutObject: 16, // 16
+    +ppLayoutObjectAndText: 14, // 14
+    +ppLayoutObjectAndTwoObjects: 30, // 30
+    +ppLayoutObjectOverText: 19, // 19
+    +ppLayoutOrgchart: 7, // 7
+    +ppLayoutPictureWithCaption: 36, // 36
+    +ppLayoutSectionHeader: 33, // 33
+    +ppLayoutTable: 4, // 4
+    +ppLayoutText: 2, // 2
+    +ppLayoutTextAndChart: 5, // 5
+    +ppLayoutTextAndClipart: 9, // 9
+    +ppLayoutTextAndMediaClip: 17, // 17
+    +ppLayoutTextAndObject: 13, // 13
+    +ppLayoutTextAndTwoObjects: 21, // 21
+    +ppLayoutTextOverObject: 20, // 20
+    +ppLayoutTitle: 1, // 1
+    +ppLayoutTitleOnly: 11, // 11
+    +ppLayoutTwoColumnText: 3, // 3
+    +ppLayoutTwoObjects: 29, // 29
+    +ppLayoutTwoObjectsAndObject: 31, // 31
+    +ppLayoutTwoObjectsAndText: 22, // 22
+    +ppLayoutTwoObjectsOverText: 23, // 23
+    +ppLayoutVerticalText: 25, // 25
+    +ppLayoutVerticalTitleAndText: 27, // 27
+    +ppLayoutVerticalTitleAndTextOverChart: 28 // 28
+  |};
+
+  declare var PowerPoint$PpSlideShowAdvanceMode: {|
+    +ppSlideShowManualAdvance: 1, // 1
+    +ppSlideShowRehearseNewTimings: 3, // 3
+    +ppSlideShowUseSlideTimings: 2 // 2
+  |};
+
+  declare var PowerPoint$PpSlideShowPointerType: {|
+    +ppSlideShowPointerAlwaysHidden: 3, // 3
+    +ppSlideShowPointerArrow: 1, // 1
+    +ppSlideShowPointerAutoArrow: 4, // 4
+    +ppSlideShowPointerEraser: 5, // 5
+    +ppSlideShowPointerNone: 0, // 0
+    +ppSlideShowPointerPen: 2 // 2
+  |};
+
+  declare var PowerPoint$PpSlideShowRangeType: {|
+    +ppShowAll: 1, // 1
+    +ppShowNamedSlideShow: 3, // 3
+    +ppShowSlideRange: 2 // 2
+  |};
+
+  declare var PowerPoint$PpSlideShowState: {|
+    +ppSlideShowBlackScreen: 3, // 3
+    +ppSlideShowDone: 5, // 5
+    +ppSlideShowPaused: 2, // 2
+    +ppSlideShowRunning: 1, // 1
+    +ppSlideShowWhiteScreen: 4 // 4
+  |};
+
+  declare var PowerPoint$PpSlideShowType: {|
+    +ppShowTypeKiosk: 3, // 3
+    +ppShowTypeSpeaker: 1, // 1
+    +ppShowTypeWindow: 2, // 2
+    +ppShowTypeWindow2: 4 // 4
+  |};
+
+  declare var PowerPoint$PpSlideSizeType: {|
+    +ppSlideSize35MM: 4, // 4
+    +ppSlideSizeA3Paper: 9, // 9
+    +ppSlideSizeA4Paper: 3, // 3
+    +ppSlideSizeB4ISOPaper: 10, // 10
+    +ppSlideSizeB4JISPaper: 12, // 12
+    +ppSlideSizeB5ISOPaper: 11, // 11
+    +ppSlideSizeB5JISPaper: 13, // 13
+    +ppSlideSizeBanner: 6, // 6
+    +ppSlideSizeCustom: 7, // 7
+    +ppSlideSizeHagakiCard: 14, // 14
+    +ppSlideSizeLedgerPaper: 8, // 8
+    +ppSlideSizeLetterPaper: 2, // 2
+    +ppSlideSizeOnScreen: 1, // 1
+    +ppSlideSizeOnScreen16x10: 16, // 16
+    +ppSlideSizeOnScreen16x9: 15, // 15
+    +ppSlideSizeOverhead: 5 // 5
+  |};
+
+  declare var PowerPoint$PpSoundEffectType: {|
+    +ppSoundEffectsMixed: -2, // -2
+    +ppSoundFile: 2, // 2
+    +ppSoundNone: 0, // 0
+    +ppSoundStopPrevious: 1 // 1
+  |};
+
+  declare var PowerPoint$PpSoundFormatType: {|
+    +ppSoundFormatCDAudio: 3, // 3
+    +ppSoundFormatMIDI: 2, // 2
+    +ppSoundFormatMixed: -2, // -2
+    +ppSoundFormatNone: 0, // 0
+    +ppSoundFormatWAV: 1 // 1
+  |};
+
+  declare var PowerPoint$PpTabStopType: {|
+    +ppTabStopCenter: 2, // 2
+    +ppTabStopDecimal: 4, // 4
+    +ppTabStopLeft: 1, // 1
+    +ppTabStopMixed: -2, // -2
+    +ppTabStopRight: 3 // 3
+  |};
+
+  declare var PowerPoint$PpTextLevelEffect: {|
+    +ppAnimateByAllLevels: 16, // 16
+    +ppAnimateByFifthLevel: 5, // 5
+    +ppAnimateByFirstLevel: 1, // 1
+    +ppAnimateByFourthLevel: 4, // 4
+    +ppAnimateBySecondLevel: 2, // 2
+    +ppAnimateByThirdLevel: 3, // 3
+    +ppAnimateLevelMixed: -2, // -2
+    +ppAnimateLevelNone: 0 // 0
+  |};
+
+  declare var PowerPoint$PpTextStyleType: {|
+    +ppBodyStyle: 3, // 3
+    +ppDefaultStyle: 1, // 1
+    +ppTitleStyle: 2 // 2
+  |};
+
+  declare var PowerPoint$PpTextUnitEffect: {|
+    +ppAnimateByCharacter: 2, // 2
+    +ppAnimateByParagraph: 0, // 0
+    +ppAnimateByWord: 1, // 1
+    +ppAnimateUnitMixed: -2 // -2
+  |};
+
+  declare var PowerPoint$PpTransitionSpeed: {|
+    +ppTransitionSpeedFast: 3, // 3
+    +ppTransitionSpeedMedium: 2, // 2
+    +ppTransitionSpeedMixed: -2, // -2
+    +ppTransitionSpeedSlow: 1 // 1
+  |};
+
+  declare var PowerPoint$PpUpdateOption: {|
+    +ppUpdateOptionAutomatic: 2, // 2
+    +ppUpdateOptionManual: 1, // 1
+    +ppUpdateOptionMixed: -2 // -2
+  |};
+
+  declare var PowerPoint$PpViewType: {|
+    +ppViewHandoutMaster: 4, // 4
+    +ppViewMasterThumbnails: 12, // 12
+    +ppViewNormal: 9, // 9
+    +ppViewNotesMaster: 5, // 5
+    +ppViewNotesPage: 3, // 3
+    +ppViewOutline: 6, // 6
+    +ppViewPrintPreview: 10, // 10
+    +ppViewSlide: 1, // 1
+    +ppViewSlideMaster: 2, // 2
+    +ppViewSlideSorter: 7, // 7
+    +ppViewThumbnails: 11, // 11
+    +ppViewTitleMaster: 8 // 8
+  |};
+
+  declare var PowerPoint$PpWindowState: {|
+    +ppWindowMaximized: 3, // 3
+    +ppWindowMinimized: 2, // 2
+    +ppWindowNormal: 1 // 1
+  |};
+
+  declare var PowerPoint$XlAxisCrosses: {|
+    +xlAxisCrossesAutomatic: -4105, // -4105
+    +xlAxisCrossesCustom: -4114, // -4114
+    +xlAxisCrossesMaximum: 2, // 2
+    +xlAxisCrossesMinimum: 4 // 4
+  |};
+
+  declare var PowerPoint$XlAxisGroup: {|
+    +xlPrimary: 1, // 1
+    +xlSecondary: 2 // 2
+  |};
+
+  declare var PowerPoint$XlAxisType: {|
+    +xlCategory: 1, // 1
+    +xlSeriesAxis: 3, // 3
+    +xlValue: 2 // 2
+  |};
+
+  declare var PowerPoint$XlBackground: {|
+    +xlBackgroundAutomatic: -4105, // -4105
+    +xlBackgroundOpaque: 3, // 3
+    +xlBackgroundTransparent: 2 // 2
+  |};
+
+  declare var PowerPoint$XlBarShape: {|
+    +xlBox: 0, // 0
+    +xlConeToMax: 5, // 5
+    +xlConeToPoint: 4, // 4
+    +xlCylinder: 3, // 3
+    +xlPyramidToMax: 2, // 2
+    +xlPyramidToPoint: 1 // 1
+  |};
+
+  declare var PowerPoint$XlBorderWeight: {|
+    +xlHairline: 1, // 1
+    +xlMedium: -4138, // -4138
+    +xlThick: 4, // 4
+    +xlThin: 2 // 2
+  |};
+
+  declare var PowerPoint$XlCategoryType: {|
+    +xlAutomaticScale: -4105, // -4105
+    +xlCategoryScale: 2, // 2
+    +xlTimeScale: 3 // 3
+  |};
+
+  declare var PowerPoint$XlChartElementPosition: {|
+    +xlChartElementPositionAutomatic: -4105, // -4105
+    +xlChartElementPositionCustom: -4114 // -4114
+  |};
+
+  declare var PowerPoint$XlChartGallery: {|
+    +xlAnyGallery: 23, // 23
+    +xlBuiltIn: 21, // 21
+    +xlUserDefined: 22 // 22
+  |};
+
+  declare var PowerPoint$XlChartItem: {|
+    +xlAxis: 21, // 21
+    +xlAxisTitle: 17, // 17
+    +xlChartArea: 2, // 2
+    +xlChartTitle: 4, // 4
+    +xlCorners: 6, // 6
+    +xlDataLabel: 0, // 0
+    +xlDataTable: 7, // 7
+    +xlDisplayUnitLabel: 30, // 30
+    +xlDownBars: 20, // 20
+    +xlDropLines: 26, // 26
+    +xlErrorBars: 9, // 9
+    +xlFloor: 23, // 23
+    +xlHiLoLines: 25, // 25
+    +xlLeaderLines: 29, // 29
+    +xlLegend: 24, // 24
+    +xlLegendEntry: 12, // 12
+    +xlLegendKey: 13, // 13
+    +xlMajorGridlines: 15, // 15
+    +xlMinorGridlines: 16, // 16
+    +xlNothing: 28, // 28
+    +xlPivotChartDropZone: 32, // 32
+    +xlPivotChartFieldButton: 31, // 31
+    +xlPlotArea: 19, // 19
+    +xlRadarAxisLabels: 27, // 27
+    +xlSeries: 3, // 3
+    +xlSeriesLines: 22, // 22
+    +xlShape: 14, // 14
+    +xlTrendline: 8, // 8
+    +xlUpBars: 18, // 18
+    +xlWalls: 5, // 5
+    +xlXErrorBars: 10, // 10
+    +xlYErrorBars: 11 // 11
+  |};
+
+  declare var PowerPoint$XlChartPicturePlacement: {|
+    +xlAllFaces: 7, // 7
+    +xlEnd: 2, // 2
+    +xlEndSides: 3, // 3
+    +xlFront: 4, // 4
+    +xlFrontEnd: 6, // 6
+    +xlFrontSides: 5, // 5
+    +xlSides: 1 // 1
+  |};
+
+  declare var PowerPoint$XlChartPictureType: {|
+    +xlStack: 2, // 2
+    +xlStackScale: 3, // 3
+    +xlStretch: 1 // 1
+  |};
+
+  declare var PowerPoint$XlChartSplitType: {|
+    +xlSplitByCustomSplit: 4, // 4
+    +xlSplitByPercentValue: 3, // 3
+    +xlSplitByPosition: 1, // 1
+    +xlSplitByValue: 2 // 2
+  |};
+
+  declare var PowerPoint$XlColorIndex: {|
+    +xlColorIndexAutomatic: -4105, // -4105
+    +xlColorIndexNone: -4142 // -4142
+  |};
+
+  declare var PowerPoint$XlConstants: {|
+    +xl3DBar: -4099, // -4099
+    +xl3DSurface: -4103, // -4103
+    +xlAbove: 0, // 0
+    +xlAutomatic: -4105, // -4105
+    +xlBar: 2, // 2
+    +xlBelow: 1, // 1
+    +xlBoth: 1, // 1
+    +xlBottom: -4107, // -4107
+    +xlCenter: -4108, // -4108
+    +xlChecker: 9, // 9
+    +xlCircle: 8, // 8
+    +xlColumn: 3, // 3
+    +xlCombination: -4111, // -4111
+    +xlCorner: 2, // 2
+    +xlCrissCross: 16, // 16
+    +xlCross: 4, // 4
+    +xlCustom: -4114, // -4114
+    +xlDefaultAutoFormat: -1, // -1
+    +xlDiamond: 2, // 2
+    +xlDistributed: -4117, // -4117
+    +xlFill: 5, // 5
+    +xlFixedValue: 1, // 1
+    +xlGeneral: 1, // 1
+    +xlGray16: 17, // 17
+    +xlGray25: -4124, // -4124
+    +xlGray50: -4125, // -4125
+    +xlGray75: -4126, // -4126
+    +xlGray8: 18, // 18
+    +xlGrid: 15, // 15
+    +xlHigh: -4127, // -4127
+    +xlInside: 2, // 2
+    +xlJustify: -4130, // -4130
+    +xlLeft: -4131, // -4131
+    +xlLightDown: 13, // 13
+    +xlLightHorizontal: 11, // 11
+    +xlLightUp: 14, // 14
+    +xlLightVertical: 12, // 12
+    +xlLow: -4134, // -4134
+    +xlMaximum: 2, // 2
+    +xlMinimum: 4, // 4
+    +xlMinusValues: 3, // 3
+    +xlNextToAxis: 4, // 4
+    +xlNone: -4142, // -4142
+    +xlOpaque: 3, // 3
+    +xlOutside: 3, // 3
+    +xlPercent: 2, // 2
+    +xlPlus: 9, // 9
+    +xlPlusValues: 2, // 2
+    +xlRight: -4152, // -4152
+    +xlScale: 3, // 3
+    +xlSemiGray75: 10, // 10
+    +xlShowLabel: 4, // 4
+    +xlShowLabelAndPercent: 5, // 5
+    +xlShowPercent: 3, // 3
+    +xlShowValue: 2, // 2
+    +xlSingle: 2, // 2
+    +xlSolid: 1, // 1
+    +xlSquare: 1, // 1
+    +xlStar: 5, // 5
+    +xlStError: 4, // 4
+    +xlTop: -4160, // -4160
+    +xlTransparent: 2, // 2
+    +xlTriangle: 3 // 3
+  |};
+
+  declare var PowerPoint$XlCopyPictureFormat: {|
+    +xlBitmap: 2, // 2
+    +xlPicture: -4147 // -4147
+  |};
+
+  declare var PowerPoint$XlDataLabelPosition: {|
+    +xlLabelPositionAbove: 0, // 0
+    +xlLabelPositionBelow: 1, // 1
+    +xlLabelPositionBestFit: 5, // 5
+    +xlLabelPositionCenter: -4108, // -4108
+    +xlLabelPositionCustom: 7, // 7
+    +xlLabelPositionInsideBase: 4, // 4
+    +xlLabelPositionInsideEnd: 3, // 3
+    +xlLabelPositionLeft: -4131, // -4131
+    +xlLabelPositionMixed: 6, // 6
+    +xlLabelPositionOutsideEnd: 2, // 2
+    +xlLabelPositionRight: -4152 // -4152
+  |};
+
+  declare var PowerPoint$XlDataLabelSeparator: {|
+    +xlDataLabelSeparatorDefault: 1 // 1
+  |};
+
+  declare var PowerPoint$XlDataLabelsType: {|
+    +xlDataLabelsShowBubbleSizes: 6, // 6
+    +xlDataLabelsShowLabel: 4, // 4
+    +xlDataLabelsShowLabelAndPercent: 5, // 5
+    +xlDataLabelsShowNone: -4142, // -4142
+    +xlDataLabelsShowPercent: 3, // 3
+    +xlDataLabelsShowValue: 2 // 2
+  |};
+
+  declare var PowerPoint$XlDisplayBlanksAs: {|
+    +xlInterpolated: 3, // 3
+    +xlNotPlotted: 1, // 1
+    +xlZero: 2 // 2
+  |};
+
+  declare var PowerPoint$XlDisplayUnit: {|
+    +xlHundredMillions: -8, // -8
+    +xlHundreds: -2, // -2
+    +xlHundredThousands: -5, // -5
+    +xlMillionMillions: -10, // -10
+    +xlMillions: -6, // -6
+    +xlTenMillions: -7, // -7
+    +xlTenThousands: -4, // -4
+    +xlThousandMillions: -9, // -9
+    +xlThousands: -3 // -3
+  |};
+
+  declare var PowerPoint$XlEndStyleCap: {|
+    +xlCap: 1, // 1
+    +xlNoCap: 2 // 2
+  |};
+
+  declare var PowerPoint$XlErrorBarDirection: {|
+    +xlChartX: -4168, // -4168
+    +xlChartY: 1 // 1
+  |};
+
+  declare var PowerPoint$XlErrorBarInclude: {|
+    +xlErrorBarIncludeBoth: 1, // 1
+    +xlErrorBarIncludeMinusValues: 3, // 3
+    +xlErrorBarIncludeNone: -4142, // -4142
+    +xlErrorBarIncludePlusValues: 2 // 2
+  |};
+
+  declare var PowerPoint$XlErrorBarType: {|
+    +xlErrorBarTypeCustom: -4114, // -4114
+    +xlErrorBarTypeFixedValue: 1, // 1
+    +xlErrorBarTypePercent: 2, // 2
+    +xlErrorBarTypeStDev: -4155, // -4155
+    +xlErrorBarTypeStError: 4 // 4
+  |};
+
+  declare var PowerPoint$XlHAlign: {|
+    +xlHAlignCenter: -4108, // -4108
+    +xlHAlignCenterAcrossSelection: 7, // 7
+    +xlHAlignDistributed: -4117, // -4117
+    +xlHAlignFill: 5, // 5
+    +xlHAlignGeneral: 1, // 1
+    +xlHAlignJustify: -4130, // -4130
+    +xlHAlignLeft: -4131, // -4131
+    +xlHAlignRight: -4152 // -4152
+  |};
+
+  declare var PowerPoint$XlLegendPosition: {|
+    +xlLegendPositionBottom: -4107, // -4107
+    +xlLegendPositionCorner: 2, // 2
+    +xlLegendPositionCustom: -4161, // -4161
+    +xlLegendPositionLeft: -4131, // -4131
+    +xlLegendPositionRight: -4152, // -4152
+    +xlLegendPositionTop: -4160 // -4160
+  |};
+
+  declare var PowerPoint$XlLineStyle: {|
+    +xlContinuous: 1, // 1
+    +xlDash: -4115, // -4115
+    +xlDashDot: 4, // 4
+    +xlDashDotDot: 5, // 5
+    +xlDot: -4118, // -4118
+    +xlDouble: -4119, // -4119
+    +xlLineStyleNone: -4142, // -4142
+    +xlSlantDashDot: 13 // 13
+  |};
+
+  declare var PowerPoint$XlMarkerStyle: {|
+    +xlMarkerStyleAutomatic: -4105, // -4105
+    +xlMarkerStyleCircle: 8, // 8
+    +xlMarkerStyleDash: -4115, // -4115
+    +xlMarkerStyleDiamond: 2, // 2
+    +xlMarkerStyleDot: -4118, // -4118
+    +xlMarkerStyleNone: -4142, // -4142
+    +xlMarkerStylePicture: -4147, // -4147
+    +xlMarkerStylePlus: 9, // 9
+    +xlMarkerStyleSquare: 1, // 1
+    +xlMarkerStyleStar: 5, // 5
+    +xlMarkerStyleTriangle: 3, // 3
+    +xlMarkerStyleX: -4168 // -4168
+  |};
+
+  declare var PowerPoint$XlOrientation: {|
+    +xlDownward: -4170, // -4170
+    +xlHorizontal: -4128, // -4128
+    +xlUpward: -4171, // -4171
+    +xlVertical: -4166 // -4166
+  |};
+
+  declare var PowerPoint$XlPattern: {|
+    +xlPatternAutomatic: -4105, // -4105
+    +xlPatternChecker: 9, // 9
+    +xlPatternCrissCross: 16, // 16
+    +xlPatternDown: -4121, // -4121
+    +xlPatternGray16: 17, // 17
+    +xlPatternGray25: -4124, // -4124
+    +xlPatternGray50: -4125, // -4125
+    +xlPatternGray75: -4126, // -4126
+    +xlPatternGray8: 18, // 18
+    +xlPatternGrid: 15, // 15
+    +xlPatternHorizontal: -4128, // -4128
+    +xlPatternLightDown: 13, // 13
+    +xlPatternLightHorizontal: 11, // 11
+    +xlPatternLightUp: 14, // 14
+    +xlPatternLightVertical: 12, // 12
+    +xlPatternLinearGradient: 4000, // 4000
+    +xlPatternNone: -4142, // -4142
+    +xlPatternRectangularGradient: 4001, // 4001
+    +xlPatternSemiGray75: 10, // 10
+    +xlPatternSolid: 1, // 1
+    +xlPatternUp: -4162, // -4162
+    +xlPatternVertical: -4166 // -4166
+  |};
+
+  declare var PowerPoint$XlPictureAppearance: {|
+    +xlPrinter: 2, // 2
+    +xlScreen: 1 // 1
+  |};
+
+  declare var PowerPoint$XlPieSliceIndex: {|
+    +xlCenterPoint: 5, // 5
+    +xlInnerCenterPoint: 8, // 8
+    +xlInnerClockwisePoint: 7, // 7
+    +xlInnerCounterClockwisePoint: 9, // 9
+    +xlMidClockwiseRadiusPoint: 4, // 4
+    +xlMidCounterClockwiseRadiusPoint: 6, // 6
+    +xlOuterCenterPoint: 2, // 2
+    +xlOuterClockwisePoint: 3, // 3
+    +xlOuterCounterClockwisePoint: 1 // 1
+  |};
+
+  declare var PowerPoint$XlPieSliceLocation: {|
+    +xlHorizontalCoordinate: 1, // 1
+    +xlVerticalCoordinate: 2 // 2
+  |};
+
+  declare var PowerPoint$XlPivotFieldOrientation: {|
+    +xlColumnField: 2, // 2
+    +xlDataField: 4, // 4
+    +xlHidden: 0, // 0
+    +xlPageField: 3, // 3
+    +xlRowField: 1 // 1
+  |};
+
+  declare var PowerPoint$XlReadingOrder: {|
+    +xlContext: -5002, // -5002
+    +xlLTR: -5003, // -5003
+    +xlRTL: -5004 // -5004
+  |};
+
+  declare var PowerPoint$XlRgbColor: {|
+    +rgbAliceBlue: 16775408, // 16775408
+    +rgbAntiqueWhite: 14150650, // 14150650
+    +rgbAqua: 16776960, // 16776960
+    +rgbAquamarine: 13959039, // 13959039
+    +rgbAzure: 16777200, // 16777200
+    +rgbBeige: 14480885, // 14480885
+    +rgbBisque: 12903679, // 12903679
+    +rgbBlack: 0, // 0
+    +rgbBlanchedAlmond: 13495295, // 13495295
+    +rgbBlue: 16711680, // 16711680
+    +rgbBlueViolet: 14822282, // 14822282
+    +rgbBrown: 2763429, // 2763429
+    +rgbBurlyWood: 8894686, // 8894686
+    +rgbCadetBlue: 10526303, // 10526303
+    +rgbChartreuse: 65407, // 65407
+    +rgbCoral: 5275647, // 5275647
+    +rgbCornflowerBlue: 15570276, // 15570276
+    +rgbCornsilk: 14481663, // 14481663
+    +rgbCrimson: 3937500, // 3937500
+    +rgbDarkBlue: 9109504, // 9109504
+    +rgbDarkCyan: 9145088, // 9145088
+    +rgbDarkGoldenrod: 755384, // 755384
+    +rgbDarkGray: 11119017, // 11119017
+    +rgbDarkGreen: 25600, // 25600
+    +rgbDarkGrey: 11119017, // 11119017
+    +rgbDarkKhaki: 7059389, // 7059389
+    +rgbDarkMagenta: 9109643, // 9109643
+    +rgbDarkOliveGreen: 3107669, // 3107669
+    +rgbDarkOrange: 36095, // 36095
+    +rgbDarkOrchid: 13382297, // 13382297
+    +rgbDarkRed: 139, // 139
+    +rgbDarkSalmon: 8034025, // 8034025
+    +rgbDarkSeaGreen: 9419919, // 9419919
+    +rgbDarkSlateBlue: 9125192, // 9125192
+    +rgbDarkSlateGray: 5197615, // 5197615
+    +rgbDarkSlateGrey: 5197615, // 5197615
+    +rgbDarkTurquoise: 13749760, // 13749760
+    +rgbDarkViolet: 13828244, // 13828244
+    +rgbDeepPink: 9639167, // 9639167
+    +rgbDeepSkyBlue: 16760576, // 16760576
+    +rgbDimGray: 6908265, // 6908265
+    +rgbDimGrey: 6908265, // 6908265
+    +rgbDodgerBlue: 16748574, // 16748574
+    +rgbFireBrick: 2237106, // 2237106
+    +rgbFloralWhite: 15792895, // 15792895
+    +rgbForestGreen: 2263842, // 2263842
+    +rgbFuchsia: 16711935, // 16711935
+    +rgbGainsboro: 14474460, // 14474460
+    +rgbGhostWhite: 16775416, // 16775416
+    +rgbGold: 55295, // 55295
+    +rgbGoldenrod: 2139610, // 2139610
+    +rgbGray: 8421504, // 8421504
+    +rgbGreen: 32768, // 32768
+    +rgbGreenYellow: 3145645, // 3145645
+    +rgbGrey: 8421504, // 8421504
+    +rgbHoneydew: 15794160, // 15794160
+    +rgbHotPink: 11823615, // 11823615
+    +rgbIndianRed: 6053069, // 6053069
+    +rgbIndigo: 8519755, // 8519755
+    +rgbIvory: 15794175, // 15794175
+    +rgbKhaki: 9234160, // 9234160
+    +rgbLavender: 16443110, // 16443110
+    +rgbLavenderBlush: 16118015, // 16118015
+    +rgbLawnGreen: 64636, // 64636
+    +rgbLemonChiffon: 13499135, // 13499135
+    +rgbLightBlue: 15128749, // 15128749
+    +rgbLightCoral: 8421616, // 8421616
+    +rgbLightCyan: 9145088, // 9145088
+    +rgbLightGoldenrodYellow: 13826810, // 13826810
+    +rgbLightGray: 13882323, // 13882323
+    +rgbLightGreen: 9498256, // 9498256
+    +rgbLightGrey: 13882323, // 13882323
+    +rgbLightPink: 12695295, // 12695295
+    +rgbLightSalmon: 8036607, // 8036607
+    +rgbLightSeaGreen: 11186720, // 11186720
+    +rgbLightSkyBlue: 16436871, // 16436871
+    +rgbLightSlateGray: 10061943, // 10061943
+    +rgbLightSlateGrey: 10061943, // 10061943
+    +rgbLightSteelBlue: 14599344, // 14599344
+    +rgbLightYellow: 14745599, // 14745599
+    +rgbLime: 65280, // 65280
+    +rgbLimeGreen: 3329330, // 3329330
+    +rgbLinen: 15134970, // 15134970
+    +rgbMaroon: 128, // 128
+    +rgbMediumAquamarine: 11206502, // 11206502
+    +rgbMediumBlue: 13434880, // 13434880
+    +rgbMediumOrchid: 13850042, // 13850042
+    +rgbMediumPurple: 14381203, // 14381203
+    +rgbMediumSeaGreen: 7451452, // 7451452
+    +rgbMediumSlateBlue: 15624315, // 15624315
+    +rgbMediumSpringGreen: 10156544, // 10156544
+    +rgbMediumTurquoise: 13422920, // 13422920
+    +rgbMediumVioletRed: 8721863, // 8721863
+    +rgbMidnightBlue: 7346457, // 7346457
+    +rgbMintCream: 16449525, // 16449525
+    +rgbMistyRose: 14804223, // 14804223
+    +rgbMoccasin: 11920639, // 11920639
+    +rgbNavajoWhite: 11394815, // 11394815
+    +rgbNavy: 8388608, // 8388608
+    +rgbNavyBlue: 8388608, // 8388608
+    +rgbOldLace: 15136253, // 15136253
+    +rgbOlive: 32896, // 32896
+    +rgbOliveDrab: 2330219, // 2330219
+    +rgbOrange: 42495, // 42495
+    +rgbOrangeRed: 17919, // 17919
+    +rgbOrchid: 14053594, // 14053594
+    +rgbPaleGoldenrod: 7071982, // 7071982
+    +rgbPaleGreen: 10025880, // 10025880
+    +rgbPaleTurquoise: 15658671, // 15658671
+    +rgbPaleVioletRed: 9662683, // 9662683
+    +rgbPapayaWhip: 14020607, // 14020607
+    +rgbPeachPuff: 12180223, // 12180223
+    +rgbPeru: 4163021, // 4163021
+    +rgbPink: 13353215, // 13353215
+    +rgbPlum: 14524637, // 14524637
+    +rgbPowderBlue: 15130800, // 15130800
+    +rgbPurple: 8388736, // 8388736
+    +rgbRed: 255, // 255
+    +rgbRosyBrown: 9408444, // 9408444
+    +rgbRoyalBlue: 14772545, // 14772545
+    +rgbSalmon: 7504122, // 7504122
+    +rgbSandyBrown: 6333684, // 6333684
+    +rgbSeaGreen: 5737262, // 5737262
+    +rgbSeashell: 15660543, // 15660543
+    +rgbSienna: 2970272, // 2970272
+    +rgbSilver: 12632256, // 12632256
+    +rgbSkyBlue: 15453831, // 15453831
+    +rgbSlateBlue: 13458026, // 13458026
+    +rgbSlateGray: 9470064, // 9470064
+    +rgbSlateGrey: 9470064, // 9470064
+    +rgbSnow: 16448255, // 16448255
+    +rgbSpringGreen: 8388352, // 8388352
+    +rgbSteelBlue: 11829830, // 11829830
+    +rgbTan: 9221330, // 9221330
+    +rgbTeal: 8421376, // 8421376
+    +rgbThistle: 14204888, // 14204888
+    +rgbTomato: 4678655, // 4678655
+    +rgbTurquoise: 13688896, // 13688896
+    +rgbViolet: 15631086, // 15631086
+    +rgbWheat: 11788021, // 11788021
+    +rgbWhite: 16777215, // 16777215
+    +rgbWhiteSmoke: 16119285, // 16119285
+    +rgbYellow: 65535, // 65535
+    +rgbYellowGreen: 3329434 // 3329434
+  |};
+
+  declare var PowerPoint$XlRowCol: {|
+    +xlColumns: 2, // 2
+    +xlRows: 1 // 1
+  |};
+
+  declare var PowerPoint$XlScaleType: {|
+    +xlScaleLinear: -4132, // -4132
+    +xlScaleLogarithmic: -4133 // -4133
+  |};
+
+  declare var PowerPoint$XlSizeRepresents: {|
+    +xlSizeIsArea: 1, // 1
+    +xlSizeIsWidth: 2 // 2
+  |};
+
+  declare var PowerPoint$XlTickLabelOrientation: {|
+    +xlTickLabelOrientationAutomatic: -4105, // -4105
+    +xlTickLabelOrientationDownward: -4170, // -4170
+    +xlTickLabelOrientationHorizontal: -4128, // -4128
+    +xlTickLabelOrientationUpward: -4171, // -4171
+    +xlTickLabelOrientationVertical: -4166 // -4166
+  |};
+
+  declare var PowerPoint$XlTickLabelPosition: {|
+    +xlTickLabelPositionHigh: -4127, // -4127
+    +xlTickLabelPositionLow: -4134, // -4134
+    +xlTickLabelPositionNextToAxis: 4, // 4
+    +xlTickLabelPositionNone: -4142 // -4142
+  |};
+
+  declare var PowerPoint$XlTickMark: {|
+    +xlTickMarkCross: 4, // 4
+    +xlTickMarkInside: 2, // 2
+    +xlTickMarkNone: -4142, // -4142
+    +xlTickMarkOutside: 3 // 3
+  |};
+
+  declare var PowerPoint$XlTimeUnit: {|
+    +xlDays: 0, // 0
+    +xlMonths: 1, // 1
+    +xlYears: 2 // 2
+  |};
+
+  declare var PowerPoint$XlTrendlineType: {|
+    +xlExponential: 5, // 5
+    +xlLinear: -4132, // -4132
+    +xlLogarithmic: -4133, // -4133
+    +xlMovingAvg: 6, // 6
+    +xlPolynomial: 3, // 3
+    +xlPower: 4 // 4
+  |};
+
+  declare var PowerPoint$XlUnderlineStyle: {|
+    +xlUnderlineStyleDouble: -4119, // -4119
+    +xlUnderlineStyleDoubleAccounting: 5, // 5
+    +xlUnderlineStyleNone: -4142, // -4142
+    +xlUnderlineStyleSingle: 2, // 2
+    +xlUnderlineStyleSingleAccounting: 4 // 4
+  |};
+
+  declare var PowerPoint$XlVAlign: {|
+    +xlVAlignBottom: -4107, // -4107
+    +xlVAlignCenter: -4108, // -4108
+    +xlVAlignDistributed: -4117, // -4117
+    +xlVAlignJustify: -4130, // -4130
+    +xlVAlignTop: -4160 // -4160
+  |};
 
   declare class PowerPoint$ActionSetting {
     constructor(): this;
-    Action: PowerPoint$PpActionType;
+    Action: $Values<typeof PowerPoint$PpActionType>;
     ActionVerb: string;
     AnimateAction: Office.MsoTriState;
     PowerPoint$Application: PowerPoint$Application;
@@ -7582,7 +2091,9 @@ declare module "activex-powerpoint" {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
     Count: number;
-    Item(Index: PowerPoint$PpMouseActivation): PowerPoint$ActionSetting;
+    Item(
+      Index: $Values<typeof PowerPoint$PpMouseActivation>
+    ): PowerPoint$ActionSetting;
     Parent: any;
   }
 
@@ -7621,8 +2132,8 @@ declare module "activex-powerpoint" {
 
   declare class PowerPoint$AnimationBehavior {
     constructor(): this;
-    Accumulate: PowerPoint$MsoAnimAccumulate;
-    Additive: PowerPoint$MsoAnimAdditive;
+    Accumulate: $Values<typeof PowerPoint$MsoAnimAccumulate>;
+    Additive: $Values<typeof PowerPoint$MsoAnimAdditive>;
     PowerPoint$Application: PowerPoint$Application;
     PowerPoint$ColorEffect: PowerPoint$ColorEffect;
     PowerPoint$CommandEffect: PowerPoint$CommandEffect;
@@ -7635,7 +2146,7 @@ declare module "activex-powerpoint" {
     PowerPoint$ScaleEffect: PowerPoint$ScaleEffect;
     PowerPoint$SetEffect: PowerPoint$SetEffect;
     PowerPoint$Timing: PowerPoint$Timing;
-    Type: PowerPoint$MsoAnimType;
+    Type: $Values<typeof PowerPoint$MsoAnimType>;
   }
 
   declare class PowerPoint$AnimationBehaviors {
@@ -7645,7 +2156,7 @@ declare module "activex-powerpoint" {
      * @param number [Index=-1]
      */
     Add(
-      Type: PowerPoint$MsoAnimType,
+      Type: $Values<typeof PowerPoint$MsoAnimType>,
       Index?: number
     ): PowerPoint$AnimationBehavior;
     PowerPoint$Application: PowerPoint$Application;
@@ -7680,22 +2191,22 @@ declare module "activex-powerpoint" {
 
   declare class PowerPoint$AnimationSettings {
     constructor(): this;
-    AdvanceMode: PowerPoint$PpAdvanceMode;
+    AdvanceMode: $Values<typeof PowerPoint$PpAdvanceMode>;
     AdvanceTime: number;
-    AfterEffect: PowerPoint$PpAfterEffect;
+    AfterEffect: $Values<typeof PowerPoint$PpAfterEffect>;
     Animate: Office.MsoTriState;
     AnimateBackground: Office.MsoTriState;
     AnimateTextInReverse: Office.MsoTriState;
     AnimationOrder: number;
     PowerPoint$Application: PowerPoint$Application;
-    ChartUnitEffect: PowerPoint$PpChartUnitEffect;
+    ChartUnitEffect: $Values<typeof PowerPoint$PpChartUnitEffect>;
     DimColor: PowerPoint$ColorFormat;
-    EntryEffect: PowerPoint$PpEntryEffect;
+    EntryEffect: $Values<typeof PowerPoint$PpEntryEffect>;
     Parent: any;
     PowerPoint$PlaySettings: PowerPoint$PlaySettings;
     PowerPoint$SoundEffect: PowerPoint$SoundEffect;
-    TextLevelEffect: PowerPoint$PpTextLevelEffect;
-    TextUnitEffect: PowerPoint$PpTextUnitEffect;
+    TextLevelEffect: $Values<typeof PowerPoint$PpTextLevelEffect>;
+    TextUnitEffect: $Values<typeof PowerPoint$PpTextUnitEffect>;
   }
 
   declare class PowerPoint$Application {
@@ -7720,7 +2231,7 @@ declare module "activex-powerpoint" {
     Creator: number;
     PowerPoint$DefaultWebOptions: PowerPoint$DefaultWebOptions;
     Dialogs: any;
-    DisplayAlerts: PowerPoint$PpAlertLevel;
+    DisplayAlerts: $Values<typeof PowerPoint$PpAlertLevel>;
     DisplayDocumentInformationPanel: boolean;
     DisplayGridLines: Office.MsoTriState;
     FeatureInstall: Office.MsoFeatureInstall;
@@ -7753,7 +2264,7 @@ declare module "activex-powerpoint" {
     OperatingSystem: string;
     PowerPoint$Options: PowerPoint$Options;
     Path: string;
-    PPFileDialog(Type: PowerPoint$PpFileDialogType): any;
+    PPFileDialog(Type: $Values<typeof PowerPoint$PpFileDialogType>): any;
     PowerPoint$Presentations: PowerPoint$Presentations;
     ProductCode: string;
     PowerPoint$ProtectedViewWindows: PowerPoint$ProtectedViewWindows;
@@ -7779,7 +2290,7 @@ declare module "activex-powerpoint" {
     Visible: Office.MsoTriState;
     Width: number;
     Windows: PowerPoint$DocumentWindows;
-    WindowState: PowerPoint$PpWindowState;
+    WindowState: $Values<typeof PowerPoint$PpWindowState>;
   }
 
   declare class PowerPoint$AutoCorrect {
@@ -7792,7 +2303,9 @@ declare module "activex-powerpoint" {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
     Count: number;
-    Item(BorderType: PowerPoint$PpBorderType): PowerPoint$LineFormat;
+    Item(
+      BorderType: $Values<typeof PowerPoint$PpBorderType>
+    ): PowerPoint$LineFormat;
     Parent: any;
   }
 
@@ -7816,8 +2329,8 @@ declare module "activex-powerpoint" {
     Picture(Picture: string): void;
     RelativeSize: number;
     StartValue: number;
-    Style: PowerPoint$PpNumberedBulletStyle;
-    Type: PowerPoint$PpBulletType;
+    Style: $Values<typeof PowerPoint$PpNumberedBulletStyle>;
+    Type: $Values<typeof PowerPoint$PpBulletType>;
     UseTextColor: Office.MsoTriState;
     UseTextFont: Office.MsoTriState;
     Visible: Office.MsoTriState;
@@ -7956,7 +2469,7 @@ declare module "activex-powerpoint" {
      * @param [Type=2]
      */
     _ApplyDataLabels(
-      Type?: PowerPoint$XlDataLabelsType,
+      Type?: $Values<typeof PowerPoint$XlDataLabelsType>,
       LegendKey?: any,
       AutoText?: any,
       HasLeaderLines?: any
@@ -7970,7 +2483,7 @@ declare module "activex-powerpoint" {
      * @param [Type=2]
      */
     ApplyDataLabels(
-      Type?: PowerPoint$XlDataLabelsType,
+      Type?: $Values<typeof PowerPoint$XlDataLabelsType>,
       LegendKey?: any,
       AutoText?: any,
       HasLeaderLines?: any,
@@ -7990,11 +2503,11 @@ declare module "activex-powerpoint" {
     /**
      * @param [AxisGroup=1]
      */
-    Axes(Type: any, AxisGroup?: PowerPoint$XlAxisGroup): any;
+    Axes(Type: any, AxisGroup?: $Values<typeof PowerPoint$XlAxisGroup>): any;
     BackWall: PowerPoint$Walls;
     Bar3DGroup: PowerPoint$ChartGroup;
     BarGroups(Index?: any): any;
-    BarShape: PowerPoint$XlBarShape;
+    BarShape: $Values<typeof PowerPoint$XlBarShape>;
     PowerPoint$ChartArea: PowerPoint$ChartArea;
     PowerPoint$ChartData: PowerPoint$ChartData;
     ChartGroups(Index?: any): any;
@@ -8025,16 +2538,16 @@ declare module "activex-powerpoint" {
      * @param [Size=2]
      */
     CopyPicture(
-      Appearance?: PowerPoint$XlPictureAppearance,
-      Format?: PowerPoint$XlCopyPictureFormat,
-      Size?: PowerPoint$XlPictureAppearance
+      Appearance?: $Values<typeof PowerPoint$XlPictureAppearance>,
+      Format?: $Values<typeof PowerPoint$XlCopyPictureFormat>,
+      Size?: $Values<typeof PowerPoint$XlPictureAppearance>
     ): void;
     PowerPoint$Corners: PowerPoint$Corners;
     Creator: number;
     PowerPoint$DataTable: PowerPoint$DataTable;
     Delete(): void;
     DepthPercent: number;
-    DisplayBlanksAs: PowerPoint$XlDisplayBlanksAs;
+    DisplayBlanksAs: $Values<typeof PowerPoint$XlDisplayBlanksAs>;
     DoughnutGroups(Index?: any): any;
     Elevation: number;
     Export(FileName: string, FilterName?: any, Interactive?: any): boolean;
@@ -8064,7 +2577,7 @@ declare module "activex-powerpoint" {
     Pie3DGroup: PowerPoint$ChartGroup;
     PieGroups(Index?: any): any;
     PowerPoint$PlotArea: PowerPoint$PlotArea;
-    PlotBy: PowerPoint$XlRowCol;
+    PlotBy: $Values<typeof PowerPoint$XlRowCol>;
     PlotVisibleOnly: boolean;
     RadarGroups(Index?: any): any;
     Refresh(): void;
@@ -8194,7 +2707,7 @@ declare module "activex-powerpoint" {
     Type: Office.MsoFillType;
     UserPicture(
       PictureFile?: any,
-      PowerPoint$PictureFormat?: any,
+      PictureFormat?: any,
       PictureStackUnit?: any,
       PicturePlacement?: any
     ): void;
@@ -8241,7 +2754,7 @@ declare module "activex-powerpoint" {
   declare class PowerPoint$ChartGroup {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
-    AxisGroup: PowerPoint$XlAxisGroup;
+    AxisGroup: $Values<typeof PowerPoint$XlAxisGroup>;
     BubbleScale: number;
     Creator: number;
     DoughnutHoleSize: number;
@@ -8264,8 +2777,8 @@ declare module "activex-powerpoint" {
     SeriesCollection(Index?: any): any;
     PowerPoint$SeriesLines: PowerPoint$SeriesLines;
     ShowNegativeBubbles: boolean;
-    SizeRepresents: PowerPoint$XlSizeRepresents;
-    SplitType: PowerPoint$XlChartSplitType;
+    SizeRepresents: $Values<typeof PowerPoint$XlSizeRepresents>;
+    SplitType: $Values<typeof PowerPoint$XlChartSplitType>;
     SplitValue: any;
     Subtype: number;
     Type: number;
@@ -8297,7 +2810,7 @@ declare module "activex-powerpoint" {
     Name: string;
     Orientation: any;
     Parent: any;
-    Position: PowerPoint$XlChartElementPosition;
+    Position: $Values<typeof PowerPoint$XlChartElementPosition>;
     ReadingOrder: number;
     Select(): any;
     Shadow: boolean;
@@ -8335,7 +2848,7 @@ declare module "activex-powerpoint" {
     ObjectThemeColor: Office.MsoThemeColorIndex;
     Parent: any;
     RGB: Office.MsoRGBType;
-    SchemeColor: PowerPoint$PpColorSchemeIndex;
+    SchemeColor: $Values<typeof PowerPoint$PpColorSchemeIndex>;
     TintAndShade: number;
     Type: Office.MsoColorType;
   }
@@ -8343,7 +2856,9 @@ declare module "activex-powerpoint" {
   declare class PowerPoint$ColorScheme {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
-    Colors(SchemeColor: PowerPoint$PpColorSchemeIndex): PowerPoint$RGBColor;
+    Colors(
+      SchemeColor: $Values<typeof PowerPoint$PpColorSchemeIndex>
+    ): PowerPoint$RGBColor;
     Count: number;
     Delete(): void;
     Parent: any;
@@ -8391,7 +2906,7 @@ declare module "activex-powerpoint" {
     bookmark: string;
     Command: string;
     Parent: any;
-    Type: PowerPoint$MsoAnimCommandType;
+    Type: $Values<typeof PowerPoint$MsoAnimCommandType>;
   }
 
   declare class PowerPoint$Comment {
@@ -8531,8 +3046,8 @@ declare module "activex-powerpoint" {
     Encoding: Office.MsoEncoding;
     FolderSuffix: string;
     PowerPoint$Fonts: Office.WebPageFonts;
-    FrameColors: PowerPoint$PpFrameColors;
-    HTMLVersion: PowerPoint$PpHTMLVersion;
+    FrameColors: $Values<typeof PowerPoint$PpFrameColors>;
+    HTMLVersion: $Values<typeof PowerPoint$PpHTMLVersion>;
     IncludeNavigation: Office.MsoTriState;
     OrganizeInFolder: Office.MsoTriState;
     RelyOnVML: Office.MsoTriState;
@@ -8736,9 +3251,9 @@ declare module "activex-powerpoint" {
     SplitVertical: number;
     Top: number;
     PowerPoint$View: PowerPoint$View;
-    ViewType: PowerPoint$PpViewType;
+    ViewType: $Values<typeof PowerPoint$PpViewType>;
     Width: number;
-    WindowState: PowerPoint$PpWindowState;
+    WindowState: $Values<typeof PowerPoint$PpWindowState>;
   }
 
   declare class PowerPoint$DocumentWindows {
@@ -8748,7 +3263,7 @@ declare module "activex-powerpoint" {
     /**
      * @param [arrangeStyle=1]
      */
-    Arrange(arrangeStyle?: PowerPoint$PpArrangeStyle): void;
+    Arrange(arrangeStyle?: $Values<typeof PowerPoint$PpArrangeStyle>): void;
     Count: number;
     Item(Index: number): PowerPoint$DocumentWindow;
     Parent: any;
@@ -8788,11 +3303,11 @@ declare module "activex-powerpoint" {
     DisplayName: string;
     PowerPoint$EffectInformation: PowerPoint$EffectInformation;
     PowerPoint$EffectParameters: PowerPoint$EffectParameters;
-    EffectType: PowerPoint$MsoAnimEffect;
+    EffectType: $Values<typeof PowerPoint$MsoAnimEffect>;
     Exit: Office.MsoTriState;
     Index: number;
-    MoveAfter(PowerPoint$Effect: PowerPoint$Effect): void;
-    MoveBefore(PowerPoint$Effect: PowerPoint$Effect): void;
+    MoveAfter(Effect: PowerPoint$Effect): void;
+    MoveBefore(Effect: PowerPoint$Effect): void;
     MoveTo(toPos: number): void;
     Paragraph: number;
     Parent: any;
@@ -8804,16 +3319,16 @@ declare module "activex-powerpoint" {
 
   declare class PowerPoint$EffectInformation {
     constructor(): this;
-    AfterEffect: PowerPoint$MsoAnimAfterEffect;
+    AfterEffect: $Values<typeof PowerPoint$MsoAnimAfterEffect>;
     AnimateBackground: Office.MsoTriState;
     AnimateTextInReverse: Office.MsoTriState;
     PowerPoint$Application: PowerPoint$Application;
-    BuildByLevelEffect: PowerPoint$MsoAnimateByLevel;
+    BuildByLevelEffect: $Values<typeof PowerPoint$MsoAnimateByLevel>;
     Dim: PowerPoint$ColorFormat;
     Parent: any;
     PowerPoint$PlaySettings: PowerPoint$PlaySettings;
     PowerPoint$SoundEffect: PowerPoint$SoundEffect;
-    TextUnitEffect: PowerPoint$MsoAnimTextUnitEffect;
+    TextUnitEffect: $Values<typeof PowerPoint$MsoAnimTextUnitEffect>;
   }
 
   declare class PowerPoint$EffectParameters {
@@ -8821,7 +3336,7 @@ declare module "activex-powerpoint" {
     Amount: number;
     PowerPoint$Application: PowerPoint$Application;
     Color2: PowerPoint$ColorFormat;
-    Direction: PowerPoint$MsoAnimDirection;
+    Direction: $Values<typeof PowerPoint$MsoAnimDirection>;
     FontName: string;
     Parent: any;
     Relative: Office.MsoTriState;
@@ -8913,8 +3428,8 @@ declare module "activex-powerpoint" {
     PowerPoint$Application: PowerPoint$Application;
     Parent: any;
     Reveal: Office.MsoTriState;
-    Subtype: PowerPoint$MsoAnimFilterEffectSubtype;
-    Type: PowerPoint$MsoAnimFilterEffectType;
+    Subtype: $Values<typeof PowerPoint$MsoAnimFilterEffectSubtype>;
+    Type: $Values<typeof PowerPoint$MsoAnimFilterEffectType>;
   }
 
   declare class PowerPoint$Floor {
@@ -9024,7 +3539,7 @@ declare module "activex-powerpoint" {
   declare class PowerPoint$HeaderFooter {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
-    Format: PowerPoint$PpDateTimeFormat;
+    Format: $Values<typeof PowerPoint$PpDateTimeFormat>;
     Parent: any;
     Text: string;
     UseFormat: Office.MsoTriState;
@@ -9115,7 +3630,7 @@ declare module "activex-powerpoint" {
     LegendEntries(Index?: any): any;
     Name: string;
     Parent: any;
-    Position: PowerPoint$XlLegendPosition;
+    Position: $Values<typeof PowerPoint$XlLegendPosition>;
     Select(): any;
     Shadow: boolean;
     Top: number;
@@ -9147,7 +3662,7 @@ declare module "activex-powerpoint" {
   declare class PowerPoint$LinkFormat {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
-    AutoUpdate: PowerPoint$PpUpdateOption;
+    AutoUpdate: $Values<typeof PowerPoint$PpUpdateOption>;
     BreakLink(): void;
     Parent: any;
     SourceFullName: string;
@@ -9229,8 +3744,10 @@ declare module "activex-powerpoint" {
     /**
      * @param [profile=2]
      */
-    ResampleFromProfile(profile?: PowerPoint$PpResampleMediaProfile): void;
-    ResamplingStatus: PowerPoint$PpMediaTaskStatus;
+    ResampleFromProfile(
+      profile?: $Values<typeof PowerPoint$PpResampleMediaProfile>
+    ): void;
+    ResamplingStatus: $Values<typeof PowerPoint$PpMediaTaskStatus>;
     SampleHeight: number;
     SampleWidth: number;
     SetDisplayPicture(Position: number): void;
@@ -9308,7 +3825,7 @@ declare module "activex-powerpoint" {
      * @param number [Index=0]
      */
     DoVerb(Index?: number): void;
-    FollowColors: PowerPoint$PpFollowColors;
+    FollowColors: $Values<typeof PowerPoint$PpFollowColors>;
     Object: any;
     PowerPoint$ObjectVerbs: PowerPoint$ObjectVerbs;
     Parent: any;
@@ -9330,7 +3847,7 @@ declare module "activex-powerpoint" {
     Parent: any;
     SlideHeight: number;
     SlideOrientation: Office.MsoOrientation;
-    SlideSize: PowerPoint$PpSlideSizeType;
+    SlideSize: $Values<typeof PowerPoint$PpSlideSizeType>;
     SlideWidth: number;
   }
 
@@ -9340,7 +3857,7 @@ declare module "activex-powerpoint" {
     Active: Office.MsoTriState;
     PowerPoint$Application: PowerPoint$Application;
     Parent: any;
-    ViewType: PowerPoint$PpViewType;
+    ViewType: $Values<typeof PowerPoint$PpViewType>;
   }
 
   declare class PowerPoint$Panes {
@@ -9353,9 +3870,9 @@ declare module "activex-powerpoint" {
 
   declare class PowerPoint$ParagraphFormat {
     constructor(): this;
-    Alignment: PowerPoint$PpParagraphAlignment;
+    Alignment: $Values<typeof PowerPoint$PpParagraphAlignment>;
     PowerPoint$Application: PowerPoint$Application;
-    BaseLineAlignment: PowerPoint$PpBaselineAlignment;
+    BaseLineAlignment: $Values<typeof PowerPoint$PpBaselineAlignment>;
     Bullet: PowerPoint$BulletFormat;
     FarEastLineBreakControl: Office.MsoTriState;
     HangingPunctuation: Office.MsoTriState;
@@ -9366,7 +3883,7 @@ declare module "activex-powerpoint" {
     SpaceAfter: number;
     SpaceBefore: number;
     SpaceWithin: number;
-    TextDirection: PowerPoint$PpDirection;
+    TextDirection: $Values<typeof PowerPoint$PpDirection>;
     WordWrap: Office.MsoTriState;
   }
 
@@ -9395,7 +3912,7 @@ declare module "activex-powerpoint" {
     ContainedType: Office.MsoShapeType;
     Name: string;
     Parent: any;
-    Type: PowerPoint$PpPlaceholderType;
+    Type: $Values<typeof PowerPoint$PpPlaceholderType>;
   }
 
   declare class PowerPoint$Placeholders {
@@ -9416,7 +3933,7 @@ declare module "activex-powerpoint" {
     Parent: any;
     Pause(): void;
     Play(): void;
-    State: PowerPoint$PpPlayerState;
+    State: $Values<typeof PowerPoint$PpPlayerState>;
     Stop(): void;
   }
 
@@ -9450,7 +3967,7 @@ declare module "activex-powerpoint" {
     Left: number;
     Name: string;
     Parent: any;
-    Position: PowerPoint$XlChartElementPosition;
+    Position: $Values<typeof PowerPoint$XlChartElementPosition>;
     Select(): any;
     Top: number;
     Width: number;
@@ -9481,18 +3998,14 @@ declare module "activex-powerpoint" {
     /**
      * @param boolean [SaveChanges=true]
      */
-    CheckIn(
-      SaveChanges?: boolean,
-      PowerPoint$Comments?: any,
-      MakePublic?: any
-    ): void;
+    CheckIn(SaveChanges?: boolean, Comments?: any, MakePublic?: any): void;
 
     /**
      * @param boolean [SaveChanges=true]
      */
     CheckInWithVersion(
       SaveChanges?: boolean,
-      PowerPoint$Comments?: any,
+      Comments?: any,
       MakePublic?: any,
       VersionType?: any
     ): void;
@@ -9520,7 +4033,7 @@ declare module "activex-powerpoint" {
       FramesPerSecond?: number,
       Quality?: number
     ): void;
-    CreateVideoStatus: PowerPoint$PpMediaTaskStatus;
+    CreateVideoStatus: $Values<typeof PowerPoint$PpMediaTaskStatus>;
     CustomDocumentProperties: any;
     PowerPoint$CustomerData: PowerPoint$CustomerData;
     CustomXMLParts: Office.CustomXMLParts;
@@ -9565,14 +4078,14 @@ declare module "activex-powerpoint" {
      */
     ExportAsFixedFormat(
       Path: string,
-      FixedFormatType: PowerPoint$PpFixedFormatType,
-      Intent?: PowerPoint$PpFixedFormatIntent,
+      FixedFormatType: $Values<typeof PowerPoint$PpFixedFormatType>,
+      Intent?: $Values<typeof PowerPoint$PpFixedFormatIntent>,
       FrameSlides?: Office.MsoTriState,
-      HandoutOrder?: PowerPoint$PpPrintHandoutOrder,
-      OutputType?: PowerPoint$PpPrintOutputType,
+      HandoutOrder?: $Values<typeof PowerPoint$PpPrintHandoutOrder>,
+      OutputType?: $Values<typeof PowerPoint$PpPrintOutputType>,
       PrintHiddenSlides?: Office.MsoTriState,
-      PowerPoint$PrintRange?: PowerPoint$PrintRange,
-      RangeType?: PowerPoint$PpPrintRangeType,
+      PrintRange?: PowerPoint$PrintRange,
+      RangeType?: $Values<typeof PowerPoint$PpPrintRangeType>,
       SlideShowName?: string,
       IncludeDocProperties?: boolean,
       KeepIRMSettings?: boolean,
@@ -9583,7 +4096,7 @@ declare module "activex-powerpoint" {
     ): void;
     PowerPoint$ExtraColors: PowerPoint$ExtraColors;
     FarEastLineBreakLanguage: Office.MsoFarEastLineBreakLanguageID;
-    FarEastLineBreakLevel: PowerPoint$PpFarEastLineBreakLevel;
+    FarEastLineBreakLevel: $Values<typeof PowerPoint$PpFarEastLineBreakLevel>;
     Final: boolean;
 
     /**
@@ -9611,13 +4124,13 @@ declare module "activex-powerpoint" {
     HandoutMaster: PowerPoint$Master;
     HasHandoutMaster: boolean;
     HasNotesMaster: boolean;
-    HasRevisionInfo: PowerPoint$PpRevisionInfo;
+    HasRevisionInfo: $Values<typeof PowerPoint$PpRevisionInfo>;
     HasSections: boolean;
     HasTitleMaster: Office.MsoTriState;
     HasVBProject: boolean;
     HTMLProject: Office.HTMLProject;
     InMergeMode: boolean;
-    LayoutDirection: PowerPoint$PpDirection;
+    LayoutDirection: $Values<typeof PowerPoint$PpDirection>;
     LockServerFile(): void;
     MakeIntoTemplate(IsDesignTemplate: Office.MsoTriState): void;
     Merge(Path: string): void;
@@ -9676,7 +4189,9 @@ declare module "activex-powerpoint" {
     RejectAll(): void;
     ReloadAs(cp: Office.MsoEncoding): void;
     RemoveBaseline(): void;
-    RemoveDocumentInformation(Type: PowerPoint$PpRemoveDocInfoType): void;
+    RemoveDocumentInformation(
+      Type: $Values<typeof PowerPoint$PpRemoveDocInfoType>
+    ): void;
     RemovePersonalInformation: Office.MsoTriState;
 
     /**
@@ -9692,7 +4207,7 @@ declare module "activex-powerpoint" {
      */
     SaveAs(
       FileName: string,
-      FileFormat?: PowerPoint$PpSaveAsFileType,
+      FileFormat?: $Values<typeof PowerPoint$PpSaveAsFileType>,
       EmbedTrueTypeFonts?: Office.MsoTriState
     ): void;
 
@@ -9702,7 +4217,7 @@ declare module "activex-powerpoint" {
      */
     SaveCopyAs(
       FileName: string,
-      FileFormat?: PowerPoint$PpSaveAsFileType,
+      FileFormat?: $Values<typeof PowerPoint$PpSaveAsFileType>,
       EmbedTrueTypeFonts?: Office.MsoTriState
     ): void;
     Saved: Office.MsoTriState;
@@ -9821,18 +4336,18 @@ declare module "activex-powerpoint" {
     Collate: Office.MsoTriState;
     FitToPage: Office.MsoTriState;
     FrameSlides: Office.MsoTriState;
-    HandoutOrder: PowerPoint$PpPrintHandoutOrder;
+    HandoutOrder: $Values<typeof PowerPoint$PpPrintHandoutOrder>;
     HighQuality: Office.MsoTriState;
     NumberOfCopies: number;
-    OutputType: PowerPoint$PpPrintOutputType;
+    OutputType: $Values<typeof PowerPoint$PpPrintOutputType>;
     Parent: any;
-    PrintColorType: PowerPoint$PpPrintColorType;
+    PrintColorType: $Values<typeof PowerPoint$PpPrintColorType>;
     PrintComments: Office.MsoTriState;
     PrintFontsAsGraphics: Office.MsoTriState;
     PrintHiddenSlides: Office.MsoTriState;
     PrintInBackground: Office.MsoTriState;
     Ranges: PowerPoint$PrintRanges;
-    RangeType: PowerPoint$PpPrintRangeType;
+    RangeType: $Values<typeof PowerPoint$PpPrintRangeType>;
     sectionIndex: number;
     SlideShowName: string;
   }
@@ -9862,7 +4377,7 @@ declare module "activex-powerpoint" {
     From: any;
     Parent: any;
     Points: PowerPoint$AnimationPoints;
-    Property: PowerPoint$MsoAnimProperty;
+    Property: $Values<typeof PowerPoint$MsoAnimProperty>;
     To: any;
   }
 
@@ -9886,7 +4401,7 @@ declare module "activex-powerpoint" {
     SourcePath: string;
     Top: number;
     Width: number;
-    WindowState: PowerPoint$PpWindowState;
+    WindowState: $Values<typeof PowerPoint$PpWindowState>;
   }
 
   declare class PowerPoint$ProtectedViewWindows {
@@ -9911,13 +4426,13 @@ declare module "activex-powerpoint" {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
     FileName: string;
-    HTMLVersion: PowerPoint$PpHTMLVersion;
+    HTMLVersion: $Values<typeof PowerPoint$PpHTMLVersion>;
     Parent: any;
     Publish(): void;
     RangeEnd: number;
     RangeStart: number;
     SlideShowName: string;
-    SourceType: PowerPoint$PpPublishSourceType;
+    SourceType: $Values<typeof PowerPoint$PpPublishSourceType>;
     SpeakerNotes: Office.MsoTriState;
   }
 
@@ -9936,7 +4451,7 @@ declare module "activex-powerpoint" {
     ContainerType: string;
     IsEmbedded: boolean;
     IsLinked: boolean;
-    profile: PowerPoint$PpResampleMediaProfile;
+    profile: $Values<typeof PowerPoint$PpResampleMediaProfile>;
     SampleHeight: number;
     SampleWidth: number;
     PowerPoint$Shape: PowerPoint$Shape;
@@ -10078,7 +4593,7 @@ declare module "activex-powerpoint" {
     PowerPoint$SlideRange: PowerPoint$SlideRange;
     PowerPoint$TextRange: PowerPoint$TextRange;
     TextRange2: Office.TextRange2;
-    Type: PowerPoint$PpSelectionType;
+    Type: $Values<typeof PowerPoint$PpSelectionType>;
     Unselect(): void;
   }
 
@@ -10091,10 +4606,10 @@ declare module "activex-powerpoint" {
      * @param number [Index=-1]
      */
     AddEffect(
-      PowerPoint$Shape: PowerPoint$Shape,
-      effectId: PowerPoint$MsoAnimEffect,
-      Level?: PowerPoint$MsoAnimateByLevel,
-      trigger?: PowerPoint$MsoAnimTriggerType,
+      Shape: PowerPoint$Shape,
+      effectId: $Values<typeof PowerPoint$MsoAnimEffect>,
+      Level?: $Values<typeof PowerPoint$MsoAnimateByLevel>,
+      trigger?: $Values<typeof PowerPoint$MsoAnimTriggerType>,
       Index?: number
     ): PowerPoint$Effect;
 
@@ -10104,52 +4619,47 @@ declare module "activex-powerpoint" {
      */
     AddTriggerEffect(
       pShape: PowerPoint$Shape,
-      effectId: PowerPoint$MsoAnimEffect,
-      trigger: PowerPoint$MsoAnimTriggerType,
+      effectId: $Values<typeof PowerPoint$MsoAnimEffect>,
+      trigger: $Values<typeof PowerPoint$MsoAnimTriggerType>,
       pTriggerShape: PowerPoint$Shape,
       bookmark?: string,
-      Level?: PowerPoint$MsoAnimateByLevel
+      Level?: $Values<typeof PowerPoint$MsoAnimateByLevel>
     ): PowerPoint$Effect;
     PowerPoint$Application: PowerPoint$Application;
 
     /**
      * @param number [Index=-1]
      */
-    Clone(
-      PowerPoint$Effect: PowerPoint$Effect,
-      Index?: number
-    ): PowerPoint$Effect;
+    Clone(Effect: PowerPoint$Effect, Index?: number): PowerPoint$Effect;
 
     /**
      * @param [DimColor=0]
      * @param [DimSchemeColor=0]
      */
     ConvertToAfterEffect(
-      PowerPoint$Effect: PowerPoint$Effect,
-      After: PowerPoint$MsoAnimAfterEffect,
+      Effect: PowerPoint$Effect,
+      After: $Values<typeof PowerPoint$MsoAnimAfterEffect>,
       DimColor?: Office.MsoRGBType,
-      DimSchemeColor?: PowerPoint$PpColorSchemeIndex
+      DimSchemeColor?: $Values<typeof PowerPoint$PpColorSchemeIndex>
     ): PowerPoint$Effect;
     ConvertToAnimateBackground(
-      PowerPoint$Effect: PowerPoint$Effect,
+      Effect: PowerPoint$Effect,
       AnimateBackground: Office.MsoTriState
     ): PowerPoint$Effect;
     ConvertToAnimateInReverse(
-      PowerPoint$Effect: PowerPoint$Effect,
+      Effect: PowerPoint$Effect,
       animateInReverse: Office.MsoTriState
     ): PowerPoint$Effect;
     ConvertToBuildLevel(
-      PowerPoint$Effect: PowerPoint$Effect,
-      Level: PowerPoint$MsoAnimateByLevel
+      Effect: PowerPoint$Effect,
+      Level: $Values<typeof PowerPoint$MsoAnimateByLevel>
     ): PowerPoint$Effect;
     ConvertToTextUnitEffect(
-      PowerPoint$Effect: PowerPoint$Effect,
-      unitEffect: PowerPoint$MsoAnimTextUnitEffect
+      Effect: PowerPoint$Effect,
+      unitEffect: $Values<typeof PowerPoint$MsoAnimTextUnitEffect>
     ): PowerPoint$Effect;
     Count: number;
-    FindFirstAnimationFor(
-      PowerPoint$Shape: PowerPoint$Shape
-    ): PowerPoint$Effect;
+    FindFirstAnimationFor(Shape: PowerPoint$Shape): PowerPoint$Effect;
     FindFirstAnimationForClick(click: number): PowerPoint$Effect;
     Item(Index: number): PowerPoint$Effect;
     Parent: any;
@@ -10184,7 +4694,7 @@ declare module "activex-powerpoint" {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
     Parent: any;
-    Property: PowerPoint$MsoAnimProperty;
+    Property: $Values<typeof PowerPoint$MsoAnimProperty>;
     To: any;
   }
 
@@ -10248,10 +4758,10 @@ declare module "activex-powerpoint" {
      */
     Export(
       PathName: string,
-      Filter: PowerPoint$PpShapeFormat,
+      Filter: $Values<typeof PowerPoint$PpShapeFormat>,
       ScaleWidth?: number,
       ScaleHeight?: number,
-      ExportMode?: PowerPoint$PpExportMode
+      ExportMode?: $Values<typeof PowerPoint$PpExportMode>
     ): void;
     Fill: PowerPoint$FillFormat;
     Flip(FlipCmd: Office.MsoFlipCmd): void;
@@ -10274,7 +4784,7 @@ declare module "activex-powerpoint" {
     PowerPoint$LinkFormat: PowerPoint$LinkFormat;
     LockAspectRatio: Office.MsoTriState;
     PowerPoint$MediaFormat: PowerPoint$MediaFormat;
-    MediaType: PowerPoint$PpMediaType;
+    MediaType: $Values<typeof PowerPoint$PpMediaType>;
     Name: string;
     Nodes: PowerPoint$ShapeNodes;
     PowerPoint$OLEFormat: PowerPoint$OLEFormat;
@@ -10424,10 +4934,10 @@ declare module "activex-powerpoint" {
      */
     Export(
       PathName: string,
-      Filter: PowerPoint$PpShapeFormat,
+      Filter: $Values<typeof PowerPoint$PpShapeFormat>,
       ScaleWidth?: number,
       ScaleHeight?: number,
-      ExportMode?: PowerPoint$PpExportMode
+      ExportMode?: $Values<typeof PowerPoint$PpExportMode>
     ): void;
     Fill: PowerPoint$FillFormat;
     Flip(FlipCmd: Office.MsoFlipCmd): void;
@@ -10452,7 +4962,7 @@ declare module "activex-powerpoint" {
     PowerPoint$LinkFormat: PowerPoint$LinkFormat;
     LockAspectRatio: Office.MsoTriState;
     PowerPoint$MediaFormat: PowerPoint$MediaFormat;
-    MediaType: PowerPoint$PpMediaType;
+    MediaType: $Values<typeof PowerPoint$PpMediaType>;
     Name: string;
     Nodes: PowerPoint$ShapeNodes;
     PowerPoint$OLEFormat: PowerPoint$OLEFormat;
@@ -10682,7 +5192,7 @@ declare module "activex-powerpoint" {
      * @param number [Height=-1]
      */
     AddPlaceholder(
-      Type: PowerPoint$PpPlaceholderType,
+      Type: $Values<typeof PowerPoint$PpPlaceholderType>,
       Left?: number,
       Top?: number,
       Width?: number,
@@ -10765,7 +5275,7 @@ declare module "activex-powerpoint" {
      * @param [Link=0]
      */
     PasteSpecial(
-      DataType?: PowerPoint$PpPasteDataType,
+      DataType?: $Values<typeof PowerPoint$PpPasteDataType>,
       DisplayAsIcon?: Office.MsoTriState,
       IconFileName?: string,
       IconIndex?: number,
@@ -10811,7 +5321,7 @@ declare module "activex-powerpoint" {
     HasNotesPage: Office.MsoTriState;
     PowerPoint$HeadersFooters: PowerPoint$HeadersFooters;
     PowerPoint$Hyperlinks: PowerPoint$Hyperlinks;
-    Layout: PowerPoint$PpSlideLayout;
+    Layout: $Values<typeof PowerPoint$PpSlideLayout>;
     PowerPoint$Master: PowerPoint$Master;
     MoveTo(toPos: number): void;
     MoveToSectionStart(toSection: number): void;
@@ -10878,7 +5388,7 @@ declare module "activex-powerpoint" {
     PowerPoint$HeadersFooters: PowerPoint$HeadersFooters;
     PowerPoint$Hyperlinks: PowerPoint$Hyperlinks;
     Item(Index: any): PowerPoint$Slide;
-    Layout: PowerPoint$PpSlideLayout;
+    Layout: $Values<typeof PowerPoint$PpSlideLayout>;
     PowerPoint$Master: PowerPoint$Master;
     MoveTo(toPos: number): void;
     MoveToSectionStart(toSection: number): void;
@@ -10912,7 +5422,10 @@ declare module "activex-powerpoint" {
 
   declare class PowerPoint$Slides {
     constructor(): this;
-    Add(Index: number, Layout: PowerPoint$PpSlideLayout): PowerPoint$Slide;
+    Add(
+      Index: number,
+      Layout: $Values<typeof PowerPoint$PpSlideLayout>
+    ): PowerPoint$Slide;
     AddSlide(
       Index: number,
       pCustomLayout: PowerPoint$CustomLayout
@@ -10943,19 +5456,19 @@ declare module "activex-powerpoint" {
 
   declare class PowerPoint$SlideShowSettings {
     constructor(): this;
-    AdvanceMode: PowerPoint$PpSlideShowAdvanceMode;
+    AdvanceMode: $Values<typeof PowerPoint$PpSlideShowAdvanceMode>;
     PowerPoint$Application: PowerPoint$Application;
     EndingSlide: number;
     LoopUntilStopped: Office.MsoTriState;
     PowerPoint$NamedSlideShows: PowerPoint$NamedSlideShows;
     Parent: any;
     PointerColor: PowerPoint$ColorFormat;
-    RangeType: PowerPoint$PpSlideShowRangeType;
+    RangeType: $Values<typeof PowerPoint$PpSlideShowRangeType>;
     Run(): PowerPoint$SlideShowWindow;
     ShowMediaControls: Office.MsoTriState;
     ShowPresenterView: Office.MsoTriState;
     ShowScrollbar: Office.MsoTriState;
-    ShowType: PowerPoint$PpSlideShowType;
+    ShowType: $Values<typeof PowerPoint$PpSlideShowType>;
     ShowWithAnimation: Office.MsoTriState;
     ShowWithNarration: Office.MsoTriState;
     SlideShowName: string;
@@ -10969,18 +5482,18 @@ declare module "activex-powerpoint" {
     AdvanceTime: number;
     PowerPoint$Application: PowerPoint$Application;
     Duration: number;
-    EntryEffect: PowerPoint$PpEntryEffect;
+    EntryEffect: $Values<typeof PowerPoint$PpEntryEffect>;
     Hidden: Office.MsoTriState;
     LoopSoundUntilNext: Office.MsoTriState;
     Parent: any;
     PowerPoint$SoundEffect: PowerPoint$SoundEffect;
-    Speed: PowerPoint$PpTransitionSpeed;
+    Speed: $Values<typeof PowerPoint$PpTransitionSpeed>;
   }
 
   declare class PowerPoint$SlideShowView {
     constructor(): this;
     AcceleratorsEnabled: Office.MsoTriState;
-    AdvanceMode: PowerPoint$PpSlideShowAdvanceMode;
+    AdvanceMode: $Values<typeof PowerPoint$PpSlideShowAdvanceMode>;
     PowerPoint$Application: PowerPoint$Application;
     CurrentShowPosition: number;
     DrawLine(BeginX: number, BeginY: number, EndX: number, EndY: number): void;
@@ -11014,14 +5527,14 @@ declare module "activex-powerpoint" {
     Parent: any;
     Player(ShapeId: any): PowerPoint$Player;
     PointerColor: PowerPoint$ColorFormat;
-    PointerType: PowerPoint$PpSlideShowPointerType;
+    PointerType: $Values<typeof PowerPoint$PpSlideShowPointerType>;
     PresentationElapsedTime: number;
     Previous(): void;
     ResetSlideTime(): void;
     PowerPoint$Slide: PowerPoint$Slide;
     SlideElapsedTime: number;
     SlideShowName: string;
-    State: PowerPoint$PpSlideShowState;
+    State: $Values<typeof PowerPoint$PpSlideShowState>;
     Zoom: number;
   }
 
@@ -11055,16 +5568,16 @@ declare module "activex-powerpoint" {
     Name: string;
     Parent: any;
     Play(): void;
-    Type: PowerPoint$PpSoundEffectType;
+    Type: $Values<typeof PowerPoint$PpSoundEffectType>;
   }
 
   declare class PowerPoint$SoundFormat {
     constructor(): this;
-    Export(FileName: string): PowerPoint$PpSoundFormatType;
+    Export(FileName: string): $Values<typeof PowerPoint$PpSoundFormatType>;
     Import(FileName: string): void;
     Play(): void;
     SourceFullName: string;
-    Type: PowerPoint$PpSoundFormatType;
+    Type: $Values<typeof PowerPoint$PpSoundFormatType>;
   }
 
   declare class PowerPoint$Table {
@@ -11078,7 +5591,7 @@ declare module "activex-powerpoint" {
      */
     ApplyStyle(StyleID?: string, SaveFormatting?: boolean): void;
     Background: PowerPoint$TableBackground;
-    Cell(PowerPoint$Row: number, PowerPoint$Column: number): PowerPoint$Cell;
+    Cell(Row: number, Column: number): PowerPoint$Cell;
     PowerPoint$Columns: PowerPoint$Columns;
     FirstCol: boolean;
     FirstRow: boolean;
@@ -11090,7 +5603,7 @@ declare module "activex-powerpoint" {
     PowerPoint$Rows: PowerPoint$Rows;
     ScaleProportionally(scale: number): void;
     Style: PowerPoint$TableStyle;
-    TableDirection: PowerPoint$PpDirection;
+    TableDirection: $Values<typeof PowerPoint$PpDirection>;
     Title: string;
     VertBanding: boolean;
   }
@@ -11115,12 +5628,15 @@ declare module "activex-powerpoint" {
     Clear(): void;
     Parent: any;
     Position: number;
-    Type: PowerPoint$PpTabStopType;
+    Type: $Values<typeof PowerPoint$PpTabStopType>;
   }
 
   declare class PowerPoint$TabStops {
     constructor(): this;
-    Add(Type: PowerPoint$PpTabStopType, Position: number): PowerPoint$TabStop;
+    Add(
+      Type: $Values<typeof PowerPoint$PpTabStopType>,
+      Position: number
+    ): PowerPoint$TabStop;
     PowerPoint$Application: PowerPoint$Application;
     Count: number;
     DefaultSpacing: number;
@@ -11165,7 +5681,7 @@ declare module "activex-powerpoint" {
   declare class PowerPoint$TextFrame {
     constructor(): this;
     PowerPoint$Application: any;
-    AutoSize: PowerPoint$PpAutoSize;
+    AutoSize: $Values<typeof PowerPoint$PpAutoSize>;
     Creator: number;
     DeleteText(): void;
     HasText: Office.MsoTriState;
@@ -11217,7 +5733,7 @@ declare module "activex-powerpoint" {
     BoundLeft: number;
     BoundTop: number;
     BoundWidth: number;
-    ChangeCase(Type: PowerPoint$PpChangeCase): void;
+    ChangeCase(Type: $Values<typeof PowerPoint$PpChangeCase>): void;
 
     /**
      * @param number [Start=-1]
@@ -11257,7 +5773,7 @@ declare module "activex-powerpoint" {
      * @param [InsertAsField=0]
      */
     InsertDateTime(
-      DateTimeFormat: PowerPoint$PpDateTimeFormat,
+      DateTimeFormat: $Values<typeof PowerPoint$PpDateTimeFormat>,
       InsertAsField?: Office.MsoTriState
     ): PowerPoint$TextRange;
     InsertSlideNumber(): PowerPoint$TextRange;
@@ -11298,7 +5814,7 @@ declare module "activex-powerpoint" {
      * @param [Link=0]
      */
     PasteSpecial(
-      DataType?: PowerPoint$PpPasteDataType,
+      DataType?: $Values<typeof PowerPoint$PpPasteDataType>,
       DisplayAsIcon?: Office.MsoTriState,
       IconFileName?: string,
       IconIndex?: number,
@@ -11383,7 +5899,9 @@ declare module "activex-powerpoint" {
     constructor(): this;
     PowerPoint$Application: PowerPoint$Application;
     Count: number;
-    Item(Type: PowerPoint$PpTextStyleType): PowerPoint$TextStyle;
+    Item(
+      Type: $Values<typeof PowerPoint$PpTextStyleType>
+    ): PowerPoint$TextStyle;
     Parent: any;
   }
 
@@ -11448,7 +5966,7 @@ declare module "activex-powerpoint" {
     NumberFormatLinked: boolean;
     NumberFormatLocal: any;
     Offset: number;
-    Orientation: PowerPoint$XlTickLabelOrientation;
+    Orientation: $Values<typeof PowerPoint$XlTickLabelOrientation>;
     Parent: any;
     ReadingOrder: number;
     Select(): any;
@@ -11474,7 +5992,7 @@ declare module "activex-powerpoint" {
     Parent: any;
     RepeatCount: number;
     RepeatDuration: number;
-    Restart: PowerPoint$MsoAnimEffectRestart;
+    Restart: $Values<typeof PowerPoint$MsoAnimEffectRestart>;
     RewindAtEnd: Office.MsoTriState;
     SmoothEnd: Office.MsoTriState;
     SmoothStart: Office.MsoTriState;
@@ -11482,7 +6000,7 @@ declare module "activex-powerpoint" {
     TriggerBookmark: string;
     TriggerDelayTime: number;
     TriggerShape: PowerPoint$Shape;
-    TriggerType: PowerPoint$MsoAnimTriggerType;
+    TriggerType: $Values<typeof PowerPoint$MsoAnimTriggerType>;
   }
 
   declare class PowerPoint$UpBars {
@@ -11521,7 +6039,7 @@ declare module "activex-powerpoint" {
      * @param [Link=0]
      */
     PasteSpecial(
-      DataType?: PowerPoint$PpPasteDataType,
+      DataType?: $Values<typeof PowerPoint$PpPasteDataType>,
       DisplayAsIcon?: Office.MsoTriState,
       IconFileName?: string,
       IconIndex?: number,
@@ -11546,7 +6064,7 @@ declare module "activex-powerpoint" {
       Collate?: Office.MsoTriState
     ): void;
     PowerPoint$Slide: any;
-    Type: PowerPoint$PpViewType;
+    Type: $Values<typeof PowerPoint$PpViewType>;
     Zoom: number;
     ZoomToFit: Office.MsoTriState;
   }
@@ -11574,8 +6092,8 @@ declare module "activex-powerpoint" {
     AllowPNG: Office.MsoTriState;
     Encoding: Office.MsoEncoding;
     FolderSuffix: string;
-    FrameColors: PowerPoint$PpFrameColors;
-    HTMLVersion: PowerPoint$PpHTMLVersion;
+    FrameColors: $Values<typeof PowerPoint$PpFrameColors>;
+    HTMLVersion: $Values<typeof PowerPoint$PpHTMLVersion>;
     IncludeNavigation: Office.MsoTriState;
     OrganizeInFolder: Office.MsoTriState;
     RelyOnVML: Office.MsoTriState;
@@ -11588,7 +6106,7 @@ declare module "activex-powerpoint" {
   }
   declare interface ActiveXObject {
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event:
         | "AfterNewPresentation"
         | "AfterPresentationOpen"
@@ -11601,75 +6119,77 @@ declare module "activex-powerpoint" {
         | "SlideShowEnd",
       argNames: ["Pres"],
       handler: (parameter: {
-        +Pres: PowerPoint$PowerPoint$Presentation
+        +Pres: PowerPoint$Presentation
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "ColorSchemeChanged" | "SlideSelectionChanged",
       argNames: ["SldRange"],
       handler: (parameter: {
-        +SldRange: PowerPoint$PowerPoint$SlideRange
+        +SldRange: PowerPoint$SlideRange
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "PresentationBeforeClose" | "PresentationBeforeSave",
       argNames: ["Pres", "Cancel"],
       handler: (parameter: {
-        +Pres: PowerPoint$PowerPoint$Presentation,
+        +Pres: PowerPoint$Presentation,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "PresentationNewSlide",
       argNames: ["Sld"],
       handler: (parameter: {
-        +Sld: PowerPoint$PowerPoint$Slide
+        +Sld: PowerPoint$Slide
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "PresentationSync",
       argNames: ["Pres", "SyncEventType"],
       handler: (parameter: {
-        +Pres: PowerPoint$PowerPoint$Presentation,
+        +Pres: PowerPoint$Presentation,
         +SyncEventType: Office.MsoSyncEventType
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event:
         | "ProtectedViewWindowActivate"
         | "ProtectedViewWindowDeactivate"
         | "ProtectedViewWindowOpen",
       argNames: ["ProtViewWindow"],
       handler: (parameter: {
-        +ProtViewWindow: PowerPoint$PowerPoint$ProtectedViewWindow
+        +ProtViewWindow: PowerPoint$ProtectedViewWindow
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "ProtectedViewWindowBeforeClose",
       argNames: ["ProtViewWindow", "ProtectedViewCloseReason", "Cancel"],
       handler: (parameter: {
-        +ProtViewWindow: PowerPoint$PowerPoint$ProtectedViewWindow,
-        +ProtectedViewCloseReason: PowerPoint$PowerPoint$PpProtectedViewCloseReason,
+        +ProtViewWindow: PowerPoint$ProtectedViewWindow,
+        +ProtectedViewCloseReason: $Values<
+          typeof PowerPoint$PpProtectedViewCloseReason
+        >,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "ProtectedViewWindowBeforeEdit",
       argNames: ["ProtViewWindow", "Cancel"],
       handler: (parameter: {
-        +ProtViewWindow: PowerPoint$PowerPoint$ProtectedViewWindow,
+        +ProtViewWindow: PowerPoint$ProtectedViewWindow,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event:
         | "SlideShowBegin"
         | "SlideShowNextBuild"
@@ -11678,171 +6198,111 @@ declare module "activex-powerpoint" {
         | "SlideShowOnPrevious",
       argNames: ["Wn"],
       handler: (parameter: {
-        +Wn: PowerPoint$PowerPoint$SlideShowWindow
+        +Wn: PowerPoint$SlideShowWindow
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "SlideShowNextClick",
       argNames: ["Wn", "nEffect"],
       handler: (parameter: {
-        +Wn: PowerPoint$PowerPoint$SlideShowWindow,
-        +nEffect: PowerPoint$PowerPoint$Effect
+        +Wn: PowerPoint$SlideShowWindow,
+        +nEffect: PowerPoint$Effect
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "WindowActivate" | "WindowDeactivate",
       argNames: ["Pres", "Wn"],
       handler: (parameter: {
-        +Pres: PowerPoint$PowerPoint$Presentation,
-        +Wn: PowerPoint$PowerPoint$DocumentWindow
+        +Pres: PowerPoint$Presentation,
+        +Wn: PowerPoint$DocumentWindow
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "WindowBeforeDoubleClick" | "WindowBeforeRightClick",
       argNames: ["Sel", "Cancel"],
       handler: (parameter: {
-        +Sel: PowerPoint$PowerPoint$Selection,
+        +Sel: PowerPoint$Selection,
         Cancel: boolean
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$Application,
+      obj: PowerPoint$Application,
       event: "WindowSelectionChange",
       argNames: ["Sel"],
       handler: (parameter: {
-        +Sel: PowerPoint$PowerPoint$Selection
+        +Sel: PowerPoint$Selection
       }) => void
     ): void;
     on(
-      obj: PowerPoint$PowerPoint$OLEControl,
+      obj: PowerPoint$OLEControl,
       event: "GotFocus" | "LostFocus",
       handler: (parameter: {}) => void
     ): void;
   }
   declare interface ActiveXObjectNameMap {
-    "PowerPoint.Application": PowerPoint$PowerPoint$Application;
+    "PowerPoint.Application": PowerPoint$Application;
   }
   declare interface EnumeratorConstructor {
+    new(col: PowerPoint$ActionSettings): Enumerator<PowerPoint$ActionSetting>;
+    new(col: PowerPoint$AddIns): Enumerator<PowerPoint$AddIn>;
     new(
-      col: PowerPoint$PowerPoint$ActionSettings
-    ): Enumerator<PowerPoint$PowerPoint$ActionSetting>;
-    new(
-      col: PowerPoint$PowerPoint$AddIns
-    ): Enumerator<PowerPoint$PowerPoint$AddIn>;
-    new(
-      col: PowerPoint$PowerPoint$AnimationBehaviors
-    ): Enumerator<PowerPoint$PowerPoint$AnimationBehavior>;
-    new(
-      col: PowerPoint$PowerPoint$AnimationPoints
-    ): Enumerator<PowerPoint$PowerPoint$AnimationPoint>;
-    new(
-      col: PowerPoint$PowerPoint$Borders
-    ): Enumerator<PowerPoint$PowerPoint$LineFormat>;
+      col: PowerPoint$AnimationBehaviors
+    ): Enumerator<PowerPoint$AnimationBehavior>;
+    new(col: PowerPoint$AnimationPoints): Enumerator<PowerPoint$AnimationPoint>;
+    new(col: PowerPoint$Borders): Enumerator<PowerPoint$LineFormat>;
     new(
       col:
-        | PowerPoint$PowerPoint$CanvasShapes
-        | PowerPoint$PowerPoint$GroupShapes
-        | PowerPoint$PowerPoint$Placeholders
-        | PowerPoint$PowerPoint$ShapeRange
-        | PowerPoint$PowerPoint$Shapes
-    ): Enumerator<PowerPoint$PowerPoint$Shape>;
+        | PowerPoint$CanvasShapes
+        | PowerPoint$GroupShapes
+        | PowerPoint$Placeholders
+        | PowerPoint$ShapeRange
+        | PowerPoint$Shapes
+    ): Enumerator<PowerPoint$Shape>;
+    new(col: PowerPoint$CellRange): Enumerator<PowerPoint$Cell>;
+    new(col: PowerPoint$ColorSchemes): Enumerator<PowerPoint$ColorScheme>;
+    new(col: PowerPoint$Columns): Enumerator<PowerPoint$Column>;
+    new(col: PowerPoint$Comments): Enumerator<PowerPoint$Comment>;
+    new(col: PowerPoint$CustomerData): Enumerator<Office.CustomXMLPart>;
+    new(col: PowerPoint$CustomLayouts): Enumerator<PowerPoint$CustomLayout>;
+    new(col: PowerPoint$Designs): Enumerator<PowerPoint$Design>;
     new(
-      col: PowerPoint$PowerPoint$CellRange
-    ): Enumerator<PowerPoint$PowerPoint$Cell>;
+      col: PowerPoint$DiagramNodeChildren | PowerPoint$DiagramNodes
+    ): Enumerator<PowerPoint$DiagramNode>;
+    new(col: PowerPoint$DocumentWindows): Enumerator<PowerPoint$DocumentWindow>;
+    new(col: PowerPoint$ExtraColors): Enumerator<Office.MsoRGBType>;
+    new(col: PowerPoint$FileConverters): Enumerator<PowerPoint$FileConverter>;
+    new(col: PowerPoint$Fonts): Enumerator<PowerPoint$Font>;
+    new(col: PowerPoint$Hyperlinks): Enumerator<PowerPoint$Hyperlink>;
+    new(col: PowerPoint$MediaBookmarks): Enumerator<PowerPoint$MediaBookmark>;
+    new(col: PowerPoint$NamedSlideShows): Enumerator<PowerPoint$NamedSlideShow>;
+    new(col: PowerPoint$ObjectVerbs | PowerPoint$Tags): Enumerator<string>;
+    new(col: PowerPoint$Panes): Enumerator<PowerPoint$Pane>;
+    new(col: PowerPoint$Presentations): Enumerator<PowerPoint$Presentation>;
+    new(col: PowerPoint$PrintRanges): Enumerator<PowerPoint$PrintRange>;
     new(
-      col: PowerPoint$PowerPoint$ColorSchemes
-    ): Enumerator<PowerPoint$PowerPoint$ColorScheme>;
+      col: PowerPoint$ProtectedViewWindows
+    ): Enumerator<PowerPoint$ProtectedViewWindow>;
+    new(col: PowerPoint$PublishObjects): Enumerator<PowerPoint$PublishObject>;
     new(
-      col: PowerPoint$PowerPoint$Columns
-    ): Enumerator<PowerPoint$PowerPoint$Column>;
+      col: PowerPoint$ResampleMediaTasks
+    ): Enumerator<PowerPoint$ResampleMediaTask>;
+    new(col: PowerPoint$Rows): Enumerator<PowerPoint$Row>;
+    new(col: PowerPoint$RulerLevels): Enumerator<PowerPoint$RulerLevel>;
+    new(col: PowerPoint$Sequence): Enumerator<PowerPoint$Effect>;
+    new(col: PowerPoint$Sequences): Enumerator<PowerPoint$Sequence>;
+    new(col: PowerPoint$ShapeNodes): Enumerator<PowerPoint$ShapeNode>;
     new(
-      col: PowerPoint$PowerPoint$Comments
-    ): Enumerator<PowerPoint$PowerPoint$Comment>;
+      col: PowerPoint$SlideRange | PowerPoint$Slides
+    ): Enumerator<PowerPoint$Slide>;
     new(
-      col: PowerPoint$PowerPoint$CustomerData
-    ): Enumerator<Office.CustomXMLPart>;
-    new(
-      col: PowerPoint$PowerPoint$CustomLayouts
-    ): Enumerator<PowerPoint$PowerPoint$CustomLayout>;
-    new(
-      col: PowerPoint$PowerPoint$Designs
-    ): Enumerator<PowerPoint$PowerPoint$Design>;
-    new(
-      col:
-        | PowerPoint$PowerPoint$DiagramNodeChildren
-        | PowerPoint$PowerPoint$DiagramNodes
-    ): Enumerator<PowerPoint$PowerPoint$DiagramNode>;
-    new(
-      col: PowerPoint$PowerPoint$DocumentWindows
-    ): Enumerator<PowerPoint$PowerPoint$DocumentWindow>;
-    new(col: PowerPoint$PowerPoint$ExtraColors): Enumerator<Office.MsoRGBType>;
-    new(
-      col: PowerPoint$PowerPoint$FileConverters
-    ): Enumerator<PowerPoint$PowerPoint$FileConverter>;
-    new(
-      col: PowerPoint$PowerPoint$Fonts
-    ): Enumerator<PowerPoint$PowerPoint$Font>;
-    new(
-      col: PowerPoint$PowerPoint$Hyperlinks
-    ): Enumerator<PowerPoint$PowerPoint$Hyperlink>;
-    new(
-      col: PowerPoint$PowerPoint$MediaBookmarks
-    ): Enumerator<PowerPoint$PowerPoint$MediaBookmark>;
-    new(
-      col: PowerPoint$PowerPoint$NamedSlideShows
-    ): Enumerator<PowerPoint$PowerPoint$NamedSlideShow>;
-    new(
-      col: PowerPoint$PowerPoint$ObjectVerbs | PowerPoint$PowerPoint$Tags
-    ): Enumerator<string>;
-    new(
-      col: PowerPoint$PowerPoint$Panes
-    ): Enumerator<PowerPoint$PowerPoint$Pane>;
-    new(
-      col: PowerPoint$PowerPoint$Presentations
-    ): Enumerator<PowerPoint$PowerPoint$Presentation>;
-    new(
-      col: PowerPoint$PowerPoint$PrintRanges
-    ): Enumerator<PowerPoint$PowerPoint$PrintRange>;
-    new(
-      col: PowerPoint$PowerPoint$ProtectedViewWindows
-    ): Enumerator<PowerPoint$PowerPoint$ProtectedViewWindow>;
-    new(
-      col: PowerPoint$PowerPoint$PublishObjects
-    ): Enumerator<PowerPoint$PowerPoint$PublishObject>;
-    new(
-      col: PowerPoint$PowerPoint$ResampleMediaTasks
-    ): Enumerator<PowerPoint$PowerPoint$ResampleMediaTask>;
-    new(col: PowerPoint$PowerPoint$Rows): Enumerator<PowerPoint$PowerPoint$Row>;
-    new(
-      col: PowerPoint$PowerPoint$RulerLevels
-    ): Enumerator<PowerPoint$PowerPoint$RulerLevel>;
-    new(
-      col: PowerPoint$PowerPoint$Sequence
-    ): Enumerator<PowerPoint$PowerPoint$Effect>;
-    new(
-      col: PowerPoint$PowerPoint$Sequences
-    ): Enumerator<PowerPoint$PowerPoint$Sequence>;
-    new(
-      col: PowerPoint$PowerPoint$ShapeNodes
-    ): Enumerator<PowerPoint$PowerPoint$ShapeNode>;
-    new(
-      col: PowerPoint$PowerPoint$SlideRange | PowerPoint$PowerPoint$Slides
-    ): Enumerator<PowerPoint$PowerPoint$Slide>;
-    new(
-      col: PowerPoint$PowerPoint$SlideShowWindows
-    ): Enumerator<PowerPoint$PowerPoint$SlideShowWindow>;
-    new(
-      col: PowerPoint$PowerPoint$TabStops
-    ): Enumerator<PowerPoint$PowerPoint$TabStop>;
-    new(
-      col: PowerPoint$PowerPoint$TextStyleLevels
-    ): Enumerator<PowerPoint$PowerPoint$TextStyleLevel>;
-    new(
-      col: PowerPoint$PowerPoint$TextStyles
-    ): Enumerator<PowerPoint$PowerPoint$TextStyle>;
+      col: PowerPoint$SlideShowWindows
+    ): Enumerator<PowerPoint$SlideShowWindow>;
+    new(col: PowerPoint$TabStops): Enumerator<PowerPoint$TabStop>;
+    new(col: PowerPoint$TextStyleLevels): Enumerator<PowerPoint$TextStyleLevel>;
+    new(col: PowerPoint$TextStyles): Enumerator<PowerPoint$TextStyle>;
   }
   declare interface SafeArray<T = any> {
     _brand: SafeArray<T>;
