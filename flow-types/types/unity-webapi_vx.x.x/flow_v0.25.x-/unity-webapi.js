@@ -7,18 +7,11 @@ declare module "unity-webapi" {
     iconUrl: string;
     onInit: Function;
   }
-  declare class UnityPlaybackState {
-    constructor(...args: empty): mixed;
-    static +Playing: Class<UnityPlaybackState__Playing> &
-      UnityPlaybackState__Playing &
-      0; // 0
-    static +Paused: Class<UnityPlaybackState__Paused> &
-      UnityPlaybackState__Paused &
-      1; // 1
-  }
 
-  declare class UnityPlaybackState__Playing mixins UnityPlaybackState {}
-  declare class UnityPlaybackState__Paused mixins UnityPlaybackState {}
+  declare var UnityPlaybackState: {|
+    +Playing: 0, // 0
+    +Paused: 1 // 1
+  |};
 
   declare class UnityTrackMetadata {
     title: string;
@@ -32,7 +25,7 @@ declare module "unity-webapi" {
     onNext(onNextCallback: Function): any;
     onPlayPause(onPlayPauseCallback: Function): any;
     getPlaybackstate(response: Function): any;
-    setPlaybackstate(state: UnityPlaybackState): any;
+    setPlaybackstate(state: $Values<typeof UnityPlaybackState>): any;
     setCanGoNext(cangonext: boolean): any;
     setCanGoPrev(cangoprev: boolean): any;
     setCanPlay(canplay: boolean): any;
