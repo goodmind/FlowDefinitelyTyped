@@ -487,17 +487,17 @@ declare module "numjs" {
   /**
    * 28x28 grayscale image with an handwritten digit extracted from MNIST database
    */
-  declare var images$data$digit: NdArray;
+  declare var images$data$digit: NdArray<>;
 
   /**
    * 28x28 grayscale image with an handwritten digit extracted from MNIST database
    */
-  declare var images$data$five: NdArray;
+  declare var images$data$five: NdArray<>;
 
   /**
    * 300x600 COLOR image representing Node.js's logo
    */
-  declare var images$data$node: NdArray;
+  declare var images$data$node: NdArray<>;
 
   /**
    * The standard, yet sometimes controversial
@@ -506,7 +506,7 @@ declare module "numjs" {
    * is useful because it contains smooth, textured, shaded as well as
    * detail areas.
    */
-  declare var images$data$lena: NdArray;
+  declare var images$data$lena: NdArray<>;
 
   /**
    * The standard, yet sometimes
@@ -515,14 +515,14 @@ declare module "numjs" {
    * this image is useful because it contains smooth, textured, shaded as
    * well as detail areas.
    */
-  declare var images$data$lenna: NdArray;
+  declare var images$data$lenna: NdArray<>;
 
   /**
    * This low-contrast image of the surface of
    * the moon is useful for illustrating histogram equalization and
    * contrast stretching.
    */
-  declare var images$data$moon: NdArray;
+  declare var images$data$moon: NdArray<>;
 
   declare function images$read(input: string): NdArray<Uint8Array>;
 
