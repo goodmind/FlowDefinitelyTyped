@@ -10,47 +10,47 @@ declare module "applepayjs" {
      */
     constructor(
       version: number,
-      paymentRequest: ApplePayJS$ApplePayJS$ApplePayPaymentRequest
+      paymentRequest: ApplePayJS$ApplePayPaymentRequest
     ): this;
 
     /**
      * A callback function that is automatically called when the payment UI is dismissed.
      */
-    oncancel: (event: ApplePayJS$ApplePayJS$Event) => void;
+    oncancel: (event: ApplePayJS$Event) => void;
 
     /**
      * A callback function that is automatically called when the user has authorized the Apple Pay payment with Touch ID, Face ID, or passcode.
      */
     onpaymentauthorized: (
-      event: ApplePayJS$ApplePayJS$ApplePayPaymentAuthorizedEvent
+      event: ApplePayJS$ApplePayPaymentAuthorizedEvent
     ) => void;
 
     /**
      * A callback function that is automatically called when a new payment method is selected.
      */
     onpaymentmethodselected: (
-      event: ApplePayJS$ApplePayJS$ApplePayPaymentMethodSelectedEvent
+      event: ApplePayJS$ApplePayPaymentMethodSelectedEvent
     ) => void;
 
     /**
      * A callback function that is called when a shipping contact is selected in the payment sheet.
      */
     onshippingcontactselected: (
-      event: ApplePayJS$ApplePayJS$ApplePayShippingContactSelectedEvent
+      event: ApplePayJS$ApplePayShippingContactSelectedEvent
     ) => void;
 
     /**
      * A callback function that is automatically called when a shipping method is selected.
      */
     onshippingmethodselected: (
-      event: ApplePayJS$ApplePayJS$ApplePayShippingMethodSelectedEvent
+      event: ApplePayJS$ApplePayShippingMethodSelectedEvent
     ) => void;
 
     /**
      * A callback function that is automatically called when the payment sheet is displayed.
      */
     onvalidatemerchant: (
-      event: ApplePayJS$ApplePayJS$ApplePayValidateMerchantEvent
+      event: ApplePayJS$ApplePayValidateMerchantEvent
     ) => void;
 
     /**
@@ -99,12 +99,12 @@ declare module "applepayjs" {
     completeMerchantValidation(merchantSession: any): void;
 
     /**
- * Completes the payment authorization with a result.
- * @param result - The status of the payment, whether it succeeded or failed for Apple Pay JS versions 1 and 2,
-or the result of the payment authorization, including its status and list of errors for Apple Pay JS version 3.
- */
+     * Completes the payment authorization with a result.
+     * @param result - The status of the payment, whether it succeeded or failed for Apple Pay JS versions 1 and 2,
+     * or the result of the payment authorization, including its status and list of errors for Apple Pay JS version 3.
+     */
     completePayment(
-      result: number | ApplePayJS$ApplePayJS$ApplePayPaymentAuthorizationResult
+      result: number | ApplePayJS$ApplePayPaymentAuthorizationResult
     ): void;
 
     /**
@@ -113,8 +113,8 @@ or the result of the payment authorization, including its status and list of err
      * @param newLineItems - A sequence of ApplePayLineItem dictionaries.
      */
     completePaymentMethodSelection(
-      newTotal: ApplePayJS$ApplePayJS$ApplePayLineItem,
-      newLineItems: ApplePayJS$ApplePayJS$ApplePayLineItem[]
+      newTotal: ApplePayJS$ApplePayLineItem,
+      newLineItems: ApplePayJS$ApplePayLineItem[]
     ): void;
 
     /**
@@ -122,7 +122,7 @@ or the result of the payment authorization, including its status and list of err
      * @param update - The updated payment method.
      */
     completePaymentMethodSelection(
-      update: ApplePayJS$ApplePayJS$ApplePayPaymentMethodUpdate
+      update: ApplePayJS$ApplePayPaymentMethodUpdate
     ): void;
 
     /**
@@ -134,9 +134,9 @@ or the result of the payment authorization, including its status and list of err
      */
     completeShippingContactSelection(
       status: number,
-      newShippingMethods: ApplePayJS$ApplePayJS$ApplePayShippingMethod[],
-      newTotal: ApplePayJS$ApplePayJS$ApplePayLineItem,
-      newLineItems: ApplePayJS$ApplePayJS$ApplePayLineItem[]
+      newShippingMethods: ApplePayJS$ApplePayShippingMethod[],
+      newTotal: ApplePayJS$ApplePayLineItem,
+      newLineItems: ApplePayJS$ApplePayLineItem[]
     ): void;
 
     /**
@@ -144,7 +144,7 @@ or the result of the payment authorization, including its status and list of err
      * @param update - The updated shipping contact.
      */
     completeShippingContactSelection(
-      update: ApplePayJS$ApplePayJS$ApplePayShippingContactUpdate
+      update: ApplePayJS$ApplePayShippingContactUpdate
     ): void;
 
     /**
@@ -155,8 +155,8 @@ or the result of the payment authorization, including its status and list of err
      */
     completeShippingMethodSelection(
       status: number,
-      newTotal: ApplePayJS$ApplePayJS$ApplePayLineItem,
-      newLineItems: ApplePayJS$ApplePayJS$ApplePayLineItem[]
+      newTotal: ApplePayJS$ApplePayLineItem,
+      newLineItems: ApplePayJS$ApplePayLineItem[]
     ): void;
 
     /**
@@ -164,7 +164,7 @@ or the result of the payment authorization, including its status and list of err
      * @param update - The updated shipping method.
      */
     completeShippingMethodSelection(
-      update: ApplePayJS$ApplePayJS$ApplePayShippingMethodUpdate
+      update: ApplePayJS$ApplePayShippingMethodUpdate
     ): void;
 
     /**
@@ -207,6 +207,17 @@ or the result of the payment authorization, including its status and list of err
      */
     static STATUS_PIN_REQUIRED: number;
   }
+  declare var ApplePayJS: typeof npm$namespace$ApplePayJS;
+
+  declare var npm$namespace$ApplePayJS: {
+    ApplePayPaymentAuthorizedEvent: typeof ApplePayJS$ApplePayPaymentAuthorizedEvent,
+    ApplePayPaymentMethodSelectedEvent: typeof ApplePayJS$ApplePayPaymentMethodSelectedEvent,
+    ApplePayShippingContactSelectedEvent: typeof ApplePayJS$ApplePayShippingContactSelectedEvent,
+    ApplePayShippingContactUpdate: typeof ApplePayJS$ApplePayShippingContactUpdate,
+    ApplePayShippingMethodSelectedEvent: typeof ApplePayJS$ApplePayShippingMethodSelectedEvent,
+    ApplePayValidateMerchantEvent: typeof ApplePayJS$ApplePayValidateMerchantEvent,
+    Event: typeof ApplePayJS$Event
+  };
 
   /**
    * Field names used for requesting contact information in a payment request.
