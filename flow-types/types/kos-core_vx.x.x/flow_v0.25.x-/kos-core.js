@@ -11,7 +11,7 @@ declare module "kos-core" {
     };
   }
   declare interface WrapperConfig {
-    model: KosModel;
+    model: KosModel<>;
     autoLoad?: boolean;
     autoReset?: boolean;
     namespace?: string;
@@ -25,7 +25,7 @@ declare module "kos-core" {
     getParam?: () => string;
     getNamespace?: () => string;
   }
-  declare export type KosDispatch = (action: Action) => void;
+  declare export type KosDispatch = (action: Action<>) => void;
   declare export type GetKosState<T = any> = () => T;
   declare export interface KosModel<T = any> {
     namespace: string;
@@ -33,7 +33,7 @@ declare module "kos-core" {
     reducers: {
       [key: string]: (
         state: T,
-        payload: {
+        x: {
           payload: T
         }
       ) => void
@@ -42,19 +42,19 @@ declare module "kos-core" {
       [key: string]: (
         dispatch: KosDispatch,
         getState: GetKosState<T>,
-        action: Action
+        action: Action<>
       ) => void
     };
     setup?: (dispatch: KosDispatch, getState: GetKosState<T>) => void;
     getAsync?: (
       key: string
-    ) => (dispatch: KosDispatch, getState?: GetKosState) => void;
+    ) => (dispatch: KosDispatch, getState?: GetKosState<>) => void;
   }
   declare interface Kos {
     Util: Util;
     registeModel: (model: any) => void;
     removeModel: (namespace: string) => void;
-    getModel: (namespace: string) => KosModel;
+    getModel: (namespace: string) => KosModel<>;
     use: (
       middleware: (api: {
         dispatch: any,
@@ -63,8 +63,8 @@ declare module "kos-core" {
     ) => void;
     Wrapper: (
       config: WrapperConfig
-    ) => (component: ReactComponent<any & KosProps>) => any;
-    start: (Layout: ReactComponent, container?: string) => void;
+    ) => (component: ReactComponent<any & KosProps<>>) => any;
+    start: (Layout: ReactComponent<>, container?: string) => void;
   }
   declare var KOS: Kos;
   declare export default typeof KOS;
