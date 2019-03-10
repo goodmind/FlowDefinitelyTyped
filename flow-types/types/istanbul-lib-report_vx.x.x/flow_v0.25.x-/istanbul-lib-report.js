@@ -12,9 +12,9 @@ declare module "istanbul-lib-report" {
   declare export function getDefaultWatermarks(): Watermarks;
 
   declare export var summarizers: {
-    flat(coverageMap: CoverageMap): Tree,
-    nested(coverageMap: CoverageMap): Tree,
-    pkg(coverageMap: CoverageMap): Tree
+    flat(coverageMap: CoverageMap): Tree<>,
+    nested(coverageMap: CoverageMap): Tree<>,
+    pkg(coverageMap: CoverageMap): Tree<>
   };
   declare export interface ContextOptions {
     dir: string;
@@ -52,7 +52,7 @@ declare module "istanbul-lib-report" {
     isSummary(): boolean;
     getCoverageSummary(filesOnly: boolean): CoverageSummary;
     getFileCoverage(): FileCoverage;
-    visit(visitor: Visitor, state: any): void;
+    visit(visitor: Visitor<>, state: any): void;
   }
   declare export type ReportNode = {
     path: string,
