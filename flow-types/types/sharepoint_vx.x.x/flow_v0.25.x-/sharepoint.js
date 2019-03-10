@@ -29,7 +29,7 @@ declare module "sharepoint" {
     key: string;
     loaded: boolean;
     depkeys?: string[];
-    state: Sods;
+    state: $Values<typeof Sods>;
     qfn?: any[];
     reset?: boolean;
   }
@@ -392,7 +392,7 @@ declare module "sharepoint" {
     ): any;
     static hasPermission(
       listPermissionMask: number,
-      listPermission: SP$ListLevelPermissionMask
+      listPermission: $Values<typeof SP$ListLevelPermissionMask>
     ): boolean;
     static newGuid(): SP$Guid;
     static isNullOrEmptyString(str: string): boolean;
@@ -494,7 +494,7 @@ declare module "sharepoint" {
 
   declare function SP$ListOperation$Selection$getSelectedItems(): Array<{
     id: number,
-    fsObjType: SP$FileSystemObjectType
+    fsObjType: $Values<typeof SP$FileSystemObjectType>
   }>;
 
   declare function SP$ListOperation$Selection$getSelectedList(): string;
@@ -537,7 +537,7 @@ declare module "sharepoint" {
       success: (response: SP$ResponseInfo) => void,
       error?: (
         response: SP$ResponseInfo,
-        error: SP$RequestExecutorErrors,
+        error: $Values<typeof SP$RequestExecutorErrors>,
         statusText: string
       ) => void
     ): void;
@@ -564,7 +564,7 @@ declare module "sharepoint" {
     success?: (response: SP$ResponseInfo) => void;
     error?: (
       response: SP$ResponseInfo,
-      error: SP$RequestExecutorErrors,
+      error: $Values<typeof SP$RequestExecutorErrors>,
       statusText: string
     ) => void;
     state?: any;
@@ -587,7 +587,7 @@ declare module "sharepoint" {
     state?: any;
   }
 
-  declare class SP$ProxyWebRequestExecutor mixins undefined.WebRequestExecutor {
+  declare class SP$ProxyWebRequestExecutor mixins Sys.Net.WebRequestExecutor {
     constructor(url: string, options?: any): this;
   }
 
@@ -809,8 +809,11 @@ declare module "sharepoint" {
     ): void;
     static invokeSetProperty(obj: any, propName: string, propValue: any): void;
     static invokeGetProperty(obj: any, propName: string): any;
-    static specifyDateTimeKind(datetime: Date, kind: SP$DateTimeKind): void;
-    static getDateTimeKind(datetime: Date): SP$DateTimeKind;
+    static specifyDateTimeKind(
+      datetime: Date,
+      kind: $Values<typeof SP$DateTimeKind>
+    ): void;
+    static getDateTimeKind(datetime: Date): $Values<typeof SP$DateTimeKind>;
     static createUnspecifiedDateTime(
       year: number,
       month: number,
@@ -825,21 +828,21 @@ declare module "sharepoint" {
   }
 
   declare interface SP$IWebRequestExecutorFactory {
-    createWebRequestExecutor(): Sys.NetWebRequestExecutor;
+    createWebRequestExecutor(): Sys.Net.WebRequestExecutor;
   }
 
   declare class SP$PageRequestFailedEventArgs mixins Sys.EventArgs {
-    get_executor(): Sys.NetWebRequestExecutor;
+    get_executor(): Sys.Net.WebRequestExecutor;
     get_errorMessage(): string;
     get_isErrorPage(): boolean;
   }
 
   declare class SP$PageRequestSucceededEventArgs mixins Sys.EventArgs {
-    get_executor(): Sys.NetWebRequestExecutor;
+    get_executor(): Sys.Net.WebRequestExecutor;
   }
 
   declare class SP$PageRequest {
-    get_request(): Sys.NetWebRequest;
+    get_request(): Sys.Net.WebRequest;
     get_url(): string;
     set_url(value: string): void;
     get_expectedContentType(): string;
@@ -1209,13 +1212,13 @@ declare module "sharepoint" {
   |};
 
   declare class SP$WebRequestEventArgs mixins Sys.EventArgs {
-    constructor(webRequest: Sys.NetWebRequest): this;
-    get_webRequest(): Sys.NetWebRequest;
+    constructor(webRequest: Sys.Net.WebRequest): this;
+    get_webRequest(): Sys.Net.WebRequest;
   }
 
   declare class SP$ClientRequest {
     static get_nextSequenceId(): number;
-    get_webRequest(): Sys.NetWebRequest;
+    get_webRequest(): Sys.Net.WebRequest;
     add_requestSucceeded(
       value: (sender: any, args: SP$ClientRequestSucceededEventArgs) => void
     ): void;
@@ -1657,7 +1660,7 @@ declare module "sharepoint" {
 
   declare class SP$AlternateUrl mixins SP$ClientObject {
     get_uri(): string;
-    get_urlZone(): SP$UrlZone;
+    get_urlZone(): $Values<typeof SP$UrlZone>;
   }
 
   declare class SP$App mixins SP$ClientObject {
@@ -1700,7 +1703,7 @@ declare module "sharepoint" {
     get_remoteAppUrl(): string;
     get_settingsPageUrl(): string;
     get_siteId(): SP$Guid;
-    get_status(): SP$AppInstanceStatus;
+    get_status(): $Values<typeof SP$AppInstanceStatus>;
     get_title(): string;
     get_webId(): SP$Guid;
     getErrorDetails(): SP$ClientObjectList<SP$AppInstanceErrorDetails>;
@@ -1716,12 +1719,12 @@ declare module "sharepoint" {
     get_correlationId(): SP$Guid;
     set_correlationId(value: SP$Guid): void;
     get_errorDetail(): string;
-    get_errorType(): SP$AppInstanceErrorType;
-    set_errorType(value: SP$AppInstanceErrorType): void;
+    get_errorType(): $Values<typeof SP$AppInstanceErrorType>;
+    set_errorType(value: $Values<typeof SP$AppInstanceErrorType>): void;
     get_errorTypeName(): string;
     get_exceptionMessage(): string;
-    get_source(): SP$AppInstanceErrorSource;
-    set_source(value: SP$AppInstanceErrorSource): void;
+    get_source(): $Values<typeof SP$AppInstanceErrorSource>;
+    set_source(value: $Values<typeof SP$AppInstanceErrorSource>): void;
     get_sourceName(): string;
   }
 
@@ -1810,10 +1813,10 @@ declare module "sharepoint" {
   }
 
   declare class SP$BasePermissions mixins SP$ClientValueObject {
-    set(perm: SP$PermissionKind): void;
-    clear(perm: SP$PermissionKind): void;
+    set(perm: $Values<typeof SP$PermissionKind>): void;
+    clear(perm: $Values<typeof SP$PermissionKind>): void;
     clearAll(): void;
-    has(perm: SP$PermissionKind): boolean;
+    has(perm: $Values<typeof SP$PermissionKind>): boolean;
     equals(perm: SP$BasePermissions): boolean;
     hasPermissions(high: number, low: number): boolean;
     get_typeId(): string;
@@ -1930,7 +1933,7 @@ declare module "sharepoint" {
 
   declare class SP$Change mixins SP$ClientObject {
     get_changeToken(): SP$ChangeToken;
-    get_changeType(): SP$ChangeType;
+    get_changeType(): $Values<typeof SP$ChangeType>;
     get_siteId(): SP$Guid;
     get_time(): Date;
   }
@@ -2183,7 +2186,7 @@ declare module "sharepoint" {
     get_sealed(): boolean;
     set_sealed(value: boolean): void;
     get_stringId(): string;
-    get_workflowAssociations(): SP$WorkflowWorkflowAssociationCollection;
+    get_workflowAssociations(): SP$Workflow$WorkflowAssociationCollection;
     update(updateChildren: boolean): void;
     deleteObject(): void;
   }
@@ -2253,8 +2256,8 @@ declare module "sharepoint" {
     get_receiverId(): SP$Guid;
     get_receiverName(): string;
     get_sequenceNumber(): number;
-    get_synchronization(): SP$EventReceiverSynchronization;
-    get_eventType(): SP$EventReceiverType;
+    get_synchronization(): $Values<typeof SP$EventReceiverSynchronization>;
+    get_eventType(): $Values<typeof SP$EventReceiverType>;
     get_receiverUrl(): string;
     update(): void;
     deleteObject(): void;
@@ -2279,10 +2282,12 @@ declare module "sharepoint" {
     set_receiverName(value: string): void;
     get_sequenceNumber(): number;
     set_sequenceNumber(value: number): void;
-    get_synchronization(): SP$EventReceiverSynchronization;
-    set_synchronization(value: SP$EventReceiverSynchronization): void;
-    get_eventType(): SP$EventReceiverType;
-    set_eventType(value: SP$EventReceiverType): void;
+    get_synchronization(): $Values<typeof SP$EventReceiverSynchronization>;
+    set_synchronization(
+      value: $Values<typeof SP$EventReceiverSynchronization>
+    ): void;
+    get_eventType(): $Values<typeof SP$EventReceiverType>;
+    set_eventType(value: $Values<typeof SP$EventReceiverType>): void;
     get_receiverUrl(): string;
     set_receiverUrl(value: string): void;
     get_typeId(): string;
@@ -2389,7 +2394,7 @@ declare module "sharepoint" {
     add(
       featureId: SP$Guid,
       force: boolean,
-      featdefScope: SP$FeatureDefinitionScope
+      featdefScope: $Values<typeof SP$FeatureDefinitionScope>
     ): SP$Feature,
     remove(featureId: SP$Guid, force: boolean): void
   } & SP$ClientObjectCollection<SP$Feature>;
@@ -2438,8 +2443,8 @@ declare module "sharepoint" {
     set_staticName(value: string): void;
     get_title(): string;
     set_title(value: string): void;
-    get_fieldTypeKind(): SP$FieldType;
-    set_fieldTypeKind(value: SP$FieldType): void;
+    get_fieldTypeKind(): $Values<typeof SP$FieldType>;
+    set_fieldTypeKind(value: $Values<typeof SP$FieldType>): void;
     get_typeAsString(): string;
     set_typeAsString(value: string): void;
     get_typeDisplayName(): string;
@@ -2458,12 +2463,12 @@ declare module "sharepoint" {
   }
 
   declare class SP$FieldCalculated mixins SP$Field {
-    get_dateFormat(): SP$DateTimeFieldFormatType;
-    set_dateFormat(value: SP$DateTimeFieldFormatType): void;
+    get_dateFormat(): $Values<typeof SP$DateTimeFieldFormatType>;
+    set_dateFormat(value: $Values<typeof SP$DateTimeFieldFormatType>): void;
     get_formula(): string;
     set_formula(value: string): void;
-    get_outputType(): SP$FieldType;
-    set_outputType(value: SP$FieldType): void;
+    get_outputType(): $Values<typeof SP$FieldType>;
+    set_outputType(value: $Values<typeof SP$FieldType>): void;
   }
 
   declare class SP$FieldCalculatedErrorValue mixins SP$ClientValueObject {
@@ -2485,8 +2490,8 @@ declare module "sharepoint" {
   }
 
   declare class SP$FieldChoice mixins SP$FieldMultiChoice {
-    get_editFormat(): SP$ChoiceFormatType;
-    set_editFormat(value: SP$ChoiceFormatType): void;
+    get_editFormat(): $Values<typeof SP$ChoiceFormatType>;
+    set_editFormat(value: $Values<typeof SP$ChoiceFormatType>): void;
   }
 
   declare type SP$FieldCollection = {
@@ -2504,7 +2509,7 @@ declare module "sharepoint" {
     addFieldAsXml(
       schemaXml: string,
       addToDefaultView: boolean,
-      options: SP$AddFieldOptions
+      options: $Values<typeof SP$AddFieldOptions>
     ): SP$Field,
     getByInternalNameOrTitle(strName: string): SP$Field
   } & SP$ClientObjectCollection<SP$Field>;
@@ -2527,12 +2532,16 @@ declare module "sharepoint" {
   }
 
   declare class SP$FieldDateTime mixins SP$Field {
-    get_dateTimeCalendarType(): SP$CalendarType;
-    set_dateTimeCalendarType(value: SP$CalendarType): void;
-    get_displayFormat(): SP$DateTimeFieldFormatType;
-    set_displayFormat(value: SP$DateTimeFieldFormatType): void;
-    get_friendlyDisplayFormat(): SP$DateTimeFieldFriendlyFormatType;
-    set_friendlyDisplayFormat(value: SP$DateTimeFieldFriendlyFormatType): void;
+    get_dateTimeCalendarType(): $Values<typeof SP$CalendarType>;
+    set_dateTimeCalendarType(value: $Values<typeof SP$CalendarType>): void;
+    get_displayFormat(): $Values<typeof SP$DateTimeFieldFormatType>;
+    set_displayFormat(value: $Values<typeof SP$DateTimeFieldFormatType>): void;
+    get_friendlyDisplayFormat(): $Values<
+      typeof SP$DateTimeFieldFriendlyFormatType
+    >;
+    set_friendlyDisplayFormat(
+      value: $Values<typeof SP$DateTimeFieldFriendlyFormatType>
+    ): void;
   }
 
   declare class SP$FieldGeolocation mixins SP$Field {}
@@ -2598,9 +2607,11 @@ declare module "sharepoint" {
     set_lookupWebId(value: SP$Guid): void;
     get_primaryFieldId(): string;
     set_primaryFieldId(value: string): void;
-    get_relationshipDeleteBehavior(): SP$RelationshipDeleteBehaviorType;
+    get_relationshipDeleteBehavior(): $Values<
+      typeof SP$RelationshipDeleteBehaviorType
+    >;
     set_relationshipDeleteBehavior(
-      value: SP$RelationshipDeleteBehaviorType
+      value: $Values<typeof SP$RelationshipDeleteBehaviorType>
     ): void;
   }
 
@@ -2708,8 +2719,8 @@ declare module "sharepoint" {
   |};
 
   declare class SP$FieldUrl mixins SP$Field {
-    get_displayFormat(): SP$UrlFieldFormatType;
-    set_displayFormat(value: SP$UrlFieldFormatType): void;
+    get_displayFormat(): $Values<typeof SP$UrlFieldFormatType>;
+    set_displayFormat(value: $Values<typeof SP$UrlFieldFormatType>): void;
   }
 
   declare class SP$FieldUrlValue mixins SP$ClientValueObject {
@@ -2732,8 +2743,8 @@ declare module "sharepoint" {
     set_presence(value: boolean): void;
     get_selectionGroup(): number;
     set_selectionGroup(value: number): void;
-    get_selectionMode(): SP$FieldUserSelectionMode;
-    set_selectionMode(value: SP$FieldUserSelectionMode): void;
+    get_selectionMode(): $Values<typeof SP$FieldUserSelectionMode>;
+    set_selectionMode(value: $Values<typeof SP$FieldUserSelectionMode>): void;
   }
 
   declare var SP$FieldUserSelectionMode: {|
@@ -2770,13 +2781,13 @@ declare module "sharepoint" {
     /**
      * The type of checkout that exists on the document.
      */
-    get_checkOutType(): SP$CheckOutType;
+    get_checkOutType(): $Values<typeof SP$CheckOutType>;
     get_contentTag(): string;
 
     /**
      * Gets the customization(ghost) status of the SPFile.
      */
-    get_customizedPageStatus(): SP$CustomizedPageStatus;
+    get_customizedPageStatus(): $Values<typeof SP$CustomizedPageStatus>;
 
     /**
      * Gets the ETag of the file
@@ -2788,7 +2799,7 @@ declare module "sharepoint" {
      */
     get_exists(): boolean;
     get_length(): number;
-    get_level(): SP$FileLevel;
+    get_level(): $Values<typeof SP$FileLevel>;
 
     /**
      * Specifies the SPListItem corresponding to this file if this file belongs to a doclib. Values for all fields are returned also.
@@ -2843,7 +2854,7 @@ declare module "sharepoint" {
      * Reverts an existing online or offline checkout for the file.
      */
     undoCheckOut(): void;
-    checkIn(comment: string, checkInType: SP$CheckinType): void;
+    checkIn(comment: string, checkInType: $Values<typeof SP$CheckinType>): void;
     publish(comment: string): void;
 
     /**
@@ -2865,9 +2876,9 @@ declare module "sharepoint" {
       contentTag: string
     ): SP$IntResult;
     getLimitedWebPartManager(
-      scope: SP$WebPartsPersonalizationScope
-    ): SP$WebPartsLimitedWebPartManager;
-    moveTo(newUrl: string, flags: SP$MoveOperations): void;
+      scope: $Values<typeof SP$WebParts$PersonalizationScope>
+    ): SP$WebParts$LimitedWebPartManager;
+    moveTo(newUrl: string, flags: $Values<typeof SP$MoveOperations>): void;
     copyTo(strNewUrl: string, bOverWrite: boolean): void;
     saveBinary(parameters: SP$FileSaveBinaryInformation): void;
     deleteObject(): void;
@@ -2886,7 +2897,7 @@ declare module "sharepoint" {
     add(parameters: SP$FileCreationInformation): SP$File,
     addTemplateFile(
       urlOfFile: string,
-      templateFileType: SP$TemplateFileType
+      templateFileType: $Values<typeof SP$TemplateFileType>
     ): SP$File
   } & SP$ClientObjectCollection<SP$File>;
 
@@ -2986,13 +2997,13 @@ declare module "sharepoint" {
   declare class SP$Form mixins SP$ClientObject {
     get_id(): SP$Guid;
     get_serverRelativeUrl(): string;
-    get_formType(): SP$PageType;
+    get_formType(): $Values<typeof SP$PageType>;
   }
 
   declare type SP$FormCollection = {
     itemAt(index: number): SP$Form,
     get_item(index: number): SP$Form,
-    getByPageType(formType: SP$PageType): SP$Form,
+    getByPageType(formType: $Values<typeof SP$PageType>): SP$Form,
     getById(id: SP$Guid): SP$Form
   } & SP$ClientObjectCollection<SP$Form>;
 
@@ -3002,7 +3013,7 @@ declare module "sharepoint" {
     get_loginName(): string;
     get_title(): string;
     set_title(value: string): void;
-    get_principalType(): SP$UtilitiesPrincipalType;
+    get_principalType(): $Values<typeof SP$Utilities$PrincipalType>;
   }
 
   declare class SP$Group mixins SP$Principal {
@@ -3141,12 +3152,12 @@ declare module "sharepoint" {
     /**
      * Gets base type for the list.
      */
-    get_baseType(): SP$BaseType;
+    get_baseType(): $Values<typeof SP$BaseType>;
 
     /**
      * Gets a value that specifies the override of the web application's BrowserFileHandling property at the list level.
      */
-    get_browserFileHandling(): SP$BrowserFileHandling;
+    get_browserFileHandling(): $Values<typeof SP$BrowserFileHandling>;
 
     /**
      * Gets the content types that are associated with the list.
@@ -3256,12 +3267,14 @@ declare module "sharepoint" {
     /**
      * Gets a value that specifies the minimum permission required to view minor versions and drafts within the list.
      */
-    get_draftVersionVisibility(): SP$DraftVisibilityType;
+    get_draftVersionVisibility(): $Values<typeof SP$DraftVisibilityType>;
 
     /**
      * Sets a value that specifies the minimum permission required to view minor versions and drafts within the list.
      */
-    set_draftVersionVisibility(value: SP$DraftVisibilityType): void;
+    set_draftVersionVisibility(
+      value: $Values<typeof SP$DraftVisibilityType>
+    ): void;
 
     /**
      * Gets a value that specifies the effective permissions on the list that are assigned to the current user.
@@ -3571,7 +3584,7 @@ declare module "sharepoint" {
     /**
      * Gets the collection of workflow association objects that represents all the workflows that are associated with the list.
      */
-    get_workflowAssociations(): SP$WorkflowWorkflowAssociationCollection;
+    get_workflowAssociations(): SP$Workflow$WorkflowAssociationCollection;
 
     /**
      * Returns the collection of changes from the change log that have occurred within the list, based on the specified query.
@@ -3618,7 +3631,7 @@ declare module "sharepoint" {
     renderListFormData(
       itemId: number,
       formId: string,
-      mode: SP$ControlMode
+      mode: $Values<typeof SP$ControlMode>
     ): SP$StringResult;
 
     /**
@@ -3711,8 +3724,8 @@ declare module "sharepoint" {
     set_description(value: string): void;
     get_documentTemplateType(): number;
     set_documentTemplateType(value: number): void;
-    get_quickLaunchOption(): SP$QuickLaunchOptions;
-    set_quickLaunchOption(value: SP$QuickLaunchOptions): void;
+    get_quickLaunchOption(): $Values<typeof SP$QuickLaunchOptions>;
+    set_quickLaunchOption(value: $Values<typeof SP$QuickLaunchOptions>): void;
     get_templateFeatureId(): SP$Guid;
     set_templateFeatureId(value: SP$Guid): void;
     get_templateType(): number;
@@ -3755,8 +3768,8 @@ declare module "sharepoint" {
     get_displayName(): string;
     get_message(): string;
     get_name(): string;
-    get_reason(): SP$ListDataValidationFailureReason;
-    get_validationType(): SP$ListDataValidationType;
+    get_reason(): $Values<typeof SP$ListDataValidationFailureReason>;
+    get_validationType(): $Values<typeof SP$ListDataValidationType>;
     get_typeId(): string;
     writeToXml(
       writer: SP$XmlWriter,
@@ -3838,7 +3851,7 @@ declare module "sharepoint" {
     /**
      * Gets or sets the file system object type for the item (file, folder or invalid).
      */
-    get_fileSystemObjectType(): SP$FileSystemObjectType;
+    get_fileSystemObjectType(): $Values<typeof SP$FileSystemObjectType>;
 
     /**
      * Gets the parent folder for the list item
@@ -3855,7 +3868,9 @@ declare module "sharepoint" {
      */
     get_parentList(): SP$List;
     refreshLoad(): void;
-    getWOPIFrameUrl(action: SP$UtilitiesSPWOPIFrameAction): SP$StringResult;
+    getWOPIFrameUrl(
+      action: $Values<typeof SP$Utilities$SPWOPIFrameAction>
+    ): SP$StringResult;
 
     /**
      * Commits changed properties of the list item. The actual update is performed during context.executeQueryAsync method call.
@@ -3925,12 +3940,14 @@ declare module "sharepoint" {
      * Sets a value that specifies the name of the new list item. It must be the name of the file if the parent list of the list item is a document library.
      */
     set_leafName(value: string): void;
-    get_underlyingObjectType(): SP$FileSystemObjectType;
+    get_underlyingObjectType(): $Values<typeof SP$FileSystemObjectType>;
 
     /**
      * Sets a value that specifies whether the new list item is a file or a folder.
      */
-    set_underlyingObjectType(value: SP$FileSystemObjectType): void;
+    set_underlyingObjectType(
+      value: $Values<typeof SP$FileSystemObjectType>
+    ): void;
     get_typeId(): string;
     writeToXml(
       writer: SP$XmlWriter,
@@ -3963,7 +3980,7 @@ declare module "sharepoint" {
 
   declare class SP$ListTemplate mixins SP$ClientObject {
     get_allowsFolderCreation(): boolean;
-    get_baseType(): SP$BaseType;
+    get_baseType(): $Values<typeof SP$BaseType>;
     get_description(): string;
     get_featureId(): SP$Guid;
     get_hidden(): boolean;
@@ -4223,8 +4240,8 @@ declare module "sharepoint" {
     get_deletedDate(): Date;
     get_dirName(): string;
     get_id(): SP$Guid;
-    get_itemState(): SP$RecycleBinItemState;
-    get_itemType(): SP$RecycleBinItemType;
+    get_itemState(): $Values<typeof SP$RecycleBinItemState>;
+    get_itemType(): $Values<typeof SP$RecycleBinItemType>;
     get_leafName(): string;
     get_size(): number;
     get_title(): string;
@@ -4298,7 +4315,9 @@ declare module "sharepoint" {
     get_fieldId(): SP$Guid;
     get_listId(): SP$Guid;
     get_lookupList(): SP$List;
-    get_relationshipDeleteBehavior(): SP$RelationshipDeleteBehaviorType;
+    get_relationshipDeleteBehavior(): $Values<
+      typeof SP$RelationshipDeleteBehaviorType
+    >;
     get_webId(): SP$Guid;
   }
 
@@ -4437,7 +4456,7 @@ declare module "sharepoint" {
     set_name(value: string): void;
     get_order(): number;
     set_order(value: number): void;
-    get_roleTypeKind(): SP$RoleType;
+    get_roleTypeKind(): $Values<typeof SP$RoleType>;
     update(): void;
     deleteObject(): void;
   }
@@ -4461,7 +4480,7 @@ declare module "sharepoint" {
     getByName(name: string): SP$RoleDefinition,
     add(parameters: SP$RoleDefinitionCreationInformation): SP$RoleDefinition,
     getById(id: number): SP$RoleDefinition,
-    getByType(roleType: SP$RoleType): SP$RoleDefinition
+    getByType(roleType: $Values<typeof SP$RoleType>): SP$RoleDefinition
   } & SP$ClientObjectCollection<SP$RoleDefinition>;
 
   declare class SP$RoleDefinitionCreationInformation
@@ -4549,7 +4568,7 @@ declare module "sharepoint" {
       ruleId: SP$Guid,
       bRepair: boolean,
       bRunAlways: boolean
-    ): SP$SiteHealthSiteHealthSummary;
+    ): SP$SiteHealth$SiteHealthSummary;
     createPreviewSPSite(upgrade: boolean, sendemail: boolean): void;
     runUpgradeSiteSession(
       versionUpgrade: boolean,
@@ -4631,8 +4650,8 @@ declare module "sharepoint" {
     get_requestDate(): Date;
     get_retryCount(): number;
     get_startTime(): Date;
-    get_status(): SP$UpgradeStatus;
-    get_upgradeType(): SP$UpgradeType;
+    get_status(): $Values<typeof SP$UpgradeStatus>;
+    get_upgradeType(): $Values<typeof SP$UpgradeType>;
     get_warnings(): number;
     get_typeId(): string;
     writeToXml(
@@ -4736,11 +4755,13 @@ declare module "sharepoint" {
     set_name(value: string): void;
     get_registrationId(): string;
     set_registrationId(value: string): void;
-    get_registrationType(): SP$UserCustomActionRegistrationType;
-    set_registrationType(value: SP$UserCustomActionRegistrationType): void;
+    get_registrationType(): $Values<typeof SP$UserCustomActionRegistrationType>;
+    set_registrationType(
+      value: $Values<typeof SP$UserCustomActionRegistrationType>
+    ): void;
     get_rights(): SP$BasePermissions;
     set_rights(value: SP$BasePermissions): void;
-    get_scope(): SP$UserCustomActionScope;
+    get_scope(): $Values<typeof SP$UserCustomActionScope>;
     get_scriptBlock(): string;
     set_scriptBlock(value: string): void;
     get_scriptSrc(): string;
@@ -4838,8 +4859,8 @@ declare module "sharepoint" {
     get_requiresClientIntegration(): boolean;
     get_rowLimit(): number;
     set_rowLimit(value: number): void;
-    get_scope(): SP$ViewScope;
-    set_scope(value: SP$ViewScope): void;
+    get_scope(): $Values<typeof SP$ViewScope>;
+    set_scope(value: $Values<typeof SP$ViewScope>): void;
     get_serverRelativeUrl(): string;
     get_styleId(): string;
     get_threaded(): boolean;
@@ -4880,8 +4901,8 @@ declare module "sharepoint" {
     set_title(value: string): void;
     get_viewFields(): string[];
     set_viewFields(value: string[]): void;
-    get_viewTypeKind(): SP$ViewType;
-    set_viewTypeKind(value: SP$ViewType): void;
+    get_viewTypeKind(): $Values<typeof SP$ViewType>;
+    set_viewTypeKind(value: $Values<typeof SP$ViewType>): void;
     get_typeId(): string;
     writeToXml(
       writer: SP$XmlWriter,
@@ -4990,8 +5011,8 @@ declare module "sharepoint" {
     get_userCustomActions(): SP$UserCustomActionCollection;
     get_webs(): SP$WebCollection;
     get_webTemplate(): string;
-    get_workflowAssociations(): SP$WorkflowWorkflowAssociationCollection;
-    get_workflowTemplates(): SP$WorkflowWorkflowTemplateCollection;
+    get_workflowAssociations(): SP$Workflow$WorkflowAssociationCollection;
+    get_workflowTemplates(): SP$Workflow$WorkflowTemplateCollection;
     doesUserHavePermissions(
       permissionMask: SP$BasePermissions
     ): SP$BooleanResult;
@@ -4999,7 +5020,7 @@ declare module "sharepoint" {
     mapToIcon(
       fileName: string,
       progId: string,
-      size: SP$UtilitiesIconSize
+      size: $Values<typeof SP$Utilities$IconSize>
     ): SP$StringResult;
     registerPushNotificationSubscriber(
       deviceAppInstanceId: SP$Guid,
@@ -5030,11 +5051,11 @@ declare module "sharepoint" {
     update(): void;
     getFileByServerRelativeUrl(serverRelativeUrl: string): SP$File;
     getFolderByServerRelativeUrl(serverRelativeUrl: string): SP$Folder;
-    getEntity(namespace: string, name: string): SP$BusinessDataEntity;
+    getEntity(namespace: string, name: string): SP$BusinessData$Entity;
     getAppBdcCatalogForAppInstance(
       appInstanceId: SP$Guid
-    ): SP$BusinessDataAppBdcCatalog;
-    getAppBdcCatalog(): SP$BusinessDataAppBdcCatalog;
+    ): SP$BusinessData$AppBdcCatalog;
+    getAppBdcCatalog(): SP$BusinessData$AppBdcCatalog;
     getSubwebsForCurrentUser(query: SP$SubwebQuery): SP$WebCollection;
     getAppInstanceById(appInstanceId: SP$Guid): SP$AppInstance;
     getAppInstancesByProductId(
@@ -5183,7 +5204,7 @@ declare module "sharepoint" {
   };
   declare interface SP$Application$UI$DefaultFormsInformationRequestor {
     onDefaultFormsInformationRetrieveSuccess(
-      defaultForms: SP$ApplicationUIDefaultFormsInformation
+      defaultForms: SP$Application$UI$DefaultFormsInformation
     ): void;
     onDefaultFormsInformationRetrieveFailure(): void;
   }
@@ -5197,14 +5218,14 @@ declare module "sharepoint" {
   }
 
   declare class SP$Application$UI$DefaultFormsInformation {
-    DefaultForms: SP$ApplicationUIFormsInfo;
+    DefaultForms: SP$Application$UI$FormsInfo;
     OtherForms: any;
     constructor(): this;
   }
 
   declare class SP$Application$UI$DefaultFormsMenuBuilder {
     static getDefaultFormsInformation(
-      requestor: SP$ApplicationUIDefaultFormsInformationRequestor,
+      requestor: SP$Application$UI$DefaultFormsInformationRequestor,
       listId: SP$Guid
     ): void;
   }
@@ -5223,7 +5244,7 @@ declare module "sharepoint" {
 
   declare interface SP$Application$UI$ViewInformationRequestor {
     onViewInformationReturned(
-      viewGroups: SP$ApplicationUIViewSelectorGroups
+      viewGroups: SP$Application$UI$ViewSelectorGroups
     ): void;
   }
 
@@ -5232,7 +5253,7 @@ declare module "sharepoint" {
     PublicViews: any;
     PersonalViews: any;
     OtherViews: any;
-    DefaultView: SP$ApplicationUIViewSelectorMenuItem;
+    DefaultView: SP$Application$UI$ViewSelectorMenuItem;
     ViewCreation: any;
     constructor(): this;
   }
@@ -5262,15 +5283,15 @@ declare module "sharepoint" {
     static set_filterMenuItemsCallback(value: (menuItems: any) => any): void;
     static showMenu(
       elem: HTMLElement,
-      options: SP$ApplicationUIViewSelectorMenuOptions
+      options: SP$Application$UI$ViewSelectorMenuOptions
     ): void;
     static getViewInformation(
-      requestor: SP$ApplicationUIViewInformationRequestor,
-      options: SP$ApplicationUIViewSelectorMenuOptions
+      requestor: SP$Application$UI$ViewInformationRequestor,
+      options: SP$Application$UI$ViewSelectorMenuOptions
     ): void;
   }
 
-  declare class SP$Application$UI$MoreColorsPicker mixins undefined.Control {
+  declare class SP$Application$UI$MoreColorsPicker mixins Sys.UI.Control {
     constructor(e: HTMLElement): this;
     initialize(): void;
     dispose(): void;
@@ -5278,15 +5299,15 @@ declare module "sharepoint" {
     set_colorValue(value: string): void;
   }
 
-  declare class SP$Application$UI$MoreColorsPage mixins undefined.Control {
+  declare class SP$Application$UI$MoreColorsPage mixins Sys.UI.Control {
     constructor(e: HTMLElement): this;
     initialize(): void;
     dispose(): void;
-    get_moreColorsPicker(): SP$ApplicationUIMoreColorsPicker;
-    set_moreColorsPicker(value: SP$ApplicationUIMoreColorsPicker): void;
+    get_moreColorsPicker(): SP$Application$UI$MoreColorsPicker;
+    set_moreColorsPicker(value: SP$Application$UI$MoreColorsPicker): void;
   }
 
-  declare class SP$Application$UI$ThemeWebPage mixins undefined.Control {
+  declare class SP$Application$UI$ThemeWebPage mixins Sys.UI.Control {
     add_themeDisplayUpdated(
       value: (sender: any, e: Sys.EventArgs) => void
     ): void;
@@ -5296,7 +5317,7 @@ declare module "sharepoint" {
     constructor(e: HTMLElement): this;
     initialize(): void;
     dispose(): void;
-    onThemeSelectionChanged(evt: Sys.UIDomEvent): void;
+    onThemeSelectionChanged(evt: Sys.UI.DomEvent): void;
     updateThemeDisplay(): void;
     get_thmxThemes(): any;
     set_thmxThemes(value: any): void;
@@ -5366,8 +5387,8 @@ declare module "sharepoint" {
     get_ruleId(): SP$Guid;
     get_ruleIsRepairable(): boolean;
     get_ruleName(): string;
-    get_status(): SP$SiteHealthSiteHealthStatusType;
-    set_status(value: SP$SiteHealthSiteHealthStatusType): void;
+    get_status(): $Values<typeof SP$SiteHealth$SiteHealthStatusType>;
+    set_status(value: $Values<typeof SP$SiteHealth$SiteHealthStatusType>): void;
     get_timeStamp(): Date;
     set_timeStamp(value: Date): void;
     get_typeId(): string;
@@ -5388,7 +5409,7 @@ declare module "sharepoint" {
     get_failedErrorCount(): number;
     get_failedWarningCount(): number;
     get_passedCount(): number;
-    get_results(): SP$SiteHealthSiteHealthResult[];
+    get_results(): SP$SiteHealth$SiteHealthResult[];
   }
 
   declare var npm$namespace$SP$BusinessData: {
@@ -5406,7 +5427,7 @@ declare module "sharepoint" {
     Runtime: typeof npm$namespace$SP$BusinessData$Runtime
   };
   declare class SP$BusinessData$AppBdcCatalog mixins SP$ClientObject {
-    getEntity(namespace: string, name: string): SP$BusinessDataEntity;
+    getEntity(namespace: string, name: string): SP$BusinessData$Entity;
     getLobSystemProperty(
       lobSystemName: string,
       propertyName: string
@@ -5443,70 +5464,70 @@ declare module "sharepoint" {
     get_estimatedInstanceCount(): number;
     get_name(): string;
     get_namespace(): string;
-    getIdentifiers(): SP$BusinessDataCollectionsEntityIdentifierCollection;
+    getIdentifiers(): SP$BusinessData$Collections$EntityIdentifierCollection;
     getIdentifierCount(): SP$IntResult;
-    getLobSystem(): SP$BusinessDataLobSystem;
-    getCreatorView(methodInstanceName: string): SP$BusinessDataEntityView;
-    getUpdaterView(updaterName: string): SP$BusinessDataEntityView;
-    getFinderView(methodInstanceName: string): SP$BusinessDataEntityView;
+    getLobSystem(): SP$BusinessData$LobSystem;
+    getCreatorView(methodInstanceName: string): SP$BusinessData$EntityView;
+    getUpdaterView(updaterName: string): SP$BusinessData$EntityView;
+    getFinderView(methodInstanceName: string): SP$BusinessData$EntityView;
     getSpecificFinderView(
       specificFinderName: string
-    ): SP$BusinessDataEntityView;
-    getDefaultSpecificFinderView(): SP$BusinessDataEntityView;
+    ): SP$BusinessData$EntityView;
+    getDefaultSpecificFinderView(): SP$BusinessData$EntityView;
     findSpecificDefault(
-      identity: SP$BusinessDataRuntimeEntityIdentity,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataRuntimeEntityInstance;
+      identity: SP$BusinessData$Runtime$EntityIdentity,
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Runtime$EntityInstance;
     findSpecific(
-      identity: SP$BusinessDataRuntimeEntityIdentity,
+      identity: SP$BusinessData$Runtime$EntityIdentity,
       specificFinderName: string,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataRuntimeEntityInstance;
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Runtime$EntityInstance;
     findSpecificDefaultByBdcId(
       bdcIdentity: string,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataRuntimeEntityInstance;
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Runtime$EntityInstance;
     findSpecificByBdcId(
       bdcIdentity: string,
       specificFinderName: string,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataRuntimeEntityInstance;
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Runtime$EntityInstance;
     findFiltered(
-      filterList: SP$BusinessDataCollectionsFilterCollection,
+      filterList: SP$BusinessData$Collections$FilterCollection,
       nameOfFinder: string,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataCollectionsEntityInstanceCollection;
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Collections$EntityInstanceCollection;
     findAssociated(
-      entityInstance: SP$BusinessDataRuntimeEntityInstance,
+      entityInstance: SP$BusinessData$Runtime$EntityInstance,
       associationName: string,
-      filterList: SP$BusinessDataCollectionsFilterCollection,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataCollectionsEntityInstanceCollection;
+      filterList: SP$BusinessData$Collections$FilterCollection,
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Collections$EntityInstanceCollection;
     getFilters(
       methodInstanceName: string
-    ): SP$BusinessDataCollectionsFilterCollection;
+    ): SP$BusinessData$Collections$FilterCollection;
     execute(
       methodInstanceName: string,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance,
+      lobSystemInstance: SP$BusinessData$LobSystemInstance,
       inputParams: any[]
-    ): SP$BusinessDataMethodExecutionResult;
-    getAssociationView(associationName: string): SP$BusinessDataEntityView;
+    ): SP$BusinessData$MethodExecutionResult;
+    getAssociationView(associationName: string): SP$BusinessData$EntityView;
     create(
-      fieldValues: SP$BusinessDataRuntimeEntityFieldValueDictionary,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataRuntimeEntityIdentity;
+      fieldValues: SP$BusinessData$Runtime$EntityFieldValueDictionary,
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Runtime$EntityIdentity;
     subscribe(
-      eventType: SP$BusinessDataRuntimeEntityEventType,
-      notificationCallback: SP$BusinessDataRuntimeNotificationCallback,
+      eventType: $Values<typeof SP$BusinessData$Runtime$EntityEventType>,
+      notificationCallback: SP$BusinessData$Runtime$NotificationCallback,
       onBehalfOfUser: string,
       subscriberName: string,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
-    ): SP$BusinessDataRuntimeSubscription;
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
+    ): SP$BusinessData$Runtime$Subscription;
     unsubscribe(
-      subscription: SP$BusinessDataRuntimeSubscription,
+      subscription: SP$BusinessData$Runtime$Subscription,
       onBehalfOfUser: string,
       unsubscriberName: string,
-      lobSystemInstance: SP$BusinessDataLobSystemInstance
+      lobSystemInstance: SP$BusinessData$LobSystemInstance
     ): void;
   }
 
@@ -5526,12 +5547,12 @@ declare module "sharepoint" {
   }
 
   declare class SP$BusinessData$EntityView mixins SP$ClientObject {
-    get_fields(): SP$BusinessDataCollectionsEntityFieldCollection;
+    get_fields(): SP$BusinessData$Collections$EntityFieldCollection;
     get_name(): string;
     get_relatedSpecificFinderName(): string;
-    getDefaultValues(): SP$BusinessDataRuntimeEntityFieldValueDictionary;
+    getDefaultValues(): SP$BusinessData$Runtime$EntityFieldValueDictionary;
     getXmlSchema(): SP$StringResult;
-    getTypeDescriptor(fieldDotNotation: string): SP$BusinessDataTypeDescriptor;
+    getTypeDescriptor(fieldDotNotation: string): SP$BusinessData$TypeDescriptor;
     getType(fieldDotNotation: string): SP$StringResult;
   }
 
@@ -5546,7 +5567,7 @@ declare module "sharepoint" {
 
   declare class SP$BusinessData$LobSystem mixins SP$ClientObject {
     get_name(): string;
-    getLobSystemInstances(): SP$BusinessDataCollectionsLobSystemInstanceCollection;
+    getLobSystemInstances(): SP$BusinessData$Collections$LobSystemInstanceCollection;
   }
 
   declare class SP$BusinessData$LobSystemInstance mixins SP$ClientObject {
@@ -5554,13 +5575,13 @@ declare module "sharepoint" {
   }
 
   declare class SP$BusinessData$MethodExecutionResult mixins SP$ClientObject {
-    get_returnParameterCollection(): SP$BusinessDataReturnParameterCollection;
+    get_returnParameterCollection(): SP$BusinessData$ReturnParameterCollection;
   }
 
   declare type SP$BusinessData$ReturnParameterCollection = {
-    itemAt(index: number): SP$BusinessDataRuntimeEntityFieldValueDictionary,
-    get_item(index: number): SP$BusinessDataRuntimeEntityFieldValueDictionary
-  } & SP$ClientObjectCollection<SP$BusinessDataRuntimeEntityFieldValueDictionary>;
+    itemAt(index: number): SP$BusinessData$Runtime$EntityFieldValueDictionary,
+    get_item(index: number): SP$BusinessData$Runtime$EntityFieldValueDictionary
+  } & SP$ClientObjectCollection<SP$BusinessData$Runtime$EntityFieldValueDictionary>;
 
   declare class SP$BusinessData$TypeDescriptor mixins SP$ClientObject {
     get_containsReadOnly(): boolean;
@@ -5573,44 +5594,44 @@ declare module "sharepoint" {
     getDefaultDisplayName(): SP$StringResult;
     isRoot(): SP$BooleanResult;
     isLeaf(): SP$BooleanResult;
-    getChildTypeDescriptors(): SP$BusinessDataCollectionsTypeDescriptorCollection;
-    getParentTypeDescriptor(): SP$BusinessDataTypeDescriptor;
+    getChildTypeDescriptors(): SP$BusinessData$Collections$TypeDescriptorCollection;
+    getParentTypeDescriptor(): SP$BusinessData$TypeDescriptor;
   }
 
   declare type SP$BusinessData$Collections$EntityFieldCollection = {
-    itemAt(index: number): SP$BusinessDataEntityField,
-    get_item(index: number): SP$BusinessDataEntityField
-  } & SP$ClientObjectCollection<SP$BusinessDataEntityField>;
+    itemAt(index: number): SP$BusinessData$EntityField,
+    get_item(index: number): SP$BusinessData$EntityField
+  } & SP$ClientObjectCollection<SP$BusinessData$EntityField>;
 
   declare type SP$BusinessData$Collections$EntityIdentifierCollection = {
-    itemAt(index: number): SP$BusinessDataEntityIdentifier,
-    get_item(index: number): SP$BusinessDataEntityIdentifier
-  } & SP$ClientObjectCollection<SP$BusinessDataEntityIdentifier>;
+    itemAt(index: number): SP$BusinessData$EntityIdentifier,
+    get_item(index: number): SP$BusinessData$EntityIdentifier
+  } & SP$ClientObjectCollection<SP$BusinessData$EntityIdentifier>;
 
   declare type SP$BusinessData$Collections$EntityInstanceCollection = {
-    itemAt(index: number): SP$BusinessDataRuntimeEntityInstance,
-    get_item(index: number): SP$BusinessDataRuntimeEntityInstance
-  } & SP$ClientObjectCollection<SP$BusinessDataRuntimeEntityInstance>;
+    itemAt(index: number): SP$BusinessData$Runtime$EntityInstance,
+    get_item(index: number): SP$BusinessData$Runtime$EntityInstance
+  } & SP$ClientObjectCollection<SP$BusinessData$Runtime$EntityInstance>;
 
   declare type SP$BusinessData$Collections$FilterCollection = {
-    itemAt(index: number): SP$BusinessDataFilter,
-    get_item(index: number): SP$BusinessDataFilter,
+    itemAt(index: number): SP$BusinessData$Filter,
+    get_item(index: number): SP$BusinessData$Filter,
     setFilterValue(
       inputFilterName: string,
       valueIndex: number,
       value: any
     ): void
-  } & SP$ClientObjectCollection<SP$BusinessDataFilter>;
+  } & SP$ClientObjectCollection<SP$BusinessData$Filter>;
 
   declare type SP$BusinessData$Collections$LobSystemInstanceCollection = {
-    itemAt(index: number): SP$BusinessDataLobSystemInstance,
-    get_item(index: number): SP$BusinessDataLobSystemInstance
-  } & SP$ClientObjectCollection<SP$BusinessDataLobSystemInstance>;
+    itemAt(index: number): SP$BusinessData$LobSystemInstance,
+    get_item(index: number): SP$BusinessData$LobSystemInstance
+  } & SP$ClientObjectCollection<SP$BusinessData$LobSystemInstance>;
 
   declare type SP$BusinessData$Collections$TypeDescriptorCollection = {
-    itemAt(index: number): SP$BusinessDataTypeDescriptor,
-    get_item(index: number): SP$BusinessDataTypeDescriptor
-  } & SP$ClientObjectCollection<SP$BusinessDataTypeDescriptor>;
+    itemAt(index: number): SP$BusinessData$TypeDescriptor,
+    get_item(index: number): SP$BusinessData$TypeDescriptor
+  } & SP$ClientObjectCollection<SP$BusinessData$TypeDescriptor>;
 
   declare var npm$namespace$SP$BusinessData$Infrastructure: {
     ExternalSubscriptionStore: typeof SP$BusinessData$Infrastructure$ExternalSubscriptionStore
@@ -5621,7 +5642,7 @@ declare module "sharepoint" {
     static newObject(
       context: SP$ClientRuntimeContext,
       web: SP$Web
-    ): SP$BusinessDataInfrastructureExternalSubscriptionStore;
+    ): SP$BusinessData$Infrastructure$ExternalSubscriptionStore;
     indexStore(): void;
   }
 
@@ -5668,7 +5689,7 @@ declare module "sharepoint" {
     static newObject(
       context: SP$ClientRuntimeContext,
       identifierValues: any[]
-    ): SP$BusinessDataRuntimeEntityIdentity;
+    ): SP$BusinessData$Runtime$EntityIdentity;
     refreshLoad(): void;
   }
 
@@ -5682,7 +5703,7 @@ declare module "sharepoint" {
       fieldDotNotation: string
     ): void;
     createCollectionInstance(fieldDotNotation: string, size: number): void;
-    getIdentity(): SP$BusinessDataRuntimeEntityIdentity;
+    getIdentity(): SP$BusinessData$Runtime$EntityIdentity;
     deleteObject(): void;
     update(): void;
     fromXml(xml: string): void;
@@ -5703,7 +5724,7 @@ declare module "sharepoint" {
     static newObject(
       context: SP$ClientRuntimeContext,
       notificationEndpoint: string
-    ): SP$BusinessDataRuntimeNotificationCallback;
+    ): SP$BusinessData$Runtime$NotificationCallback;
   }
 
   declare class SP$BusinessData$Runtime$Subscription mixins SP$ClientObject {
@@ -5714,7 +5735,7 @@ declare module "sharepoint" {
       context: SP$ClientRuntimeContext,
       id: any,
       hash: string
-    ): SP$BusinessDataRuntimeSubscription;
+    ): SP$BusinessData$Runtime$Subscription;
   }
 
   declare var npm$namespace$SP$Sharing: {
@@ -5726,7 +5747,7 @@ declare module "sharepoint" {
   declare class SP$Sharing$DocumentSharingManager {
     static getRoleDefinition(
       context: SP$ClientRuntimeContext,
-      role: SP$SharingRole
+      role: $Values<typeof SP$Sharing$Role>
     ): SP$RoleDefinition;
     static isDocumentSharingEnabled(
       context: SP$ClientRuntimeContext,
@@ -5735,13 +5756,13 @@ declare module "sharepoint" {
     static updateDocumentSharingInfo(
       context: SP$ClientRuntimeContext,
       resourceAddress: string,
-      userRoleAssignments: SP$SharingUserRoleAssignment[],
+      userRoleAssignments: SP$Sharing$UserRoleAssignment[],
       validateExistingPermissions: boolean,
       additiveMode: boolean,
       sendServerManagedNotification: boolean,
       customMessage: string,
       includeAnonymousLinksInNotification: boolean
-    ): SP$SharingUserSharingResult[];
+    ): SP$Sharing$UserSharingResult[];
   }
 
   declare var SP$Sharing$Role: {|
@@ -5752,8 +5773,8 @@ declare module "sharepoint" {
   |};
 
   declare class SP$Sharing$UserRoleAssignment mixins SP$ClientValueObject {
-    get_role(): SP$SharingRole;
-    set_role(value: SP$SharingRole): void;
+    get_role(): $Values<typeof SP$Sharing$Role>;
+    set_role(value: $Values<typeof SP$Sharing$Role>): void;
     get_userId(): string;
     set_userId(value: string): void;
     get_typeId(): string;
@@ -5765,8 +5786,8 @@ declare module "sharepoint" {
   }
 
   declare class SP$Sharing$UserSharingResult mixins SP$ClientValueObject {
-    get_allowedRoles(): SP$SharingRole[];
-    get_currentRole(): SP$SharingRole;
+    get_allowedRoles(): $Values<typeof SP$Sharing$Role>[];
+    get_currentRole(): $Values<typeof SP$Sharing$Role>;
     get_isUserKnown(): boolean;
     get_message(): string;
     get_status(): boolean;
@@ -5998,7 +6019,7 @@ declare module "sharepoint" {
     /**
      * Identifies whether the actor is a user, document, site, or tag.
      */
-    get_actorType(): SP$Social$SocialActorType;
+    get_actorType(): $Values<typeof SP$Social$SocialActorType>;
 
     /**
      * Specifies whether the actor can be followed by the current user.
@@ -6054,7 +6075,7 @@ declare module "sharepoint" {
     /**
      * Represents the status of retrieving the actor
      */
-    get_status(): SP$Social$SocialStatusCode;
+    get_status(): $Values<typeof SP$Social$SocialStatusCode>;
 
     /**
      * The StatusText property returns the most recent post of the user.
@@ -6099,12 +6120,14 @@ declare module "sharepoint" {
     /**
      * Identifies whether the actor is a user, document, site, or tag.
      */
-    get_actorType(): SP$Social$SocialActorType;
+    get_actorType(): $Values<typeof SP$Social$SocialActorType>;
 
     /**
      * Identifies whether the actor is a user, document, site, or tag.
      */
-    set_actorType(value: SP$Social$SocialActorType): SP$Social$SocialActorType;
+    set_actorType(
+      value: $Values<typeof SP$Social$SocialActorType>
+    ): $Values<typeof SP$Social$SocialActorType>;
 
     /**
      * URI of the document or site content.
@@ -6148,14 +6171,14 @@ declare module "sharepoint" {
     /**
      * Specifies the type of object that the attachment contains.
      */
-    get_attachmentKind(): SP$Social$SocialAttachmentKind;
+    get_attachmentKind(): $Values<typeof SP$Social$SocialAttachmentKind>;
 
     /**
      * Specifies the type of object that the attachment contains.
      */
     set_attachmentKind(
-      value: SP$Social$SocialAttachmentKind
-    ): SP$Social$SocialAttachmentKind;
+      value: $Values<typeof SP$Social$SocialAttachmentKind>
+    ): $Values<typeof SP$Social$SocialAttachmentKind>;
 
     /**
      * Specifies the action to take when the user selects the attachment.
@@ -6261,14 +6284,14 @@ declare module "sharepoint" {
     /**
      * Specifies whether the action is to navigate to a URI or an action that is dependent on the context in which the object is presented to the user.
      */
-    get_actionKind(): SP$Social$SocialAttachmentActionKind;
+    get_actionKind(): $Values<typeof SP$Social$SocialAttachmentActionKind>;
 
     /**
      * Specifies whether the action is to navigate to a URI or an action that is dependent on the context in which the object is presented to the user.
      */
     set_actionKind(
-      value: SP$Social$SocialAttachmentActionKind
-    ): SP$Social$SocialAttachmentActionKind;
+      value: $Values<typeof SP$Social$SocialAttachmentActionKind>
+    ): $Values<typeof SP$Social$SocialAttachmentActionKind>;
 
     /**
      * Specifies the URI associated with the action.
@@ -6300,14 +6323,14 @@ declare module "sharepoint" {
     /**
      * Specifies whether the item being inserted is a user, document, site, tag, or link.
      */
-    get_itemType(): SP$Social$SocialDataItemType;
+    get_itemType(): $Values<typeof SP$Social$SocialDataItemType>;
 
     /**
      * Specifies whether the item being inserted is a user, document, site, tag, or link.
      */
     set_itemType(
-      value: SP$Social$SocialDataItemType
-    ): SP$Social$SocialDataItemType;
+      value: $Values<typeof SP$Social$SocialDataItemType>
+    ): $Values<typeof SP$Social$SocialDataItemType>;
 
     /**
      * Identifies the tag.
@@ -6372,7 +6395,7 @@ declare module "sharepoint" {
     /**
      * Specifies whether the overlay is a link or one or more actors.
      */
-    get_overlayType(): SP$Social$SocialDataOverlayType;
+    get_overlayType(): $Values<typeof SP$Social$SocialDataOverlayType>;
   }
 
   /**
@@ -6387,7 +6410,7 @@ declare module "sharepoint" {
      * Specifies a type name associated with the internal error if a type name is available.
      */
     get_internalTypeName(): string;
-    get_status(): SP$Social$SocialStatusCode;
+    get_status(): $Values<typeof SP$Social$SocialStatusCode>;
   }
 
   /**
@@ -6398,7 +6421,7 @@ declare module "sharepoint" {
      * Specifies attributes of the returned feed.
      * The attributes specify if the requested feed has additional threads that were not included in the returned thread.
      */
-    get_attributes(): SP$Social$SocialFeedAttributes;
+    get_attributes(): $Values<typeof SP$Social$SocialFeedAttributes>;
 
     /**
      * Returns the date-time of the most recent post that was requested.
@@ -6479,7 +6502,7 @@ declare module "sharepoint" {
      * Each thread consists of a root post and an array of reply posts.
      */
     getFeed(
-      type: SP$Social$SocialFeedType,
+      type: $Values<typeof SP$Social$SocialFeedType>,
       options: Social$SocialFeedOptions
     ): SP$Social$SocialFeed;
 
@@ -6576,10 +6599,10 @@ declare module "sharepoint" {
     set_newerThan(value: string): string;
     get_olderThan(): string;
     set_olderThan(value: string): string;
-    get_sortOrder(): SP$Social$SocialFeedSortOrder;
+    get_sortOrder(): $Values<typeof SP$Social$SocialFeedSortOrder>;
     set_sortOrder(
-      value: SP$Social$SocialFeedSortOrder
-    ): SP$Social$SocialFeedSortOrder;
+      value: $Values<typeof SP$Social$SocialFeedSortOrder>
+    ): $Values<typeof SP$Social$SocialFeedSortOrder>;
   }
 
   /**
@@ -6610,8 +6633,12 @@ declare module "sharepoint" {
     follow(actor: SP$Social$SocialActorInfo): SP$IntResult;
     stopFollowing(actor: SP$Social$SocialActorInfo): SP$BooleanResult;
     isFollowed(actor: SP$Social$SocialActorInfo): SP$BooleanResult;
-    getFollowed(types: SP$Social$SocialActorTypes): SP$Social$SocialActor[];
-    getFollowedCount(types: SP$Social$SocialActorTypes): SP$IntResult;
+    getFollowed(
+      types: $Values<typeof SP$Social$SocialActorTypes>
+    ): SP$Social$SocialActor[];
+    getFollowedCount(
+      types: $Values<typeof SP$Social$SocialActorTypes>
+    ): SP$IntResult;
 
     /**
      * Returns the users who are followers of the current user.
@@ -6643,7 +6670,7 @@ declare module "sharepoint" {
     /**
      * Describes attributes about the post, such as whether the current user can delete or like the post.
      */
-    get_attributes(): SP$Social$SocialPostAttributes;
+    get_attributes(): $Values<typeof SP$Social$SocialPostAttributes>;
 
     /**
      * Specifies the author of the post as an index to the social thread's Actors array.
@@ -6678,7 +6705,7 @@ declare module "sharepoint" {
     /**
      * Specifies whether a post is the root post or a reply post in a thread
      */
-    get_postType(): SP$Social$SocialPostType;
+    get_postType(): $Values<typeof SP$Social$SocialPostType>;
 
     /**
      * Specifies the URI of the image to be displayed with the post.
@@ -6832,14 +6859,14 @@ declare module "sharepoint" {
     /**
      * Specifies whether the item being formatted is a text element, a user, a document, a site, a tag, or a link.
      */
-    get_itemType(): SP$Social$SocialPostDefinitionDataItemType;
+    get_itemType(): $Values<typeof SP$Social$SocialPostDefinitionDataItemType>;
 
     /**
      * Specifies whether the item being formatted is a text element, a user, a document, a site, a tag, or a link.
      */
     set_itemType(
-      value: SP$Social$SocialPostDefinitionDataItemType
-    ): SP$Social$SocialPostDefinitionDataItemType;
+      value: $Values<typeof SP$Social$SocialPostDefinitionDataItemType>
+    ): $Values<typeof SP$Social$SocialPostDefinitionDataItemType>;
 
     /**
      * Specifies the post definition token to be replaced by the item
@@ -6921,7 +6948,7 @@ declare module "sharepoint" {
     /**
      * Specifies attributes of the thread, such as whether the current user can reply or lock the thread and whether the thread is a digest of a thread on the server, whether the number of replies has reached the maximum, and whether the thread is locked.
      */
-    get_attributes(): SP$Social$SocialThreadAttributes;
+    get_attributes(): $Values<typeof SP$Social$SocialThreadAttributes>;
 
     /**
      * Specifies the unique identification of the thread.
@@ -6955,12 +6982,12 @@ declare module "sharepoint" {
     /**
      * Provides information about conditions that were encountered retrieving the thread that did not prevent the operation from completing.
      */
-    get_status(): SP$Social$SocialStatusCode;
+    get_status(): $Values<typeof SP$Social$SocialStatusCode>;
 
     /**
      * Specifies if the thread is a normal thread created by one or more CreatePost calls or a reference post generated by the server when a user replies to a post, likes a post, or creates a post with a tag or mention
      */
-    get_threadType(): SP$Social$SocialThreadType;
+    get_threadType(): $Values<typeof SP$Social$SocialThreadType>;
     get_totalReplyCount(): number;
   }
 
@@ -7033,7 +7060,7 @@ declare module "sharepoint" {
     getTermsInDefaultLanguage(
       termLabel: string,
       defaultLabelOnly: boolean,
-      stringMatchOption: SP$Taxonomy$StringMatchOption,
+      stringMatchOption: $Values<typeof SP$Taxonomy$StringMatchOption>,
       resultCollectionSize: number,
       trimUnavailable: boolean,
       trimDeprecated: boolean
@@ -7041,7 +7068,7 @@ declare module "sharepoint" {
     getTermsInWorkingLocale(
       termLabel: string,
       defaultLabelOnly: boolean,
-      stringMatchOption: SP$Taxonomy$StringMatchOption,
+      stringMatchOption: $Values<typeof SP$Taxonomy$StringMatchOption>,
       resultCollectionSize: number,
       trimUnavailable: boolean,
       trimDeprecated: boolean
@@ -7154,7 +7181,7 @@ declare module "sharepoint" {
     getByName(name: string): Taxonomy$TermGroup
   } & SP$ClientObjectCollection<Taxonomy$TermGroup>;
 
-  declare class SP$Taxonomy$TermGroup mixins TaxonomyItem {
+  declare class SP$Taxonomy$TermGroup mixins SP$Taxonomy$TaxonomyItem {
     get_description(): string;
     set_description(value: string): void;
     get_isSiteCollectionGroup(): boolean;
@@ -7174,7 +7201,7 @@ declare module "sharepoint" {
     ): Taxonomy$TermSetCollection;
   }
 
-  declare class SP$Taxonomy$TermSetItem mixins TaxonomyItem {
+  declare class SP$Taxonomy$TermSetItem mixins SP$Taxonomy$TaxonomyItem {
     get_customProperties(): {
       [key: string]: string
     };
@@ -7200,7 +7227,7 @@ declare module "sharepoint" {
     getByName(name: string): Taxonomy$TermSet
   } & SP$ClientObjectCollection<Taxonomy$TermSet>;
 
-  declare class SP$Taxonomy$TermSet mixins TermSetItem {
+  declare class SP$Taxonomy$TermSet mixins SP$Taxonomy$TermSetItem {
     get_contact(): string;
     set_contact(value: string): void;
     get_description(): string;
@@ -7242,7 +7269,7 @@ declare module "sharepoint" {
     getByName(name: string): Taxonomy$Term
   } & SP$ClientObjectCollection<Taxonomy$Term>;
 
-  declare class SP$Taxonomy$Term mixins TermSetItem {
+  declare class SP$Taxonomy$Term mixins SP$Taxonomy$TermSetItem {
     get_description(): string;
     get_isDeprecated(): boolean;
     get_isKeyword(): boolean;
@@ -7281,7 +7308,7 @@ declare module "sharepoint" {
       termLabel: string,
       lcid: number,
       defaultLabelOnly: boolean,
-      stringMatchOption: SP$Taxonomy$StringMatchOption,
+      stringMatchOption: $Values<typeof SP$Taxonomy$StringMatchOption>,
       resultCollectionSize: number,
       trimUnavailable: boolean
     ): SP$Taxonomy$TermCollection;
@@ -7321,8 +7348,10 @@ declare module "sharepoint" {
     set_lcid(value: number): void;
     get_resultCollectionSize(): number;
     set_resultCollectionSize(value: number): void;
-    get_stringMatchOption(): SP$Taxonomy$StringMatchOption;
-    set_stringMatchOption(value: SP$Taxonomy$StringMatchOption): void;
+    get_stringMatchOption(): $Values<typeof SP$Taxonomy$StringMatchOption>;
+    set_stringMatchOption(
+      value: $Values<typeof SP$Taxonomy$StringMatchOption>
+    ): void;
     get_termLabel(): string;
     set_termLabel(value: string): void;
     get_trimDeprecated(): boolean;
@@ -7340,18 +7369,22 @@ declare module "sharepoint" {
     set_customPropertyValue(value: string): void;
     get_resultCollectionSize(): number;
     set_resultCollectionSize(value: number): void;
-    get_stringMatchOption(): SP$Taxonomy$StringMatchOption;
-    set_stringMatchOption(value: SP$Taxonomy$StringMatchOption): void;
+    get_stringMatchOption(): $Values<typeof SP$Taxonomy$StringMatchOption>;
+    set_stringMatchOption(
+      value: $Values<typeof SP$Taxonomy$StringMatchOption>
+    ): void;
     get_trimUnavailable(): boolean;
     set_trimUnavailable(value: boolean): void;
   }
 
   declare class SP$Taxonomy$ChangeInformation mixins SP$ClientObject {
     constructor(context: SP$ClientContext): this;
-    get_itemType(): SP$Taxonomy$ChangeItemType;
-    set_itemType(value: SP$Taxonomy$ChangeItemType): void;
-    get_operationType(): SP$Taxonomy$ChangeOperationType;
-    set_operationType(value: SP$Taxonomy$ChangeOperationType): void;
+    get_itemType(): $Values<typeof SP$Taxonomy$ChangeItemType>;
+    set_itemType(value: $Values<typeof SP$Taxonomy$ChangeItemType>): void;
+    get_operationType(): $Values<typeof SP$Taxonomy$ChangeOperationType>;
+    set_operationType(
+      value: $Values<typeof SP$Taxonomy$ChangeOperationType>
+    ): void;
     get_startTime(): Date;
     set_startTime(value: Date): void;
     get_withinTimeSpan(): number;
@@ -7367,19 +7400,19 @@ declare module "sharepoint" {
     get_changedBy(): string;
     get_changedTime(): Date;
     get_id(): SP$Guid;
-    get_itemType(): SP$Taxonomy$ChangeItemType;
-    get_operation(): SP$Taxonomy$ChangeOperationType;
+    get_itemType(): $Values<typeof SP$Taxonomy$ChangeItemType>;
+    get_operation(): $Values<typeof SP$Taxonomy$ChangeOperationType>;
   }
 
-  declare class SP$Taxonomy$ChangedSite mixins ChangedItem {
+  declare class SP$Taxonomy$ChangedSite mixins SP$Taxonomy$ChangedItem {
     get_siteId(): SP$Guid;
     get_termId(): SP$Guid;
     get_termSetId(): SP$Guid;
   }
 
-  declare class SP$Taxonomy$ChangedGroup mixins ChangedItem {}
+  declare class SP$Taxonomy$ChangedGroup mixins SP$Taxonomy$ChangedItem {}
 
-  declare class SP$Taxonomy$ChangedTerm mixins ChangedItem {
+  declare class SP$Taxonomy$ChangedTerm mixins SP$Taxonomy$ChangedItem {
     get_changedCustomProperties(): string[];
     get_changedLocalCustomProperties(): string[];
     get_groupId(): SP$Guid;
@@ -7388,12 +7421,12 @@ declare module "sharepoint" {
     get_termSetId(): SP$Guid;
   }
 
-  declare class SP$Taxonomy$ChangedTermSet mixins ChangedItem {
+  declare class SP$Taxonomy$ChangedTermSet mixins SP$Taxonomy$ChangedItem {
     get_fromGroupId(): SP$Guid;
     get_groupId(): SP$Guid;
   }
 
-  declare class SP$Taxonomy$ChangedTermStore mixins ChangedItem {
+  declare class SP$Taxonomy$ChangedTermStore mixins SP$Taxonomy$ChangedItem {
     get_changedLanguage(): number;
     get_isDefaultLanguageChanged(): boolean;
     get_isFullFarmRestore(): boolean;
@@ -7488,7 +7521,7 @@ declare module "sharepoint" {
   declare var npm$namespace$SP$DocumentSet: {
     DocumentSet: typeof SP$DocumentSet$DocumentSet
   };
-  declare class SP$DocumentSet$DocumentSet mixins ClientObject {
+  declare class SP$DocumentSet$DocumentSet mixins SP$ClientObject {
     static create(
       context: SP$ClientContext,
       parentFolder: SP$Folder,
@@ -7501,7 +7534,7 @@ declare module "sharepoint" {
     EmbedCodeConfiguration: typeof SP$Video$EmbedCodeConfiguration,
     VideoSet: typeof SP$Video$VideoSet
   };
-  declare class SP$Video$EmbedCodeConfiguration mixins ClientValueObject {
+  declare class SP$Video$EmbedCodeConfiguration mixins SP$ClientValueObject {
     get_autoPlay(): boolean;
     set_autoPlay(value: boolean): boolean;
     get_displayTitle(): boolean;
@@ -7522,7 +7555,7 @@ declare module "sharepoint" {
     set_previewImagePath(value: string): string;
   }
 
-  declare class SP$Video$VideoSet mixins DocumentSet$DocumentSet {
+  declare class SP$Video$VideoSet mixins SP$DocumentSet$DocumentSet {
     static createVideo(
       context: SP$ClientContext,
       parentFolder: SP$Folder,
@@ -7549,8 +7582,826 @@ declare module "sharepoint" {
   }
 
   declare var npm$namespace$SP$UI: {
+    $create_DialogOptions: typeof SP$UI$$create_DialogOptions,
+
+    DialogResult: typeof SP$UI$DialogResult,
+    PopoutMenu: typeof SP$UI$PopoutMenu,
+    AttractModeControl: typeof SP$UI$AttractModeControl,
+    Status: typeof SP$UI$Status,
+    Menu: typeof SP$UI$Menu,
+    MenuTest: typeof SP$UI$MenuTest,
+    DialogOptions: typeof SP$UI$DialogOptions,
+    Dialog: typeof SP$UI$Dialog,
+    ModalDialog: typeof SP$UI$ModalDialog,
+    Command: typeof SP$UI$Command,
+    CommandBar: typeof SP$UI$CommandBar,
+    PagingControl: typeof SP$UI$PagingControl,
+    ApplicationPages: typeof npm$namespace$SP$UI$ApplicationPages,
+    Notify: typeof npm$namespace$SP$UI$Notify,
+    Workspace: typeof npm$namespace$SP$UI$Workspace,
+    Workplace: typeof npm$namespace$SP$UI$Workplace,
+    UIUtility: typeof npm$namespace$SP$UI$UIUtility,
     Controls: typeof npm$namespace$SP$UI$Controls
   };
+
+  declare var npm$namespace$SP$UI$ApplicationPages: {
+    SelectorType: typeof SP$UI$ApplicationPages$SelectorType,
+    CalendarScope: typeof SP$UI$ApplicationPages$CalendarScope,
+    SelectorSelectionEventArgs: typeof SP$UI$ApplicationPages$SelectorSelectionEventArgs,
+    CalendarSelector: typeof SP$UI$ApplicationPages$CalendarSelector,
+    BaseSelectorComponent: typeof SP$UI$ApplicationPages$BaseSelectorComponent,
+    CalendarInstanceRepository: typeof SP$UI$ApplicationPages$CalendarInstanceRepository,
+    ResolveEntity: typeof SP$UI$ApplicationPages$ResolveEntity,
+    ClientPeoplePickerQueryParameters: typeof SP$UI$ApplicationPages$ClientPeoplePickerQueryParameters,
+    ClientPeoplePickerWebServiceInterface: typeof SP$UI$ApplicationPages$ClientPeoplePickerWebServiceInterface,
+    PeoplePickerWebServiceInterface: typeof SP$UI$ApplicationPages$PeoplePickerWebServiceInterface
+  };
+  declare class SP$UI$ApplicationPages$SelectorSelectionEventArgs
+    mixins Sys.EventArgs {
+    constructor(entities: any): this;
+    get_entities(): any;
+  }
+
+  declare interface SP$UI$ApplicationPages$ISelectorComponent {
+    get_selectedEntities(): any;
+    set_selectedEntities(value: any): void;
+    get_callback(): (sender: any, e: Sys.EventArgs) => void;
+    set_callback(value: (sender: any, e: Sys.EventArgs) => void): void;
+    get_scopeKey(): string;
+    get_componentType(): $Values<typeof SP$UI$ApplicationPages$SelectorType>;
+    revertTo(ent: SP$UI$ApplicationPages$ResolveEntity): void;
+    removeEntity(ent: SP$UI$ApplicationPages$ResolveEntity): void;
+    setEntity(ent: SP$UI$ApplicationPages$ResolveEntity): void;
+  }
+
+  declare var SP$UI$ApplicationPages$SelectorType: {|
+    +none: 0, // 0
+    +resource: 1, // 1
+    +people: 2, // 2
+    +people_And_Resource: 3, // 3
+    +event: 4 // 4
+  |};
+
+  declare class SP$UI$ApplicationPages$CalendarSelector mixins Sys.Component {
+    static instance(): SP$UI$ApplicationPages$CalendarSelector;
+    registerSelector(selector: SP$UI$ApplicationPages$ISelectorComponent): void;
+    getSelector(
+      type: $Values<typeof SP$UI$ApplicationPages$SelectorType>,
+      scopeKey: string
+    ): SP$UI$ApplicationPages$ISelectorComponent;
+    addHandler(
+      scopeKey: string,
+      people: boolean,
+      resource: boolean,
+      handler: (
+        sender: any,
+        selection: SP$UI$ApplicationPages$SelectorSelectionEventArgs
+      ) => void
+    ): void;
+    revertTo(scopeKey: string, ent: SP$UI$ApplicationPages$ResolveEntity): void;
+    removeEntity(
+      scopeKey: string,
+      ent: SP$UI$ApplicationPages$ResolveEntity
+    ): void;
+    constructor(): this;
+  }
+
+  declare class SP$UI$ApplicationPages$BaseSelectorComponent
+    mixins SP$UI$ApplicationPages$ISelectorComponent {
+    constructor(
+      key: string,
+      type: $Values<typeof SP$UI$ApplicationPages$SelectorType>
+    ): this;
+    get_scopeKey(): string;
+    get_componentType(): $Values<typeof SP$UI$ApplicationPages$SelectorType>;
+    get_selectedEntities(): any;
+    set_selectedEntities(value: any): void;
+    get_callback(): (sender: any, e: Sys.EventArgs) => void;
+    set_callback(value: (sender: any, e: Sys.EventArgs) => void): void;
+    revertTo(ent: SP$UI$ApplicationPages$ResolveEntity): void;
+    removeEntity(ent: SP$UI$ApplicationPages$ResolveEntity): void;
+    setEntity(ent: SP$UI$ApplicationPages$ResolveEntity): void;
+  }
+
+  declare interface SP$UI$ApplicationPages$ICalendarController {
+    moveToDate(date: string): void;
+    moveToViewType(viewType: string): void;
+    moveToViewDate(
+      scope: $Values<typeof SP$UI$ApplicationPages$CalendarScope>,
+      date: string
+    ): void;
+    moveToView(
+      scope: $Values<typeof SP$UI$ApplicationPages$CalendarScope>
+    ): void;
+    expandAll(): void;
+    collapseAll(): void;
+    refreshItems(): void;
+    getActiveScope(): $Values<typeof SP$UI$ApplicationPages$CalendarScope>;
+    newItemDialog(contentTypeId: string): void;
+    deleteItem(itemId: string): void;
+  }
+
+  declare var SP$UI$ApplicationPages$CalendarScope: {|
+    +nothing: 0, // 0
+    +monthly: 1, // 1
+    +weeklyGroup: 2, // 2
+    +daily: 3, // 3
+    +weekly: 4, // 4
+    +dailyGroup: 5 // 5
+  |};
+
+  declare class SP$UI$ApplicationPages$CalendarInstanceRepository {
+    static registerInstance(
+      instanceId: string,
+      contoller: SP$UI$ApplicationPages$ICalendarController
+    ): void;
+    static lookupInstance(
+      instanceId: string
+    ): SP$UI$ApplicationPages$ICalendarController;
+    static firstInstance(): SP$UI$ApplicationPages$ICalendarController;
+  }
+
+  declare class SP$UI$ApplicationPages$ResolveEntity {
+    tYPE_EVENT: string;
+    tYPE_USER: string;
+    tYPE_RESOURCE: string;
+    tYPE_EXCHANGE: string;
+    entityType: string;
+    displayName: string;
+    email: string;
+    accountName: string;
+    id: string;
+    members: SP$UI$ApplicationPages$ResolveEntity[];
+    needResolve: boolean;
+    isGroup: boolean;
+    get_key(): string;
+    constructor(): this;
+  }
+
+  declare class SP$UI$ApplicationPages$ClientPeoplePickerQueryParameters
+    mixins SP$ClientValueObject {
+    get_allowEmailAddresses(): boolean;
+    set_allowEmailAddresses(value: boolean): void;
+    get_allowMultipleEntities(): boolean;
+    set_allowMultipleEntities(value: boolean): void;
+    get_allUrlZones(): boolean;
+    set_allUrlZones(value: boolean): void;
+    get_enabledClaimProviders(): string;
+    set_enabledClaimProviders(value: string): void;
+    get_forceClaims(): boolean;
+    set_forceClaims(value: boolean): void;
+    get_maximumEntitySuggestions(): number;
+    set_maximumEntitySuggestions(value: number): void;
+    get_principalSource(): $Values<typeof SP$Utilities$PrincipalSource>;
+    set_principalSource(
+      value: $Values<typeof SP$Utilities$PrincipalSource>
+    ): void;
+    get_principalType(): $Values<typeof SP$Utilities$PrincipalType>;
+    set_principalType(value: $Values<typeof SP$Utilities$PrincipalType>): void;
+    get_queryString(): string;
+    set_queryString(value: string): void;
+    get_required(): boolean;
+    set_required(value: boolean): void;
+    get_sharePointGroupID(): number;
+    set_sharePointGroupID(value: number): void;
+    get_urlZone(): $Values<typeof SP$UrlZone>;
+    set_urlZone(value: $Values<typeof SP$UrlZone>): void;
+    get_urlZoneSpecified(): boolean;
+    set_urlZoneSpecified(value: boolean): void;
+    get_web(): SP$Web;
+    set_web(value: SP$Web): void;
+    get_webApplicationID(): SP$Guid;
+    set_webApplicationID(value: SP$Guid): void;
+    get_typeId(): string;
+    writeToXml(
+      writer: SP$XmlWriter,
+      serializationContext: SP$SerializationContext
+    ): void;
+    constructor(): this;
+  }
+
+  declare class SP$UI$ApplicationPages$ClientPeoplePickerWebServiceInterface {
+    static clientPeoplePickerSearchUser(
+      context: SP$ClientRuntimeContext,
+      queryParams: SP$UI$ApplicationPages$ClientPeoplePickerQueryParameters
+    ): SP$StringResult;
+    static clientPeoplePickerResolveUser(
+      context: SP$ClientRuntimeContext,
+      queryParams: SP$UI$ApplicationPages$ClientPeoplePickerQueryParameters
+    ): SP$StringResult;
+  }
+
+  declare class SP$UI$ApplicationPages$PeoplePickerWebServiceInterface {
+    static getSearchResultsByHierarchy(
+      context: SP$ClientRuntimeContext,
+      providerID: string,
+      hierarchyNodeID: string,
+      entityTypes: string,
+      contextUrl: string
+    ): SP$StringResult;
+    static getSearchResults(
+      context: SP$ClientRuntimeContext,
+      searchPattern: string,
+      providerID: string,
+      hierarchyNodeID: string,
+      entityTypes: string
+    ): SP$StringResult;
+  }
+
+  declare class SP$UI$PopoutMenu mixins Sys.IDisposable {
+    constructor(
+      launcherId: string,
+      menuId: string,
+      iconId: string,
+      launcherOpenCssClass: string,
+      textDirection: string,
+      closeIconUrl: string,
+      isClustered: boolean,
+      closeIconOffsetLeft: number,
+      closeIconOffsetTop: number,
+      closeIconHeight: number,
+      closeIconWidth: number
+    ): this;
+    launchMenu(): void;
+    closeMenu(): void;
+    static createPopoutMenuInstanceAndLaunch(
+      anchorId: string,
+      menuId: string,
+      iconId: string,
+      anchorOpenCss: string,
+      textDirection: string,
+      closeIconUrl: string,
+      isClustered: boolean,
+      x: number,
+      y: number,
+      height: number,
+      width: number
+    ): void;
+    static closeActivePopoutMenuInstance(): void;
+    dispose(): void;
+  }
+
+  declare class SP$UI$AttractModeControl mixins Sys.UI.Control {
+    defaultAttractModeIcon: string;
+    cssAttractMode: string;
+    cssAttractModeBackground: string;
+    cssAttractModeCell: string;
+    cssAttractModeWrapper: string;
+    cssAttractModeIcon: string;
+    cssAttractModeText: string;
+    get_imageElement(): any;
+    get_textElement(): HTMLElement;
+    constructor(): this;
+  }
+
+  declare var npm$namespace$SP$UI$Notify: {
+    addNotification: typeof SP$UI$Notify$addNotification,
+    removeNotification: typeof SP$UI$Notify$removeNotification,
+    showLoadingNotification: typeof SP$UI$Notify$showLoadingNotification,
+
+    Notification: typeof SP$UI$Notify$Notification,
+    NotificationContainer: typeof SP$UI$Notify$NotificationContainer
+  };
+  declare function SP$UI$Notify$addNotification(
+    strHtml: string,
+    bSticky: boolean
+  ): string;
+
+  declare function SP$UI$Notify$removeNotification(nid: string): void;
+
+  declare function SP$UI$Notify$showLoadingNotification(
+    bSticky: boolean
+  ): string;
+
+  declare class SP$UI$Notify$Notification {
+    constructor(
+      containerId: $Values<typeof SPNotifications$ContainerID>,
+      strHtml: string,
+      bSticky?: boolean,
+      strTooltip?: string,
+      onclickHandler?: () => void,
+      extraData?: SPStatusNotificationData
+    ): this;
+    get_id(): string;
+    Show(bNoAnimate: boolean): void;
+    Hide(bNoAnimate: boolean): void;
+  }
+
+  declare class SP$UI$Notify$NotificationContainer {
+    constructor(
+      id: number,
+      element: any,
+      layer: number,
+      notificationLimit?: number
+    ): this;
+    Clear(): void;
+    GetCount(): number;
+    SetEventHandler(
+      eventId: $Values<typeof SPNotifications$EventID>,
+      eventHandler: any
+    ): void;
+  }
+
+  declare class SP$UI$Status {
+    static addStatus(
+      strTitle: string,
+      strHtml?: string,
+      atBegining?: boolean
+    ): string;
+    static appendStatus(sid: string, strTitle: string, strHtml: string): string;
+    static updateStatus(sid: string, strHtml: string): void;
+    static setStatusPriColor(sid: string, strColor: string): void;
+    static removeStatus(sid: string): void;
+    static removeAllStatus(hide: boolean): void;
+    constructor(): this;
+  }
+
+  declare var npm$namespace$SP$UI$Workspace: {
+    add_resized: typeof SP$UI$Workspace$add_resized,
+    remove_resized: typeof SP$UI$Workspace$remove_resized
+  };
+  declare function SP$UI$Workspace$add_resized(handler: () => void): void;
+
+  declare function SP$UI$Workspace$remove_resized(handler: () => void): void;
+
+  declare class SP$UI$Menu {
+    static create(id: string): SP$UI$Menu;
+    addMenuItem(
+      text: string,
+      actionScriptText: string,
+      imageSourceUrl: string,
+      imageAlternateText: string,
+      sequenceNumber: number,
+      description: string,
+      id: string
+    ): HTMLElement;
+    addSeparator(): void;
+    addSubMenu(
+      text: string,
+      imageSourceUrl: string,
+      imageAlternateText: string,
+      sequenceNumber: number,
+      description: string,
+      id: string
+    ): SP$UI$Menu;
+    show(
+      relativeElement: HTMLElement,
+      forceRefresh: boolean,
+      flipTopLevelMenu: boolean,
+      yOffset: number
+    ): void;
+    showFilterMenu(
+      relativeElement: HTMLElement,
+      forceRefresh: boolean,
+      flipTopLevelMenu: boolean,
+      yOffset: number,
+      fShowClose: boolean,
+      fShowCheckBoxes: boolean
+    ): void;
+    hideIcons(): void;
+    showIcons(): void;
+  }
+
+  declare class SP$UI$MenuTest {
+    static setup(relativeElement: HTMLElement): void;
+    constructor(): this;
+  }
+
+  declare function SP$UI$$create_DialogOptions(): UI$DialogOptions;
+
+  /**
+   * Result of a modal dialog execution
+   */
+
+  declare var SP$UI$DialogResult: {|
+    +invalid: 0, // 0
+    +cancel: 1, // 1
+    +OK: 2 // 2
+  |};
+
+  /**
+   * Callback which processes dialog result value after dialog is closed
+   */
+  declare type SP$UI$DialogReturnValueCallback = (
+    dialogResult: $Values<typeof SP$UI$DialogResult>,
+    returnValue: any
+  ) => void;
+
+  /**
+   * Options for dialog creation
+   */
+  declare interface SP$UI$IDialogOptions {
+    /**
+     * Text displayed in the title bar of the dialog box. If not defined, it will default to the title of the page defined by url property.
+     */
+    title?: string;
+
+    /**
+     * X coordinate of the dialog box.
+     */
+    x?: number;
+
+    /**
+     * Y coordinate of the dialog box.
+     */
+    y?: number;
+
+    /**
+     * The dialog will be maximized when shown.
+     */
+    showMaximized?: boolean;
+
+    /**
+     * url of the page which is shown in the modal dialog. You should use either html or url attribute, but not both.
+     */
+    url?: string;
+
+    /**
+     * specifies if close button should be shown on the dialog
+     */
+    showClose?: boolean;
+
+    /**
+     * specifies if maximize button should be shown on the dialog
+     */
+    allowMaximize?: boolean;
+
+    /**
+     * callback that is called after dialog is closed
+     */
+    dialogReturnValueCallback?: SP$UI$DialogReturnValueCallback;
+
+    /**
+     * automatically determine size of the dialog based on its contents.
+     */
+    autoSize?: boolean;
+
+    /**
+     * minimum width of the dialog when using autoSize option
+     */
+    autoSizeStartWidth?: number;
+
+    /**
+     * include padding for adding a scrollbar
+     */
+    includeScrollBarPadding?: boolean;
+
+    /**
+     * width of the dialog. if not specified, will be determined automatically based on the contents of the dialog
+     */
+    width?: number;
+
+    /**
+     * height of the dialog. if not specified, will be determined automatically based on the contents of the dialog
+     */
+    height?: number;
+
+    /**
+     * html element which will be used as contents of the dialog. You should use either html or url attribute, but not both.
+     */
+    html?: HTMLElement;
+
+    /**
+     * custom arguments to be passed to the dialog
+     */
+    args?: any;
+  }
+
+  declare class SP$UI$DialogOptions mixins SP$UI$IDialogOptions {
+    /**
+     * Text displayed in the title bar of the dialog box. If not defined, it will default to the title of the page defined by url property.
+     */
+    title: string;
+
+    /**
+     * X coordinate of the dialog box.
+     */
+    x: number;
+
+    /**
+     * Y coordinate of the dialog box.
+     */
+    y: number;
+
+    /**
+     * The dialog will be maximized when shown.
+     */
+    showMaximized: boolean;
+
+    /**
+     * url of the page which is shown in the modal dialog. You should use either html or url attribute, but not both.
+     */
+    url: string;
+
+    /**
+     * specifies if close button should be shown on the dialog
+     */
+    showClose: boolean;
+
+    /**
+     * specifies if maximize button should be shown on the dialog
+     */
+    allowMaximize: boolean;
+
+    /**
+     * callback that is called after dialog is closed
+     */
+    dialogReturnValueCallback: SP$UI$DialogReturnValueCallback;
+
+    /**
+     * automatically determine size of the dialog based on its contents.
+     */
+    autoSize: boolean;
+
+    /**
+     * minimum width of the dialog when using autoSize option
+     */
+    autoSizeStartWidth: number;
+
+    /**
+     * include padding for adding a scrollbar
+     */
+    includeScrollBarPadding: boolean;
+
+    /**
+     * width of the dialog. if not specified, will be determined automatically based on the contents of the dialog
+     */
+    width: number;
+
+    /**
+     * height of the dialog. if not specified, will be determined automatically based on the contents of the dialog
+     */
+    height: number;
+
+    /**
+     * html element which will be used as contents of the dialog. You should use either html or url attribute, but not both.
+     */
+    html: HTMLElement;
+
+    /**
+     * custom arguments to be passed to the dialog
+     */
+    args: any;
+  }
+
+  /**
+   * Represents a dialog. Do not use this class directly from your code.
+   */
+  declare class SP$UI$Dialog {
+    get_firstTabStop(): HTMLElement;
+    get_lastTabStop(): HTMLElement;
+    get_url(): string;
+    get_html(): string;
+    get_title(): string;
+    get_args(): any;
+    get_allowMaximize(): boolean;
+    get_showClose(): boolean;
+    get_returnValue(): any;
+    set_returnValue(value: any): void;
+    get_frameElement(): HTMLFrameElement;
+    get_dialogElement(): HTMLElement;
+    get_isMaximized(): boolean;
+    get_closed(): boolean;
+    autoSizeSuppressScrollbar(resizePageCallBack: any): void;
+    autoSize(): void;
+  }
+
+  /**
+   * Represents a modal dialog
+   */
+  declare class SP$UI$ModalDialog mixins SP$UI$Dialog {
+    /**
+     * Displays a modal dialog defined by the specified options.
+     */
+    static showModalDialog(options: SP$UI$IDialogOptions): SP$UI$ModalDialog;
+
+    /**
+     * Should be called from an existing dialog.
+     */
+    static commonModalDialogClose(
+      dialogResult: $Values<typeof SP$UI$DialogResult>,
+      returnValue: any
+    ): void;
+
+    /**
+     * Shows a modal dialog, specified by url, callback, args, and options. Internally, uses SP.UI.ModalDialog.showModalDialog.
+     * @param url overrides options.url
+     * @param callback overrides options.dialogResultValueCallback
+     * @param args overrides options.args
+     */
+    static commonModalDialogOpen(
+      url: string,
+      options: SP$UI$IDialogOptions,
+      callback?: SP$UI$DialogReturnValueCallback,
+      args?: any
+    ): void;
+
+    /**
+     * Refresh the page if specified dialogResult equals to SP.UI.DialogResult.OK
+     */
+    static RefreshPage(dialogResult: $Values<typeof SP$UI$DialogResult>): void;
+
+    /**
+     * Show page specified by the url in a modal dialog. If the dialog returns SP.UI.DialogResult.OK, the page is refreshed.
+     */
+    static ShowPopupDialog(url: string): void;
+
+    /**
+     * Show modal dialog specified by url, callback, height and width.
+     */
+    static OpenPopUpPage(
+      url: string,
+      callback: SP$UI$DialogReturnValueCallback,
+      width?: number,
+      height?: number
+    ): void;
+
+    /**
+     * Displays a wait/loading modal dialog with the specified title, message, height and width. Height and width are defined in pixels. Cancel/close button is not shown.
+     */
+    static showWaitScreenWithNoClose(
+      title: string,
+      message?: string,
+      height?: number,
+      width?: number
+    ): SP$UI$ModalDialog;
+
+    /**
+     * Displays a wait/loading modal dialog with the specified title, message, height and width. Height and width are defined in pixels. Cancel button is shown. If user clicks it, the callbackFunc is called.
+     */
+    static showWaitScreenSize(
+      title: string,
+      message?: string,
+      callbackFunc?: SP$UI$DialogReturnValueCallback,
+      height?: number,
+      width?: number
+    ): SP$UI$ModalDialog;
+    static showPlatformFirstRunDialog(
+      url: string,
+      callbackFunc: SP$UI$DialogReturnValueCallback
+    ): SP$UI$ModalDialog;
+    static get_childDialog(): SP$UI$ModalDialog;
+
+    /**
+     * Closes the dialog using the specified dialog result.
+     */
+    close(dialogResult: $Values<typeof SP$UI$DialogResult>): void;
+  }
+
+  declare class SP$UI$Command {
+    constructor(name: string, displayName: string): this;
+    get_displayName(): string;
+    set_displayName(value: string): string;
+    get_tooltip(): string;
+    set_tooltip(value: string): string;
+    get_isEnabled(): boolean;
+    set_isEnabled(value: boolean): boolean;
+    get_href(): string;
+    get_name(): string;
+    get_elementIDPrefix(): string;
+    set_elementIDPrefix(value: string): string;
+    get_linkElement(): HTMLAnchorElement;
+    get_isDropDownCommand(): boolean;
+    set_isDropDownCommand(value: boolean): boolean;
+    attachEvents(): void;
+    render(builder: SP$HtmlBuilder): void;
+
+    /**
+     * Should override
+     */
+    onClick(): void;
+  }
+
+  declare class SP$UI$CommandBar {
+    constructor(): this;
+    get_commands(): SP$UI$Command[];
+    get_dropDownThreshold(): number;
+    set_dropDownThreshold(value: number): number;
+    get_elementID(): string;
+    get_overrideClass(): string;
+    set_overrideClass(value: string): string;
+    addCommand(action: SP$UI$Command): void;
+    insertCommand(action: SP$UI$Command, position: number): void;
+    render(builder: SP$HtmlBuilder): void;
+    attachEvents(): void;
+    findCommandByName(name: string): SP$UI$Command;
+  }
+
+  declare class SP$UI$PagingControl {
+    constructor(id: string): this;
+    render(innerContent: string): string;
+    postRender(): void;
+    get_innerContent(): HTMLSpanElement;
+    get_innerContentClass(): string;
+    setButtonState(buttonId: number, state: number): void;
+    getButtonState(buttonId: number): number;
+    onWindowResized(): void;
+
+    /**
+     * Should override
+     */
+    onPrev(): void;
+    onNext(): void;
+    static ButtonIDs: {
+      prev: number,
+      next: number
+    };
+    static ButtonState: {
+      hidden: number,
+      disabled: number,
+      enabled: number
+    };
+  }
+
+  declare var npm$namespace$SP$UI$Workplace: {
+    add_resized: typeof SP$UI$Workplace$add_resized,
+    remove_resized: typeof SP$UI$Workplace$remove_resized
+  };
+  declare function SP$UI$Workplace$add_resized(
+    handler: (obj: any, args: any) => void
+  ): void;
+
+  declare function SP$UI$Workplace$remove_resized(
+    handler: (obj: any, args: any) => void
+  ): void;
+
+  declare var npm$namespace$SP$UI$UIUtility: {
+    generateRandomElementId: typeof SP$UI$UIUtility$generateRandomElementId,
+    cancelEvent: typeof SP$UI$UIUtility$cancelEvent,
+    clearChildNodes: typeof SP$UI$UIUtility$clearChildNodes,
+    hideElement: typeof SP$UI$UIUtility$hideElement,
+    showElement: typeof SP$UI$UIUtility$showElement,
+    insertBefore: typeof SP$UI$UIUtility$insertBefore,
+    insertAfter: typeof SP$UI$UIUtility$insertAfter,
+    removeNode: typeof SP$UI$UIUtility$removeNode,
+    calculateOffsetLeft: typeof SP$UI$UIUtility$calculateOffsetLeft,
+    calculateOffsetTop: typeof SP$UI$UIUtility$calculateOffsetTop,
+    createHtmlInputText: typeof SP$UI$UIUtility$createHtmlInputText,
+    createHtmlInputCheck: typeof SP$UI$UIUtility$createHtmlInputCheck,
+    setInnerText: typeof SP$UI$UIUtility$setInnerText,
+    getInnerText: typeof SP$UI$UIUtility$getInnerText,
+    isTextNode: typeof SP$UI$UIUtility$isTextNode,
+    isSvgNode: typeof SP$UI$UIUtility$isSvgNode,
+    isNodeOfType: typeof SP$UI$UIUtility$isNodeOfType,
+    focusValidOnThisNode: typeof SP$UI$UIUtility$focusValidOnThisNode
+  };
+  declare function SP$UI$UIUtility$generateRandomElementId(): string;
+
+  declare function SP$UI$UIUtility$cancelEvent(evt: Event): void;
+
+  declare function SP$UI$UIUtility$clearChildNodes(elem: HTMLElement): void;
+
+  declare function SP$UI$UIUtility$hideElement(elem: HTMLElement): void;
+
+  declare function SP$UI$UIUtility$showElement(elem: HTMLElement): void;
+
+  declare function SP$UI$UIUtility$insertBefore(
+    elem: HTMLElement,
+    targetElement: HTMLElement
+  ): void;
+
+  declare function SP$UI$UIUtility$insertAfter(
+    elem: HTMLElement,
+    targetElement: HTMLElement
+  ): void;
+
+  declare function SP$UI$UIUtility$removeNode(elem: HTMLElement): void;
+
+  declare function SP$UI$UIUtility$calculateOffsetLeft(
+    elem: HTMLElement
+  ): number;
+
+  declare function SP$UI$UIUtility$calculateOffsetTop(
+    elem: HTMLElement
+  ): number;
+
+  declare function SP$UI$UIUtility$createHtmlInputText(
+    text: string
+  ): HTMLInputElement;
+
+  declare function SP$UI$UIUtility$createHtmlInputCheck(
+    isChecked: boolean
+  ): HTMLInputElement;
+
+  declare function SP$UI$UIUtility$setInnerText(
+    elem: HTMLElement,
+    value: string
+  ): void;
+
+  declare function SP$UI$UIUtility$getInnerText(elem: HTMLElement): string;
+
+  declare function SP$UI$UIUtility$isTextNode(elem: HTMLElement): boolean;
+
+  declare function SP$UI$UIUtility$isSvgNode(elem: HTMLElement): boolean;
+
+  declare function SP$UI$UIUtility$isNodeOfType(
+    elem: HTMLElement,
+    tagNames: string[]
+  ): boolean;
+
+  declare function SP$UI$UIUtility$focusValidOnThisNode(
+    elem: HTMLElement
+  ): boolean;
 
   declare var npm$namespace$SP$UI$Controls: {
     NavigationOptions: typeof SP$UI$Controls$NavigationOptions,
@@ -7578,14 +8429,16 @@ declare module "sharepoint" {
     topHeaderVisible?: boolean;
   }
 
-  declare class SP$UI$Controls$NavigationOptions mixins INavigationOptions {}
+  declare class SP$UI$Controls$NavigationOptions
+    mixins SP$UI$Controls$INavigationOptions {}
 
   declare interface SP$UI$Controls$ISettingsLink {
     linkUrl: string;
     displayName: string;
   }
 
-  declare class SP$UI$Controls$SettingsLink mixins ISettingsLink {
+  declare class SP$UI$Controls$SettingsLink
+    mixins SP$UI$Controls$ISettingsLink {
     linkUrl: string;
     displayName: string;
   }
@@ -7663,7 +8516,7 @@ declare module "sharepoint" {
     +all: 5 // 5
   |};
 
-  declare class SP$UserProfiles$HashTag mixins ClientValueObject {
+  declare class SP$UserProfiles$HashTag mixins SP$ClientValueObject {
     get_name(): string;
     get_useCount(): number;
   }
@@ -7954,12 +8807,16 @@ declare module "sharepoint" {
     /**
      * Specifies attributes of the user's personal site.
      */
-    get_personalSiteCapabilities(): SP$UserProfiles$PersonalSiteCapabilities;
+    get_personalSiteCapabilities(): $Values<
+      typeof SP$UserProfiles$PersonalSiteCapabilities
+    >;
 
     /**
      * Provides the state of the user's personal site
      */
-    get_personalSiteInstantiationState(): SP$UserProfiles$PersonalSiteInstantiationState;
+    get_personalSiteInstantiationState(): $Values<
+      typeof SP$UserProfiles$PersonalSiteInstantiationState
+    >;
 
     /**
      * Specifies whether the user can import pictures
@@ -8066,7 +8923,7 @@ declare module "sharepoint" {
      * @param subType Integer that identifies the sites to return by the web template.
      */
     getItems(
-      options: UserProfiles$FollowedContentQueryOptions,
+      options: $Values<typeof SP$UserProfiles$FollowedContentQueryOptions>,
       subtype: number
     ): UserProfiles$FollowedItem[];
 
@@ -8189,14 +9046,14 @@ declare module "sharepoint" {
     /**
      * Specifies the type of this item.
      */
-    get_itemType(): UserProfiles$FollowedItemType;
+    get_itemType(): $Values<typeof SP$UserProfiles$FollowedItemType>;
 
     /**
      * Specifies the type of this item.
      */
     set_itemType(
-      value: UserProfiles$FollowedItemType
-    ): UserProfiles$FollowedItemType;
+      value: $Values<typeof SP$UserProfiles$FollowedItemType>
+    ): $Values<typeof SP$UserProfiles$FollowedItemType>;
 
     /**
      * The ListId property specifies the list identification (GUID) for this item in the Content database if this item is a list or the list identification for its parent list.
@@ -8354,7 +9211,7 @@ declare module "sharepoint" {
     /**
      * Provides information about the attempt to follow an item.
      */
-    get_resultType(): UserProfiles$FollowResultType;
+    get_resultType(): $Values<typeof SP$UserProfiles$FollowResultType>;
   }
 
   declare var SP$UserProfiles$FollowResultType: {|
@@ -8399,8 +9256,303 @@ declare module "sharepoint" {
   }
 
   declare var npm$namespace$SP$Utilities: {
+    DateTimeFormat: typeof SP$Utilities$DateTimeFormat,
+    IconSize: typeof SP$Utilities$IconSize,
+    LogAppErrorResult: typeof SP$Utilities$LogAppErrorResult,
+    PrincipalSource: typeof SP$Utilities$PrincipalSource,
+    PrincipalType: typeof SP$Utilities$PrincipalType,
+    SPWOPIFrameAction: typeof SP$Utilities$SPWOPIFrameAction,
+    Utility: typeof SP$Utilities$Utility,
+    EmailProperties: typeof SP$Utilities$EmailProperties,
+    PrincipalInfo: typeof SP$Utilities$PrincipalInfo,
+    WikiPageCreationInformation: typeof SP$Utilities$WikiPageCreationInformation,
+    DateUtility: typeof SP$Utilities$DateUtility,
+    HttpUtility: typeof SP$Utilities$HttpUtility,
+    UrlBuilder: typeof SP$Utilities$UrlBuilder,
+    LocUtility: typeof SP$Utilities$LocUtility,
+    VersionUtility: typeof SP$Utilities$VersionUtility,
     Set: typeof SP$Utilities$Set
   };
+  declare class SP$Utilities$Utility {
+    lAYOUTS_LATESTVERSION_RELATIVE_URL: string;
+    lAYOUTS_LATESTVERSION_URL: string;
+    static get_layoutsLatestVersionRelativeUrl(): string;
+    static get_layoutsLatestVersionUrl(): string;
+    static getLayoutsPageUrl(pageName: string): string;
+    static getImageUrl(imageName: string): string;
+    static createWikiPageInContextWeb(
+      context: SP$ClientRuntimeContext,
+      parameters: SP$Utilities$WikiPageCreationInformation
+    ): SP$File;
+    static localizeWebPartGallery(
+      context: SP$ClientRuntimeContext,
+      items: SP$ListItemCollection
+    ): SP$ClientObjectList<SP$ListItem>;
+    static getAppLicenseInformation(
+      context: SP$ClientRuntimeContext,
+      productId: SP$Guid
+    ): SP$AppLicenseCollection;
+    static importAppLicense(
+      context: SP$ClientRuntimeContext,
+      licenseTokenToImport: string,
+      contentMarket: string,
+      billingMarket: string,
+      appName: string,
+      iconUrl: string,
+      providerName: string,
+      appSubtype: number
+    ): void;
+    static getAppLicenseDeploymentId(
+      context: SP$ClientRuntimeContext
+    ): SP$GuidResult;
+    static logCustomAppError(
+      context: SP$ClientRuntimeContext,
+      error: string
+    ): SP$IntResult;
+    static logCustomRemoteAppError(
+      context: SP$ClientRuntimeContext,
+      productId: SP$Guid,
+      error: string
+    ): SP$IntResult;
+    static getLocalizedString(
+      context: SP$ClientRuntimeContext,
+      source: string,
+      defaultResourceFile: string,
+      language: number
+    ): SP$StringResult;
+    static createNewDiscussion<T>(
+      context: SP$ClientRuntimeContext,
+      list: SP$List,
+      title: string
+    ): SP$ListItem<T>;
+    static createNewDiscussionReply<T>(
+      context: SP$ClientRuntimeContext,
+      parent: SP$ListItem<T>
+    ): SP$ListItem<T>;
+    static markDiscussionAsFeatured(
+      context: SP$ClientRuntimeContext,
+      listID: string,
+      topicIDs: string
+    ): void;
+    static unmarkDiscussionAsFeatured(
+      context: SP$ClientRuntimeContext,
+      listID: string,
+      topicIDs: string
+    ): void;
+    static searchPrincipals(
+      context: SP$ClientRuntimeContext,
+      web: SP$Web,
+      input: string,
+      scopes: $Values<typeof SP$Utilities$PrincipalType>,
+      sources: $Values<typeof SP$Utilities$PrincipalSource>,
+      usersContainer: SP$UserCollection,
+      maxCount: number
+    ): SP$Utilities$PrincipalInfo[];
+    static getCurrentUserEmailAddresses(
+      context: SP$ClientRuntimeContext
+    ): SP$StringResult;
+    static createEmailBodyForInvitation(
+      context: SP$ClientRuntimeContext,
+      pageAddress: string
+    ): SP$StringResult;
+    static getPeoplePickerURL(
+      context: SP$ClientRuntimeContext,
+      web: SP$Web,
+      fieldUser: SP$FieldUser
+    ): SP$StringResult;
+    static resolvePrincipal(
+      context: SP$ClientRuntimeContext,
+      web: SP$Web,
+      input: string,
+      scopes: $Values<typeof SP$Utilities$PrincipalType>,
+      sources: $Values<typeof SP$Utilities$PrincipalSource>,
+      usersContainer: SP$UserCollection,
+      inputIsEmailOnly: boolean
+    ): SP$Utilities$PrincipalInfo;
+    static getLowerCaseString(
+      context: SP$ClientRuntimeContext,
+      sourceValue: string,
+      lcid: number
+    ): SP$StringResult;
+    static formatDateTime(
+      context: SP$ClientRuntimeContext,
+      web: SP$Web,
+      datetime: Date,
+      format: $Values<typeof SP$Utilities$DateTimeFormat>
+    ): SP$StringResult;
+    static isUserLicensedForEntityInContext(
+      context: SP$ClientRuntimeContext,
+      licensableEntity: string
+    ): SP$BooleanResult;
+  }
+
+  declare var SP$Utilities$DateTimeFormat: {|
+    +dateTime: 0, // 0
+    +dateOnly: 1, // 1
+    +timeOnly: 2, // 2
+    +iSO8601: 3, // 3
+    +monthDayOnly: 4, // 4
+    +monthYearOnly: 5, // 5
+    +longDate: 6, // 6
+    +unknownFormat: 7 // 7
+  |};
+
+  declare class SP$Utilities$EmailProperties mixins SP$ClientValueObject {
+    get_additionalHeaders(): any;
+    set_additionalHeaders(value: any): void;
+    get_bCC(): string[];
+    set_bCC(value: string[]): void;
+    get_body(): string;
+    set_body(value: string): void;
+    get_cC(): string[];
+    set_cC(value: string[]): void;
+    get_from(): string;
+    set_from(value: string): void;
+    get_subject(): string;
+    set_subject(value: string): void;
+    get_to(): string[];
+    set_to(value: string[]): void;
+    get_typeId(): string;
+    writeToXml(
+      writer: SP$XmlWriter,
+      serializationContext: SP$SerializationContext
+    ): void;
+    constructor(): this;
+  }
+
+  declare var SP$Utilities$IconSize: {|
+    +size16: 0, // 0
+    +size32: 1, // 1
+    +size256: 2 // 2
+  |};
+
+  declare var SP$Utilities$LogAppErrorResult: {|
+    +success: 0, // 0
+    +errorsThrottled: 1, // 1
+    +accessDenied: 2 // 2
+  |};
+
+  declare class SP$Utilities$PrincipalInfo mixins SP$ClientValueObject {
+    get_department(): string;
+    get_displayName(): string;
+    get_email(): string;
+    get_jobTitle(): string;
+    get_loginName(): string;
+    get_mobile(): string;
+    get_principalId(): number;
+    get_principalType(): $Values<typeof SP$Utilities$PrincipalType>;
+    get_sIPAddress(): string;
+    get_typeId(): string;
+    writeToXml(
+      writer: SP$XmlWriter,
+      serializationContext: SP$SerializationContext
+    ): void;
+    constructor(): this;
+  }
+
+  declare var SP$Utilities$PrincipalSource: {|
+    +none: 0, // 0
+    +userInfoList: 1, // 1
+    +windows: 2, // 2
+    +membershipProvider: 3, // 3
+    +roleProvider: 4, // 4
+    +all: 5 // 5
+  |};
+
+  declare var SP$Utilities$PrincipalType: {|
+    +none: 0, // 0
+    +user: 1, // 1
+    +distributionList: 2, // 2
+    +securityGroup: 3, // 3
+    +sharePointGroup: 4, // 4
+    +all: 5 // 5
+  |};
+
+  declare var SP$Utilities$SPWOPIFrameAction: {|
+    +view: 0, // 0
+    +edit: 1, // 1
+    +mobileView: 2, // 2
+    +interactivePreview: 3 // 3
+  |};
+
+  declare class SP$Utilities$WikiPageCreationInformation
+    mixins SP$ClientValueObject {
+    get_serverRelativeUrl(): string;
+    set_serverRelativeUrl(value: string): void;
+    get_wikiHtmlContent(): string;
+    set_wikiHtmlContent(value: string): void;
+    get_typeId(): string;
+    writeToXml(
+      writer: SP$XmlWriter,
+      serializationContext: SP$SerializationContext
+    ): void;
+    constructor(): this;
+  }
+
+  declare class SP$Utilities$DateUtility {
+    static isLeapYear(year: number): boolean;
+    static dateToJulianDay(year: number, month: number, day: number): number;
+    static julianDayToDate(julianDay: number): SP$DateTimeUtil$SimpleDate;
+    static daysInMonth(year: number, month: number): number;
+  }
+
+  declare class SP$Utilities$HttpUtility {
+    /**
+     * Official version of STSHtmlEncode. Calls it internally.
+     */
+    static htmlEncode(stringToEncode: string): string;
+    static urlPathEncode(stringToEncode: string): string;
+    static urlKeyValueEncode(keyOrValueToEncode: string): string;
+    static ecmaScriptStringLiteralEncode(scriptLiteralToEncode: string): string;
+    static navigateTo(url: string): void;
+
+    /**
+     * Appends correct "Source" parameter to the specified url, and then navigates to this url.
+     * "Source" parameter is recognized in many places in SharePoint, usually to determine "Cancel" behavior.
+     */
+    static appendSourceAndNavigateTo(url: string): void;
+    static escapeXmlText(stringToEscape: string): string;
+    static navigateHttpFolder(urlSrc: string, frameTarget: string): void;
+  }
+
+  declare class SP$Utilities$UrlBuilder {
+    constructor(path: string): this;
+    static urlCombine(path1: string, path2: string): string;
+    static replaceOrAddQueryString(
+      url: string,
+      key: string,
+      value: string
+    ): string;
+    static removeQueryString(url: string, key: string): string;
+    combinePath(path: string): void;
+    addKeyValueQueryString(key: string, value: string): void;
+
+    /**
+     * Returns the resulting url
+     */
+    get_url(): string;
+
+    /**
+     * Same as get_url()
+     */
+    toString(): string;
+  }
+
+  declare class SP$Utilities$LocUtility {
+    static getLocalizedCountValue(
+      locText: string,
+      intervals: string,
+      count: number
+    ): string;
+  }
+
+  declare class SP$Utilities$VersionUtility {
+    static get_layoutsLatestVersionRelativeUrl(): string;
+    static get_layoutsLatestVersionUrl(): string;
+    static getLayoutsPageUrl(pageName: string): string;
+    static getImageUrl(imageName: string): string;
+  }
+
   declare class SP$Utilities$Set {
     constructor(items?: {
       [item: string]: number
@@ -8434,7 +9586,7 @@ declare module "sharepoint" {
     /**
      * Adds all items from array to the set, and returns the set
      */
-    AddArray(array: any[]): SP$UtilitiesSet;
+    AddArray(array: any[]): SP$Utilities$Set;
 
     /**
      * Adds an item to the set
@@ -8449,7 +9601,7 @@ declare module "sharepoint" {
     /**
      * Clears all the items from set
      */
-    Clear(): SP$UtilitiesSet;
+    Clear(): SP$Utilities$Set;
 
     /**
      * Returns true if item exists in this set
@@ -8459,32 +9611,32 @@ declare module "sharepoint" {
     /**
      * Returns a copy of this set
      */
-    Clone(): SP$UtilitiesSet;
+    Clone(): SP$Utilities$Set;
 
     /**
      * Returns a set that contains all the items that exist only in one of the sets (this and other), but not in both
      */
-    SymmetricDifference(otherSet: SP$UtilitiesSet): SP$UtilitiesSet;
+    SymmetricDifference(otherSet: SP$Utilities$Set): SP$Utilities$Set;
 
     /**
      * Returns a set that contains all the items that are in this set but not in the otherSet
      */
-    Difference(otherSet: SP$UtilitiesSet): SP$UtilitiesSet;
+    Difference(otherSet: SP$Utilities$Set): SP$Utilities$Set;
 
     /**
      * Returns a new set, that contains items from this set and otherSet
      */
-    Union(otherSet: SP$UtilitiesSet): SP$UtilitiesSet;
+    Union(otherSet: SP$Utilities$Set): SP$Utilities$Set;
 
     /**
      * Adds all items from otherSet to this set, and returns this set
      */
-    UnionWith(otherSet: SP$UtilitiesSet): SP$UtilitiesSet;
+    UnionWith(otherSet: SP$Utilities$Set): SP$Utilities$Set;
 
     /**
      * Returns a new set, that contains only items that exist both in this set and the otherSet
      */
-    Intersection(otherSet: SP$UtilitiesSet): SP$UtilitiesSet;
+    Intersection(otherSet: SP$Utilities$Set): SP$Utilities$Set;
   }
 
   declare var npm$namespace$SP$DateTimeUtil: {
@@ -8531,14 +9683,14 @@ declare module "sharepoint" {
   };
   declare class SP$WebParts$LimitedWebPartManager mixins SP$ClientObject {
     get_hasPersonalizedParts(): boolean;
-    get_scope(): SP$WebPartsPersonalizationScope;
-    get_webParts(): SP$WebPartsWebPartDefinitionCollection;
+    get_scope(): $Values<typeof SP$WebParts$PersonalizationScope>;
+    get_webParts(): SP$WebParts$WebPartDefinitionCollection;
     addWebPart(
-      webPart: SP$WebPartsWebPart,
+      webPart: SP$WebParts$WebPart,
       zoneId: string,
       zoneIndex: number
-    ): SP$WebPartsWebPartDefinition;
-    importWebPart(webPartXml: string): SP$WebPartsWebPartDefinition;
+    ): SP$WebParts$WebPartDefinition;
+    importWebPart(webPartXml: string): SP$WebParts$WebPartDefinition;
   }
 
   declare var SP$WebParts$PersonalizationScope: {|
@@ -8582,7 +9734,7 @@ declare module "sharepoint" {
 
   declare class SP$WebParts$WebPartDefinition mixins SP$ClientObject {
     get_id(): SP$Guid;
-    get_webPart(): SP$WebPartsWebPart;
+    get_webPart(): SP$WebParts$WebPart;
     saveWebPartChanges(): void;
     closeWebPart(): void;
     openWebPart(): void;
@@ -8591,10 +9743,10 @@ declare module "sharepoint" {
   }
 
   declare type SP$WebParts$WebPartDefinitionCollection = {
-    itemAt(index: number): SP$WebPartsWebPartDefinition,
-    get_item(index: number): SP$WebPartsWebPartDefinition,
-    getById(id: SP$Guid): SP$WebPartsWebPartDefinition,
-    getByControlId(controlId: string): SP$WebPartsWebPartDefinition
+    itemAt(index: number): SP$WebParts$WebPartDefinition,
+    get_item(index: number): SP$WebParts$WebPartDefinition,
+    getById(id: SP$Guid): SP$WebParts$WebPartDefinition,
+    getByControlId(controlId: string): SP$WebParts$WebPartDefinition
   } & SP$ClientObjectCollection<SP$WebParts$WebPartDefinition>;
 
   declare var npm$namespace$SP$Workflow: {
@@ -8635,13 +9787,13 @@ declare module "sharepoint" {
   }
 
   declare type SP$Workflow$WorkflowAssociationCollection = {
-    itemAt(index: number): SP$WorkflowWorkflowAssociation,
-    get_item(index: number): SP$WorkflowWorkflowAssociation,
-    getById(associationId: SP$Guid): SP$WorkflowWorkflowAssociation,
+    itemAt(index: number): SP$Workflow$WorkflowAssociation,
+    get_item(index: number): SP$Workflow$WorkflowAssociation,
+    getById(associationId: SP$Guid): SP$Workflow$WorkflowAssociation,
     add(
-      parameters: SP$WorkflowWorkflowAssociationCreationInformation
-    ): SP$WorkflowWorkflowAssociation,
-    getByName(name: string): SP$WorkflowWorkflowAssociation
+      parameters: SP$Workflow$WorkflowAssociationCreationInformation
+    ): SP$Workflow$WorkflowAssociation,
+    getByName(name: string): SP$Workflow$WorkflowAssociation
   } & SP$ClientObjectCollection<SP$Workflow$WorkflowAssociation>;
 
   declare class SP$Workflow$WorkflowAssociationCreationInformation
@@ -8656,8 +9808,8 @@ declare module "sharepoint" {
     set_name(value: string): void;
     get_taskList(): SP$List;
     set_taskList(value: SP$List): void;
-    get_template(): SP$WorkflowWorkflowTemplate;
-    set_template(value: SP$WorkflowWorkflowTemplate): void;
+    get_template(): SP$Workflow$WorkflowTemplate;
+    set_template(value: SP$Workflow$WorkflowTemplate): void;
     get_typeId(): string;
     writeToXml(
       writer: SP$XmlWriter,
@@ -8679,10 +9831,10 @@ declare module "sharepoint" {
   }
 
   declare type SP$Workflow$WorkflowTemplateCollection = {
-    itemAt(index: number): SP$WorkflowWorkflowTemplate,
-    get_item(index: number): SP$WorkflowWorkflowTemplate,
-    getById(templateId: SP$Guid): SP$WorkflowWorkflowTemplate,
-    getByName(name: string): SP$WorkflowWorkflowTemplate
+    itemAt(index: number): SP$Workflow$WorkflowTemplate,
+    get_item(index: number): SP$Workflow$WorkflowTemplate,
+    getById(templateId: SP$Guid): SP$Workflow$WorkflowTemplate,
+    getByName(name: string): SP$Workflow$WorkflowTemplate
   } & SP$ClientObjectCollection<SP$Workflow$WorkflowTemplate>;
 
   declare var npm$namespace$SP$WorkflowServices: {
@@ -9005,7 +10157,7 @@ declare module "sharepoint" {
     /**
      * Returns runtime status of the workflow instance
      */
-    get_status(): SP$WorkflowServices$WorkflowStatus;
+    get_status(): $Values<typeof SP$WorkflowServices$WorkflowStatus>;
 
     /**
      * Specifies the custom status set by workflow authors.
@@ -9134,7 +10286,7 @@ declare module "sharepoint" {
      */
     countInstancesWithStatus(
       parentSubscription: WorkflowServices$WorkflowSubscription,
-      status: SP$WorkflowServices$WorkflowStatus
+      status: $Values<typeof SP$WorkflowServices$WorkflowStatus>
     ): SP$IntResult;
 
     /**
@@ -9411,7 +10563,7 @@ declare module "sharepoint" {
     CustomizableString: typeof SP$Publishing$CustomizableString,
     Navigation: typeof npm$namespace$SP$Publishing$Navigation
   };
-  declare class SP$Publishing$PublishingWeb mixins ClientObject {
+  declare class SP$Publishing$PublishingWeb mixins SP$ClientObject {
     static getPublishingWeb(
       context: SP$ClientContext,
       web: SP$Web
@@ -9423,7 +10575,7 @@ declare module "sharepoint" {
   }
 
   declare class SP$Publishing$PublishingPageInformation
-    mixins ClientValueObject {
+    mixins SP$ClientValueObject {
     get_folder(): SP$Folder;
     set_folder(value: SP$Folder): SP$Folder;
     get_name(): string;
@@ -9432,19 +10584,20 @@ declare module "sharepoint" {
     set_pageLayoutListItem(value: SP$ListItem): SP$ListItem;
   }
 
-  declare class SP$Publishing$PublishingPage mixins ScheduledItem {
+  declare class SP$Publishing$PublishingPage
+    mixins SP$Publishing$ScheduledItem {
     static getPublishingPage(
       context: SP$ClientContext,
       sourceListItem: SP$ListItem
     ): SP$Publishing$PublishingPage;
     addFriendlyUrl(
       friendlyUrlSegment: string,
-      editableParent: Navigation$NavigationTermSetItem,
+      editableParent: SP$Publishing$Navigation$NavigationTermSetItem,
       doAddToNavigation: boolean
     ): SP$StringResult;
   }
 
-  declare class SP$Publishing$ScheduledItem mixins ClientObject {
+  declare class SP$Publishing$ScheduledItem mixins SP$ClientObject {
     get_listItem(): SP$ListItem;
     get_startDate(): Date;
     set_startDate(value: Date): Date;
@@ -9453,7 +10606,7 @@ declare module "sharepoint" {
     schedule(approvalComment: string): void;
   }
 
-  declare class SP$Publishing$PublishingSite mixins ClientObject {
+  declare class SP$Publishing$PublishingSite mixins SP$ClientObject {
     static createPageLayout(
       context: SP$ClientContext,
       parameters: Publishing$PageLayoutCreationInformation
@@ -9461,7 +10614,7 @@ declare module "sharepoint" {
   }
 
   declare class SP$Publishing$PageLayoutCreationInformation
-    mixins ClientValueObject {
+    mixins SP$ClientValueObject {
     get_web(): SP$Web;
     set_web(value: SP$Web): SP$Web;
     get_associatedContentTypeId(): string;
@@ -9495,7 +10648,7 @@ declare module "sharepoint" {
     static deletePlugin(context: SP$ClientContext, pluginName: string): void;
   }
 
-  declare class SP$Publishing$AddinSettings mixins ClientObject {
+  declare class SP$Publishing$AddinSettings mixins SP$ClientObject {
     constructor(ctx: SP$ClientContext, id: SP$Guid): this;
     get_id(): SP$Guid;
     get_title(): string;
@@ -9522,7 +10675,7 @@ declare module "sharepoint" {
     };
   }
 
-  declare class SP$Publishing$AddinPlugin mixins ClientObject {
+  declare class SP$Publishing$AddinPlugin mixins SP$ClientObject {
     constructor(ctx: SP$ClientContext): this;
     get_description(): string;
     set_description(value: string): string;
@@ -9562,7 +10715,7 @@ declare module "sharepoint" {
     ): SP$ClientResult<Publishing$DesignPackageInfo>;
   }
 
-  declare class SP$Publishing$DesignPackageInfo mixins ClientValueObject {
+  declare class SP$Publishing$DesignPackageInfo mixins SP$ClientValueObject {
     get_packageName(): string;
     set_packageName(value: string): string;
     get_packageGuid(): SP$Guid;
@@ -9583,7 +10736,7 @@ declare module "sharepoint" {
     ): void;
   }
 
-  declare class SP$Publishing$ImageRendition mixins ClientValueObject {
+  declare class SP$Publishing$ImageRendition mixins SP$ClientValueObject {
     get_id(): number;
     get_version(): number;
     get_name(): string;
@@ -9594,7 +10747,7 @@ declare module "sharepoint" {
     set_height(value: number): number;
   }
 
-  declare class SP$Publishing$Variations mixins ClientObject {
+  declare class SP$Publishing$Variations mixins SP$ClientObject {
     static getLabels(
       context: SP$ClientContext
     ): SP$ClientObjectList<Publishing$VariationLabel>;
@@ -9610,7 +10763,7 @@ declare module "sharepoint" {
     ): void;
   }
 
-  declare class SP$Publishing$VariationLabel mixins ClientObject {
+  declare class SP$Publishing$VariationLabel mixins SP$ClientObject {
     get_displayName(): string;
     set_displayName(value: string): string;
     get_isSource(): boolean;
@@ -9625,7 +10778,7 @@ declare module "sharepoint" {
     set_topWebUrl(value: string): string;
   }
 
-  declare class SP$Publishing$CustomizableString mixins ClientObject {
+  declare class SP$Publishing$CustomizableString mixins SP$ClientObject {
     get_defaultValue(): string;
     get_value(): string;
     set_value(value: string): string;
@@ -9659,13 +10812,13 @@ declare module "sharepoint" {
   |};
 
   declare class SP$Publishing$Navigation$NavigationTermSetItem
-    mixins ClientObject {
+    mixins SP$ClientObject {
     get_id(): SP$Guid;
     get_isReadOnly(): boolean;
-    get_linkType(): SP$Publishing$Navigation$NavigationLinkType;
+    get_linkType(): $Values<typeof SP$Publishing$Navigation$NavigationLinkType>;
     set_linkType(
-      value: SP$Publishing$Navigation$NavigationLinkType
-    ): SP$Publishing$Navigation$NavigationLinkType;
+      value: $Values<typeof SP$Publishing$Navigation$NavigationLinkType>
+    ): $Values<typeof SP$Publishing$Navigation$NavigationLinkType>;
     get_targetUrlForChildTerms(): SP$Publishing$CustomizableString;
     get_catalogTargetUrlForChildTerms(): SP$Publishing$CustomizableString;
     get_taxonomyName(): string;
@@ -9674,17 +10827,17 @@ declare module "sharepoint" {
     get_view(): Navigation$NavigationTermSetView;
     createTerm(
       termName: string,
-      linkType: SP$Publishing$Navigation$NavigationLinkType,
+      linkType: $Values<typeof SP$Publishing$Navigation$NavigationLinkType>,
       termId: SP$Guid
-    ): Taxonomy$Term;
-    getTaxonomyTermStore(): Taxonomy$TermStore;
+    ): SP$Taxonomy$Term;
+    getTaxonomyTermStore(): SP$Taxonomy$TermStore;
     getResolvedDisplayUrl(browserQueryString: string): SP$StringResult;
   }
 
-  declare type SP$Publishing$Navigation$NavigationTermCollection = {} & ClientObjectCollection<Navigation$NavigationTerm>;
+  declare type SP$Publishing$Navigation$NavigationTermCollection = {} & SP$ClientObjectCollection<Navigation$NavigationTerm>;
 
   declare class SP$Publishing$Navigation$NavigationTerm
-    mixins NavigationTermSetItem {
+    mixins SP$Publishing$Navigation$NavigationTermSetItem {
     get_associatedFolderUrl(): string;
     set_associatedFolderUrl(value: string): string;
     get_catalogTargetUrl(): SP$Publishing$CustomizableString;
@@ -9707,7 +10860,7 @@ declare module "sharepoint" {
     get_targetUrl(): SP$Publishing$CustomizableString;
     get_termSet(): Navigation$NavigationTermSet;
     getAsEditable(
-      taxonomySession: Taxonomy$TaxonomySession
+      taxonomySession: SP$Taxonomy$TaxonomySession
     ): SP$Publishing$Navigation$NavigationTerm;
     getWithNewView(
       newView: Navigation$NavigationTermSetView
@@ -9720,24 +10873,24 @@ declare module "sharepoint" {
     getResolvedAssociatedFolderUrl(): SP$StringResult;
     getWebRelativeFriendlyUrl(): SP$StringResult;
     getAllParentTerms(): SP$Publishing$Navigation$NavigationTermCollection;
-    getTaxonomyTerm(): Taxonomy$Term;
+    getTaxonomyTerm(): SP$Taxonomy$Term;
     move(newParent: SP$Publishing$Navigation$NavigationTermSetItem): void;
     deleteObject(): void;
     static getAsResolvedByWeb(
       context: SP$ClientContext,
-      term: Taxonomy$Term,
+      term: SP$Taxonomy$Term,
       web: SP$Web,
       siteMapProviderName: string
     ): SP$Publishing$Navigation$NavigationTerm;
     static getAsResolvedByView(
       context: SP$ClientContext,
-      term: Taxonomy$Term,
+      term: SP$Taxonomy$Term,
       view: Navigation$NavigationTermSetView
     ): SP$Publishing$Navigation$NavigationTerm;
   }
 
   declare class SP$Publishing$Navigation$NavigationTermSet
-    mixins NavigationTermSetItem {
+    mixins SP$Publishing$Navigation$NavigationTermSetItem {
     get_isNavigationTermSet(): boolean;
     set_isNavigationTermSet(value: boolean): boolean;
     get_lcid(): number;
@@ -9745,23 +10898,23 @@ declare module "sharepoint" {
     get_termGroupId(): SP$Guid;
     get_termStoreId(): SP$Guid;
     getAsEditable(
-      taxonomySession: Taxonomy$TaxonomySession
+      taxonomySession: SP$Taxonomy$TaxonomySession
     ): SP$Publishing$Navigation$NavigationTermSet;
     getWithNewView(
       newView: Navigation$NavigationTermSetView
     ): SP$Publishing$Navigation$NavigationTermSet;
-    getTaxonomyTermSet(): Taxonomy$TermSet;
+    getTaxonomyTermSet(): SP$Taxonomy$TermSet;
     getAllTerms(): SP$Publishing$Navigation$NavigationTermCollection;
     findTermForUrl(url: string): SP$Publishing$Navigation$NavigationTerm;
     static getAsResolvedByWeb(
       context: SP$ClientContext,
-      termSet: Taxonomy$TermSet,
+      termSet: SP$Taxonomy$TermSet,
       web: SP$Web,
       siteMapProviderName: string
     ): SP$Publishing$Navigation$NavigationTermSet;
     static getAsResolvedByView(
       context: SP$ClientContext,
-      termSet: Taxonomy$TermSet,
+      termSet: SP$Taxonomy$TermSet,
       view: Navigation$NavigationTermSetView
     ): SP$Publishing$Navigation$NavigationTermSet;
   }
@@ -9770,10 +10923,10 @@ declare module "sharepoint" {
     Add(item: string): void,
     Clear(): void,
     Remove(item: string): SP$BooleanResult
-  } & ClientObjectCollection<string>;
+  } & SP$ClientObjectCollection<string>;
 
   declare class SP$Publishing$Navigation$NavigationTermSetView
-    mixins ClientObject {
+    mixins SP$ClientObject {
     constructor(
       context: SP$ClientContext,
       web: SP$Web,
@@ -9810,7 +10963,7 @@ declare module "sharepoint" {
     ): SP$Publishing$Navigation$NavigationTermSet;
     static setCrawlAsFriendlyUrlPage(
       context: SP$ClientContext,
-      navigationTerm: Taxonomy$Term,
+      navigationTerm: SP$Taxonomy$Term,
       crawlAsFriendlyUrlPage: boolean
     ): SP$BooleanResult;
     static getNavigationLcidForWeb(
@@ -9828,7 +10981,7 @@ declare module "sharepoint" {
   }
 
   declare class SP$Publishing$Navigation$WebNavigationSettings
-    mixins ClientObject {
+    mixins SP$ClientObject {
     constructor(context: SP$ClientContext, web: SP$Web): this;
     get_addNewPagesToNavigation(): boolean;
     set_addNewPagesToNavigation(value: boolean): boolean;
@@ -9836,20 +10989,22 @@ declare module "sharepoint" {
     set_createFriendlyUrlsForNewPages(value: boolean): boolean;
     get_currentNavigation(): Navigation$StandardNavigationSettings;
     get_globalNavigation(): Navigation$StandardNavigationSettings;
-    update(taxonomySession: Taxonomy$TaxonomySession): void;
+    update(taxonomySession: SP$Taxonomy$TaxonomySession): void;
     resetToDefaults(): void;
   }
 
   declare class SP$Publishing$Navigation$StandardNavigationSettings
-    mixins ClientObject {
+    mixins SP$ClientObject {
     get_termSetId(): SP$Guid;
     set_termSetId(value: SP$Guid): SP$Guid;
     get_termStoreId(): SP$Guid;
     set_termStoreId(value: SP$Guid): SP$Guid;
-    get_source(): SP$Publishing$Navigation$StandardNavigationSource;
+    get_source(): $Values<
+      typeof SP$Publishing$Navigation$StandardNavigationSource
+    >;
     set_source(
-      value: SP$Publishing$Navigation$StandardNavigationSource
-    ): SP$Publishing$Navigation$StandardNavigationSource;
+      value: $Values<typeof SP$Publishing$Navigation$StandardNavigationSource>
+    ): $Values<typeof SP$Publishing$Navigation$StandardNavigationSource>;
   }
 
   declare var npm$namespace$SP$CompliancePolicy: {
@@ -9869,7 +11024,7 @@ declare module "sharepoint" {
     +list: 2 // 2
   |};
 
-  declare class SP$CompliancePolicy$SPContainerId mixins ClientObject {
+  declare class SP$CompliancePolicy$SPContainerId mixins SP$ClientObject {
     static createFromList(
       context: SP$ClientRuntimeContext,
       list: SP$List
@@ -9905,7 +11060,7 @@ declare module "sharepoint" {
     serialize(): SP$StringResult;
   }
 
-  declare class SP$CompliancePolicy$SPPolicyAssociation mixins ClientObject {
+  declare class SP$CompliancePolicy$SPPolicyAssociation mixins SP$ClientObject {
     get_allowOverride(): boolean;
     set_allowOverride(value: boolean): boolean;
     get_comment(): string;
@@ -9936,7 +11091,7 @@ declare module "sharepoint" {
     set_whenCreatedUTC(value: Date): Date;
   }
 
-  declare class SP$CompliancePolicy$SPPolicyBinding mixins ClientObject {
+  declare class SP$CompliancePolicy$SPPolicyBinding mixins SP$ClientObject {
     get_identity(): any;
     set_identity(value: any): any;
     get_isExempt(): boolean;
@@ -9967,7 +11122,7 @@ declare module "sharepoint" {
     set_whenCreatedUTC(value: Date): Date;
   }
 
-  declare class SP$CompliancePolicy$SPPolicyDefinition mixins ClientObject {
+  declare class SP$CompliancePolicy$SPPolicyDefinition mixins SP$ClientObject {
     get_comment(): string;
     set_comment(value: string): string;
     get_createdBy(): any;
@@ -9998,7 +11153,7 @@ declare module "sharepoint" {
     set_whenCreatedUTC(value: Date): Date;
   }
 
-  declare class SP$CompliancePolicy$SPPolicyRule mixins ClientObject {
+  declare class SP$CompliancePolicy$SPPolicyRule mixins SP$ClientObject {
     get_comment(): string;
     set_comment(value: string): string;
     get_createdBy(): any;
@@ -10027,7 +11182,7 @@ declare module "sharepoint" {
     set_whenCreatedUTC(value: Date): Date;
   }
 
-  declare class SP$CompliancePolicy$SPPolicyStore mixins ClientObject {
+  declare class SP$CompliancePolicy$SPPolicyStore mixins SP$ClientObject {
     constructor(context: SP$ClientRuntimeContext, web: SP$Web): this;
     static createPolicyDefinition(
       context: SP$ClientRuntimeContext
@@ -10081,7 +11236,7 @@ declare module "sharepoint" {
     deletePolicyAssociation(policyAssociationId: any): void;
   }
 
-  declare class SP$CompliancePolicy$SPPolicyStoreProxy mixins ClientObject {
+  declare class SP$CompliancePolicy$SPPolicyStoreProxy mixins SP$ClientObject {
     constructor(context: SP$ClientRuntimeContext, web: SP$Web): this;
     get_policyStoreUrl(): string;
   }
@@ -10099,15 +11254,17 @@ declare module "sharepoint" {
     +failed: 3 // 3
   |};
 
-  declare class SP$Discovery$Case mixins ClientObject {
+  declare class SP$Discovery$Case mixins SP$ClientObject {
     constructor(context: SP$ClientRuntimeContext, web: SP$Web): this;
     getExportContent(sourceIds: number[]): SP$StringResult;
   }
 
-  declare class SP$Discovery$Export mixins ClientObject {
+  declare class SP$Discovery$Export mixins SP$ClientObject {
     constructor(context: SP$ClientRuntimeContext, item: SP$ListItem): this;
-    get_status(): SP$Discovery$ExportStatus;
-    set_status(value: SP$Discovery$ExportStatus): SP$Discovery$ExportStatus;
+    get_status(): $Values<typeof SP$Discovery$ExportStatus>;
+    set_status(
+      value: $Values<typeof SP$Discovery$ExportStatus>
+    ): $Values<typeof SP$Discovery$ExportStatus>;
     update(): void;
     getExportContent(): SP$StringResult;
   }
@@ -10374,12 +11531,12 @@ declare module "sharepoint" {
     /**
      * Replaces the control TableCache object with the provided one
      */
-    ResetData(cache: SP$JsGridTableCache): void;
+    ResetData(cache: SP$JsGrid$TableCache): void;
 
     /**
      * Initialize the control
      */
-    Init(parameters: SP$JsGridJsGridControlParameters): void;
+    Init(parameters: SP$JsGrid$JsGridControl$Parameters): void;
     Cleanup(): void;
 
     /**
@@ -10442,7 +11599,7 @@ declare module "sharepoint" {
     /**
      * Get diff tracker object that tracks changes to the grid data.
      */
-    GetDiffTracker(): SP$JsGridInternalDiffTracker;
+    GetDiffTracker(): SP$JsGrid$Internal$DiffTracker;
 
     /**
      * Moves focus to the JsGrid control
@@ -10506,7 +11663,7 @@ declare module "sharepoint" {
      */
     AddRowHeaderState(
       recordKey: number,
-      rowHeaderState: SP$JsGridRowHeaderState
+      rowHeaderState: SP$JsGrid$RowHeaderState
     ): void;
 
     /**
@@ -10572,24 +11729,30 @@ declare module "sharepoint" {
      * Attach event handler to a particular event type
      */
     AttachEvent(
-      eventType: JsGrid$EventType,
+      eventType: $Values<typeof SP$JsGrid$EventType>,
       fnOnEvent: (args: JsGrid$IEventArgs) => void
     ): void;
 
     /**
      * Detach a previously set event handler
      */
-    DetachEvent(eventType: JsGrid$EventType, fnOnEvent: any): void;
+    DetachEvent(
+      eventType: $Values<typeof SP$JsGrid$EventType>,
+      fnOnEvent: any
+    ): void;
 
     /**
      * Set a delegate. Delegates are way to replace default functionality with custom one.
      */
-    SetDelegate(delegateKey: JsGrid$DelegateType, fn: any): void;
+    SetDelegate(
+      delegateKey: $Values<typeof SP$JsGrid$DelegateType>,
+      fn: any
+    ): void;
 
     /**
      * Get current delegate.
      */
-    GetDelegate(delegateKey: JsGrid$DelegateType): any;
+    GetDelegate(delegateKey: $Values<typeof SP$JsGrid$DelegateType>): any;
 
     /**
      * Re-render the specified row in the view.
@@ -10774,7 +11937,7 @@ declare module "sharepoint" {
       bDontExpand?: boolean
     ): any;
     GetFocusedItem(): any;
-    SendKeyDownEvent(eventInfo: Sys.UIDomEvent): any;
+    SendKeyDownEvent(eventInfo: Sys.UI.DomEvent): any;
 
     /**
      * Moves cursor to entry record (the row that is used to add new records)
@@ -10866,7 +12029,7 @@ declare module "sharepoint" {
     /**
      * Get undo manager for performing undo/redo operations programmatically.
      */
-    GetUndoManager(): SP$JsGridCommandManager;
+    GetUndoManager(): SP$JsGrid$CommandManager;
 
     /**
      * Gets number of records visible in the current view, including the entry row.
@@ -10973,15 +12136,15 @@ declare module "sharepoint" {
   declare class SP$JsGrid$RowHeaderState {
     constructor(
       id: string,
-      img: SP$JsGridImage,
-      priority: SP$JsGridRowHeaderStatePriorities,
+      img: SP$JsGrid$Image,
+      priority: $Values<typeof SP$JsGrid$RowHeaderStatePriorities>,
       tooltip: string,
-      fnOnClick: (eventInfo: Sys.UIDomEvent, recordKey: number) => void
+      fnOnClick: (eventInfo: Sys.UI.DomEvent, recordKey: number) => void
     ): this;
     GetId(): string;
-    GetImg(): SP$JsGridImage;
-    GetPriority(): SP$JsGridRowHeaderStatePriorities;
-    GetOnClick(): (eventInfo: Sys.UIDomEvent, recordKey: number) => void;
+    GetImg(): SP$JsGrid$Image;
+    GetPriority(): $Values<typeof SP$JsGrid$RowHeaderStatePriorities>;
+    GetOnClick(): (eventInfo: Sys.UI.DomEvent, recordKey: number) => void;
     GetTooltip(): string;
     toString(): string;
   }
@@ -11011,7 +12174,7 @@ declare module "sharepoint" {
      */
     Render(
       altText: string,
-      clickFn: (eventInfo: Sys.UIDomEvent) => void,
+      clickFn: (eventInfo: Sys.UI.DomEvent) => void,
       bHideTooltip: boolean
     ): HTMLElement;
   }
@@ -11043,12 +12206,14 @@ declare module "sharepoint" {
     OnBeginRedoDataUpdateChange: typeof SP$JsGrid$EventArgs$OnBeginRedoDataUpdateChange,
     OnBeginUndoDataUpdateChange: typeof SP$JsGrid$EventArgs$OnBeginUndoDataUpdateChange
   };
-  declare class SP$JsGrid$EventArgs$OnEntryRecordAdded mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$OnEntryRecordAdded
+    mixins SP$JsGrid$IEventArgs {
     constructor(recordKey: number): this;
     recordKey: number;
   }
 
-  declare class SP$JsGrid$EventArgs$CellFocusChanged mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$CellFocusChanged
+    mixins SP$JsGrid$IEventArgs {
     constructor(
       newRecordKey: number,
       newFieldKey: string,
@@ -11061,94 +12226,98 @@ declare module "sharepoint" {
     oldFieldKey: string;
   }
 
-  declare class SP$JsGrid$EventArgs$RowFocusChanged mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$RowFocusChanged
+    mixins SP$JsGrid$IEventArgs {
     constructor(newRecordKey: number, oldRecordKey: number): this;
     newRecordKey: number;
     oldRecordKey: number;
   }
 
-  declare class SP$JsGrid$EventArgs$CellEditBegin mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$CellEditBegin mixins SP$JsGrid$IEventArgs {
     constructor(recordKey: number, fieldKey: string): this;
     recordKey: number;
     fieldKey: string;
   }
 
-  declare class SP$JsGrid$EventArgs$CellEditCompleted mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$CellEditCompleted
+    mixins SP$JsGrid$IEventArgs {
     constructor(
       recordKey: number,
       fieldKey: string,
-      changeKey: JsGrid$IChangeKey,
+      changeKey: SP$JsGrid$IChangeKey,
       bCancelled: boolean
     ): this;
     recordKey: number;
     fieldKey: string;
-    changeKey: JsGrid$IChangeKey;
+    changeKey: SP$JsGrid$IChangeKey;
     bCancelled: boolean;
   }
 
-  declare class SP$JsGrid$EventArgs$Click mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$Click mixins SP$JsGrid$IEventArgs {
     constructor(
-      eventInfo: Sys.UIDomEvent,
-      context: JsGrid$ClickContext,
+      eventInfo: Sys.UI.DomEvent,
+      context: $Values<typeof SP$JsGrid$ClickContext>,
       recordKey: number,
       fieldKey: string
     ): this;
-    eventInfo: Sys.UIDomEvent;
-    context: JsGrid$ClickContext;
+    eventInfo: Sys.UI.DomEvent;
+    context: $Values<typeof SP$JsGrid$ClickContext>;
     recordKey: number;
     fieldKey: string;
   }
 
-  declare class SP$JsGrid$EventArgs$PropertyChanged mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$PropertyChanged
+    mixins SP$JsGrid$IEventArgs {
     constructor(
       recordKey: number,
       fieldKey: string,
-      oldProp: SP$JsGridInternalPropertyUpdate,
-      newProp: SP$JsGridInternalPropertyUpdate,
-      propType: SP$JsGridIPropertyType,
-      changeKey: SP$JsGridIChangeKey,
-      validationState: SP$JsGridValidationState
+      oldProp: SP$JsGrid$Internal$PropertyUpdate,
+      newProp: SP$JsGrid$Internal$PropertyUpdate,
+      propType: SP$JsGrid$IPropertyType,
+      changeKey: SP$JsGrid$IChangeKey,
+      validationState: $Values<typeof SP$JsGrid$ValidationState>
     ): this;
     recordKey: number;
     fieldKey: string;
-    oldProp: SP$JsGridInternalPropertyUpdate;
-    newProp: SP$JsGridInternalPropertyUpdate;
-    propType: SP$JsGridIPropertyType;
-    changeKey: SP$JsGridIChangeKey;
-    validationState: SP$JsGridValidationState;
+    oldProp: SP$JsGrid$Internal$PropertyUpdate;
+    newProp: SP$JsGrid$Internal$PropertyUpdate;
+    propType: SP$JsGrid$IPropertyType;
+    changeKey: SP$JsGrid$IChangeKey;
+    validationState: $Values<typeof SP$JsGrid$ValidationState>;
   }
 
-  declare class SP$JsGrid$EventArgs$RecordInserted mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$RecordInserted mixins SP$JsGrid$IEventArgs {
     constructor(
       recordKey: number,
       recordIdx: number,
       afterRecordKey: number,
-      changeKey: JsGrid$IChangeKey
+      changeKey: SP$JsGrid$IChangeKey
     ): this;
     recordKey: number;
     recordIdx: number;
     afterRecordKey: number;
-    changeKey: JsGrid$IChangeKey;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
-  declare class SP$JsGrid$EventArgs$RecordDeleted mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$RecordDeleted mixins SP$JsGrid$IEventArgs {
     constructor(
       recordKey: number,
       recordIdx: number,
-      changeKey: JsGrid$IChangeKey
+      changeKey: SP$JsGrid$IChangeKey
     ): this;
     recordKey: number;
     recordIdx: number;
-    changeKey: JsGrid$IChangeKey;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
-  declare class SP$JsGrid$EventArgs$RecordChecked mixins IEventArgs {
-    constructor(recordKeySet: SP$UtilitiesSet, bChecked: boolean): this;
-    recordKeySet: SP$UtilitiesSet;
+  declare class SP$JsGrid$EventArgs$RecordChecked mixins SP$JsGrid$IEventArgs {
+    constructor(recordKeySet: SP$Utilities$Set, bChecked: boolean): this;
+    recordKeySet: SP$Utilities$Set;
     bChecked: boolean;
   }
 
-  declare class SP$JsGrid$EventArgs$OnCellErrorStateChanged mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$OnCellErrorStateChanged
+    mixins SP$JsGrid$IEventArgs {
     constructor(
       recordKey: number,
       fieldKey: string,
@@ -11165,7 +12334,8 @@ declare module "sharepoint" {
     errorId: number;
   }
 
-  declare class SP$JsGrid$EventArgs$OnRowErrorStateChanged mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$OnRowErrorStateChanged
+    mixins SP$JsGrid$IEventArgs {
     constructor(
       recordKey: number,
       bAddingError: boolean,
@@ -11182,67 +12352,73 @@ declare module "sharepoint" {
     message: string;
   }
 
-  declare class SP$JsGrid$EventArgs$OnEntryRecordCommitted mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$OnEntryRecordCommitted
+    mixins SP$JsGrid$IEventArgs {
     constructor(
       origRecKey: string,
       recordKey: number,
-      changeKey: JsGrid$IChangeKey
+      changeKey: SP$JsGrid$IChangeKey
     ): this;
     originalRecordKey: number;
     recordKey: number;
-    changeKey: JsGrid$IChangeKey;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
-  declare class SP$JsGrid$EventArgs$SingleCellClick mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$SingleCellClick
+    mixins SP$JsGrid$IEventArgs {
     constructor(
-      eventInfo: Sys.UIDomEvent,
+      eventInfo: Sys.UI.DomEvent,
       recordKey: number,
       fieldKey: string
     ): this;
-    eventInfo: Sys.UIDomEvent;
+    eventInfo: Sys.UI.DomEvent;
     recordKey: number;
     fieldKey: string;
   }
 
   declare class SP$JsGrid$EventArgs$PendingChangeKeyInitiallyComplete
-    mixins IEventArgs {
-    constructor(changeKey: JsGrid$IChangeKey): this;
-    changeKey: JsGrid$IChangeKey;
+    mixins SP$JsGrid$IEventArgs {
+    constructor(changeKey: SP$JsGrid$IChangeKey): this;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
-  declare class SP$JsGrid$EventArgs$VacateChange mixins IEventArgs {
-    constructor(changeKey: JsGrid$IChangeKey): this;
-    changeKey: JsGrid$IChangeKey;
+  declare class SP$JsGrid$EventArgs$VacateChange mixins SP$JsGrid$IEventArgs {
+    constructor(changeKey: SP$JsGrid$IChangeKey): this;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
-  declare class SP$JsGrid$EventArgs$GridErrorStateChanged mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$GridErrorStateChanged
+    mixins SP$JsGrid$IEventArgs {
     constructor(bAnyErrors: boolean): this;
     bAnyErrors: boolean;
   }
 
-  declare class SP$JsGrid$EventArgs$SingleCellKeyDown mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$SingleCellKeyDown
+    mixins SP$JsGrid$IEventArgs {
     constructor(
-      eventInfo: Sys.UIDomEvent,
+      eventInfo: Sys.UI.DomEvent,
       recordKey: number,
       fieldKey: string
     ): this;
-    eventInfo: Sys.UIDomEvent;
+    eventInfo: Sys.UI.DomEvent;
     recordKey: number;
     fieldKey: string;
   }
 
-  declare class SP$JsGrid$EventArgs$OnRecordsReordered mixins IEventArgs {
-    constructor(recordKeys: string[], changeKey: JsGrid$IChangeKey): this;
+  declare class SP$JsGrid$EventArgs$OnRecordsReordered
+    mixins SP$JsGrid$IEventArgs {
+    constructor(recordKeys: string[], changeKey: SP$JsGrid$IChangeKey): this;
     reorderedKeys: string[];
-    changeKey: JsGrid$IChangeKey;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
-  declare class SP$JsGrid$EventArgs$OnRowEscape mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$OnRowEscape mixins SP$JsGrid$IEventArgs {
     constructor(recordKey: number): this;
     recordKey: number;
   }
 
-  declare class SP$JsGrid$EventArgs$OnEndRenameColumn mixins IEventArgs {
+  declare class SP$JsGrid$EventArgs$OnEndRenameColumn
+    mixins SP$JsGrid$IEventArgs {
     constructor(
       columnKey: string,
       originalColumnTitle: string,
@@ -11254,15 +12430,15 @@ declare module "sharepoint" {
   }
 
   declare class SP$JsGrid$EventArgs$OnBeginRedoDataUpdateChange
-    mixins IEventArgs {
-    constructor(changeKey: JsGrid$IChangeKey): this;
-    changeKey: JsGrid$IChangeKey;
+    mixins SP$JsGrid$IEventArgs {
+    constructor(changeKey: SP$JsGrid$IChangeKey): this;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
   declare class SP$JsGrid$EventArgs$OnBeginUndoDataUpdateChange
-    mixins IEventArgs {
-    constructor(changeKey: JsGrid$IChangeKey): this;
-    changeKey: JsGrid$IChangeKey;
+    mixins SP$JsGrid$IEventArgs {
+    constructor(changeKey: SP$JsGrid$IChangeKey): this;
+    changeKey: SP$JsGrid$IChangeKey;
   }
 
   declare var npm$namespace$SP$JsGrid$JsGridControl: {
@@ -11273,23 +12449,23 @@ declare module "sharepoint" {
     RowViewParameters: typeof SP$JsGrid$JsGridControl$RowViewParameters
   };
   declare class SP$JsGrid$JsGridControl$Parameters {
-    tableCache: SP$JsGridTableCache;
+    tableCache: SP$JsGrid$TableCache;
     name: any;
     bNotificationsEnabled: boolean;
     styleManager: JsGrid$IStyleManager;
     minHeaderHeight: number;
     minRowHeight: number;
-    commandMgr: SP$JsGridCommandManager;
-    enabledRowHeaderAutoStates: SP$UtilitiesSet;
+    commandMgr: SP$JsGrid$CommandManager;
+    enabledRowHeaderAutoStates: SP$Utilities$Set;
     tableViewParams: JsGridControl$TableViewParameters;
     bEnableDiffTracking: boolean;
     isRTL: boolean;
   }
 
   declare class SP$JsGrid$JsGridControl$TableViewParameters {
-    paneLayout: SP$JsGridPaneLayout;
-    defaultEditMode: SP$JsGridEditMode;
-    allowedSelectionTypes: SP$JsGridSelectionTypeFlags;
+    paneLayout: $Values<typeof SP$JsGrid$PaneLayout>;
+    defaultEditMode: $Values<typeof SP$JsGrid$EditMode>;
+    allowedSelectionTypes: $Values<typeof SP$JsGrid$SelectionTypeFlags>;
     bMovableColumns: boolean;
     bResizableColumns: boolean;
     bHidableColumns: boolean;
@@ -11322,7 +12498,7 @@ declare module "sharepoint" {
   }
 
   declare class SP$JsGrid$JsGridControl$RowViewParameters {
-    hierarchyMode: SP$JsGridHierarchyMode;
+    hierarchyMode: $Values<typeof SP$JsGrid$HierarchyMode>;
     view: any;
     topViewIdx: number;
     groupingLevel: any;
@@ -11342,59 +12518,62 @@ declare module "sharepoint" {
   declare class SP$JsGrid$TableCache {}
 
   declare interface SP$JsGrid$IStyleManager {
-    gridPaneStyle: IStyleType$GridPane;
+    gridPaneStyle: SP$JsGrid$IStyleType$GridPane;
     columnHeaderStyleCollection: {
-      normal: IStyleType$Header,
-      normalHover: IStyleType$Header,
-      partSelected: IStyleType$Header,
-      partSelectedHover: IStyleType$Header,
-      allSelected: IStyleType$Header,
-      allSelectedHover: IStyleType$Header
+      normal: SP$JsGrid$IStyleType$Header,
+      normalHover: SP$JsGrid$IStyleType$Header,
+      partSelected: SP$JsGrid$IStyleType$Header,
+      partSelectedHover: SP$JsGrid$IStyleType$Header,
+      allSelected: SP$JsGrid$IStyleType$Header,
+      allSelectedHover: SP$JsGrid$IStyleType$Header
     };
     rowHeaderStyleCollection: {
-      normal: IStyleType$Header,
-      normalHover: IStyleType$Header,
-      partSelected: IStyleType$Header,
-      partSelectedHover: IStyleType$Header,
-      allSelected: IStyleType$Header,
-      allSelectedHover: IStyleType$Header
+      normal: SP$JsGrid$IStyleType$Header,
+      normalHover: SP$JsGrid$IStyleType$Header,
+      partSelected: SP$JsGrid$IStyleType$Header,
+      partSelectedHover: SP$JsGrid$IStyleType$Header,
+      allSelected: SP$JsGrid$IStyleType$Header,
+      allSelectedHover: SP$JsGrid$IStyleType$Header
     };
     splitterStyleCollection: {
-      normal: IStyleType$Splitter,
-      normalHandle: IStyleType$SplitterHandle,
-      hover: IStyleType$Splitter,
-      hoverHandle: IStyleType$SplitterHandle,
-      dra: IStyleType$Splitter,
-      dragHandle: IStyleType$SplitterHandle
+      normal: SP$JsGrid$IStyleType$Splitter,
+      normalHandle: SP$JsGrid$IStyleType$SplitterHandle,
+      hover: SP$JsGrid$IStyleType$Splitter,
+      hoverHandle: SP$JsGrid$IStyleType$SplitterHandle,
+      dra: SP$JsGrid$IStyleType$Splitter,
+      dragHandle: SP$JsGrid$IStyleType$SplitterHandle
     };
-    defaultCellStyle: IStyleType$Cell;
-    readOnlyCellStyle: IStyleType$Cell;
-    readOnlyFocusedCellStyle: IStyleType$Cell;
-    timescaleTierStyle: IStyleType$TimescaleTier;
+    defaultCellStyle: SP$JsGrid$IStyleType$Cell;
+    readOnlyCellStyle: SP$JsGrid$IStyleType$Cell;
+    readOnlyFocusedCellStyle: SP$JsGrid$IStyleType$Cell;
+    timescaleTierStyle: SP$JsGrid$IStyleType$TimescaleTier;
     groupingStyles: any[];
-    widgetDockStyle: IStyleType$Widget;
-    widgetDockHoverStyle: IStyleType$Widget;
-    widgetDockPressedStyle: IStyleType$Widget;
-    RegisterCellStyle(styleId: string, cellStyle: IStyleType$Cell): void;
-    GetCellStyle(styleId: string): IStyleType$Cell;
+    widgetDockStyle: SP$JsGrid$IStyleType$Widget;
+    widgetDockHoverStyle: SP$JsGrid$IStyleType$Widget;
+    widgetDockPressedStyle: SP$JsGrid$IStyleType$Widget;
+    RegisterCellStyle(
+      styleId: string,
+      cellStyle: SP$JsGrid$IStyleType$Cell
+    ): void;
+    GetCellStyle(styleId: string): SP$JsGrid$IStyleType$Cell;
     UpdateSplitterStyleFromCss(
-      styleObject: IStyleType$Splitter,
+      styleObject: SP$JsGrid$IStyleType$Splitter,
       splitterStyleNameCollection: any
     ): void;
     UpdateHeaderStyleFromCss(
-      styleObject: IStyleType$Header,
+      styleObject: SP$JsGrid$IStyleType$Header,
       headerStyleNameCol: any
     ): void;
     UpdateGridPaneStyleFromCss(
-      styleObject: IStyleType$GridPane,
+      styleObject: SP$JsGrid$IStyleType$GridPane,
       gridStyleNameCollection: any
     ): void;
     UpdateDefaultCellStyleFromCss(
-      styleObject: IStyleType$Cell,
+      styleObject: SP$JsGrid$IStyleType$Cell,
       cssClass: string
     ): void;
     UpdateGroupStylesFromCss(
-      styleObject: IStyleType$Cell,
+      styleObject: SP$JsGrid$IStyleType$Cell,
       prefix: string
     ): void;
   }
@@ -11406,7 +12585,7 @@ declare module "sharepoint" {
     leftInnerBorderColor: any,
     innerBorderColor: any,
     backgroundColor: any
-  } & IStyleType;
+  } & SP$JsGrid$IStyleType;
 
   declare type SP$JsGrid$IStyleType$SplitterHandle = {
     outerBorderColor: any,
@@ -11415,7 +12594,7 @@ declare module "sharepoint" {
     backgroundColor: any,
     gripUpperColor: any,
     gripLowerColor: any
-  } & IStyleType;
+  } & SP$JsGrid$IStyleType;
 
   declare interface SP$JsGrid$IStyleType$GridPane {
     verticalBorderColor: any;
@@ -11497,7 +12676,7 @@ declare module "sharepoint" {
      * -> CSS text-align
      */
     textAlign: any
-  } & IStyleType;
+  } & SP$JsGrid$IStyleType;
 
   declare interface SP$JsGrid$IStyleType$Widget {
     backgroundColor: any;
@@ -11526,14 +12705,14 @@ declare module "sharepoint" {
 
   declare class SP$JsGrid$Style {
     static WidgetControl$Type: {
-      Splitter: IStyleType$Splitter,
-      SplitterHandle: IStyleType$SplitterHandle,
-      GridPane: IStyleType$GridPane,
-      Header: IStyleType$Header,
-      RowHeaderStyle: IStyleType$RowHeaderStyle,
-      TimescaleTier: IStyleType$TimescaleTier,
-      Cell: IStyleType$Cell,
-      Widget: IStyleType$Widget
+      Splitter: SP$JsGrid$IStyleType$Splitter,
+      SplitterHandle: SP$JsGrid$IStyleType$SplitterHandle,
+      GridPane: SP$JsGrid$IStyleType$GridPane,
+      Header: SP$JsGrid$IStyleType$Header,
+      RowHeaderStyle: SP$JsGrid$IStyleType$RowHeaderStyle,
+      TimescaleTier: SP$JsGrid$IStyleType$TimescaleTier,
+      Cell: SP$JsGrid$IStyleType$Cell,
+      Widget: SP$JsGrid$IStyleType$Widget
     };
     static SetRTL: (rtlObject: any) => void;
     static MakeJsGridStyleManager: () => SP$JsGrid$IStyleManager;
@@ -11693,7 +12872,7 @@ declare module "sharepoint" {
     fnGetCellEditMode: (
       record: JsGrid$IRecord,
       fieldKey: string
-    ) => JsGrid$EditMode;
+    ) => $Values<typeof SP$JsGrid$EditMode>;
 
     /**
      * this function should return name of the display control for the given cell in the column
@@ -11847,20 +13026,20 @@ declare module "sharepoint" {
       key: string,
       hasDataValue: boolean,
       hasLocalizedValue: boolean,
-      textDirection: SP$JsGrid$TextDirection,
+      textDirection: $Values<typeof SP$JsGrid$TextDirection>,
       defaultCellStyleId?: any,
-      editMode?: SP$JsGrid$EditMode,
+      editMode?: $Values<typeof SP$JsGrid$EditMode>,
       dateOnly?: boolean,
       csrInfo?: any
     ): this;
     key: string;
     hasDataValue: boolean;
     hasLocalizedValue: boolean;
-    textDirection: SP$JsGrid$TextDirection;
+    textDirection: $Values<typeof SP$JsGrid$TextDirection>;
     dateOnly: boolean;
     csrInfo: any;
-    GetEditMode(): SP$JsGrid$EditMode;
-    SetEditMode(mode: SP$JsGrid$EditMode): void;
+    GetEditMode(): $Values<typeof SP$JsGrid$EditMode>;
+    SetEditMode(mode: $Values<typeof SP$JsGrid$EditMode>): void;
     GetDefaultCellStyleId(): any;
     CompareSingleDataEqual(dataValue1: any, dataValue2: any): boolean;
     GetPropType(): any;
@@ -11878,13 +13057,13 @@ declare module "sharepoint" {
     RTL: any;
     emptyValue: any;
     bLightFocus: boolean;
-    OnKeyDown(domEvent: Sys.UIDomEvent): void;
+    OnKeyDown(domEvent: Sys.UI.DomEvent): void;
   }
 
   declare type SP$JsGrid$IEditControlGridContext = {
     OnActivateActor(): void,
     OnDeactivateActor(): void
-  } & IEditActorGridContext;
+  } & SP$JsGrid$IEditActorGridContext;
 
   declare interface SP$JsGrid$IPropertyType {
     ID: string;
@@ -11914,7 +13093,7 @@ declare module "sharepoint" {
       id: string,
       bLimitToList: boolean
     }
-  } & IPropertyType;
+  } & SP$JsGrid$IPropertyType;
 
   declare type SP$JsGrid$IMultiValuePropertyType = {
     bMultiValue: boolean,
@@ -11928,7 +13107,7 @@ declare module "sharepoint" {
     InitSingleValuePropType(): void,
     LocStrToLocStrArray(locStr: string): string[],
     LocStrArrayToLocStr(locStrArray: string[]): string
-  } & IPropertyType;
+  } & SP$JsGrid$IPropertyType;
 
   declare class SP$JsGrid$PropertyType {
     /**
@@ -11970,7 +13149,7 @@ declare module "sharepoint" {
     HyperLink: typeof SP$JsGrid$PropertyType$HyperLink,
     Utils: typeof SP$JsGrid$PropertyType$Utils
   };
-  declare class SP$JsGrid$PropertyType$String mixins IPropertyType {
+  declare class SP$JsGrid$PropertyType$String mixins SP$JsGrid$IPropertyType {
     constructor(): this;
     SPAnimation$ID: string;
     BeginValidateNormalizeConvert(
@@ -11988,7 +13167,8 @@ declare module "sharepoint" {
     toString(): string;
   }
 
-  declare class SP$JsGrid$PropertyType$LookupTable mixins ILookupPropertyType {
+  declare class SP$JsGrid$PropertyType$LookupTable
+    mixins SP$JsGrid$ILookupPropertyType {
     constructor(items: any[], id: string, bLimitToList: boolean): this;
     SPAnimation$ID: string;
     BeginValidateNormalizeConvert(
@@ -12016,7 +13196,8 @@ declare module "sharepoint" {
     };
   }
 
-  declare class SP$JsGrid$PropertyType$CheckBoxBoolean mixins IPropertyType {
+  declare class SP$JsGrid$PropertyType$CheckBoxBoolean
+    mixins SP$JsGrid$IPropertyType {
     constructor(): this;
     SPAnimation$ID: string;
     BeginValidateNormalizeConvert(
@@ -12036,7 +13217,8 @@ declare module "sharepoint" {
     toString(): string;
   }
 
-  declare class SP$JsGrid$PropertyType$DropDownBoolean mixins IPropertyType {
+  declare class SP$JsGrid$PropertyType$DropDownBoolean
+    mixins SP$JsGrid$IPropertyType {
     constructor(): this;
     SPAnimation$ID: string;
     BeginValidateNormalizeConvert(
@@ -12057,7 +13239,7 @@ declare module "sharepoint" {
   }
 
   declare class SP$JsGrid$PropertyType$MultiValuePropType
-    mixins IMultiValuePropertyType {
+    mixins SP$JsGrid$IMultiValuePropertyType {
     SPAnimation$ID: string;
     BeginValidateNormalizeConvert(
       recordKey: number,
@@ -12084,7 +13266,8 @@ declare module "sharepoint" {
     LocStrArrayToLocStr(locStrArray: string[]): string;
   }
 
-  declare class SP$JsGrid$PropertyType$HyperLink mixins IPropertyType {
+  declare class SP$JsGrid$PropertyType$HyperLink
+    mixins SP$JsGrid$IPropertyType {
     SPAnimation$ID: string;
     BeginValidateNormalizeConvert(
       recordKey: number,
@@ -12191,7 +13374,7 @@ declare module "sharepoint" {
     NotifyVacateChange(changeKey: SP$JsGrid$IChangeKey): void;
   }
 
-  declare class SP$JsGrid$Internal$PropertyUpdate mixins IValue {
+  declare class SP$JsGrid$Internal$PropertyUpdate mixins SP$JsGrid$IValue {
     constructor(data: any, localized: string): this;
     data: any;
     localized: string;
@@ -12222,19 +13405,19 @@ declare module "sharepoint" {
     NotifyEditComplete(): void,
     Show(element: HTMLElement): void,
     Hide(element: HTMLElement): void
-  } & IEditActorCellContext;
+  } & SP$JsGrid$IEditActorCellContext;
 
   declare interface SP$JsGrid$IEditControl {
-    SupportedWriteMode?: SP$JsGridEditActorWriteType;
-    SupportedReadMode?: SP$JsGridEditActorReadType;
+    SupportedWriteMode?: $Values<typeof SP$JsGrid$EditActorWriteType>;
+    SupportedReadMode?: $Values<typeof SP$JsGrid$EditActorReadType>;
     GetCellContext?: () => SP$JsGrid$IEditControlCellContext;
     GetOriginalValue?: () => SP$JsGrid$IValue;
     SetValue?: (value: SP$JsGrid$IValue) => void;
     Dispose(): void;
     GetInputElement?: () => HTMLElement;
-    Focus?: (eventInfo: Sys.UIDomEvent) => void;
+    Focus?: (eventInfo: Sys.UI.DomEvent) => void;
     BindToCell(cellContext: SP$JsGrid$IEditControlCellContext): void;
-    OnBeginEdit(eventInfo: Sys.UIDomEvent): void;
+    OnBeginEdit(eventInfo: Sys.UI.DomEvent): void;
     Unbind(): void;
     OnEndEdit(): void;
     OnCellMove?: () => void;
@@ -12254,11 +13437,11 @@ declare module "sharepoint" {
         }
       ) => any
     ): this;
-    AddColumn(gridField: SP$JsGridGridField, values: SP$JsGrid$IValue[]): void;
+    AddColumn(gridField: SP$JsGrid$GridField, values: SP$JsGrid$IValue[]): void;
     RemoveColumn(fieldKey: string): void;
     InitJsGridParams(
-      optGridParams?: JsGridControl$Parameters
-    ): JsGridControl$Parameters;
+      optGridParams?: SP$JsGrid$JsGridControl$Parameters
+    ): SP$JsGrid$JsGridControl$Parameters;
   }
 
   declare interface SP$JsGrid$IGridData {
@@ -12271,7 +13454,7 @@ declare module "sharepoint" {
     MultiValueSeparator?: string;
     LookupTableInfo?: JsGrid$ILookupTableInfo[];
     PivotedColumns?: SP$JsGrid$ColumnInfo[];
-    PaneLayout?: SP$JsGrid$PaneLayout;
+    PaneLayout?: $Values<typeof SP$JsGrid$PaneLayout>;
     GanttInfo?: any;
     AutoFilterableColumns?: boolean;
     AutoFilterState?: any;
@@ -12368,11 +13551,11 @@ declare module "sharepoint" {
   declare interface SP$JsGrid$IFieldInfo {
     fieldKey: string;
     propertyTypeId: string;
-    editMode?: SP$JsGrid$EditMode;
+    editMode?: $Values<typeof SP$JsGrid$EditMode>;
     hasDataValue?: boolean;
     hasLocalizedValue?: boolean;
     multiValue?: boolean;
-    textDirection?: SP$JsGrid$TextDirection;
+    textDirection?: $Values<typeof SP$JsGrid$TextDirection>;
     dateOnly?: boolean;
     defaultCellStyleId?: any;
   }
@@ -12396,7 +13579,7 @@ declare module "sharepoint" {
     ): void;
     static Instances: SP$GanttControl[];
     static FnGanttCreationCallback: Array<(control: SP$GanttControl) => void>;
-    get_Columns(): SP$JsGridColumnInfo[];
+    get_Columns(): SP$JsGrid$ColumnInfo[];
   }
 
   /**
@@ -13385,8 +14568,8 @@ declare module "sharepoint" {
     /**
      * Display format for the choice field
      */
-    FormatType: SPClientTemplates$ChoiceFormatType
-  } & FieldSchema_InForm;
+    FormatType: $Values<typeof SPClientTemplates$ChoiceFormatType>
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a Lookup field in list form or in list view in grid mode
@@ -13432,7 +14615,7 @@ declare module "sharepoint" {
      */
     ChoiceCount: number,
     LookupListId: string
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a DateTime field in list form or in list view in grid mode
@@ -13441,12 +14624,12 @@ declare module "sharepoint" {
     /**
      * Type of calendar to use
      */
-    CalendarType: SPClientTemplates$DateTimeCalendarType,
+    CalendarType: $Values<typeof SPClientTemplates$DateTimeCalendarType>,
 
     /**
      * Display format for DateTime field.
      */
-    DisplayFormat: SPClientTemplates$DateTimeDisplayFormat,
+    DisplayFormat: $Values<typeof SPClientTemplates$DateTimeDisplayFormat>,
 
     /**
      * Indicates wherever current user regional settings specify to display week numbers in day or week views of a calendar.
@@ -13465,7 +14648,7 @@ declare module "sharepoint" {
     MaxJDay: number,
     HoursMode24: boolean,
     HoursOptions: string[]
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a DateTime field in list form or in list view in grid mode
@@ -13473,7 +14656,7 @@ declare module "sharepoint" {
   declare type SPClientTemplates$FieldSchema_InForm_Geolocation = {
     BingMapsKey: string,
     IsBingMapBlockedInCurrentRegion: boolean
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a Choice field in list form or in list view in grid mode
@@ -13488,7 +14671,7 @@ declare module "sharepoint" {
      * Indicates wherever fill-in choice is allowed
      */
     FillInChoice: boolean
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a Choice field in list form or in list view in grid mode
@@ -13507,7 +14690,7 @@ declare module "sharepoint" {
     /**
      * Rich text mode for the field
      */
-    RichTextMode: SPClientTemplates$RichTextMode,
+    RichTextMode: $Values<typeof SPClientTemplates$RichTextMode>,
 
     /**
      * Number of lines configured to display
@@ -13523,28 +14706,28 @@ declare module "sharepoint" {
      * WebPartAdderId for the ScriptEditorWebPart
      */
     ScriptEditorAdderId: string
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a Number field in list form or in list view in grid mode
    */
   declare type SPClientTemplates$FieldSchema_InForm_Number = {
     ShowAsPercentage: boolean
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a Number field in list form or in list view in grid mode
    */
   declare type SPClientTemplates$FieldSchema_InForm_Text = {
     MaxLength: number
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a Number field in list form or in list view in grid mode
    */
   declare type SPClientTemplates$FieldSchema_InForm_Url = {
-    DisplayFormat: SPClientTemplates$UrlFormatType
-  } & FieldSchema_InForm;
+    DisplayFormat: $Values<typeof SPClientTemplates$UrlFormatType>
+  } & SPClientTemplates$FieldSchema_InForm;
 
   /**
    * Represents schema for a Number field in list form or in list view in grid mode
@@ -13567,7 +14750,7 @@ declare module "sharepoint" {
     EntitySeparator: string,
     PictureOnly: boolean,
     PictureSize: string
-  } & FieldSchema_InForm;
+  } & SPClientTemplates$FieldSchema_InForm;
 
   declare interface SPClientTemplates$FieldSchema {
     /**
@@ -13643,7 +14826,7 @@ declare module "sharepoint" {
      * If SPFarm.Local.UseMinWidthForHtmlPicker is true, UseMinWidth will be set to true. Undefined in other cases.
      */
     UseMinWidth: boolean
-  } & FieldSchema;
+  } & SPClientTemplates$FieldSchema;
 
   declare interface SPClientTemplates$ListSchema {
     Field: SPClientTemplates$FieldSchema[];
@@ -13651,7 +14834,7 @@ declare module "sharepoint" {
 
   declare type SPClientTemplates$ListSchema_InForm = {
     Field: SPClientTemplates$FieldSchema_InForm[]
-  } & ListSchema;
+  } & SPClientTemplates$ListSchema;
 
   declare interface SPClientTemplates$ListData_InForm {
     Items: SPClientTemplates$Item[];
@@ -13663,19 +14846,21 @@ declare module "sharepoint" {
     CurrentItems: SPClientTemplates$Item[],
     CurrentFieldSchema: SPClientTemplates$FieldSchema_InForm,
     CurrentFieldValue: any
-  } & RenderContext_Form;
+  } & SPClientTemplates$RenderContext_Form;
 
   declare type SPClientTemplates$RenderContext_Form = {
     CurrentItem: SPClientTemplates$Item,
     FieldControlModes: {
-      [fieldInternalName: string]: SPClientTemplates$ClientControlMode
+      [fieldInternalName: string]: $Values<
+        typeof SPClientTemplates$ClientControlMode
+      >
     },
     FormContext: SPClientTemplates$ClientFormContext,
     FormUniqueId: string,
     ListData: SPClientTemplates$ListData_InForm,
     ListSchema: SPClientTemplates$ListSchema_InForm,
     CSRCustomLayout?: boolean
-  } & RenderContext;
+  } & SPClientTemplates$RenderContext;
 
   declare type SPClientTemplates$FieldSchema_InView_LookupField = {
     /**
@@ -13692,7 +14877,7 @@ declare module "sharepoint" {
      * Either "TRUE" or "FALSE"
      */
     HasPrefix: string
-  } & FieldSchema_InView;
+  } & SPClientTemplates$FieldSchema_InView;
 
   declare type SPClientTemplates$FieldSchema_InView_UserField = {
     /**
@@ -13719,7 +14904,7 @@ declare module "sharepoint" {
      * Either "1" or "0"
      */
     DefaultRender: string
-  } & FieldSchema_InView;
+  } & SPClientTemplates$FieldSchema_InView;
 
   /**
    * Represents field schema in a list view.
@@ -13778,7 +14963,7 @@ declare module "sharepoint" {
      * Indicates whether the field can be sorted. Either "TRUE" or "FALSE"
      */
     Sortable: string
-  } & FieldSchema;
+  } & SPClientTemplates$FieldSchema;
 
   declare type SPClientTemplates$ListSchema_InView = {
     /**
@@ -13932,7 +15117,7 @@ declare module "sharepoint" {
      * Query string parameters that specify current root folder (RootFolder) and folder content type id (FolderCTID)
      */
     ViewSelector_ViewParameters: string
-  } & ListSchema;
+  } & SPClientTemplates$ListSchema;
 
   declare interface SPClientTemplates$ListData_InView {
     FilterLink: string;
@@ -13964,7 +15149,7 @@ declare module "sharepoint" {
     CurrentGroupIdx: number,
     CurrentGroup: SP$Group,
     CurrentItems: SPClientTemplates$Item[]
-  } & RenderContext_InView;
+  } & SPClientTemplates$RenderContext_InView;
 
   declare type SPClientTemplates$RenderContext_InView = {
     AllowCreateFolder: boolean,
@@ -14074,12 +15259,12 @@ declare module "sharepoint" {
     WorkflowAssociated: boolean,
     wpq: string,
     WriteSecurity: string
-  } & RenderContext;
+  } & SPClientTemplates$RenderContext;
 
   declare type SPClientTemplates$RenderContext_ItemInView = {
     CurrentItem: SPClientTemplates$Item,
     CurrentItemIdx: number
-  } & RenderContext_InView;
+  } & SPClientTemplates$RenderContext_InView;
 
   declare type SPClientTemplates$RenderContext_FieldInView = {
     /**
@@ -14090,11 +15275,13 @@ declare module "sharepoint" {
       | SPClientTemplates$FieldSchema_InView,
     CurrentFieldValue: any,
     FieldControlsModes: {
-      [fieldInternalName: string]: SPClientTemplates$ClientControlMode
+      [fieldInternalName: string]: $Values<
+        typeof SPClientTemplates$ClientControlMode
+      >
     },
     FormContext: SPClientTemplates$ClientFormContext,
     FormUniqueId: string
-  } & RenderContext_ItemInView;
+  } & SPClientTemplates$RenderContext_ItemInView;
 
   declare interface SPClientTemplates$Item {
     [fieldInternalName: string]: any;
@@ -14110,7 +15297,7 @@ declare module "sharepoint" {
 
   declare interface SPClientTemplates$RenderContext {
     BaseViewID?: number;
-    ControlMode?: SPClientTemplates$ClientControlMode;
+    ControlMode?: $Values<typeof SPClientTemplates$ClientControlMode>;
     CurrentCultureName?: string;
     CurrentLanguage?: number;
     CurrentSelectedItems?: any;
@@ -14349,16 +15536,18 @@ declare module "sharepoint" {
       renderCtx: SPClientTemplates$TemplateOverridesOptions
     ): any;
     static ControlModeToString(
-      mode: SPClientTemplates$ClientControlMode
+      mode: $Values<typeof SPClientTemplates$ClientControlMode>
     ): string;
     static FileSystemObjectTypeToString(
-      fileSystemObjectType: SPClientTemplates$FileSystemObjectType
+      fileSystemObjectType: $Values<
+        typeof SPClientTemplates$FileSystemObjectType
+      >
     ): string;
     static ChoiceFormatTypeToString(
-      fileSystemObjectType: SPClientTemplates$ChoiceFormatType
+      fileSystemObjectType: $Values<typeof SPClientTemplates$ChoiceFormatType>
     ): string;
     static RichTextModeToString(
-      fileSystemObjectType: SPClientTemplates$RichTextMode
+      fileSystemObjectType: $Values<typeof SPClientTemplates$RichTextMode>
     ): string;
     static IsValidControlMode(mode: number): boolean;
 
@@ -14455,7 +15644,7 @@ declare module "sharepoint" {
     updateControlValue(fieldname: string, value: any): void;
     registerClientValidator(
       fieldname: string,
-      validator: SPClientForms$ClientValidationValidatorSet
+      validator: SPClientForms$ClientValidation$ValidatorSet
     ): void;
     registerHasValueChangedCallback(
       fieldname: string,
@@ -14506,22 +15695,22 @@ declare module "sharepoint" {
   }
 
   declare class SPClientForms$ClientValidation$RequiredValidator
-    mixins IValidator {
+    mixins SPClientForms$ClientValidation$IValidator {
     Validate(value: any): SPClientForms$ClientValidation$ValidationResult;
   }
 
   declare class SPClientForms$ClientValidation$RequiredFileValidator
-    mixins IValidator {
+    mixins SPClientForms$ClientValidation$IValidator {
     Validate(value: any): SPClientForms$ClientValidation$ValidationResult;
   }
 
   declare class SPClientForms$ClientValidation$RequiredRichTextValidator
-    mixins IValidator {
+    mixins SPClientForms$ClientValidation$IValidator {
     Validate(value: any): SPClientForms$ClientValidation$ValidationResult;
   }
 
   declare class SPClientForms$ClientValidation$MaxLengthUrlValidator
-    mixins IValidator {
+    mixins SPClientForms$ClientValidation$IValidator {
     Validate(value: any): SPClientForms$ClientValidation$ValidationResult;
   }
 
@@ -14540,7 +15729,7 @@ declare module "sharepoint" {
     RenderClientForm(): void;
     SubmitClientForm(): boolean;
     NotifyControlEvent(
-      eventName: SPClientForms$FormManagerEvents,
+      eventName: $Values<typeof SPClientForms$FormManagerEvents>,
       fldName: string,
       eventArg: any
     ): void;
@@ -14728,14 +15917,17 @@ declare module "sharepoint" {
   }
 
   declare class SPAnimation$State {
-    SetAttribute(attributeId: SPAnimation$Attribute, value: number): void;
-    GetAttribute(attributeId: SPAnimation$Attribute): number;
-    GetDataIndex(attributeId: SPAnimation$Attribute): number;
+    SetAttribute(
+      attributeId: $Values<typeof SPAnimation$Attribute>,
+      value: number
+    ): void;
+    GetAttribute(attributeId: $Values<typeof SPAnimation$Attribute>): number;
+    GetDataIndex(attributeId: $Values<typeof SPAnimation$Attribute>): number;
   }
 
   declare class SPAnimation$Object {
     constructor(
-      animationID: SPAnimation$ID,
+      animationID: $Values<typeof SPAnimation$ID>,
       delay: number,
       element: HTMLElement | HTMLElement[],
       finalState: SPAnimation$State,
@@ -14785,7 +15977,7 @@ declare module "sharepoint" {
       newWidth: number,
       finishFunc: (data: any) => void,
       data: any,
-      animationId: SPAnimation$ID
+      animationId: $Values<typeof SPAnimation$ID>
     ): void;
     static QuickResize(
       element: HTMLElement,
@@ -14983,7 +16175,7 @@ declare module "sharepoint" {
    * Contains information about a keyword based search query.
    */
   declare class Microsoft$SharePoint$Client$Search$Query$KeywordQuery
-    mixins Query {
+    mixins Microsoft$SharePoint$Client$Search$Query$Query {
     constructor(context: SP$ClientContext): this;
     get_collapseSpecification: () => string;
     set_collapseSpecification: (value: string) => void;
@@ -15127,7 +16319,9 @@ declare module "sharepoint" {
     ) => Microsoft$SharePoint$Client$Search$Query$QueryPropertyValue;
     static getQueryPropertyValueType: (
       val: Microsoft$SharePoint$Client$Search$Query$QueryPropertyValue
-    ) => Microsoft$SharePoint$Client$Search$Query$QueryPropertyValueType;
+    ) => $Values<
+      typeof Microsoft$SharePoint$Client$Search$Query$QueryPropertyValueType
+    >;
     static queryPropertyValueToObject: (
       val: Microsoft$SharePoint$Client$Search$Query$QueryPropertyValue
     ) => any;
@@ -15136,7 +16330,7 @@ declare module "sharepoint" {
   declare type Microsoft$SharePoint$Client$Search$Query$ReorderingRuleCollection = {
     itemAt(index: number): Query$ReorderingRule,
     get_item(index: number): Query$ReorderingRule,
-    get_childItemType(): typeof ReorderingRule,
+    get_childItemType(): typeof Microsoft$SharePoint$Client$Search$Query$ReorderingRule,
     add(property: Query$ReorderingRule): void,
     clear(): void
   } & SP$ClientObjectCollection<Query$ReorderingRule>;
@@ -15157,9 +16351,13 @@ declare module "sharepoint" {
     mixins SP$ClientValueObject {
     get_boost: () => number;
     set_boost: (value: number) => void;
-    get_matchType: () => Microsoft$SharePoint$Client$Search$Query$ReorderingRuleMatchType;
+    get_matchType: () => $Values<
+      typeof Microsoft$SharePoint$Client$Search$Query$ReorderingRuleMatchType
+    >;
     set_matchType: (
-      value: Microsoft$SharePoint$Client$Search$Query$ReorderingRuleMatchType
+      value: $Values<
+        typeof Microsoft$SharePoint$Client$Search$Query$ReorderingRuleMatchType
+      >
     ) => void;
     get_matchValue: () => string;
     set_matchValue: (value: string) => void;
@@ -15168,8 +16366,13 @@ declare module "sharepoint" {
   declare type Microsoft$SharePoint$Client$Search$Query$SortCollection = {
     itemAt(index: number): Query$Sort,
     get_item(index: number): Query$Sort,
-    get_childItemType(): typeof Sort,
-    add(strProperty: string, sortDirection: Query$SortDirection): void,
+    get_childItemType(): typeof Microsoft$SharePoint$Client$Search$Query$Sort,
+    add(
+      strProperty: string,
+      sortDirection: $Values<
+        typeof Microsoft$SharePoint$Client$Search$Query$SortDirection
+      >
+    ): void,
     clear(): void
   } & SP$ClientObjectCollection<Query$Sort>;
 
@@ -15181,9 +16384,13 @@ declare module "sharepoint" {
 
   declare class Microsoft$SharePoint$Client$Search$Query$Sort
     mixins SP$ClientValueObject {
-    get_direction: () => Microsoft$SharePoint$Client$Search$Query$SortDirection;
+    get_direction: () => $Values<
+      typeof Microsoft$SharePoint$Client$Search$Query$SortDirection
+    >;
     set_direction: (
-      value: Microsoft$SharePoint$Client$Search$Query$SortDirection
+      value: $Values<
+        typeof Microsoft$SharePoint$Client$Search$Query$SortDirection
+      >
     ) => void;
     get_property: () => string;
     set_property: (value: string) => void;
@@ -15198,7 +16405,7 @@ declare module "sharepoint" {
       [key: string]: any
     };
     get_queryErrors: () => {
-      [key: string]: WebControls$ControlMessage
+      [key: string]: Microsoft$SharePoint$Client$Search$WebControls$ControlMessage
     };
     get_queryId: () => string;
     get_spellingSuggestion: () => string;
@@ -15316,7 +16523,9 @@ declare module "sharepoint" {
     get_correlationID: () => string;
     get_encodeDetails: () => boolean;
     get_header: () => string;
-    get_level: () => Srch$MessageLevel;
+    get_level: () => $Values<
+      typeof Microsoft$SharePoint$Client$Search$WebControls$MessageLevel
+    >;
     get_messageDetails: () => string;
     get_messageDetailsForViewers: () => string;
     get_serverTypeId: () => string;
@@ -15360,7 +16569,9 @@ declare module "sharepoint" {
     mixins SP$ClientObject {
     constructor(
       context: SP$ClientContext,
-      lowestCurrentLevelToUse: Administration$SearchObjectLevel
+      lowestCurrentLevelToUse: $Values<
+        typeof Microsoft$SharePoint$Client$Search$Administration$SearchObjectLevel
+      >
     ): this;
   }
 
@@ -15380,14 +16591,14 @@ declare module "sharepoint" {
     constructor(context: SP$ClientContext): this;
     get_importWarnings: () => string;
     exportSearchConfiguration: (
-      owningScope: Administration$SearchObjectOwner
+      owningScope: Microsoft$SharePoint$Client$Search$Administration$SearchObjectOwner
     ) => SP$JsonObjectResult;
     importSearchConfiguration: (
-      owningScope: Administration$SearchObjectOwner,
+      owningScope: Microsoft$SharePoint$Client$Search$Administration$SearchObjectOwner,
       searchConfiguration: string
     ) => void;
     deleteSearchConfiguration: (
-      owningScope: Administration$SearchObjectOwner,
+      owningScope: Microsoft$SharePoint$Client$Search$Administration$SearchObjectOwner,
       searchConfiguration: string
     ) => void;
   }
@@ -15615,7 +16826,7 @@ declare module "sharepoint" {
       pickerElementId: string,
       users: ISPClientPeoplePickerEntity[]
     ) => void;
-    SP$UrlZone: SP$UrlZone;
+    SP$UrlZone: $Values<typeof SP$UrlZone>;
     AllUrlZones: boolean;
     SharePointGroupID: number;
     AllowEmailAddresses: boolean;
@@ -15628,10 +16839,10 @@ declare module "sharepoint" {
     CurrentLocalSuggestionsDict: ISPClientPeoplePickerEntity;
     VisibleSuggestions: number;
     PrincipalAccountType: string;
-    PrincipalAccountTypeEnum: SP$UtilitiesPrincipalType;
+    PrincipalAccountTypeEnum: $Values<typeof SP$Utilities$PrincipalType>;
     EnabledClaimProviders: string;
-    SearchPrincipalSource: SP$UtilitiesPrincipalSource;
-    ResolvePrincipalSource: SP$UtilitiesPrincipalSource;
+    SearchPrincipalSource: $Values<typeof SP$Utilities$PrincipalSource>;
+    ResolvePrincipalSource: $Values<typeof SP$Utilities$PrincipalSource>;
     MaximumEntitySuggestions: number;
     EditorWidthSet: boolean;
     QueryScriptInit: boolean;
@@ -15675,7 +16886,7 @@ declare module "sharepoint" {
     ): void;
     AddPickerSearchQuery(queryStr: string): string;
     AddPickerResolveQuery(queryStr: string): string;
-    GetPeoplePickerQueryParameters(): SP$UIApplicationPagesClientPeoplePickerQueryParameters;
+    GetPeoplePickerQueryParameters(): SP$UI$ApplicationPages$ClientPeoplePickerQueryParameters;
     AddProcessedUser(
       userObject: ISPClientPeoplePickerEntity,
       fResolved?: boolean
@@ -15744,7 +16955,7 @@ declare module "sharepoint" {
     ErrorMessage?: string;
     InitialHelpText?: string;
     InitialSuggestions?: ISPClientPeoplePickerEntity[];
-    UrlZone?: SP$UrlZone;
+    UrlZone?: $Values<typeof SP$UrlZone>;
     WebApplicationID?: SP$Guid;
     SharePointGroupID?: number;
 
@@ -15753,8 +16964,8 @@ declare module "sharepoint" {
      */
     PrincipalAccountType?: string;
     EnabledClaimProvider?: string;
-    ResolvePrincipalSource?: SP$UtilitiesPrincipalSource;
-    SearchPrincipalSource?: SP$UtilitiesPrincipalSource;
+    ResolvePrincipalSource?: $Values<typeof SP$Utilities$PrincipalSource>;
+    SearchPrincipalSource?: $Values<typeof SP$Utilities$PrincipalSource>;
     OnUserResolvedClientScript?: (
       pickerElementId: string,
       users: ISPClientPeoplePickerEntity[]
@@ -16290,7 +17501,7 @@ declare module "sharepoint" {
     +local: 2 // 2
   |};
 
-  declare class Srch$ClientControl mixins undefined.Control {
+  declare class Srch$ClientControl mixins Sys.UI.Control {
     constructor(elem: Element): this;
 
     /**
@@ -16370,7 +17581,7 @@ declare module "sharepoint" {
     clickHandler(e: Event): any;
   }
 
-  declare class Srch$DataProvider mixins ClientControl {
+  declare class Srch$DataProvider mixins Srch$ClientControl {
     constructor(elem: Element): this;
     get_currentQueryState(): any;
     get_sourceID(): string;
@@ -16506,7 +17717,7 @@ declare module "sharepoint" {
     getSortName(): string;
   }
 
-  declare class Srch$DisplayControl mixins ClientControl {
+  declare class Srch$DisplayControl mixins Srch$ClientControl {
     get_queryGroupName(): string;
     set_queryGroupName(value: string): string;
     get_dataProvider(): Srch$DataProvider;
@@ -16538,7 +17749,7 @@ declare module "sharepoint" {
     render(): void;
   }
 
-  declare class Srch$Refinement mixins DisplayControl {
+  declare class Srch$Refinement mixins Srch$DisplayControl {
     static createRefinementTextbox(name: string): Element;
     static submitMultiRefinement(
       name: string,
@@ -16646,7 +17857,7 @@ declare module "sharepoint" {
     deepHits: number;
   }
 
-  declare class Srch$Result mixins DisplayControl {
+  declare class Srch$Result mixins Srch$DisplayControl {
     static parsePropertyMappingWithSlotDisplayNames(
       mappings: any
     ): {
@@ -16712,7 +17923,7 @@ declare module "sharepoint" {
     get_preloadedItemTemplateIds(): string[];
     set_preloadedItemTemplateIds(value: string[]): string[];
     processResultReady(
-      resultTableCollection: Microsoft$SharePointClientSearchQueryResultTableCollection
+      resultTableCollection: Microsoft$SharePoint$Client$Search$Query$ResultTableCollection
     ): void;
     render(): void;
     scriptApplication_PreLoad(sender: any, e: any): void;
@@ -16727,14 +17938,14 @@ declare module "sharepoint" {
      * Returns true if the specified table has results and is enabled to be shown by this control
      */
     shouldShowTable(
-      resultTable: Microsoft$SharePointClientSearchQueryResultTable
+      resultTable: Microsoft$SharePoint$Client$Search$Query$ResultTable
     ): boolean;
   }
 
   /**
    * Represents the search box control
    */
-  declare class Srch$SearchBox mixins ClientControl {
+  declare class Srch$SearchBox mixins Srch$ClientControl {
     constructor(elem: Element): this;
 
     /**
@@ -17411,17 +18622,17 @@ declare module "sharepoint" {
     static isTableTypeof(resultTable: any, tableTypeName: string): boolean;
     static isSubstrateTable(resultTable: any): boolean;
     static getTableOfType(
-      tableCollection: Microsoft$SharePointClientSearchQueryResultTableCollection,
+      tableCollection: Microsoft$SharePoint$Client$Search$Query$ResultTableCollection,
       tableTypeName: string
-    ): Microsoft$SharePointClientSearchQueryResultTable;
+    ): Microsoft$SharePoint$Client$Search$Query$ResultTable;
     static isFirstPromotedBlock(
-      resultTable: Microsoft$SharePointClientSearchQueryResultTable
+      resultTable: Microsoft$SharePoint$Client$Search$Query$ResultTable
     ): boolean;
     static isFirstRankedBlock(
-      resultTable: Microsoft$SharePointClientSearchQueryResultTable
+      resultTable: Microsoft$SharePoint$Client$Search$Query$ResultTable
     ): boolean;
     static isIntentTable(
-      resultTable: Microsoft$SharePointClientSearchQueryResultTable
+      resultTable: Microsoft$SharePoint$Client$Search$Query$ResultTable
     ): boolean;
     static createBehavior(
       id: string,
