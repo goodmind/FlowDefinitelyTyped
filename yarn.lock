@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@goodmind/flowgen@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@goodmind/flowgen/-/flowgen-2.1.0.tgz#7b76e0fef318c935d761bdcd0c11d4436fb89814"
-  integrity sha512-XAJTGnVGBRYAtRIaf+Gkqo1SAblDN8mWbgljnOWepGrKjZ7rg5qHCrh/2bcCLea85fUezz6Lcor/PD+SWOckOg==
+"@goodmind/flowgen@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@goodmind/flowgen/-/flowgen-2.1.2.tgz#0308dae3c78a5ca62dd5623f772ebcd0c8fe0716"
+  integrity sha512-CPXXm965SZn2cB3E27cvNuUpIaL1NRYhwbZGw+cm4nKzYhU4pMSH2g7Km2+alQASAUroKtfpAhQUvyZGf8/kuw==
   dependencies:
     commander "^2.11.0"
     lodash "^4.17.4"
