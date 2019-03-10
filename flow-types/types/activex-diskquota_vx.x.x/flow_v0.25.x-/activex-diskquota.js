@@ -1,78 +1,32 @@
 declare module "activex-diskquota" {
-  declare class DiskQuotaTypeLibrary$AccountStatusConstants {
-    constructor(...args: empty): mixed;
-    static +dqAcctDeleted: Class<DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctDeleted> &
-      DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctDeleted &
-      2; // 2
-    static +dqAcctInvalid: Class<DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctInvalid> &
-      DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctInvalid &
-      3; // 3
-    static +dqAcctResolved: Class<DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctResolved> &
-      DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctResolved &
-      0; // 0
-    static +dqAcctUnavailable: Class<DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnavailable> &
-      DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnavailable &
-      1; // 1
-    static +dqAcctUnknown: Class<DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnknown> &
-      DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnknown &
-      4; // 4
-    static +dqAcctUnresolved: Class<DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnresolved> &
-      DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnresolved &
-      5; // 5
-  }
+  declare var npm$namespace$DiskQuotaTypeLibrary: {
+    AccountStatusConstants: typeof DiskQuotaTypeLibrary$AccountStatusConstants,
+    QuotaStateConstants: typeof DiskQuotaTypeLibrary$QuotaStateConstants,
+    UserNameResolutionConstants: typeof DiskQuotaTypeLibrary$UserNameResolutionConstants,
+    DIDiskQuotaUser: typeof DiskQuotaTypeLibrary$DIDiskQuotaUser,
+    DiskQuotaControl: typeof DiskQuotaTypeLibrary$DiskQuotaControl
+  };
 
-  declare class DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctDeleted
-    mixins DiskQuotaTypeLibrary$AccountStatusConstants {}
-  declare class DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctInvalid
-    mixins DiskQuotaTypeLibrary$AccountStatusConstants {}
-  declare class DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctResolved
-    mixins DiskQuotaTypeLibrary$AccountStatusConstants {}
-  declare class DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnavailable
-    mixins DiskQuotaTypeLibrary$AccountStatusConstants {}
-  declare class DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnknown
-    mixins DiskQuotaTypeLibrary$AccountStatusConstants {}
-  declare class DiskQuotaTypeLibrary$AccountStatusConstants__dqAcctUnresolved
-    mixins DiskQuotaTypeLibrary$AccountStatusConstants {}
+  declare var DiskQuotaTypeLibrary$AccountStatusConstants: {|
+    +dqAcctDeleted: 2, // 2
+    +dqAcctInvalid: 3, // 3
+    +dqAcctResolved: 0, // 0
+    +dqAcctUnavailable: 1, // 1
+    +dqAcctUnknown: 4, // 4
+    +dqAcctUnresolved: 5 // 5
+  |};
 
-  declare class DiskQuotaTypeLibrary$QuotaStateConstants {
-    constructor(...args: empty): mixed;
-    static +dqStateDisable: Class<DiskQuotaTypeLibrary$QuotaStateConstants__dqStateDisable> &
-      DiskQuotaTypeLibrary$QuotaStateConstants__dqStateDisable &
-      0; // 0
-    static +dqStateEnforce: Class<DiskQuotaTypeLibrary$QuotaStateConstants__dqStateEnforce> &
-      DiskQuotaTypeLibrary$QuotaStateConstants__dqStateEnforce &
-      2; // 2
-    static +dqStateTrack: Class<DiskQuotaTypeLibrary$QuotaStateConstants__dqStateTrack> &
-      DiskQuotaTypeLibrary$QuotaStateConstants__dqStateTrack &
-      1; // 1
-  }
+  declare var DiskQuotaTypeLibrary$QuotaStateConstants: {|
+    +dqStateDisable: 0, // 0
+    +dqStateEnforce: 2, // 2
+    +dqStateTrack: 1 // 1
+  |};
 
-  declare class DiskQuotaTypeLibrary$QuotaStateConstants__dqStateDisable
-    mixins DiskQuotaTypeLibrary$QuotaStateConstants {}
-  declare class DiskQuotaTypeLibrary$QuotaStateConstants__dqStateEnforce
-    mixins DiskQuotaTypeLibrary$QuotaStateConstants {}
-  declare class DiskQuotaTypeLibrary$QuotaStateConstants__dqStateTrack
-    mixins DiskQuotaTypeLibrary$QuotaStateConstants {}
-
-  declare class DiskQuotaTypeLibrary$UserNameResolutionConstants {
-    constructor(...args: empty): mixed;
-    static +dqResolveAsync: Class<DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveAsync> &
-      DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveAsync &
-      2; // 2
-    static +dqResolveNone: Class<DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveNone> &
-      DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveNone &
-      0; // 0
-    static +dqResolveSync: Class<DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveSync> &
-      DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveSync &
-      1; // 1
-  }
-
-  declare class DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveAsync
-    mixins DiskQuotaTypeLibrary$UserNameResolutionConstants {}
-  declare class DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveNone
-    mixins DiskQuotaTypeLibrary$UserNameResolutionConstants {}
-  declare class DiskQuotaTypeLibrary$UserNameResolutionConstants__dqResolveSync
-    mixins DiskQuotaTypeLibrary$UserNameResolutionConstants {}
+  declare var DiskQuotaTypeLibrary$UserNameResolutionConstants: {|
+    +dqResolveAsync: 2, // 2
+    +dqResolveNone: 0, // 0
+    +dqResolveSync: 1 // 1
+  |};
 
   /**
    * Automation interface for DiskQuotaUser
@@ -88,7 +42,7 @@ declare module "activex-diskquota" {
     /**
      * Status of user's account
      */
-    AccountStatus: DiskQuotaTypeLibrary$AccountStatusConstants;
+    AccountStatus: $Values<typeof DiskQuotaTypeLibrary$AccountStatusConstants>;
 
     /**
      * User's display name
@@ -222,7 +176,7 @@ declare module "activex-diskquota" {
     /**
      * State of the volume's disk quota system
      */
-    QuotaState: DiskQuotaTypeLibrary$QuotaStateConstants;
+    QuotaState: $Values<typeof DiskQuotaTypeLibrary$QuotaStateConstants>;
 
     /**
      * Terminate the user name resolution thread
@@ -237,24 +191,26 @@ declare module "activex-diskquota" {
     /**
      * Control the resolution of user Security IDs to user Names
      */
-    UserNameResolution: DiskQuotaTypeLibrary$UserNameResolutionConstants;
+    UserNameResolution: $Values<
+      typeof DiskQuotaTypeLibrary$UserNameResolutionConstants
+    >;
   }
   declare interface ActiveXObject {
     on(
-      obj: DiskQuotaTypeLibrary$DiskQuotaTypeLibrary$DiskQuotaControl,
+      obj: DiskQuotaTypeLibrary$DiskQuotaControl,
       event: "OnUserNameChanged",
       argNames: ["pUser"],
       handler: (parameter: {
-        +pUser: DiskQuotaTypeLibrary$DiskQuotaTypeLibrary$DIDiskQuotaUser
+        +pUser: DiskQuotaTypeLibrary$DIDiskQuotaUser
       }) => void
     ): void;
   }
   declare interface ActiveXObjectNameMap {
-    "Microsoft.DiskQuota": DiskQuotaTypeLibrary$DiskQuotaTypeLibrary$DiskQuotaControl;
+    "Microsoft.DiskQuota": DiskQuotaTypeLibrary$DiskQuotaControl;
   }
   declare interface EnumeratorConstructor {
     new(
-      col: DiskQuotaTypeLibrary$DiskQuotaTypeLibrary$DiskQuotaControl
-    ): Enumerator<DiskQuotaTypeLibrary$DiskQuotaTypeLibrary$DIDiskQuotaUser>;
+      col: DiskQuotaTypeLibrary$DiskQuotaControl
+    ): Enumerator<DiskQuotaTypeLibrary$DIDiskQuotaUser>;
   }
 }
