@@ -20,7 +20,7 @@ declare module "@storybook/addon-notes" {
       kind: string,
       story: string
     }
-  ): ReturnType<StoryDecorator>;
+  ): $Call<StoryDecorator>;
 
   declare export function withNotes(options?: WithNotesOptions): StoryDecorator;
 
