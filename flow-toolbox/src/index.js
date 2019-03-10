@@ -10,6 +10,7 @@ const { unplug } = require("./commands/unplug");
 const { typecheck } = require("./commands/typecheck");
 
 require("yargs") // eslint-disable-line
+  .scriptName("flow-toolbox")
   .help("help", "Show usage instructions.")
   .showHelpOnFail(true)
   .option("v", {
