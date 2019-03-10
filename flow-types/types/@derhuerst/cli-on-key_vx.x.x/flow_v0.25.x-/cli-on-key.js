@@ -1,4 +1,6 @@
 declare module "@derhuerst/cli-on-key" {
+  import typeof * as stream from "stream";
+
   declare interface listen$Key {
     name?: string;
     ctrl: boolean;
@@ -14,8 +16,8 @@ declare module "@derhuerst/cli-on-key" {
   declare type listen$OffKeyPress = (key: listen$Key) => void;
   declare function listen(
     stream: stream.Readable,
-    callback: listen$listen$Callback
-  ): listen$listen$OffKeyPress;
+    callback: listen$Callback
+  ): listen$OffKeyPress;
 
-  declare module.exports: typeof listen;
+  declare export default typeof listen;
 }
