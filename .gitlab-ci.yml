@@ -24,5 +24,4 @@ typecheck:
       - flow-types/typecheck
   script:
     - yarn
-    - cd flow-types
     - npx flow-toolbox typecheck
