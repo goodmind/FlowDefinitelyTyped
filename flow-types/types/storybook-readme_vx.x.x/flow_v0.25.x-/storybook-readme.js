@@ -1,5 +1,5 @@
 declare module "storybook-readme" {
-  declare export type Renderable = React.ComponentType | JSX.Element;
+  declare export type Renderable = React$ComponentType<> | React$Node;
   declare export type RenderFunction = () => Renderable | Renderable[];
   declare export type Readme = string | string[];
   declare export type DecoratorPattern = (
@@ -19,11 +19,11 @@ declare module "storybook-readme" {
 
   declare export interface CustomComponents {
     PreviewComponent: (props: {
-      children: JSX.Element
-    }) => JSX.Element;
+      children: React$Node
+    }) => React$Node;
     FooterComponent: (props: {
-      children: JSX.Element
-    }) => JSX.Element;
+      children: React$Node
+    }) => React$Node;
   }
   declare export function withDocs(
     custom: CustomComponents
@@ -35,6 +35,8 @@ declare module "storybook-readme" {
   ): RenderFunction;
 
   declare export function withDocs(readme: Readme): DecoratorPattern;
+
+  declare var withDocs: typeof npm$namespace$withDocs;
 
   declare var npm$namespace$withDocs: {
     addFooterDocs: typeof withDocs$addFooterDocs
