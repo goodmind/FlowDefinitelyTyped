@@ -135,10 +135,10 @@ declare module "n3" {
   ): Quad;
 
   declare function DataFactory$quad<Q_In: RDF.BaseQuad, Q_Out: BaseQuad>(
-    subject: $ElementType<Q_In, "subject">,
-    predicate: $ElementType<Q_In, "predicate">,
-    object: $ElementType<Q_In, "object">,
-    graph?: $ElementType<Q_In, "graph">
+    subject: $PropertyType<Q_In, "subject">,
+    predicate: $PropertyType<Q_In, "predicate">,
+    object: $PropertyType<Q_In, "object">,
+    graph?: $PropertyType<Q_In, "graph">
   ): Q_Out;
 
   declare function DataFactory$triple(
@@ -148,9 +148,9 @@ declare module "n3" {
   ): Quad;
 
   declare function DataFactory$triple<Q_In: RDF.BaseQuad, Q_Out: BaseQuad>(
-    subject: $ElementType<Q_In, "subject">,
-    predicate: $ElementType<Q_In, "predicate">,
-    object: $ElementType<Q_In, "object">
+    subject: $PropertyType<Q_In, "subject">,
+    predicate: $PropertyType<Q_In, "predicate">,
+    object: $PropertyType<Q_In, "object">
   ): Q_Out;
 
   declare export type ErrorCallback = (err: Error, result: any) => void;
@@ -164,8 +164,8 @@ declare module "n3" {
     ...optionalParams: any[]
   ) => void;
   declare export interface BlankTriple<Q: RDF.BaseQuad = RDF.Quad> {
-    predicate: $ElementType<Q, "predicate">;
-    object: $ElementType<Q, "object">;
+    predicate: $PropertyType<Q, "predicate">;
+    object: $PropertyType<Q, "object">;
   }
   declare export interface ParserConstructor {
     new<Q: BaseQuad>(options?: ParserOptions): N3Parser<Q>;
@@ -181,7 +181,7 @@ declare module "n3" {
   declare export type ParseCallback<Q: BaseQuad = Quad> = (
     error: Error,
     quad: Q,
-    prefixes: Prefixes
+    prefixes: Prefixes<>
   ) => void;
   declare export interface N3Parser<Q: BaseQuad = Quad> {
     parse(input: string): Q[];
@@ -198,19 +198,19 @@ declare module "n3" {
     pause(): this,
     resume(): this,
     isPaused(): boolean,
-    pipe<T: NodeJS.WritableStream | RDF.Stream<Q>>(
+    pipe<T: NodeJS$WritableStream | RDF.Stream<Q>>(
       destination: T,
       options?: {
         end?: boolean
       }
     ): T,
-    unpipe(destination?: NodeJS.WritableStream | RDF.Stream<Q>): void,
+    unpipe(destination?: NodeJS$WritableStream | RDF.Stream<Q>): void,
     unshift(chunk: string | Buffer): void,
     wrap(
-      oldStream: NodeJS.ReadableStream | RDF.Stream<Q>
-    ): NodeJS.ReadableStream
+      oldStream: NodeJS$ReadableStream | RDF.Stream<Q>
+    ): NodeJS$ReadableStream
   } & RDF.Stream<Q> &
-    NodeJS.WritableStream &
+    NodeJS$WritableStream &
     RDF.Sink<Q>;
 
   declare export interface WriterOptions {
@@ -227,17 +227,17 @@ declare module "n3" {
   declare export var Writer: WriterConstructor;
   declare export interface N3Writer<Q: RDF.BaseQuad = RDF.Quad> {
     quadToString(
-      subject: $ElementType<Q, "subject">,
-      predicate: $ElementType<Q, "predicate">,
-      object: $ElementType<Q, "object">,
-      graph?: $ElementType<Q, "graph">
+      subject: $PropertyType<Q, "subject">,
+      predicate: $PropertyType<Q, "predicate">,
+      object: $PropertyType<Q, "object">,
+      graph?: $PropertyType<Q, "graph">
     ): string;
     quadsToString(quads: RDF.Quad[]): string;
     addQuad(
-      subject: $ElementType<Q, "subject">,
-      predicate: $ElementType<Q, "predicate">,
-      object: $ElementType<Q, "object"> | Array<$ElementType<Q, "object">>,
-      graph?: $ElementType<Q, "graph">,
+      subject: $PropertyType<Q, "subject">,
+      predicate: $PropertyType<Q, "predicate">,
+      object: $PropertyType<Q, "object"> | Array<$PropertyType<Q, "object">>,
+      graph?: $PropertyType<Q, "graph">,
       done?: () => void
     ): void;
     addQuad(quad: RDF.Quad): void;
@@ -253,13 +253,13 @@ declare module "n3" {
     ): void;
     end(err?: ErrorCallback, result?: string): void;
     blank(
-      predicate: $ElementType<Q, "predicate">,
-      object: $ElementType<Q, "object">
+      predicate: $PropertyType<Q, "predicate">,
+      object: $PropertyType<Q, "object">
     ): BlankNode;
     blank(
-      triple: BlankTriple | RDF.Quad | BlankTriple[] | RDF.Quad[]
+      triple: BlankTriple<> | RDF.Quad | BlankTriple<>[] | RDF.Quad[]
     ): BlankNode;
-    list(triple: Array<$ElementType<Q, "object">>): Quad_Object[];
+    list(triple: Array<$PropertyType<Q, "object">>): Quad_Object[];
   }
   declare export interface StreamWriterConstructor {
     new<Q: RDF.BaseQuad>(options?: WriterOptions): N3StreamWriter<Q>;
@@ -270,7 +270,7 @@ declare module "n3" {
   declare export var StreamWriter: StreamWriterConstructor;
   declare export type N3StreamWriter<
     Q: RDF.BaseQuad = Quad
-  > = {} & NodeJS.ReadWriteStream & RDF.Source;
+  > = {} & NodeJS$ReadWriteStream & RDF.Source;
 
   declare export type N3Store<
     Q_RDF: RDF.BaseQuad = RDF.Quad,
@@ -278,23 +278,23 @@ declare module "n3" {
   > = {
     +size: number,
     addQuad(
-      subject: $ElementType<Q_RDF, "subject">,
-      predicate: $ElementType<Q_RDF, "predicate">,
+      subject: $PropertyType<Q_RDF, "subject">,
+      predicate: $PropertyType<Q_RDF, "predicate">,
       object:
-        | $ElementType<Q_RDF, "object">
-        | Array<$ElementType<Q_RDF, "object">>,
-      graph?: $ElementType<Q_RDF, "graph">,
+        | $PropertyType<Q_RDF, "object">
+        | Array<$PropertyType<Q_RDF, "object">>,
+      graph?: $PropertyType<Q_RDF, "graph">,
       done?: () => void
     ): void,
     addQuad(quad: Q_RDF): void,
     addQuads(quads: Q_RDF[]): void,
     removeQuad(
-      subject: $ElementType<Q_RDF, "subject">,
-      predicate: $ElementType<Q_RDF, "predicate">,
+      subject: $PropertyType<Q_RDF, "subject">,
+      predicate: $PropertyType<Q_RDF, "predicate">,
       object:
-        | $ElementType<Q_RDF, "object">
-        | Array<$ElementType<Q_RDF, "object">>,
-      graph?: $ElementType<Q_RDF, "graph">,
+        | $PropertyType<Q_RDF, "object">
+        | Array<$PropertyType<Q_RDF, "object">>,
+      graph?: $PropertyType<Q_RDF, "graph">,
       done?: () => void
     ): void,
     removeQuad(quad: Q_RDF): void,
@@ -336,7 +336,7 @@ declare module "n3" {
       predicate: OTerm,
       object: OTerm,
       graph: OTerm
-    ): Array<$ElementType<Q_N3, "subject">>,
+    ): Array<$PropertyType<Q_N3, "subject">>,
     forSubjects(
       callback: QuadCallback<Q_N3>,
       predicate: OTerm,
@@ -347,7 +347,7 @@ declare module "n3" {
       subject: OTerm,
       object: OTerm,
       graph: OTerm
-    ): Array<$ElementType<Q_N3, "predicate">>,
+    ): Array<$PropertyType<Q_N3, "predicate">>,
     forPredicates(
       callback: QuadCallback<Q_N3>,
       subject: OTerm,
@@ -358,7 +358,7 @@ declare module "n3" {
       subject: OTerm,
       predicate: OTerm,
       graph: OTerm
-    ): Array<$ElementType<Q_N3, "object">>,
+    ): Array<$PropertyType<Q_N3, "object">>,
     forObjects(
       callback: QuadCallback<Q_N3>,
       subject: OTerm,
@@ -369,7 +369,7 @@ declare module "n3" {
       subject: OTerm,
       predicate: OTerm,
       object: OTerm
-    ): Array<$ElementType<Q_N3, "graph">>,
+    ): Array<$PropertyType<Q_N3, "graph">>,
     forGraphs(
       callback: QuadCallback<Q_N3>,
       subject: OTerm,
