@@ -1,3 +1,5 @@
+declare var i18n: typeof npm$namespace$i18n;
+
 declare var npm$namespace$i18n: {
   configure: typeof i18n$configure,
   init: typeof i18n$init,
