@@ -8,7 +8,7 @@ declare module "react-lazyload" {
     overflow?: boolean;
     resize?: boolean;
     scroll?: boolean;
-    children?: JSX.Element;
+    children?: React$Node;
     throttle?: number | boolean;
     debounce?: number | boolean;
     placeholder?: any;
