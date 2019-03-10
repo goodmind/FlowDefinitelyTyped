@@ -1,4 +1,10 @@
 declare module "activex-stdole" {
+  declare var npm$namespace$stdole: {
+    LoadPictureConstants: typeof stdole$LoadPictureConstants,
+    OLE_TRISTATE: typeof stdole$OLE_TRISTATE,
+    StdFont: typeof stdole$StdFont,
+    StdPicture: typeof stdole$StdPicture
+  };
   declare type stdole$IFontDisp = stdole$StdFont;
 
   declare type stdole$IPictureDisp = stdole$StdPicture;
@@ -13,47 +19,18 @@ declare module "activex-stdole" {
 
   declare type stdole$OLE_YPOS_PIXELS = number;
 
-  declare class stdole$LoadPictureConstants {
-    constructor(...args: empty): mixed;
-    static +Color: Class<stdole$LoadPictureConstants__Color> &
-      stdole$LoadPictureConstants__Color &
-      4; // 4
-    static +Default: Class<stdole$LoadPictureConstants__Default> &
-      stdole$LoadPictureConstants__Default &
-      0; // 0
-    static +Monochrome: Class<stdole$LoadPictureConstants__Monochrome> &
-      stdole$LoadPictureConstants__Monochrome &
-      1; // 1
-    static +VgaColor: Class<stdole$LoadPictureConstants__VgaColor> &
-      stdole$LoadPictureConstants__VgaColor &
-      2; // 2
-  }
+  declare var stdole$LoadPictureConstants: {|
+    +Color: 4, // 4
+    +Default: 0, // 0
+    +Monochrome: 1, // 1
+    +VgaColor: 2 // 2
+  |};
 
-  declare class stdole$LoadPictureConstants__Color
-    mixins stdole$LoadPictureConstants {}
-  declare class stdole$LoadPictureConstants__Default
-    mixins stdole$LoadPictureConstants {}
-  declare class stdole$LoadPictureConstants__Monochrome
-    mixins stdole$LoadPictureConstants {}
-  declare class stdole$LoadPictureConstants__VgaColor
-    mixins stdole$LoadPictureConstants {}
-
-  declare class stdole$OLE_TRISTATE {
-    constructor(...args: empty): mixed;
-    static +Checked: Class<stdole$OLE_TRISTATE__Checked> &
-      stdole$OLE_TRISTATE__Checked &
-      1; // 1
-    static +Gray: Class<stdole$OLE_TRISTATE__Gray> &
-      stdole$OLE_TRISTATE__Gray &
-      2; // 2
-    static +Unchecked: Class<stdole$OLE_TRISTATE__Unchecked> &
-      stdole$OLE_TRISTATE__Unchecked &
-      0; // 0
-  }
-
-  declare class stdole$OLE_TRISTATE__Checked mixins stdole$OLE_TRISTATE {}
-  declare class stdole$OLE_TRISTATE__Gray mixins stdole$OLE_TRISTATE {}
-  declare class stdole$OLE_TRISTATE__Unchecked mixins stdole$OLE_TRISTATE {}
+  declare var stdole$OLE_TRISTATE: {|
+    +Checked: 1, // 1
+    +Gray: 2, // 2
+    +Unchecked: 0 // 0
+  |};
 
   declare interface stdole$DISPPARAMS {
     +cArgs: number;
@@ -115,7 +92,7 @@ declare module "activex-stdole" {
   }
   declare interface ActiveXObject {
     on(
-      obj: stdole$stdole$StdFont,
+      obj: stdole$StdFont,
       event: "FontChanged",
       argNames: ["PropertyName"],
       handler: (parameter: {
@@ -124,7 +101,7 @@ declare module "activex-stdole" {
     ): void;
   }
   declare interface ActiveXObjectNameMap {
-    stdole$StdFont: stdole$stdole$StdFont;
-    stdole$StdPicture: stdole$stdole$StdPicture;
+    StdFont: stdole$StdFont;
+    StdPicture: stdole$StdPicture;
   }
 }
