@@ -46,7 +46,7 @@ declare module "@rebass/grid" {
     order?: ResponsiveProp,
     is?: string | ComponentType<any>,
     alignSelf?: ResponsiveProp
-  } & Omit<React.ComponentPropsWithRef<"div">, "color" | "is"> &
+  } & Omit<React$ComponentPropsWithRef<"div">, "color" | "is"> &
     CommonProps;
 
   declare export type FlexProps = {
@@ -57,11 +57,11 @@ declare module "@rebass/grid" {
   } & BoxProps;
 
   declare export type BoxComponent = StyledComponent<
-    React.ForwardRefExoticComponent<$Shape<BoxProps>>,
+    React$ForwardRefExoticComponent<$Shape<BoxProps>>,
     any
   >;
   declare export type FlexComponent = StyledComponent<
-    React.ForwardRefExoticComponent<$Shape<FlexProps>>,
+    React$ForwardRefExoticComponent<$Shape<FlexProps>>,
     any
   >;
   declare export interface Theme {
@@ -72,5 +72,5 @@ declare module "@rebass/grid" {
   declare export var Box: BoxComponent;
   declare export var Flex: FlexComponent;
   declare export var theme: Theme;
-  declare export var div: ComponentType<React.HTMLProps<HTMLDivElement>>;
+  declare export var div: ComponentType<React$HTMLProps<HTMLDivElement>>;
 }
