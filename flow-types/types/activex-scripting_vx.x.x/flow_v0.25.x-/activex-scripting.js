@@ -1,4 +1,6 @@
 declare module "activex-scripting" {
+  declare var Scripting: typeof npm$namespace$Scripting;
+
   declare var npm$namespace$Scripting: {
     CompareMethod: typeof Scripting$CompareMethod,
     DriveTypeConst: typeof Scripting$DriveTypeConst,
@@ -280,7 +282,7 @@ declare module "activex-scripting" {
     /**
      * Get drive that contains file
      */
-    Scripting$Drive: Scripting$Drive;
+    Drive: Scripting$Drive;
 
     /**
      * Move this file
@@ -420,7 +422,7 @@ declare module "activex-scripting" {
     /**
      * Get drives collection
      */
-    Scripting$Drives: Scripting$Drives;
+    Drives: Scripting$Drives;
 
     /**
      * Check if a file exists
@@ -579,12 +581,12 @@ declare module "activex-scripting" {
     /**
      * Get drive that contains folder
      */
-    Scripting$Drive: Scripting$Drive;
+    Drive: Scripting$Drive;
 
     /**
      * Get files collection
      */
-    Scripting$Files: Scripting$Files;
+    Files: Scripting$Files;
 
     /**
      * True if folder is root
