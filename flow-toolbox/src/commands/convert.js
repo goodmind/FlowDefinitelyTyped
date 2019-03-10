@@ -24,6 +24,7 @@ const {
 const baseDir = path.join(__dirname, "../../..");
 
 const skipList = [
+  ".DS_Store",
   "chrome",
   "activex-libreoffice",
   "echarts",
