@@ -211,7 +211,7 @@ declare module "react-share" {
     /**
      * Supply a function as the child to render anything but the count
      */
-    children?: (shareCount: number) => React.ReactNode;
+    children?: (shareCount: number) => React.Node;
   }
   declare export var FacebookShareCount: React.StatelessComponent<ShareCountComponentProps>;
   declare export var GooglePlusShareCount: React.StatelessComponent<ShareCountComponentProps>;

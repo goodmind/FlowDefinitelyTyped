@@ -8,6 +8,7 @@ const { missingTypes } = require("./commands/missing-types");
 const { main } = require("./commands/convert");
 const { unplug } = require("./commands/unplug");
 const { typecheck } = require("./commands/typecheck");
+const { clean } = require("./commands/clean");
 
 require("yargs") // eslint-disable-line
   .scriptName("flow-toolbox")
@@ -107,6 +108,14 @@ require("yargs") // eslint-disable-line
     yargs => {},
     argv => {
       typecheck(argv.names);
+    }
+  )
+  .command(
+    "clean",
+    "clean types",
+    yargs => {},
+    argv => {
+      clean()
     }
   )
   .demandCommand(1, "You need at least one command before moving on").argv;

@@ -17,6 +17,7 @@
 // TypeScript Version: 2.8
 
 import * as Redis from "ioredis";
+import { EventEmitter } from "events";
 
 /**
  * This is the Queue constructor.
@@ -228,6 +229,25 @@ declare namespace Bull {
      * Takes a lock for this job so that no other queue worker can process it at the same time.
      */
     takeLock(): Promise<number | false>;
+
+    /**
+     * Get job properties as Json Object
+     */
+    toJSON(): {
+      id: JobId,
+      name: string,
+      data: T,
+      opts: JobOptions,
+      progress: number,
+      delay: number,
+      timestamp: number,
+      attemptsMade: number,
+      failedReason: any,
+      stacktrace: string[] | null,
+      returnvalue: any,
+      finishedOn: number | null,
+      processedOn: number | null
+    };
   }
 
   type JobStatus = 'completed' | 'waiting' | 'active' | 'delayed' | 'failed';
@@ -365,7 +385,7 @@ declare namespace Bull {
     next: number;
   }
 
-  interface Queue<T = any> {
+  interface Queue<T = any> extends EventEmitter {
     /**
      * The name of the queue
      */

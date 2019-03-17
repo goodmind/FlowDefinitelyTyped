@@ -1,6 +1,6 @@
 declare module "react-dragtastic" {
   import type {
-    ReactNode,
+    Node,
     Component,
     MouseEventHandler,
     TouchEventHandler
@@ -112,7 +112,7 @@ declare module "react-dragtastic" {
           onTouchStart: TouchEventHandler
         }
       }
-    ) => ReactNode;
+    ) => Node;
   }
 
   /**
@@ -169,7 +169,7 @@ declare module "react-dragtastic" {
           onMouseUp: () => void
         }
       }
-    ) => ReactNode;
+    ) => Node;
   }
 
   /**
@@ -201,7 +201,7 @@ declare module "react-dragtastic" {
          */
         isOverAccepted: boolean
       }
-    ) => ReactNode;
+    ) => Node;
   }
 
   /**
@@ -215,7 +215,7 @@ declare module "react-dragtastic" {
      * For example, you may pass ['type', 'data'] to only rerender if these keys change.
      */
     subscribeTo?: $ReadOnlyArray<string> | null;
-    children: (arg: State) => ReactNode;
+    children: (arg: State) => Node;
   }
 
   /**

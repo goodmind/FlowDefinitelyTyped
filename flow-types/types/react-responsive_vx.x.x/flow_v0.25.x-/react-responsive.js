@@ -65,7 +65,7 @@ declare module "react-responsive" {
     query?: string,
     style?: React.CSSProperties,
     className?: string,
-    children?: React.ReactNode | ((matches: boolean) => React.ReactNode),
+    children?: React.Node | ((matches: boolean) => React.Node),
     values?: $Shape<MediaQueryMatchers>,
     onBeforeChange?: (matches: boolean) => void,
     onChange?: (matches: boolean) => void

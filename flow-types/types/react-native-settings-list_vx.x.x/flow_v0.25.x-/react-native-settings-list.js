@@ -1,5 +1,5 @@
 declare module "react-native-settings-list" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   import type {
     TextStyle,
@@ -57,7 +57,7 @@ declare module "react-native-settings-list" {
     /**
      * Icon displayed on the left of the settings item
      */
-    icon?: ReactNode;
+    icon?: Node;
 
     /**
      * Item Box Style
@@ -116,7 +116,7 @@ declare module "react-native-settings-list" {
      * Default: true
      */
     hasNavArrow?: boolean;
-    arrowIcon?: ReactNode;
+    arrowIcon?: Node;
     arrowStyle?: StyleProp<ImageStyle>;
 
     /**
@@ -153,10 +153,11 @@ declare module "react-native-settings-list" {
     /**
      * Right side content
      */
-    rightSideContent?: ReactNode;
+    rightSideContent?: Node;
     borderHide?: "Top" | "Bottom" | "Both";
     itemRef?: () => void;
   }
+  declare var SettingsList: typeof npm$namespace$SettingsList;
 
   declare var npm$namespace$SettingsList: {
     Header: typeof SettingsList$Header,

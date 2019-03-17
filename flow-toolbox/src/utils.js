@@ -33,14 +33,16 @@ function fileName(inputName) {
 }
 
 function convertSourceFile(code, name) {
+  const special = ["arcgis-js-api", "node"];
   try {
     const hasHeader =
       code.includes(`declare module '${name}'`) ||
       code.includes(`declare module "${name}"`) ||
       code.includes(`declare module ${name}`);
-    const template = hasHeader
-      ? code
-      : `
+    const template =
+      hasHeader || special.includes(name)
+        ? code
+        : `
 declare module '${name}' {
   ${code}
 };
@@ -79,6 +81,7 @@ declare module '${name}' {
       }
       const body = ts.getMutableClone(sourceFile.statements[0].body);
       body.statements = body.statements.filter(node => {
+        if (special.includes(name)) return true;
         if (
           node.kind === ts.SyntaxKind.ModuleDeclaration &&
           (node.flags & ts.NodeFlags.Namespace) === 0 &&
@@ -89,7 +92,11 @@ declare module '${name}' {
             return false;
           }
         }
-        if (node.kind === ts.SyntaxKind.ModuleDeclaration && (node.flags & ts.NodeFlags.GlobalAugmentation) === ts.NodeFlags.GlobalAugmentation) {
+        if (
+          node.kind === ts.SyntaxKind.ModuleDeclaration &&
+          (node.flags & ts.NodeFlags.GlobalAugmentation) ===
+            ts.NodeFlags.GlobalAugmentation
+        ) {
           if (body.statements) {
             nodes.push(node);
             return false;
@@ -322,6 +329,30 @@ async function safeFlowGenDiff(name, sourceFile, commonAncestor) {
   );
 }
 
+async function bfs(rootDir) {
+  const queue = [];
+  const files = [];
+  queue.push(rootDir);
+  let current;
+  while (queue.length) {
+    current = queue.shift();
+    try {
+      const dir = await fs.promises.readdir(current, { withFileTypes: true });
+      for (const file of dir) {
+        if (file.isDirectory()) {
+          queue.push(path.join(current, file.name));
+        } else {
+          if (!file.name.endsWith(".d.ts")) continue;
+          files.push(path.join(current, file.name));
+        }
+      }
+    } catch {
+      files.push(current);
+    }
+  }
+  return files;
+}
+
 module.exports = {
   convertSourceFile,
   label,
@@ -332,5 +363,6 @@ module.exports = {
   copyTests,
   originalName,
   getPackageFolder,
-  exportForFlowTyped
+  exportForFlowTyped,
+  bfs
 };

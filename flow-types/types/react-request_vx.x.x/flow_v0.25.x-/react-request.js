@@ -17,7 +17,7 @@ declare module "react-request" {
   } & RequestInit;
 
   declare export type FetchProps<T = any> = {
-    children?: (renderProps: RenderProps<T>) => React.ReactNode
+    children?: (renderProps: RenderProps<T>) => React.Node
   } & FetchRequestProps;
 
   declare export interface RequestKeyOptions {

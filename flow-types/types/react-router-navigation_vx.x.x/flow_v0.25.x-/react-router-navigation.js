@@ -1,10 +1,5 @@
 declare module "react-router-navigation" {
-  import type {
-    Component,
-    ReactNode,
-    ReactElement,
-    ComponentClass
-  } from "react";
+  import type { Component, Node, ReactElement, ComponentClass } from "react";
 
   import type {
     StyleProp,
@@ -27,16 +22,16 @@ declare module "react-router-navigation" {
   declare export type CardSubViewProps = any;
   declare export interface NavBarProps {
     hideNavBar?: boolean;
-    renderNavBar?: (props: CardSubViewProps) => ReactNode;
+    renderNavBar?: (props: CardSubViewProps) => Node;
     navBarStyle?: StyleProp<ViewStyle>;
     hideBackButton?: boolean;
     backButtonTintColor?: string;
     backButtonTitle?: string;
-    renderLeftButton?: (props: CardSubViewProps) => ReactNode;
+    renderLeftButton?: (props: CardSubViewProps) => Node;
     title?: string;
     titleStyle?: StyleProp<TextStyle>;
-    renderTitle?: (props: CardSubViewProps) => ReactNode;
-    renderRightButton?: (props: CardSubViewProps) => ReactNode;
+    renderTitle?: (props: CardSubViewProps) => Node;
+    renderRightButton?: (props: CardSubViewProps) => Node;
   }
   declare export type NavigationProps = {
     cardStyle?: StyleProp<ViewStyle>,
@@ -58,15 +53,15 @@ declare module "react-router-navigation" {
   declare export type TabSubViewProps = any;
   declare export interface TabBarProps {
     hideTabBar?: boolean;
-    renderTabBar?: (props: TabSubViewProps) => ReactNode;
+    renderTabBar?: (props: TabSubViewProps) => Node;
     tabBarStyle?: StyleProp<ViewStyle>;
     tabStyle?: StyleProp<ViewStyle>;
     label?: string;
     labelStyle?: StyleProp<TextStyle>;
-    renderLabel?: (props: TabSubViewProps) => ReactNode;
+    renderLabel?: (props: TabSubViewProps) => Node;
     tabTintColor?: string;
     tabActiveTintColor?: string;
-    renderTabIcon?: (props: TabSubViewProps) => ReactNode;
+    renderTabIcon?: (props: TabSubViewProps) => Node;
     tabBarPosition?: "top" | "bottom";
     tabBarIndicatorStyle?: StyleProp<ViewStyle>;
   }
@@ -92,7 +87,7 @@ declare module "react-router-navigation" {
   } & TabProps;
 
   declare export type BottomNavigationProps = {
-    children?: ReactNode[],
+    children?: Node[],
     lazy?: boolean,
     style?: StyleProp<ViewStyle>
   } & TabBarProps;
@@ -107,21 +102,21 @@ declare module "react-router-navigation" {
     static defaultProps: {
       lazy: true
     };
-    renderPager: (sceneProps: TabSubViewProps) => ReactNode;
+    renderPager: (sceneProps: TabSubViewProps) => Node;
     renderNavigationBar: (
       sceneProps: TabSubViewProps,
       props: TabSubViewProps
-    ) => ReactNode;
-    renderSceneView: (sceneProps: TabSubViewProps) => ReactNode;
+    ) => Node;
+    renderSceneView: (sceneProps: TabSubViewProps) => Node;
     renderScene: (sceneProps: TabSubViewProps) => ReactElement<ViewProps>;
   }
   declare export function Card(props: CardProps): ReactElement<CardProps>;
 
   declare export class NavBar mixins Component<CardSubViewProps, void> {
     props: CardSubViewProps;
-    renderLeftComponent: (sceneProps: CardSubViewProps) => ReactNode;
-    renderTitleComponent: (sceneProps: CardSubViewProps) => ReactNode;
-    renderRightComponent: (sceneProps: CardSubViewProps) => ReactNode;
+    renderLeftComponent: (sceneProps: CardSubViewProps) => Node;
+    renderTitleComponent: (sceneProps: CardSubViewProps) => Node;
+    renderRightComponent: (sceneProps: CardSubViewProps) => Node;
   }
   declare export type NavigationComponentProps = {
     children?: Array<ReactElement<any>>
@@ -132,7 +127,7 @@ declare module "react-router-navigation" {
     renderHeader: (
       sceneProps: CardSubViewProps,
       props: CardSubViewProps
-    ) => ReactNode;
+    ) => Node;
     renderSceneComponent: (
       sceneProps: CardSubViewProps
     ) => ComponentClass<any> | void;

@@ -20,8 +20,8 @@ declare module "react-notification-system" {
   ) => void;
 
   declare export interface NotificationSystem$Notification {
-    title?: string | global$JSX$Element;
-    message?: string | global$JSX$Element;
+    title?: string | React$Node;
+    message?: string | React$Node;
     level?: "error" | "warning" | "info" | "success";
     position?: "tr" | "tl" | "tc" | "br" | "bl" | "bc";
     autoDismiss?: number;

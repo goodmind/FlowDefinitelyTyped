@@ -1,5 +1,5 @@
 declare module "@atlaskit/layer" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   declare export default class Layer mixins Component<Props> {}
   declare export interface Props {
@@ -19,12 +19,12 @@ declare module "@atlaskit/layer" {
     /**
      * Target to which layer is attached
      */
-    children?: ReactNode;
+    children?: Node;
 
     /**
      * HTML content to display in the layer. Will be aligned to the target according to the position prop.
      */
-    content?: ReactNode;
+    content?: Node;
 
     /**
      * String representing the offsets from the target element in the format "[x-offset][y-offset]",

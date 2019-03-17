@@ -25,7 +25,7 @@ declare module "react-tagsinput" {
     ) => void,
     +ref: (r: any) => void,
     +value: Tag
-  } & InputProps;
+  } & TagsInput$InputProps;
 
   declare interface TagsInput$TagProps {
     [prop: string]: any;
@@ -36,7 +36,7 @@ declare module "react-tagsinput" {
     +getTagDisplayValue: (tag: Tag) => string,
     +onRemove: (tagIndex: number) => void,
     +tag: Tag
-  } & TagProps;
+  } & TagsInput$TagProps;
 
   declare type TagsInput$ReactTagsInputProps = {
     value: Tag[],
@@ -59,11 +59,11 @@ declare module "react-tagsinput" {
     tagProps?: TagsInput$TagProps,
     inputProps?: TagsInput$InputProps,
     tagDisplayProp?: string | null,
-    renderTag?: (props: TagsInput$RenderTagProps) => React.ReactNode,
-    renderInput?: (props: TagsInput$RenderInputProps) => React.ReactNode,
+    renderTag?: (props: TagsInput$RenderTagProps) => React.Node,
+    renderInput?: (props: TagsInput$RenderInputProps) => React.Node,
     renderLayout?: (
-      tagComponents: React.Component[],
-      inputComponent: React.Component
+      tagComponents: React.Component<>[],
+      inputComponent: React.Component<>
     ) => React.ReactChild,
     preventSubmit?: boolean
   } & React.Props<TagsInput>;

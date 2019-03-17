@@ -1,5 +1,5 @@
 declare module "dayzed" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   declare export interface DateObj {
     date: Date;
@@ -30,7 +30,7 @@ declare module "dayzed" {
       dateObj: DateObj
     }) => Record<string, any>;
   }
-  declare type RenderFn = (renderProps: RenderProps) => ReactNode;
+  declare type RenderFn = (renderProps: RenderProps) => Node;
   declare interface Props {
     date?: Date;
     maxDate?: Date;

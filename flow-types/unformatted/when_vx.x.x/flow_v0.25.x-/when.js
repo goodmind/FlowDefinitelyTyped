@@ -3,6 +3,7 @@ declare function When<T>(promiseOrValue: T | When$Promise<T> | When$Thenable<T>)
 declare function When<T, U>(
 promiseOrValue: T | When$Promise<T> | When$Thenable<T>,
 transform: (val: T) => U): When$Promise<U>
+declare var When: typeof npm$namespace$When;
 
       declare var npm$namespace$When: {
         attempt: typeof When$attempt,
@@ -418,7 +419,7 @@ onRejected?: (reason: any) => U): When$Thenable<U>
 declare module 'when/node' {
         import typeof * as when from 'when';
 
-	declare var When$_: typeof when._;
+	declare var _: typeof when._;
 	declare function lift<T>(fn: _$NodeFn0<T>): _$LiftedFn0<T>
 
 	declare function lift<A1, T>(fn: _$NodeFn1<A1, T>): _$LiftedFn1<A1, T>

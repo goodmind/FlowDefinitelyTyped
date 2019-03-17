@@ -18,7 +18,8 @@ const {
   fileName,
   runFlowGen,
   originalName,
-  copyTests
+  copyTests,
+  bfs
 } = require("../utils");
 
 const baseDir = path.join(__dirname, "../../..");
@@ -111,12 +112,24 @@ async function main(argv) {
       } catch {}
       continue;
     }
-    const typescriptFile = `${baseDir}/types/${type}/index.d.ts`;
-    if (!infojson[name]) infojson[name] = {};
-    const previousCommitHash = infojson[name].typescriptCommitHash;
-    const commitHash = JSON.parse(
-      await execa.stdout("git", ["log", "-1", '--pretty="%H"', typescriptFile])
+    const typescriptFolder = `${baseDir}/types/${type}`;
+    const typescriptFiles = await bfs(typescriptFolder);
+    console.log(
+      label(chalk.bgWhite, name),
+      label(chalk.bgBlue, "FILES COUNT"),
+      typescriptFiles.length
     );
+    const typescriptFile = `${typescriptFolder}/index.d.ts`;
+    if (!infojson[name]) infojson[name] = {};
+    infojson[name].filesCount = typescriptFiles.length;
+    const previousCommitHash = infojson[name].typescriptCommitHash;
+    const gitLog = await execa.stdout("git", [
+      "log",
+      "-1",
+      '--pretty="%H"',
+      typescriptFile
+    ]);
+    const commitHash = gitLog === "" ? null : JSON.parse(gitLog);
     const unpluggedExists = await glob(
       `${baseDir}/flow-types/unplugged/${name}_v*/flow_v*`
     );

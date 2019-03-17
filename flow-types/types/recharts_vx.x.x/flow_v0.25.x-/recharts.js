@@ -12,7 +12,7 @@ declare module "recharts" {
   declare export type Percentage = string;
   declare export type RechartsFunction = (...args: any[]) => void;
   declare export type LegendValueFormatter = (
-    value?: $ElementType<LegendPayload, "value">,
+    value?: $PropertyType<LegendPayload, "value">,
     entry?: LegendPayload,
     i?: number
   ) => any;
@@ -20,17 +20,15 @@ declare module "recharts" {
   declare export type TickGeneratorFunction = (noTicksProps: {
     [key: string]: any
   }) => any[];
-  declare export type LabelFormatter = (
-    label: string | number
-  ) => React.ReactNode;
+  declare export type LabelFormatter = (label: string | number) => React.Node;
   declare export type TooltipFormatter = (
     value: string | number | Array<string | number>,
     name: string,
     entry: TooltipPayload,
     index: number
-  ) => React.ReactNode;
+  ) => React.Node;
   declare export type ItemSorter<T> = (a: T, b: T) => number;
-  declare export type ContentRenderer<P> = (props: P) => React.ReactNode;
+  declare export type ContentRenderer<P> = (props: P) => React.Node;
   declare export type DataKey =
     | string
     | number
@@ -200,7 +198,7 @@ declare module "recharts" {
     maxBarSize?: number;
     style?: { [key: string]: any };
     className?: string;
-    children?: React.ReactNode | React.ReactNode[];
+    children?: React.Node | React.Node[];
     onClick?: RechartsFunction;
     onMouseLeave?: RechartsFunction;
     onMouseEnter?: RechartsFunction;
@@ -313,11 +311,11 @@ declare module "recharts" {
     isRange?: boolean,
     points?: Point[]
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export class Area mixins React.Component<AreaProps> {}
-  declare export type AreaChartProps = CategoricalChartWrapper &
+  declare export type AreaChartProps = CategoricalChartWrapper<> &
     EventAttributes;
   declare export class AreaChart mixins React.Component<AreaChartProps> {}
   declare export interface BarData {
@@ -359,11 +357,12 @@ declare module "recharts" {
       | React.ReactElement<LabelProps>
       | ContentRenderer<any>
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export class Bar mixins React.Component<BarProps> {}
-  declare export type BarChartProps = CategoricalChartWrapper & EventAttributes;
+  declare export type BarChartProps = CategoricalChartWrapper<> &
+    EventAttributes;
   declare export class BarChart mixins React.Component<BarChartProps> {}
   declare export interface BrushProps {
     className?: string;
@@ -380,7 +379,7 @@ declare module "recharts" {
     startIndex?: number;
     endIndex?: number;
     tickFormatter?: TickFormatterFunction;
-    children?: React.ReactNode;
+    children?: React.Node;
     onChange?: RechartsFunction;
     updateId?: string | number;
   }
@@ -409,15 +408,15 @@ declare module "recharts" {
     ticksGenerator?: TickGeneratorFunction,
     interval?: AxisInterval
   } & EventAttributes &
-    $Shape<PresentationAttributes>;
+    $Shape<PresentationAttributes<>>;
 
   declare export class CartesianAxis
     mixins React.Component<CartesianAxisProps> {}
   declare export type CoordinatesGenerator = (arg: {
-    yAxis: $ElementType<CartesianGridProps, "yAxis">,
-    width: $ElementType<CartesianGridProps, "chartWidth">,
-    height: $ElementType<CartesianGridProps, "chartHeight">,
-    offset: $ElementType<CartesianGridProps, "offset">
+    yAxis: $PropertyType<CartesianGridProps, "yAxis">,
+    width: $PropertyType<CartesianGridProps, "chartWidth">,
+    height: $PropertyType<CartesianGridProps, "chartHeight">,
+    offset: $PropertyType<CartesianGridProps, "offset">
   }) => number[];
   declare export type CartesianGridProps = {
     y?: number,
@@ -444,16 +443,16 @@ declare module "recharts" {
     chartHeight?: number,
     horizontalFill?: string[],
     verticalFill?: string[]
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class CartesianGrid
     mixins React.Component<CartesianGridProps> {}
   declare export type CellProps = {
     onClick?: RechartsFunction
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class Cell mixins React.Component<CellProps> {}
-  declare export type ComposedChartProps = CategoricalChartWrapper &
+  declare export type ComposedChartProps = CategoricalChartWrapper<> &
     EventAttributes;
   declare export class ComposedChart
     mixins React.Component<ComposedChartProps> {}
@@ -465,7 +464,7 @@ declare module "recharts" {
     height?: number,
     top?: number,
     left?: number
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class Cross mixins React.Component<CrossProps> {}
   declare export type CurveProps = {
@@ -478,7 +477,7 @@ declare module "recharts" {
     path?: string,
     pathRef?: React.Ref<any>
   } & EventAttributes &
-    $Shape<PresentationAttributes>;
+    $Shape<PresentationAttributes<>>;
 
   declare export class Curve mixins React.Component<CurveProps> {}
   declare export type DotProps = {
@@ -578,11 +577,11 @@ declare module "recharts" {
       | ContentRenderer<any>,
     points?: Point[]
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export class Line mixins React.Component<LineProps> {}
-  declare export type LineChartProps = CategoricalChartWrapper &
+  declare export type LineChartProps = CategoricalChartWrapper<> &
     EventAttributes;
   declare export class LineChart mixins React.Component<LineChartProps> {}
   declare export type PieProps = {
@@ -624,7 +623,7 @@ declare module "recharts" {
     activeIndex?: number | number[],
     blendStroke?: boolean
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export type PieLabelRenderProps = {
@@ -676,7 +675,7 @@ declare module "recharts" {
     orientation?: "inner" | "outer",
     tickFormatter?: TickFormatterFunction
   } & EventAttributes &
-    $Shape<PresentationAttributes>;
+    $Shape<PresentationAttributes<>>;
 
   declare export class PolarAngleAxis
     mixins React.Component<PolarAngleAxisProps> {}
@@ -688,7 +687,7 @@ declare module "recharts" {
     polarAngles?: number[],
     polarRadius?: number[],
     gridType?: "polygon" | "circle"
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class PolarGrid mixins React.Component<PolarGridProps> {}
   declare export interface PolarRadiusAxisTick {
@@ -722,7 +721,7 @@ declare module "recharts" {
     scale?: ScaleType | RechartsFunction,
     allowDataOverflow?: boolean
   } & EventAttributes &
-    $Shape<PresentationAttributes>;
+    $Shape<PresentationAttributes<>>;
 
   declare export class PolarRadiusAxis
     mixins React.Component<PolarRadiusAxisProps> {}
@@ -734,7 +733,7 @@ declare module "recharts" {
     className?: string,
     points?: PolygonPoint[]
   } & EventAttributes &
-    $Shape<PresentationAttributes>;
+    $Shape<PresentationAttributes<>>;
 
   declare export class Polygon mixins React.Component<PolygonProps> {}
   declare export interface RadarPoint {
@@ -770,7 +769,7 @@ declare module "recharts" {
     legendType?: LegendType,
     hide?: boolean
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export class Radar mixins React.Component<RadarProps> {}
@@ -819,7 +818,7 @@ declare module "recharts" {
       | { [key: string]: any },
     hide?: boolean
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export class RadialBar mixins React.Component<RadialBarProps> {}
@@ -842,7 +841,7 @@ declare module "recharts" {
     height?: number,
     radius?: number | any[]
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export class Rectangle mixins React.Component<RectangleProps> {}
@@ -863,7 +862,7 @@ declare module "recharts" {
     shape?:
       | ContentRenderer<ReferenceAreaProps & RectangleProps>
       | React.ReactElement<any>
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class ReferenceArea
     mixins React.Component<ReferenceAreaProps> {}
@@ -931,7 +930,7 @@ declare module "recharts" {
     minHeight?: string | number;
     minWidth?: string | number;
     maxHeight?: string | number;
-    children: React.ReactNode;
+    children: React.Node;
     debounce?: number;
     id?: string | number;
     className?: string | number;
@@ -981,11 +980,11 @@ declare module "recharts" {
     data?: { [key: string]: any }[],
     name?: string | number
   } & EventAttributes &
-    $Shape<PresentationAttributes> &
+    $Shape<PresentationAttributes<>> &
     Animatable;
 
   declare export class Scatter mixins React.Component<ScatterProps> {}
-  declare export type ScatterChartProps = CategoricalChartWrapper &
+  declare export type ScatterChartProps = CategoricalChartWrapper<> &
     EventAttributes;
   declare export class ScatterChart mixins React.Component<ScatterChartProps> {}
   declare export type SectorProps = {
@@ -998,7 +997,7 @@ declare module "recharts" {
     endAngle?: number,
     cornerRadius?: number | string
   } & EventAttributes &
-    $Shape<PresentationAttributes>;
+    $Shape<PresentationAttributes<>>;
 
   declare export class Sector mixins React.Component<SectorProps> {}
   declare export type TextProps = {
@@ -1009,7 +1008,7 @@ declare module "recharts" {
     style?: { [key: string]: any },
     capHeight?: string,
     lineHeight?: string
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class Text mixins React.Component<TextProps> {}
   declare export interface ViewBox {
@@ -1081,7 +1080,7 @@ declare module "recharts" {
     className?: string,
     nameKey?: string | number | RechartsFunction,
     dataKey?: DataKey,
-    children?: React.ReactNode[] | React.ReactNode
+    children?: React.Node[] | React.Node
   } & EventAttributes &
     Animatable;
 
@@ -1094,15 +1093,15 @@ declare module "recharts" {
     value?: number | string,
     offset?: number,
     position?: PositionType,
-    children?: React.ReactNode[] | React.ReactNode,
+    children?: React.Node[] | React.Node,
     className?: string,
     content?: React.ReactElement<any> | ContentRenderer<any>
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class LabelList mixins React.Component<LabelListProps> {}
   declare export interface LabelListProps {
     angle?: number;
-    children?: React.ReactNode[] | React.ReactNode;
+    children?: React.Node[] | React.Node;
     className?: string;
     clockWise?: boolean;
     content?: React.ReactElement<any> | ContentRenderer<LabelProps>;
@@ -1223,7 +1222,7 @@ declare module "recharts" {
     viewBox?: ViewBox;
     className?: string;
     style?: { [key: string]: any };
-    children?: React.ReactNode[] | React.ReactNode;
+    children?: React.Node[] | React.Node;
   }
   declare export class Surface mixins React.Component<SurfaceProps> {}
   declare export type SymbolsProps = {
@@ -1240,7 +1239,7 @@ declare module "recharts" {
     cy?: number,
     size?: number,
     sizeType?: "area" | "diameter"
-  } & $Shape<PresentationAttributes>;
+  } & $Shape<PresentationAttributes<>>;
 
   declare export class Symbols mixins React.Component<SymbolsProps> {}
 }

@@ -1,4 +1,6 @@
 declare module "activex-dao" {
+  declare var DAO: typeof npm$namespace$DAO;
+
   declare var npm$namespace$DAO: {
     _DAOSuppHelp: typeof DAO$_DAOSuppHelp,
     CollatingOrderEnum: typeof DAO$CollatingOrderEnum,
@@ -364,7 +366,7 @@ declare module "activex-dao" {
 
   declare class DAO$ComplexType {
     constructor(): this;
-    DAO$Fields: DAO$Fields;
+    Fields: DAO$Fields;
   }
 
   declare class DAO$Connection {
@@ -373,7 +375,7 @@ declare module "activex-dao" {
     Close(): void;
     Connect: string;
     CreateQueryDef(Name?: string, SQLText?: string): DAO$QueryDef;
-    DAO$Database: DAO$Database;
+    Database: DAO$Database;
     Execute(
       Query: string,
       Options?: $Values<typeof DAO$RecordsetOptionEnum>
@@ -386,10 +388,10 @@ declare module "activex-dao" {
       Options?: $Values<typeof DAO$RecordsetOptionEnum>,
       LockEdit?: $Values<typeof DAO$LockTypeEnum>
     ): DAO$Recordset;
-    DAO$QueryDefs: DAO$QueryDefs;
+    QueryDefs: DAO$QueryDefs;
     QueryTimeout: number;
     RecordsAffected: number;
-    DAO$Recordsets: DAO$Recordsets;
+    Recordsets: DAO$Recordsets;
     StillExecuting: boolean;
     Transactions: boolean;
     Updatable: boolean;
@@ -405,12 +407,12 @@ declare module "activex-dao" {
   declare class DAO$Container {
     constructor(): this;
     AllPermissions: number;
-    DAO$Documents: DAO$Documents;
+    Documents: DAO$Documents;
     Inherit: boolean;
     Name: string;
     Owner: string;
     Permissions: number;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     UserName: string;
   }
 
@@ -426,8 +428,8 @@ declare module "activex-dao" {
     Close(): void;
     CollatingOrder: number;
     Connect: string;
-    DAO$Connection: DAO$Connection;
-    DAO$Containers: DAO$Containers;
+    Connection: DAO$Connection;
+    Containers: DAO$Containers;
     CreateProperty(
       Name?: string,
       Type?: $Values<typeof DAO$DataTypeEnum>,
@@ -466,18 +468,18 @@ declare module "activex-dao" {
       LockEdit?: $Values<typeof DAO$LockTypeEnum>
     ): DAO$Recordset;
     PopulatePartial(DbPathName: string): void;
-    DAO$Properties: DAO$Properties;
-    DAO$QueryDefs: DAO$QueryDefs;
+    Properties: DAO$Properties;
+    QueryDefs: DAO$QueryDefs;
     QueryTimeout: number;
     RecordsAffected: number;
-    DAO$Recordsets: DAO$Recordsets;
-    DAO$Relations: DAO$Relations;
+    Recordsets: DAO$Recordsets;
+    Relations: DAO$Relations;
     ReplicaID: string;
     Synchronize(
       DbPathName: string,
       ExchangeType?: $Values<typeof DAO$SynchronizeTypeEnum>
     ): void;
-    DAO$TableDefs: DAO$TableDefs;
+    TableDefs: DAO$TableDefs;
     Transactions: boolean;
     Updatable: boolean;
     Version: string;
@@ -536,7 +538,7 @@ declare module "activex-dao" {
     DefaultPassword: string;
     DefaultType: number;
     DefaultUser: string;
-    DAO$Errors: DAO$Errors;
+    Errors: DAO$Errors;
     Idle(Action?: $Values<typeof DAO$IdleEnum>): void;
     IniPath: string;
 
@@ -566,7 +568,7 @@ declare module "activex-dao" {
       ReadOnly?: boolean,
       Connect?: string
     ): DAO$Database;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     RegisterDatabase(
       Dsn: string,
       Driver: string,
@@ -578,13 +580,13 @@ declare module "activex-dao" {
     SetOption(Option: $Values<typeof DAO$SetOptionEnum>, Value: any): void;
     SystemDB: string;
     Version: string;
-    DAO$Workspaces: DAO$Workspaces;
+    Workspaces: DAO$Workspaces;
   }
 
   declare class DAO$Document {
     constructor(): this;
     AllPermissions: number;
-    DAO$Container: string;
+    Container: string;
     CreateProperty(
       Name?: string,
       Type?: $Values<typeof DAO$DataTypeEnum>,
@@ -596,7 +598,7 @@ declare module "activex-dao" {
     Name: string;
     Owner: string;
     Permissions: number;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     UserName: string;
   }
 
@@ -631,7 +633,7 @@ declare module "activex-dao" {
     Attributes: number;
     CollatingOrder: number;
     CollectionIndex: number;
-    DAO$ComplexType: DAO$ComplexType;
+    ComplexType: DAO$ComplexType;
     CreateProperty(
       Name?: string,
       Type?: $Values<typeof DAO$DataTypeEnum>,
@@ -649,7 +651,7 @@ declare module "activex-dao" {
     Name: string;
     OrdinalPosition: number;
     OriginalValue: any;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     Required: boolean;
     SaveToFile(FileName: string): void;
     Size: number;
@@ -677,8 +679,8 @@ declare module "activex-dao" {
     CreateUser(Name?: string, PID?: string, Password?: string): DAO$User;
     Name: string;
     PID: string;
-    DAO$Properties: DAO$Properties;
-    DAO$Users: DAO$Users;
+    Properties: DAO$Properties;
+    Users: DAO$Users;
   }
 
   declare interface DAO$Groups {
@@ -701,12 +703,12 @@ declare module "activex-dao" {
       DDL?: boolean
     ): DAO$Property;
     DistinctCount: number;
-    DAO$Fields: DAO$Fields;
+    Fields: DAO$Fields;
     Foreign: boolean;
     IgnoreNulls: boolean;
     Name: string;
     Primary: boolean;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     Required: boolean;
     Unique: boolean;
   }
@@ -724,7 +726,7 @@ declare module "activex-dao" {
     constructor(): this;
     Direction: number;
     Name: string;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     Type: number;
     Value: any;
   }
@@ -749,7 +751,7 @@ declare module "activex-dao" {
     constructor(): this;
     Inherited: boolean;
     Name: string;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     Type: number;
     Value: any;
   }
@@ -768,7 +770,7 @@ declare module "activex-dao" {
     ): DAO$Property;
     DateCreated: VarDate;
     Execute(Options?: $Values<typeof DAO$RecordsetOptionEnum>): void;
-    DAO$Fields: DAO$Fields;
+    Fields: DAO$Fields;
     hStmt: number;
     LastUpdated: VarDate;
     MaxRecords: number;
@@ -779,9 +781,9 @@ declare module "activex-dao" {
       Options?: $Values<typeof DAO$RecordsetOptionEnum>,
       LockEdit?: $Values<typeof DAO$LockTypeEnum>
     ): DAO$Recordset;
-    DAO$Parameters: DAO$Parameters;
+    Parameters: DAO$Parameters;
     Prepare: $Values<typeof DAO$QueryDefStateEnum>;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     RecordsAffected: number;
     ReturnsRecords: boolean;
     SQL: string;
@@ -911,11 +913,11 @@ declare module "activex-dao" {
     constructor(): this;
     Attributes: $Values<typeof DAO$RelationAttributeEnum>;
     CreateField(Name?: string): DAO$Field;
-    DAO$Fields: DAO$Fields;
+    Fields: DAO$Fields;
     ForeignTable: string;
     Name: string;
     PartialReplica: boolean;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     Table: string;
   }
 
@@ -946,15 +948,15 @@ declare module "activex-dao" {
       DDL?: boolean
     ): DAO$Property;
     DateCreated: VarDate;
-    DAO$Fields: DAO$Fields;
-    DAO$Indexes: DAO$Indexes;
+    Fields: DAO$Fields;
+    Indexes: DAO$Indexes;
     LastUpdated: VarDate;
     Name: string;
     OpenRecordset(
       Type?: $Values<typeof DAO$RecordsetTypeEnum>,
       Options?: $Values<typeof DAO$RecordsetOptionEnum>
     ): DAO$Recordset;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     RecordCount: number;
     RefreshLink(): void;
     ReplicaFilter: string | boolean;
@@ -976,12 +978,12 @@ declare module "activex-dao" {
   declare class DAO$User {
     constructor(): this;
     CreateGroup(Name?: string, PID?: string): DAO$Group;
-    DAO$Groups: DAO$Groups;
+    Groups: DAO$Groups;
     Name: string;
     NewPassword(bstrOld: string, bstrNew: string): void;
     Password: string;
     PID: string;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
   }
 
   declare interface DAO$Users {
@@ -1002,7 +1004,7 @@ declare module "activex-dao" {
      * @param Options [Options=0]
      */
     CommitTrans(Options?: number): void;
-    DAO$Connections: DAO$Connections;
+    Connections: DAO$Connections;
 
     /**
      * @param Connect Specify one of the following:
@@ -1017,9 +1019,9 @@ declare module "activex-dao" {
     ): DAO$Database;
     CreateGroup(Name?: string, PID?: string): DAO$Group;
     CreateUser(Name?: string, PID?: string, Password?: string): DAO$User;
-    DAO$Databases: DAO$Databases;
+    Databases: DAO$Databases;
     DefaultCursorDriver: number;
-    DAO$Groups: DAO$Groups;
+    Groups: DAO$Groups;
     hEnv: number;
     IsolateODBCTrans: number;
     LoginTimeout: number;
@@ -1042,11 +1044,11 @@ declare module "activex-dao" {
       ReadOnly?: boolean,
       Connect?: string
     ): DAO$Database;
-    DAO$Properties: DAO$Properties;
+    Properties: DAO$Properties;
     Rollback(): void;
     Type: number;
     UserName: string;
-    DAO$Users: DAO$Users;
+    Users: DAO$Users;
   }
 
   declare interface DAO$Workspaces {

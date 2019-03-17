@@ -5,8 +5,6 @@ node_js:
 cache:
   yarn: true
 
-sudo: false
-
 notifications:
   email: false
 

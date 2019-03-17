@@ -36,15 +36,15 @@ declare module "react-resize-detector" {
      * Makes sense only when refreshMode is set. Default: 1000.
      */
     refreshRate?: number,
-    render?: (props: any) => React.ReactNode
+    render?: (props: any) => React.Node
   } & React.Props<ReactResizeDetector>;
 
   declare class ReactResizeDetector
     mixins React.PureComponent<ReactResizeDetectorProps> {}
   declare export function withResizeDetector(
-    WrappedComponent: React.ReactNode,
+    WrappedComponent: React.Node,
     props?: ReactResizeDetectorProps
-  ): React.Component;
+  ): React.Component<>;
 
   declare export default typeof ReactResizeDetector;
 }

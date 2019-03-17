@@ -15,8 +15,8 @@ declare module "react-sortable-tree" {
   declare export * from "./utils/default-handlers"
 
   declare export interface TreeItem {
-    title?: React.ReactNode;
-    subtitle?: React.ReactNode;
+    title?: React.Node;
+    subtitle?: React.Node;
     expanded?: boolean;
     children?: TreeItem[];
     [x: string]: any;
@@ -91,12 +91,12 @@ declare module "react-sortable-tree" {
     canDrag: boolean;
     scaffoldBlockPxWidth: number;
     toggleChildrenVisibility?: (data: NodeData) => void;
-    buttons?: JSX.Element[];
+    buttons?: React$Node[];
     className?: string;
     style?: React.CSSProperties;
-    title?: (data: NodeData) => JSX.Element | JSX.Element;
-    subtitle?: (data: NodeData) => JSX.Element | JSX.Element;
-    icons?: JSX.Element[];
+    title?: (data: NodeData) => React$Node | React$Node;
+    subtitle?: (data: NodeData) => React$Node | React$Node;
+    icons?: React$Node[];
     lowerSiblingCounts: number[];
     swapDepth?: number;
     swapFrom?: number;
@@ -131,7 +131,7 @@ declare module "react-sortable-tree" {
     scaffoldBlockPxWidth: number;
     lowerSiblingCounts: number[];
     listIndex: number;
-    children: JSX.Element[];
+    children: React$Node[];
     connectDropTarget: ConnectDropTarget;
     isOver: boolean;
     canDrop?: boolean;

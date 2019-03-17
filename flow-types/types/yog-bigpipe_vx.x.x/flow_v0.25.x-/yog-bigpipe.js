@@ -16,12 +16,18 @@ declare module "yog-bigpipe" {
   declare interface AddPageletConfig {
     id: string;
     lazy?: boolean;
-    Pagelet$mode?: yogBigpipe$yogBigpipe$Pagelet.Pagelet$mode;
+    mode?: yogBigpipe$Pagelet$mode;
   }
   declare function yogBigpipe(option?: BigPipeOption): RequestHandler;
 
-  declare module.exports: typeof yogBigpipe;
+  declare export default typeof yogBigpipe;
 
+  declare var yogBigpipe: typeof npm$namespace$yogBigpipe;
+
+  declare var npm$namespace$yogBigpipe: {
+    BigPipe: typeof yogBigpipe$BigPipe,
+    Pagelet: typeof yogBigpipe$Pagelet
+  };
   declare class yogBigpipe$BigPipe mixins Readable {
     constructor(option?: BigPipeOption): this;
     map: {
@@ -31,10 +37,10 @@ declare module "yog-bigpipe" {
     pipelines: yogBigpipe$Pagelet[];
     rendered: yogBigpipe$Pagelet[];
     sources: {};
-    state: yogBigpipe$Pagelet.Pagelet$status;
+    state: yogBigpipe$Pagelet$status;
     quicklings: {};
     parentQuicklings: string[];
-    yogBigpipe$Pagelet: yogBigpipe$PageletConstructor<yogBigpipe$Pagelet>;
+    Pagelet: yogBigpipe$PageletConstructor<yogBigpipe$Pagelet>;
     pageletData: {};
     bind(id: string, fn: Callback): yogBigpipe$BigPipe;
     bindPageOnly(fn: Callback): void;
@@ -43,7 +49,7 @@ declare module "yog-bigpipe" {
     isQuickingMode(): boolean;
     addPagelet(obj: AddPageletConfig): void;
     isQuicklingWidget(item: {
-      mode: yogBigpipe$Pagelet.Pagelet$mode,
+      mode: yogBigpipe$Pagelet$mode,
       [key: string]: any
     }): void;
     render(): void;
@@ -64,7 +70,7 @@ declare module "yog-bigpipe" {
 
   declare interface yogBigpipe$PageletOption {
     id: string;
-    Pagelet$mode?: yogBigpipe$Pagelet.Pagelet$mode;
+    mode?: yogBigpipe$Pagelet$mode;
     lazy?: boolean;
     reqID: string;
     skipAnalysis: boolean;
@@ -90,13 +96,13 @@ declare module "yog-bigpipe" {
     constructor(obj: yogBigpipe$PageletOption): this;
     model: {};
     container: string;
-    Pagelet$mode: yogBigpipe$Pagelet.Pagelet$mode;
+    mode: yogBigpipe$Pagelet$mode;
     id: string;
     locals: {};
     compiled: boolean;
     reqID: string;
     skipAnalysis: boolean;
-    state: yogBigpipe$Pagelet.Pagelet$status;
+    state: yogBigpipe$Pagelet$status;
     scripts: string[];
     styles: string[];
     js: string[];
@@ -115,11 +121,11 @@ declare module "yog-bigpipe" {
     toJson(): yogBigpipe$PageletData;
   }
 
-  declare type Pagelet$status =
+  declare type yogBigpipe$Pagelet$status =
     | "pending"
     | "rendering"
     | "fulfilled"
     | "failed";
 
-  declare type Pagelet$mode = "async" | "pipeline" | "quickling";
+  declare type yogBigpipe$Pagelet$mode = "async" | "pipeline" | "quickling";
 }

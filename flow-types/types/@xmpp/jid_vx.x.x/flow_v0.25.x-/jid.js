@@ -9,6 +9,8 @@ declare module "@xmpp/jid" {
     resource?: string
   ): jid$JID;
 
+  declare var jid: typeof npm$namespace$jid;
+
   declare var npm$namespace$jid: {
     jid: typeof jid$jid,
     createJID: typeof jid$createJID,

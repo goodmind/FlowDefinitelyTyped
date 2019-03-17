@@ -1,49 +1,47 @@
-declare interface ZenObservable$SubscriptionObserver<T> {
-  closed: boolean;
-  next(value: T): void;
-  error(errorValue: any): void;
-  complete(): void;
-}
-
-declare interface ZenObservable$Subscription {
-  closed: boolean;
-  unsubscribe(): void;
-}
-
-declare interface ZenObservable$Observer<T> {
-  start?: (subscription: ZenObservable$Subscription) => any;
-  next?: (value: T) => void;
-  error?: (errorValue: any) => void;
-  complete?: () => void;
-}
-
-declare type ZenObservable$Subscriber<T> = (
-  observer: ZenObservable$SubscriptionObserver<T>
-) => void | (() => void) | ZenObservable$Subscription;
-
-declare interface ZenObservable$ObservableLike<T> {
-  subscribe?: ZenObservable$Subscriber<T>;
-  "NO PRINT IMPLEMENTED: ComputedPropertyName"():
-    | Observable<T>
-    | ZenObservable$ObservableLike<T>;
-}
 declare module "global" {
   declare interface SymbolConstructor {
     +observable: Symbol;
   }
+  declare interface ZenObservable$SubscriptionObserver<T> {
+    closed: boolean;
+    next(value: T): void;
+    error(errorValue: any): void;
+    complete(): void;
+  }
+
+  declare interface ZenObservable$Subscription {
+    closed: boolean;
+    unsubscribe(): void;
+  }
+
+  declare interface ZenObservable$Observer<T> {
+    start?: (subscription: global$ZenObservable$Subscription) => any;
+    next?: (value: T) => void;
+    error?: (errorValue: any) => void;
+    complete?: () => void;
+  }
+
+  declare type ZenObservable$Subscriber<T> = (
+    observer: global$ZenObservable$SubscriptionObserver<T>
+  ) => void | (() => void) | global$ZenObservable$Subscription;
+
+  declare interface ZenObservable$ObservableLike<T> {
+    subscribe?: global$ZenObservable$Subscriber<T>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"():
+      | Observable<T>
+      | global$ZenObservable$ObservableLike<T>;
+  }
 }
 declare module "zen-observable" {
   declare class Observable<T> {
-    constructor(subscriber: ZenObservable$ZenObservable$Subscriber<T>): this;
-    subscribe(
-      observer: ZenObservable$ZenObservable$Observer<T>
-    ): ZenObservable$ZenObservable$Subscription;
+    constructor(subscriber: ZenObservable$Subscriber<T>): this;
+    subscribe(observer: ZenObservable$Observer<T>): ZenObservable$Subscription;
     subscribe(
       onNext: (value: T) => void,
       onError?: (error: any) => void,
       onComplete?: () => void
-    ): ZenObservable$ZenObservable$Subscription;
-    undefined(): Observable<T>;
+    ): ZenObservable$Subscription;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Observable<T>;
     forEach(callback: (value: T) => void): Promise<void>;
     map<R>(callback: (value: T) => R): Observable<R>;
     filter(callback: (value: T) => boolean): Observable<T>;
@@ -56,16 +54,14 @@ declare module "zen-observable" {
       initialValue?: R
     ): Observable<R>;
     flatMap<R>(
-      callback: (value: T) => ZenObservable$ZenObservable$ObservableLike<R>
+      callback: (value: T) => ZenObservable$ObservableLike<R>
     ): Observable<R>;
     concat<R>(...observable: Array<Observable<R>>): Observable<R>;
     static from<R>(
-      observable:
-        | Observable<R>
-        | ZenObservable$ZenObservable$ObservableLike<R>
-        | ArrayLike<R>
+      observable: Observable<R> | ZenObservable$ObservableLike<R> | ArrayLike<R>
     ): Observable<R>;
     static of<R>(...items: R[]): Observable<R>;
   }
-  declare module.exports: typeof Observable;
+
+  declare export default typeof Observable;
 }

@@ -5,5 +5,5 @@ declare module "abs" {
    */
   declare function Abs(input: string): string;
 
-  declare module.exports: typeof Abs;
+  declare export default typeof Abs;
 }

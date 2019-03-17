@@ -2,6 +2,7 @@ declare module "react-tooltip" {
   import typeof * as React from "react";
 
   declare class ReactTooltip mixins React.Component<ReactTooltip$Props> {}
+  declare var ReactTooltip: typeof npm$namespace$ReactTooltip;
 
   declare var npm$namespace$ReactTooltip: {
     hide: typeof ReactTooltip$hide,
@@ -42,7 +43,7 @@ declare module "react-tooltip" {
 
   declare type ReactTooltip$GetContentCallback = (
     dataTip: string
-  ) => React.ReactNode;
+  ) => React.Node;
 
   declare type ReactTooltip$GetContent =
     | ReactTooltip$GetContentCallback

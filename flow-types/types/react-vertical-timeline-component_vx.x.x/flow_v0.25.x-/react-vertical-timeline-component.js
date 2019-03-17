@@ -12,7 +12,7 @@ declare module "react-vertical-timeline-component" {
     date?: string;
     iconOnClick?: () => void;
     iconStyle?: React.CSSProperties;
-    icon?: React.ReactNode;
+    icon?: React.Node;
     position?: string;
     style?: React.CSSProperties;
     visibilitySensorProps?: any;

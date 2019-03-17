@@ -351,7 +351,7 @@ msgOpenCalendar: string
 declare interface material$IMenuService {
 close(): void,
 hide(response?: any, options?: any): IPromise<any>,
-open(event?: MouseEvent): void
+open(event?: MouseEvent | JQueryEventObject): void
 } 
 
 declare interface material$IColorPalette {
@@ -533,6 +533,11 @@ configure(options: material$IProgressCircularConfig): void
 } 
 
 declare type material$IStickyService = (scope: IScope, element: JQuery, elementClone?: JQuery) => void;
+
+declare interface material$IInteractionService {
+getLastInteractionType(): string | null,
+isUserInvoked(checkDelay?: number): boolean
+} 
     }
 declare module 'angular-material' {
         import typeof * as angular from 'angular';

@@ -1,7 +1,7 @@
 declare module "react-router-navigation-core" {
   import type {
     PureComponent,
-    ReactNode,
+    Node,
     ComponentClass,
     ReactElement
   } from "react";
@@ -19,12 +19,12 @@ declare module "react-router-navigation-core" {
   };
   declare export type NavigationState<OwnRoute> = {
     index: number,
-    routes: Array<Route & OwnRoute>
+    routes: Array<Route<> & OwnRoute>
   };
   declare export type RouteProps = {
     component?: ComponentClass<RouterProps>,
-    render?: (props: RouterProps) => ReactNode,
-    children?: ((props: RouterProps) => ReactNode) | ReactNode,
+    render?: (props: RouterProps) => Node,
+    children?: ((props: RouterProps) => Node) | Node,
     path?: string,
     exact?: boolean,
     strict?: boolean
@@ -54,8 +54,8 @@ declare module "react-router-navigation-core" {
     tabs: Tab[]
   };
   declare export type CardStackProps = {
-    children?: ReactNode[],
-    render: (props: CardsRendererProps) => ReactNode
+    children?: Node[],
+    render: (props: CardsRendererProps) => Node
   };
   declare export class CardStack
     mixins PureComponent<
@@ -75,8 +75,8 @@ declare module "react-router-navigation-core" {
     onNavigateBack: () => boolean;
   }
   declare export type TabStackProps = {
-    children?: ReactNode[],
-    render: (props: TabsRendererProps) => ReactNode,
+    children?: Node[],
+    render: (props: TabsRendererProps) => Node,
     lazy?: boolean,
     forceSync?: boolean,
     style?: StyleProp<ViewStyle>
@@ -111,16 +111,19 @@ declare module "react-router-navigation-core" {
     currentLocation: Location,
     nextLocation: Location
   ) => boolean;
-  declare export var get: <Item: Route>(items: Item[], route: Route) => Item;
-  declare export var createKey: (route: Route) => string;
+  declare export var get: <Item: Route<>>(
+    items: Item[],
+    route: Route<>
+  ) => Item;
+  declare export var createKey: (route: Route<>) => string;
   declare export var getRoute: (
     stack: RouteProps[],
     location: Location
-  ) => Route | void;
+  ) => Route<> | void;
   declare export var renderSubView: (
-    render: (propsA: any, propsB: any) => ReactNode,
+    render: (propsA: any, propsB: any) => Node,
     additionalProps?: any
-  ) => (ownProps: any) => ReactNode;
+  ) => (ownProps: any) => Node;
   declare export var build: <Item>(
     children: Array<ReactElement<Item>>,
     oldBuild?: Item[]

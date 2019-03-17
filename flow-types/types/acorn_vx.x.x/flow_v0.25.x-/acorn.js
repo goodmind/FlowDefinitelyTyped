@@ -3,6 +3,8 @@ declare module "acorn" {
 
   import typeof * as ESTree from "estree";
 
+  declare var acorn: typeof npm$namespace$acorn;
+
   declare var npm$namespace$acorn: {
     getLineInfo: typeof acorn$getLineInfo,
     isIdentifierStart: typeof acorn$isIdentifierStart,
@@ -255,12 +257,12 @@ declare module "acorn" {
   declare type acorn$Comment = {
     type: string,
     value: string
-  } & AbstractToken;
+  } & acorn$AbstractToken;
 
   declare type acorn$Token = {
     type: acorn$TokenType,
     value: any
-  } & AbstractToken;
+  } & acorn$AbstractToken;
 
   declare function acorn$isNewLine(code: number): boolean;
 

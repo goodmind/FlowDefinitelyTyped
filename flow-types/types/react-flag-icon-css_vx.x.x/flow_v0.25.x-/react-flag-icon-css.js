@@ -1,7 +1,7 @@
 declare module "react-flag-icon-css" {
   import typeof * as CSS from "csstype";
 
-  import type { PureComponent, ReactNode } from "react";
+  import type { PureComponent, Node } from "react";
 
   declare export type FlagIconSize = "lg" | "2x" | "3x" | "4x" | "5x";
   declare export type FlagIconFlip = "horizontal" | "vertical";
@@ -51,7 +51,7 @@ declare module "react-flag-icon-css" {
      * This is mapped to a CSS module and appended to class in the HTML.
      */
     styleName?: string;
-    children?: ReactNode;
+    children?: Node;
   }
   declare export class FlagIcon mixins PureComponent<FlagIconProps> {}
   declare export default function FlagIconFactory(

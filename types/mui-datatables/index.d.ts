@@ -1,5 +1,5 @@
 // Type definitions for mui-datatables 2.0
-// Project: https://github.com/gregnb/mui-datatable
+// Project: https://github.com/gregnb/mui-datatables
 // Definitions by: Jeroen "Favna" Claassens <https://github.com/favna>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.8
@@ -44,6 +44,7 @@ interface MUIDataTableCustomHeadRenderer extends MUIDataTableColumn {
 
 interface MUIDataTableColumn {
     name: string;
+    label?: string;
     options?: MUIDataTableColumnOptions;
 }
 
@@ -84,7 +85,7 @@ interface MUIDataTableTextLabelsSelectedRows {
     deleteAria: string;
 }
 
-interface MUIDataTableTextLabels {
+export interface MUIDataTableTextLabels {
     body: MUIDataTableTextLabelsBody;
     pagination: MUIDataTableTextLabelsPagination;
     toolbar: MUIDataTableTextLabelsToolbar;
@@ -104,7 +105,7 @@ export interface MUIDataTableColumnOptions {
     hint?: string;
     customHeadRender?: (columnMeta: MUIDataTableCustomHeadRenderer, updateDirection: (params: any) => any) => string;
     customBodyRender?: (value: any, tableMeta: MUIDataTableMeta, updateValue: (s: any, c: any, p: any) => any) => string | React.ReactNode;
-    setCellProps?: (cellValue: string, rowIndex: number, columnIndex: number) => string;
+    setCellProps?: (cellValue: string, rowIndex: number, columnIndex: number) => object;
 }
 
 export interface MUIDataTableOptions {
@@ -116,7 +117,7 @@ export interface MUIDataTableOptions {
     textLabels?: MUIDataTableTextLabels;
     pagination?: boolean;
     selectableRows?: boolean;
-    IsRowSelectable?: (dataIndex: any) => boolean;
+    IsRowSelectable?: (dataIndex: number) => boolean;
     resizableColumns?: boolean;
     expandableRows?: boolean;
     renderExpandableRow?: (rowData: string[], rowMeta: { dataIndex: number; rowIndex: number }) => React.ReactNode;
@@ -142,7 +143,7 @@ export interface MUIDataTableOptions {
     onRowsSelect?: (currentRowsSelected: any[], rowsSelected: any[]) => void;
     onRowsDelete?: (rowsDeleted: any[]) => void;
     onRowClick?: (rowData: string[], rowMeta: { dataIndex: number; rowIndex: number }) => void;
-    onCellClick?: (colIndex: number, rowIndex: number) => void;
+    onCellClick?: (colData: any, cellMeta: { colIndex: number, rowIndex: number, dataIndex: number }) => void;
     onChangePage?: (currentPage: number) => void;
     onChangeRowsPerPage?: (numberOfRows: number) => void;
     onSearchChange?: (searchText: string) => void;
@@ -150,7 +151,7 @@ export interface MUIDataTableOptions {
     onColumnSortChange?: (changedColumn: string, direction: string) => void;
     onColumnViewChange?: (changedColumn: string, action: string) => void;
     onTableChange?: (action: string, tableState: object) => void;
-    setRowProps?: (row: any[], rowIndex: number) => any;
+    setRowProps?: (row: any[], rowIndex: number) => object;
 }
 
 export type MUIDataTableColumnDef = string | MUIDataTableColumn;

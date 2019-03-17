@@ -679,8 +679,8 @@ hasMany(name: RelationshipsFor<this>): DS$HasManyReference<any>;
  * invoking the callback with the name of each relationship and its relationship
  * descriptor.
  */
-eachRelationship(
-callback: (name: string, details: RelationshipMeta<this>) => void,
+eachRelationship<T: DS$Model>(
+callback: (name: string, details: RelationshipMeta<T>) => void,
 binding?: any): any;
 
 /**

@@ -1,5 +1,5 @@
 declare module "react-reconciler" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   declare function ReactReconciler<
     Type,
@@ -445,7 +445,7 @@ declare module "react-reconciler" {
   }
 
   declare interface ReactReconciler$Interaction {
-    ___count: number;
+    __count: number;
     id: number;
     name: string;
     timestamp: number;
@@ -462,7 +462,7 @@ declare module "react-reconciler" {
 
   declare type ReactReconciler$ReactNodeList =
     | ReactReconciler$ReactEmpty
-    | ReactNode;
+    | Node;
 
   declare interface ReactReconciler$ReactProviderType<T> {
     $$typeof: Symbol | number;

@@ -6,13 +6,13 @@ declare module "rmc-drawer" {
   declare interface DrawerProps {
     className?: string;
     prefixCls?: string;
-    children?: React.ReactNode | React.ReactNode[];
+    children?: React.Node | React.Node[];
     style?: React.CSSProperties;
     sidebarStyle?: React.CSSProperties;
     contentStyle?: React.CSSProperties;
     overlayStyle?: React.CSSProperties;
     dragHandleStyle?: React.CSSProperties;
-    sidebar?: React.ReactNode;
+    sidebar?: React.Node;
     onOpenChange?: (
       open: boolean,
       overlay?: {

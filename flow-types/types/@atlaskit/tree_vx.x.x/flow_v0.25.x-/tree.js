@@ -1,5 +1,5 @@
 declare module "@atlaskit/tree" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   import type {
     DraggingStyle,
@@ -110,7 +110,7 @@ declare module "@atlaskit/tree" {
     /**
      * Function that will be called to render a single item.
      */
-    renderItem: (itemProps: RenderItemParams) => ReactNode;
+    renderItem: (itemProps: RenderItemParams) => Node;
 
     /**
      * Number of pixel is used to scaffold the tree by the consumer.

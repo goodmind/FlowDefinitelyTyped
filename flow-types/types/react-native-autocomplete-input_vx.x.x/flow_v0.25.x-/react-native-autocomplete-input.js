@@ -1,5 +1,5 @@
 declare module "react-native-autocomplete-input" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   import type {
     GestureResponderHandlers,
@@ -56,7 +56,7 @@ declare module "react-native-autocomplete-input" {
      * function
      * onStartShouldSetResponderCapture will be passed to the result list view container (onStartShouldSetResponderCapture).
      */
-    onStartShouldSetResponderCapture?: $ElementType<
+    onStartShouldSetResponderCapture?: $PropertyType<
       GestureResponderHandlers,
       "onStartShouldSetResponderCapture"
     >,
@@ -65,19 +65,19 @@ declare module "react-native-autocomplete-input" {
      * function
      * renderItem will be called to render the data objects which will be displayed in the result view below the text input.
      */
-    renderItem(item: T): ReactNode,
+    renderItem(item: T): Node,
 
     /**
      * function
      * renderSeparator will be called to render the list separators which will be displayed between the list elements in the result view below the text input.
      */
-    renderSeparator?: $ElementType<ListViewProperties, "renderSeparator">,
+    renderSeparator?: $PropertyType<ListViewProperties, "renderSeparator">,
 
     /**
      * function
      * render custom TextInput. All props passed to this function.
      */
-    renderTextInput?: (props: TextInputProperties) => ReactNode
+    renderTextInput?: (props: TextInputProperties) => Node
   } & TextInputProperties;
 
   declare export default class Autocomplete<T>

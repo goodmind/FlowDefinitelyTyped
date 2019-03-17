@@ -6,7 +6,7 @@ declare module "redux-devtools-dock-monitor" {
     /**
      * Any valid Redux DevTools monitor.
      */
-    children?: React.ReactNode;
+    children?: React.Node;
 
     /**
      * A key or a key combination that toggles the dock visibility.

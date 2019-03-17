@@ -1,5 +1,5 @@
 declare module "react-native-tab-view" {
-  import type { PureComponent, ReactNode, ComponentType } from "react";
+  import type { PureComponent, Node, ComponentType } from "react";
 
   import type {
     Animated,
@@ -62,7 +62,7 @@ declare module "react-native-tab-view" {
     swipeEnabled?: boolean,
     swipeDistanceThreshold?: number,
     swipeVelocityThreshold?: number,
-    children?: ReactNode
+    children?: Node
   };
   declare export type TabViewProps<T: RouteBase = RouteBase> = PagerProps & {
     navigationState: NavigationState<T>,
@@ -73,13 +73,13 @@ declare module "react-native-tab-view" {
     }) => void,
     initialLayout?: Layout,
     canJumpToTab?: (route: T) => boolean,
-    renderPager?: (props: SceneRendererProps<T> & PagerProps) => ReactNode,
-    renderScene: (props: SceneRendererProps<T> & Scene<T>) => ReactNode,
-    renderTabBar?: (props: SceneRendererProps<T>) => ReactNode,
+    renderPager?: (props: SceneRendererProps<T> & PagerProps) => Node,
+    renderScene: (props: SceneRendererProps<T> & Scene<T>) => Node,
+    renderTabBar?: (props: SceneRendererProps<T>) => Node,
     lazy?: boolean,
     style?: StyleProp<ViewStyle>
   };
-  declare export class TabView<T: Route = Route>
+  declare export class TabView<T: Route<> = Route<>>
     mixins PureComponent<TabViewProps<T>> {}
   declare export type GestureEvent = {
     nativeEvent: {
@@ -120,14 +120,14 @@ declare module "react-native-tab-view" {
     swipeVelocityThreshold?: number,
     onSwipeStart?: GestureHandler,
     onSwipeEnd?: GestureHandler,
-    children?: ReactNode
+    children?: Node
   };
   declare export type DefaultTransitionSpec = {
     timing: typeof Animated.spring,
     tension: 300,
     friction: 35
   };
-  declare export class PagerPan<T: Route = Route>
+  declare export class PagerPan<T: Route<> = Route<>>
     mixins PureComponent<PagerPanProps<T>> {
     static defaultProps: {
       configureTransition: () => DefaultTransitionSpec,
@@ -152,9 +152,9 @@ declare module "react-native-tab-view" {
   > = SceneRendererProps<T> & {
     animationEnabled?: boolean,
     swipeEnabled?: boolean,
-    children?: ReactNode
+    children?: Node
   };
-  declare export class PagerScroll<T: Route = Route>
+  declare export class PagerScroll<T: Route<> = Route<>>
     mixins PureComponent<PagerScrollProps<T>> {}
   declare export type PageScrollEvent = {
     nativeEvent: {
@@ -168,9 +168,9 @@ declare module "react-native-tab-view" {
   > = SceneRendererProps<T> & {
     animationEnabled?: boolean,
     swipeEnabled?: boolean,
-    children?: ReactNode
+    children?: Node
   };
-  declare export class PagerAndroid<T: Route = Route>
+  declare export class PagerAndroid<T: Route<> = Route<>>
     mixins PureComponent<PagerAndroidProps<T>> {}
   declare export type IndicatorProps<
     T: RouteBase = RouteBase
@@ -184,21 +184,21 @@ declare module "react-native-tab-view" {
     pressColor?: string,
     pressOpacity?: number,
     getLabelText?: (scene: Scene<T>) => string | void | null,
-    renderLabel?: (scene: Scene<T>) => ReactNode,
-    renderIcon?: (scene: Scene<T>) => ReactNode,
-    renderBadge?: (scene: Scene<T>) => ReactNode,
-    renderIndicator?: (props: IndicatorProps<T>) => ReactNode,
+    renderLabel?: (scene: Scene<T>) => Node,
+    renderIcon?: (scene: Scene<T>) => Node,
+    renderBadge?: (scene: Scene<T>) => Node,
+    renderIndicator?: (props: IndicatorProps<T>) => Node,
     onTabPress?: (scene: Scene<T>) => void,
     tabStyle?: StyleProp<ViewStyle>,
     indicatorStyle?: StyleProp<ViewStyle>,
     labelStyle?: StyleProp<ViewStyle>,
     style?: StyleProp<ViewStyle>
   };
-  declare export class TabBar<T: Route = Route>
+  declare export class TabBar<T: Route<> = Route<>>
     mixins PureComponent<TabBarProps<T>> {}
   declare export function SceneMap(scenes: {
     [key: string]: ComponentType<any>
   }): (props: {
-    route: Route
-  }) => ReactNode;
+    route: Route<>
+  }) => Node;
 }

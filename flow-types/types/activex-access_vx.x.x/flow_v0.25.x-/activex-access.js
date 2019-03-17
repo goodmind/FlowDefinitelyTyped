@@ -1,4 +1,6 @@
 declare module "activex-access" {
+  declare var Access: typeof npm$namespace$Access;
+
   declare var npm$namespace$Access: {
     AcBrowseToObjectType: typeof Access$AcBrowseToObjectType,
     AcCloseSave: typeof Access$AcCloseSave,
@@ -2095,7 +2097,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BeforeUpdate: string;
     BeforeUpdateMacro: string;
@@ -2111,7 +2113,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -2177,11 +2179,11 @@ declare module "activex-access" {
     OnMouseUpMacro: string;
     OptionValue: number;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -2231,7 +2233,7 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BackColor: number;
     BackShade: number;
     BackStyle: number;
@@ -2277,7 +2279,7 @@ declare module "activex-access" {
     Height: number;
     HelpContextId: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     HyperlinkAddress: string;
     HyperlinkSubAddress: string;
     InSelection: boolean;
@@ -2304,14 +2306,14 @@ declare module "activex-access" {
     OnMouseUp: string;
     OnMouseUpMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     RightMargin: number;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     ShortcutMenuBar: string;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     SpecialEffect: number;
     Tag: string;
     Target: string;
@@ -2331,12 +2333,12 @@ declare module "activex-access" {
     constructor(): this;
     _Evaluate(bstrExpr: string, ...ppsa: any[]): any;
     _Name: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BottomPadding: number;
     Column(Index: number, Row?: any): any;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     Dropdown(): void;
-    Access$Form: Access$Form;
+    Form: Access$Form;
     Goto(): void;
     GridlineColor: number;
     GridlineStyleBottom: number;
@@ -2348,7 +2350,7 @@ declare module "activex-access" {
     GridlineWidthRight: number;
     GridlineWidthTop: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     IsMemberSafe(dispid: number): boolean;
     ItemData(Index: number): any;
     ItemsSelected: Access$_ItemsSelected;
@@ -2360,16 +2362,16 @@ declare module "activex-access" {
     Object: any;
     ObjectVerbs(Index: number): string;
     OldValue: any;
-    Access$Pages: Access$Pages;
+    Pages: Access$Pages;
     Parent: any;
-    Access$Properties: Access$Properties;
-    Access$Report: Access$Report;
+    Properties: Access$Properties;
+    Report: Access$Report;
     Requery(): void;
     RightPadding: number;
     Selected(lRow: number): number;
     SetFocus(): void;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     TopPadding: number;
     Undo(): void;
     VerticalAnchor: $Values<typeof Access$AcVerticalAnchor>;
@@ -2405,7 +2407,7 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BorderColor: number;
     BorderLineStyle: number;
     BorderShade: number;
@@ -2415,9 +2417,9 @@ declare module "activex-access" {
     BorderWidth: number;
     BottomPadding: number;
     Cancel: boolean;
-    Access$Class: string;
+    Class: string;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -2469,10 +2471,10 @@ declare module "activex-access" {
     OnUpdated: string;
     OnUpdatedMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     SizeToFit(): void;
     SpecialEffect: number;
@@ -2528,7 +2530,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BeforeUpdate: string;
     BeforeUpdateMacro: string;
@@ -2544,7 +2546,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -2610,11 +2612,11 @@ declare module "activex-access" {
     OnMouseUpMacro: string;
     OptionValue: number;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -2641,7 +2643,7 @@ declare module "activex-access" {
     AlternateBackShade: number;
     AlternateBackThemeColorIndex: number;
     AlternateBackTint: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoHeight: boolean;
     BackColor: number;
     BackShade: number;
@@ -2649,7 +2651,7 @@ declare module "activex-access" {
     BackTint: number;
     CanGrow: boolean;
     CanShrink: boolean;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     DisplayWhen: number;
     EventProcPrefix: string;
     ForceNewPage: number;
@@ -2679,7 +2681,7 @@ declare module "activex-access" {
     OnRetreat: string;
     OnRetreatMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     RepeatSection: boolean;
     SetTabOrder(): void;
     SpecialEffect: number;
@@ -2695,7 +2697,7 @@ declare module "activex-access" {
     AlternateBackShade: number;
     AlternateBackThemeColorIndex: number;
     AlternateBackTint: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoHeight: boolean;
     BackColor: number;
     BackShade: number;
@@ -2703,7 +2705,7 @@ declare module "activex-access" {
     BackTint: number;
     CanGrow: boolean;
     CanShrink: boolean;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     DisplayWhen: number;
     EventProcPrefix: string;
     ForceNewPage: number;
@@ -2733,7 +2735,7 @@ declare module "activex-access" {
     OnRetreat: string;
     OnRetreatMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     RepeatSection: boolean;
     SetTabOrder(): void;
     SpecialEffect: number;
@@ -2774,7 +2776,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BackColor: number;
     BackShade: number;
@@ -2795,7 +2797,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -2892,13 +2894,13 @@ declare module "activex-access" {
     PressedShade: number;
     PressedThemeColorIndex: number;
     PressedTint: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     QuickStyle: number;
     QuickStyleMask: number;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     Shadow: number;
     Shape: number;
@@ -2948,7 +2950,7 @@ declare module "activex-access" {
     IsWeb: boolean;
     Name: string;
     Parent: any;
-    Access$Properties: Access$AccessObjectProperties;
+    Properties: Access$AccessObjectProperties;
     Type: $Values<typeof Access$AcObjectType>;
   }
 
@@ -2982,13 +2984,13 @@ declare module "activex-access" {
 
   declare class Access$AccessProperty {
     constructor(): this;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     Category: number;
     Inherited: boolean;
     IsMemberSafe(dispid: number): boolean;
     Name: string;
     Parent: any;
-    Access$Properties: DAO.Properties;
+    Properties: DAO.Properties;
     Type: number;
     Value: any;
   }
@@ -3009,11 +3011,11 @@ declare module "activex-access" {
     AddToFavorites(): void;
     ADOConnectString: string;
     AnswerWizard: Office.AnswerWizard;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AppLoadString(id: number): any;
     Assistance: Office.IAssistance;
     Assistant: Office.Assistant;
-    Access$AutoCorrect: Access$AutoCorrect;
+    AutoCorrect: Access$AutoCorrect;
     AutomationSecurity: Office.MsoAutomationSecurity;
     BeginUndoable(Hwnd: number): void;
     BrokenReference: boolean;
@@ -3022,9 +3024,9 @@ declare module "activex-access" {
     BuilderString(): any;
     CloseCurrentDatabase(): void;
     CodeContextObject: any;
-    Access$CodeData: Access$CodeData;
+    CodeData: Access$CodeData;
     CodeDb(): DAO.Database;
-    Access$CodeProject: Access$CodeProject;
+    CodeProject: Access$CodeProject;
     ColumnHistory(
       TableName: string,
       ColumnName: string,
@@ -3183,17 +3185,17 @@ declare module "activex-access" {
       Width?: number,
       Height?: number
     ): Access$Control;
-    Access$CurrentData: Access$CurrentData;
+    CurrentData: Access$CurrentData;
     CurrentDb(): DAO.Database;
     CurrentObjectName: string;
     CurrentObjectType: $Values<typeof Access$AcObjectType>;
-    Access$CurrentProject: Access$CurrentProject;
+    CurrentProject: Access$CurrentProject;
     CurrentUser(): string;
     CurrentWebUser(DisplayOption: $Values<typeof Access$AcWebUserDisplay>): any;
     CurrentWebUserGroups(
       DisplayOption: $Values<typeof Access$AcWebUserGroupsDisplay>
     ): any;
-    Access$DataAccessPages: Access$DataAccessPages;
+    DataAccessPages: Access$DataAccessPages;
     DAvg(Expr: string, Domain: string, Criteria?: string): number | null;
     DBEngine: DAO.DBEngine;
     DCount(Expr: string, Domain: string, Criteria?: string): number | null;
@@ -3203,7 +3205,7 @@ declare module "activex-access" {
     DDERequest(ChanNum: number, Item: string): string;
     DDETerminate(ChanNum: number): void;
     DDETerminateAll(): void;
-    Access$DefaultWebOptions: Access$DefaultWebOptions;
+    DefaultWebOptions: Access$DefaultWebOptions;
     DefaultWorkspaceClone(): DAO.Workspace;
     DelAutoCorrect(ChangeFrom: string): void;
     DeleteControl(FormName: string, ControlName: string): void;
@@ -3217,7 +3219,7 @@ declare module "activex-access" {
     DLookup(Expr: string, Domain: string, Criteria?: string): any;
     DMax(Expr: string, Domain: string, Criteria?: string): any;
     DMin(Expr: string, Domain: string, Criteria?: string): any;
-    Access$DoCmd: Access$DoCmd;
+    DoCmd: Access$DoCmd;
     DStDev(Expr: string, Domain: string, Criteria?: string): number | null;
     DStDevP(Expr: string, Domain: string, Criteria?: string): number | null;
     DSum(Expr: string, Domain: string, Criteria?: string): number | null;
@@ -3313,7 +3315,7 @@ declare module "activex-access" {
       Method?: Office.MsoExtraInfoMethod,
       HeaderInfo?: string
     ): void;
-    Access$Forms: Access$Forms;
+    Forms: Access$Forms;
     GetHiddenAttribute(
       ObjectType: $Values<typeof Access$AcObjectType>,
       ObjectName: string
@@ -3369,10 +3371,10 @@ declare module "activex-access" {
       FileName: string
     ): void;
     LoadPicture(FileName: string): any;
-    Access$LocalVars: Access$LocalVars;
-    Access$MacroError: Access$MacroError;
+    LocalVars: Access$LocalVars;
+    MacroError: Access$MacroError;
     MenuBar: string;
-    Access$Modules: Access$Modules;
+    Modules: Access$Modules;
     MsoDebugOptions: Office.MsoDebugOptions;
     Name: string;
     NewAccessProject(filepath: string, Connect?: string): void;
@@ -3414,15 +3416,15 @@ declare module "activex-access" {
     OpenCurrentDatabaseOld(filepath: string, Exclusive?: boolean): void;
     Parent: any;
     PlainText(RichText: string, Length?: number): string;
-    Access$Printer: Access$Printer;
-    Access$Printers: Access$Printers;
+    Printer: Access$Printer;
+    Printers: Access$Printers;
     ProductCode: string;
 
     /**
      * @param Option [Option=1]
      */
     Quit(Option?: $Values<typeof Access$AcQuitOption>): void;
-    Access$References: Access$References;
+    References: Access$References;
     RefreshDatabaseWindow(): void;
     RefreshTitleBar(): void;
     ReloadAddIns(): void;
@@ -3432,8 +3434,8 @@ declare module "activex-access" {
       FileName: string,
       token: number
     ): void;
-    Access$Reports: Access$Reports;
-    Access$ReturnVars: Access$ReturnVars;
+    Reports: Access$Reports;
+    ReturnVars: Access$ReturnVars;
     Run(
       Procedure: string,
       Arg1?: any,
@@ -3491,7 +3493,7 @@ declare module "activex-access" {
       ObjectName: string,
       FileName: string
     ): void;
-    Access$Screen: Access$Screen;
+    Screen: Access$Screen;
     SetDefaultWorkgroupFile(Path: string): void;
     SetHiddenAttribute(
       ObjectType: $Values<typeof Access$AcObjectType>,
@@ -3542,7 +3544,7 @@ declare module "activex-access" {
         | typeof Access$AcSysCmdAction.acSysCmdRemoveMeter
         | typeof Access$AcSysCmdAction.acSysCmdRuntime
     ): null;
-    Access$TempVars: Access$TempVars;
+    TempVars: Access$TempVars;
 
     /**
      * @param WellFormedXMLOutput [WellFormedXMLOutput=false]
@@ -3560,8 +3562,8 @@ declare module "activex-access" {
     Version: string;
     VGXFrameInterval: any;
     Visible: boolean;
-    Access$WebServices: Access$WebServices;
-    Access$WizHook: Access$WizHook;
+    WebServices: Access$WebServices;
+    WizHook: Access$WizHook;
   }
 
   declare class Access$Attachment {
@@ -3596,7 +3598,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AttachmentCount: number;
     AutoLabel: boolean;
     Back(): void;
@@ -3619,7 +3621,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -3651,7 +3653,7 @@ declare module "activex-access" {
     Height: number;
     HelpContextId: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     InSelection: boolean;
     IsMemberSafe(dispid: number): boolean;
     IsVisible: boolean;
@@ -3702,10 +3704,10 @@ declare module "activex-access" {
     PictureDisp(var_0?: any): any;
     PictureSizeMode: number;
     PictureTiling: boolean;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -3760,7 +3762,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoActivate: number;
     AutoLabel: boolean;
     BackColor: number;
@@ -3778,12 +3780,12 @@ declare module "activex-access" {
     BorderTint: number;
     BorderWidth: number;
     BottomPadding: number;
-    Access$Class: string;
+    Class: string;
     ColumnHidden: boolean;
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -3856,11 +3858,11 @@ declare module "activex-access" {
     OnUpdated: string;
     OnUpdatedMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
     RightPadding: number;
     Scaling: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeMode: number;
@@ -3915,7 +3917,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BeforeUpdate: string;
     BeforeUpdateMacro: string;
@@ -3931,7 +3933,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -3997,11 +3999,11 @@ declare module "activex-access" {
     OnMouseUpMacro: string;
     OptionValue: number;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -4053,13 +4055,13 @@ declare module "activex-access" {
     AllMacros: Access$AccessObjects;
     AllModules: Access$AccessObjects;
     AllReports: Access$AccessObjects;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BaseConnectionString: string;
     CloseConnection(): void;
     Connection: ADODB.Connection;
     FileFormat: $Values<typeof Access$AcFileFormat>;
     FullName: string;
-    Access$ImportExportSpecifications: Access$ImportExportSpecifications;
+    ImportExportSpecifications: Access$ImportExportSpecifications;
     IsConnected: boolean;
     IsMemberSafe(dispid: number): boolean;
     IsTrusted: boolean;
@@ -4073,7 +4075,7 @@ declare module "activex-access" {
     Parent: any;
     Path: string;
     ProjectType: $Values<typeof Access$AcProjectType>;
-    Access$Properties: Access$AccessObjectProperties;
+    Properties: Access$AccessObjectProperties;
     RemovePersonalInformation: boolean;
     Resources: Access$SharedResources;
     UpdateDependencyInfo(): void;
@@ -4116,7 +4118,7 @@ declare module "activex-access" {
     AllowAutoCorrect: boolean;
     AllowedText: number;
     AllowValueListEdits: boolean;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoExpand: boolean;
     AutoLabel: boolean;
     BackColor: number;
@@ -4147,7 +4149,7 @@ declare module "activex-access" {
     ColumnWidth: number;
     ColumnWidths: string;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -4169,7 +4171,7 @@ declare module "activex-access" {
     ForeThemeColorIndex: number;
     ForeTint: number;
     Format: string;
-    Access$FormatConditions: Access$FormatConditions;
+    FormatConditions: Access$FormatConditions;
     FormatPictureText: string;
     Goto(): void;
     GridlineColor: number;
@@ -4188,7 +4190,7 @@ declare module "activex-access" {
     HelpContextId: number;
     HideDuplicates: boolean;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     IMEHold: boolean;
     IMEMode: $Values<typeof Access$AcImeMode>;
     IMESentenceMode: $Values<typeof Access$AcImeSentenceMode>;
@@ -4252,7 +4254,7 @@ declare module "activex-access" {
     OnNotInListMacro: string;
     OnUndo: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Recordset: DAO.Recordset | ADODB.Recordset;
     RemoveItem(Index: number | string): void;
@@ -4262,7 +4264,7 @@ declare module "activex-access" {
     RowSource: string;
     RowSourceType: string;
     ScrollBarAlign: number;
-    Access$Section: number;
+    Section: number;
     Selected(lRow: number): number;
     SelLength: number;
     SelStart: number;
@@ -4272,7 +4274,7 @@ declare module "activex-access" {
     ShortcutMenuBar: string;
     ShowOnlyRowSourceValues: boolean;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     SpecialEffect: number;
     StatusBarText: string;
     TabIndex: number;
@@ -4328,7 +4330,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdateMacro: string;
     Alignment: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     AutoRepeat: boolean;
     BackColor: number;
@@ -4348,7 +4350,7 @@ declare module "activex-access" {
     Cancel: boolean;
     Caption: string;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlTipText: string;
     ControlType: number;
     CursorOnHover: $Values<typeof Access$AcCursorOnHover>;
@@ -4392,7 +4394,7 @@ declare module "activex-access" {
     HoverShade: number;
     HoverThemeColorIndex: number;
     HoverTint: number;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     HyperlinkAddress: string;
     HyperlinkSubAddress: string;
     InSelection: boolean;
@@ -4449,13 +4451,13 @@ declare module "activex-access" {
     PressedShade: number;
     PressedThemeColorIndex: number;
     PressedTint: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     QuickStyle: number;
     QuickStyleMask: number;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     Shadow: number;
     Shape: number;
@@ -4482,12 +4484,12 @@ declare module "activex-access" {
     constructor(): this;
     _Evaluate(bstrExpr: string, ...ppsa: any[]): any;
     _Name: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BottomPadding: number;
     Column(Index: number, Row?: number): any;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     Dropdown(): void;
-    Access$Form: Access$Form;
+    Form: Access$Form;
     Goto(): void;
     GridlineColor: number;
     GridlineStyleBottom: number;
@@ -4499,7 +4501,7 @@ declare module "activex-access" {
     GridlineWidthRight: number;
     GridlineWidthTop: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     IsMemberSafe(dispid: number): boolean;
     ItemData(Index: number): any;
     ItemsSelected: Access$_ItemsSelected;
@@ -4511,16 +4513,16 @@ declare module "activex-access" {
     Object: any;
     ObjectVerbs(Index: number): string;
     OldValue: any;
-    Access$Pages: Access$Pages;
+    Pages: Access$Pages;
     Parent: any;
-    Access$Properties: Access$Properties;
-    Access$Report: Access$Report;
+    Properties: Access$Properties;
+    Report: Access$Report;
     Requery(): void;
     RightPadding: number;
     Selected(lRow: number): number;
     SetFocus(): void;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     TopPadding: number;
     Undo(): void;
     VerticalAnchor: $Values<typeof Access$AcVerticalAnchor>;
@@ -4555,13 +4557,13 @@ declare module "activex-access" {
     AllMacros: Access$AccessObjects;
     AllModules: Access$AccessObjects;
     AllReports: Access$AccessObjects;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BaseConnectionString: string;
     CloseConnection(): void;
     Connection: ADODB.Connection;
     FileFormat: $Values<typeof Access$AcFileFormat>;
     FullName: string;
-    Access$ImportExportSpecifications: Access$ImportExportSpecifications;
+    ImportExportSpecifications: Access$ImportExportSpecifications;
     IsConnected: boolean;
     IsMemberSafe(dispid: number): boolean;
     IsTrusted: boolean;
@@ -4575,7 +4577,7 @@ declare module "activex-access" {
     Parent: any;
     Path: string;
     ProjectType: $Values<typeof Access$AcProjectType>;
-    Access$Properties: Access$AccessObjectProperties;
+    Properties: Access$AccessObjectProperties;
     RemovePersonalInformation: boolean;
     Resources: Access$SharedResources;
     UpdateDependencyInfo(): void;
@@ -4612,7 +4614,7 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BorderColor: number;
     BorderLineStyle: number;
     BorderShade: number;
@@ -4622,9 +4624,9 @@ declare module "activex-access" {
     BorderWidth: number;
     BottomPadding: number;
     Cancel: boolean;
-    Access$Class: string;
+    Class: string;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -4676,10 +4678,10 @@ declare module "activex-access" {
     OnUpdated: string;
     OnUpdatedMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     SizeToFit(): void;
     SpecialEffect: number;
@@ -4699,7 +4701,7 @@ declare module "activex-access" {
   declare class Access$DataAccessPage {
     constructor(): this;
     _Name: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     ApplyTheme(ThemeName: string): void;
     ConnectionString: string;
     CurrentSelection: any;
@@ -4714,7 +4716,7 @@ declare module "activex-access" {
     RemovePersonalInformation: boolean;
     Tag: string;
     Visible: boolean;
-    Access$WebOptions: Access$WebOptions;
+    WebOptions: Access$WebOptions;
     WindowHeight: number;
     WindowWidth: number;
   }
@@ -4731,7 +4733,7 @@ declare module "activex-access" {
   declare class Access$DefaultWebOptions {
     constructor(): this;
     AlwaysSaveInDefaultEncoding: boolean;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     CheckIfOfficeIsHTMLEditor: boolean;
     DownloadComponents: boolean;
     Encoding: Office.MsoEncoding;
@@ -5327,7 +5329,7 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BackColor: number;
     BackShade: number;
     BackStyle: number;
@@ -5353,7 +5355,7 @@ declare module "activex-access" {
     Height: number;
     HelpContextId: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     InSelection: boolean;
     IsMemberSafe(dispid: number): boolean;
     IsVisible: boolean;
@@ -5364,9 +5366,9 @@ declare module "activex-access" {
     Move(Left: number, Top?: number, Width?: number, Height?: number): void;
     Name: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     ShortcutMenuBar: string;
     SizeToFit(): void;
     SpecialEffect: number;
@@ -5391,7 +5393,7 @@ declare module "activex-access" {
     constructor(): this;
     IsMemberSafe(dispid: number): boolean;
     Name: string;
-    Access$Operations: Access$Operations;
+    Operations: Access$Operations;
     Parent: any;
   }
 
@@ -5454,7 +5456,7 @@ declare module "activex-access" {
     AllowPivotChartView: boolean;
     AllowPivotTableView: boolean;
     AllowUpdating: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoCenter: boolean;
     AutoResize: boolean;
     BatchUpdates: boolean;
@@ -5494,7 +5496,7 @@ declare module "activex-access" {
     ConnectControl: Access$Control;
     ConnectSynch: number;
     ControlBox: boolean;
-    Access$Controls: Access$Controls;
+    Controls: Access$Controls;
     Count: number;
     CurrentRecord: number;
     CurrentSectionLeft: number;
@@ -5532,7 +5534,7 @@ declare module "activex-access" {
     FilterOn: boolean;
     FilterOnLoad: boolean;
     FitToScreen: boolean;
-    Access$Form: Access$Form;
+    Form: Access$Form;
     FormName: string;
     FrozenColumns: number;
 
@@ -5562,7 +5564,7 @@ declare module "activex-access" {
     MinButton: boolean;
     MinMaxButtons: number;
     Modal: boolean;
-    Access$Module: Access$Module;
+    Module: Access$Module;
     MouseWheel: string;
     MouseWheelMacro: string;
     Move(Left: number, Top?: number, Width?: number, Height?: number): void;
@@ -5634,8 +5636,8 @@ declare module "activex-access" {
     OrderByOn: boolean;
     OrderByOnLoad: boolean;
     Orientation: number;
-    Access$Page: number;
-    Access$Pages: number;
+    Page: number;
+    Pages: number;
     Painting: boolean;
     PaintPalette: any;
     PaletteSource: string;
@@ -5651,8 +5653,8 @@ declare module "activex-access" {
     PivotTableChange: string;
     PivotTableChangeMacro: string;
     PopUp: boolean;
-    Access$Printer: Access$Printer;
-    Access$Properties: Access$Properties;
+    Printer: Access$Printer;
+    Properties: Access$Properties;
     PrtDevMode: any;
     PrtDevNames: any;
     PrtMip: any;
@@ -5824,7 +5826,7 @@ declare module "activex-access" {
 
   declare class Access$GroupLevel {
     constructor(): this;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     ControlSource: string;
     GroupFooter: boolean;
     GroupHeader: boolean;
@@ -5833,7 +5835,7 @@ declare module "activex-access" {
     IsMemberSafe(dispid: number): boolean;
     KeepTogether: number;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     SortOrder: boolean;
   }
 
@@ -5871,7 +5873,7 @@ declare module "activex-access" {
     constructor(): this;
     _Evaluate(bstrExpr: string, ...ppsa: any[]): any;
     _Name: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BackColor: number;
     BackShade: number;
     BackStyle: number;
@@ -5886,7 +5888,7 @@ declare module "activex-access" {
     BorderWidth: number;
     BottomPadding: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlTipText: string;
     ControlType: number;
     DisplayWhen: number;
@@ -5907,7 +5909,7 @@ declare module "activex-access" {
     Height: number;
     HelpContextId: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     HyperlinkAddress: string;
     HyperlinkSubAddress: string;
     ImageHeight: number;
@@ -5940,10 +5942,10 @@ declare module "activex-access" {
     PictureData: any;
     PictureTiling: boolean;
     PictureType: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeMode: number;
@@ -5960,7 +5962,7 @@ declare module "activex-access" {
 
   declare class Access$ImportExportSpecification {
     constructor(): this;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     Delete(): void;
     Description: string;
     Execute(Prompt?: boolean): void;
@@ -6012,7 +6014,7 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BackColor: number;
     BackShade: number;
     BackStyle: number;
@@ -6058,7 +6060,7 @@ declare module "activex-access" {
     Height: number;
     HelpContextId: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     HyperlinkAddress: string;
     HyperlinkSubAddress: string;
     InSelection: boolean;
@@ -6085,14 +6087,14 @@ declare module "activex-access" {
     OnMouseUp: string;
     OnMouseUpMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     RightMargin: number;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     ShortcutMenuBar: string;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     SpecialEffect: number;
     Tag: string;
     Target: string;
@@ -6112,7 +6114,7 @@ declare module "activex-access" {
     constructor(): this;
     _Evaluate(bstrExpr: string, ...ppsa: any[]): any;
     _Name: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BorderColor: number;
     BorderLineStyle: number;
     BorderShade: number;
@@ -6135,8 +6137,8 @@ declare module "activex-access" {
     Name: string;
     OldBorderStyle: number;
     Parent: any;
-    Access$Properties: Access$Properties;
-    Access$Section: number;
+    Properties: Access$Properties;
+    Section: number;
     SizeToFit(): void;
     SpecialEffect: number;
     Tag: string;
@@ -6180,7 +6182,7 @@ declare module "activex-access" {
     AfterUpdate: string;
     AfterUpdateMacro: string;
     AllowValueListEdits: boolean;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BackColor: number;
     BackShade: number;
@@ -6205,7 +6207,7 @@ declare module "activex-access" {
     ColumnWidth: number;
     ColumnWidths: string;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -6240,7 +6242,7 @@ declare module "activex-access" {
     HelpContextId: number;
     HideDuplicates: boolean;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     IMEHold: boolean;
     IMEMode: $Values<typeof Access$AcImeMode>;
     IMESentenceMode: $Values<typeof Access$AcImeSentenceMode>;
@@ -6292,7 +6294,7 @@ declare module "activex-access" {
     OnMouseUp: string;
     OnMouseUpMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Recordset: DAO.Recordset | ADODB.Recordset;
     RemoveItem(Index: number | string): void;
@@ -6301,13 +6303,13 @@ declare module "activex-access" {
     RowSource: string;
     RowSourceType: string;
     ScrollBarAlign: number;
-    Access$Section: number;
+    Section: number;
     Selected(lRow: number): number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     ShowOnlyRowSourceValues: boolean;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     SpecialEffect: number;
     StatusBarText: string;
     TabIndex: number;
@@ -6360,7 +6362,7 @@ declare module "activex-access" {
     constructor(): this;
     AddFromFile(FileName: string): void;
     AddFromString(String: string): void;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     CountOfDeclarationLines: number;
     CountOfLines: number;
     CreateEventProc(EventName: string, ObjectName: string): number;
@@ -6436,7 +6438,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdateMacro: string;
     Alignment: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     AutoRepeat: boolean;
     BackColor: number;
@@ -6455,7 +6457,7 @@ declare module "activex-access" {
     BottomPadding: number;
     Caption: string;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlTipText: string;
     ControlType: number;
     CursorOnHover: $Values<typeof Access$AcCursorOnHover>;
@@ -6498,7 +6500,7 @@ declare module "activex-access" {
     HoverShade: number;
     HoverThemeColorIndex: number;
     HoverTint: number;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     HyperlinkAddress: string;
     HyperlinkSubAddress: string;
     InSelection: boolean;
@@ -6558,13 +6560,13 @@ declare module "activex-access" {
     PressedShade: number;
     PressedThemeColorIndex: number;
     PressedTint: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     QuickStyle: number;
     QuickStyleMask: number;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     Shadow: number;
     Shape: number;
@@ -6616,7 +6618,7 @@ declare module "activex-access" {
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
     AllowedText: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoTab: boolean;
     BackColor: number;
     BackShade: number;
@@ -6632,14 +6634,14 @@ declare module "activex-access" {
     BorderWidth: number;
     BottomPadding: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlTipText: string;
     ControlType: number;
     DisplayWhen: number;
     Enabled: boolean;
     EventProcPrefix: string;
     FilterLookup: number;
-    Access$FormatConditions: Access$FormatConditions;
+    FormatConditions: Access$FormatConditions;
     Goto(): void;
     GridlineColor: number;
     GridlineShade: number;
@@ -6656,7 +6658,7 @@ declare module "activex-access" {
     Height: number;
     HelpContextId: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     InSelection: boolean;
     IsMemberSafe(dispid: number): boolean;
     IsVisible: boolean;
@@ -6692,21 +6694,21 @@ declare module "activex-access" {
     OnMouseUp: string;
     OnMouseUpMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
     ScrollBarAlign: number;
-    Access$Section: number;
+    Section: number;
     SelectedTab: Access$NavigationButton;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     Span: $Values<typeof Access$AcNavigationSpan>;
     SpecialEffect: number;
     StatusBarText: string;
-    Access$SubForm: string;
+    SubForm: string;
     TabIndex: number;
     Tabs: Access$Children;
     TabStop: boolean;
@@ -6752,7 +6754,7 @@ declare module "activex-access" {
     accValue(varChild?: any): string;
     Action: number;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoActivate: number;
     BackColor: number;
     BackShade: number;
@@ -6768,11 +6770,11 @@ declare module "activex-access" {
     BorderTint: number;
     BorderWidth: number;
     BottomPadding: number;
-    Access$Class: string;
+    Class: string;
     ColumnCount: number;
     ColumnHeads: boolean;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlTipText: string;
     ControlType: number;
     Data: number;
@@ -6840,13 +6842,13 @@ declare module "activex-access" {
     OnMouseUpMacro: string;
     OnUpdated: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
     RightPadding: number;
     RowSource: string;
     RowSourceType: string;
     Scaling: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeMode: number;
@@ -6880,7 +6882,7 @@ declare module "activex-access" {
     IsMemberSafe(dispid: number): boolean;
     Name: string;
     Parent: any;
-    Access$WSParameters: Access$WSParameters;
+    WSParameters: Access$WSParameters;
   }
 
   declare interface Access$Operations {
@@ -6923,7 +6925,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BeforeUpdate: string;
     BeforeUpdateMacro: string;
@@ -6939,7 +6941,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -7005,11 +7007,11 @@ declare module "activex-access" {
     OnMouseUpMacro: string;
     OptionValue: number;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -7061,7 +7063,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BackColor: number;
     BackShade: number;
@@ -7081,7 +7083,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -7121,9 +7123,9 @@ declare module "activex-access" {
     OnMouseUp: string;
     OnMouseUpMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -7171,10 +7173,10 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     Caption: string;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlTipText: string;
     ControlType: number;
     Enabled: boolean;
@@ -7203,9 +7205,9 @@ declare module "activex-access" {
     Picture: string;
     PictureData: any;
     PictureType: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     SetTabOrder(): void;
     ShortcutMenuBar: string;
@@ -7221,7 +7223,7 @@ declare module "activex-access" {
     constructor(): this;
     _Evaluate(bstrExpr: string, ...ppsa: any[]): any;
     _Name: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     ControlName: string;
     ControlType: number;
     EventProcPrefix: string;
@@ -7232,8 +7234,8 @@ declare module "activex-access" {
     Move(Left: number, Top?: number, Width?: number, Height?: number): void;
     Name: string;
     Parent: any;
-    Access$Properties: Access$Properties;
-    Access$Section: number;
+    Properties: Access$Properties;
+    Section: number;
     SizeToFit(): void;
     Tag: string;
     Top: number;
@@ -7256,7 +7258,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BackColor: number;
     BackStyle: number;
@@ -7266,7 +7268,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -7315,9 +7317,9 @@ declare module "activex-access" {
     OnMouseUpMacro: string;
     OptionValue: number;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     Requery(): void;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -7383,7 +7385,7 @@ declare module "activex-access" {
     constructor(): this;
     _Evaluate(bstrExpr: string, ...ppsa: any[]): any;
     _Name: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BackColor: number;
     BackShade: number;
     BackStyle: number;
@@ -7420,8 +7422,8 @@ declare module "activex-access" {
     OnMouseUp: string;
     OnMouseUpMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
-    Access$Section: number;
+    Properties: Access$Properties;
+    Section: number;
     SizeToFit(): void;
     SpecialEffect: number;
     Tag: string;
@@ -7465,7 +7467,7 @@ declare module "activex-access" {
     AllowDesignChanges: boolean;
     AllowLayoutView: boolean;
     AllowReportView: boolean;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoCenter: boolean;
     AutoResize: boolean;
     BorderStyle: number;
@@ -7482,7 +7484,7 @@ declare module "activex-access" {
     ): void;
     CloseButton: boolean;
     ControlBox: boolean;
-    Access$Controls: Access$Controls;
+    Controls: Access$Controls;
     Count: number;
     CurrentRecord: number;
     CurrentView: number;
@@ -7541,7 +7543,7 @@ declare module "activex-access" {
     MinButton: boolean;
     MinMaxButtons: number;
     Modal: boolean;
-    Access$Module: Access$Module;
+    Module: Access$Module;
     MouseWheel: string;
     MouseWheelMacro: string;
     Move(Left: number, Top?: number, Width?: number, Height?: number): void;
@@ -7603,10 +7605,10 @@ declare module "activex-access" {
     OrderByOn: boolean;
     OrderByOnLoad: boolean;
     Orientation: number;
-    Access$Page: number;
+    Page: number;
     PageFooter: number;
     PageHeader: number;
-    Access$Pages: number;
+    Pages: number;
     Painting: boolean;
     PaintPalette: any;
     PaletteSource: string;
@@ -7622,9 +7624,9 @@ declare module "activex-access" {
     PopUp: boolean;
     Print(Expr: string): void;
     PrintCount: number;
-    Access$Printer: Access$Printer;
+    Printer: Access$Printer;
     PrintSection: boolean;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     PrtDevMode: any;
     PrtDevNames: any;
     PrtMip: any;
@@ -7633,7 +7635,7 @@ declare module "activex-access" {
     Recordset: DAO.Recordset | ADODB.Recordset | null;
     RecordSource: string;
     RecordSourceQualifier: string;
-    Access$Report: Access$Report;
+    Report: Access$Report;
     Requery(): void;
     RibbonName: string;
     Scale(flags: number, x1: number, y1: number, x2: number, y2: number): void;
@@ -7700,7 +7702,7 @@ declare module "activex-access" {
     ActiveDatasheet: Access$Form;
     ActiveForm: Access$Form;
     ActiveReport: Access$Report;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     IsMemberSafe(dispid: number): boolean;
     MousePointer: number;
     Parent: any;
@@ -7714,7 +7716,7 @@ declare module "activex-access" {
     AlternateBackShade: number;
     AlternateBackThemeColorIndex: number;
     AlternateBackTint: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoHeight: boolean;
     BackColor: number;
     BackShade: number;
@@ -7722,7 +7724,7 @@ declare module "activex-access" {
     BackTint: number;
     CanGrow: boolean;
     CanShrink: boolean;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     DisplayWhen: number;
     EventProcPrefix: string;
     ForceNewPage: number;
@@ -7752,7 +7754,7 @@ declare module "activex-access" {
     OnRetreat: string;
     OnRetreatMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     RepeatSection: boolean;
     SetTabOrder(): void;
     SpecialEffect: number;
@@ -7781,20 +7783,20 @@ declare module "activex-access" {
 
   declare class Access$SmartTag {
     constructor(): this;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     Delete(): void;
     IsMemberSafe(dispid: number): boolean;
     IsMissing: boolean;
     Name: string;
     Parent: any;
-    Access$Properties: Access$SmartTagProperties;
-    Access$SmartTagActions: Access$SmartTagActions;
+    Properties: Access$SmartTagProperties;
+    SmartTagActions: Access$SmartTagActions;
     XML: string;
   }
 
   declare class Access$SmartTagAction {
     constructor(): this;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     Execute(): void;
     IsMemberSafe(dispid: number): boolean;
     Name: string;
@@ -7868,7 +7870,7 @@ declare module "activex-access" {
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
     AddColon: boolean;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BorderColor: number;
     BorderLineStyle: number;
@@ -7881,13 +7883,13 @@ declare module "activex-access" {
     CanGrow: boolean;
     CanShrink: boolean;
     ControlName: string;
-    Access$Controls: Access$Controls;
+    Controls: Access$Controls;
     ControlType: number;
     DisplayWhen: number;
     Enabled: boolean;
     EventProcPrefix: string;
     FilterOnEmptyMaster: boolean;
-    Access$Form: Access$Form;
+    Form: Access$Form;
     Goto(): void;
     GridlineColor: number;
     GridlineShade: number;
@@ -7924,11 +7926,11 @@ declare module "activex-access" {
     OnExit: string;
     OnExitMacro: string;
     Parent: any;
-    Access$Properties: Access$Properties;
-    Access$Report: Access$Report;
+    Properties: Access$Properties;
+    Report: Access$Report;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     SizeToFit(): void;
     SourceObject: string;
@@ -7946,11 +7948,11 @@ declare module "activex-access" {
 
   declare class Access$SubReport {
     constructor(): this;
-    Access$Application: Access$Application;
-    Access$Form: Access$Form;
+    Application: Access$Application;
+    Form: Access$Form;
     IsMemberSafe(dispid: number): boolean;
     Parent: any;
-    Access$Report: Access$Report;
+    Report: Access$Report;
   }
 
   declare class Access$TabControl {
@@ -7982,7 +7984,7 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BackColor: number;
     BackShade: number;
     BackStyle: number;
@@ -8062,7 +8064,7 @@ declare module "activex-access" {
     OnMouseMoveMacro: string;
     OnMouseUp: string;
     OnMouseUpMacro: string;
-    Access$Pages: Access$Pages;
+    Pages: Access$Pages;
     Parent: any;
     PressedColor: number;
     PressedForeColor: number;
@@ -8072,9 +8074,9 @@ declare module "activex-access" {
     PressedShade: number;
     PressedThemeColorIndex: number;
     PressedTint: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     Shape: number;
     ShortcutMenuBar: string;
     SizeToFit(): void;
@@ -8150,7 +8152,7 @@ declare module "activex-access" {
     AfterUpdateMacro: string;
     AllowAutoCorrect: boolean;
     AllowedText: number;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AsianLineBreak: boolean;
     AutoLabel: boolean;
     AutoTab: boolean;
@@ -8177,7 +8179,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -8201,7 +8203,7 @@ declare module "activex-access" {
     ForeThemeColorIndex: number;
     ForeTint: number;
     Format: string;
-    Access$FormatConditions: Access$FormatConditions;
+    FormatConditions: Access$FormatConditions;
     FormatPictureText: string;
     FuriganaControl: string;
     Goto(): void;
@@ -8221,7 +8223,7 @@ declare module "activex-access" {
     HelpContextId: number;
     HideDuplicates: boolean;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     IMEHold: boolean;
     IMEMode: $Values<typeof Access$AcImeMode>;
     IMESentenceMode: $Values<typeof Access$AcImeSentenceMode>;
@@ -8276,7 +8278,7 @@ declare module "activex-access" {
     OnUndo: string;
     Parent: any;
     PostalAddress: string;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadingOrder: number;
     Requery(): void;
     RightMargin: number;
@@ -8284,7 +8286,7 @@ declare module "activex-access" {
     RunningSum: number;
     ScrollBarAlign: number;
     ScrollBars: number;
-    Access$Section: number;
+    Section: number;
     SelLength: number;
     SelStart: number;
     SelText: string;
@@ -8292,7 +8294,7 @@ declare module "activex-access" {
     ShortcutMenuBar: string;
     ShowDatePicker: number;
     SizeToFit(): void;
-    Access$SmartTags: Access$SmartTags;
+    SmartTags: Access$SmartTags;
     SpecialEffect: number;
     StatusBarText: string;
     TabIndex: number;
@@ -8350,7 +8352,7 @@ declare module "activex-access" {
     AddColon: boolean;
     AfterUpdate: string;
     AfterUpdateMacro: string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     AutoLabel: boolean;
     BackColor: number;
     BackShade: number;
@@ -8371,7 +8373,7 @@ declare module "activex-access" {
     ColumnOrder: number;
     ColumnWidth: number;
     ControlName: string;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -8468,13 +8470,13 @@ declare module "activex-access" {
     PressedShade: number;
     PressedThemeColorIndex: number;
     PressedTint: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     QuickStyle: number;
     QuickStyleMask: number;
     ReadingOrder: number;
     Requery(): void;
     RightPadding: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     Shadow: number;
     Shape: number;
@@ -8528,7 +8530,7 @@ declare module "activex-access" {
     accSelection: any;
     accState(varChild?: any): any;
     accValue(varChild?: any): string;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     BorderColor: number;
     BorderLineStyle: number;
     BorderShade: number;
@@ -8537,7 +8539,7 @@ declare module "activex-access" {
     BorderTint: number;
     BorderWidth: number;
     BottomPadding: number;
-    Access$Controls: Access$Children;
+    Controls: Access$Children;
     ControlSource: string;
     ControlTipText: string;
     ControlType: number;
@@ -8560,7 +8562,7 @@ declare module "activex-access" {
     Height: number;
     HelpContextId: number;
     HorizontalAnchor: $Values<typeof Access$AcHorizontalAnchor>;
-    Access$Hyperlink: Access$Hyperlink;
+    Hyperlink: Access$Hyperlink;
     InSelection: boolean;
     IsMemberSafe(dispid: number): boolean;
     Layout: $Values<typeof Access$AcLayoutType>;
@@ -8598,14 +8600,14 @@ declare module "activex-access" {
     OnUpdatedMacro: string;
     Parent: any;
     Progress: number;
-    Access$Properties: Access$Properties;
+    Properties: Access$Properties;
     ReadyState: $Values<typeof Access$AcWebBrowserState>;
     Requery(): void;
     RightPadding: number;
     ScrollBars: $Values<typeof Access$AcWebBrowserScrollBars>;
     ScrollLeft: number;
     ScrollTop: number;
-    Access$Section: number;
+    Section: number;
     SetFocus(): void;
     SizeToFit(): void;
     SpecialEffect: number;
@@ -8625,7 +8627,7 @@ declare module "activex-access" {
 
   declare class Access$WebOptions {
     constructor(): this;
-    Access$Application: Access$Application;
+    Application: Access$Application;
     DownloadComponents: boolean;
     Encoding: Office.MsoEncoding;
     FolderSuffix: string;
@@ -8640,7 +8642,7 @@ declare module "activex-access" {
 
   declare class Access$WebService {
     constructor(): this;
-    Access$Entities: Access$Entities;
+    Entities: Access$Entities;
     IsMemberSafe(dispid: number): boolean;
     Name: string;
     Parent: any;
@@ -8873,6 +8875,7 @@ declare module "activex-access" {
     +TargetFrameName: string | null;
     +URL: string;
   }
+  declare var AccWizObjects: typeof npm$namespace$AccWizObjects;
 
   declare var npm$namespace$AccWizObjects: {
     WIZ_CSIDL_FLAGS: typeof AccWizObjects$WIZ_CSIDL_FLAGS,

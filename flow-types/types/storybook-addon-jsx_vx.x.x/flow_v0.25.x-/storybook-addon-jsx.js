@@ -10,7 +10,7 @@ declare module "@storybook/react" {
   }
 }
 declare module "storybook-addon-jsx" {
-  import type { ReactNode, ReactElement } from "react";
+  import type { Node, ReactElement } from "react";
 
   declare export type displayNameFunc = (element: ReactElement<any>) => string;
 }

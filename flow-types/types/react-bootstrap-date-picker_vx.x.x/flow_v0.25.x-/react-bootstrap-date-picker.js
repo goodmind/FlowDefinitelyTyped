@@ -2,7 +2,7 @@ declare module "react-bootstrap-date-picker" {
   import type {
     ComponentClass,
     StatelessComponent,
-    ReactNode,
+    Node,
     FocusEventHandler,
     HTMLAttributes
   } from "react";
@@ -29,11 +29,11 @@ declare module "react-bootstrap-date-picker" {
     onFocus?: FocusEventHandler<any>;
     onBlur?: FocusEventHandler<any>;
     dateFormat?: string;
-    clearButtonElement?: ReactNode;
+    clearButtonElement?: Node;
     showClearButton?: boolean;
     onClear?: () => void;
-    previousButtonElement?: ReactNode;
-    nextButtonElement?: ReactNode;
+    previousButtonElement?: Node;
+    nextButtonElement?: Node;
     cellPadding?: string;
     dayLabels?: string[];
     monthLabels?: string[];

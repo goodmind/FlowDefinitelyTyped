@@ -1,5 +1,5 @@
 declare module "react-native-dialog" {
-  import type { Ref, PureComponent, ReactNode } from "react";
+  import type { Ref, PureComponent, Node } from "react";
 
   import type {
     ViewProps,
@@ -27,8 +27,8 @@ declare module "react-native-dialog" {
     onPress: () => void;
   }
   declare interface ContainerProps {
-    blurComponentIOS?: ReactNode;
-    children: React.ReactNode[];
+    blurComponentIOS?: Node;
+    children: React.Node[];
 
     /**
      * default: false
@@ -46,6 +46,7 @@ declare module "react-native-dialog" {
   declare interface DescriptionProps {
     children: string;
   }
+  declare var Dialog: typeof npm$namespace$Dialog;
 
   declare var npm$namespace$Dialog: {
     Button: typeof Dialog$Button,

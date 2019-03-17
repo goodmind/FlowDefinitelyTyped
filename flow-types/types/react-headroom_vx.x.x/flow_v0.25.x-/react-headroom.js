@@ -1,5 +1,5 @@
 declare module "react-headroom" {
-  import type { CSSProperties, ReactNode, Component } from "react";
+  import type { CSSProperties, Node, Component } from "react";
 
   declare class Headroom mixins Component<ReactHeadroomProps> {
     constructor(props: ReactHeadroomProps): this;
@@ -18,7 +18,7 @@ declare module "react-headroom" {
     calcHeightOnResize?: boolean;
     disableInlineStyles?: boolean;
     className?: string;
-    children: ReactNode;
+    children: Node;
   }
   declare export default typeof Headroom;
 }

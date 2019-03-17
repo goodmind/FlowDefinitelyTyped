@@ -1,5 +1,5 @@
 declare module "ui-box" {
-  import type { Component, ComponentClass, ReactNode } from "react";
+  import type { Component, ComponentClass, Node } from "react";
 
   import typeof * as CSS from "csstype";
 
@@ -11,14 +11,14 @@ declare module "ui-box" {
   /**
    * A prop defining which
    */
-  declare type UIBoxIsProp = string | ReactNode;
+  declare type UIBoxIsProp = string | Node;
   declare type CSSProps = CSS.StandardProperties;
   declare export interface BoxProps {
     /**
      * Callback that gets passed a ref to inner DOM node (or component if the is prop is set to a
      * React component type).
      */
-    innerRef?: (node: ReactNode) => any;
+    innerRef?: (node: Node) => any;
 
     /**
      * Lets you change the underlying element type.

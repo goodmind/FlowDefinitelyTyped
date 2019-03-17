@@ -1,5 +1,5 @@
 declare module "react-native-htmlview" {
-  import type { Component, ComponentType, ReactNode } from "react";
+  import type { Component, ComponentType, Node } from "react";
 
   import type {
     StyleProp,
@@ -47,8 +47,8 @@ declare module "react-native-htmlview" {
       index: number,
       siblings: HTMLViewNode,
       parent: HTMLViewNode,
-      defaultRenderer: (node: HTMLViewNode, parent: HTMLViewNode) => ReactNode
-    ) => ReactNode;
+      defaultRenderer: (node: HTMLViewNode, parent: HTMLViewNode) => Node
+    ) => Node;
 
     /**
      * Text which is rendered before every li inside a ul

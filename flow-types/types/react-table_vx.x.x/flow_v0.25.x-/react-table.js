@@ -9,8 +9,8 @@ declare module "react-table" {
     | AccessorFunction<D>;
   declare export type Aggregator = (values: any, rows: any) => any;
   declare export type TableCellRenderer =
-    | ((cellInfo: CellInfo, column: any) => React.ReactNode)
-    | React.ReactNode;
+    | ((cellInfo: CellInfo, column: any) => React.Node)
+    | React.Node;
   declare export type FilterRender = (params: {
     column: Column,
     filter: any,
@@ -18,10 +18,10 @@ declare module "react-table" {
     key?: string
   }) => React.ReactElement<any>;
   declare export type PivotRenderer =
-    | ((cellInfo: CellInfo) => React.ReactNode)
+    | ((cellInfo: CellInfo) => React.Node)
     | (() => any)
     | string
-    | React.ReactNode;
+    | React.Node;
   declare export type ComponentPropsGetter0 = (
     finalState: any,
     rowInfo: void,
@@ -56,9 +56,7 @@ declare module "react-table" {
     rows: any[],
     column: any
   ) => any[];
-  declare export type SubComponentFunction = (
-    rowInfo: RowInfo
-  ) => React.ReactNode;
+  declare export type SubComponentFunction = (rowInfo: RowInfo) => React.Node;
   declare export type PageChangeFunction = (page: number) => void;
   declare export type PageSizeChangeFunction = (
     newPageSize: number,
@@ -297,7 +295,7 @@ declare module "react-table" {
     /**
      * The content rendered inside of a padding row
      */
-    PadRowComponent: () => React.ReactNode,
+    PadRowComponent: () => React.Node,
 
     /**
      * Server-side callbacks
@@ -311,7 +309,7 @@ declare module "react-table" {
       state: FinalState<ResolvedData>,
       makeTable: () => React.ReactElement<any>,
       instance: Instance<ResolvedData>
-    ) => React.ReactNode
+    ) => React.Node
   } & $Shape<TextProps> &
     $Shape<ComponentDecoratorProps> &
     $Shape<ControlledStateCallbackProps> &
@@ -507,56 +505,56 @@ declare module "react-table" {
     getResizerProps: ComponentPropsGetter0;
   }
   declare export interface ComponentProps {
-    TableComponent: React.ReactType;
-    TheadComponent: React.ReactType;
-    TbodyComponent: React.ReactType;
-    TrGroupComponent: React.ReactType;
-    TrComponent: React.ReactType;
-    ThComponent: React.ReactType;
-    TdComponent: React.ReactType;
-    TfootComponent: React.ReactType;
-    ExpanderComponent: React.ReactType;
-    AggregatedComponent: React.ReactType;
-    PivotValueComponent: React.ReactType;
-    PivotComponent: React.ReactType;
-    FilterComponent: React.ReactType;
-    PaginationComponent: React.ReactType;
-    PreviousComponent: React.ReactType;
-    NextComponent: React.ReactType;
-    LoadingComponent: React.ReactType;
-    NoDataComponent: React.ReactType;
-    ResizerComponent: React.ReactType;
+    TableComponent: React.ReactType<>;
+    TheadComponent: React.ReactType<>;
+    TbodyComponent: React.ReactType<>;
+    TrGroupComponent: React.ReactType<>;
+    TrComponent: React.ReactType<>;
+    ThComponent: React.ReactType<>;
+    TdComponent: React.ReactType<>;
+    TfootComponent: React.ReactType<>;
+    ExpanderComponent: React.ReactType<>;
+    AggregatedComponent: React.ReactType<>;
+    PivotValueComponent: React.ReactType<>;
+    PivotComponent: React.ReactType<>;
+    FilterComponent: React.ReactType<>;
+    PaginationComponent: React.ReactType<>;
+    PreviousComponent: React.ReactType<>;
+    NextComponent: React.ReactType<>;
+    LoadingComponent: React.ReactType<>;
+    NoDataComponent: React.ReactType<>;
+    ResizerComponent: React.ReactType<>;
   }
   declare export interface TextProps {
     /**
      * Default: 'Previous'
      */
-    previousText: React.ReactNode;
+    previousText: React.Node;
 
     /**
      * Default: 'Next'
      */
-    nextText: React.ReactNode;
+    nextText: React.Node;
 
     /**
      * Default: 'Loading...'
      */
-    loadingText: React.ReactNode;
+    loadingText: React.Node;
 
     /**
      * Default: 'No rows found'
      */
-    noDataText: React.ReactNode | React.ComponentType;
+    noDataText: React.Node | React.ComponentType<>;
 
     /**
      * Default: 'Page'
      */
-    pageText: React.ReactNode;
+    pageText: React.Node;
 
     /**
      * Default: 'of'
      */
-    ofText: React.ReactNode;
+    ofText: React.Node;
 
     /**
      * Default: 'rows'
@@ -955,7 +953,7 @@ declare module "react-table" {
     headerGroups: any[]
   } & TableProps<D>;
 
-  declare export var ReactTableDefaults: TableProps;
+  declare export var ReactTableDefaults: TableProps<>;
   declare export default class ReactTable<D>
     mixins React.Component<$Shape<TableProps<D>>> {}
   declare export type Instance<D = any> = {

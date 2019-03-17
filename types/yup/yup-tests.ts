@@ -148,6 +148,7 @@ mixed.default({ number: 5 });
 mixed.default(() => ({ number: 5 }));
 mixed.default();
 mixed.nullable(true);
+mixed.nullable();
 mixed.required();
 mixed.required("Foo");
 mixed.required(() => "Foo");
@@ -204,6 +205,12 @@ const testContext = function(this: TestContext) {
     this.resolve;
     // $ExpectType ValidationError
     this.createError({ path: "1", message: "1" });
+    // $ExpectType ValidationError
+    this.createError({ message: "1" });
+    // $ExpectType ValidationError
+    this.createError({ path: "1"});
+    // $ExpectType ValidationError
+    this.createError();
     return true;
 };
 mixed.test("with-context", "it uses function context", testContext);
@@ -285,6 +292,8 @@ strSchema.isValid("hello"); // => true
 strSchema.required();
 strSchema.required("req");
 strSchema.required(() => "req");
+strSchema.length(5, "message");
+strSchema.length(5, () => "message");
 strSchema.min(5, "message");
 strSchema.min(5, () => "message");
 strSchema.max(5, "message");
@@ -411,7 +420,7 @@ const description: SchemaDescription = {
     type: "type",
     label: "label",
     meta: { key: "value" },
-    tests: ["test1", "test2"],
+    tests: [{ name: "test1", params: {} }, { name: "test2", params: {} }],
     fields: { key: "value" }
 };
 

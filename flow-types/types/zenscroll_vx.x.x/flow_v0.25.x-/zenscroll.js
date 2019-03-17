@@ -1,6 +1,6 @@
 declare module "zenscroll" {
-  declare var zenScroll: ZenScroll$ZenScroll$zenscroll;
-  declare module.exports: typeof zenScroll;
+  declare var zenScroll: ZenScroll$zenscroll;
+  declare export default typeof zenScroll;
 
   declare interface ZenScroll$setupOption {
     defaultDuration: number;

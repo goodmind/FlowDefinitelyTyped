@@ -1,7 +1,9 @@
 declare module "react-rte" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   import type { ContentBlock, EditorState } from "draft-js";
+
+  import typeof * as draftjs from "draft-js";
 
   declare type CustomBlockFn = (
     element: Element
@@ -96,8 +98,8 @@ declare module "react-rte" {
     set: SetControlState,
     get: GetControlState,
     state: EditorState
-  ) => ReactNode;
-  declare type CustomControl = ReactNode | CustControlFunc;
+  ) => Node;
+  declare type CustomControl = Node | CustControlFunc;
   declare type GroupName =
     | "INLINE_STYLE_BUTTONS"
     | "BLOCK_TYPE_BUTTONS"

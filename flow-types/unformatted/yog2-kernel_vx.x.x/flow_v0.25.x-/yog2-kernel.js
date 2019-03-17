@@ -1,3 +1,6 @@
+declare module 'global' {
+        declare var yog: yog$Yog;
+    }
 declare module 'yog2-kernel' {
         import typeof * as express from 'express';
 
@@ -9,15 +12,6 @@ declare module 'yog2-kernel' {
 
 	import typeof * as yogBigpipe from 'yog-bigpipe';
 
-	
-      declare var npm$namespace$global: {
-        
-        yog: typeof global$yog,
-        
-        
-        
-      }
-declare var global$yog: yog$Yog;
 	declare export interface YogBootstrapOption {
 rootPath?: string,
 pluginsPath?: string,
@@ -59,7 +53,8 @@ wrapAsync(
 fn: (req: Request, resp: Response, next: express.NextFunction) => any): express.RequestHandler
 } & express.Router
 
-	
+	declare var yog: typeof npm$namespace$yog;
+
       declare var npm$namespace$yog: {
         
         

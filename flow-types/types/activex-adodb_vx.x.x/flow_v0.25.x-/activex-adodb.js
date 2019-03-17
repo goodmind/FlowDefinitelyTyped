@@ -1,4 +1,6 @@
 declare module "activex-adodb" {
+  declare var ADODB: typeof npm$namespace$ADODB;
+
   declare var npm$namespace$ADODB: {
     ADCPROP_ASYNCTHREADPRIORITY_ENUM: typeof ADODB$ADCPROP_ASYNCTHREADPRIORITY_ENUM,
     ADCPROP_AUTORECALC_ENUM: typeof ADODB$ADCPROP_AUTORECALC_ENUM,
@@ -704,9 +706,9 @@ declare module "activex-adodb" {
     ): ADODB$Recordset | null;
     Name: string;
     NamedParameters: boolean;
-    ADODB$Parameters: ADODB$Parameters;
+    Parameters: ADODB$Parameters;
     Prepared: boolean;
-    ADODB$Properties: ADODB$Properties;
+    Properties: ADODB$Properties;
     State: $Values<typeof ADODB$ObjectStateEnum>;
   }
 
@@ -726,7 +728,7 @@ declare module "activex-adodb" {
     ConnectionTimeout: number;
     CursorLocation: $Values<typeof ADODB$CursorLocationEnum>;
     DefaultDatabase: string;
-    ADODB$Errors: ADODB$Errors;
+    Errors: ADODB$Errors;
 
     /**
      * @param Options [Options=-1]
@@ -781,7 +783,7 @@ declare module "activex-adodb" {
       Restrictions: SafeArray<string>,
       SchemaID: string
     ): ADODB$Recordset;
-    ADODB$Properties: ADODB$Properties;
+    Properties: ADODB$Properties;
     Provider: string;
     RollbackTrans(): void;
     State: $Values<typeof ADODB$ObjectStateEnum>;
@@ -823,7 +825,7 @@ declare module "activex-adodb" {
     NumericScale: number;
     OriginalValue: any;
     Precision: number;
-    ADODB$Properties: ADODB$Properties;
+    Properties: ADODB$Properties;
     Status: number;
     Type: $Values<typeof ADODB$DataTypeEnum>;
     UnderlyingValue: any;
@@ -879,7 +881,7 @@ declare module "activex-adodb" {
     Name: string;
     NumericScale: number;
     Precision: number;
-    ADODB$Properties: ADODB$Properties;
+    Properties: ADODB$Properties;
     Size: number;
     Type: $Values<typeof ADODB$DataTypeEnum>;
     Value: any;
@@ -945,7 +947,7 @@ declare module "activex-adodb" {
      * @param Async [Async=false]
      */
     DeleteRecord(Source?: string, Async?: boolean): void;
-    ADODB$Fields: ADODB$Fields;
+    Fields: ADODB$Fields;
     GetChildren(): ADODB$Recordset;
     Mode: $Values<typeof ADODB$ConnectModeEnum>;
 
@@ -989,7 +991,7 @@ declare module "activex-adodb" {
       Password?: string
     ): void;
     ParentURL: string;
-    ADODB$Properties: ADODB$Properties;
+    Properties: ADODB$Properties;
     RecordType: $Values<typeof ADODB$RecordTypeEnum>;
     Source: string | ADODB$Recordset | ADODB$Command;
     State: $Values<typeof ADODB$ObjectStateEnum>;

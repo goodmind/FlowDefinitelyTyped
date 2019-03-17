@@ -10,7 +10,7 @@ declare module "styled-react-modal" {
 
   declare var BaseModalBackground: StyledComponent<"div", any>;
   declare interface ModalProps {
-    children?: React.ReactNode;
+    children?: React.Node;
     isOpen: boolean;
     allowScroll?: boolean;
     afterOpen?: () => void;
@@ -31,7 +31,7 @@ declare module "styled-react-modal" {
   }
   declare interface ModalProviderProps {
     backgroundComponent?: AnyStyledComponent;
-    children: React.ReactNode;
+    children: React.Node;
   }
   declare class ModalProvider mixins React.Component<ModalProviderProps> {}
   declare export default typeof Modal;

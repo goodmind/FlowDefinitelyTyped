@@ -1,5 +1,5 @@
 declare module "react-inlinesvg" {
-  import type { ComponentType, ReactNode } from "react";
+  import type { ComponentType, Node } from "react";
 
   declare export type RequestError = {
     isHttpError: boolean,
@@ -17,9 +17,9 @@ declare module "react-inlinesvg" {
   declare export interface Props {
     baseURL?: string;
     cacheGetRequests?: boolean;
-    children?: ReactNode;
+    children?: Node;
     className?: string;
-    preloader?: ReactNode;
+    preloader?: Node;
     src: URL | string;
     style?: { [key: string]: any };
     uniqueHash?: string;
@@ -27,7 +27,7 @@ declare module "react-inlinesvg" {
     onError?: (error: RequestError | InlineSVGError) => void;
     onLoad?: (src: URL | string, isCached: boolean) => void;
     supportTest?: () => void;
-    wrapper?: () => ReactNode;
+    wrapper?: () => Node;
   }
   declare var InlineSVG: ComponentType<Props>;
   declare export default typeof InlineSVG;

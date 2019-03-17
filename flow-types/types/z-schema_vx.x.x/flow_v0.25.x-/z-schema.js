@@ -81,11 +81,11 @@ declare module "z-schema" {
   }
   declare class Validator {
     /**
- * Register a custom format.
- * @param name - name of the custom format
- * @param validatorFunction - custom format validator function.
-Returns `true` if `value` matches the custom format.
- */
+     * Register a custom format.
+     * @param name - name of the custom format
+     * @param validatorFunction - custom format validator function.
+     * Returns `true` if `value` matches the custom format.
+     */
     static registerFormat(
       formatName: string,
       validatorFunction: (value: any) => boolean
@@ -105,8 +105,8 @@ Returns `true` if `value` matches the custom format.
      * @returns {string[]} the list of all registered format names.
      */
     static getRegisteredFormats(): string[];
-    static getDefaultOptions(): Validator$Validator$Options;
-    constructor(options: Validator$Validator$Options): this;
+    static getDefaultOptions(): Validator$Options;
+    constructor(options: Validator$Options): this;
 
     /**
      * @param schema - JSON object representing schema
@@ -134,13 +134,13 @@ Returns `true` if `value` matches the custom format.
     /**
      * Returns an Error object for the most recent failed validation, or null if the validation was successful.
      */
-    getLastError(): Validator$Validator$SchemaError;
+    getLastError(): Validator$SchemaError;
 
     /**
      * Returns the error details for the most recent validation, or undefined if the validation was successful.
      * This is the same list as the SchemaError.details property.
      */
-    getLastErrors(): Validator$Validator$SchemaErrorDetail[];
+    getLastErrors(): Validator$SchemaErrorDetail[];
   }
 
   /**
@@ -148,13 +148,13 @@ Returns `true` if `value` matches the custom format.
    */
   declare class Report {
     /**
- * @param errorCode - a string representing the code for the custom error, e.g. INVALID_VALUE_SET
- * @param errorMessage - string with the message to be returned in the error
- * @param params - an array of relevant params for the error, e.g. [fieldName, fieldValue]
- * @param subReports - sub-schema involved in the error
- * @param schemaDescription - description from the schema used in the validation
-Adds custom error to the errors array in the validation instance and sets valid to false if it is not already set as false
- */
+     * @param errorCode - a string representing the code for the custom error, e.g. INVALID_VALUE_SET
+     * @param errorMessage - string with the message to be returned in the error
+     * @param params - an array of relevant params for the error, e.g. [fieldName, fieldValue]
+     * @param subReports - sub-schema involved in the error
+     * @param schemaDescription - description from the schema used in the validation
+     * Adds custom error to the errors array in the validation instance and sets valid to false if it is not already set as false
+     */
     addCustomError: (
       errorCode: string,
       errorMessage: string,
@@ -163,5 +163,5 @@ Adds custom error to the errors array in the validation instance and sets valid 
       schemaDescription: string
     ) => void;
   }
-  declare module.exports: typeof Validator;
+  declare export default typeof Validator;
 }

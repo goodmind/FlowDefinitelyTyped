@@ -1,5 +1,5 @@
 declare module "react-google-maps-loader" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   declare export default typeof ReactGoogleMapsLoader;
 
@@ -17,6 +17,6 @@ declare module "react-google-maps-loader" {
     render: (
       googleMaps: ReactGoogleMapsLoader$GoogleMaps,
       error?: string | null
-    ) => ReactNode;
+    ) => Node;
   }
 }

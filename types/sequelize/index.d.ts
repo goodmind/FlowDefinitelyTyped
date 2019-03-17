@@ -1,5 +1,5 @@
 // Type definitions for Sequelize 4.27.11
-// Project: http://sequelizejs.com
+// Project: http://sequelizejs.com, https://github.com/sequelize/sequelize
 // Definitions by: samuelneff <https://github.com/samuelneff>
 //                 Peter Harris <https://github.com/codeanimal>
 //                 Ivan Drinchev <https://github.com/drinchev>
@@ -281,6 +281,11 @@ declare namespace sequelize {
          * Apply a scope on the related model, or remove its default scope by passing false.
          */
         scope?: string | boolean;
+
+        /**
+         * Load further nested related models
+         */
+        include?: IncludeOptions;
     }
 
     /**
@@ -1380,6 +1385,10 @@ declare namespace sequelize {
          */
         timestamps?: boolean;
 
+        /**
+         * Belongs-To-Many creates a unique key when primary key is not present on through model. This unique key name can be overridden using uniqueKey option.
+         */
+        uniqueKey?: string;
     }
 
     /**
@@ -3286,6 +3295,11 @@ declare namespace sequelize {
          * if true, it will also eager load the relations of the child models, recursively.
          */
         nested?: boolean;
+
+        /**
+         * If true, runs a separate query to fetch the associated instances, only supported for hasMany associations
+         */
+        separate?: boolean;
     }
 
     /**
@@ -5275,6 +5289,11 @@ declare namespace sequelize {
         collate?: string;
 
         /**
+         * Specify the ROW_FORMAT for use with the MySQL InnoDB engine.
+         */
+        rowFormat?: string;
+
+        /**
          * Set the initial AUTO_INCREMENT value for the table in MySQL.
          */
         initialAutoIncrement?: string;
@@ -5924,6 +5943,15 @@ declare namespace sequelize {
         cls: any;
         useCLS(namespace:cls.Namespace): Sequelize;
 
+        /**
+         * Default export for `import Sequelize from 'sequelize';` kind of imports
+         */
+        default: SequelizeStatic;
+
+        /**
+         * Export sequelize static on the instance for `import Sequelize from 'sequelize';` kind of imports
+         */
+        Sequelize: SequelizeStatic;
     }
 
     interface QueryOptionsTransactionRequired { }
@@ -6504,6 +6532,16 @@ declare namespace sequelize {
          * A function that gets executed while running the query to log the sql.
          */
         logging?: Function;
+
+        /**
+         * Specify the parent transaction so that this transaction is nested or a save point within the parent
+         */
+        transaction?: Transaction;
+
+        /**
+         * Sets the constraints to be deferred or immediately checked.
+         */
+        deferrable?: Deferrable[keyof Deferrable];
 
     }
 

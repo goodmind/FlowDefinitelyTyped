@@ -2,7 +2,7 @@ declare module "react-autocomplete" {
   import type {
     Component,
     ChangeEvent,
-    ReactNode,
+    Node,
     CSSProperties,
     HTMLProps
   } from "react";
@@ -78,7 +78,7 @@ declare module "react-autocomplete" {
       item: any,
       isHighlighted: boolean,
       styles?: CSSProperties
-    ) => ReactNode;
+    ) => Node;
 
     /**
      * Arguments: `items: Array<Any>, value: String, styles: Object`
@@ -89,11 +89,7 @@ declare module "react-autocomplete" {
      * { top, left, minWidth } which are the coordinates of the top-left corner
      * and the width of the dropdown menu.
      */
-    renderMenu?: (
-      items: any[],
-      value: string,
-      styles: CSSProperties
-    ) => ReactNode;
+    renderMenu?: (items: any[], value: string, styles: CSSProperties) => Node;
 
     /**
      * Styles that are applied to the dropdown menu in the default `renderMenu`
@@ -111,7 +107,7 @@ declare module "react-autocomplete" {
      * apply `props.ref` and all `props.on<event>` event handlers. Failing to do
      * this will cause `Autocomplete` to behave unexpectedly.
      */
-    renderInput?: (props: HTMLProps<HTMLInputElement>) => ReactNode;
+    renderInput?: (props: HTMLProps<HTMLInputElement>) => Node;
 
     /**
      * Props passed to `props.renderInput`. By default these props will be
@@ -191,12 +187,12 @@ declare module "react-autocomplete" {
      * Autocomplete exposes a subset of `HTMLInputElement` properties to the parent component.
      * They can be accessed through Autocomplete's `ref` prop.
      */
-    blur: $ElementType<HTMLInputElement, "blur">;
-    checkValidity: $ElementType<HTMLInputElement, "checkValidity">;
-    click: $ElementType<HTMLInputElement, "click">;
-    focus: $ElementType<HTMLInputElement, "focus">;
-    select: $ElementType<HTMLInputElement, "select">;
-    setCustomValidity: $ElementType<HTMLInputElement, "setCustomValidity">;
-    setSelectionRange: $ElementType<HTMLInputElement, "setSelectionRange">;
+    blur: $PropertyType<HTMLInputElement, "blur">;
+    checkValidity: $PropertyType<HTMLInputElement, "checkValidity">;
+    click: $PropertyType<HTMLInputElement, "click">;
+    focus: $PropertyType<HTMLInputElement, "focus">;
+    select: $PropertyType<HTMLInputElement, "select">;
+    setCustomValidity: $PropertyType<HTMLInputElement, "setCustomValidity">;
+    setSelectionRange: $PropertyType<HTMLInputElement, "setSelectionRange">;
   }
 }

@@ -1,6 +1,8 @@
 declare module "yeoman-test" {
   import type { EventEmitter } from "events";
 
+  import typeof * as Generator from "yeoman-generator";
+
   declare export interface Dictionary<T> {
     [key: string]: T;
   }
@@ -40,27 +42,27 @@ declare module "yeoman-test" {
   ): void;
 
   /**
- * Clean-up the test directory and cd into it.
- * Call given callback after entering the test directory.
- * @param dir - path to the test directory
- * @param cb - callback executed after setting working directory to dir
- * @example testDirectory(path.join(__dirname, './temp'), function () {
-fs.writeFileSync('testfile', 'Roses are red.');
-});
- */
+   * Clean-up the test directory and cd into it.
+   * Call given callback after entering the test directory.
+   * @param dir - path to the test directory
+   * @param cb - callback executed after setting working directory to dir
+   * @example testDirectory(path.join(__dirname, './temp'), function () {
+   * fs.writeFileSync('testfile', 'Roses are red.');
+   * });
+   */
   declare export function testDirectory(
     dir: string,
     cb?: (error?: any) => void
   ): void;
 
   /**
- * Answer prompt questions for the passed-in generator
- * @param generator - a Yeoman generator
- * @param answers - an object where keys are the
-generators prompt names and values are the answers to
-the prompt questions
- * @example mockPrompt(angular, {'bootstrap': 'Y', 'compassBoostrap': 'Y'});
- */
+   * Answer prompt questions for the passed-in generator
+   * @param generator - a Yeoman generator
+   * @param answers - an object where keys are the
+   * generators prompt names and values are the answers to
+   * the prompt questions
+   * @example mockPrompt(angular, {'bootstrap': 'Y', 'compassBoostrap': 'Y'});
+   */
   declare export function mockPrompt(
     generator: Generator,
     answers: Generator.Answers
@@ -87,21 +89,21 @@ the prompt questions
   declare export function createDummyGenerator(): Generator;
 
   /**
- * Create a generator, using the given dependencies and controller arguments
- * Dependecies can be path (autodiscovery) or an array [<generator>, <name>]
- * @param name - the name of the generator
- * @param dependencies - paths to the generators dependencies
- * @param args - arguments to the generator;
-if String, will be split on spaces to create an Array
- * @param options - configuration for the generator
- * @example var deps = ['../../app',
-'../../common',
-'../../controller',
-'../../main',
-[createDummyGenerator(), 'testacular:app']
-];
-var angular = createGenerator('angular:app', deps);
- */
+   * Create a generator, using the given dependencies and controller arguments
+   * Dependecies can be path (autodiscovery) or an array [<generator>, <name>]
+   * @param name - the name of the generator
+   * @param dependencies - paths to the generators dependencies
+   * @param args - arguments to the generator;
+   * if String, will be split on spaces to create an Array
+   * @param options - configuration for the generator
+   * @example var deps = ['../../app',
+   * '../../common',
+   * '../../controller',
+   * '../../main',
+   * [createDummyGenerator(), 'testacular:app']
+   * ];
+   * var angular = createGenerator('angular:app', deps);
+   */
   declare export function createGenerator(
     name: string,
     dependencies: Dependency[],
@@ -148,12 +150,12 @@ var angular = createGenerator('angular:app', deps);
   }
   declare export interface RunContextConstructor {
     /**
- * This class provide a run context object to façade the complexity involved in setting
- * up a generator for testing
- * @param Generator - Namespace or generator constructor. If the later
-                     is provided, then namespace is assumed to be
-                     'gen:test' in all cases
- */
+     * This class provide a run context object to façade the complexity involved in setting
+     * up a generator for testing
+     * @param Generator - Namespace or generator constructor. If the later
+     *                      is provided, then namespace is assumed to be
+     *                      'gen:test' in all cases
+     */
     new(
       Generator: string | Constructor<Generator>,
       settings?: RunContextSettings
@@ -183,28 +185,28 @@ var angular = createGenerator('angular:app', deps);
     /**
      * Promise `.then()` duck typing
      */
-    then: $ElementType<Promise<string>, "then">,
+    then: $PropertyType<Promise<string>, "then">,
 
     /**
      * Promise `.catch()` duck typing
      */
-    catch: $ElementType<Promise<string>, "catch">,
+    catch: $PropertyType<Promise<string>, "catch">,
 
     /**
- * Clean the provided directory, then change directory into it
- * @param dirPath - Directory path (relative to CWD). Prefer passing an absolute
-            file path for predictable results
- * @param cb - callback who'll receive the folder path as argument
- * @return run context instance
- */
+     * Clean the provided directory, then change directory into it
+     * @param dirPath - Directory path (relative to CWD). Prefer passing an absolute
+     *             file path for predictable results
+     * @param cb - callback who'll receive the folder path as argument
+     * @return run context instance
+     */
     inDir(dirPath: string, cb?: (folderPath: string) => void): this,
 
     /**
- * Change directory without deleting directory content.
- * @param dirPath - Directory path (relative to CWD). Prefer passing an absolute
-            file path for predictable results
- * @return run context instance
- */
+     * Change directory without deleting directory content.
+     * @param dirPath - Directory path (relative to CWD). Prefer passing an absolute
+     *             file path for predictable results
+     * @return run context instance
+     */
     cd(dirPath: string): this,
 
     /**
@@ -241,19 +243,19 @@ var angular = createGenerator('angular:app', deps);
     withPrompts(answers: Generator.Answers): this,
 
     /**
- * Provide dependent generators
- * @param dependencies - paths to the generators dependencies
- * @example var angular = new RunContext('../../app');
-angular.withGenerators([
-'../../common',
-'../../controller',
-'../../main',
-[helpers.createDummyGenerator(), 'testacular:app']
-]);
-angular.on('end', function () {
-// assert something
-});
- */
+     * Provide dependent generators
+     * @param dependencies - paths to the generators dependencies
+     * @example var angular = new RunContext('../../app');
+     * angular.withGenerators([
+     * '../../common',
+     * '../../controller',
+     * '../../main',
+     * [helpers.createDummyGenerator(), 'testacular:app']
+     * ]);
+     * angular.on('end', function () {
+     * // assert something
+     * });
+     */
     withGenerators(dependencies: Dependency[]): this,
 
     /**

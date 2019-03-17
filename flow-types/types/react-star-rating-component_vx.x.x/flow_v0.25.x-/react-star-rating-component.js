@@ -31,7 +31,7 @@ declare module "react-star-rating-component" {
       nextValue: number,
       prevValue: number,
       name: string
-    ) => React.ReactNode | string;
+    ) => React.Node | string;
 
     /**
      * render method for the half-star icon
@@ -40,7 +40,7 @@ declare module "react-star-rating-component" {
       nextValue: number,
       prevValue: number,
       name: string
-    ) => React.ReactNode | string;
+    ) => React.Node | string;
 
     /**
      * color of selected icons

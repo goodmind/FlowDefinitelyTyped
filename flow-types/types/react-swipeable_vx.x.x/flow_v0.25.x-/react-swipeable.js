@@ -52,7 +52,7 @@ declare module "react-swipeable" {
     trackMouse?: boolean,
     disabled?: boolean,
     innerRef?: React.Ref<T>,
-    children?: React.ReactNode
+    children?: React.Node
   } & React.ClassAttributes<ReactSwipeable<T>> &
     React.HTMLAttributes<T>;
 

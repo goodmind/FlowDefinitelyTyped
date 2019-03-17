@@ -5,7 +5,7 @@ declare module "jsnox" {
     createElement<P>(
       type: React.ComponentClass<P> | string,
       props: P,
-      children: React.ReactNode
+      children: React.Node
     ): React.ReactElement<P>;
   }
   declare type Module = (reactObj: ReactLikeObject) => CreateElement;
@@ -18,10 +18,7 @@ declare module "jsnox" {
      * @param children A single React node (string or ReactElement) or array of nodes.
      * Note that unlike with React itself, multiple children must be placed into an array.
      */
-    <P>(
-      specString: string,
-      children: React.ReactNode
-    ): React.DOMElement<P, Element>;
+    <P>(specString: string, children: React.Node): React.DOMElement<P, Element>;
 
     /**
      * Renders an HTML element from the given spec string, with optional props
@@ -35,7 +32,7 @@ declare module "jsnox" {
     <P>(
       specString: string,
       props?: React.HTMLAttributes<{}>,
-      children?: React.ReactNode
+      children?: React.Node
     ): React.DOMElement<P, Element>;
 
     /**
@@ -47,7 +44,7 @@ declare module "jsnox" {
      */
     <P>(
       component: React.ComponentClass<P>,
-      children: React.ReactNode
+      children: React.Node
     ): React.ReactElement<P>;
 
     /**
@@ -61,7 +58,7 @@ declare module "jsnox" {
     <P>(
       component: React.ComponentClass<P>,
       props?: P,
-      children?: React.ReactNode
+      children?: React.Node
     ): React.ReactElement<P>;
   }
   declare var exports: Module;

@@ -1,5 +1,5 @@
 declare module "react-native-flip-card" {
-  import type { Component, ReactNode, ComponentClass } from "react";
+  import type { Component, Node, ComponentClass } from "react";
 
   import type {
     ViewProps,
@@ -24,13 +24,13 @@ declare module "react-native-flip-card" {
     useNativeDriver?: boolean;
   }
   declare export interface FaceProps {
-    chilren: JSX.Element[];
+    chilren: React$Node[];
   }
   declare export interface BackProps {
     flipHorizontal: boolean;
     flipVertical: boolean;
     perspective: number;
-    chilren: JSX.Element[];
+    chilren: React$Node[];
   }
   declare export var Face: ComponentClass<FaceProps>;
   declare export var Back: ComponentClass<BackProps>;

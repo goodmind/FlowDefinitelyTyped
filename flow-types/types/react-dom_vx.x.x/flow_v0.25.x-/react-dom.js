@@ -8,7 +8,7 @@ declare module "react-dom" {
     CElement,
     DOMAttributes,
     DOMElement,
-    ReactNode,
+    Node,
     ReactPortal
   } from "react";
 
@@ -19,7 +19,7 @@ declare module "react-dom" {
   declare export function unmountComponentAtNode(container: Element): boolean;
 
   declare export function createPortal(
-    children: ReactNode,
+    children: Node,
     container: Element,
     key?: null | string
   ): ReactPortal;

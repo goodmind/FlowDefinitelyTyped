@@ -1,5 +1,5 @@
 declare module "@atlaskit/single-select" {
-  import type { Component, ReactNode, SyntheticEvent } from "react";
+  import type { Component, Node, SyntheticEvent } from "react";
 
   declare export default class SingleSelect mixins Component<Props> {}
   declare export class StatelessSelect mixins Component<StatelessProps> {}
@@ -33,7 +33,7 @@ declare module "@atlaskit/single-select" {
     /**
      * message to show on the dialog when isInvalid is true
      */
-    invalidMessage?: ReactNode;
+    invalidMessage?: Node;
 
     /**
      * controls the top margin of the label component rendered.
@@ -172,7 +172,7 @@ declare module "@atlaskit/single-select" {
     items: ItemType[];
   }
   declare export interface ItemType {
-    content?: ReactNode;
+    content?: Node;
     description?: string;
     label?: string;
     tooltipDescription?: string;
@@ -181,6 +181,6 @@ declare module "@atlaskit/single-select" {
     filterValues?: string[];
     isDisabled?: boolean;
     isSelected?: boolean;
-    elemBefore?: ReactNode;
+    elemBefore?: Node;
   }
 }

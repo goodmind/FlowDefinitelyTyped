@@ -1,5 +1,5 @@
 // Type definitions for Video.js 7.2
-// Project: https://github.com/videojs/video.js
+// Project: https://github.com/videojs/video.js, https://videojs.com
 // Definitions by: Vincent Bortone <https://github.com/vbortone>
 //                 Simon Clériot <https://github.com/scleriot>
 //                 Sean Bennett <https://github.com/SWBennett06>
@@ -3721,6 +3721,13 @@ declare namespace videojs {
 		HaveEnoughData = 4
 	}
 
+	enum NetworkState {
+		Empty = 0,
+		Idle = 1,
+		Loading = 2,
+		NoSource = 3
+	}
+
 	/**
 	 * An instance of the `Player` class is created when any of the Video.js setup methods
 	 * are used to initialize a video.
@@ -4241,7 +4248,7 @@ declare namespace videojs {
 		 */
 		loop(value?: boolean): void;
 
-		loop(): string;
+		loop(): boolean;
 
 		/**
 		 * Get the current muted state, or turn mute on or off
@@ -4256,6 +4263,13 @@ declare namespace videojs {
 		muted(muted: boolean): void;
 
 		muted(): boolean;
+
+		/**
+		 * Returns the current state of network activity for the element
+		 *
+		 * @return The current network state
+		 */
+		networkState(): NetworkState;
 
 		/**
 		 * Pause the video playback

@@ -18,7 +18,7 @@ declare module "react-timeago" {
     suffix: ReactTimeago$Suffix,
     epochMiliseconds: number,
     nextFormatter?: ReactTimeago$Formatter
-  ) => React.ReactNode;
+  ) => React.Node;
 
   declare interface ReactTimeago$ReactTimeagoProps {
     +live?: boolean;

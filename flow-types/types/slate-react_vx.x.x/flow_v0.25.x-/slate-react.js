@@ -29,7 +29,7 @@ declare module "slate-react" {
   }
   declare export interface RenderMarkProps {
     attributes: RenderAttributes;
-    children: React.ReactNode;
+    children: React.Node;
     editor: CoreEditor;
     mark: Mark;
     marks: Immutable.Set<Mark>;
@@ -39,7 +39,7 @@ declare module "slate-react" {
   }
   declare export interface RenderNodeProps {
     attributes: RenderAttributes;
-    children: React.ReactNode;
+    children: React.Node;
     editor: CoreEditor;
     isFocused: boolean;
     isSelected: boolean;
@@ -140,466 +140,466 @@ declare module "slate-react" {
       commands: any[],
       queries: any[]
     ): void;
-    addMark: $ElementType<CoreEditor, "addMark">;
-    delete: $ElementType<CoreEditor, "delete">;
-    deleteBackward: $ElementType<CoreEditor, "deleteBackward">;
-    deleteForward: $ElementType<CoreEditor, "deleteForward">;
-    insertBlock: $ElementType<CoreEditor, "insertBlock">;
-    insertFragment: $ElementType<CoreEditor, "insertFragment">;
-    insertInline: $ElementType<CoreEditor, "insertInline">;
-    insertText: $ElementType<CoreEditor, "insertText">;
-    setBlocks: $ElementType<CoreEditor, "setBlocks">;
-    setInlines: $ElementType<CoreEditor, "setInlines">;
-    splitBlock: $ElementType<CoreEditor, "splitBlock">;
-    splitInline: $ElementType<CoreEditor, "splitInline">;
-    removeMark: $ElementType<CoreEditor, "removeMark">;
-    replaceMark: $ElementType<CoreEditor, "replaceMark">;
-    toggleMark: $ElementType<CoreEditor, "toggleMark">;
-    unwrapBlock: $ElementType<CoreEditor, "unwrapBlock">;
-    unwrapInline: $ElementType<CoreEditor, "unwrapInline">;
-    wrapBlock: $ElementType<CoreEditor, "wrapBlock">;
-    wrapInline: $ElementType<CoreEditor, "wrapInline">;
-    wrapText: $ElementType<CoreEditor, "wrapText">;
-    blur: $ElementType<CoreEditor, "blur">;
-    deselect: $ElementType<CoreEditor, "deselect">;
-    flip: $ElementType<CoreEditor, "flip">;
-    focus: $ElementType<CoreEditor, "focus">;
-    moveAnchorBackward: $ElementType<CoreEditor, "moveAnchorBackward">;
-    moveAnchorForward: $ElementType<CoreEditor, "moveAnchorForward">;
-    moveAnchorTo: $ElementType<CoreEditor, "moveAnchorTo">;
-    moveAnchorToEndOfBlock: $ElementType<CoreEditor, "moveAnchorToEndOfBlock">;
-    moveAnchorToEndOfInline: $ElementType<
+    addMark: $PropertyType<CoreEditor, "addMark">;
+    delete: $PropertyType<CoreEditor, "delete">;
+    deleteBackward: $PropertyType<CoreEditor, "deleteBackward">;
+    deleteForward: $PropertyType<CoreEditor, "deleteForward">;
+    insertBlock: $PropertyType<CoreEditor, "insertBlock">;
+    insertFragment: $PropertyType<CoreEditor, "insertFragment">;
+    insertInline: $PropertyType<CoreEditor, "insertInline">;
+    insertText: $PropertyType<CoreEditor, "insertText">;
+    setBlocks: $PropertyType<CoreEditor, "setBlocks">;
+    setInlines: $PropertyType<CoreEditor, "setInlines">;
+    splitBlock: $PropertyType<CoreEditor, "splitBlock">;
+    splitInline: $PropertyType<CoreEditor, "splitInline">;
+    removeMark: $PropertyType<CoreEditor, "removeMark">;
+    replaceMark: $PropertyType<CoreEditor, "replaceMark">;
+    toggleMark: $PropertyType<CoreEditor, "toggleMark">;
+    unwrapBlock: $PropertyType<CoreEditor, "unwrapBlock">;
+    unwrapInline: $PropertyType<CoreEditor, "unwrapInline">;
+    wrapBlock: $PropertyType<CoreEditor, "wrapBlock">;
+    wrapInline: $PropertyType<CoreEditor, "wrapInline">;
+    wrapText: $PropertyType<CoreEditor, "wrapText">;
+    blur: $PropertyType<CoreEditor, "blur">;
+    deselect: $PropertyType<CoreEditor, "deselect">;
+    flip: $PropertyType<CoreEditor, "flip">;
+    focus: $PropertyType<CoreEditor, "focus">;
+    moveAnchorBackward: $PropertyType<CoreEditor, "moveAnchorBackward">;
+    moveAnchorForward: $PropertyType<CoreEditor, "moveAnchorForward">;
+    moveAnchorTo: $PropertyType<CoreEditor, "moveAnchorTo">;
+    moveAnchorToEndOfBlock: $PropertyType<CoreEditor, "moveAnchorToEndOfBlock">;
+    moveAnchorToEndOfInline: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfInline"
     >;
-    moveAnchorToEndOfDocument: $ElementType<
+    moveAnchorToEndOfDocument: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfDocument"
     >;
-    moveAnchorToEndOfNextBlock: $ElementType<
+    moveAnchorToEndOfNextBlock: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfNextBlock"
     >;
-    moveAnchorToEndOfNextInline: $ElementType<
+    moveAnchorToEndOfNextInline: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfNextInline"
     >;
-    moveAnchorToEndOfNextText: $ElementType<
+    moveAnchorToEndOfNextText: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfNextText"
     >;
-    moveAnchorEndOfNode: $ElementType<CoreEditor, "moveAnchorEndOfNode">;
-    moveAnchorToEndOfPreviousBlock: $ElementType<
+    moveAnchorEndOfNode: $PropertyType<CoreEditor, "moveAnchorEndOfNode">;
+    moveAnchorToEndOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfPreviousBlock"
     >;
-    moveAnchorToEndOfPreviousInline: $ElementType<
+    moveAnchorToEndOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfPreviousInline"
     >;
-    moveAnchorToEndOfPreviousText: $ElementType<
+    moveAnchorToEndOfPreviousText: $PropertyType<
       CoreEditor,
       "moveAnchorToEndOfPreviousText"
     >;
-    moveAnchorToEndOfText: $ElementType<CoreEditor, "moveAnchorToEndOfText">;
-    moveAnchorToStartOfBlock: $ElementType<
+    moveAnchorToEndOfText: $PropertyType<CoreEditor, "moveAnchorToEndOfText">;
+    moveAnchorToStartOfBlock: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfBlock"
     >;
-    moveAnchorToStartOfDocument: $ElementType<
+    moveAnchorToStartOfDocument: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfDocument"
     >;
-    moveAnchorToStartOfInline: $ElementType<
+    moveAnchorToStartOfInline: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfInline"
     >;
-    moveAnchorToStartOfNextBlock: $ElementType<
+    moveAnchorToStartOfNextBlock: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfNextBlock"
     >;
-    moveAnchorToStartOfNextInline: $ElementType<
+    moveAnchorToStartOfNextInline: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfNextInline"
     >;
-    moveAnchorToStartOfNextText: $ElementType<
+    moveAnchorToStartOfNextText: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfNextText"
     >;
-    moveAnchorToStartOfNode: $ElementType<
+    moveAnchorToStartOfNode: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfNode"
     >;
-    moveAnchorToStartOfPreviousBlock: $ElementType<
+    moveAnchorToStartOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfPreviousBlock"
     >;
-    moveAnchorToStartOfPreviousInline: $ElementType<
+    moveAnchorToStartOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfPreviousInline"
     >;
-    moveAnchorToStartOfPreviousText: $ElementType<
+    moveAnchorToStartOfPreviousText: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfPreviousText"
     >;
-    moveAnchorToStartOfText: $ElementType<
+    moveAnchorToStartOfText: $PropertyType<
       CoreEditor,
       "moveAnchorToStartOfText"
     >;
-    moveEndBackward: $ElementType<CoreEditor, "moveEndBackward">;
-    moveEndForward: $ElementType<CoreEditor, "moveEndForward">;
-    moveEndTo: $ElementType<CoreEditor, "moveEndTo">;
-    moveEndToEndOfBlock: $ElementType<CoreEditor, "moveEndToEndOfBlock">;
-    moveEndToEndOfDocument: $ElementType<CoreEditor, "moveEndToEndOfDocument">;
-    moveEndToEndOfInline: $ElementType<CoreEditor, "moveEndToEndOfInline">;
-    moveEndToEndOfNextBlock: $ElementType<
+    moveEndBackward: $PropertyType<CoreEditor, "moveEndBackward">;
+    moveEndForward: $PropertyType<CoreEditor, "moveEndForward">;
+    moveEndTo: $PropertyType<CoreEditor, "moveEndTo">;
+    moveEndToEndOfBlock: $PropertyType<CoreEditor, "moveEndToEndOfBlock">;
+    moveEndToEndOfDocument: $PropertyType<CoreEditor, "moveEndToEndOfDocument">;
+    moveEndToEndOfInline: $PropertyType<CoreEditor, "moveEndToEndOfInline">;
+    moveEndToEndOfNextBlock: $PropertyType<
       CoreEditor,
       "moveEndToEndOfNextBlock"
     >;
-    moveEndToEndOfNextInline: $ElementType<
+    moveEndToEndOfNextInline: $PropertyType<
       CoreEditor,
       "moveEndToEndOfNextInline"
     >;
-    moveEndToEndOfNextText: $ElementType<CoreEditor, "moveEndToEndOfNextText">;
-    moveEndToEndOfNode: $ElementType<CoreEditor, "moveEndToEndOfNode">;
-    moveEndToEndOfPreviousBlock: $ElementType<
+    moveEndToEndOfNextText: $PropertyType<CoreEditor, "moveEndToEndOfNextText">;
+    moveEndToEndOfNode: $PropertyType<CoreEditor, "moveEndToEndOfNode">;
+    moveEndToEndOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveEndToEndOfPreviousBlock"
     >;
-    moveEndToEndOfPreviousInline: $ElementType<
+    moveEndToEndOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveEndToEndOfPreviousInline"
     >;
-    moveEndToEndOfPreviousText: $ElementType<
+    moveEndToEndOfPreviousText: $PropertyType<
       CoreEditor,
       "moveEndToEndOfPreviousText"
     >;
-    moveEndToEndOfText: $ElementType<CoreEditor, "moveEndToEndOfText">;
-    moveEndToStartOfBlock: $ElementType<CoreEditor, "moveEndToStartOfBlock">;
-    moveEndToStartOfDocument: $ElementType<
+    moveEndToEndOfText: $PropertyType<CoreEditor, "moveEndToEndOfText">;
+    moveEndToStartOfBlock: $PropertyType<CoreEditor, "moveEndToStartOfBlock">;
+    moveEndToStartOfDocument: $PropertyType<
       CoreEditor,
       "moveEndToStartOfDocument"
     >;
-    moveEndToStartOfInline: $ElementType<CoreEditor, "moveEndToStartOfInline">;
-    moveEndToStartOfNextBlock: $ElementType<
+    moveEndToStartOfInline: $PropertyType<CoreEditor, "moveEndToStartOfInline">;
+    moveEndToStartOfNextBlock: $PropertyType<
       CoreEditor,
       "moveEndToStartOfNextBlock"
     >;
-    moveEndToStartOfNextInline: $ElementType<
+    moveEndToStartOfNextInline: $PropertyType<
       CoreEditor,
       "moveEndToStartOfNextInline"
     >;
-    moveEndToStartOfNextText: $ElementType<
+    moveEndToStartOfNextText: $PropertyType<
       CoreEditor,
       "moveEndToStartOfNextText"
     >;
-    moveEndToStartOfNode: $ElementType<CoreEditor, "moveEndToStartOfNode">;
-    moveEndToStartOfPreviousBlock: $ElementType<
+    moveEndToStartOfNode: $PropertyType<CoreEditor, "moveEndToStartOfNode">;
+    moveEndToStartOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveEndToStartOfPreviousBlock"
     >;
-    moveEndToStartOfPreviousInline: $ElementType<
+    moveEndToStartOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveEndToStartOfPreviousInline"
     >;
-    moveEndToStartOfPreviousText: $ElementType<
+    moveEndToStartOfPreviousText: $PropertyType<
       CoreEditor,
       "moveEndToStartOfPreviousText"
     >;
-    moveEndToStartOfText: $ElementType<CoreEditor, "moveEndToStartOfText">;
-    moveFocusBackward: $ElementType<CoreEditor, "moveFocusBackward">;
-    moveFocusForward: $ElementType<CoreEditor, "moveFocusForward">;
-    moveFocusTo: $ElementType<CoreEditor, "moveFocusTo">;
-    moveFocusToEndOfBlock: $ElementType<CoreEditor, "moveFocusToEndOfBlock">;
-    moveFocusToEndOfDocument: $ElementType<
+    moveEndToStartOfText: $PropertyType<CoreEditor, "moveEndToStartOfText">;
+    moveFocusBackward: $PropertyType<CoreEditor, "moveFocusBackward">;
+    moveFocusForward: $PropertyType<CoreEditor, "moveFocusForward">;
+    moveFocusTo: $PropertyType<CoreEditor, "moveFocusTo">;
+    moveFocusToEndOfBlock: $PropertyType<CoreEditor, "moveFocusToEndOfBlock">;
+    moveFocusToEndOfDocument: $PropertyType<
       CoreEditor,
       "moveFocusToEndOfDocument"
     >;
-    moveFocusToEndOfInline: $ElementType<CoreEditor, "moveFocusToEndOfInline">;
-    moveFocusToEndOfNextBlock: $ElementType<
+    moveFocusToEndOfInline: $PropertyType<CoreEditor, "moveFocusToEndOfInline">;
+    moveFocusToEndOfNextBlock: $PropertyType<
       CoreEditor,
       "moveFocusToEndOfNextBlock"
     >;
-    moveFocusToEndOfNextInline: $ElementType<
+    moveFocusToEndOfNextInline: $PropertyType<
       CoreEditor,
       "moveFocusToEndOfNextInline"
     >;
-    moveFocusToEndOfNextText: $ElementType<
+    moveFocusToEndOfNextText: $PropertyType<
       CoreEditor,
       "moveFocusToEndOfNextText"
     >;
-    moveFocusToEndOfNode: $ElementType<CoreEditor, "moveFocusToEndOfNode">;
-    moveFocusToEndOfPreviousBlock: $ElementType<
+    moveFocusToEndOfNode: $PropertyType<CoreEditor, "moveFocusToEndOfNode">;
+    moveFocusToEndOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveFocusToEndOfPreviousBlock"
     >;
-    moveFocusToEndOfPreviousInline: $ElementType<
+    moveFocusToEndOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveFocusToEndOfPreviousInline"
     >;
-    moveFocusToEndOfPreviousText: $ElementType<
+    moveFocusToEndOfPreviousText: $PropertyType<
       CoreEditor,
       "moveFocusToEndOfPreviousText"
     >;
-    moveFocusToEndOfText: $ElementType<CoreEditor, "moveFocusToEndOfText">;
-    moveFocusToStartOfBlock: $ElementType<
+    moveFocusToEndOfText: $PropertyType<CoreEditor, "moveFocusToEndOfText">;
+    moveFocusToStartOfBlock: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfBlock"
     >;
-    moveFocusToStartOfDocument: $ElementType<
+    moveFocusToStartOfDocument: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfDocument"
     >;
-    moveFocusToStartOfInline: $ElementType<
+    moveFocusToStartOfInline: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfInline"
     >;
-    moveFocusToStartOfNextBlock: $ElementType<
+    moveFocusToStartOfNextBlock: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfNextBlock"
     >;
-    moveFocusToStartOfNextInline: $ElementType<
+    moveFocusToStartOfNextInline: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfNextInline"
     >;
-    moveFocusToStartOfNextText: $ElementType<
+    moveFocusToStartOfNextText: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfNextText"
     >;
-    moveFocusToStartOfNode: $ElementType<CoreEditor, "moveFocusToStartOfNode">;
-    moveFocusToStartOfPreviousBlock: $ElementType<
+    moveFocusToStartOfNode: $PropertyType<CoreEditor, "moveFocusToStartOfNode">;
+    moveFocusToStartOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfPreviousBlock"
     >;
-    moveFocusToStartOfPreviousInline: $ElementType<
+    moveFocusToStartOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfPreviousInline"
     >;
-    moveFocusToStartOfPreviousText: $ElementType<
+    moveFocusToStartOfPreviousText: $PropertyType<
       CoreEditor,
       "moveFocusToStartOfPreviousText"
     >;
-    moveFocusToStartOfText: $ElementType<CoreEditor, "moveFocusToStartOfText">;
-    moveStartForward: $ElementType<CoreEditor, "moveStartForward">;
-    moveStartBackward: $ElementType<CoreEditor, "moveStartBackward">;
-    moveStartTo: $ElementType<CoreEditor, "moveStartTo">;
-    moveStartToEndOfBlock: $ElementType<CoreEditor, "moveStartToEndOfBlock">;
-    moveStartToEndOfDocument: $ElementType<
+    moveFocusToStartOfText: $PropertyType<CoreEditor, "moveFocusToStartOfText">;
+    moveStartForward: $PropertyType<CoreEditor, "moveStartForward">;
+    moveStartBackward: $PropertyType<CoreEditor, "moveStartBackward">;
+    moveStartTo: $PropertyType<CoreEditor, "moveStartTo">;
+    moveStartToEndOfBlock: $PropertyType<CoreEditor, "moveStartToEndOfBlock">;
+    moveStartToEndOfDocument: $PropertyType<
       CoreEditor,
       "moveStartToEndOfDocument"
     >;
-    moveStartToEndOfInline: $ElementType<CoreEditor, "moveStartToEndOfInline">;
-    moveStartToEndOfNextBlock: $ElementType<
+    moveStartToEndOfInline: $PropertyType<CoreEditor, "moveStartToEndOfInline">;
+    moveStartToEndOfNextBlock: $PropertyType<
       CoreEditor,
       "moveStartToEndOfNextBlock"
     >;
-    moveStartToEndOfNextInline: $ElementType<
+    moveStartToEndOfNextInline: $PropertyType<
       CoreEditor,
       "moveStartToEndOfNextInline"
     >;
-    moveStartToEndOfNextText: $ElementType<
+    moveStartToEndOfNextText: $PropertyType<
       CoreEditor,
       "moveStartToEndOfNextText"
     >;
-    moveStartToEndOfNode: $ElementType<CoreEditor, "moveStartToEndOfNode">;
-    moveStartToEndOfPreviousBlock: $ElementType<
+    moveStartToEndOfNode: $PropertyType<CoreEditor, "moveStartToEndOfNode">;
+    moveStartToEndOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveStartToEndOfPreviousBlock"
     >;
-    moveStartToEndOfPreviousInline: $ElementType<
+    moveStartToEndOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveStartToEndOfPreviousInline"
     >;
-    moveStartToEndOfPreviousText: $ElementType<
+    moveStartToEndOfPreviousText: $PropertyType<
       CoreEditor,
       "moveStartToEndOfPreviousText"
     >;
-    moveStartToEndOfText: $ElementType<CoreEditor, "moveStartToEndOfText">;
-    moveStartToStartOfBlock: $ElementType<
+    moveStartToEndOfText: $PropertyType<CoreEditor, "moveStartToEndOfText">;
+    moveStartToStartOfBlock: $PropertyType<
       CoreEditor,
       "moveStartToStartOfBlock"
     >;
-    moveStartToStartOfDocument: $ElementType<
+    moveStartToStartOfDocument: $PropertyType<
       CoreEditor,
       "moveStartToStartOfDocument"
     >;
-    moveStartToStartOfInline: $ElementType<
+    moveStartToStartOfInline: $PropertyType<
       CoreEditor,
       "moveStartToStartOfInline"
     >;
-    moveStartToStartOfNextBlock: $ElementType<
+    moveStartToStartOfNextBlock: $PropertyType<
       CoreEditor,
       "moveStartToStartOfNextBlock"
     >;
-    moveStartToStartOfNextInline: $ElementType<
+    moveStartToStartOfNextInline: $PropertyType<
       CoreEditor,
       "moveStartToStartOfNextInline"
     >;
-    moveStartToStartOfNextText: $ElementType<
+    moveStartToStartOfNextText: $PropertyType<
       CoreEditor,
       "moveStartToStartOfNextText"
     >;
-    moveStartToStartOfNode: $ElementType<CoreEditor, "moveStartToStartOfNode">;
-    moveStartToStartOfPreviousBlock: $ElementType<
+    moveStartToStartOfNode: $PropertyType<CoreEditor, "moveStartToStartOfNode">;
+    moveStartToStartOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveStartToStartOfPreviousBlock"
     >;
-    moveStartToStartOfPreviousInline: $ElementType<
+    moveStartToStartOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveStartToStartOfPreviousInline"
     >;
-    moveStartToStartOfPreviousText: $ElementType<
+    moveStartToStartOfPreviousText: $PropertyType<
       CoreEditor,
       "moveStartToStartOfPreviousText"
     >;
-    moveStartToStartOfText: $ElementType<CoreEditor, "moveStartToStartOfText">;
-    moveBackward: $ElementType<CoreEditor, "moveBackward">;
-    moveForward: $ElementType<CoreEditor, "moveForward">;
-    moveTo: $ElementType<CoreEditor, "moveTo">;
-    moveToAnchor: $ElementType<CoreEditor, "moveToAnchor">;
-    moveToFocus: $ElementType<CoreEditor, "moveToFocus">;
-    moveToStart: $ElementType<CoreEditor, "moveToStart">;
-    moveToEnd: $ElementType<CoreEditor, "moveToEnd">;
-    moveToEndOfBlock: $ElementType<CoreEditor, "moveToEndOfBlock">;
-    moveToEndOfDocument: $ElementType<CoreEditor, "moveToEndOfDocument">;
-    moveToEndOfInline: $ElementType<CoreEditor, "moveToEndOfInline">;
-    moveToEndOfNextBlock: $ElementType<CoreEditor, "moveToEndOfNextBlock">;
-    moveToEndOfNextInline: $ElementType<CoreEditor, "moveToEndOfNextInline">;
-    moveToEndOfNextText: $ElementType<CoreEditor, "moveToEndOfNextText">;
-    moveToEndOfNode: $ElementType<CoreEditor, "moveToEndOfNode">;
-    moveToEndOfPreviousBlock: $ElementType<
+    moveStartToStartOfText: $PropertyType<CoreEditor, "moveStartToStartOfText">;
+    moveBackward: $PropertyType<CoreEditor, "moveBackward">;
+    moveForward: $PropertyType<CoreEditor, "moveForward">;
+    moveTo: $PropertyType<CoreEditor, "moveTo">;
+    moveToAnchor: $PropertyType<CoreEditor, "moveToAnchor">;
+    moveToFocus: $PropertyType<CoreEditor, "moveToFocus">;
+    moveToStart: $PropertyType<CoreEditor, "moveToStart">;
+    moveToEnd: $PropertyType<CoreEditor, "moveToEnd">;
+    moveToEndOfBlock: $PropertyType<CoreEditor, "moveToEndOfBlock">;
+    moveToEndOfDocument: $PropertyType<CoreEditor, "moveToEndOfDocument">;
+    moveToEndOfInline: $PropertyType<CoreEditor, "moveToEndOfInline">;
+    moveToEndOfNextBlock: $PropertyType<CoreEditor, "moveToEndOfNextBlock">;
+    moveToEndOfNextInline: $PropertyType<CoreEditor, "moveToEndOfNextInline">;
+    moveToEndOfNextText: $PropertyType<CoreEditor, "moveToEndOfNextText">;
+    moveToEndOfNode: $PropertyType<CoreEditor, "moveToEndOfNode">;
+    moveToEndOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveToEndOfPreviousBlock"
     >;
-    moveToEndOfPreviousInline: $ElementType<
+    moveToEndOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveToEndOfPreviousInline"
     >;
-    moveToEndOfPreviousText: $ElementType<
+    moveToEndOfPreviousText: $PropertyType<
       CoreEditor,
       "moveToEndOfPreviousText"
     >;
-    moveToEndOfText: $ElementType<CoreEditor, "moveToEndOfText">;
-    moveToStartOfBlock: $ElementType<CoreEditor, "moveToStartOfBlock">;
-    moveToStartOfDocument: $ElementType<CoreEditor, "moveToStartOfDocument">;
-    moveToStartOfInline: $ElementType<CoreEditor, "moveToStartOfInline">;
-    moveToStartOfNextBlock: $ElementType<CoreEditor, "moveToStartOfNextBlock">;
-    moveToStartOfNextInline: $ElementType<
+    moveToEndOfText: $PropertyType<CoreEditor, "moveToEndOfText">;
+    moveToStartOfBlock: $PropertyType<CoreEditor, "moveToStartOfBlock">;
+    moveToStartOfDocument: $PropertyType<CoreEditor, "moveToStartOfDocument">;
+    moveToStartOfInline: $PropertyType<CoreEditor, "moveToStartOfInline">;
+    moveToStartOfNextBlock: $PropertyType<CoreEditor, "moveToStartOfNextBlock">;
+    moveToStartOfNextInline: $PropertyType<
       CoreEditor,
       "moveToStartOfNextInline"
     >;
-    moveToStartOfNextText: $ElementType<CoreEditor, "moveToStartOfNextText">;
-    moveToStartOfNode: $ElementType<CoreEditor, "moveToStartOfNode">;
-    moveToStartOfPreviousBlock: $ElementType<
+    moveToStartOfNextText: $PropertyType<CoreEditor, "moveToStartOfNextText">;
+    moveToStartOfNode: $PropertyType<CoreEditor, "moveToStartOfNode">;
+    moveToStartOfPreviousBlock: $PropertyType<
       CoreEditor,
       "moveToStartOfPreviousBlock"
     >;
-    moveToStartOfPreviousInline: $ElementType<
+    moveToStartOfPreviousInline: $PropertyType<
       CoreEditor,
       "moveToStartOfPreviousInline"
     >;
-    moveToStartOfPreviousText: $ElementType<
+    moveToStartOfPreviousText: $PropertyType<
       CoreEditor,
       "moveToStartOfPreviousText"
     >;
-    moveToStartOfText: $ElementType<CoreEditor, "moveToStartOfText">;
-    moveToRangeOfDocument: $ElementType<CoreEditor, "moveToRangeOfDocument">;
-    moveToRangeOf: $ElementType<CoreEditor, "moveToRangeOf">;
-    select: $ElementType<CoreEditor, "select">;
-    addMarkAtRange: $ElementType<CoreEditor, "addMarkAtRange">;
-    deleteAtRange: $ElementType<CoreEditor, "deleteAtRange">;
-    deleteCharBackwardAtRange: $ElementType<
+    moveToStartOfText: $PropertyType<CoreEditor, "moveToStartOfText">;
+    moveToRangeOfDocument: $PropertyType<CoreEditor, "moveToRangeOfDocument">;
+    moveToRangeOf: $PropertyType<CoreEditor, "moveToRangeOf">;
+    select: $PropertyType<CoreEditor, "select">;
+    addMarkAtRange: $PropertyType<CoreEditor, "addMarkAtRange">;
+    deleteAtRange: $PropertyType<CoreEditor, "deleteAtRange">;
+    deleteCharBackwardAtRange: $PropertyType<
       CoreEditor,
       "deleteCharBackwardAtRange"
     >;
-    deleteLineBackwardAtRange: $ElementType<
+    deleteLineBackwardAtRange: $PropertyType<
       CoreEditor,
       "deleteLineBackwardAtRange"
     >;
-    deleteWordBackwardAtRange: $ElementType<
+    deleteWordBackwardAtRange: $PropertyType<
       CoreEditor,
       "deleteWordBackwardAtRange"
     >;
-    deleteBackwardAtRange: $ElementType<CoreEditor, "deleteBackwardAtRange">;
-    deleteCharForwardAtRange: $ElementType<
+    deleteBackwardAtRange: $PropertyType<CoreEditor, "deleteBackwardAtRange">;
+    deleteCharForwardAtRange: $PropertyType<
       CoreEditor,
       "deleteCharForwardAtRange"
     >;
-    deleteLineForwardAtRange: $ElementType<
+    deleteLineForwardAtRange: $PropertyType<
       CoreEditor,
       "deleteLineForwardAtRange"
     >;
-    deleteWordForwardAtRange: $ElementType<
+    deleteWordForwardAtRange: $PropertyType<
       CoreEditor,
       "deleteWordForwardAtRange"
     >;
-    deleteForwardAtRange: $ElementType<CoreEditor, "deleteForwardAtRange">;
-    insertBlockAtRange: $ElementType<CoreEditor, "insertBlockAtRange">;
-    insertFragmentAtRange: $ElementType<CoreEditor, "insertFragmentAtRange">;
-    insertInlineAtRange: $ElementType<CoreEditor, "insertInlineAtRange">;
-    insertTextAtRange: $ElementType<CoreEditor, "insertTextAtRange">;
-    setBlocksAtRange: $ElementType<CoreEditor, "setBlocksAtRange">;
-    setInlinesAtRange: $ElementType<CoreEditor, "setInlinesAtRange">;
-    splitBlockAtRange: $ElementType<CoreEditor, "splitBlockAtRange">;
-    splitInlineAtRange: $ElementType<CoreEditor, "splitInlineAtRange">;
-    removeMarkAtRange: $ElementType<CoreEditor, "removeMarkAtRange">;
-    toggleMarkAtRange: $ElementType<CoreEditor, "toggleMarkAtRange">;
-    unwrapBlockAtRange: $ElementType<CoreEditor, "unwrapBlockAtRange">;
-    unwrapInlineAtRange: $ElementType<CoreEditor, "unwrapInlineAtRange">;
-    wrapBlockAtRange: $ElementType<CoreEditor, "wrapBlockAtRange">;
-    wrapInlineAtRange: $ElementType<CoreEditor, "wrapInlineAtRange">;
-    wrapTextAtRange: $ElementType<CoreEditor, "wrapTextAtRange">;
-    addMarkByKey: $ElementType<CoreEditor, "addMarkByKey">;
-    addMarkByPath: $ElementType<CoreEditor, "addMarkByPath">;
-    insertNodeByKey: $ElementType<CoreEditor, "insertNodeByKey">;
-    insertNodeByPath: $ElementType<CoreEditor, "insertNodeByPath">;
-    insertFragmentByKey: $ElementType<CoreEditor, "insertFragmentByKey">;
-    insertFragmentByPath: $ElementType<CoreEditor, "insertFragmentByPath">;
-    insertTextByKey: $ElementType<CoreEditor, "insertTextByKey">;
-    insertTextByPath: $ElementType<CoreEditor, "insertTextByPath">;
-    mergeNodeByKey: $ElementType<CoreEditor, "mergeNodeByKey">;
-    mergeNodeByPath: $ElementType<CoreEditor, "mergeNodeByPath">;
-    moveNodeByKey: $ElementType<CoreEditor, "moveNodeByKey">;
-    moveNodeByPath: $ElementType<CoreEditor, "moveNodeByPath">;
-    removeMarkByKey: $ElementType<CoreEditor, "removeMarkByKey">;
-    removeMarkByPath: $ElementType<CoreEditor, "removeMarkByPath">;
-    removeNodeByKey: $ElementType<CoreEditor, "removeNodeByKey">;
-    removeNodeByPath: $ElementType<CoreEditor, "removeNodeByPath">;
-    replaceNodeByKey: $ElementType<CoreEditor, "replaceNodeByKey">;
-    replaceNodeByPath: $ElementType<CoreEditor, "replaceNodeByPath">;
-    removeTextByKey: $ElementType<CoreEditor, "removeTextByKey">;
-    removeTextByPath: $ElementType<CoreEditor, "removeTextByPath">;
-    setMarkByKey: $ElementType<CoreEditor, "setMarkByKey">;
-    setMarksByPath: $ElementType<CoreEditor, "setMarksByPath">;
-    setNodeByKey: $ElementType<CoreEditor, "setNodeByKey">;
-    setNodeByPath: $ElementType<CoreEditor, "setNodeByPath">;
-    splitNodeByKey: $ElementType<CoreEditor, "splitNodeByKey">;
-    splitNodeByPath: $ElementType<CoreEditor, "splitNodeByPath">;
-    unwrapInlineByKey: $ElementType<CoreEditor, "unwrapInlineByKey">;
-    unwrapInlineByPath: $ElementType<CoreEditor, "unwrapInlineByPath">;
-    unwrapBlockByKey: $ElementType<CoreEditor, "unwrapBlockByKey">;
-    unwrapBlockByPath: $ElementType<CoreEditor, "unwrapBlockByPath">;
-    unwrapNodeByKey: $ElementType<CoreEditor, "unwrapNodeByKey">;
-    unwrapNodeByPath: $ElementType<CoreEditor, "unwrapNodeByPath">;
-    wrapInlineByKey: $ElementType<CoreEditor, "wrapInlineByKey">;
-    wrapInlineByPath: $ElementType<CoreEditor, "wrapInlineByPath">;
-    wrapBlockByKey: $ElementType<CoreEditor, "wrapBlockByKey">;
-    wrapBlockByPath: $ElementType<CoreEditor, "wrapBlockByPath">;
-    wrapNodeByKey: $ElementType<CoreEditor, "wrapNodeByKey">;
-    wrapNodeByPath: $ElementType<CoreEditor, "wrapNodeByPath">;
-    normalize: $ElementType<CoreEditor, "normalize">;
-    withoutNormalizing: $ElementType<CoreEditor, "withoutNormalizing">;
-    withoutSaving: $ElementType<CoreEditor, "withoutSaving">;
-    withoutMerging: $ElementType<CoreEditor, "withoutMerging">;
-    redo: $ElementType<CoreEditor, "redo">;
-    undo: $ElementType<CoreEditor, "undo">;
-    snapshotSelection: $ElementType<CoreEditor, "snapshotSelection">;
-    command: $ElementType<CoreEditor, "command">;
-    query: $ElementType<CoreEditor, "query">;
-    registerCommand: $ElementType<CoreEditor, "registerCommand">;
-    registerQuery: $ElementType<CoreEditor, "registerQuery">;
-    applyOperation: $ElementType<CoreEditor, "applyOperation">;
-    run: $ElementType<CoreEditor, "run">;
+    deleteForwardAtRange: $PropertyType<CoreEditor, "deleteForwardAtRange">;
+    insertBlockAtRange: $PropertyType<CoreEditor, "insertBlockAtRange">;
+    insertFragmentAtRange: $PropertyType<CoreEditor, "insertFragmentAtRange">;
+    insertInlineAtRange: $PropertyType<CoreEditor, "insertInlineAtRange">;
+    insertTextAtRange: $PropertyType<CoreEditor, "insertTextAtRange">;
+    setBlocksAtRange: $PropertyType<CoreEditor, "setBlocksAtRange">;
+    setInlinesAtRange: $PropertyType<CoreEditor, "setInlinesAtRange">;
+    splitBlockAtRange: $PropertyType<CoreEditor, "splitBlockAtRange">;
+    splitInlineAtRange: $PropertyType<CoreEditor, "splitInlineAtRange">;
+    removeMarkAtRange: $PropertyType<CoreEditor, "removeMarkAtRange">;
+    toggleMarkAtRange: $PropertyType<CoreEditor, "toggleMarkAtRange">;
+    unwrapBlockAtRange: $PropertyType<CoreEditor, "unwrapBlockAtRange">;
+    unwrapInlineAtRange: $PropertyType<CoreEditor, "unwrapInlineAtRange">;
+    wrapBlockAtRange: $PropertyType<CoreEditor, "wrapBlockAtRange">;
+    wrapInlineAtRange: $PropertyType<CoreEditor, "wrapInlineAtRange">;
+    wrapTextAtRange: $PropertyType<CoreEditor, "wrapTextAtRange">;
+    addMarkByKey: $PropertyType<CoreEditor, "addMarkByKey">;
+    addMarkByPath: $PropertyType<CoreEditor, "addMarkByPath">;
+    insertNodeByKey: $PropertyType<CoreEditor, "insertNodeByKey">;
+    insertNodeByPath: $PropertyType<CoreEditor, "insertNodeByPath">;
+    insertFragmentByKey: $PropertyType<CoreEditor, "insertFragmentByKey">;
+    insertFragmentByPath: $PropertyType<CoreEditor, "insertFragmentByPath">;
+    insertTextByKey: $PropertyType<CoreEditor, "insertTextByKey">;
+    insertTextByPath: $PropertyType<CoreEditor, "insertTextByPath">;
+    mergeNodeByKey: $PropertyType<CoreEditor, "mergeNodeByKey">;
+    mergeNodeByPath: $PropertyType<CoreEditor, "mergeNodeByPath">;
+    moveNodeByKey: $PropertyType<CoreEditor, "moveNodeByKey">;
+    moveNodeByPath: $PropertyType<CoreEditor, "moveNodeByPath">;
+    removeMarkByKey: $PropertyType<CoreEditor, "removeMarkByKey">;
+    removeMarkByPath: $PropertyType<CoreEditor, "removeMarkByPath">;
+    removeNodeByKey: $PropertyType<CoreEditor, "removeNodeByKey">;
+    removeNodeByPath: $PropertyType<CoreEditor, "removeNodeByPath">;
+    replaceNodeByKey: $PropertyType<CoreEditor, "replaceNodeByKey">;
+    replaceNodeByPath: $PropertyType<CoreEditor, "replaceNodeByPath">;
+    removeTextByKey: $PropertyType<CoreEditor, "removeTextByKey">;
+    removeTextByPath: $PropertyType<CoreEditor, "removeTextByPath">;
+    setMarkByKey: $PropertyType<CoreEditor, "setMarkByKey">;
+    setMarksByPath: $PropertyType<CoreEditor, "setMarksByPath">;
+    setNodeByKey: $PropertyType<CoreEditor, "setNodeByKey">;
+    setNodeByPath: $PropertyType<CoreEditor, "setNodeByPath">;
+    splitNodeByKey: $PropertyType<CoreEditor, "splitNodeByKey">;
+    splitNodeByPath: $PropertyType<CoreEditor, "splitNodeByPath">;
+    unwrapInlineByKey: $PropertyType<CoreEditor, "unwrapInlineByKey">;
+    unwrapInlineByPath: $PropertyType<CoreEditor, "unwrapInlineByPath">;
+    unwrapBlockByKey: $PropertyType<CoreEditor, "unwrapBlockByKey">;
+    unwrapBlockByPath: $PropertyType<CoreEditor, "unwrapBlockByPath">;
+    unwrapNodeByKey: $PropertyType<CoreEditor, "unwrapNodeByKey">;
+    unwrapNodeByPath: $PropertyType<CoreEditor, "unwrapNodeByPath">;
+    wrapInlineByKey: $PropertyType<CoreEditor, "wrapInlineByKey">;
+    wrapInlineByPath: $PropertyType<CoreEditor, "wrapInlineByPath">;
+    wrapBlockByKey: $PropertyType<CoreEditor, "wrapBlockByKey">;
+    wrapBlockByPath: $PropertyType<CoreEditor, "wrapBlockByPath">;
+    wrapNodeByKey: $PropertyType<CoreEditor, "wrapNodeByKey">;
+    wrapNodeByPath: $PropertyType<CoreEditor, "wrapNodeByPath">;
+    normalize: $PropertyType<CoreEditor, "normalize">;
+    withoutNormalizing: $PropertyType<CoreEditor, "withoutNormalizing">;
+    withoutSaving: $PropertyType<CoreEditor, "withoutSaving">;
+    withoutMerging: $PropertyType<CoreEditor, "withoutMerging">;
+    redo: $PropertyType<CoreEditor, "redo">;
+    undo: $PropertyType<CoreEditor, "undo">;
+    snapshotSelection: $PropertyType<CoreEditor, "snapshotSelection">;
+    command: $PropertyType<CoreEditor, "command">;
+    query: $PropertyType<CoreEditor, "query">;
+    registerCommand: $PropertyType<CoreEditor, "registerCommand">;
+    registerQuery: $PropertyType<CoreEditor, "registerQuery">;
+    applyOperation: $PropertyType<CoreEditor, "applyOperation">;
+    run: $PropertyType<CoreEditor, "run">;
   }
   declare export type SlateType =
     | "fragment"

@@ -1,15 +1,15 @@
-declare interface Wallet$GetAccessTokenResult {
+declare interface YandexMoneySDK$Wallet$GetAccessTokenResult {
   access_token?: string;
   error?: string;
 }
 
-declare interface Wallet$SendAuthenticatedRequestParams {
+declare interface YandexMoneySDK$Wallet$SendAuthenticatedRequestParams {
   headers?: any;
   data?: any;
   url: string;
 }
 
-declare interface Wallet$AccountInfoResult {
+declare interface YandexMoneySDK$Wallet$AccountInfoResult {
   account: string;
   balance: number;
   currency: string;
@@ -33,7 +33,7 @@ declare interface Wallet$AccountInfoResult {
   }[];
 }
 
-declare interface Wallet$OperationHistoryOptions {
+declare interface YandexMoneySDK$Wallet$OperationHistoryOptions {
   type: string;
   label: string;
   from?: string | Date;
@@ -43,7 +43,7 @@ declare interface Wallet$OperationHistoryOptions {
   details?: boolean;
 }
 
-declare interface Wallet$OperationHistoryResult {
+declare interface YandexMoneySDK$Wallet$OperationHistoryResult {
   error?: string;
   next_record?: string;
   operations?: {
@@ -59,7 +59,7 @@ declare interface Wallet$OperationHistoryResult {
   }[];
 }
 
-declare interface Wallet$OperationDetailsResult {
+declare interface YandexMoneySDK$Wallet$OperationDetailsResult {
   error?: string;
   operation_id?: string;
   status?: string;
@@ -95,7 +95,7 @@ declare interface Wallet$OperationDetailsResult {
   };
 }
 
-declare interface Wallet$RequestPaymentOptions {
+declare interface YandexMoneySDK$Wallet$RequestPaymentOptions {
   pattern_id: string;
   to?: string;
   amount?: number;
@@ -113,7 +113,7 @@ declare interface Wallet$RequestPaymentOptions {
   test_result?: string;
 }
 
-declare interface Wallet$RequestPaymentResult {
+declare interface YandexMoneySDK$Wallet$RequestPaymentResult {
   status: string;
   error?: string;
   money_source?: {
@@ -140,7 +140,7 @@ declare interface Wallet$RequestPaymentResult {
   ext_action_uri?: string;
 }
 
-declare interface Wallet$ProcessPaymentOptions {
+declare interface YandexMoneySDK$Wallet$ProcessPaymentOptions {
   request_id: string;
   money_source?: string;
   csc?: string;
@@ -151,7 +151,7 @@ declare interface Wallet$ProcessPaymentOptions {
   test_result?: string;
 }
 
-declare interface Wallet$ProcessPaymentResult {
+declare interface YandexMoneySDK$Wallet$ProcessPaymentResult {
   status: string;
   error?: string;
   payment_id?: string;
@@ -182,25 +182,25 @@ declare interface Wallet$ProcessPaymentResult {
   };
 }
 
-declare interface Wallet$IncomingTransferAcceptResult {
+declare interface YandexMoneySDK$Wallet$IncomingTransferAcceptResult {
   status: string;
   error?: string;
   protection_code_attempts_available?: number;
   ext_action_uri?: string;
 }
 
-declare interface Wallet$IncomingTransferRejectResult {
+declare interface YandexMoneySDK$Wallet$IncomingTransferRejectResult {
   status: string;
   error?: string;
 }
 
-declare interface ExternalPayment$GetInstanceIdResult {
+declare interface YandexMoneySDK$ExternalPayment$GetInstanceIdResult {
   status: string;
   error?: string;
   instance_id?: string;
 }
 
-declare interface ExternalPayment$RequestOptions {
+declare interface YandexMoneySDK$ExternalPayment$RequestOptions {
   pattern_id: string;
   to?: string;
   amount?: number;
@@ -209,7 +209,7 @@ declare interface ExternalPayment$RequestOptions {
   [key: string]: any;
 }
 
-declare interface ExternalPayment$RequestResult {
+declare interface YandexMoneySDK$ExternalPayment$RequestResult {
   status: string;
   error?: string;
   request_id?: string;
@@ -217,7 +217,7 @@ declare interface ExternalPayment$RequestResult {
   title?: string;
 }
 
-declare interface ExternalPayment$ProcessOptions {
+declare interface YandexMoneySDK$ExternalPayment$ProcessOptions {
   request_id: string;
   ext_auth_success_uri: string;
   ext_auth_fail_uri: string;
@@ -226,7 +226,7 @@ declare interface ExternalPayment$ProcessOptions {
   csc?: string;
 }
 
-declare interface ExternalPayment$ProcessResult {
+declare interface YandexMoneySDK$ExternalPayment$ProcessResult {
   status: string;
   error?: string;
   acs_uri?: string;
@@ -251,7 +251,7 @@ declare module "yandex-money-sdk" {
     (err: any, body: TBody, response: http.IncomingMessage): any;
   }
   declare export interface WalletStatic {
-    new(accessToken: string): Wallet;
+    new(accessToken: string): YandexMoneySDK$Wallet;
     buildObtainTokenUrl(
       clientId: string,
       redirectURI: string,
@@ -262,7 +262,7 @@ declare module "yandex-money-sdk" {
       code: string,
       redirectURI: string,
       clientSecret: string,
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$GetAccessTokenResult>
+      callback: ResponseCallback<YandexMoneySDK$Wallet$GetAccessTokenResult>
     ): void;
     revokeToken(
       token: string,
@@ -272,53 +272,53 @@ declare module "yandex-money-sdk" {
   }
   declare export interface Wallet {
     sendAuthenticatedRequest(
-      params: YandexMoneySDK$Wallet.Wallet$SendAuthenticatedRequestParams,
+      params: YandexMoneySDK$Wallet$SendAuthenticatedRequestParams,
       callback: ResponseCallback<any>
     ): void;
     accountInfo(
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$AccountInfoResult>
+      callback: ResponseCallback<YandexMoneySDK$Wallet$AccountInfoResult>
     ): void;
     operationHistory(
-      options: YandexMoneySDK$Wallet.Wallet$OperationHistoryOptions,
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$OperationHistoryResult>
+      options: YandexMoneySDK$Wallet$OperationHistoryOptions,
+      callback: ResponseCallback<YandexMoneySDK$Wallet$OperationHistoryResult>
     ): void;
     operationDetails(
       operation_id: string,
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$OperationDetailsResult>
+      callback: ResponseCallback<YandexMoneySDK$Wallet$OperationDetailsResult>
     ): void;
     requestPayment(
-      options: YandexMoneySDK$Wallet.Wallet$RequestPaymentOptions,
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$RequestPaymentResult>
+      options: YandexMoneySDK$Wallet$RequestPaymentOptions,
+      callback: ResponseCallback<YandexMoneySDK$Wallet$RequestPaymentResult>
     ): void;
     processPayment(
-      options: YandexMoneySDK$Wallet.Wallet$ProcessPaymentOptions,
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$ProcessPaymentResult>
+      options: YandexMoneySDK$Wallet$ProcessPaymentOptions,
+      callback: ResponseCallback<YandexMoneySDK$Wallet$ProcessPaymentResult>
     ): void;
     incomingTransferAccept(
       operation_id: string,
       protectionCode: string,
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$IncomingTransferAcceptResult>
+      callback: ResponseCallback<YandexMoneySDK$Wallet$IncomingTransferAcceptResult>
     ): void;
     incomingTransferReject(
       operation_id: string,
-      callback: ResponseCallback<YandexMoneySDK$Wallet.Wallet$IncomingTransferRejectResult>
+      callback: ResponseCallback<YandexMoneySDK$Wallet$IncomingTransferRejectResult>
     ): void;
   }
   declare export interface ExternalPaymentStatic {
-    new(instanceId: string): ExternalPayment;
+    new(instanceId: string): YandexMoneySDK$ExternalPayment;
     getInstanceId(
       clientId: string,
-      callback: ResponseCallback<YandexMoneySDK$ExternalPayment.ExternalPayment$GetInstanceIdResult>
+      callback: ResponseCallback<YandexMoneySDK$ExternalPayment$GetInstanceIdResult>
     ): void;
   }
   declare export interface ExternalPayment {
     request(
-      options: YandexMoneySDK$ExternalPayment.ExternalPayment$RequestOptions,
-      callback: ResponseCallback<YandexMoneySDK$ExternalPayment.ExternalPayment$RequestResult>
+      options: YandexMoneySDK$ExternalPayment$RequestOptions,
+      callback: ResponseCallback<YandexMoneySDK$ExternalPayment$RequestResult>
     ): void;
     process(
-      options: YandexMoneySDK$ExternalPayment.ExternalPayment$ProcessOptions,
-      callback: ResponseCallback<YandexMoneySDK$ExternalPayment.ExternalPayment$ProcessResult>
+      options: YandexMoneySDK$ExternalPayment$ProcessOptions,
+      callback: ResponseCallback<YandexMoneySDK$ExternalPayment$ProcessResult>
     ): void;
   }
   declare export interface Config {

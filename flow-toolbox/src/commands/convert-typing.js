@@ -18,7 +18,8 @@ const {
   originalName,
   definitelyTypedName,
   copyTests,
-  label
+  label,
+  bfs
 } = require("../utils");
 
 const baseDir = path.join(__dirname, "../../..");
@@ -52,7 +53,14 @@ async function convertTyping(name) {
     useCaseSensitiveFileNames: () => true,
     writeFile: () => null
   };
-  const typescriptFile = `${baseDir}/types/${type}/index.d.ts`;
+  const typescriptFolder = `${baseDir}/types/${type}`;
+  const typescriptFiles = await bfs(typescriptFolder);
+  console.log(
+    label(chalk.bgWhite, name),
+    label(chalk.bgBlue, "FILES COUNT"),
+    typescriptFiles.length
+  );
+  const typescriptFile = `${typescriptFolder}/index.d.ts`;
   const customCompilerHost = ts.createCompilerHost({}, true);
   const oldGetSourceFile = customCompilerHost.getSourceFile.bind(
     customCompilerHost
@@ -82,10 +90,15 @@ async function convertTyping(name) {
   //     return;
   // }
   if (!infojson[name]) infojson[name] = {};
+  infojson[name].filesCount = typescriptFiles.length;
   const previousCommitHash = infojson[name].typescriptCommitHash;
-  const commitHash = JSON.parse(
-    await execa.stdout("git", ["log", "-1", '--pretty="%H"', typescriptFile])
-  );
+  const gitLog = await execa.stdout("git", [
+    "log",
+    "-1",
+    '--pretty="%H"',
+    typescriptFile
+  ]);
+  const commitHash = gitLog === "" ? null : JSON.parse(gitLog);
   const folder = await getPackageFolder(name);
   const isTypescriptUpdated = previousCommitHash !== commitHash;
   console.log(

@@ -9,13 +9,19 @@ const _ = require("lodash");
 const baseDir = path.join(__dirname, "../../../");
 
 async function commitTypes(argv) {
-  const typesLibraries = await glob(
-    `${baseDir}/flow-types/types/**/*_v*/!(test_)*.js`
-  );
-  const unformattedLibraries = await glob(
-    `${baseDir}/flow-types/unformatted/**/*_v*/!(test_)*.js`
-  );
-  const libraries = new Set([...typesLibraries, ...unformattedLibraries]);
+  const gitFiles = (await execa("git", ["ls-files", "-m"])).stdout
+    .split("\n")
+    .filter(file => file.startsWith("flow-types"))
+    .filter(file => file.endsWith(".js"))
+    .map(folder => path.join(baseDir, folder));
+  // console.log(gitFiles);
+  // const typesLibraries = await glob(
+  //   `${baseDir}/flow-types/types/**/*_v*/!(test_)*.js`
+  // );
+  // const unformattedLibraries = await glob(
+  //   `${baseDir}/flow-types/unformatted/**/*_v*/!(test_)*.js`
+  // );
+  const libraries = new Set([...gitFiles]);
   let count = 0;
   for (const library of libraries) {
     const split = path.relative(baseDir, library).split(path.sep);

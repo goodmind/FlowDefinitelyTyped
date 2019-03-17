@@ -47,7 +47,7 @@ declare module "gestalt" {
     alignItems?: "start" | "end" | "center" | "baseline" | "stretch";
     alignSelf?: "auto" | "start" | "end" | "center" | "baseline" | "stretch";
     bottom?: boolean;
-    children?: React.ReactNode;
+    children?: React.Node;
     color?:
       | "blue"
       | "darkGray"
@@ -74,7 +74,7 @@ declare module "gestalt" {
     mdColumn?: UnsignedUpTo12;
     lgColumn?: UnsignedUpTo12;
     dangerouslySetInlineStyle?: {
-      ___style: {
+      __style: {
         [key: string]: any
       }
     };
@@ -161,15 +161,15 @@ declare module "gestalt" {
     inline?: boolean;
     name?: string;
     onClick?: (args: {
-      event: React.SyntheticEvent<React.MouseEvent>
+      event: React.SyntheticEvent<React.MouseEvent<>>
     }) => void;
     size?: "sm" | "md" | "lg";
     type?: "submit" | "button";
   }
   declare export interface CardProps {
     active?: boolean;
-    children?: React.ReactNode;
-    image?: React.ReactNode;
+    children?: React.Node;
+    image?: React.Node;
     onMouseEnter?: (args: {
       event: React.SyntheticEvent<React.MouseEvent<HTMLDivElement>>
     }) => void;
@@ -194,15 +194,15 @@ declare module "gestalt" {
     smSpan?: UnsignedUpTo12;
     mdSpan?: UnsignedUpTo12;
     lgSpan?: UnsignedUpTo12;
-    children?: React.ReactNode;
+    children?: React.Node;
   }
   declare export interface ContainerProps {
-    children?: React.ReactNode;
+    children?: React.Node;
   }
   declare export interface FlyoutProps {
     anchor: React.RefObject<any>;
     onDismiss: () => void;
-    children?: React.ReactNode;
+    children?: React.Node;
     color?: "blue" | "orange" | "white";
     idealDirection?: "up" | "right" | "down" | "left";
     positionRelativeToAnchor?: boolean;
@@ -218,7 +218,7 @@ declare module "gestalt" {
   }
   declare export interface HeaderProps {
     accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-    children?: React.ReactNode;
+    children?: React.Node;
     color?:
       | "blue"
       | "darkGray"
@@ -348,7 +348,7 @@ declare module "gestalt" {
       | "watermelon"
       | "white";
     dangerouslySetSvgPath?: {
-      ___path: string
+      __path: string
     };
     inline?: boolean;
     size?: number | string;
@@ -361,7 +361,7 @@ declare module "gestalt" {
     bgColor?: "transparent" | "lightGray" | "white";
     iconColor?: "blue" | "darkGray" | "gray" | "red" | "white";
     onClick?: (args: {
-      event: React.SyntheticEvent<React.MouseEvent>
+      event: React.SyntheticEvent<React.MouseEvent<>>
     }) => void;
     size?: "xs" | "sm" | "md" | "lg" | "xl";
   }
@@ -371,7 +371,7 @@ declare module "gestalt" {
     naturalHeight: number;
     naturalWidth: number;
     src: string;
-    children?: React.ReactNode;
+    children?: React.Node;
     fit?: "cover" | "contain" | "none";
     onError?: () => void;
     onLoad?: () => void;
@@ -380,32 +380,32 @@ declare module "gestalt" {
   }
   declare export interface LabelProps {
     htmlFor: string;
-    children?: React.ReactNode;
+    children?: React.Node;
   }
   declare export interface LetterboxProps {
     contentAspectRatio: number;
     height: number;
     width: number;
-    children?: React.ReactNode;
+    children?: React.Node;
   }
   declare export interface LinkProps {
-    children?: React.ReactNode;
+    children?: React.Node;
     href?: string;
     inline?: boolean;
     onClick?: (args: {
-      event: React.SyntheticEvent<React.MouseEvent>
+      event: React.SyntheticEvent<React.MouseEvent<>>
     }) => void;
     target?: "null" | "self" | "blank";
   }
   declare export interface MaskProps {
-    children?: React.ReactNode;
+    children?: React.Node;
     height?: number | string;
     shape?: "circle" | "rounded" | "square";
     wash?: boolean;
     width?: number | string;
   }
   declare export interface MasonryProps {
-    comp: React.ComponentType;
+    comp: React.ComponentType<>;
     items: $ReadOnlyArray<any>;
     columnWidth?: number;
     flexible?: boolean;
@@ -422,8 +422,8 @@ declare module "gestalt" {
     accessibilityModalLabel: string;
     heading: string;
     onDismiss: () => void;
-    children?: React.ReactNode;
-    footer?: React.ReactNode;
+    children?: React.Node;
+    footer?: React.Node;
     role?: "alertdialog" | "dialog";
     size?: "sm" | "md" | "lg";
   }
@@ -470,9 +470,9 @@ declare module "gestalt" {
     value?: string;
   }
   declare export interface SegmentedControlProps {
-    items: $ReadOnlyArray<React.ReactNode>;
+    items: $ReadOnlyArray<React.Node>;
     onChange: (args: {
-      event: React.SyntheticEvent<React.MouseEvent>,
+      event: React.SyntheticEvent<React.MouseEvent<>>,
       activeIndex: number
     }) => void;
     selectedItemIndex: number;
@@ -501,9 +501,9 @@ declare module "gestalt" {
   }
   declare export interface StickyProps {
     bottom?: number | string;
-    children?: React.ReactNode;
+    children?: React.Node;
     dangerouslySetZIndex?: {
-      ___zIndex: string
+      __zIndex: string
     };
     left?: number | string;
     right?: number | string;
@@ -522,7 +522,7 @@ declare module "gestalt" {
   declare export interface TabsProps {
     activeTabIndex: number;
     onChange: (args: {
-      event: React.SyntheticEvent<React.MouseEvent>,
+      event: React.SyntheticEvent<React.MouseEvent<>>,
       activeTabIndex: number
     }) => void;
     tabs: $ReadOnlyArray<{
@@ -533,7 +533,7 @@ declare module "gestalt" {
   declare export interface TextProps {
     align?: "left" | "right" | "center" | "justify";
     bold?: boolean;
-    children?: React.ReactNode;
+    children?: React.Node;
     color?:
       | "blue"
       | "darkGray"
@@ -572,11 +572,11 @@ declare module "gestalt" {
     idealErrorDirection?: "up" | "right" | "down" | "left";
     name?: string;
     onBlur?: (args: {
-      event: React.SyntheticEvent<React.FocusEvent>,
+      event: React.SyntheticEvent<React.FocusEvent<>>,
       value: string
     }) => void;
     onFocus?: (args: {
-      event: React.SyntheticEvent<React.FocusEvent>,
+      event: React.SyntheticEvent<React.FocusEvent<>>,
       value: string
     }) => void;
     placeholder?: string;
@@ -595,11 +595,11 @@ declare module "gestalt" {
     idealErrorDirection?: "up" | "right" | "down" | "left";
     name?: string;
     onBlur?: (args: {
-      event: React.SyntheticEvent<React.FocusEvent>,
+      event: React.SyntheticEvent<React.FocusEvent<>>,
       value: string
     }) => void;
     onFocus?: (args: {
-      event: React.SyntheticEvent<React.FocusEvent>,
+      event: React.SyntheticEvent<React.FocusEvent<>>,
       value: string
     }) => void;
     placeholder?: string;
@@ -615,7 +615,7 @@ declare module "gestalt" {
   declare export interface TooltipProps {
     anchor: any;
     onDismiss: () => void;
-    children?: React.ReactNode;
+    children?: React.Node;
     idealDirection?: "up" | "right" | "down" | "left";
     positionRelativeToAnchor?: boolean;
     size?: "xs" | "sm" | "md" | "lg" | "xl";
@@ -626,7 +626,7 @@ declare module "gestalt" {
         | React.SyntheticEvent<React.MouseEvent<HTMLDivElement>>
         | React.SyntheticEvent<React.KeyboardEvent<HTMLDivElement>>
     }) => void;
-    children?: React.ReactNode;
+    children?: React.Node;
     fullHeight?: boolean;
     fullWidth?: boolean;
     mouseCursor?:

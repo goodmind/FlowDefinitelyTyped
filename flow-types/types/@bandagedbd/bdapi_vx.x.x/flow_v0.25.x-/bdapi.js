@@ -44,6 +44,7 @@ declare module "@bandagedbd/bdapi" {
     icon?: boolean;
     timeout?: number;
   }
+  declare var BdApiModule: typeof npm$namespace$BdApiModule;
 
   declare var npm$namespace$BdApiModule: {
     alert: typeof BdApiModule$alert,

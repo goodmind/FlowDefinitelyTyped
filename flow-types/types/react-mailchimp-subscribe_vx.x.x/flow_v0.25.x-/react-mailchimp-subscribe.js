@@ -1,5 +1,5 @@
 declare module "react-mailchimp-subscribe" {
-  import type { Component, ReactNode } from "react";
+  import type { Component, Node } from "react";
 
   declare export interface EmailFormFields {
     EMAIL: string;
@@ -29,7 +29,7 @@ declare module "react-mailchimp-subscribe" {
   declare export type FormHooks<FormFields> = SubscribeArg<FormFields> &
     (ResponseArgs | PendingArgs);
   declare export interface Props<FormFields> {
-    render?: (hooks: FormHooks<FormFields>) => ReactNode;
+    render?: (hooks: FormHooks<FormFields>) => Node;
     url: string;
   }
   declare export default class MailchimpSubscribe<
