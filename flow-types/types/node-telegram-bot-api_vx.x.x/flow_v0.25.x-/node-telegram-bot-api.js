@@ -948,103 +948,96 @@ declare module "node-telegram-bot-api" {
     type?: TelegramBot$MessageType;
   }
   declare class TelegramBot mixins EventEmitter {
-    constructor(
-      token: string,
-      options?: TelegramBot$TelegramBot$ConstructorOptions
-    ): this;
-    startPolling(
-      options?: TelegramBot$TelegramBot$StartPollingOptions
-    ): Promise<any>;
-    stopPolling(
-      options?: TelegramBot$TelegramBot$StopPollingOptions
-    ): Promise<any>;
+    constructor(token: string, options?: TelegramBot$ConstructorOptions): this;
+    startPolling(options?: TelegramBot$StartPollingOptions): Promise<any>;
+    stopPolling(options?: TelegramBot$StopPollingOptions): Promise<any>;
     isPolling(): boolean;
     openWebHook(): Promise<any>;
     closeWebHook(): Promise<any>;
     hasOpenWebHook(): boolean;
-    getMe(): Promise<TelegramBot$TelegramBot$User>;
+    getMe(): Promise<TelegramBot$User>;
     setWebHook(
       url: string,
-      options?: TelegramBot$TelegramBot$SetWebHookOptions
+      options?: TelegramBot$SetWebHookOptions
     ): Promise<any>;
     deleteWebHook(): Promise<boolean>;
-    getWebHookInfo(): Promise<TelegramBot$TelegramBot$WebhookInfo>;
+    getWebHookInfo(): Promise<TelegramBot$WebhookInfo>;
     getUpdates(
-      options?: TelegramBot$TelegramBot$GetUpdatesOptions
-    ): Promise<TelegramBot$TelegramBot$Update[]>;
-    processUpdate(update: TelegramBot$TelegramBot$Update): void;
+      options?: TelegramBot$GetUpdatesOptions
+    ): Promise<TelegramBot$Update[]>;
+    processUpdate(update: TelegramBot$Update): void;
     sendMessage(
       chatId: number | string,
       text: string,
-      options?: TelegramBot$TelegramBot$SendMessageOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendMessageOptions
+    ): Promise<TelegramBot$Message>;
     answerInlineQuery(
       inlineQueryId: string,
-      results: $ReadOnlyArray<TelegramBot$TelegramBot$InlineQueryResult>,
-      options?: TelegramBot$TelegramBot$AnswerInlineQueryOptions
+      results: $ReadOnlyArray<TelegramBot$InlineQueryResult>,
+      options?: TelegramBot$AnswerInlineQueryOptions
     ): Promise<boolean>;
     forwardMessage(
       chatId: number | string,
       fromChatId: number | string,
       messageId: number | string,
-      options?: TelegramBot$TelegramBot$ForwardMessageOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$ForwardMessageOptions
+    ): Promise<TelegramBot$Message>;
     sendPhoto(
       chatId: number | string,
       photo: string | Stream | Buffer,
-      options?: TelegramBot$TelegramBot$SendPhotoOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendPhotoOptions
+    ): Promise<TelegramBot$Message>;
     sendAudio(
       chatId: number | string,
       audio: string | Stream | Buffer,
-      options?: TelegramBot$TelegramBot$SendAudioOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendAudioOptions
+    ): Promise<TelegramBot$Message>;
     sendDocument(
       chatId: number | string,
       doc: string | Stream | Buffer,
-      options?: TelegramBot$TelegramBot$SendDocumentOptions,
+      options?: TelegramBot$SendDocumentOptions,
       fileOpts?: any
-    ): Promise<TelegramBot$TelegramBot$Message>;
+    ): Promise<TelegramBot$Message>;
     sendMediaGroup(
       chatId: number | string,
-      media: $ReadOnlyArray<TelegramBot$TelegramBot$InputMedia>,
-      options?: TelegramBot$TelegramBot$SendMediaGroupOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      media: $ReadOnlyArray<TelegramBot$InputMedia>,
+      options?: TelegramBot$SendMediaGroupOptions
+    ): Promise<TelegramBot$Message>;
     sendSticker(
       chatId: number | string,
       sticker: string | Stream | Buffer,
-      options?: TelegramBot$TelegramBot$SendStickerOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendStickerOptions
+    ): Promise<TelegramBot$Message>;
     sendVideo(
       chatId: number | string,
       video: string | Stream | Buffer,
-      options?: TelegramBot$TelegramBot$SendVideoOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendVideoOptions
+    ): Promise<TelegramBot$Message>;
     sendVideoNote(
       chatId: number | string,
       videoNote: string | Stream | Buffer,
-      options?: TelegramBot$TelegramBot$SendVideoNoteOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendVideoNoteOptions
+    ): Promise<TelegramBot$Message>;
     sendVoice(
       chatId: number | string,
       voice: string | Stream | Buffer,
-      options?: TelegramBot$TelegramBot$SendVoiceOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendVoiceOptions
+    ): Promise<TelegramBot$Message>;
     sendChatAction(
       chatId: number | string,
-      action: TelegramBot$TelegramBot$ChatAction
+      action: TelegramBot$ChatAction
     ): Promise<boolean>;
     kickChatMember(chatId: number | string, userId: string): Promise<boolean>;
     unbanChatMember(chatId: number | string, userId: string): Promise<boolean>;
     restrictChatMember(
       chatId: number | string,
       userId: string,
-      options?: TelegramBot$TelegramBot$RestrictChatMemberOptions
+      options?: TelegramBot$RestrictChatMemberOptions
     ): Promise<boolean>;
     promoteChatMember(
       chatId: number | string,
       userId: string,
-      options?: TelegramBot$TelegramBot$PromoteChatMemberOptions
+      options?: TelegramBot$PromoteChatMemberOptions
     ): Promise<boolean>;
     exportChatInviteLink(chatId: number | string): Promise<string>;
     setChatPhoto(
@@ -1064,90 +1057,86 @@ declare module "node-telegram-bot-api" {
     unpinChatMessage(chatId: number | string): Promise<boolean>;
     answerCallbackQuery(
       callbackQueryId: string,
-      options?: $Shape<TelegramBot$TelegramBot$AnswerCallbackQueryOptions>
+      options?: $Shape<TelegramBot$AnswerCallbackQueryOptions>
     ): Promise<boolean>;
 
     /**
      * @deprecated since version 0.30.0
      */
     answerCallbackQuery(
-      options?: TelegramBot$TelegramBot$AnswerCallbackQueryOptions
+      options?: TelegramBot$AnswerCallbackQueryOptions
     ): Promise<boolean>;
     editMessageText(
       text: string,
-      options?: TelegramBot$TelegramBot$EditMessageTextOptions
-    ): Promise<TelegramBot$TelegramBot$Message | boolean>;
+      options?: TelegramBot$EditMessageTextOptions
+    ): Promise<TelegramBot$Message | boolean>;
     editMessageCaption(
       caption: string,
-      options?: TelegramBot$TelegramBot$EditMessageCaptionOptions
-    ): Promise<TelegramBot$TelegramBot$Message | boolean>;
+      options?: TelegramBot$EditMessageCaptionOptions
+    ): Promise<TelegramBot$Message | boolean>;
     editMessageReplyMarkup(
-      replyMarkup: TelegramBot$TelegramBot$InlineKeyboardMarkup,
-      options?: TelegramBot$TelegramBot$EditMessageReplyMarkupOptions
-    ): Promise<TelegramBot$TelegramBot$Message | boolean>;
+      replyMarkup: TelegramBot$InlineKeyboardMarkup,
+      options?: TelegramBot$EditMessageReplyMarkupOptions
+    ): Promise<TelegramBot$Message | boolean>;
     getUserProfilePhotos(
       userId: number | string,
-      options?: TelegramBot$TelegramBot$GetUserProfilePhotosOptions
-    ): Promise<TelegramBot$TelegramBot$UserProfilePhotos>;
+      options?: TelegramBot$GetUserProfilePhotosOptions
+    ): Promise<TelegramBot$UserProfilePhotos>;
     sendLocation(
       chatId: number | string,
       latitude: number,
       longitude: number,
-      options?: TelegramBot$TelegramBot$SendLocationOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendLocationOptions
+    ): Promise<TelegramBot$Message>;
     editMessageLiveLocation(
       latitude: number,
       longitude: number,
-      options?: TelegramBot$TelegramBot$EditMessageLiveLocationOptions
-    ): Promise<TelegramBot$TelegramBot$Message | boolean>;
+      options?: TelegramBot$EditMessageLiveLocationOptions
+    ): Promise<TelegramBot$Message | boolean>;
     stopMessageLiveLocation(
-      options?: TelegramBot$TelegramBot$StopMessageLiveLocationOptions
-    ): Promise<TelegramBot$TelegramBot$Message | boolean>;
+      options?: TelegramBot$StopMessageLiveLocationOptions
+    ): Promise<TelegramBot$Message | boolean>;
     sendVenue(
       chatId: number | string,
       latitude: number,
       longitude: number,
       title: string,
       address: string,
-      options?: TelegramBot$TelegramBot$SendVenueOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendVenueOptions
+    ): Promise<TelegramBot$Message>;
     sendContact(
       chatId: number | string,
       phoneNumber: string,
       firstName: string,
-      options?: TelegramBot$TelegramBot$SendContactOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
-    getFile(fileId: string): Promise<TelegramBot$TelegramBot$File>;
+      options?: TelegramBot$SendContactOptions
+    ): Promise<TelegramBot$Message>;
+    getFile(fileId: string): Promise<TelegramBot$File>;
     getFileLink(fileId: string): Promise<string>;
     getFileStream(fileId: string): Readable;
     downloadFile(fileId: string, downloadDir: string): Promise<string>;
     onText(
       regexp: RegExp,
       callback: (
-        msg: TelegramBot$TelegramBot$Message,
+        msg: TelegramBot$Message,
         match: RegExpExecArray | null
       ) => void
     ): void;
-    removeTextListener(
-      regexp: RegExp
-    ): TelegramBot$TelegramBot$TextListener | null;
+    removeTextListener(regexp: RegExp): TelegramBot$TextListener | null;
     onReplyToMessage(
       chatId: number | string,
       messageId: number | string,
-      callback: (msg: TelegramBot$TelegramBot$Message) => void
+      callback: (msg: TelegramBot$Message) => void
     ): number;
-    removeReplyListener(
-      replyListenerId: number
-    ): TelegramBot$TelegramBot$ReplyListener;
-    getChat(chatId: number | string): Promise<TelegramBot$TelegramBot$Chat>;
+    removeReplyListener(replyListenerId: number): TelegramBot$ReplyListener;
+    getChat(chatId: number | string): Promise<TelegramBot$Chat>;
     getChatAdministrators(
       chatId: number | string
-    ): Promise<TelegramBot$TelegramBot$ChatMember[]>;
+    ): Promise<TelegramBot$ChatMember[]>;
     getChatMembersCount(chatId: number | string): Promise<number>;
     getChatMember(
       chatId: number | string,
       userId: string
-    ): Promise<TelegramBot$TelegramBot$ChatMember>;
+    ): Promise<TelegramBot$ChatMember>;
     leaveChat(chatId: number | string): Promise<boolean>;
     setChatStickerSet(
       chatId: number | string,
@@ -1157,17 +1146,17 @@ declare module "node-telegram-bot-api" {
     sendGame(
       chatId: number | string,
       gameShortName: string,
-      options?: TelegramBot$TelegramBot$SendGameOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      options?: TelegramBot$SendGameOptions
+    ): Promise<TelegramBot$Message>;
     setGameScore(
       userId: string,
       score: number,
-      options?: TelegramBot$TelegramBot$SetGameScoreOptions
-    ): Promise<TelegramBot$TelegramBot$Message | boolean>;
+      options?: TelegramBot$SetGameScoreOptions
+    ): Promise<TelegramBot$Message | boolean>;
     getGameHighScores(
       userId: string,
-      options?: TelegramBot$TelegramBot$GetGameHighScoresOptions
-    ): Promise<TelegramBot$TelegramBot$GameHighScore[]>;
+      options?: TelegramBot$GetGameHighScoresOptions
+    ): Promise<TelegramBot$GameHighScore[]>;
     deleteMessage(
       chatId: number | string,
       messageId: string,
@@ -1181,37 +1170,37 @@ declare module "node-telegram-bot-api" {
       providerToken: string,
       startParameter: string,
       currency: string,
-      prices: $ReadOnlyArray<TelegramBot$TelegramBot$LabeledPrice>,
-      options?: TelegramBot$TelegramBot$SendInvoiceOptions
-    ): Promise<TelegramBot$TelegramBot$Message>;
+      prices: $ReadOnlyArray<TelegramBot$LabeledPrice>,
+      options?: TelegramBot$SendInvoiceOptions
+    ): Promise<TelegramBot$Message>;
     answerShippingQuery(
       shippingQueryId: string,
       ok: boolean,
-      options?: TelegramBot$TelegramBot$AnswerShippingQueryOptions
+      options?: TelegramBot$AnswerShippingQueryOptions
     ): Promise<boolean>;
     answerPreCheckoutQuery(
       preCheckoutQueryId: string,
       ok: boolean,
-      options?: TelegramBot$TelegramBot$AnswerPreCheckoutQueryOptions
+      options?: TelegramBot$AnswerPreCheckoutQueryOptions
     ): Promise<boolean>;
     addListener(
-      event: TelegramBot$TelegramBot$MessageType | "message",
+      event: TelegramBot$MessageType | "message",
       listener: (
-        message: TelegramBot$TelegramBot$Message,
-        metadata: TelegramBot$TelegramBot$Metadata
+        message: TelegramBot$Message,
+        metadata: TelegramBot$Metadata
       ) => void
     ): this;
     addListener(
       event: "callback_query",
-      listener: (query: TelegramBot$TelegramBot$CallbackQuery) => void
+      listener: (query: TelegramBot$CallbackQuery) => void
     ): this;
     addListener(
       event: "inline_query",
-      listener: (query: TelegramBot$TelegramBot$InlineQuery) => void
+      listener: (query: TelegramBot$InlineQuery) => void
     ): this;
     addListener(
       event: "chosen_inline_result",
-      listener: (result: TelegramBot$TelegramBot$ChosenInlineResult) => void
+      listener: (result: TelegramBot$ChosenInlineResult) => void
     ): this;
     addListener(
       event:
@@ -1222,38 +1211,38 @@ declare module "node-telegram-bot-api" {
         | "edited_channel_post"
         | "edited_channel_post_text"
         | "edited_channel_post_caption",
-      listener: (message: TelegramBot$TelegramBot$Message) => void
+      listener: (message: TelegramBot$Message) => void
     ): this;
     addListener(
       event: "shipping_query",
-      listener: (query: TelegramBot$TelegramBot$ShippingQuery) => void
+      listener: (query: TelegramBot$ShippingQuery) => void
     ): this;
     addListener(
       event: "pre_checkout_query",
-      listener: (query: TelegramBot$TelegramBot$PreCheckoutQuery) => void
+      listener: (query: TelegramBot$PreCheckoutQuery) => void
     ): this;
     addListener(
       event: "polling_error" | "webhook_error" | "error",
       listener: (error: Error) => void
     ): this;
     on(
-      event: TelegramBot$TelegramBot$MessageType | "message",
+      event: TelegramBot$MessageType | "message",
       listener: (
-        message: TelegramBot$TelegramBot$Message,
-        metadata: TelegramBot$TelegramBot$Metadata
+        message: TelegramBot$Message,
+        metadata: TelegramBot$Metadata
       ) => void
     ): this;
     on(
       event: "callback_query",
-      listener: (query: TelegramBot$TelegramBot$CallbackQuery) => void
+      listener: (query: TelegramBot$CallbackQuery) => void
     ): this;
     on(
       event: "inline_query",
-      listener: (query: TelegramBot$TelegramBot$InlineQuery) => void
+      listener: (query: TelegramBot$InlineQuery) => void
     ): this;
     on(
       event: "chosen_inline_result",
-      listener: (result: TelegramBot$TelegramBot$ChosenInlineResult) => void
+      listener: (result: TelegramBot$ChosenInlineResult) => void
     ): this;
     on(
       event:
@@ -1264,38 +1253,38 @@ declare module "node-telegram-bot-api" {
         | "edited_channel_post"
         | "edited_channel_post_text"
         | "edited_channel_post_caption",
-      listener: (message: TelegramBot$TelegramBot$Message) => void
+      listener: (message: TelegramBot$Message) => void
     ): this;
     on(
       event: "shipping_query",
-      listener: (query: TelegramBot$TelegramBot$ShippingQuery) => void
+      listener: (query: TelegramBot$ShippingQuery) => void
     ): this;
     on(
       event: "pre_checkout_query",
-      listener: (query: TelegramBot$TelegramBot$PreCheckoutQuery) => void
+      listener: (query: TelegramBot$PreCheckoutQuery) => void
     ): this;
     on(
       event: "polling_error" | "webhook_error" | "error",
       listener: (error: Error) => void
     ): this;
     once(
-      event: TelegramBot$TelegramBot$MessageType | "message",
+      event: TelegramBot$MessageType | "message",
       listener: (
-        message: TelegramBot$TelegramBot$Message,
-        metadata: TelegramBot$TelegramBot$Metadata
+        message: TelegramBot$Message,
+        metadata: TelegramBot$Metadata
       ) => void
     ): this;
     once(
       event: "callback_query",
-      listener: (query: TelegramBot$TelegramBot$CallbackQuery) => void
+      listener: (query: TelegramBot$CallbackQuery) => void
     ): this;
     once(
       event: "inline_query",
-      listener: (query: TelegramBot$TelegramBot$InlineQuery) => void
+      listener: (query: TelegramBot$InlineQuery) => void
     ): this;
     once(
       event: "chosen_inline_result",
-      listener: (result: TelegramBot$TelegramBot$ChosenInlineResult) => void
+      listener: (result: TelegramBot$ChosenInlineResult) => void
     ): this;
     once(
       event:
@@ -1306,38 +1295,38 @@ declare module "node-telegram-bot-api" {
         | "edited_channel_post"
         | "edited_channel_post_text"
         | "edited_channel_post_caption",
-      listener: (message: TelegramBot$TelegramBot$Message) => void
+      listener: (message: TelegramBot$Message) => void
     ): this;
     once(
       event: "shipping_query",
-      listener: (query: TelegramBot$TelegramBot$ShippingQuery) => void
+      listener: (query: TelegramBot$ShippingQuery) => void
     ): this;
     once(
       event: "pre_checkout_query",
-      listener: (query: TelegramBot$TelegramBot$PreCheckoutQuery) => void
+      listener: (query: TelegramBot$PreCheckoutQuery) => void
     ): this;
     once(
       event: "polling_error" | "webhook_error" | "error",
       listener: (error: Error) => void
     ): this;
     prependListener(
-      event: TelegramBot$TelegramBot$MessageType | "message",
+      event: TelegramBot$MessageType | "message",
       listener: (
-        message: TelegramBot$TelegramBot$Message,
-        metadata: TelegramBot$TelegramBot$Metadata
+        message: TelegramBot$Message,
+        metadata: TelegramBot$Metadata
       ) => void
     ): this;
     prependListener(
       event: "callback_query",
-      listener: (query: TelegramBot$TelegramBot$CallbackQuery) => void
+      listener: (query: TelegramBot$CallbackQuery) => void
     ): this;
     prependListener(
       event: "inline_query",
-      listener: (query: TelegramBot$TelegramBot$InlineQuery) => void
+      listener: (query: TelegramBot$InlineQuery) => void
     ): this;
     prependListener(
       event: "chosen_inline_result",
-      listener: (result: TelegramBot$TelegramBot$ChosenInlineResult) => void
+      listener: (result: TelegramBot$ChosenInlineResult) => void
     ): this;
     prependListener(
       event:
@@ -1348,38 +1337,38 @@ declare module "node-telegram-bot-api" {
         | "edited_channel_post"
         | "edited_channel_post_text"
         | "edited_channel_post_caption",
-      listener: (message: TelegramBot$TelegramBot$Message) => void
+      listener: (message: TelegramBot$Message) => void
     ): this;
     prependListener(
       event: "shipping_query",
-      listener: (query: TelegramBot$TelegramBot$ShippingQuery) => void
+      listener: (query: TelegramBot$ShippingQuery) => void
     ): this;
     prependListener(
       event: "pre_checkout_query",
-      listener: (query: TelegramBot$TelegramBot$PreCheckoutQuery) => void
+      listener: (query: TelegramBot$PreCheckoutQuery) => void
     ): this;
     prependListener(
       event: "polling_error" | "webhook_error" | "error",
       listener: (error: Error) => void
     ): this;
     prependOnceListener(
-      event: TelegramBot$TelegramBot$MessageType | "message",
+      event: TelegramBot$MessageType | "message",
       listener: (
-        message: TelegramBot$TelegramBot$Message,
-        metadata: TelegramBot$TelegramBot$Metadata
+        message: TelegramBot$Message,
+        metadata: TelegramBot$Metadata
       ) => void
     ): this;
     prependOnceListener(
       event: "callback_query",
-      listener: (query: TelegramBot$TelegramBot$CallbackQuery) => void
+      listener: (query: TelegramBot$CallbackQuery) => void
     ): this;
     prependOnceListener(
       event: "inline_query",
-      listener: (query: TelegramBot$TelegramBot$InlineQuery) => void
+      listener: (query: TelegramBot$InlineQuery) => void
     ): this;
     prependOnceListener(
       event: "chosen_inline_result",
-      listener: (result: TelegramBot$TelegramBot$ChosenInlineResult) => void
+      listener: (result: TelegramBot$ChosenInlineResult) => void
     ): this;
     prependOnceListener(
       event:
@@ -1390,38 +1379,38 @@ declare module "node-telegram-bot-api" {
         | "edited_channel_post"
         | "edited_channel_post_text"
         | "edited_channel_post_caption",
-      listener: (message: TelegramBot$TelegramBot$Message) => void
+      listener: (message: TelegramBot$Message) => void
     ): this;
     prependOnceListener(
       event: "shipping_query",
-      listener: (query: TelegramBot$TelegramBot$ShippingQuery) => void
+      listener: (query: TelegramBot$ShippingQuery) => void
     ): this;
     prependOnceListener(
       event: "pre_checkout_query",
-      listener: (query: TelegramBot$TelegramBot$PreCheckoutQuery) => void
+      listener: (query: TelegramBot$PreCheckoutQuery) => void
     ): this;
     prependOnceListener(
       event: "polling_error" | "webhook_error" | "error",
       listener: (error: Error) => void
     ): this;
     removeListener(
-      event: TelegramBot$TelegramBot$MessageType | "message",
+      event: TelegramBot$MessageType | "message",
       listener: (
-        message: TelegramBot$TelegramBot$Message,
-        metadata: TelegramBot$TelegramBot$Metadata
+        message: TelegramBot$Message,
+        metadata: TelegramBot$Metadata
       ) => void
     ): this;
     removeListener(
       event: "callback_query",
-      listener: (query: TelegramBot$TelegramBot$CallbackQuery) => void
+      listener: (query: TelegramBot$CallbackQuery) => void
     ): this;
     removeListener(
       event: "inline_query",
-      listener: (query: TelegramBot$TelegramBot$InlineQuery) => void
+      listener: (query: TelegramBot$InlineQuery) => void
     ): this;
     removeListener(
       event: "chosen_inline_result",
-      listener: (result: TelegramBot$TelegramBot$ChosenInlineResult) => void
+      listener: (result: TelegramBot$ChosenInlineResult) => void
     ): this;
     removeListener(
       event:
@@ -1432,38 +1421,38 @@ declare module "node-telegram-bot-api" {
         | "edited_channel_post"
         | "edited_channel_post_text"
         | "edited_channel_post_caption",
-      listener: (message: TelegramBot$TelegramBot$Message) => void
+      listener: (message: TelegramBot$Message) => void
     ): this;
     removeListener(
       event: "shipping_query",
-      listener: (query: TelegramBot$TelegramBot$ShippingQuery) => void
+      listener: (query: TelegramBot$ShippingQuery) => void
     ): this;
     removeListener(
       event: "pre_checkout_query",
-      listener: (query: TelegramBot$TelegramBot$PreCheckoutQuery) => void
+      listener: (query: TelegramBot$PreCheckoutQuery) => void
     ): this;
     removeListener(
       event: "polling_error" | "webhook_error" | "error",
       listener: (error: Error) => void
     ): this;
     off(
-      event: TelegramBot$TelegramBot$MessageType | "message",
+      event: TelegramBot$MessageType | "message",
       listener: (
-        message: TelegramBot$TelegramBot$Message,
-        metadata: TelegramBot$TelegramBot$Metadata
+        message: TelegramBot$Message,
+        metadata: TelegramBot$Metadata
       ) => void
     ): this;
     off(
       event: "callback_query",
-      listener: (query: TelegramBot$TelegramBot$CallbackQuery) => void
+      listener: (query: TelegramBot$CallbackQuery) => void
     ): this;
     off(
       event: "inline_query",
-      listener: (query: TelegramBot$TelegramBot$InlineQuery) => void
+      listener: (query: TelegramBot$InlineQuery) => void
     ): this;
     off(
       event: "chosen_inline_result",
-      listener: (result: TelegramBot$TelegramBot$ChosenInlineResult) => void
+      listener: (result: TelegramBot$ChosenInlineResult) => void
     ): this;
     off(
       event:
@@ -1474,15 +1463,15 @@ declare module "node-telegram-bot-api" {
         | "edited_channel_post"
         | "edited_channel_post_text"
         | "edited_channel_post_caption",
-      listener: (message: TelegramBot$TelegramBot$Message) => void
+      listener: (message: TelegramBot$Message) => void
     ): this;
     off(
       event: "shipping_query",
-      listener: (query: TelegramBot$TelegramBot$ShippingQuery) => void
+      listener: (query: TelegramBot$ShippingQuery) => void
     ): this;
     off(
       event: "pre_checkout_query",
-      listener: (query: TelegramBot$TelegramBot$PreCheckoutQuery) => void
+      listener: (query: TelegramBot$PreCheckoutQuery) => void
     ): this;
     off(
       event: "polling_error" | "webhook_error" | "error",
@@ -1490,7 +1479,7 @@ declare module "node-telegram-bot-api" {
     ): this;
     removeAllListeners(
       event:
-        | TelegramBot$TelegramBot$MessageType
+        | TelegramBot$MessageType
         | "message"
         | "callback_query"
         | "inline_query"
@@ -1510,7 +1499,7 @@ declare module "node-telegram-bot-api" {
     ): this;
     listeners(
       event:
-        | TelegramBot$TelegramBot$MessageType
+        | TelegramBot$MessageType
         | "message"
         | "callback_query"
         | "inline_query"
@@ -1527,10 +1516,10 @@ declare module "node-telegram-bot-api" {
         | "polling_error"
         | "webhook_error"
         | "error"
-    ): Array<(data: any, metadata?: TelegramBot$TelegramBot$Metadata) => void>;
+    ): Array<(data: any, metadata?: TelegramBot$Metadata) => void>;
     rawListeners(
       event:
-        | TelegramBot$TelegramBot$MessageType
+        | TelegramBot$MessageType
         | "message"
         | "callback_query"
         | "inline_query"
@@ -1547,9 +1536,9 @@ declare module "node-telegram-bot-api" {
         | "polling_error"
         | "webhook_error"
         | "error"
-    ): Array<(data: any, metadata?: TelegramBot$TelegramBot$Metadata) => void>;
+    ): Array<(data: any, metadata?: TelegramBot$Metadata) => void>;
     eventNames(): Array<
-      | TelegramBot$TelegramBot$MessageType
+      | TelegramBot$MessageType
       | "message"
       | "callback_query"
       | "inline_query"
@@ -1569,7 +1558,7 @@ declare module "node-telegram-bot-api" {
     >;
     listenerCount(
       event:
-        | TelegramBot$TelegramBot$MessageType
+        | TelegramBot$MessageType
         | "message"
         | "callback_query"
         | "inline_query"
@@ -1588,5 +1577,5 @@ declare module "node-telegram-bot-api" {
         | "error"
     ): number;
   }
-  declare module.exports: typeof TelegramBot;
+  declare export default typeof TelegramBot;
 }
