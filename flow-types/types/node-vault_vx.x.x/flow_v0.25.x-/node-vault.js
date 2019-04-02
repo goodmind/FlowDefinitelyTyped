@@ -123,8 +123,8 @@ declare module "node-vault" {
     requestOptions?: request.CoreOptions;
   }
   declare function NodeVault(
-    options?: NodeVault$NodeVault$VaultOptions
-  ): NodeVault$NodeVault$client;
+    options?: NodeVault$VaultOptions
+  ): NodeVault$client;
 
-  declare module.exports: typeof NodeVault;
+  declare export default typeof NodeVault;
 }
