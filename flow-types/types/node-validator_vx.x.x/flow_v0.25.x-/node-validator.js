@@ -17,6 +17,8 @@ declare type ValidatorOptions$Options =
   | ValidatorOptions$IsStringOptions
   | ValidatorOptions$IsNumberOptions
   | ValidatorOptions$IsDateOptions;
+declare var Validator: typeof npm$namespace$Validator;
+
 declare var npm$namespace$Validator: {
   express: typeof Validator$express,
   bodyValidator: typeof Validator$bodyValidator,
@@ -59,7 +61,7 @@ declare type Validator$IsObjectValidator = {
     customValidator: Validator$ValidateFn
   ) => Validator$IsObjectValidator,
   validate: Validator$ValidateFn
-} & Validatable;
+} & Validator$Validatable;
 
 declare function Validator$express(validator: Validator$Validatable): any;
 
