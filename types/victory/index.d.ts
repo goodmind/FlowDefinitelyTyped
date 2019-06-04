@@ -3,8 +3,12 @@
 // Definitions by: Alexey Svetliakov <https://github.com/asvetliakov>
 //                 snerks <https://github.com/snerks>
 //                 Krzysztof Cebula <https://github.com/Havret>
-//                 Vitaliy Polyanskiy <https://github.com/allreadyExisted>
+//                 Vitaliy Polyanskiy <https://github.com/alreadyExisted>
 //                 James Lismore <https://github.com/jlismore>
+//                 Stack Builders <https://github.com/stackbuilders>
+//                 Esteban Ibarra <https://github.com/ibarrae>
+//                 Dominic Lee <https://github.com/dominictwlee>
+//                 Dave Vedder <https://github.com/veddermatic>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.8
 
@@ -903,10 +907,14 @@ declare module "victory" {
   /**
    * Category prop type
    */
-  type CategoryPropType = string[] | {
-    x: string[]
-    y: string[]
-  };
+  type CategoryPropType =
+    | string[]
+    | { x: string[] }
+    | { y: string[] }
+    | {
+        x: string[];
+        y: string[];
+      };
 
   /**
    * Data getter property type
@@ -942,6 +950,13 @@ declare module "victory" {
      * This value should be given as a number of pixels
      */
     height?: number;
+    /**
+     * The horizontal prop determines whether data will be plotted horizontally.
+     * When this prop is set to true, the independent variable will be plotted on the y axis
+     * and the dependent variable will be plotted on the x axis.
+     * @default false
+     */
+    horizontal?: boolean;
     /**
      * The padding props specifies the amount of padding in number of pixels between
      * the edge of the chart and any rendered child components. This prop can be given
@@ -1073,6 +1088,13 @@ declare module "victory" {
      * @default "y"
      */
     y?: DataGetterPropType;
+    /**
+     * Use y0 data accessor prop to determine how the component defines the baseline y0 data.
+     * This prop is useful for defining custom baselines for components like VictoryBar or VictoryArea.
+     * This prop may be given in a variety of formats.
+     * @example 'last_quarter_profit', () => 10, 1, 'employees.salary', ["employees", "salary"]
+     */
+    y0?: DataGetterPropType;
   }
 
   // Common labable interface
@@ -1750,6 +1772,11 @@ declare module "victory" {
      */
     categories?: CategoryPropType;
     /**
+     * The color prop is an optional prop that defines a single color to be applied to the
+     * children of VictoryGroup. The color prop will override colors specified via colorScale.
+     */
+    color?: string;
+    /**
      * The colorScale prop is an optional prop that defines the color scale the chart's bars
      * will be created on. This prop should be given as an array of CSS colors, or as a string
      * corresponding to one of the built in color scales. VictoryBar will automatically assign
@@ -2001,7 +2028,7 @@ declare module "victory" {
      * gutters are between columns. When orientation is vertical, gutters
      * are the space between rows.
      */
-    gutter?: number;
+    gutter?: number | {left: number, right: number};
     /**
      * The itemsPerRow prop determines how many items to render in each row
      * of a horizontal legend, or in each column of a vertical legend. This
@@ -2424,4 +2451,24 @@ declare module "victory" {
    * Data changes are animated with VictoryAnimation.
    */
   export class VictoryPie extends React.Component<VictoryPieProps, any> {}
+
+  export type ContainerType =
+    | "brush"
+    | "cursor"
+    | "selection"
+    | "voronoi"
+    | "zoom";
+
+  /**
+   * createContainer makes a container component with multiple behaviors.
+   * It allows you to effectively combine any two of the following containers:
+   * VictoryBrushContainer, VictoryCursorContainer, VictorySelectionContainer,
+   * VictoryVoronoiContainer, or VictoryZoomContainer.
+   * @param c1 : "brush" | "cursor" | "selection" | "voronoi" | "zoom"
+   * @param c2 : "brush" | "cursor" | "selection" | "voronoi" | "zoom"
+   */
+  export function createContainer<V, W>(
+    c1: ContainerType,
+    c2: ContainerType
+  ): React.ComponentType<V & W>;
 }

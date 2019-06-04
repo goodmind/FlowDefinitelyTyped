@@ -1,4 +1,4 @@
-// Type definitions for slate-react 0.21
+// Type definitions for slate-react 0.22
 // Project: https://github.com/ianstormtaylor/slate
 // Definitions by: Andy Kent <https://github.com/andykent>
 //                 Jamie Talbot <https://github.com/majelbstoat>
@@ -9,6 +9,7 @@
 //                 Hanna Greaves <https://github.com/sgreav>
 //                 Francesco Agnoletto <https://github.com/Kornil>
 //                 Jack Allen <https://github.com/jackall3n>
+//                 Benjamin Evenson <https://github.com/benjiro>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.8
 import {
@@ -57,9 +58,20 @@ export interface RenderNodeProps {
   isFocused: boolean;
   isSelected: boolean;
   key: string;
-  node: Block | Inline;
   parent: Node;
   readOnly: boolean;
+}
+
+export interface RenderBlockProps extends RenderNodeProps {
+    node: Block;
+}
+
+export interface RenderDocumentProps extends RenderNodeProps {
+    node: Document;
+}
+
+export interface RenderInlineProps extends RenderNodeProps {
+    node: Inline;
 }
 
 export type EventHook = (
@@ -72,7 +84,9 @@ export interface Plugin {
     decorateNode?: (node: Node, editor: CoreEditor, next: () => any) => any;
     renderEditor?: (props: EditorProps, editor: CoreEditor, next: () => any) => any;
     renderMark?: (props: RenderMarkProps, editor: CoreEditor, next: () => any) => any;
-    renderNode?: (props: RenderNodeProps, editor: CoreEditor, next: () => any) => any;
+    renderBlock?: (props: RenderBlockProps, editor: CoreEditor, next: () => any) => any;
+    renderDocument?: (props: RenderDocumentProps, editor: CoreEditor, next: () => any) => any;
+    renderInline?: (props: RenderInlineProps, editor: CoreEditor, next: () => any) => any;
     shouldNodeComponentUpdate?: (previousProps: RenderNodeProps, props: RenderNodeProps, editor: CoreEditor, next: () => any) => any;
 
     onBeforeInput?: EventHook;
@@ -331,6 +345,7 @@ export class Editor extends React.Component<EditorProps, EditorState> implements
     replaceNodeByPath: CoreEditor['replaceNodeByPath'];
     removeTextByKey: CoreEditor['removeTextByKey'];
     removeTextByPath: CoreEditor['removeTextByPath'];
+    setDecorations: CoreEditor['setDecorations'];
     setMarkByKey: CoreEditor['setMarkByKey'];
     setMarksByPath: CoreEditor['setMarksByPath'];
     setNodeByKey: CoreEditor['setNodeByKey'];
@@ -372,20 +387,11 @@ export type SlateType =
     | "text"
     | "files";
 
-export function cloneFragment(
-    event: Event,
-    value: Value,
-    fragment?: Document,
-    callback?: () => void
-): void;
+export function cloneFragment(event: Event | React.SyntheticEvent, editor: CoreEditor, callback?: () => void): void;
 export function findDOMNode(node: Node, win?: Window): Element;
 export function findDOMRange(range: Range, win?: Window): Range;
-export function findNode(element: Element, value: Value): Node;
-export function findRange(selection: Selection, value: Value): Range;
-export function getEventRange(event: Event, value: Value): Range;
-export function getEventTransfer(event: Event): { type: SlateType; node: Node };
-export function setEventTransfer(
-    event: Event,
-    type: SlateType,
-    data: any
-): void;
+export function findNode(element: Element, editor: CoreEditor): Node;
+export function findRange(selection: Selection | Range, editor: CoreEditor): Range;
+export function getEventRange(event: Event | React.SyntheticEvent, editor: CoreEditor): Range;
+export function getEventTransfer(event: Event | React.SyntheticEvent): { type: SlateType; node: Node };
+export function setEventTransfer(event: Event | React.SyntheticEvent, type: SlateType, data: any): void;

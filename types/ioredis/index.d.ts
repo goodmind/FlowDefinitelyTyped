@@ -253,11 +253,11 @@ declare namespace IORedis {
         zscore(key: KeyType, member: string, callback: (err: Error, res: string) => void): void;
         zscore(key: KeyType, member: string): Promise<string>;
 
-        zrank(key: KeyType, member: string, callback: (err: Error, res: number) => void): void;
-        zrank(key: KeyType, member: string): Promise<number>;
+        zrank(key: KeyType, member: string, callback: (err: Error, res: number | null) => void): void;
+        zrank(key: KeyType, member: string): Promise<number | null>;
 
-        zrevrank(key: KeyType, member: string, callback: (err: Error, res: number) => void): void;
-        zrevrank(key: KeyType, member: string): Promise<number>;
+        zrevrank(key: KeyType, member: string, callback: (err: Error, res: number | null) => void): void;
+        zrevrank(key: KeyType, member: string): Promise<number | null>;
 
         hset(key: KeyType, field: string, value: any, callback: (err: Error, res: 0 | 1) => void): void;
         hset(key: KeyType, field: string, value: any): Promise<0 | 1>;
@@ -875,10 +875,20 @@ declare namespace IORedis {
 
     type NodeRole = 'master' | 'slave' | 'all';
 
+    type CallbackFunction<T = any> = (err?: NodeJS.ErrnoException | null, result?: T) => void;
+
     interface Cluster extends NodeJS.EventEmitter, Commander {
         connect(callback: () => void): Promise<any>;
         disconnect(): void;
         nodes(role?: NodeRole): Redis[];
+        quit(callback?: CallbackFunction<'OK'>): Promise<'OK'>;
+        get(key: KeyType, callback: (err: Error, res: string | null) => void): void;
+        get(key: KeyType): Promise<string | null>;
+        set(key: KeyType, value: any, expiryMode?: string | any[], time?: number | string, setMode?: number | string): Promise<string>;
+        set(key: KeyType, value: any, callback: (err: Error, res: string) => void): void;
+        set(key: KeyType, value: any, setMode: string | any[], callback: (err: Error, res: string) => void): void;
+        set(key: KeyType, value: any, expiryMode: string, time: number | string, callback: (err: Error, res: string) => void): void;
+        set(key: KeyType, value: any, expiryMode: string, time: number | string, setMode: number | string, callback: (err: Error, res: string) => void): void;
     }
 
     interface ClusterStatic extends NodeJS.EventEmitter, Commander {

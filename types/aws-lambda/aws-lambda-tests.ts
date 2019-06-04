@@ -8,10 +8,14 @@ declare let num: number;
 declare let error: Error;
 declare let bool: boolean;
 declare let boolOrUndefined: boolean | undefined;
+declare let boolOrNumOrStr: boolean | number | string;
 declare let numOrUndefined: number | undefined;
 declare let apiGwEvtReqCtx: AWSLambda.APIGatewayEventRequestContext;
 declare let apiGwEvtReqCtxOpt: AWSLambda.APIGatewayEventRequestContext | null | undefined;
 declare let apiGwEvt: AWSLambda.APIGatewayEvent;
+declare let albEvtReqCtx: AWSLambda.ALBEventRequestContext;
+declare let albEvt: AWSLambda.ALBEvent;
+declare let albRes: AWSLambda.ALBResult;
 declare let customAuthorizerEvt: AWSLambda.CustomAuthorizerEvent;
 declare let clientCtx: AWSLambda.ClientContext;
 declare let clientCtxOrUndefined: AWSLambda.ClientContext | undefined;
@@ -124,6 +128,27 @@ str = apiGwEvt.multiValueQueryStringParameters!["example"][0];
 str = apiGwEvt.stageVariables!["example"];
 apiGwEvtReqCtx = apiGwEvt.requestContext;
 str = apiGwEvt.resource;
+
+/* Application Load Balancer Event Request Context */
+str = albEvtReqCtx.elb.targetGroupArn;
+
+/* Application Load Balancer Event */
+str = albEvt.httpMethod;
+str = albEvt.path;
+str = albEvt.queryStringParameters!["example"];
+str = albEvt.headers!["example"];
+str = albEvt.multiValueQueryStringParameters!["example"][0];
+str = albEvt.multiValueHeaders!["example"][0];
+strOrNull = albEvt.body;
+bool = albEvt.isBase64Encoded;
+
+/* Application Load Balancer Result */
+num = albRes.statusCode;
+str = albRes.statusDescription;
+boolOrNumOrStr = albRes.headers!["example"];
+boolOrNumOrStr = albRes.multiValueHeaders!["example"][0];
+str = albRes.body;
+bool = albRes.isBase64Encoded;
 
 /* API Gateway CustomAuthorizer Event */
 str = customAuthorizerEvt.type;
@@ -519,7 +544,7 @@ str = cloudwatchLogsDecodedData.logEvents[0].extractedFields!["example"];
 
 /* ClientContext */
 clientContextClient = clientCtx.client;
-anyObj = clientCtx.custom;
+anyObj = clientCtx.Custom;
 clientContextEnv = clientCtx.env;
 
 /* ClientContextEnv */
@@ -879,6 +904,33 @@ const inferredHandler: AWSLambda.S3Handler = (event, context, cb) => {
 // Test using default Callback type still works.
 const defaultCallbackHandler: AWSLambda.APIGatewayProxyHandler = (event: AWSLambda.APIGatewayEvent, context: AWSLambda.Context, cb: AWSLambda.Callback) => { };
 
+const albSyncHandler: AWSLambda.ALBHandler = (
+    event: AWSLambda.ALBEvent,
+    context: AWSLambda.Context,
+    cb: AWSLambda.ALBCallback,
+) => {
+    cb(null, {
+        statusCode: 200,
+        statusDescription: '200 OK',
+        headers: { },
+        body: '',
+        isBase64Encoded: false,
+    });
+};
+const albAsyncHandler: AWSLambda.ALBHandler = async (
+    event: AWSLambda.ALBEvent,
+    context: AWSLambda.Context,
+    cb: AWSLambda.ALBCallback,
+) => {
+    return {
+        statusCode: 200,
+        statusDescription: '200 OK',
+        headers: { },
+        body: '',
+        isBase64Encoded: false,
+    };
+};
+
 // Specific types
 let s3Handler: AWSLambda.S3Handler = (event: AWSLambda.S3Event, context: AWSLambda.Context, cb: AWSLambda.Callback<void>) => {};
 // Test old name
@@ -966,6 +1018,11 @@ const cloudFrontRequestHandler: AWSLambda.CloudFrontRequestHandler = (event: AWS
 };
 
 const cloudFrontResponseHandler: AWSLambda.CloudFrontResponseHandler = (event: AWSLambda.CloudFrontResponseEvent, context: AWSLambda.Context, cb: AWSLambda.CloudFrontResponseCallback) => { };
+
+const cloudFrontHeaders: AWSLambda.CloudFrontHeaders = {
+    'content-type': [{ value: 'text/plain' }],
+    'x-foo-bar': [{ key: 'X-Foo-Bar', value: 'example' }]
+};
 
 const customAuthorizerHandler: AWSLambda.CustomAuthorizerHandler = (event: AWSLambda.CustomAuthorizerEvent, context: AWSLambda.Context, cb: AWSLambda.CustomAuthorizerCallback) => { };
 

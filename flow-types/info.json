@@ -16132,12 +16132,10 @@
     "filesCount": 1
   },
   "node-telegram-bot-api": {
-    "stdout": true,
     "typescriptCommitHash": "9ea25077b0d9c011e8c9af38b954d7f390f75828",
     "filesCount": 1
   },
   "node-vault": {
-    "stdout": true,
     "typescriptCommitHash": "54c77e47cb51d500ee1ce1bdf429afd970b17cfe",
     "filesCount": 1
   },
@@ -27111,15 +27109,15 @@
   },
   "@carbon/layout": {
     "filesCount": 1,
-    "typescriptCommitHash": null
+    "typescriptCommitHash": "a336ba83ae30b666f284dfd16c1b926f7ae03106"
   },
   "@carbon/motion": {
     "filesCount": 1,
-    "typescriptCommitHash": null
+    "typescriptCommitHash": "d69938c98f79fdf9f948e47fdd7f6ba68c42ccfe"
   },
   "@carbon/type": {
     "filesCount": 1,
-    "typescriptCommitHash": null
+    "typescriptCommitHash": "d4c5675d00e52c4cf99dcc88a5c0fea838d241eb"
   },
   "cassanknex": {
     "filesCount": 1,
