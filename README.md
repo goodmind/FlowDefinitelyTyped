@@ -12,7 +12,7 @@ See the [flow-typed](https://github.com/flow-typed/flow-typed) README.
 
 ## How can I contribute?
 
-Copy definition from `flow-types` and fix type errors, then follow flow-typed [contributing guide](https://github.com/flow-typed/flow-typed/tree/master/CONTRIBUTING.md)
+Copy definition from `flow-types/types` or `flow-types/unformatted` and fix type errors, then follow flow-typed [contributing guide](https://github.com/flow-typed/flow-typed/tree/master/CONTRIBUTING.md)
 
 ### Make a pull request
 
