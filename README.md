@@ -1,10 +1,10 @@
-# FlowDefinitelyTyped [![Join the chat at https://discordapp.com/invite/8ezwRUK](https://img.shields.io/discord/539606376339734558.svg?label=discord&logo=discord&logoColor=white)](https://discordapp.com/invite/8ezwRUK)
+# FlowDefinitelyTyped
 
 > The repository for *horrible quality*, but *more quantity* Flow type definitions.
 
 If anything here seems wrong, please raise an issue in [Flow Discord channel](https://discord.gg/nNZuUHN).
 
-[![Join the chat at https://gitter.im/DefinitelyTyped/DefinitelyTyped](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/DefinitelyTyped/DefinitelyTyped?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://discordapp.com/invite/8ezwRUK](https://img.shields.io/discord/539606376339734558.svg?label=discord&logo=discord&logoColor=white)](https://discordapp.com/invite/8ezwRUK)
 
 ## What are declaration files?
 
