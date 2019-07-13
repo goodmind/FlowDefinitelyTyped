@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@goodmind/flowgen@^2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@goodmind/flowgen/-/flowgen-2.1.4.tgz#b771b1a78a3b0b15c6b7224b507b4ef080f31947"
-  integrity sha512-XfdjEf698hbPl6NCnyZFL91suWJfF2OtvlM7QotTHjO7MCSgph9w6PTBJmKdYJY+XS2TNi9/yS+ReA9zABwN6Q==
+"@goodmind/flowgen@^2.3.12":
+  version "2.3.12"
+  resolved "https://registry.yarnpkg.com/@goodmind/flowgen/-/flowgen-2.3.12.tgz#677b6b174141d9660a32c9453157eb111f846618"
+  integrity sha512-6SH5Wq8othDcFBOiwKmDMzjlzyfQBvPP4J1cIr2zTvdAl9qqwpUFIcSgEMrrzUCpdAQ6ncMwg5yNrKrqAfKyxA==
   dependencies:
     commander "^2.11.0"
     lodash "^4.17.4"
     paralleljs "^0.2.1"
     prettier "^1.16.4"
     shelljs "^0.8.3"
-    typescript "^3.3.3"
+    typescript "^3.3.3333"
     typescript-compiler "^1.4.1-2"
 
 "@octokit/endpoint@^3.1.1":
@@ -1210,22 +1210,22 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-flow-bin@^0.95.1:
-  version "0.95.1"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.95.1.tgz#633113831ccff4b7ee70a2730f63fc43b69ba85f"
-  integrity sha512-06IOC/pqPMNRYtC6AMZEWYR9Fi6UdBC7gImGinPuNUpPZFnP5E9/0cBCl3DWrH4zz/gSM2HdDilU7vPGpYIr2w==
+flow-bin@^0.100.0:
+  version "0.100.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.100.0.tgz#729902726658cfa0a81425d6401f9625cf9f5534"
+  integrity sha512-jcethhgrslBJukH7Z7883ohFFpzLrdsOEwHxvn5NwuTWbNaE71GAl55/PEBRJwYpDvYkRlqgcNkANTv0x5XjqA==
 
-flowgen@^1.5.5:
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.5.7.tgz#a4dfb1b6bd19ae6213501305b62e202744101e1c"
-  integrity sha512-SCFlg0iYmEDIRDUom6vLtfjBl2LNPfXQpBj13MO45VyjvlHvz4k6mc5rAnVfNSLFvI4wNH7IBFMdYNiXm3lkUQ==
+flowgen@^1.8.4:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.8.4.tgz#bfa843f1f8fc531f1250d5a820ff130707ac0d4b"
+  integrity sha512-YB1ClbuyxzK6M6SveFf8yD/dyHq2NTvTEz2PhvA6U3tRGHv0krIKnjBm/g7e+QfR2jQcS45STPkHGExLqHmV8Q==
   dependencies:
     commander "^2.11.0"
     lodash "^4.17.4"
     paralleljs "^0.2.1"
-    prettier "^1.12.1"
-    shelljs "^0.8.2"
-    typescript "^3.3.1"
+    prettier "^1.16.4"
+    shelljs "^0.8.3"
+    typescript "^3.3.3333"
     typescript-compiler "^1.4.1-2"
 
 flush-write-stream@^1.0.0:
@@ -2980,7 +2980,7 @@ prepend-http@^1.0.1:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier@^1.12.1, prettier@^1.16.4:
+prettier@^1.16.4:
   version "1.16.4"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.4.tgz#73e37e73e018ad2db9c76742e2647e21790c9717"
   integrity sha512-ZzWuos7TI5CKUeQAtFd6Zhm2s6EpAD/ZLApIhsF9pRvRtM1RFo61dM/4MSRUA0SuLugA/zgrZD8m0BaY46Og7g==
@@ -3439,7 +3439,7 @@ shebang-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
   integrity sha1-2kL0l0DAtC2yypcoVxyxkMmO/qM=
 
-shelljs@^0.8.2, shelljs@^0.8.3:
+shelljs@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.3.tgz#a7f3319520ebf09ee81275b2368adb286659b097"
   integrity sha512-fc0BKlAWiLpwZljmOvAOTE/gXawtCoNrP5oaY7KIaQbbyHeQVg01pSEuEGvGh3HEdBU4baCD7wQBwADmM/7f7A==
@@ -3949,15 +3949,10 @@ typescript-compiler@^1.4.1-2:
   resolved "https://registry.yarnpkg.com/typescript-compiler/-/typescript-compiler-1.4.1-2.tgz#ba4f7db22d91534a1929d90009dce161eb72fd3f"
   integrity sha1-uk99si2RU0oZKdkACdzhYety/T8=
 
-typescript@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.1.tgz#6de14e1db4b8a006ac535e482c8ba018c55f750b"
-  integrity sha512-cTmIDFW7O0IHbn1DPYjkiebHxwtCMU+eTy30ZtJNBPF9j2O1ITu5XH2YnBeVRKWHqF+3JQwWJv0Q0aUgX8W7IA==
-
-typescript@^3.3.3:
-  version "3.3.3333"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
-  integrity sha512-JjSKsAfuHBE/fB2oZ8NxtRTk5iGcg6hkYXMnZ3Wc+b2RSqejEqTaem11mHASMnFilHrax3sLK0GDzcJrekZYLw==
+typescript@^3.3.1, typescript@^3.3.3333:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.1.tgz#ba72a6a600b2158139c5dd8850f700e231464202"
+  integrity sha512-64HkdiRv1yYZsSe4xC1WVgamNigVYjlssIoaH2HcZF0+ijsk5YK2g0G34w9wJkze8+5ow4STd22AynfO6ZYYLw==
 
 typescript@next:
   version "3.4.0-dev.20190202"

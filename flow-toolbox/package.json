@@ -8,10 +8,11 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@goodmind/flowgen": "^2.3.12",
     "diff": "^4.0.1",
     "error-stack-parser": "^2.0.2",
     "execa": "^1.0.0",
-    "flowgen": "^1.5.5",
+    "flowgen": "^1.8.4",
     "fs-extra": "^7.0.1",
     "glob-promise": "^3.4.0",
     "lodash": "^4.17.11",
@@ -20,8 +21,7 @@
     "typescript": "^3.3.1"
   },
   "devDependencies": {
-    "@goodmind/flowgen": "^2.1.4",
-    "flow-bin": "^0.95.1",
+    "flow-bin": "^0.100.0",
     "yargs": "^12.0.5"
   }
 }
